@@ -9,50 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+from .group_0197 import (
+    RepositoryRuleRequiredStatusChecksPropParametersType,
+    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
-    """WorkflowFileReference
+class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
+    """required_status_checks
 
-    A workflow that must run for this rule to pass
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
-    "RepositoryRuleWorkflowsPropParametersType",
-    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksType",
+    "RepositoryRuleRequiredStatusChecksTypeForResponse",
 )

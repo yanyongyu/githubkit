@@ -18,30 +18,104 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsOrganizationPermissions(GitHubModel):
-    """ActionsOrganizationPermissions"""
+class SecurityAndAnalysis(GitHubModel):
+    """SecurityAndAnalysis"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    selected_repositories_url: Missing[str] = Field(
+    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
         default=UNSET,
-        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
+        description="Enable or disable GitHub Advanced Security for the repository.\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.\n",
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
+    dependabot_security_updates: Missing[
+        SecurityAndAnalysisPropDependabotSecurityUpdates
+    ] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="Enable or disable Dependabot security updates for the repository.",
     )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
     )
-    sha_pinning_required: Missing[bool] = Field(
+    secret_scanning_push_protection: Missing[
+        SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
+    secret_scanning_non_provider_patterns: Missing[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
+    ] = Field(default=UNSET)
+    secret_scanning_ai_detection: Missing[
+        SecurityAndAnalysisPropSecretScanningAiDetection
+    ] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
+    """
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="The enablement status of Dependabot security updates for the repository.",
     )
 
 
-model_rebuild(ActionsOrganizationPermissions)
+class SecurityAndAnalysisPropSecretScanning(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-__all__ = ("ActionsOrganizationPermissions",)
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+model_rebuild(SecurityAndAnalysis)
+model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(SecurityAndAnalysisPropCodeSecurity)
+model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
+model_rebuild(SecurityAndAnalysisPropSecretScanning)
+model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
+model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
+
+__all__ = (
+    "SecurityAndAnalysis",
+    "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropCodeSecurity",
+    "SecurityAndAnalysisPropDependabotSecurityUpdates",
+    "SecurityAndAnalysisPropSecretScanning",
+    "SecurityAndAnalysisPropSecretScanningAiDetection",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
+    "SecurityAndAnalysisPropSecretScanningPushProtection",
+)

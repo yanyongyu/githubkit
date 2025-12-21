@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -21,29 +20,51 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
+class PullRequestReviewEventPropReview(GitHubModel):
+    """PullRequestReviewEventPropReview"""
 
-    Custom repository roles created by organization owners
-    """
-
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
+    state: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    pull_request_url: Missing[str] = Field(default=UNSET)
+    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
+class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinks"""
 
-__all__ = ("OrganizationCustomRepositoryRole",)
+    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewEventPropReview)
+model_rebuild(PullRequestReviewEventPropReviewPropLinks)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReviewEventPropReview",
+    "PullRequestReviewEventPropReviewPropLinks",
+    "PullRequestReviewEventPropReviewPropLinksPropHtml",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
+)

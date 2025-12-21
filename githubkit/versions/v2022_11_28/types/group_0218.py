@@ -12,33 +12,47 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    A hosted compute network settings resource.
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+
+
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
+    """WorkflowFileReference
 
-    A hosted compute network settings resource.
+    A workflow that must run for this rule to pass
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
 )

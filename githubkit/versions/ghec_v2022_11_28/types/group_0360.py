@@ -9,119 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryCollaboratorPermissionType(TypedDict):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorType]
-
-
-class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorTypeForResponse]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0070 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0072 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
 
 
-class CollaboratorType(TypedDict):
-    """Collaborator
+class CodeScanningAlertType(TypedDict):
+    """CodeScanningAlert"""
 
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    number: int
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
     url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsType]
-    role_name: str
-    user_view_type: NotRequired[str]
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class CollaboratorTypeForResponse(TypedDict):
-    """Collaborator
+class CodeScanningAlertTypeForResponse(TypedDict):
+    """CodeScanningAlert"""
 
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    number: int
+    created_at: str
+    updated_at: NotRequired[str]
     url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
-    role_name: str
-    user_view_type: NotRequired[str]
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
-class CollaboratorPropPermissionsType(TypedDict):
-    """CollaboratorPropPermissions"""
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
 
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class CollaboratorPropPermissionsTypeForResponse(TypedDict):
-    """CollaboratorPropPermissions"""
+class CodeScanningAlertRuleTypeForResponse(TypedDict):
+    """CodeScanningAlertRule"""
 
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
+    security_severity_level: NotRequired[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CollaboratorPropPermissionsType",
-    "CollaboratorPropPermissionsTypeForResponse",
-    "CollaboratorType",
-    "CollaboratorTypeForResponse",
-    "RepositoryCollaboratorPermissionType",
-    "RepositoryCollaboratorPermissionTypeForResponse",
+    "CodeScanningAlertRuleType",
+    "CodeScanningAlertRuleTypeForResponse",
+    "CodeScanningAlertType",
+    "CodeScanningAlertTypeForResponse",
 )

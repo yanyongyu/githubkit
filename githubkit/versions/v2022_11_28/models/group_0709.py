@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0453 import EnterpriseWebhooks
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0456 import RepositoryWebhooks
-from .group_0484 import WebhooksProjectCard
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0484 import WebhooksUser
 
 
-class WebhookProjectCardConverted(GitHubModel):
-    """project_card converted event"""
+class WebhookOrgBlockUnblocked(GitHubModel):
+    """org_block unblocked event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectCardConvertedPropChanges = Field()
+    action: Literal["unblocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,12 +40,10 @@ class WebhookProjectCardConverted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -54,24 +52,6 @@ class WebhookProjectCardConverted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectCardConvertedPropChanges(GitHubModel):
-    """WebhookProjectCardConvertedPropChanges"""
+model_rebuild(WebhookOrgBlockUnblocked)
 
-    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectCardConverted)
-model_rebuild(WebhookProjectCardConvertedPropChanges)
-model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
-
-__all__ = (
-    "WebhookProjectCardConverted",
-    "WebhookProjectCardConvertedPropChanges",
-    "WebhookProjectCardConvertedPropChangesPropNote",
-)
+__all__ = ("WebhookOrgBlockUnblocked",)

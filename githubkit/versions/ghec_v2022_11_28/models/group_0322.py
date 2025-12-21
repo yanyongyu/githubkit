@@ -15,35 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0321 import BranchProtection
 
+class OidcCustomSubRepo(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-class ShortBranch(GitHubModel):
-    """Short Branch
-
-    Short Branch
+    Actions OIDC subject customization for a repository
     """
 
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+model_rebuild(OidcCustomSubRepo)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
-
-__all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
-)
+__all__ = ("OidcCustomSubRepo",)

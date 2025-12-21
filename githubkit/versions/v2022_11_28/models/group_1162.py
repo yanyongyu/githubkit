@@ -18,17 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
-        Field(
-            default=UNSET,
-            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
-        )
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to provide to the originating repository.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="The password to provide to the originating repository.",
+    )
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+        default=UNSET,
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

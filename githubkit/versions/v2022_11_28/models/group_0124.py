@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,26 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the tool used to generate the code scanning analysis.",
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    guid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+    )
 
 
-model_rebuild(OrganizationUpdateIssueType)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = ("OrganizationUpdateIssueType",)
+__all__ = ("CodeScanningAnalysisTool",)

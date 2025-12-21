@@ -9,131 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksApproverType(TypedDict):
-    """WebhooksApprover"""
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
+
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class WebhooksApproverTypeForResponse(TypedDict):
-    """WebhooksApprover"""
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
 
-
-class WebhooksReviewersItemsType(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
-    type: NotRequired[Literal["User"]]
-
-
-class WebhooksReviewersItemsTypeForResponse(TypedDict):
-    """WebhooksReviewersItems"""
-
-    reviewer: NotRequired[
-        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
-    ]
-    type: NotRequired[Literal["User"]]
-
-
-class WebhooksReviewersItemsPropReviewerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksApproverType",
-    "WebhooksApproverTypeForResponse",
-    "WebhooksReviewersItemsPropReviewerType",
-    "WebhooksReviewersItemsPropReviewerTypeForResponse",
-    "WebhooksReviewersItemsType",
-    "WebhooksReviewersItemsTypeForResponse",
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
 )

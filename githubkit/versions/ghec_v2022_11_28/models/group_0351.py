@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,56 +17,161 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0342 import BranchRestrictionPolicy
+from .group_0352 import ProtectedBranchPropRequiredPullRequestReviews
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class ProtectedBranch(GitHubModel):
+    """Protected Branch
+
+    Branch protections protect branches
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
+    url: str = Field()
+    required_status_checks: Missing[StatusCheckPolicy] = Field(
+        default=UNSET, title="Status Check Policy", description="Status Check Policy"
+    )
+    required_pull_request_reviews: Missing[
+        ProtectedBranchPropRequiredPullRequestReviews
+    ] = Field(default=UNSET)
+    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
+        default=UNSET
+    )
+    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
+    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
+        default=UNSET
+    )
+    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
+        default=UNSET
+    )
+    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
+    restrictions: Missing[BranchRestrictionPolicy] = Field(
         default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+        title="Branch Restriction Policy",
+        description="Branch Restriction Policy",
     )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    required_conversation_resolution: Missing[
+        ProtectedBranchPropRequiredConversationResolution
+    ] = Field(default=UNSET)
+    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
+    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
         default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetup)
+class ProtectedBranchPropRequiredSignatures(GitHubModel):
+    """ProtectedBranchPropRequiredSignatures"""
 
-__all__ = ("CodeScanningDefaultSetup",)
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropEnforceAdmins(GitHubModel):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowForcePushes(GitHubModel):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowDeletions(GitHubModel):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropBlockCreations(GitHubModel):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropLockBranch(GitHubModel):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropAllowForkSyncing(GitHubModel):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class StatusCheckPolicy(GitHubModel):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str = Field()
+    strict: bool = Field()
+    contexts: list[str] = Field()
+    checks: list[StatusCheckPolicyPropChecksItems] = Field()
+    contexts_url: str = Field()
+
+
+class StatusCheckPolicyPropChecksItems(GitHubModel):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str = Field()
+    app_id: Union[int, None] = Field()
+
+
+model_rebuild(ProtectedBranch)
+model_rebuild(ProtectedBranchPropRequiredSignatures)
+model_rebuild(ProtectedBranchPropEnforceAdmins)
+model_rebuild(ProtectedBranchPropRequiredLinearHistory)
+model_rebuild(ProtectedBranchPropAllowForcePushes)
+model_rebuild(ProtectedBranchPropAllowDeletions)
+model_rebuild(ProtectedBranchPropRequiredConversationResolution)
+model_rebuild(ProtectedBranchPropBlockCreations)
+model_rebuild(ProtectedBranchPropLockBranch)
+model_rebuild(ProtectedBranchPropAllowForkSyncing)
+model_rebuild(StatusCheckPolicy)
+model_rebuild(StatusCheckPolicyPropChecksItems)
+
+__all__ = (
+    "ProtectedBranch",
+    "ProtectedBranchPropAllowDeletions",
+    "ProtectedBranchPropAllowForcePushes",
+    "ProtectedBranchPropAllowForkSyncing",
+    "ProtectedBranchPropBlockCreations",
+    "ProtectedBranchPropEnforceAdmins",
+    "ProtectedBranchPropLockBranch",
+    "ProtectedBranchPropRequiredConversationResolution",
+    "ProtectedBranchPropRequiredLinearHistory",
+    "ProtectedBranchPropRequiredSignatures",
+    "StatusCheckPolicy",
+    "StatusCheckPolicyPropChecksItems",
+)

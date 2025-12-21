@@ -13,41 +13,99 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0555 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0569 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0750 import (
+    WebhookIssuesEditedPropIssueType,
+    WebhookIssuesEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesUnpinnedType(TypedDict):
-    """issues unpinned event"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
-    action: Literal["unpinned"]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
-    """issues unpinned event"""
+class WebhookIssuesEditedTypeForResponse(TypedDict):
+    """issues edited event"""
 
-    action: Literal["unpinned"]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssue2TypeForResponse
+    issue: WebhookIssuesEditedPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
+
+
+class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookIssuesUnpinnedType",
-    "WebhookIssuesUnpinnedTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesTypeForResponse",
+    "WebhookIssuesEditedType",
+    "WebhookIssuesEditedTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,34 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0194 import ReactionRollup
 
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
 
-    A reply to a discussion within a team.
+    An status update belonging to a project
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    id: float = Field(description="The unique identifier of the status update.")
+    node_id: str = Field(description="The node ID of the status update.")
+    project_node_id: Missing[str] = Field(
+        default=UNSET,
+        description="The node ID of the project that this status update belongs to.",
     )
-    created_at: _dt.datetime = Field()
-    last_edited_at: Union[_dt.datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    created_at: _dt.datetime = Field(
+        description="The time when the status update was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time when the status update was last updated."
+    )
+    status: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET, description="The current status.")
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the period covered by the update."
+    )
+    target_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The target date associated with the update."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
+    )
 
 
-model_rebuild(TeamDiscussionComment)
+model_rebuild(ProjectsV2StatusUpdate)
 
-__all__ = ("TeamDiscussionComment",)
+__all__ = ("ProjectsV2StatusUpdate",)

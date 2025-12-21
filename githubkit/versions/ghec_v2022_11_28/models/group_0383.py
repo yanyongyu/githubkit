@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,49 +17,65 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class RepositoryCollaboratorPermission(GitHubModel):
+    """Repository Collaborator Permission
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
-
-    The status of a deployment.
+    Repository Collaborator Permission
     """
 
-    url: str = Field()
+    permission: str = Field()
+    role_name: str = Field()
+    user: Union[None, Collaborator] = Field()
+
+
+class Collaborator(GitHubModel):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str = Field()
     id: int = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
     node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The environment of the deployment that the status is for.",
-    )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
+    role_name: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentStatus)
+class CollaboratorPropPermissions(GitHubModel):
+    """CollaboratorPropPermissions"""
 
-__all__ = ("DeploymentStatus",)
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    admin: bool = Field()
+
+
+model_rebuild(RepositoryCollaboratorPermission)
+model_rebuild(Collaborator)
+model_rebuild(CollaboratorPropPermissions)
+
+__all__ = (
+    "Collaborator",
+    "CollaboratorPropPermissions",
+    "RepositoryCollaboratorPermission",
+)

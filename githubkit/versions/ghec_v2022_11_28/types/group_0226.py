@@ -11,73 +11,62 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0082 import TeamType, TeamTypeForResponse
 
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    The campaign metadata and alert stats.
+    A comment made to a gist.
     """
 
-    number: int
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[_dt.datetime]
-    ends_at: _dt.datetime
-    closed_at: NotRequired[Union[_dt.datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class CampaignSummaryTypeForResponse(TypedDict):
-    """Campaign summary
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    The campaign metadata and alert stats.
+    A comment made to a gist.
     """
 
-    number: int
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserTypeForResponse]
-    team_managers: NotRequired[list[TeamTypeForResponse]]
-    published_at: NotRequired[str]
-    ends_at: str
-    closed_at: NotRequired[Union[str, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
-
-
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
-
-
-class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryPropAlertStatsTypeForResponse",
-    "CampaignSummaryType",
-    "CampaignSummaryTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

@@ -13,32 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0145 import (
-    RepositoryRuleTagNamePatternPropParametersType,
-    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    Parameters to be used for the tag_name_pattern rule
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
+    """branch_name_pattern
 
-    Parameters to be used for the tag_name_pattern rule
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleTagNamePatternType",
-    "RepositoryRuleTagNamePatternTypeForResponse",
+    "RepositoryRuleBranchNamePatternType",
+    "RepositoryRuleBranchNamePatternTypeForResponse",
 )

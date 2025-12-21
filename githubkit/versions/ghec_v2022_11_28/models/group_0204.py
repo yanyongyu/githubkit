@@ -19,34 +19,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0003 import SimpleUser
 
 
-class GistComment(GitHubModel):
-    """Gist Comment
+class ReleaseAsset(GitHubModel):
+    """Release Asset
 
-    A comment made to a gist.
+    Data related to a release.
     """
 
+    url: str = Field()
+    browser_download_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
-    user: Union[None, SimpleUser] = Field()
+    name: str = Field(description="The file name of the asset.")
+    label: Union[str, None] = Field()
+    state: Literal["uploaded", "open"] = Field(
+        description="State of the release asset."
+    )
+    content_type: str = Field()
+    size: int = Field()
+    digest: Union[str, None] = Field()
+    download_count: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
+    uploader: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(GistComment)
+model_rebuild(ReleaseAsset)
 
-__all__ = ("GistComment",)
+__all__ = ("ReleaseAsset",)

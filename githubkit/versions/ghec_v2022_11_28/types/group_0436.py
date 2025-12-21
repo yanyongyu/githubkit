@@ -9,35 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
 
-class PageDeploymentType(TypedDict):
-    """GitHub Pages
 
-    The GitHub Pages deployment status.
+class ReviewRequestedIssueEventType(TypedDict):
+    """Review Requested Issue Event
+
+    Review Requested Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["review_requested"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class PageDeploymentTypeForResponse(TypedDict):
-    """GitHub Pages
+class ReviewRequestedIssueEventTypeForResponse(TypedDict):
+    """Review Requested Issue Event
 
-    The GitHub Pages deployment status.
+    Review Requested Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_requested"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    review_requester: SimpleUserTypeForResponse
+    requested_team: NotRequired[TeamTypeForResponse]
+    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PageDeploymentType",
-    "PageDeploymentTypeForResponse",
+    "ReviewRequestedIssueEventType",
+    "ReviewRequestedIssueEventTypeForResponse",
 )

@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Permission check result for a given devcontainer config.
     """
 
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    )
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
+
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

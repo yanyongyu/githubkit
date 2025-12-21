@@ -298,12 +298,6 @@ class RestNamespace:
         return HostedComputeClient(self._github)
 
     @cached_property
-    def reactions(self) -> "ReactionsClient":
-        from .reactions import ReactionsClient
-
-        return ReactionsClient(self._github)
-
-    @cached_property
     def rate_limit(self) -> "RateLimitClient":
         from .rate_limit import RateLimitClient
 
@@ -314,6 +308,12 @@ class RestNamespace:
         from .checks import ChecksClient
 
         return ChecksClient(self._github)
+
+    @cached_property
+    def reactions(self) -> "ReactionsClient":
+        from .reactions import ReactionsClient
+
+        return ReactionsClient(self._github)
 
     @cached_property
     def dependency_graph(self) -> "DependencyGraphClient":

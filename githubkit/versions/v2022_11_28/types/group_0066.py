@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0067 import (
+    CommitCommentEventPropCommentType,
+    CommitCommentEventPropCommentTypeForResponse,
+)
 
 
-class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
-    """Actions cache retention limit for an organization
+class CommitCommentEventType(TypedDict):
+    """CommitCommentEvent"""
 
-    GitHub Actions cache retention policy for an organization.
-    """
-
-    max_cache_retention_days: NotRequired[int]
+    action: str
+    comment: CommitCommentEventPropCommentType
 
 
-class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache retention limit for an organization
+class CommitCommentEventTypeForResponse(TypedDict):
+    """CommitCommentEvent"""
 
-    GitHub Actions cache retention policy for an organization.
-    """
-
-    max_cache_retention_days: NotRequired[int]
+    action: str
+    comment: CommitCommentEventPropCommentTypeForResponse
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForOrganizationType",
-    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
+    "CommitCommentEventType",
+    "CommitCommentEventTypeForResponse",
 )

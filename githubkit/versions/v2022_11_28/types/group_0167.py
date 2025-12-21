@@ -9,29 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    Prevent merge commits from being pushed to matching refs.
+    The configuration for iteration fields.
     """
 
-    type: Literal["required_linear_history"]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    ]
 
 
-class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
-    """required_linear_history
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    Prevent merge commits from being pushed to matching refs.
+    The configuration for iteration fields.
     """
 
-    type: Literal["required_linear_history"]
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

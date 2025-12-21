@@ -17,21 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0183 import RepositoryRuleBranchNamePatternPropParameters
 
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-class RepositoryRuleBranchNamePattern(GitHubModel):
-    """branch_name_pattern
-
-    Parameters to be used for the branch_name_pattern rule
-    """
-
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
+    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
     )
 
 
-model_rebuild(RepositoryRuleBranchNamePattern)
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-__all__ = ("RepositoryRuleBranchNamePattern",)
+    Parameters for a targeting a repository property
+    """
+
+    name: str = Field(description="The name of the repository property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the repository property"
+    )
+    source: Missing[Literal["custom", "system"]] = Field(
+        default=UNSET,
+        description="The source of the repository property. Defaults to 'custom' if not specified.",
+    )
+
+
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+)

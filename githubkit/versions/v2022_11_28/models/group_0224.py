@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,154 +18,139 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
+from .group_0174 import RepositoryRulesetBypassActor
+from .group_0175 import RepositoryRulesetConditions
+from .group_0183 import OrgRulesetConditionsOneof0
+from .group_0184 import OrgRulesetConditionsOneof1
+from .group_0185 import OrgRulesetConditionsOneof2
+from .group_0186 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0187 import RepositoryRuleUpdate
+from .group_0189 import RepositoryRuleRequiredLinearHistory
+from .group_0190 import RepositoryRuleMergeQueue
+from .group_0192 import RepositoryRuleRequiredDeployments
+from .group_0194 import RepositoryRulePullRequest
+from .group_0196 import RepositoryRuleRequiredStatusChecks
+from .group_0198 import RepositoryRuleCommitMessagePattern
+from .group_0200 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0202 import RepositoryRuleCommitterEmailPattern
+from .group_0204 import RepositoryRuleBranchNamePattern
+from .group_0206 import RepositoryRuleTagNamePattern
+from .group_0208 import RepositoryRuleFilePathRestriction
+from .group_0210 import RepositoryRuleMaxFilePathLength
+from .group_0212 import RepositoryRuleFileExtensionRestriction
+from .group_0214 import RepositoryRuleMaxFileSize
+from .group_0217 import RepositoryRuleWorkflows
+from .group_0219 import RepositoryRuleCodeScanning
+from .group_0221 import RepositoryRuleCopilotCodeReview
 
 
-class TeamRepository(GitHubModel):
-    """Team Repository
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
 
-    A team's access to a repository.
+    A set of rules to apply when specified conditions are met.
     """
 
-    id: int = Field(description="Unique identifier of the repository")
-    node_id: str = Field()
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    forks: int = Field()
-    permissions: Missing[TeamRepositoryPropPermissions] = Field(default=UNSET)
-    role_name: Missing[str] = Field(default=UNSET)
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field(
-        default=False, description="Whether the repository is private or public."
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: str = Field()
-    mirror_url: Union[str, None] = Field()
-    hooks_url: str = Field()
-    svn_url: str = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    size: int = Field()
-    default_branch: str = Field(description="The default branch of the repository.")
-    open_issues_count: int = Field()
-    is_template: Missing[bool] = Field(
+    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
+    )
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Whether this repository acts as a template that can be used to generate new repositories.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
-    has_projects: bool = Field(
-        default=True, description="Whether projects are enabled."
-    )
-    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    has_pages: bool = Field()
-    has_downloads: bool = Field(
-        default=True, description="Whether downloads are enabled."
-    )
-    archived: bool = Field(
-        default=False, description="Whether the repository is archived."
-    )
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
-    )
-    visibility: Missing[str] = Field(
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ] = Field(
         default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
     )
-    pushed_at: Union[_dt.datetime, None] = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
-    )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
-    )
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow Auto-merge to be used on pull requests.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
-    )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
-    )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow forking this repo"
-    )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to require contributors to sign off on web-based commits",
-    )
-    subscribers_count: Missing[int] = Field(default=UNSET)
-    network_count: Missing[int] = Field(default=UNSET)
-    open_issues: int = Field()
-    watchers: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-class TeamRepositoryPropPermissions(GitHubModel):
-    """TeamRepositoryPropPermissions"""
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
 
-    admin: bool = Field()
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(TeamRepository)
-model_rebuild(TeamRepositoryPropPermissions)
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
+
+
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "TeamRepository",
-    "TeamRepositoryPropPermissions",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
 )

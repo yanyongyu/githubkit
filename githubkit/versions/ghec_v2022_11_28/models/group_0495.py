@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,47 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0162 import RepositoryRuleCopilotCodeReviewPropParameters
 
-class GroupResponse(GitHubModel):
-    """GroupResponse"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+class RepositoryRuleDetailedOneof21(GitHubModel):
+    """RepositoryRuleDetailedOneof21"""
+
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
     )
-    external_id: Missing[Union[str, None]] = Field(
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        description="The type of source for the ruleset that includes this rule.",
     )
-    display_name: Missing[Union[str, None]] = Field(
+    ruleset_source: Missing[str] = Field(
         default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
+        description="The name of the source of the ruleset that includes this rule.",
     )
-    members: Missing[list[GroupResponsePropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
-
-
-class GroupResponsePropMembersItems(GitHubModel):
-    """GroupResponsePropMembersItems"""
-
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-model_rebuild(GroupResponse)
-model_rebuild(GroupResponsePropMembersItems)
+model_rebuild(RepositoryRuleDetailedOneof21)
 
-__all__ = (
-    "GroupResponse",
-    "GroupResponsePropMembersItems",
-)
+__all__ = ("RepositoryRuleDetailedOneof21",)

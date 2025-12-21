@@ -9,63 +9,264 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0279 import (
-    CodeScanningVariantAnalysisSkippedRepoGroupType,
-    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+from .group_0273 import (
+    BranchRestrictionPolicyType,
+    BranchRestrictionPolicyTypeForResponse,
+)
+from .group_0283 import (
+    ProtectedBranchPropRequiredPullRequestReviewsType,
+    ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse,
 )
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class ProtectedBranchType(TypedDict):
+    """Protected Branch
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Branch protections protect branches
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    url: str
+    required_status_checks: NotRequired[StatusCheckPolicyType]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsType
+    ]
+    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
+    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
+    restrictions: NotRequired[BranchRestrictionPolicyType]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionType
+    ]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class ProtectedBranchTypeForResponse(TypedDict):
+    """Protected Branch
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Branch protections protect branches
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    url: str
+    required_status_checks: NotRequired[StatusCheckPolicyTypeForResponse]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse
+    ]
+    required_signatures: NotRequired[
+        ProtectedBranchPropRequiredSignaturesTypeForResponse
+    ]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsTypeForResponse]
+    required_linear_history: NotRequired[
+        ProtectedBranchPropRequiredLinearHistoryTypeForResponse
+    ]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesTypeForResponse]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsTypeForResponse]
+    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionTypeForResponse
+    ]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsTypeForResponse]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchTypeForResponse]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingTypeForResponse]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class ProtectedBranchPropRequiredSignaturesType(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    repository_count: int
-    repository_full_names: list[str]
+    url: str
+    enabled: bool
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class ProtectedBranchPropRequiredSignaturesTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
 
-    repository_count: int
-    repository_full_names: list[str]
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsType(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsTypeForResponse(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesType(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsType(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropRequiredConversationResolutionTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropBlockCreationsType(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropBlockCreationsTypeForResponse(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropLockBranchType(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropLockBranchTypeForResponse(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingType(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class StatusCheckPolicyType(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsType]
+    contexts_url: str
+
+
+class StatusCheckPolicyTypeForResponse(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsTypeForResponse]
+    contexts_url: str
+
+
+class StatusCheckPolicyPropChecksItemsType(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
+
+
+class StatusCheckPolicyPropChecksItemsTypeForResponse(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
+    "ProtectedBranchPropAllowDeletionsType",
+    "ProtectedBranchPropAllowDeletionsTypeForResponse",
+    "ProtectedBranchPropAllowForcePushesType",
+    "ProtectedBranchPropAllowForcePushesTypeForResponse",
+    "ProtectedBranchPropAllowForkSyncingType",
+    "ProtectedBranchPropAllowForkSyncingTypeForResponse",
+    "ProtectedBranchPropBlockCreationsType",
+    "ProtectedBranchPropBlockCreationsTypeForResponse",
+    "ProtectedBranchPropEnforceAdminsType",
+    "ProtectedBranchPropEnforceAdminsTypeForResponse",
+    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropLockBranchTypeForResponse",
+    "ProtectedBranchPropRequiredConversationResolutionType",
+    "ProtectedBranchPropRequiredConversationResolutionTypeForResponse",
+    "ProtectedBranchPropRequiredLinearHistoryType",
+    "ProtectedBranchPropRequiredLinearHistoryTypeForResponse",
+    "ProtectedBranchPropRequiredSignaturesType",
+    "ProtectedBranchPropRequiredSignaturesTypeForResponse",
+    "ProtectedBranchType",
+    "ProtectedBranchTypeForResponse",
+    "StatusCheckPolicyPropChecksItemsType",
+    "StatusCheckPolicyPropChecksItemsTypeForResponse",
+    "StatusCheckPolicyType",
+    "StatusCheckPolicyTypeForResponse",
 )

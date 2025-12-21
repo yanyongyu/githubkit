@@ -9,76 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Moved Column in Project Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    object_: GitRefPropObjectType
 
 
-class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
-    """Moved Column in Project Issue Event
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
 
-    Moved Column in Project Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
-    ]
+    object_: GitRefPropObjectTypeForResponse
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    id: int
+    type: str
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
-class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
 
-    id: int
+    type: str
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventTypeForResponse",
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
 )

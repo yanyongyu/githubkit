@@ -9,60 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class BillingUsageSummaryReportOrgType(TypedDict):
+    """BillingUsageSummaryReportOrg"""
+
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
+class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrg"""
 
-    Authentication Token
-    """
-
-    token: str
-    expires_at: _dt.datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
+    organization: str
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
 
 
-class AuthenticationTokenTypeForResponse(TypedDict):
-    """Authentication Token
+class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    Authentication Token
-    """
-
-    token: str
-    expires_at: str
-    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
+class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
-    """AuthenticationTokenPropPermissions
+class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenPropPermissionsTypeForResponse",
-    "AuthenticationTokenType",
-    "AuthenticationTokenTypeForResponse",
+    "BillingUsageSummaryReportOrgPropTimePeriodType",
+    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
+    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportOrgType",
+    "BillingUsageSummaryReportOrgTypeForResponse",
 )

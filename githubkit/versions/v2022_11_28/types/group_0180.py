@@ -9,38 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0181 import (
-    RepositoryRuleCommitterEmailPatternPropParametersType,
-    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
-)
+
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+
+    repository_ids: NotRequired[list[int]]
 
 
-class RepositoryRuleCommitterEmailPatternType(TypedDict):
-    """committer_email_pattern
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Parameters to be used for the committer_email_pattern rule
-    """
-
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
-
-
-class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
-    """committer_email_pattern
-
-    Parameters to be used for the committer_email_pattern rule
-    """
-
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
-    ]
+    repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoryRuleCommitterEmailPatternType",
-    "RepositoryRuleCommitterEmailPatternTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
 )

@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class MergedUpstream(GitHubModel):
-    """Merged upstream
+class DemilestonedIssueEvent(GitHubModel):
+    """Demilestoned Issue Event
 
-    Results of a successful merge upstream request
+    Demilestoned Issue Event
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
-    base_branch: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["demilestoned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    milestone: DemilestonedIssueEventPropMilestone = Field()
 
 
-model_rebuild(MergedUpstream)
+class DemilestonedIssueEventPropMilestone(GitHubModel):
+    """DemilestonedIssueEventPropMilestone"""
 
-__all__ = ("MergedUpstream",)
+    title: str = Field()
+
+
+model_rebuild(DemilestonedIssueEvent)
+model_rebuild(DemilestonedIssueEventPropMilestone)
+
+__all__ = (
+    "DemilestonedIssueEvent",
+    "DemilestonedIssueEventPropMilestone",
+)

@@ -9,35 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EmailType(TypedDict):
-    """Email
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    Email
+    Tag protection
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-class EmailTypeForResponse(TypedDict):
-    """Email
+class TagProtectionTypeForResponse(TypedDict):
+    """Tag protection
 
-    Email
+    Tag protection
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
 __all__ = (
-    "EmailType",
-    "EmailTypeForResponse",
+    "TagProtectionType",
+    "TagProtectionTypeForResponse",
 )

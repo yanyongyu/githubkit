@@ -12,338 +12,186 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0174 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0183 import (
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0184 import (
+    OrgRulesetConditionsOneof1Type,
+    OrgRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0185 import (
+    OrgRulesetConditionsOneof2Type,
+    OrgRulesetConditionsOneof2TypeForResponse,
+)
+from .group_0186 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0187 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0189 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0192 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0194 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0196 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0198 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0200 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0202 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0204 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0206 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0208 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0210 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0212 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0214 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0217 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0219 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0221 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
-class ReposOwnerRepoPatchBodyType(TypedDict):
-    """ReposOwnerRepoPatchBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private"]]
-    security_and_analysis: NotRequired[
-        Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType, None]
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
     ]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    is_template: NotRequired[bool]
-    default_branch: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    archived: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-
-
-class ReposOwnerRepoPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private"]]
-    security_and_analysis: NotRequired[
-        Union[ReposOwnerRepoPatchBodyPropSecurityAndAnalysisTypeForResponse, None]
-    ]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    is_template: NotRequired[bool]
-    default_branch: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    archived: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
-
-    Specify which security and analysis features to enable or disable for the
-    repository.
-
-    To use this parameter, you must have admin permissions for the repository or be
-    an owner or security manager for the organization that owns the repository. For
-    more information, see "[Managing security managers in your
-    organization](https://docs.github.com/organizations/managing-peoples-access-to-
-    your-organization-with-roles/managing-security-managers-in-your-organization)."
-
-    For example, to enable GitHub Advanced Security, use this data in the body of
-    the `PATCH` request:
-    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
-
-    You can check which security and analysis features are currently enabled by
-    using a `GET /repos/{owner}/{repo}` request.
-    """
-
-    advanced_security: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType
-    ]
-    code_security: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType
-    ]
-    secret_scanning: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType
-    ]
-    secret_scanning_push_protection: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisTypeForResponse(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysis
-
-    Specify which security and analysis features to enable or disable for the
-    repository.
-
-    To use this parameter, you must have admin permissions for the repository or be
-    an owner or security manager for the organization that owns the repository. For
-    more information, see "[Managing security managers in your
-    organization](https://docs.github.com/organizations/managing-peoples-access-to-
-    your-organization-with-roles/managing-security-managers-in-your-organization)."
-
-    For example, to enable GitHub Advanced Security, use this data in the body of
-    the `PATCH` request:
-    `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
-
-    You can check which security and analysis features are currently enabled by
-    using a `GET /repos/{owner}/{repo}` request.
-    """
-
-    advanced_security: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityTypeForResponse
-    ]
-    code_security: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityTypeForResponse
-    ]
-    secret_scanning: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningTypeForResponse
-    ]
-    secret_scanning_push_protection: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
-    ]
-    secret_scanning_ai_detection: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
     ]
 
 
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
+class OrgsOrgRulesetsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    Use the `status` property to enable or disable GitHub Advanced Security for this
-    repository.
-    For more information, see "[About GitHub Advanced
-    Security](/github/getting-started-with-github/learning-about-github/about-
-    github-advanced-security)."
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity
-
-    Use the `status` property to enable or disable GitHub Advanced Security for this
-    repository.
-    For more information, see "[About GitHub Advanced
-    Security](/github/getting-started-with-github/learning-about-github/about-
-    github-advanced-security)."
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
-
-    Use the `status` property to enable or disable GitHub Code Security for this
-    repository.
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity
-
-    Use the `status` property to enable or disable GitHub Code Security for this
-    repository.
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
-
-    Use the `status` property to enable or disable secret scanning for this
-    repository. For more information, see "[About secret scanning](/code-
-    security/secret-security/about-secret-scanning)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning
-
-    Use the `status` property to enable or disable secret scanning for this
-    repository. For more information, see "[About secret scanning](/code-
-    security/secret-security/about-secret-scanning)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
-
-    Use the `status` property to enable or disable secret scanning push protection
-    for this repository. For more information, see "[Protecting pushes with secret
-    scanning](/code-security/secret-scanning/protecting-pushes-with-secret-
-    scanning)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection
-
-    Use the `status` property to enable or disable secret scanning push protection
-    for this repository. For more information, see "[Protecting pushes with secret
-    scanning](/code-security/secret-scanning/protecting-pushes-with-secret-
-    scanning)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection
-
-    Use the `status` property to enable or disable secret scanning AI detection for
-    this repository. For more information, see "[Responsible detection of generic
-    secrets with AI](https://docs.github.com/code-security/secret-scanning/using-
-    advanced-secret-scanning-and-push-protection-features/generic-secret-
-    detection/responsible-ai-generic-secrets)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection
-
-    Use the `status` property to enable or disable secret scanning AI detection for
-    this repository. For more information, see "[Responsible detection of generic
-    secrets with AI](https://docs.github.com/code-security/secret-scanning/using-
-    advanced-secret-scanning-and-push-protection-features/generic-secret-
-    detection/responsible-ai-generic-secrets)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatte
-    rns
-
-    Use the `status` property to enable or disable secret scanning non-provider
-    patterns for this repository. For more information, see "[Supported secret
-    scanning patterns](/code-security/secret-scanning/introduction/supported-secret-
-    scanning-patterns#supported-secrets)."
-    """
-
-    status: NotRequired[str]
-
-
-class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatte
-    rns
-
-    Use the `status` property to enable or disable secret scanning non-provider
-    patterns for this repository. For more information, see "[Supported secret
-    scanning patterns](/code-security/secret-scanning/introduction/supported-secret-
-    scanning-patterns#supported-secrets)."
-    """
-
-    status: NotRequired[str]
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0TypeForResponse,
+            OrgRulesetConditionsOneof1TypeForResponse,
+            OrgRulesetConditionsOneof2TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurityTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningTypeForResponse",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
-    "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisTypeForResponse",
-    "ReposOwnerRepoPatchBodyType",
-    "ReposOwnerRepoPatchBodyTypeForResponse",
+    "OrgsOrgRulesetsPostBodyType",
+    "OrgsOrgRulesetsPostBodyTypeForResponse",
 )

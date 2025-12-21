@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0135 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0455 import (
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0502 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectCreatedType",
-    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
 )

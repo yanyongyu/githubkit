@@ -90,6 +90,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .dismissal_request_code_scanning import (
         dismissal_request_code_scanning_action_types as dismissal_request_code_scanning_action_types,
     )
+    from .dismissal_request_dependabot import (
+        DismissalRequestDependabotEvent as DismissalRequestDependabotEvent,
+    )
+    from .dismissal_request_dependabot import (
+        dismissal_request_dependabot_action_types as dismissal_request_dependabot_action_types,
+    )
     from .dismissal_request_secret_scanning import (
         DismissalRequestSecretScanningEvent as DismissalRequestSecretScanningEvent,
     )
@@ -355,6 +361,10 @@ else:
         ".dismissal_request_code_scanning": (
             "DismissalRequestCodeScanningEvent",
             "dismissal_request_code_scanning_action_types",
+        ),
+        ".dismissal_request_dependabot": (
+            "DismissalRequestDependabotEvent",
+            "dismissal_request_dependabot_action_types",
         ),
         ".dismissal_request_secret_scanning": (
             "DismissalRequestSecretScanningEvent",

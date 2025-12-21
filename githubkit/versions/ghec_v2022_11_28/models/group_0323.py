@@ -14,21 +14,19 @@ import datetime as _dt
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GitUser(GitHubModel):
-    """Git User
+class ActionsSecret(GitHubModel):
+    """Actions Secret
 
-    Metaproperties for Git author/committer information.
+    Set secrets for GitHub Actions.
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[_dt.datetime] = Field(default=UNSET)
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(GitUser)
+model_rebuild(ActionsSecret)
 
-__all__ = ("GitUser",)
+__all__ = ("ActionsSecret",)

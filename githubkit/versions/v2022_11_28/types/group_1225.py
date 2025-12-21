@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",
-    "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

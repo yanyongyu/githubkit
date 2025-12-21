@@ -9,47 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0114 import RunnerLabel
 
-class OrgHook(GitHubModel):
-    """Org Hook
 
-    Org Hook
+class Runner(GitHubModel):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
+    id: int = Field(description="The ID of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the runner group."
+    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+model_rebuild(Runner)
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
-
-__all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
-)
+__all__ = ("Runner",)

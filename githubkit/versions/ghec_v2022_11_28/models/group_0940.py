@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0531 import EnterpriseWebhooks
-from .group_0532 import SimpleInstallation
-from .group_0533 import OrganizationSimpleWebhooks
-from .group_0534 import RepositoryWebhooks
+from .group_0553 import EnterpriseWebhooks
+from .group_0554 import SimpleInstallation
+from .group_0555 import OrganizationSimpleWebhooks
+from .group_0556 import RepositoryWebhooks
+from .group_0600 import WebhooksSponsorship
 
 
-class WebhookWatchStarted(GitHubModel):
-    """watch started event"""
+class WebhookSponsorshipCancelled(GitHubModel):
+    """sponsorship cancelled event"""
 
-    action: Literal["started"] = Field()
+    action: Literal["cancelled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +44,15 @@ class WebhookWatchStarted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookWatchStarted)
+model_rebuild(WebhookSponsorshipCancelled)
 
-__all__ = ("WebhookWatchStarted",)
+__all__ = ("WebhookSponsorshipCancelled",)

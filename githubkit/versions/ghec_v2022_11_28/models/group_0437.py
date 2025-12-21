@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,27 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class PagesDeploymentStatus(GitHubModel):
-    """GitHub Pages deployment status"""
-
-    status: Missing[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ] = Field(default=UNSET, description="The current status of the deployment.")
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0083 import Team
 
 
-model_rebuild(PagesDeploymentStatus)
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-__all__ = ("PagesDeploymentStatus",)
+    Review Request Removed Issue Event
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["review_request_removed"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+
+
+model_rebuild(ReviewRequestRemovedIssueEvent)
+
+__all__ = ("ReviewRequestRemovedIssueEvent",)

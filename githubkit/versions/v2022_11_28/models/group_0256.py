@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GitUser(GitHubModel):
-    """Git User
+class ActionsRepositoryPermissions(GitHubModel):
+    """ActionsRepositoryPermissions"""
 
-    Metaproperties for Git author/committer information.
-    """
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
+    )
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[_dt.datetime] = Field(default=UNSET)
 
+model_rebuild(ActionsRepositoryPermissions)
 
-model_rebuild(GitUser)
-
-__all__ = ("GitUser",)
+__all__ = ("ActionsRepositoryPermissions",)

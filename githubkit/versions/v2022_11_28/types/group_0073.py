@@ -9,86 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BillingPremiumRequestUsageReportOrgType(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodType
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType]
+    Gist History
+    """
 
-
-class BillingPremiumRequestUsageReportOrgTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrg"""
-
-    time_period: BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse
-    organization: str
-    user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[
-        BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse
-    ]
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[_dt.datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
 
 
-class BillingPremiumRequestUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Gist History
+    """
 
-
-class BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
 
 
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-class BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportOrgPropUsageItemsItems"""
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
+    """GistHistoryPropChangeStatus"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
+
+    Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodType",
-    "BillingPremiumRequestUsageReportOrgPropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportOrgType",
-    "BillingPremiumRequestUsageReportOrgTypeForResponse",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
+    "GistHistoryType",
+    "GistHistoryTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

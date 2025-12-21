@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -17,67 +18,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class ContentTree(GitHubModel):
-    """Content Tree
 
-    Content Tree
+class CodeScanningCodeqlDatabase(GitHubModel):
+    """CodeQL Database
+
+    A CodeQL database.
     """
 
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    encoding: Missing[str] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+    id: int = Field(description="The ID of the CodeQL database.")
+    name: str = Field(description="The name of the CodeQL database.")
+    language: str = Field(description="The language of the CodeQL database.")
+    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    content_type: str = Field(description="The MIME type of the CodeQL database file.")
+    size: int = Field(description="The size of the CodeQL database file in bytes.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
+    )
+    commit_oid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
+    )
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
+model_rebuild(CodeScanningCodeqlDatabase)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
-
-
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
-
-__all__ = (
-    "ContentTree",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
-    "ContentTreePropLinks",
-)
+__all__ = ("CodeScanningCodeqlDatabase",)

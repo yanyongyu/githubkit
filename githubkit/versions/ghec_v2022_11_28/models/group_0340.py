@@ -15,22 +15,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0341 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
 
-    Commit an autofix for a code scanning alert
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
     """
 
-    target_ref: Missing[str] = Field(
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
         default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(CodeScanningAutofixCommits)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("CodeScanningAutofixCommits",)
+__all__ = ("ProtectedBranchPullRequestReview",)

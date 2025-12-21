@@ -14,19 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0169 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    A tool that must provide code review results for this rule to pass.
+    Merges must be performed via a merge queue.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
-        description="The name of a code review analysis tool"
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)
+__all__ = ("RepositoryRuleMergeQueue",)

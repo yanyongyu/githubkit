@@ -10,86 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0099 import TeamSimpleType, TeamSimpleTypeForResponse
+from typing_extensions import TypedDict
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    The Relationship a Team has with a role.
+    A description of the machine powering a codespace.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    The Relationship a Team has with a role.
+    A description of the machine powering a codespace.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleTypeForResponse]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

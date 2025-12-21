@@ -9,40 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0088 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
-
-    Details for the vulnerable dependency.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Details for the vulnerable dependency.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "CodeScanningDefaultSetupUpdateResponseType",
+    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
 )

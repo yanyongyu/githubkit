@@ -10,63 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0053 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class ReleaseType(TypedDict):
+    """Release
 
-    A comment made to a gist.
+    A release.
     """
 
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
     id: int
     node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserType]
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
     created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class ReleaseTypeForResponse(TypedDict):
+    """Release
 
-    A comment made to a gist.
+    A release.
     """
 
+    url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
     id: int
     node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserTypeForResponse]
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
     created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    published_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    author: SimpleUserTypeForResponse
+    assets: list[ReleaseAssetTypeForResponse]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "ReleaseType",
+    "ReleaseTypeForResponse",
 )

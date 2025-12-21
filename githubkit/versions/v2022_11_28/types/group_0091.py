@@ -10,24 +10,68 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    budgets: list[BudgetType]
+    has_next_page: NotRequired[bool]
 
 
-class ActionsGetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsGetDefaultWorkflowPermissions"""
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
 
-    default_workflow_permissions: Literal["read", "write"]
-    can_approve_pull_request_reviews: bool
+    budgets: list[BudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
+
+
+class BudgetType(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "ActionsGetDefaultWorkflowPermissionsType",
-    "ActionsGetDefaultWorkflowPermissionsTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

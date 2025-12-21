@@ -9,48 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    Branch Short
+    Commit an autofix for a code scanning alert
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
 
-    Branch Short
+    Commit an autofix for a code scanning alert
     """
 
-    name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
-
-
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
 )

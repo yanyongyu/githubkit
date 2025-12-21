@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,43 +18,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0194 import ReactionRollup
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-class TeamDiscussion(GitHubModel):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Private registry configuration for an organization
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the discussion.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
     )
-    comments_count: int = Field()
-    comments_url: str = Field()
+    username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
+    )
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    )
     created_at: _dt.datetime = Field()
-    last_edited_at: Union[_dt.datetime, None] = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The unique sequence number of a team discussion.")
-    pinned: bool = Field(
-        description="Whether or not this discussion should be pinned for easy retrieval."
-    )
-    private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization owners."
-    )
-    team_url: str = Field()
-    title: str = Field(description="The title of the discussion.")
     updated_at: _dt.datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TeamDiscussion)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("TeamDiscussion",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

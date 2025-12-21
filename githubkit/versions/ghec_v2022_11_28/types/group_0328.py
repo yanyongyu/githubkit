@@ -9,61 +9,131 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0326 import CommitType, CommitTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0203 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0235 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0327 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class WorkflowRunType(TypedDict):
+    """Workflow Run
 
-    Branch With Protection
+    An invocation of a workflow
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    actor: NotRequired[SimpleUserType]
+    triggering_actor: NotRequired[SimpleUserType]
+    run_started_at: NotRequired[_dt.datetime]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitType]
+    repository: MinimalRepositoryType
+    head_repository: MinimalRepositoryType
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class WorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run
 
-    Branch With Protection
+    An invocation of a workflow
     """
 
-    name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
-    protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    id: int
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[
+        Union[list[ReferencedWorkflowTypeForResponse], None]
+    ]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
+    html_url: str
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    created_at: str
+    updated_at: str
+    actor: NotRequired[SimpleUserTypeForResponse]
+    triggering_actor: NotRequired[SimpleUserTypeForResponse]
+    run_started_at: NotRequired[str]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    head_repository: MinimalRepositoryTypeForResponse
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
 
-    html: str
-    self_: str
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ReferencedWorkflowTypeForResponse(TypedDict):
+    """Referenced workflow
 
-    html: str
-    self_: str
+    A workflow referenced/reused by the initial caller workflow
+    """
+
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "ReferencedWorkflowType",
+    "ReferencedWorkflowTypeForResponse",
+    "WorkflowRunType",
+    "WorkflowRunTypeForResponse",
 )

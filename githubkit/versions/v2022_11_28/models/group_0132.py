@@ -9,100 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0042 import OrganizationSimple
+from .group_0121 import Team
 
 
-class OrganizationProgrammaticAccessGrant(GitHubModel):
-    """Organization Programmatic Access Grant
+class CopilotSeatDetails(GitHubModel):
+    """Copilot Business Seat Detail
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    id: int = Field(
-        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
+    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    organization: Missing[Union[None, OrganizationSimple]] = Field(default=UNSET)
+    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
+        default=UNSET,
+        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
+    pending_cancellation_date: Missing[Union[_dt.date, None]] = Field(
+        default=UNSET,
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
     )
-    repositories_url: str = Field(
-        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
+    last_activity_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
     )
-    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
     )
-    access_granted_at: str = Field(
-        description="Date and time when the fine-grained personal access token was approved to access the organization."
+    last_authenticated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
     )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
+    created_at: _dt.datetime = Field(
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
     )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
     )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-    Permissions requested, categorized by type of permission.
+    Group of enterprise owners and/or members
     """
 
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
-        default=UNSET
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
     )
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
+    )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrant)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+model_rebuild(CopilotSeatDetails)
+model_rebuild(EnterpriseTeam)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrant",
-    "OrganizationProgrammaticAccessGrantPropPermissions",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "CopilotSeatDetails",
+    "EnterpriseTeam",
+    "OrgsOrgCopilotBillingSeatsGetResponse200",
 )

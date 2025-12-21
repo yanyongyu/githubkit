@@ -12,21 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0100 import Team
-
-
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
-    """
-
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+from .group_0050 import Issue
 
 
-model_rebuild(PullRequestReviewRequest)
+class TimelineCrossReferencedEventPropSource(GitHubModel):
+    """TimelineCrossReferencedEventPropSource"""
 
-__all__ = ("PullRequestReviewRequest",)
+    type: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+
+
+model_rebuild(TimelineCrossReferencedEventPropSource)
+
+__all__ = ("TimelineCrossReferencedEventPropSource",)

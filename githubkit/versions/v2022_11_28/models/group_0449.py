@@ -18,19 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0084 import MinimalRepository
+from .group_0448 import SearchResultTextMatchesItems
 
-class KeySimple(GitHubModel):
-    """Key Simple
 
-    Key Simple
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
+
+    Code Search Result Item
     """
 
-    id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(KeySimple)
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
-__all__ = ("KeySimple",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CodeSearchResultItem] = Field()
+
+
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
+
+__all__ = (
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
+)

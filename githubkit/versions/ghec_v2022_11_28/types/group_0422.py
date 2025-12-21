@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0197 import IssueType, IssueTypeForResponse
-
-
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
-
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
+
+
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
+
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventPropSourceType",
-    "TimelineCrossReferencedEventPropSourceTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

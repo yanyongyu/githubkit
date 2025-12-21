@@ -9,28 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0306 import SimpleCommit
+from .group_0010 import Integration
+from .group_0203 import PullRequestMinimal
+from .group_0235 import MinimalRepository
 
 
-class MergeGroup(GitHubModel):
-    """Merge Group
+class SimpleCheckSuite(GitHubModel):
+    """SimpleCheckSuite
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    A suite of checks performed on the code of a given code change
     """
 
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
+    after: Missing[Union[str, None]] = Field(default=UNSET)
+    app: Missing[Union[Integration, None]] = Field(
+        default=UNSET,
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    before: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(
+        default=UNSET, description="The SHA of the head commit that is being checked."
+    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
+    repository: Missing[MinimalRepository] = Field(
+        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    )
+    status: Missing[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MergeGroup)
+model_rebuild(SimpleCheckSuite)
 
-__all__ = ("MergeGroup",)
+__all__ = ("SimpleCheckSuite",)

@@ -9,88 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableType
-
-
-class WorkflowUsageTypeForResponse(TypedDict):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableTypeForResponse
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillableTypeForResponse",
-    "WorkflowUsageType",
-    "WorkflowUsageTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

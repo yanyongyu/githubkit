@@ -9,40 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
+    ]
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
     """
 
-    emails: list[str]
+    value: NotRequired[str]
+    primary: NotRequired[bool]
 
 
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
     """
 
-    emails: list[str]
+    value: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse",
 )

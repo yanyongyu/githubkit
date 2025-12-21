@@ -9,27 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0103 import CustomPropertyValue
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
+class Migration(GitHubModel):
+    """Migration
 
-    List of custom property values for a repository
+    A migration.
     """
 
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
+    id: int = Field()
+    owner: Union[None, SimpleUser] = Field()
+    guid: str = Field()
+    state: str = Field()
+    lock_repositories: bool = Field()
+    exclude_metadata: bool = Field()
+    exclude_git_data: bool = Field()
+    exclude_attachments: bool = Field()
+    exclude_releases: bool = Field()
+    exclude_owner_projects: bool = Field()
+    org_metadata_only: bool = Field()
+    repositories: list[Repository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations."
+    )
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    node_id: str = Field()
+    archive_url: Missing[str] = Field(default=UNSET)
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
     )
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+model_rebuild(Migration)
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+__all__ = ("Migration",)

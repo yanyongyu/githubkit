@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
+
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
+
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    The GitHub Pages deployment status.
+    """
 
-
-class RepositoryRuleDetailedOneof8TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
-    ]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof8Type",
-    "RepositoryRuleDetailedOneof8TypeForResponse",
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
 )

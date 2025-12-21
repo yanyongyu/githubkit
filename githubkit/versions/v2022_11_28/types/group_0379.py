@@ -14,36 +14,28 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0380 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    Legacy Review Comment
+    Timeline Reviewed Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
     html_url: str
     pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -54,42 +46,28 @@ class ReviewCommentType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
+class TimelineReviewedEventTypeForResponse(TypedDict):
+    """Timeline Reviewed Event
 
-    Legacy Review Comment
+    Timeline Reviewed Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    created_at: str
-    updated_at: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    state: str
     html_url: str
     pull_request_url: str
+    links: TimelineReviewedEventPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -100,20 +78,53 @@ class ReviewCommentTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+
+
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksTypeForResponse",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventTypeForResponse",
 )

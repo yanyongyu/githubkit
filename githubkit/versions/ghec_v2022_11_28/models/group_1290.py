@@ -13,14 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
-
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+from .group_0355 import CheckRun
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody)
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",)
+    total_count: int = Field()
+    check_runs: list[CheckRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)

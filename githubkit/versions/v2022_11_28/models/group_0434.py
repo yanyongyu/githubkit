@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,139 +17,131 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
-from .group_0428 import SearchResultTextMatchesItems
+
+class RepositoryAdvisoryUpdate(GitHubModel):
+    """RepositoryAdvisoryUpdate"""
+
+    summary: Missing[str] = Field(
+        max_length=1024, default=UNSET, description="A short summary of the advisory."
+    )
+    description: Missing[str] = Field(
+        max_length=65535,
+        default=UNSET,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: Missing[list[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
+        Field(
+            default=UNSET,
+            description="A product affected by the vulnerability detailed in a repository security advisory.",
+        )
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    state: Missing[Literal["published", "closed", "draft"]] = Field(
+        default=UNSET, description="The state of the advisory."
+    )
+    collaborating_users: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="A list of usernames who have been granted write access to the advisory.",
+    )
+    collaborating_teams: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="A list of team slugs which have been granted write access to the advisory.",
+    )
 
 
-class RepoSearchResultItem(GitHubModel):
-    """Repo Search Result Item
+class RepositoryAdvisoryUpdatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
-    Repo Search Result Item
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field()
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    pushed_at: _dt.datetime = Field()
-    homepage: Union[str, None] = Field()
-    size: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    open_issues_count: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    default_branch: str = Field()
-    score: float = Field()
-    forks_url: str = Field()
-    keys_url: str = Field()
-    collaborators_url: str = Field()
-    teams_url: str = Field()
-    hooks_url: str = Field()
-    issue_events_url: str = Field()
-    events_url: str = Field()
-    assignees_url: str = Field()
-    branches_url: str = Field()
-    tags_url: str = Field()
-    blobs_url: str = Field()
-    git_tags_url: str = Field()
-    git_refs_url: str = Field()
-    trees_url: str = Field()
-    statuses_url: str = Field()
-    languages_url: str = Field()
-    stargazers_url: str = Field()
-    contributors_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    commits_url: str = Field()
-    git_commits_url: str = Field()
-    comments_url: str = Field()
-    issue_comment_url: str = Field()
-    contents_url: str = Field()
-    compare_url: str = Field()
-    merges_url: str = Field()
-    archive_url: str = Field()
-    downloads_url: str = Field()
-    issues_url: str = Field()
-    pulls_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    labels_url: str = Field()
-    releases_url: str = Field()
-    deployments_url: str = Field()
-    git_url: str = Field()
-    ssh_url: str = Field()
-    clone_url: str = Field()
-    svn_url: str = Field()
-    forks: int = Field()
-    open_issues: int = Field()
-    watchers: int = Field()
-    topics: Missing[list[str]] = Field(default=UNSET)
-    mirror_url: Union[str, None] = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_pages: bool = Field()
-    has_wiki: bool = Field()
-    has_downloads: bool = Field()
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    archived: bool = Field()
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
     )
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
-    )
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    allow_auto_merge: Missing[bool] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
 
 
-class RepoSearchResultItemPropPermissions(GitHubModel):
-    """RepoSearchResultItemPropPermissions"""
-
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-
-
-class SearchRepositoriesGetResponse200(GitHubModel):
-    """SearchRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[RepoSearchResultItem] = Field()
-
-
-model_rebuild(RepoSearchResultItem)
-model_rebuild(RepoSearchResultItemPropPermissions)
-model_rebuild(SearchRepositoriesGetResponse200)
+model_rebuild(RepositoryAdvisoryUpdate)
+model_rebuild(RepositoryAdvisoryUpdatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "RepoSearchResultItem",
-    "RepoSearchResultItemPropPermissions",
-    "SearchRepositoriesGetResponse200",
+    "RepositoryAdvisoryUpdate",
+    "RepositoryAdvisoryUpdatePropCreditsItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage",
 )

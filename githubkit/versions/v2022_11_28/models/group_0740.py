@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,15 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0453 import EnterpriseWebhooks
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0456 import RepositoryWebhooks
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0505 import WebhooksProjectColumn
 
 
-class WebhookPublic(GitHubModel):
-    """public event"""
+class WebhookProjectColumnEdited(GitHubModel):
+    """project_column edited event"""
 
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectColumnEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,13 +45,35 @@ class WebhookPublic(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    project_column: WebhooksProjectColumn = Field(title="Project Column")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookPublic)
+class WebhookProjectColumnEditedPropChanges(GitHubModel):
+    """WebhookProjectColumnEditedPropChanges"""
 
-__all__ = ("WebhookPublic",)
+    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectColumnEdited)
+model_rebuild(WebhookProjectColumnEditedPropChanges)
+model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookProjectColumnEdited",
+    "WebhookProjectColumnEditedPropChanges",
+    "WebhookProjectColumnEditedPropChangesPropName",
+)

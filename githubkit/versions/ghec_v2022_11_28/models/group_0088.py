@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class CopilotUsageMetrics28DayReport(GitHubModel):
+    """Copilot Metrics 28 Day Report
 
-    Details for the vulnerable package.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    download_links: list[str] = Field(
+        description="The URLs to download the latest Copilot usage metrics report for the enterprise/organization."
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
+    report_start_day: _dt.date = Field(
+        description="The start date of the report period in `YYYY-MM-DD` format."
+    )
+    report_end_day: _dt.date = Field(
+        description="The end date of the report period in `YYYY-MM-DD` format."
+    )
 
 
-model_rebuild(DependabotAlertPackage)
+model_rebuild(CopilotUsageMetrics28DayReport)
 
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("CopilotUsageMetrics28DayReport",)

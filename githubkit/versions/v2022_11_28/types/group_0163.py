@@ -9,41 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0154 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0160 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    Conditions to target repositories by property and refs by name
+    A draft issue in a project
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
 
-    Conditions to target repositories by property and refs by name
+    A draft issue in a project
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
 )

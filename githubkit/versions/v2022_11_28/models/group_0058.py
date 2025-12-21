@@ -9,34 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
-
-    Marketplace Listing Plan
-    """
-
-    url: str = Field()
-    accounts_url: str = Field()
-    id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+from .group_0050 import Issue
+from .group_0051 import IssueComment
 
 
-model_rebuild(MarketplaceListingPlan)
+class IssueCommentEvent(GitHubModel):
+    """IssueCommentEvent"""
 
-__all__ = ("MarketplaceListingPlan",)
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: IssueComment = Field(
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
+
+
+model_rebuild(IssueCommentEvent)
+
+__all__ = ("IssueCommentEvent",)

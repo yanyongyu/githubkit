@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,85 +18,77 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
+from .group_0052 import PullRequestMinimal
+from .group_0285 import DeploymentSimple
+from .group_0478 import SimpleCheckSuite
 
-class WebhooksTeam(GitHubModel):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
+class CheckRunWithSimpleCheckSuite(GitHubModel):
+    """CheckRun
+
+    A check performed on the code of a given code change
     """
 
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
+    app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
-    node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhooksTeamPropParent, None]] = Field(default=UNSET)
-    permission: Missing[str] = Field(
+    check_suite: SimpleCheckSuite = Field(
+        description="A suite of checks performed on the code of a given code change"
+    )
+    completed_at: Union[_dt.datetime, None] = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,
-        description="Permission that the team will have for its repositories",
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(default=UNSET)
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
-    type: Missing[Literal["enterprise", "organization"]] = Field(
-        default=UNSET, description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-
-
-class WebhooksTeamPropParent(GitHubModel):
-    """WebhooksTeamPropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
+    details_url: str = Field()
+    external_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
     html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
+    id: int = Field(description="The id of the check.")
+    name: str = Field(description="The name of the check.")
     node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
+    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
+    pull_requests: list[PullRequestMinimal] = Field()
+    started_at: _dt.datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
+        description="The phase of the lifecycle that the check is currently in."
     )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
-        Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
-        )
-    )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
+    url: str = Field()
 
 
-model_rebuild(WebhooksTeam)
-model_rebuild(WebhooksTeamPropParent)
+class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+
+
+model_rebuild(CheckRunWithSimpleCheckSuite)
+model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
 
 __all__ = (
-    "WebhooksTeam",
-    "WebhooksTeamPropParent",
+    "CheckRunWithSimpleCheckSuite",
+    "CheckRunWithSimpleCheckSuitePropOutput",
 )

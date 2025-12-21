@@ -9,36 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0128 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+
+class DeployKeyType(TypedDict):
+    """Deploy Key
+
+    An SSH key granting access to a single repository.
+    """
+
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    An SSH key granting access to a single repository.
+    """
 
-
-class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof1Type",
-    "RepositoryRuleDetailedOneof1TypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

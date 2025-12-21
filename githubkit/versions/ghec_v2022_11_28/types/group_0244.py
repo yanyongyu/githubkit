@@ -9,35 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSubjectStatsItemsType(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class ActionsOrganizationPermissionsType(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    enabled_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
+    """ActionsOrganizationPermissions"""
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    enabled_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ApiInsightsSubjectStatsItemsType",
-    "ApiInsightsSubjectStatsItemsTypeForResponse",
+    "ActionsOrganizationPermissionsType",
+    "ActionsOrganizationPermissionsTypeForResponse",
 )

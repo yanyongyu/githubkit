@@ -10,55 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class ApiInsightsSubjectStatsItemsType(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
-
-
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
-
-
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "ApiInsightsSubjectStatsItemsType",
+    "ApiInsightsSubjectStatsItemsTypeForResponse",
 )

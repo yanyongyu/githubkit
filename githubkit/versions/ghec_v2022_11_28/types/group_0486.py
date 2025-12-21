@@ -9,40 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0143 import (
+    RepositoryRuleCommitterEmailPatternPropParametersType,
+    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
+)
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class RepositoryRuleDetailedOneof12Type(TypedDict):
+    """RepositoryRuleDetailedOneof12"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class RepositoryRuleDetailedOneof12TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof12"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "RepositoryRuleDetailedOneof12Type",
+    "RepositoryRuleDetailedOneof12TypeForResponse",
 )

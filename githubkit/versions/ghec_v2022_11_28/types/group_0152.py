@@ -13,34 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0153 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMaxFileSizeType(TypedDict):
-    """max_file_size
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Prevent commits with individual files that exceed the specified limit from being
+    Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-class RepositoryRuleMaxFileSizeTypeForResponse(TypedDict):
-    """max_file_size
+class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
+    """file_extension_restriction
 
-    Prevent commits with individual files that exceed the specified limit from being
+    Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizeType",
-    "RepositoryRuleMaxFileSizeTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionType",
+    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
 )

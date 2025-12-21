@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class PorterLargeFile(GitHubModel):
-    """Porter Large File
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    Porter Large File
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    ref_name: str = Field()
-    path: str = Field()
-    oid: str = Field()
-    size: int = Field()
 
+model_rebuild(Metadata)
 
-model_rebuild(PorterLargeFile)
-
-__all__ = ("PorterLargeFile",)
+__all__ = ("Metadata",)

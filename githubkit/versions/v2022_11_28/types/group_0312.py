@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from typing_extensions import TypedDict
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool
+
+
+class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
+    """Codespaces Permissions Check
+
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "CodespacesPermissionsCheckForDevcontainerType",
+    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
 )

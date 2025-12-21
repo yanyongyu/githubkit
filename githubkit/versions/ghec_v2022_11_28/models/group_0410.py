@@ -9,44 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0411 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class DemilestonedIssueEvent(GitHubModel):
-    """Demilestoned Issue Event
-
-    Demilestoned Issue Event
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["demilestoned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    milestone: DemilestonedIssueEventPropMilestone = Field()
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    )
+    type: str = Field()
+    reviewers: Missing[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    )
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
-    """DemilestonedIssueEventPropMilestone"""
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-    title: str = Field()
-
-
-model_rebuild(DemilestonedIssueEvent)
-model_rebuild(DemilestonedIssueEventPropMilestone)
-
-__all__ = (
-    "DemilestonedIssueEvent",
-    "DemilestonedIssueEventPropMilestone",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

@@ -9,99 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0256 import GitUserType, GitUserTypeForResponse
-from .group_0428 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
-from .group_0431 import (
-    CommitSearchResultItemPropCommitType,
-    CommitSearchResultItemPropCommitTypeForResponse,
-)
+
+class SecretScanningScanHistoryType(TypedDict):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: NotRequired[list[SecretScanningScanType]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
+    backfill_scans: NotRequired[list[SecretScanningScanType]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+    ]
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class SecretScanningScanHistoryTypeForResponse(TypedDict):
+    """SecretScanningScanHistory"""
 
-    Commit Search Result Item
+    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[
+            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+        ]
+    ]
+
+
+class SecretScanningScanType(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CommitSearchResultItemTypeForResponse(TypedDict):
-    """Commit Search Result Item
+class SecretScanningScanTypeForResponse(TypedDict):
+    """SecretScanningScan
 
-    Commit Search Result Item
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitTypeForResponse
-    author: Union[None, SimpleUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
-
-
-class SearchCommitsGetResponse200TypeForResponse(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemTypeForResponse]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemPropParentsItemsTypeForResponse",
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemTypeForResponse",
-    "SearchCommitsGetResponse200Type",
-    "SearchCommitsGetResponse200TypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
+    "SecretScanningScanHistoryType",
+    "SecretScanningScanHistoryTypeForResponse",
+    "SecretScanningScanType",
+    "SecretScanningScanTypeForResponse",
 )

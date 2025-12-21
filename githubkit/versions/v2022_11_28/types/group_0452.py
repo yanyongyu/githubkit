@@ -9,82 +9,208 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingUsageSummaryReportUserType(TypedDict):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriodType
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
-
-
-class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0045 import MilestoneType, MilestoneTypeForResponse
+from .group_0046 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0048 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0049 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0448 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Issue Search Result Item
+    """
+
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    id: int
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    user: Union[None, SimpleUserType]
+    labels: list[IssueSearchResultItemPropLabelsItemsType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserType]
+    milestone: Union[None, MilestoneType]
+    comments: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class IssueSearchResultItemTypeForResponse(TypedDict):
+    """Issue Search Result Item
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Issue Search Result Item
+    """
+
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    id: int
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    comments: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
-class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
 
 
-class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+
+
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemType]
+
+
+class SearchIssuesGetResponse200TypeForResponse(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "BillingUsageSummaryReportUserPropTimePeriodType",
-    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportUserType",
-    "BillingUsageSummaryReportUserTypeForResponse",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
+    "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemPropPullRequestTypeForResponse",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemTypeForResponse",
+    "SearchIssuesGetResponse200Type",
+    "SearchIssuesGetResponse200TypeForResponse",
 )

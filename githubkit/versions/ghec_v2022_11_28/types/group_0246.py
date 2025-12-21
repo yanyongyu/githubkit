@@ -12,23 +12,35 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    The public key used for setting Actions Secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class ActionsPublicKeyTypeForResponse(TypedDict):
+    """ActionsPublicKey
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    The public key used for setting Actions Secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsTimeStatsItemsType",
-    "ApiInsightsTimeStatsItemsTypeForResponse",
+    "ActionsPublicKeyType",
+    "ActionsPublicKeyTypeForResponse",
 )

@@ -18,24 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomPropertyPayload(GitHubModel):
-    """Organization Custom Property Payload
+class OrganizationCustomProperty(GitHubModel):
+    """Custom Property for Organization
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Custom property defined for an organization
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property.")
+    property_name: Missing[str] = Field(
+        default=UNSET, description="The name of the property"
     )
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
+    value_type: Missing[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    ] = Field(default=UNSET, description="The type of the value for the property")
     required: Missing[bool] = Field(
         default=UNSET, description="Whether the property is required."
     )
     default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property."
+        default=UNSET, description="Default value of the property"
     )
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property."
+        default=UNSET, description="Short description of the property"
     )
     allowed_values: Missing[Union[list[str], None]] = Field(
         default=UNSET,
@@ -43,9 +52,9 @@ class OrganizationCustomPropertyPayload(GitHubModel):
     )
     values_editable_by: Missing[
         Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property.")
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(OrganizationCustomPropertyPayload)
+model_rebuild(OrganizationCustomProperty)
 
-__all__ = ("OrganizationCustomPropertyPayload",)
+__all__ = ("OrganizationCustomProperty",)

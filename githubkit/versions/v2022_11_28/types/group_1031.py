@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    issue_field_id: int
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    issue_field_id: int
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

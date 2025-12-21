@@ -16,57 +16,51 @@ from typing_extensions import TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    A comment made to a gist.
+    Data related to a release.
     """
 
+    url: str
+    browser_download_url: str
     id: int
     node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserType]
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    uploader: Union[None, SimpleUserType]
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
 
-    A comment made to a gist.
+    Data related to a release.
     """
 
+    url: str
+    browser_download_url: str
     id: int
     node_id: str
-    url: str
-    body: str
-    user: Union[None, SimpleUserTypeForResponse]
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
     created_at: str
     updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    uploader: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
 )

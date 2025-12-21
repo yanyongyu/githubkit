@@ -9,60 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class ReviewRequestedIssueEventType(TypedDict):
+    """Review Requested Issue Event
 
-    Page Build
+    Review Requested Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
+    actor: SimpleUserType
+    event: Literal["review_requested"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class ReviewRequestedIssueEventTypeForResponse(TypedDict):
+    """Review Requested Issue Event
 
-    message: Union[str, None]
+    Review Requested Issue Event
+    """
 
-
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_requested"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    review_requester: SimpleUserTypeForResponse
+    requested_team: NotRequired[TeamTypeForResponse]
+    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "ReviewRequestedIssueEventType",
+    "ReviewRequestedIssueEventTypeForResponse",
 )

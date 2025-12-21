@@ -9,42 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class PageBuild(GitHubModel):
-    """Page Build
+class DemilestonedIssueEvent(GitHubModel):
+    """Demilestoned Issue Event
 
-    Page Build
+    Demilestoned Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["demilestoned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    milestone: DemilestonedIssueEventPropMilestone = Field()
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+class DemilestonedIssueEventPropMilestone(GitHubModel):
+    """DemilestonedIssueEventPropMilestone"""
 
-    message: Union[str, None] = Field()
+    title: str = Field()
 
 
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
+model_rebuild(DemilestonedIssueEvent)
+model_rebuild(DemilestonedIssueEventPropMilestone)
 
 __all__ = (
-    "PageBuild",
-    "PageBuildPropError",
+    "DemilestonedIssueEvent",
+    "DemilestonedIssueEventPropMilestone",
 )

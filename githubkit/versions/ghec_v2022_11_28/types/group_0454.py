@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
+
+Language
+"""
 
 
-class RepositoryRuleDetailedOneof2Type(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    type: Literal["deletion"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
-
-
-class RepositoryRuleDetailedOneof2TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
-
-    type: Literal["deletion"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+Language
+"""
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof2Type",
-    "RepositoryRuleDetailedOneof2TypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

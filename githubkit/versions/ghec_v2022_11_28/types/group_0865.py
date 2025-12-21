@@ -13,44 +13,43 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0866 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackageType,
-    WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse,
-)
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0590 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookRegistryPackageUpdatedType(TypedDict):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestOpenedType(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["updated"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    pull_request: PullRequestWebhookType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRegistryPackageUpdatedTypeForResponse(TypedDict):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestOpenedTypeForResponse(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["updated"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    pull_request: PullRequestWebhookTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedType",
-    "WebhookRegistryPackageUpdatedTypeForResponse",
+    "WebhookPullRequestOpenedType",
+    "WebhookPullRequestOpenedTypeForResponse",
 )

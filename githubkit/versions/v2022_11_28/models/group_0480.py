@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0239 import SimpleCommit
 
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-class MergeGroup(GitHubModel):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
+    id: int = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
+    url: str = Field()
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(MergeGroup)
+model_rebuild(WebhooksDeployKey)
 
-__all__ = ("MergeGroup",)
+__all__ = ("WebhooksDeployKey",)

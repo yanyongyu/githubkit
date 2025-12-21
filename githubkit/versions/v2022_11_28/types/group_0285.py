@@ -9,67 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class CodeScanningDefaultSetupUpdateType(TypedDict):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
+class DeploymentSimpleType(TypedDict):
+    """Deployment
+
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ]
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupUpdate
+class DeploymentSimpleTypeForResponse(TypedDict):
+    """Deployment
 
-    Configuration for code scanning default setup.
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ]
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: str
+    updated_at: str
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupUpdateType",
-    "CodeScanningDefaultSetupUpdateTypeForResponse",
+    "DeploymentSimpleType",
+    "DeploymentSimpleTypeForResponse",
 )

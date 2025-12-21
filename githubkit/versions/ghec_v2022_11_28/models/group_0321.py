@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,176 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0318 import ProtectedBranchPullRequestReview
-from .group_0320 import BranchRestrictionPolicy
 
+class Job(GitHubModel):
+    """Job
 
-class BranchProtection(GitHubModel):
-    """Branch Protection
-
-    Branch Protection
+    Information of a job execution in a workflow run
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    required_status_checks: Missing[ProtectedBranchRequiredStatusCheck] = Field(
+    id: int = Field(description="The id of the job.")
+    run_id: int = Field(description="The id of the associated workflow run.")
+    run_url: str = Field()
+    run_attempt: Missing[int] = Field(
         default=UNSET,
-        title="Protected Branch Required Status Check",
-        description="Protected Branch Required Status Check",
+        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
     )
-    enforce_admins: Missing[ProtectedBranchAdminEnforced] = Field(
-        default=UNSET,
-        title="Protected Branch Admin Enforced",
-        description="Protected Branch Admin Enforced",
-    )
-    required_pull_request_reviews: Missing[ProtectedBranchPullRequestReview] = Field(
-        default=UNSET,
-        title="Protected Branch Pull Request Review",
-        description="Protected Branch Pull Request Review",
-    )
-    restrictions: Missing[BranchRestrictionPolicy] = Field(
-        default=UNSET,
-        title="Branch Restriction Policy",
-        description="Branch Restriction Policy",
-    )
-    required_linear_history: Missing[BranchProtectionPropRequiredLinearHistory] = Field(
-        default=UNSET
-    )
-    allow_force_pushes: Missing[BranchProtectionPropAllowForcePushes] = Field(
-        default=UNSET
-    )
-    allow_deletions: Missing[BranchProtectionPropAllowDeletions] = Field(default=UNSET)
-    block_creations: Missing[BranchProtectionPropBlockCreations] = Field(default=UNSET)
-    required_conversation_resolution: Missing[
-        BranchProtectionPropRequiredConversationResolution
-    ] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    protection_url: Missing[str] = Field(default=UNSET)
-    required_signatures: Missing[BranchProtectionPropRequiredSignatures] = Field(
-        default=UNSET
-    )
-    lock_branch: Missing[BranchProtectionPropLockBranch] = Field(
-        default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
-    )
-    allow_fork_syncing: Missing[BranchProtectionPropAllowForkSyncing] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
-    )
-
-
-class ProtectedBranchAdminEnforced(GitHubModel):
-    """Protected Branch Admin Enforced
-
-    Protected Branch Admin Enforced
-    """
-
+    node_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being run.")
     url: str = Field()
-    enabled: bool = Field()
+    html_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ] = Field(description="The phase of the lifecycle that the job is currently in.")
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field(description="The outcome of the job.")
+    created_at: _dt.datetime = Field(
+        description="The time that the job created, in ISO 8601 format."
+    )
+    started_at: _dt.datetime = Field(
+        description="The time that the job started, in ISO 8601 format."
+    )
+    completed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the job finished, in ISO 8601 format."
+    )
+    name: str = Field(description="The name of the job.")
+    steps: Missing[list[JobPropStepsItems]] = Field(
+        default=UNSET, description="Steps in this job."
+    )
+    check_run_url: str = Field()
+    labels: list[str] = Field(
+        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
+    )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
+    )
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
 
 
-class BranchProtectionPropRequiredLinearHistory(GitHubModel):
-    """BranchProtectionPropRequiredLinearHistory"""
+class JobPropStepsItems(GitHubModel):
+    """JobPropStepsItems"""
 
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowForcePushes(GitHubModel):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowDeletions(GitHubModel):
-    """BranchProtectionPropAllowDeletions"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropBlockCreations(GitHubModel):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The phase of the lifecycle that the job is currently in."
+    )
+    conclusion: Union[str, None] = Field(description="The outcome of the job.")
+    name: str = Field(description="The name of the job.")
+    number: int = Field()
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="The time that the step started, in ISO 8601 format."
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="The time that the job finished, in ISO 8601 format."
+    )
 
 
-class BranchProtectionPropRequiredConversationResolution(GitHubModel):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropRequiredSignatures(GitHubModel):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class BranchProtectionPropLockBranch(GitHubModel):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class BranchProtectionPropAllowForkSyncing(GitHubModel):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchRequiredStatusCheck(GitHubModel):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: Missing[str] = Field(default=UNSET)
-    enforcement_level: Missing[str] = Field(default=UNSET)
-    contexts: list[str] = Field()
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItems] = Field()
-    contexts_url: Missing[str] = Field(default=UNSET)
-    strict: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItems(GitHubModel):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str = Field()
-    app_id: Union[int, None] = Field()
-
-
-model_rebuild(BranchProtection)
-model_rebuild(ProtectedBranchAdminEnforced)
-model_rebuild(BranchProtectionPropRequiredLinearHistory)
-model_rebuild(BranchProtectionPropAllowForcePushes)
-model_rebuild(BranchProtectionPropAllowDeletions)
-model_rebuild(BranchProtectionPropBlockCreations)
-model_rebuild(BranchProtectionPropRequiredConversationResolution)
-model_rebuild(BranchProtectionPropRequiredSignatures)
-model_rebuild(BranchProtectionPropLockBranch)
-model_rebuild(BranchProtectionPropAllowForkSyncing)
-model_rebuild(ProtectedBranchRequiredStatusCheck)
-model_rebuild(ProtectedBranchRequiredStatusCheckPropChecksItems)
+model_rebuild(Job)
+model_rebuild(JobPropStepsItems)
 
 __all__ = (
-    "BranchProtection",
-    "BranchProtectionPropAllowDeletions",
-    "BranchProtectionPropAllowForcePushes",
-    "BranchProtectionPropAllowForkSyncing",
-    "BranchProtectionPropBlockCreations",
-    "BranchProtectionPropLockBranch",
-    "BranchProtectionPropRequiredConversationResolution",
-    "BranchProtectionPropRequiredLinearHistory",
-    "BranchProtectionPropRequiredSignatures",
-    "ProtectedBranchAdminEnforced",
-    "ProtectedBranchRequiredStatusCheck",
-    "ProtectedBranchRequiredStatusCheckPropChecksItems",
+    "Job",
+    "JobPropStepsItems",
 )

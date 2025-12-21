@@ -9,41 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0254 import BranchProtection
 
 
-class ShortBranch(GitHubModel):
-    """Short Branch
+class ActionsVariable(GitHubModel):
+    """Actions Variable"""
 
-    Short Branch
-    """
-
-    name: str = Field()
-    commit: ShortBranchPropCommit = Field()
-    protected: bool = Field()
-    protection: Missing[BranchProtection] = Field(
-        default=UNSET, title="Branch Protection", description="Branch Protection"
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    protection_url: Missing[str] = Field(default=UNSET)
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
 
 
-class ShortBranchPropCommit(GitHubModel):
-    """ShortBranchPropCommit"""
+model_rebuild(ActionsVariable)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(ShortBranch)
-model_rebuild(ShortBranchPropCommit)
-
-__all__ = (
-    "ShortBranch",
-    "ShortBranchPropCommit",
-)
+__all__ = ("ActionsVariable",)

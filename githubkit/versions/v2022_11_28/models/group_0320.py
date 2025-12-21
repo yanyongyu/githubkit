@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,19 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0100 import Team
+from .group_0019 import LicenseSimple
+from .group_0172 import CodeOfConductSimple
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+    url: str = Field()
+    html_url: str = Field()
+
+
+class CommunityProfile(GitHubModel):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
+
+__all__ = (
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
+)

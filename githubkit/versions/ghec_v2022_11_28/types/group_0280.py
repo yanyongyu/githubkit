@@ -9,44 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
+class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[_dt.datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+    name: str
+    description: NotRequired[str]
+    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
 
 
-class RuleSuitesItemsTypeForResponse(TypedDict):
-    """RuleSuitesItems"""
+class OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[str]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+    name: str
+    description: NotRequired[str]
+    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
 
 
 __all__ = (
-    "RuleSuitesItemsType",
-    "RuleSuitesItemsTypeForResponse",
+    "OrganizationCustomOrganizationRoleCreateSchemaType",
+    "OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse",
 )

@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class VerificationTypeForResponse(TypedDict):
-    """Verification"""
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "VerificationType",
-    "VerificationTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

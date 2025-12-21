@@ -10,60 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0197 import IssueType, IssueTypeForResponse
-from .group_0268 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0271 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    An item belonging to a project
+    Interaction limit settings.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
 
-    An item belonging to a project
+    Interaction limit settings.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
 )

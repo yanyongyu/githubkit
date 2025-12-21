@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0201 import IssueType, IssueTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class WebhookSubIssuesParentIssueRemovedType(TypedDict):
+    """parent issue removed event"""
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: float
+    parent_issue: IssueType
+    parent_issue_repo: RepositoryType
+    sub_issue_id: float
+    sub_issue: IssueType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
+    """parent issue removed event"""
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
+    parent_issue_repo: RepositoryTypeForResponse
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "AppManifestsCodeConversionsPostResponse201Allof1Type",
-    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
+    "WebhookSubIssuesParentIssueRemovedType",
+    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
 )

@@ -12,27 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class SocialAccountType(TypedDict):
-    """Social account
+class ContentTrafficType(TypedDict):
+    """Content Traffic
 
-    Social media account
+    Content Traffic
     """
 
-    provider: str
-    url: str
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
-class SocialAccountTypeForResponse(TypedDict):
-    """Social account
+class ContentTrafficTypeForResponse(TypedDict):
+    """Content Traffic
 
-    Social media account
+    Content Traffic
     """
 
-    provider: str
-    url: str
+    path: str
+    title: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "SocialAccountType",
-    "SocialAccountTypeForResponse",
+    "ContentTrafficType",
+    "ContentTrafficTypeForResponse",
 )

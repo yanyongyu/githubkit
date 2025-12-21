@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,41 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ContentFile(GitHubModel):
-    """Content File
-
-    Content File
-    """
-
-    type: Literal["file"] = Field()
-    encoding: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
+from .group_0299 import CodeScanningVariantAnalysisRepository
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
 
 
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
-)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

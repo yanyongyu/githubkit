@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,63 +18,146 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0531 import EnterpriseWebhooks
-from .group_0532 import SimpleInstallation
-from .group_0533 import OrganizationSimpleWebhooks
-from .group_0534 import RepositoryWebhooks
-from .group_0539 import CheckRunWithSimpleCheckSuite
 
+class WebhooksRelease1(GitHubModel):
+    """Release
 
-class WebhookCheckRunRequestedAction(GitHubModel):
-    """Check Run Requested Action Event"""
-
-    action: Literal["requested_action"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
-        Field(default=UNSET, description="The action requested by the user.")
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookCheckRunRequestedActionPropRequestedAction(GitHubModel):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The integrator reference of the action requested by the user.",
+    assets: list[Union[WebhooksRelease1PropAssetsItems, None]] = Field()
+    assets_url: str = Field()
+    author: Union[WebhooksRelease1PropAuthor, None] = Field(title="User")
+    body: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    discussion_url: Missing[str] = Field(default=UNSET)
+    draft: bool = Field(description="Whether the release is a draft or published")
+    html_url: str = Field()
+    id: int = Field()
+    immutable: bool = Field(description="Whether or not the release is immutable.")
+    name: Union[str, None] = Field()
+    node_id: str = Field()
+    prerelease: bool = Field(
+        description="Whether the release is identified as a prerelease or a full release."
     )
+    published_at: Union[_dt.datetime, None] = Field()
+    reactions: Missing[WebhooksRelease1PropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    tag_name: str = Field(description="The name of the tag.")
+    tarball_url: Union[str, None] = Field()
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
+    upload_url: str = Field()
+    url: str = Field()
+    zipball_url: Union[str, None] = Field()
 
 
-model_rebuild(WebhookCheckRunRequestedAction)
-model_rebuild(WebhookCheckRunRequestedActionPropRequestedAction)
+class WebhooksRelease1PropAssetsItems(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: _dt.datetime = Field()
+    download_count: int = Field()
+    id: int = Field()
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    digest: Union[str, None] = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: _dt.datetime = Field()
+    uploader: Missing[Union[WebhooksRelease1PropAssetsItemsPropUploader, None]] = Field(
+        default=UNSET, title="User"
+    )
+    url: str = Field()
+
+
+class WebhooksRelease1PropAssetsItemsPropUploader(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksRelease1PropAuthor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksRelease1PropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+model_rebuild(WebhooksRelease1)
+model_rebuild(WebhooksRelease1PropAssetsItems)
+model_rebuild(WebhooksRelease1PropAssetsItemsPropUploader)
+model_rebuild(WebhooksRelease1PropAuthor)
+model_rebuild(WebhooksRelease1PropReactions)
 
 __all__ = (
-    "WebhookCheckRunRequestedAction",
-    "WebhookCheckRunRequestedActionPropRequestedAction",
+    "WebhooksRelease1",
+    "WebhooksRelease1PropAssetsItems",
+    "WebhooksRelease1PropAssetsItemsPropUploader",
+    "WebhooksRelease1PropAuthor",
+    "WebhooksRelease1PropReactions",
 )

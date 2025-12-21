@@ -9,82 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0046 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class ProjectsV2ItemWithContentType(TypedDict):
-    """Projects v2 Item
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    An item belonging to a project
+    Org Membership
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
-    """Projects v2 Item
+class OrgMembershipTypeForResponse(TypedDict):
+    """Org Membership
 
-    An item belonging to a project
+    Org Membership
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[
-        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
-    ]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleTypeForResponse
+    user: Union[None, SimpleUserTypeForResponse]
+    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
 
 
-ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
-
-The content of the item, which varies by content type.
-"""
+    can_create_repository: bool
 
 
-ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
+class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-
-ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
+    can_create_repository: bool
 
 
 __all__ = (
-    "ProjectsV2ItemWithContentPropContentType",
-    "ProjectsV2ItemWithContentPropContentTypeForResponse",
-    "ProjectsV2ItemWithContentPropFieldsItemsType",
-    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
-    "ProjectsV2ItemWithContentType",
-    "ProjectsV2ItemWithContentTypeForResponse",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipPropPermissionsTypeForResponse",
+    "OrgMembershipType",
+    "OrgMembershipTypeForResponse",
 )

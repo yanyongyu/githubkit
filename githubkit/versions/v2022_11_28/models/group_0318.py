@@ -18,84 +18,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0317 import DeploymentBranchPolicySettings
-from .group_0319 import EnvironmentPropProtectionRulesItemsAnyof1
+from .group_0084 import MinimalRepository
 
 
-class Environment(GitHubModel):
-    """Environment
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    Details of a deployment environment
+    Combined Commit Status
     """
 
-    id: int = Field(description="The id of the environment.")
-    node_id: str = Field()
-    name: str = Field(description="The name of the environment.")
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
     url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field(
-        description="The time that the environment was created, in ISO 8601 format."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the environment was last updated, in ISO 8601 format."
-    )
-    protection_rules: Missing[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0,
-                EnvironmentPropProtectionRulesItemsAnyof1,
-                EnvironmentPropProtectionRulesItemsAnyof2,
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Built-in deployment protection rules for the environment.",
-    )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
-    )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
 
+    description: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    type: str = Field()
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
-    )
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of environments in this repository"
-    )
-    environments: Missing[list[Environment]] = Field(default=UNSET)
-
-
-model_rebuild(Environment)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
-model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
 __all__ = (
-    "Environment",
-    "EnvironmentPropProtectionRulesItemsAnyof0",
-    "EnvironmentPropProtectionRulesItemsAnyof2",
-    "ReposOwnerRepoEnvironmentsGetResponse200",
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
 )

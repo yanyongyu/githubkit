@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0083 import EnterpriseTeam
+from .group_0008 import Enterprise
 
 
-class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+    Enterprise custom roles
+    """
+
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    inherited_from: Missing[list[EnterpriseTeam]] = Field(
+    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
         default=UNSET,
-        description="Enterprise Team the user has gotten the role through",
+        description='Source answers the question, "where did this role come from?"',
+    )
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    enterprise: Union[None, Enterprise] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(EnterpriseUserRoleAssignmentAllof1)
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
 
-__all__ = ("EnterpriseUserRoleAssignmentAllof1",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of enterprise roles available to the enterprise.",
+    )
+    roles: Missing[list[EnterpriseRole]] = Field(
+        default=UNSET,
+        description="The list of enterprise roles available to the enterprise.",
+    )
+
+
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
+
+__all__ = (
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
+)

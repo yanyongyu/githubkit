@@ -15,58 +15,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WorkflowUsage(GitHubModel):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillable = Field()
+from .group_0245 import RateLimit
 
 
-class WorkflowUsagePropBillable(GitHubModel):
-    """WorkflowUsagePropBillable"""
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
 
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
+model_rebuild(RateLimitOverviewPropResources)
 
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WorkflowUsage)
-model_rebuild(WorkflowUsagePropBillable)
-model_rebuild(WorkflowUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowUsagePropBillablePropMacos)
-model_rebuild(WorkflowUsagePropBillablePropWindows)
-
-__all__ = (
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropWindows",
-)
+__all__ = ("RateLimitOverviewPropResources",)

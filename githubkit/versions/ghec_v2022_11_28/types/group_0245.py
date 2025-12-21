@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    API Insights usage summary stats for an organization
-    """
-
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
-    """Summary Stats
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    API Insights usage summary stats for an organization
-    """
-
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsSummaryStatsType",
-    "ApiInsightsSummaryStatsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

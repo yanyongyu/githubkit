@@ -9,44 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ApiInsightsTimeStatsItemsType(TypedDict):
+    """ApiInsightsTimeStatsItems"""
+
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsTimeStatsItems"""
 
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
-
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
+    timestamp: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "ApiInsightsTimeStatsItemsType",
+    "ApiInsightsTimeStatsItemsTypeForResponse",
 )

@@ -12,25 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
-    """ActionsForkPrWorkflowsPrivateRepos"""
+class ActionsCacheRetentionLimitForOrganization(GitHubModel):
+    """Actions cache retention limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool = Field(
-        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
-    )
-    send_write_tokens_to_workflows: bool = Field(
-        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
-    )
-    send_secrets_and_variables: bool = Field(
-        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
-    )
-    require_approval_for_fork_pr_workflows: bool = Field(
-        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
     )
 
 
-model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
+model_rebuild(ActionsCacheRetentionLimitForOrganization)
 
-__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)
+__all__ = ("ActionsCacheRetentionLimitForOrganization",)

@@ -9,33 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
-    base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ]
+    A response made by a requester to dismiss the request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[list[str]]
-    base_role: NotRequired[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ]
+    A response made by a requester to dismiss the request.
+    """
+
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCustomOrganizationRoleUpdateSchemaType",
-    "OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

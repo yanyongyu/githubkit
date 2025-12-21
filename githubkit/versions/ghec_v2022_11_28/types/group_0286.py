@@ -9,216 +9,135 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0081 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class TeamFullType(TypedDict):
-    """Full Team
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
 
-    Groups of organization members that gives permissions on specified repositories.
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
     id: int
-    node_id: str
-    url: str
-    html_url: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[Literal["closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: str
-    members_url: str
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleType]]
-    members_count: int
-    repos_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    organization: TeamOrganizationType
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-class TeamFullTypeForResponse(TypedDict):
-    """Full Team
+class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
+    """Organization Programmatic Access Grant
 
-    Groups of organization members that gives permissions on specified repositories.
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
     id: int
-    node_id: str
-    url: str
-    html_url: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[Literal["closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: str
-    members_url: str
+    owner: SimpleUserTypeForResponse
+    repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleTypeForResponse]]
-    members_count: int
-    repos_count: int
-    created_at: str
-    updated_at: str
-    organization: TeamOrganizationTypeForResponse
-    ldap_dn: NotRequired[str]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
+    access_granted_at: str
+    token_id: int
+    token_name: str
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-class TeamOrganizationType(TypedDict):
-    """Team Organization
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
-    Team Organization
+    Permissions requested, categorized by type of permission.
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    name: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    blog: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    twitter_username: NotRequired[Union[str, None]]
-    is_verified: NotRequired[bool]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    html_url: str
-    created_at: _dt.datetime
-    type: str
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    private_gists: NotRequired[Union[int, None]]
-    disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
-    billing_email: NotRequired[Union[str, None]]
-    plan: NotRequired[TeamOrganizationPropPlanType]
-    default_repository_permission: NotRequired[Union[str, None]]
-    members_can_create_repositories: NotRequired[Union[bool, None]]
-    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
-    members_allowed_repository_creation_type: NotRequired[str]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
-    web_commit_signoff_required: NotRequired[bool]
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
 
 
-class TeamOrganizationTypeForResponse(TypedDict):
-    """Team Organization
+class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
-    Team Organization
+    Permissions requested, categorized by type of permission.
     """
 
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    name: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    blog: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    twitter_username: NotRequired[Union[str, None]]
-    is_verified: NotRequired[bool]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    html_url: str
-    created_at: str
-    type: str
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    private_gists: NotRequired[Union[int, None]]
-    disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
-    billing_email: NotRequired[Union[str, None]]
-    plan: NotRequired[TeamOrganizationPropPlanTypeForResponse]
-    default_repository_permission: NotRequired[Union[str, None]]
-    members_can_create_repositories: NotRequired[Union[bool, None]]
-    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
-    members_allowed_repository_creation_type: NotRequired[str]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
-    web_commit_signoff_required: NotRequired[bool]
-    updated_at: str
-    archived_at: Union[str, None]
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
+    ]
 
 
-class TeamOrganizationPropPlanType(TypedDict):
-    """TeamOrganizationPropPlan"""
-
-    name: str
-    space: int
-    private_repos: int
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
+    dict[str, Any]
+)
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
 
 
-class TeamOrganizationPropPlanTypeForResponse(TypedDict):
-    """TeamOrganizationPropPlan"""
+OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""
 
-    name: str
-    space: int
-    private_repos: int
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
+
+
+OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""
 
 
 __all__ = (
-    "TeamFullType",
-    "TeamFullTypeForResponse",
-    "TeamOrganizationPropPlanType",
-    "TeamOrganizationPropPlanTypeForResponse",
-    "TeamOrganizationType",
-    "TeamOrganizationTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
+    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantTypeForResponse",
 )

@@ -9,25 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0274 import ProjectsV2FieldSingleSelectOption
 
+class OrgsOrgHooksPostBody(GitHubModel):
+    """OrgsOrgHooksPostBody"""
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
-
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    name: str = Field(description='Must be passed as "web".')
+    config: OrgsOrgHooksPostBodyPropConfig = Field(
+        description="Key/value pairs to provide settings for this webhook."
+    )
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description='Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
+class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksPostBodyPropConfig
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: str = Field(description="The URL to which the payloads will be delivered.")
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    username: Missing[str] = Field(default=UNSET)
+    password: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgHooksPostBody)
+model_rebuild(OrgsOrgHooksPostBodyPropConfig)
+
+__all__ = (
+    "OrgsOrgHooksPostBody",
+    "OrgsOrgHooksPostBodyPropConfig",
+)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,55 +19,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0082 import Team
+from .group_0198 import ReactionRollup
 
 
-class PendingDeploymentPropReviewersItems(GitHubModel):
-    """PendingDeploymentPropReviewersItems"""
+class TeamDiscussion(GitHubModel):
+    """Team Discussion
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
-
-
-class PendingDeployment(GitHubModel):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    A team discussion is a persistent record of a free-form conversation within a
+    team.
     """
 
-    environment: PendingDeploymentPropEnvironment = Field()
-    wait_timer: int = Field(description="The set duration of the wait timer")
-    wait_timer_started_at: Union[_dt.datetime, None] = Field(
-        description="The time that the wait timer began."
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the discussion.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
     )
-    current_user_can_approve: bool = Field(
-        description="Whether the currently authenticated user can approve the deployment"
+    created_at: _dt.datetime = Field()
+    last_edited_at: Union[_dt.datetime, None] = Field()
+    html_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The unique sequence number of a team discussion.")
+    pinned: bool = Field(
+        description="Whether or not this discussion should be pinned for easy retrieval."
     )
-    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    private: bool = Field(
+        description="Whether or not this discussion should be restricted to team members and organization owners."
     )
+    team_url: str = Field()
+    title: str = Field(description="The title of the discussion.")
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class PendingDeploymentPropEnvironment(GitHubModel):
-    """PendingDeploymentPropEnvironment"""
+model_rebuild(TeamDiscussion)
 
-    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the environment."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(PendingDeploymentPropReviewersItems)
-model_rebuild(PendingDeployment)
-model_rebuild(PendingDeploymentPropEnvironment)
-
-__all__ = (
-    "PendingDeployment",
-    "PendingDeploymentPropEnvironment",
-    "PendingDeploymentPropReviewersItems",
-)
+__all__ = ("TeamDiscussion",)

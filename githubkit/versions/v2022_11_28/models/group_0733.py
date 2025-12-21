@@ -18,125 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0488 import ProjectsV2Item
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0503 import WebhooksProjectCard
 
 
-class WebhookProjectsV2ItemEdited(GitHubModel):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectCardEdited(GitHubModel):
+    """project_card edited event"""
 
     action: Literal["edited"] = Field()
-    changes: Missing[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0,
-            WebhookProjectsV2ItemEditedPropChangesOneof1,
-        ]
-    ] = Field(
+    changes: WebhookProjectCardEditedPropChanges = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The changes made to the item may involve modifications in the item's fields and draft issue body.\nIt includes altered values for text, number, date, single select, and iteration fields, along with the GraphQL node ID of the changed field.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+class WebhookProjectCardEditedPropChanges(GitHubModel):
+    """WebhookProjectCardEditedPropChanges"""
 
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: Missing[str] = Field(default=UNSET)
-    field_type: Missing[str] = Field(default=UNSET)
-    field_name: Missing[str] = Field(default=UNSET)
-    project_number: Missing[int] = Field(default=UNSET)
-    from_: Missing[
-        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
-    ] = Field(default=UNSET, alias="from")
-    to: Missing[
-        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
-    ] = Field(default=UNSET)
+    note: WebhookProjectCardEditedPropChangesPropNote = Field()
 
 
-class ProjectsV2SingleSelectOption(GitHubModel):
-    """Projects v2 Single Select Option
+class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardEditedPropChangesPropNote"""
 
-    An option for a single select field
-    """
-
-    id: str = Field(description="The unique identifier of the option.")
-    name: str = Field(description="The display name of the option.")
-    color: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The color associated with the option."
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the option."
-    )
+    from_: Union[str, None] = Field(alias="from")
 
 
-class ProjectsV2IterationSetting(GitHubModel):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str = Field(description="The unique identifier of the iteration setting.")
-    title: str = Field(description="The iteration title.")
-    title_html: Missing[str] = Field(
-        default=UNSET, description="The iteration title, rendered as HTML."
-    )
-    duration: Missing[Union[float, None]] = Field(
-        default=UNSET, description="The duration of the iteration in days."
-    )
-    start_date: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The start date of the iteration."
-    )
-    completed: Missing[bool] = Field(
-        default=UNSET, description="Whether the iteration has been completed."
-    )
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBody = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBody(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemEdited)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue)
-model_rebuild(ProjectsV2SingleSelectOption)
-model_rebuild(ProjectsV2IterationSetting)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1PropBody)
+model_rebuild(WebhookProjectCardEdited)
+model_rebuild(WebhookProjectCardEditedPropChanges)
+model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
 
 __all__ = (
-    "ProjectsV2IterationSetting",
-    "ProjectsV2SingleSelectOption",
-    "WebhookProjectsV2ItemEdited",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
+    "WebhookProjectCardEdited",
+    "WebhookProjectCardEditedPropChanges",
+    "WebhookProjectCardEditedPropChangesPropNote",
 )

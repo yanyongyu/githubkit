@@ -15,38 +15,26 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Repository invitations let you manage who you collaborate with.
     """
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
     )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
     )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
-    )
+    reason: Union[str, None] = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(CodespaceExportDetails)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("CodespaceExportDetails",)
+__all__ = ("RepositorySubscription",)

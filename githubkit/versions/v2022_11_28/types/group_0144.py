@@ -13,27 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
-    description: NotRequired[str]
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
-    description: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

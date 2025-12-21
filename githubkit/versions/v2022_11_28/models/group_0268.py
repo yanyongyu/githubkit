@@ -15,77 +15,35 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0063 import MinimalRepository
-from .group_0238 import PullRequestMinimal
-from .group_0239 import SimpleCommit
+from .group_0003 import SimpleUser
 
 
-class CheckSuite(GitHubModel):
-    """CheckSuite
+class Activity(GitHubModel):
+    """Activity
 
-    A suite of checks performed on the code of a given code change
+    Activity
     """
 
     id: int = Field()
     node_id: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that is being checked."
+    before: str = Field(description="The SHA of the commit before the activity.")
+    after: str = Field(description="The SHA of the commit after the activity.")
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-    ] = Field(
-        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
-    )
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-    ] = Field()
-    url: Union[str, None] = Field()
-    before: Union[str, None] = Field()
-    after: Union[str, None] = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field()
-    app: Union[None, Integration, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-    latest_check_runs_count: int = Field()
-    check_runs_url: str = Field()
-    rerequestable: Missing[bool] = Field(default=UNSET)
-    runs_rerequestable: Missing[bool] = Field(default=UNSET)
+    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ] = Field(description="The type of the activity that was performed.")
+    actor: Union[None, SimpleUser] = Field()
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+model_rebuild(Activity)
 
-    total_count: int = Field()
-    check_suites: list[CheckSuite] = Field()
-
-
-model_rebuild(CheckSuite)
-model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
-
-__all__ = (
-    "CheckSuite",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
-)
+__all__ = ("Activity",)

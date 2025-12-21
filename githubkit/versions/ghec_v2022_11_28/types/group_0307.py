@@ -10,130 +10,271 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0213 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0306 import SimpleCommitType, SimpleCommitTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0306 import (
+    RepositoryAdvisoryCreditType,
+    RepositoryAdvisoryCreditTypeForResponse,
+)
 
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
+class RepositoryAdvisoryType(TypedDict):
+    """RepositoryAdvisory
 
-    An invocation of a workflow
+    A repository security advisory.
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
     html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[_dt.datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    published_at: Union[_dt.datetime, None]
+    closed_at: Union[_dt.datetime, None]
+    withdrawn_at: Union[_dt.datetime, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
+    cvss: Union[RepositoryAdvisoryPropCvssType, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[list[SimpleUserType], None]
+    collaborating_teams: Union[list[TeamType], None]
+    private_fork: None
 
 
-class WorkflowRunTypeForResponse(TypedDict):
-    """Workflow Run
+class RepositoryAdvisoryTypeForResponse(TypedDict):
+    """RepositoryAdvisory
 
-    An invocation of a workflow
+    A repository security advisory.
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[
-        Union[list[ReferencedWorkflowTypeForResponse], None]
+    ghsa_id: str
+    cve_id: Union[str, None]
+    url: str
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    published_at: Union[str, None]
+    closed_at: Union[str, None]
+    withdrawn_at: Union[str, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
+    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
+    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
+    collaborating_teams: Union[list[TeamTypeForResponse], None]
+    private_fork: None
+
+
+class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropSubmissionType(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropCvssType(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCwesItemsType(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
     ]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    created_at: str
-    updated_at: str
-    actor: NotRequired[SimpleUserTypeForResponse]
-    triggering_actor: NotRequired[SimpleUserTypeForResponse]
-    run_started_at: NotRequired[str]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    head_repository: MinimalRepositoryTypeForResponse
-    head_repository_id: NotRequired[int]
-    display_title: str
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
 
-    A workflow referenced/reused by the initial caller workflow
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
+
+
+class RepositoryAdvisoryVulnerabilityType(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
 
 
-class ReferencedWorkflowTypeForResponse(TypedDict):
-    """Referenced workflow
+class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerability
 
-    A workflow referenced/reused by the initial caller workflow
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "ReferencedWorkflowTypeForResponse",
-    "WorkflowRunType",
-    "WorkflowRunTypeForResponse",
+    "RepositoryAdvisoryPropCreditsItemsType",
+    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryPropCvssType",
+    "RepositoryAdvisoryPropCvssTypeForResponse",
+    "RepositoryAdvisoryPropCwesItemsType",
+    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryPropSubmissionTypeForResponse",
+    "RepositoryAdvisoryType",
+    "RepositoryAdvisoryTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityType",
+    "RepositoryAdvisoryVulnerabilityTypeForResponse",
 )

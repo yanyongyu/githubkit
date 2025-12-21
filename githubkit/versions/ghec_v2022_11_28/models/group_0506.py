@@ -9,21 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+from .group_0003 import SimpleUser
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class ContributorActivity(GitHubModel):
+    """Contributor Activity
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUser] = Field()
+    total: int = Field()
+    weeks: list[ContributorActivityPropWeeksItems] = Field()
+
+
+class ContributorActivityPropWeeksItems(GitHubModel):
+    """ContributorActivityPropWeeksItems"""
+
+    w: Missing[int] = Field(default=UNSET)
+    a: Missing[int] = Field(default=UNSET)
+    d: Missing[int] = Field(default=UNSET)
+    c: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ContributorActivity)
+model_rebuild(ContributorActivityPropWeeksItems)
+
+__all__ = (
+    "ContributorActivity",
+    "ContributorActivityPropWeeksItems",
+)

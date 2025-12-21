@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,89 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0011 import WebhookConfig
+from .group_0422 import HookResponse
 
-class TimelineCommittedEvent(GitHubModel):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class Hook(GitHubModel):
+    """Webhook
+
+    Webhooks for repositories.
     """
 
-    event: Missing[Literal["committed"]] = Field(default=UNSET)
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: TimelineCommittedEventPropAuthor = Field(
-        description="Identifying information for the git-user"
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
     )
-    committer: TimelineCommittedEventPropCommitter = Field(
-        description="Identifying information for the git-user"
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
     )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: TimelineCommittedEventPropTree = Field()
-    parents: list[TimelineCommittedEventPropParentsItems] = Field()
-    verification: TimelineCommittedEventPropVerification = Field()
-    html_url: str = Field()
-
-
-class TimelineCommittedEventPropAuthor(GitHubModel):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropCommitter(GitHubModel):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class TimelineCommittedEventPropTree(GitHubModel):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
     url: str = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-class TimelineCommittedEventPropParentsItems(GitHubModel):
-    """TimelineCommittedEventPropParentsItems"""
+model_rebuild(Hook)
 
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class TimelineCommittedEventPropVerification(GitHubModel):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(TimelineCommittedEvent)
-model_rebuild(TimelineCommittedEventPropAuthor)
-model_rebuild(TimelineCommittedEventPropCommitter)
-model_rebuild(TimelineCommittedEventPropTree)
-model_rebuild(TimelineCommittedEventPropParentsItems)
-model_rebuild(TimelineCommittedEventPropVerification)
-
-__all__ = (
-    "TimelineCommittedEvent",
-    "TimelineCommittedEventPropAuthor",
-    "TimelineCommittedEventPropCommitter",
-    "TimelineCommittedEventPropParentsItems",
-    "TimelineCommittedEventPropTree",
-    "TimelineCommittedEventPropVerification",
-)
+__all__ = ("Hook",)

@@ -10,68 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
+    """Organization private registry
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
-
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Private registry configuration for an organization
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
     created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
     updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
 
 
-class TeamDiscussionTypeForResponse(TypedDict):
-    """Team Discussion
+class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
+    """Organization private registry
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Private registry configuration for an organization
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    comments_count: int
-    comments_url: str
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[str]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
     created_at: str
-    last_edited_at: Union[str, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
     updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "TeamDiscussionType",
-    "TeamDiscussionTypeForResponse",
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
+    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
 )

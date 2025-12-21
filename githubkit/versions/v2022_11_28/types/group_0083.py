@@ -13,27 +13,167 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionType
+    ]
 
 
-class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
-    """ActionsOrganizationPermissions"""
+class SecurityAndAnalysisTypeForResponse(TypedDict):
+    """SecurityAndAnalysis"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    advanced_security: NotRequired[
+        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
+    ]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
+    ]
+
+
+class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "ActionsOrganizationPermissionsType",
-    "ActionsOrganizationPermissionsTypeForResponse",
+    "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
+    "SecurityAndAnalysisPropCodeSecurityType",
+    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
+    "SecurityAndAnalysisType",
+    "SecurityAndAnalysisTypeForResponse",
 )

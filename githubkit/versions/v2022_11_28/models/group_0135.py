@@ -19,54 +19,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0134 import ProjectsV2StatusUpdate
+from .group_0084 import MinimalRepository
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class Package(GitHubModel):
+    """Package
 
-    A projects v2 project
+    A software package
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
-    )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
-    )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was closed."
-    )
-    created_at: _dt.datetime = Field(
-        description="The time when the project was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time when the project was last updated."
-    )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
-    )
-    deleted_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was deleted."
-    )
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
-    )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
-    )
+    id: int = Field(description="Unique identifier of the package.")
+    name: str = Field(description="The name of the package.")
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    version_count: int = Field(description="The number of versions of the package.")
+    visibility: Literal["private", "public"] = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(Package)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("Package",)

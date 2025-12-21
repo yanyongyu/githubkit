@@ -9,65 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-
-
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
-
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
+    The type of issue.
     """
 
     id: int
+    node_id: str
     name: str
-    color: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    is_enabled: NotRequired[bool]
 
 
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    Details about the selected option (only present for single_select fields)
+    The type of issue.
     """
 
     id: int
+    node_id: str
     name: str
-    color: str
+    description: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
 )

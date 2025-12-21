@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class ApplicationsClientIdTokenPostBody(GitHubModel):
+    """ApplicationsClientIdTokenPostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(ApplicationsClientIdTokenPostBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("ApplicationsClientIdTokenPostBody",)

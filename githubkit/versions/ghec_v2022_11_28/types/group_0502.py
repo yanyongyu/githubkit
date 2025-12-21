@@ -9,51 +9,120 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserRoleItemsType(TypedDict):
-    """UserRoleItems"""
+class PrivateVulnerabilityReportCreateType(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
 
-    display: NotRequired[str]
-    type: NotRequired[str]
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
     ]
-    primary: NotRequired[bool]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class UserRoleItemsTypeForResponse(TypedDict):
-    """UserRoleItems"""
+class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
 
-    display: NotRequired[str]
-    type: NotRequired[str]
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[
+            list[
+                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
+            ],
+            None,
+        ]
     ]
-    primary: NotRequired[bool]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "UserRoleItemsType",
-    "UserRoleItemsTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
+    "PrivateVulnerabilityReportCreateType",
+    "PrivateVulnerabilityReportCreateTypeForResponse",
 )

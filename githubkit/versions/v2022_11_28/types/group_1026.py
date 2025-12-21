@@ -14,49 +14,87 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
     total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    configurations: list[OrgPrivateRegistryConfigurationType]
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
     total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
 
-    A hosted compute network configuration.
+    Private registry configuration for an organization
     """
 
-    id: str
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[_dt.datetime, None]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
+    """Organization private registry
 
-    A hosted compute network configuration.
+    Private registry configuration for an organization
     """
 
-    id: str
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    created_on: Union[str, None]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgPrivateRegistryConfigurationType",
+    "OrgPrivateRegistryConfigurationTypeForResponse",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
+    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
 )

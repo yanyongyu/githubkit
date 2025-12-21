@@ -10,87 +10,62 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0305 import PullRequestMinimal
-from .group_0332 import DeploymentSimple
 
 
-class CheckRun(GitHubModel):
-    """CheckRun
+class Deployment(GitHubModel):
+    """Deployment
 
-    A check performed on the code of a given code change
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    id: int = Field(description="The id of the check.")
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    node_id: str = Field()
-    external_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: Union[str, None] = Field()
-    details_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(
-        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
+    id: int = Field(description="Unique identifier of the deployment")
+    node_id: str = Field()
+    sha: str = Field()
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or sha."
     )
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    started_at: Union[_dt.datetime, None] = Field()
-    completed_at: Union[_dt.datetime, None] = Field()
-    output: CheckRunPropOutput = Field()
-    name: str = Field(description="The name of the check.")
-    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
-    app: Union[None, Integration, None] = Field()
-    pull_requests: list[PullRequestMinimal] = Field(
-        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
-    )
-    deployment: Missing[DeploymentSimple] = Field(
+    task: str = Field(description="Parameter to specify a task to execute")
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
     )
 
 
-class CheckRunPropOutput(GitHubModel):
-    """CheckRunPropOutput"""
-
-    title: Union[str, None] = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    annotations_count: int = Field()
-    annotations_url: str = Field()
+class DeploymentPropPayloadOneof0(ExtraGitHubModel):
+    """DeploymentPropPayloadOneof0"""
 
 
-class CheckRunPropCheckSuite(GitHubModel):
-    """CheckRunPropCheckSuite"""
-
-    id: int = Field()
-
-
-model_rebuild(CheckRun)
-model_rebuild(CheckRunPropOutput)
-model_rebuild(CheckRunPropCheckSuite)
+model_rebuild(Deployment)
+model_rebuild(DeploymentPropPayloadOneof0)
 
 __all__ = (
-    "CheckRun",
-    "CheckRunPropCheckSuite",
-    "CheckRunPropOutput",
+    "Deployment",
+    "DeploymentPropPayloadOneof0",
 )

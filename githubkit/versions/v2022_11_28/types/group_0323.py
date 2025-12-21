@@ -9,34 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-    A GitHub App that is providing a custom deployment protection rule.
-    """
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksType
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
+
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksTypeForResponse
 
 
-class CustomDeploymentRuleAppTypeForResponse(TypedDict):
-    """Custom deployment protection rule app
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
-    A GitHub App that is providing a custom deployment protection rule.
-    """
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "CustomDeploymentRuleAppType",
-    "CustomDeploymentRuleAppTypeForResponse",
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

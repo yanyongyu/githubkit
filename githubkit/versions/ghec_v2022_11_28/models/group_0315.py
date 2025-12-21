@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0314 import RateLimit
+from .group_0316 import RateLimitOverviewPropResources
 
 
-class Activity(GitHubModel):
-    """Activity
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    Activity
+    Rate Limit Overview
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
-    )
-    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(Activity)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("Activity",)
+__all__ = ("RateLimitOverview",)

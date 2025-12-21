@@ -9,24 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CheckAnnotationTypeForResponse(TypedDict):
+    """Check Annotation
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
 __all__ = (
-    "CodeScanningSarifsReceiptType",
-    "CodeScanningSarifsReceiptTypeForResponse",
+    "CheckAnnotationType",
+    "CheckAnnotationTypeForResponse",
 )

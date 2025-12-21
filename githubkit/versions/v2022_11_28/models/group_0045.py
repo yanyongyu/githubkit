@@ -9,32 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
-
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+from .group_0003 import SimpleUser
 
 
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
+class Milestone(GitHubModel):
+    """Milestone
 
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
+    A collection of related issues and pull requests.
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
+    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
+model_rebuild(Milestone)
 
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("Milestone",)

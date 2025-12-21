@@ -9,45 +9,992 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0806 import (
+    WebhookRubygemsMetadataType,
+    WebhookRubygemsMetadataTypeForResponse,
 )
-from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0566 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectColumnMovedType(TypedDict):
-    """project_column moved event"""
+class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropPackageVersion"""
 
-    action: Literal["moved"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    author: NotRequired[
+        Union[WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType, None]
+    ]
+    body: NotRequired[
+        Union[
+            str, WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type
+        ]
+    ]
+    body_html: NotRequired[str]
+    container_metadata: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType,
+            None,
+        ]
+    ]
+    created_at: NotRequired[str]
+    description: str
+    docker_metadata: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType
+        ]
+    ]
+    draft: NotRequired[bool]
+    html_url: str
+    id: int
+    installation_command: str
+    manifest: NotRequired[str]
+    metadata: list[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType
+    ]
+    name: str
+    npm_metadata: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType,
+            None,
+        ]
+    ]
+    nuget_metadata: NotRequired[
+        Union[
+            list[
+                WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType
+            ],
+            None,
+        ]
+    ]
+    package_files: list[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType
+    ]
+    package_url: NotRequired[str]
+    prerelease: NotRequired[bool]
+    release: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType
+    ]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
+    source_url: NotRequired[str]
+    summary: str
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    target_oid: NotRequired[str]
+    updated_at: NotRequired[str]
+    version: str
 
 
-class WebhookProjectColumnMovedTypeForResponse(TypedDict):
-    """project_column moved event"""
+class WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackagePropPackageVersion"""
 
-    action: Literal["moved"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    author: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorTypeForResponse,
+            None,
+        ]
+    ]
+    body: NotRequired[
+        Union[
+            str,
+            WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1TypeForResponse,
+        ]
+    ]
+    body_html: NotRequired[str]
+    container_metadata: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataTypeForResponse,
+            None,
+        ]
+    ]
+    created_at: NotRequired[str]
+    description: str
+    docker_metadata: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse
+        ]
+    ]
+    draft: NotRequired[bool]
+    html_url: str
+    id: int
+    installation_command: str
+    manifest: NotRequired[str]
+    metadata: list[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse
+    ]
+    name: str
+    npm_metadata: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataTypeForResponse,
+            None,
+        ]
+    ]
+    nuget_metadata: NotRequired[
+        Union[
+            list[
+                WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    package_files: list[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse
+    ]
+    package_url: NotRequired[str]
+    prerelease: NotRequired[bool]
+    release: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseTypeForResponse
+    ]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataTypeForResponse]]
+    source_url: NotRequired[str]
+    summary: str
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    target_oid: NotRequired[str]
+    updated_at: NotRequired[str]
+    version: str
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type(TypedDict):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1TypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata"""
+
+    labels: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType,
+            None,
+        ]
+    ]
+    manifest: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType,
+            None,
+        ]
+    ]
+    tag: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType
+    ]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata"""
+
+    labels: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsTypeForResponse,
+            None,
+        ]
+    ]
+    manifest: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestTypeForResponse,
+            None,
+        ]
+    ]
+    tag: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagTypeForResponse
+    ]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLab
+    els
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLab
+    els
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropMan
+    ifest
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropMan
+    ifest
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag"""
+
+    digest: NotRequired[str]
+    name: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag"""
+
+    digest: NotRequired[str]
+    name: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
+
+    tags: NotRequired[list[str]]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
+
+    tags: NotRequired[list[str]]
+
+
+WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType: TypeAlias = (
+    dict[str, Any]
+)
+"""WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems
+"""
+
+
+WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems
+"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata"""
+
+    name: NotRequired[str]
+    version: NotRequired[str]
+    npm_user: NotRequired[str]
+    author: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType,
+            None,
+        ]
+    ]
+    bugs: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType,
+            None,
+        ]
+    ]
+    dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType
+    ]
+    dev_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType
+    ]
+    peer_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType
+    ]
+    optional_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType
+    ]
+    description: NotRequired[str]
+    dist: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType,
+            None,
+        ]
+    ]
+    git_head: NotRequired[str]
+    homepage: NotRequired[str]
+    license_: NotRequired[str]
+    main: NotRequired[str]
+    repository: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType,
+            None,
+        ]
+    ]
+    scripts: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType
+    ]
+    id: NotRequired[str]
+    node_version: NotRequired[str]
+    npm_version: NotRequired[str]
+    has_shrinkwrap: NotRequired[bool]
+    maintainers: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType
+        ]
+    ]
+    contributors: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType
+        ]
+    ]
+    engines: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType
+    ]
+    keywords: NotRequired[list[str]]
+    files: NotRequired[list[str]]
+    bin_: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType
+    ]
+    man: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType
+    ]
+    directories: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType,
+            None,
+        ]
+    ]
+    os: NotRequired[list[str]]
+    cpu: NotRequired[list[str]]
+    readme: NotRequired[str]
+    installation_command: NotRequired[str]
+    release_id: NotRequired[int]
+    commit_oid: NotRequired[str]
+    published_via_actions: NotRequired[bool]
+    deleted_by_id: NotRequired[int]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata"""
+
+    name: NotRequired[str]
+    version: NotRequired[str]
+    npm_user: NotRequired[str]
+    author: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorTypeForResponse,
+            None,
+        ]
+    ]
+    bugs: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsTypeForResponse,
+            None,
+        ]
+    ]
+    dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesTypeForResponse
+    ]
+    dev_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesTypeForResponse
+    ]
+    peer_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesTypeForResponse
+    ]
+    optional_dependencies: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesTypeForResponse
+    ]
+    description: NotRequired[str]
+    dist: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistTypeForResponse,
+            None,
+        ]
+    ]
+    git_head: NotRequired[str]
+    homepage: NotRequired[str]
+    license_: NotRequired[str]
+    main: NotRequired[str]
+    repository: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryTypeForResponse,
+            None,
+        ]
+    ]
+    scripts: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsTypeForResponse
+    ]
+    id: NotRequired[str]
+    node_version: NotRequired[str]
+    npm_version: NotRequired[str]
+    has_shrinkwrap: NotRequired[bool]
+    maintainers: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsTypeForResponse
+        ]
+    ]
+    contributors: NotRequired[
+        list[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsTypeForResponse
+        ]
+    ]
+    engines: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesTypeForResponse
+    ]
+    keywords: NotRequired[list[str]]
+    files: NotRequired[list[str]]
+    bin_: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinTypeForResponse
+    ]
+    man: NotRequired[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManTypeForResponse
+    ]
+    directories: NotRequired[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesTypeForResponse,
+            None,
+        ]
+    ]
+    os: NotRequired[list[str]]
+    cpu: NotRequired[list[str]]
+    readme: NotRequired[str]
+    installation_command: NotRequired[str]
+    release_id: NotRequired[int]
+    commit_oid: NotRequired[str]
+    published_via_actions: NotRequired[bool]
+    deleted_by_id: NotRequired[int]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenc
+    ies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenc
+    ies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDepend
+    encies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDepend
+    encies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDepen
+    dencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDepen
+    dencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalD
+    ependencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalD
+    ependencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositor
+    y
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositor
+    y
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintaine
+    rsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintaine
+    rsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContribut
+    orsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContribut
+    orsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectori
+    es
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectori
+    es
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
+
+    content_type: str
+    created_at: str
+    download_url: str
+    id: int
+    md5: Union[str, None]
+    name: str
+    sha1: Union[str, None]
+    sha256: Union[str, None]
+    size: int
+    state: Union[str, None]
+    updated_at: str
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
+
+    content_type: str
+    created_at: str
+    download_url: str
+    id: int
+    md5: Union[str, None]
+    name: str
+    sha1: Union[str, None]
+    sha256: Union[str, None]
+    size: int
+    state: Union[str, None]
+    updated_at: str
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems"""
+
+    id: NotRequired[Union[int, str]]
+    name: NotRequired[str]
+    value: NotRequired[
+        Union[
+            bool,
+            str,
+            int,
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type,
+        ]
+    ]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems"""
+
+    id: NotRequired[Union[int, str]]
+    name: NotRequired[str]
+    value: NotRequired[
+        Union[
+            bool,
+            str,
+            int,
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3TypeForResponse,
+        ]
+    ]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropVa
+    lueOneof3
+    """
+
+    url: NotRequired[str]
+    branch: NotRequired[str]
+    commit: NotRequired[str]
+    type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3TypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropVa
+    lueOneof3
+    """
+
+    url: NotRequired[str]
+    branch: NotRequired[str]
+    commit: NotRequired[str]
+    type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropRelease"""
+
+    author: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType,
+        None,
+    ]
+    created_at: str
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    prerelease: bool
+    published_at: str
+    tag_name: str
+    target_commitish: str
+    url: str
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseTypeForResponse(
+    TypedDict
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropRelease"""
+
+    author: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse,
+        None,
+    ]
+    created_at: str
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    prerelease: bool
+    published_at: str
+    tag_name: str
+    target_commitish: str
+    url: str
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectColumnMovedType",
-    "WebhookProjectColumnMovedTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1TypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3TypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropPackageVersionType",
+    "WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse",
 )

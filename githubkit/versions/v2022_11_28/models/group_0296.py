@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 
 from pydantic import Field
 
@@ -18,46 +17,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0063 import MinimalRepository
+from .group_0124 import CodeScanningAnalysisTool
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class CodeScanningAnalysis(GitHubModel):
+    """CodeScanningAnalysis"""
 
-    Combined Commit Status
-    """
-
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    ref: str = Field(
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
     )
-    commit_url: str = Field()
-    url: str = Field()
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which this analysis was performed."
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    error: str = Field()
+    created_at: _dt.datetime = Field(
+        description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    results_count: int = Field(
+        description="The total number of results in the analysis."
+    )
+    rules_count: int = Field(
+        description="The total number of rules used in the analysis."
+    )
+    id: int = Field(description="Unique identifier for this analysis.")
+    url: str = Field(description="The REST API URL of the analysis resource.")
+    sarif_id: str = Field(description="An identifier for the upload.")
+    tool: CodeScanningAnalysisTool = Field()
+    deletable: bool = Field()
+    warning: str = Field(description="Warning generated when processing the analysis")
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
+model_rebuild(CodeScanningAnalysis)
 
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
-
-__all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
-)
+__all__ = ("CodeScanningAnalysis",)

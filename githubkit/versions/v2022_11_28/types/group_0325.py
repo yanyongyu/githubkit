@@ -9,30 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    Short Blob
+    An object describing a symlink
     """
 
-    url: str
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
     sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class ShortBlobTypeForResponse(TypedDict):
-    """Short Blob
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    Short Blob
+    An object describing a symlink
     """
 
-    url: str
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
     sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
+
+
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "ShortBlobType",
-    "ShortBlobTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0081 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class ActionsHostedRunnerCuratedImage(GitHubModel):
-    """GitHub-hosted runner image details.
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    Provides details of a hosted runner image
+    Marketplace Purchase
     """
 
-    id: str = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    size_gb: int = Field(description="Image size in GB.")
-    display_name: str = Field(description="Display name for this image.")
-    source: Literal["github", "partner", "custom"] = Field(
-        description="The image provider."
-    )
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-model_rebuild(ActionsHostedRunnerCuratedImage)
+model_rebuild(MarketplacePurchase)
 
-__all__ = ("ActionsHostedRunnerCuratedImage",)
+__all__ = ("MarketplacePurchase",)

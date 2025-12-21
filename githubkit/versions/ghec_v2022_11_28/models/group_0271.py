@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,28 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+
+class ApiInsightsUserStatsItems(GitHubModel):
+    """ApiInsightsUserStatsItems"""
+
+    actor_type: Missing[str] = Field(default=UNSET)
+    actor_name: Missing[str] = Field(default=UNSET)
+    actor_id: Missing[int] = Field(default=UNSET)
+    integration_id: Missing[Union[int, None]] = Field(default=UNSET)
+    oauth_application_id: Missing[Union[int, None]] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class ProjectsV2DraftIssue(GitHubModel):
-    """Draft Issue
+model_rebuild(ApiInsightsUserStatsItems)
 
-    A draft issue in a project
-    """
-
-    id: float = Field(description="The ID of the draft issue")
-    node_id: str = Field(description="The node ID of the draft issue")
-    title: str = Field(description="The title of the draft issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The body content of the draft issue"
-    )
-    user: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field(description="The time the draft issue was created")
-    updated_at: _dt.datetime = Field(
-        description="The time the draft issue was last updated"
-    )
-
-
-model_rebuild(ProjectsV2DraftIssue)
-
-__all__ = ("ProjectsV2DraftIssue",)
+__all__ = ("ApiInsightsUserStatsItems",)

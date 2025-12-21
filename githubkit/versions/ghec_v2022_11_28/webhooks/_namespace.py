@@ -43,6 +43,7 @@ if TYPE_CHECKING:
     from .discussion import DiscussionEvent
     from .discussion_comment import DiscussionCommentEvent
     from .dismissal_request_code_scanning import DismissalRequestCodeScanningEvent
+    from .dismissal_request_dependabot import DismissalRequestDependabotEvent
     from .dismissal_request_secret_scanning import DismissalRequestSecretScanningEvent
     from .exemption_request_push_ruleset import ExemptionRequestPushRulesetEvent
     from .exemption_request_secret_scanning import ExemptionRequestSecretScanningEvent
@@ -130,6 +131,7 @@ EventNameType: TypeAlias = Literal[
     "discussion",
     "discussion_comment",
     "dismissal_request_code_scanning",
+    "dismissal_request_dependabot",
     "dismissal_request_secret_scanning",
     "exemption_request_push_ruleset",
     "fork",
@@ -213,6 +215,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "discussion",
     "discussion_comment",
     "dismissal_request_code_scanning",
+    "dismissal_request_dependabot",
     "dismissal_request_secret_scanning",
     "exemption_request_push_ruleset",
     "fork",
@@ -391,6 +394,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["dismissal_request_code_scanning"], payload: Union[str, bytes]
     ) -> "DismissalRequestCodeScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["dismissal_request_dependabot"], payload: Union[str, bytes]
+    ) -> "DismissalRequestDependabotEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -813,6 +821,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["dismissal_request_code_scanning"], payload: Mapping[str, Any]
     ) -> "DismissalRequestCodeScanningEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["dismissal_request_dependabot"], payload: Mapping[str, Any]
+    ) -> "DismissalRequestDependabotEvent": ...
     @overload
     @staticmethod
     def parse_obj(

@@ -9,156 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
-    """Dependency Graph SPDX SBOM
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
 
 
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
-    ]
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
-class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[
-            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
-        ]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

@@ -9,40 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0334 import MetadataType, MetadataTypeForResponse
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    Porter Author
-    """
-
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
 
-    Porter Author
-    """
-
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "DependencyType",
+    "DependencyTypeForResponse",
 )

@@ -9,153 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
-from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
 from .group_0089 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
 )
 
 
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Details for the GitHub Security Advisory.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
+    package: DependabotAlertPackageType
     severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: _dt.datetime
-    updated_at: _dt.datetime
-    withdrawn_at: Union[_dt.datetime, None]
-
-
-class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
-    severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssTypeForResponse
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse]
-    identifiers: list[
-        DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
     ]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    published_at: str
-    updated_at: str
-    withdrawn_at: Union[str, None]
 
 
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    score: float
-    vector_string: Union[str, None]
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    ]
 
 
-class DependabotAlertSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Details pertaining to the package version that patches this vulnerability.
     """
 
-    score: float
-    vector_string: Union[str, None]
+    identifier: str
 
 
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    A CWE weakness assigned to the advisory.
+    Details pertaining to the package version that patches this vulnerability.
     """
 
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
+    identifier: str
 
 
 __all__ = (
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCvssTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryType",
-    "DependabotAlertSecurityAdvisoryTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

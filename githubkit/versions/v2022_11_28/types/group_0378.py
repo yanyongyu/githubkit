@@ -13,114 +13,150 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    Timeline Committed Event
     """
 
-    id: int
+    event: NotRequired[Literal["committed"]]
+    sha: str
     node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
+    url: str
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: list[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
     html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class TimelineCommittedEventTypeForResponse(TypedDict):
+    """Timeline Committed Event
 
-    Pull Request Reviews are reviews on pull requests.
+    Timeline Committed Event
     """
 
-    id: int
+    event: NotRequired[Literal["committed"]]
+    sha: str
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    state: str
+    url: str
+    author: TimelineCommittedEventPropAuthorTypeForResponse
+    committer: TimelineCommittedEventPropCommitterTypeForResponse
+    message: str
+    tree: TimelineCommittedEventPropTreeTypeForResponse
+    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
+    verification: TimelineCommittedEventPropVerificationTypeForResponse
     html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
+    Identifying information for the git-user
+    """
 
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
+    date: _dt.datetime
+    email: str
+    name: str
 
 
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
+class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropAuthor
 
-    href: str
+    Identifying information for the git-user
+    """
 
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    date: str
+    email: str
+    name: str
 
 
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
 
-    href: str
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropAuthorTypeForResponse",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropCommitterTypeForResponse",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropParentsItemsTypeForResponse",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropTreeTypeForResponse",
+    "TimelineCommittedEventPropVerificationType",
+    "TimelineCommittedEventPropVerificationTypeForResponse",
+    "TimelineCommittedEventType",
+    "TimelineCommittedEventTypeForResponse",
 )

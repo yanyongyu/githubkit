@@ -11,86 +11,44 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
-
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableType
+from .group_0245 import RateLimitType, RateLimitTypeForResponse
 
 
-class WorkflowUsageTypeForResponse(TypedDict):
-    """Workflow Usage
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillableTypeForResponse
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
 
 
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillableTypeForResponse",
-    "WorkflowUsageType",
-    "WorkflowUsageTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
 )

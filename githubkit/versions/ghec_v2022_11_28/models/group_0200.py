@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,79 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Feed(GitHubModel):
-    """Feed
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-    Feed
+    A value assigned to an issue field
     """
 
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    node_id: str = Field()
+    data_type: Literal["text", "single_select", "number", "date"] = Field(
+        description="The data type of the issue field"
     )
-    repository_discussions_category_url: Missing[str] = Field(
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
+    )
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
         default=UNSET,
-        description="A feed of discussions for a given repository and category.",
-    )
-    links: FeedPropLinks = Field(alias="_links")
-
-
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
-
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+        description="Details about the selected option (only present for single_select fields)",
     )
 
 
-class LinkWithType(GitHubModel):
-    """Link With Type
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-    Hypermedia Link with Type
+    Details about the selected option (only present for single_select fields)
     """
 
-    href: str = Field()
-    type: str = Field()
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
 
 
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
 
 __all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
+    "IssueFieldValue",
+    "IssueFieldValuePropSingleSelectOption",
 )

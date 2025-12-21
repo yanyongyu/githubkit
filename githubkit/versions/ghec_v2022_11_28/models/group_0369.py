@@ -9,49 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0368 import CodeScanningVariantAnalysisRepository
 
 
-class ContentFile(GitHubModel):
-    """Content File
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Content File
-    """
-
-    type: Literal["file"] = Field()
-    encoding: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    )
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
-
-__all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
-)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

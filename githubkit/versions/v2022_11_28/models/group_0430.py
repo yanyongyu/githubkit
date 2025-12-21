@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -17,59 +18,70 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0063 import MinimalRepository
-from .group_0256 import GitUser
-from .group_0428 import SearchResultTextMatchesItems
-from .group_0431 import CommitSearchResultItemPropCommit
+
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
 
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
 
-    Commit Search Result Item
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    parents: list[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
     )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
     )
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
 
 
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CommitSearchResultItem] = Field()
-
-
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
 
 __all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
 )

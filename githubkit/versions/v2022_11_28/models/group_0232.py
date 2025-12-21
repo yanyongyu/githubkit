@@ -9,102 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Job(GitHubModel):
-    """Job
+class SecretScanningLocationCommit(GitHubModel):
+    """SecretScanningLocationCommit
 
-    Information of a job execution in a workflow run
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    id: int = Field(description="The id of the job.")
-    run_id: int = Field(description="The id of the associated workflow run.")
-    run_url: str = Field()
-    run_attempt: Missing[int] = Field(
-        default=UNSET,
-        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
+    path: str = Field(description="The file path in the repository")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    node_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being run.")
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(description="The phase of the lifecycle that the job is currently in.")
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field(description="The outcome of the job.")
-    created_at: _dt.datetime = Field(
-        description="The time that the job created, in ISO 8601 format."
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
     )
-    started_at: _dt.datetime = Field(
-        description="The time that the job started, in ISO 8601 format."
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
     )
-    completed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the job finished, in ISO 8601 format."
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
     )
-    name: str = Field(description="The name of the job.")
-    steps: Missing[list[JobPropStepsItems]] = Field(
-        default=UNSET, description="Steps in this job."
-    )
-    check_run_url: str = Field()
-    labels: list[str] = Field(
-        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
-    )
-    runner_id: Union[int, None] = Field(
-        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_name: Union[str, None] = Field(
-        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_id: Union[int, None] = Field(
-        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_name: Union[str, None] = Field(
-        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-
-
-class JobPropStepsItems(GitHubModel):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The phase of the lifecycle that the job is currently in."
-    )
-    conclusion: Union[str, None] = Field(description="The outcome of the job.")
-    name: str = Field(description="The name of the job.")
-    number: int = Field()
-    started_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the step started, in ISO 8601 format."
-    )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the job finished, in ISO 8601 format."
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    blob_url: str = Field(description="The API URL to get the associated blob resource")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource"
     )
 
 
-model_rebuild(Job)
-model_rebuild(JobPropStepsItems)
+class SecretScanningLocationWikiCommit(GitHubModel):
+    """SecretScanningLocationWikiCommit
+
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str = Field(description="The file path of the wiki page")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The GitHub URL to get the associated wiki commit"
+    )
+
+
+class SecretScanningLocationIssueBody(GitHubModel):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionTitle(GitHubModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected."
+    )
+
+
+model_rebuild(SecretScanningLocationCommit)
+model_rebuild(SecretScanningLocationWikiCommit)
+model_rebuild(SecretScanningLocationIssueBody)
+model_rebuild(SecretScanningLocationDiscussionTitle)
+model_rebuild(SecretScanningLocationDiscussionComment)
+model_rebuild(SecretScanningLocationPullRequestBody)
+model_rebuild(SecretScanningLocationPullRequestReview)
 
 __all__ = (
-    "Job",
-    "JobPropStepsItems",
+    "SecretScanningLocationCommit",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationIssueBody",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationWikiCommit",
 )

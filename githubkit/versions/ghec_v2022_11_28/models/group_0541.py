@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflow(GitHubModel):
-    """Workflow"""
+class CodespacesUserPublicKey(GitHubModel):
+    """CodespacesUserPublicKey
 
-    badge_url: str = Field()
-    created_at: _dt.datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    The public key used for setting user Codespaces' Secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(WebhooksWorkflow)
+model_rebuild(CodespacesUserPublicKey)
 
-__all__ = ("WebhooksWorkflow",)
+__all__ = ("CodespacesUserPublicKey",)

@@ -9,34 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0194 import Label
+from .group_0201 import Issue
 
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
+class IssuesEvent(GitHubModel):
+    """IssuesEvent"""
 
-    Marketplace Listing Plan
-    """
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
-    url: str = Field()
-    accounts_url: str = Field()
-    id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
 
+model_rebuild(IssuesEvent)
 
-model_rebuild(MarketplaceListingPlan)
-
-__all__ = ("MarketplaceListingPlan",)
+__all__ = ("IssuesEvent",)

@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0206 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RulesetVersionTypeForResponse(TypedDict):
-    """Ruleset version
+class RepositoryRuleBranchNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    The historical version of a ruleset
-    """
-
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RulesetVersionType",
-    "RulesetVersionTypeForResponse",
+    "RepositoryRuleBranchNamePatternPropParametersType",
+    "RepositoryRuleBranchNamePatternPropParametersTypeForResponse",
 )

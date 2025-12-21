@@ -9,38 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class LicenseType(TypedDict):
+    """License
 
-    The public key used for setting Codespaces secrets.
+    License
     """
 
-    key_id: str
     key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class CodespacesPublicKeyTypeForResponse(TypedDict):
-    """CodespacesPublicKey
+class LicenseTypeForResponse(TypedDict):
+    """License
 
-    The public key used for setting Codespaces secrets.
+    License
     """
 
-    key_id: str
     key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
 __all__ = (
-    "CodespacesPublicKeyType",
-    "CodespacesPublicKeyTypeForResponse",
+    "LicenseType",
+    "LicenseTypeForResponse",
 )

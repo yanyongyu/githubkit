@@ -10,79 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0198 import ReactionRollup
 
 
-class GistHistory(GitHubModel):
-    """Gist History
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    Gist History
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class GistHistoryPropChangeStatus(GitHubModel):
-    """GistHistoryPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-class GistSimplePropForkOf(GitHubModel):
-    """Gist
-
-    Gist
-    """
-
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
     html_url: str = Field()
-    files: GistSimplePropForkOfPropFiles = Field()
-    public: bool = Field()
+    user: Union[None, SimpleUser] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    issue_url: str = Field()
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
-    """GistSimplePropForkOfPropFiles"""
+model_rebuild(IssueComment)
 
-
-model_rebuild(GistHistory)
-model_rebuild(GistHistoryPropChangeStatus)
-model_rebuild(GistSimplePropForkOf)
-model_rebuild(GistSimplePropForkOfPropFiles)
-
-__all__ = (
-    "GistHistory",
-    "GistHistoryPropChangeStatus",
-    "GistSimplePropForkOf",
-    "GistSimplePropForkOfPropFiles",
-)
+__all__ = ("IssueComment",)

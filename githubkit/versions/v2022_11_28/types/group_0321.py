@@ -12,22 +12,53 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+from .group_0278 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0279 import CommitType, CommitTypeForResponse
 
 
-class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
+
+
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
+
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternWithTypeType",
-    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

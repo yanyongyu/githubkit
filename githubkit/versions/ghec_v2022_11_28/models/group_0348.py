@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,34 +17,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0345 import CodeScanningVariantAnalysisRepository
+from .group_0003 import SimpleUser
+from .group_0347 import DiffEntry
+from .group_0349 import CommitPropCommit
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class Commit(GitHubModel):
+    """Commit
 
-    repository: CodeScanningVariantAnalysisRepository = Field(
-        title="Repository Identifier", description="Repository Identifier"
-    )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
-    )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
+    Commit
+    """
+
+    url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
+class EmptyObject(GitHubModel):
+    """Empty Object
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
+
+    sha: str = Field()
+    url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
+
+__all__ = (
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
+)

@@ -9,104 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    body: Union[str, None]
-    columns_url: str
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhooksProjectTypeForResponse(TypedDict):
-    """Project"""
-
-    body: Union[str, None]
-    columns_url: str
+    conclusion: None
     created_at: str
-    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
+    environment: str
     html_url: str
     id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
+    name: None
+    status: str
     updated_at: str
-    url: str
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
-    """User"""
+class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: None
+    status: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectPropCreatorTypeForResponse",
-    "WebhooksProjectType",
-    "WebhooksProjectTypeForResponse",
+    "WebhooksWorkflowJobRunType",
+    "WebhooksWorkflowJobRunTypeForResponse",
 )

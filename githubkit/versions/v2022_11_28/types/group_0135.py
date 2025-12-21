@@ -14,65 +14,48 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0134 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class PackageType(TypedDict):
+    """Package
 
-    A projects v2 project
+    A software package
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
 
 
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    A projects v2 project
+    A software package
     """
 
-    id: float
-    node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
     created_at: str
     updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[None, SimpleUserTypeForResponse]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[None, ProjectsV2StatusUpdateTypeForResponse]
-    ]
-    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

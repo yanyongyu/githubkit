@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,23 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0230 import MarketplaceListingPlan
 
-class OrganizationCustomRepositoryRoleCreateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+    """MarketplacePurchasePropMarketplacePendingChange"""
+
+    is_installed: Missing[bool] = Field(default=UNSET)
+    effective_date: Missing[str] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleCreateSchema)
+class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchema",)
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
+    )
+
+
+model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
+model_rebuild(MarketplacePurchasePropMarketplacePurchase)
+
+__all__ = (
+    "MarketplacePurchasePropMarketplacePendingChange",
+    "MarketplacePurchasePropMarketplacePurchase",
+)

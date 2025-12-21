@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    total_count: int
+    repositories: list[RepositoryType]
+    repository_selection: NotRequired[str]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    total_count: int
+    repositories: list[RepositoryTypeForResponse]
+    repository_selection: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200Type",
+    "InstallationRepositoriesGetResponse200TypeForResponse",
 )

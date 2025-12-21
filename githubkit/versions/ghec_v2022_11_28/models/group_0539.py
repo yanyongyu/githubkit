@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,77 +18,66 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0305 import PullRequestMinimal
-from .group_0332 import DeploymentSimple
-from .group_0538 import SimpleCheckSuite
+from .group_0531 import SearchResultTextMatchesItems
 
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
+class UserSearchResultItem(GitHubModel):
+    """User Search Result Item
 
-    A check performed on the code of a given code change
+    User Search Result Item
     """
 
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
-    )
-    completed_at: Union[_dt.datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
-    )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
+    login: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: _dt.datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
-    )
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    score: float = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    events_url: str = Field()
+    public_repos: Missing[int] = Field(default=UNSET)
+    public_gists: Missing[int] = Field(default=UNSET)
+    followers: Missing[int] = Field(default=UNSET)
+    following: Missing[int] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    bio: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    site_admin: bool = Field()
+    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    suspended_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class SearchUsersGetResponse200(GitHubModel):
+    """SearchUsersGetResponse200"""
 
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[UserSearchResultItem] = Field()
 
 
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
+model_rebuild(UserSearchResultItem)
+model_rebuild(SearchUsersGetResponse200)
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
+    "SearchUsersGetResponse200",
+    "UserSearchResultItem",
 )

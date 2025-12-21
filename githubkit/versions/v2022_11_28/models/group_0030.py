@@ -66,6 +66,12 @@ class CodeSecurityConfiguration(GitHubModel):
             description="The enablement status of Dependabot security updates",
         )
     )
+    dependabot_delegated_alert_dismissal: Missing[
+        Union[None, Literal["enabled", "disabled", "not_set"]]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Dependabot delegated alert dismissal",
+    )
     code_scanning_options: Missing[
         Union[CodeSecurityConfigurationPropCodeScanningOptions, None]
     ] = Field(default=UNSET, description="Feature options for code scanning")

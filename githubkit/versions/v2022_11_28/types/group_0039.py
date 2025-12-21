@@ -10,84 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0037 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0038 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0040 import (
-    DependabotAlertWithRepositoryPropDependencyType,
-    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
-)
 
+class DependabotAlertDismissalRequestSimpleType(TypedDict):
+    """Dependabot alert dismissal request
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
-
-    A Dependabot alert.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    repository: SimpleRepositoryType
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
+    created_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    A Dependabot alert.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[
+        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
+    created_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryTypeForResponse",
+    "DependabotAlertDismissalRequestSimplePropRequesterType",
+    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestSimpleType",
+    "DependabotAlertDismissalRequestSimpleTypeForResponse",
 )

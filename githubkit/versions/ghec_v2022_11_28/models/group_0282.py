@@ -9,39 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0082 import TeamSimple
 
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
 
-    A credit given to a user for a repository security advisory.
+    The Relationship a Team has with a role.
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-__all__ = ("RepositoryAdvisoryCredit",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
+
+__all__ = (
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
+)

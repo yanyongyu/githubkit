@@ -9,99 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
 
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
+
+
+class WebhookRubygemsMetadataTypeForResponse(TypedDict):
+    """Ruby Gems metadata"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
+    repo: NotRequired[str]
+    dependencies: NotRequired[
+        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
     ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    commit_oid: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[
-            WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse, None
-        ]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    version: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    version: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+
+WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse",
-    "WebhookProjectCardMovedPropProjectCardAllof1Type",
-    "WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataTypeForResponse",
 )

@@ -17,22 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0218 import RepositoryRuleWorkflowsPropParameters
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
 
-    Check immutable releases settings for an organization.
+class RepositoryRuleWorkflows(GitHubModel):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
-    )
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+model_rebuild(RepositoryRuleWorkflows)
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+__all__ = ("RepositoryRuleWorkflows",)

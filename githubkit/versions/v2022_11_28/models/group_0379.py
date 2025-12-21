@@ -19,33 +19,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0044 import ReactionRollup
-from .group_0380 import ReviewCommentPropLinks
 
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
 
-    Legacy Review Comment
+    Timeline Reviewed Event
     """
 
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    id: int = Field()
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
     html_url: str = Field()
     pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -59,40 +54,35 @@ class ReviewComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
 
 
-model_rebuild(ReviewComment)
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-__all__ = ("ReviewComment",)
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
+
+
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
+
+__all__ = (
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
+)

@@ -9,41 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class PullRequestWebhookAllof1Type(TypedDict):
-    """PullRequestWebhookAllof1"""
+class WebhooksRepositoriesItemsType(TypedDict):
+    """WebhooksRepositoriesItems"""
 
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
 
-class PullRequestWebhookAllof1TypeForResponse(TypedDict):
-    """PullRequestWebhookAllof1"""
+class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesItems"""
 
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
 
 __all__ = (
-    "PullRequestWebhookAllof1Type",
-    "PullRequestWebhookAllof1TypeForResponse",
+    "WebhooksRepositoriesItemsType",
+    "WebhooksRepositoriesItemsTypeForResponse",
 )

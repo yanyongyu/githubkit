@@ -9,75 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0100 import TeamType, TeamTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
+class ActionsHostedRunnerCuratedImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    The campaign metadata and alert stats.
+    Provides details of a hosted runner image
     """
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[_dt.datetime]
-    ends_at: _dt.datetime
-    closed_at: NotRequired[Union[_dt.datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
-class CampaignSummaryTypeForResponse(TypedDict):
-    """Campaign summary
+class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner image details.
 
-    The campaign metadata and alert stats.
+    Provides details of a hosted runner image
     """
 
-    number: int
-    created_at: str
-    updated_at: str
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserTypeForResponse]
-    team_managers: NotRequired[list[TeamTypeForResponse]]
-    published_at: NotRequired[str]
-    ends_at: str
-    closed_at: NotRequired[Union[str, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
-
-
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
-
-
-class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+    id: str
+    platform: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryPropAlertStatsTypeForResponse",
-    "CampaignSummaryType",
-    "CampaignSummaryTypeForResponse",
+    "ActionsHostedRunnerCuratedImageType",
+    "ActionsHostedRunnerCuratedImageTypeForResponse",
 )

@@ -17,33 +17,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import DependabotAlertPackage
 
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
-
-    Details for the vulnerable dependency.
-    """
-
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
     )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
     )
-    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
-        Field(
-            default=UNSET,
-            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-        )
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
     )
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = ("CodeScanningSarifsStatus",)

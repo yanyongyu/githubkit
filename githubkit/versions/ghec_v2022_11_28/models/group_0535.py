@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,72 +18,126 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0196 import Milestone
+from .group_0197 import IssueType
+from .group_0198 import ReactionRollup
+from .group_0199 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0200 import IssueFieldValue
+from .group_0531 import SearchResultTextMatchesItems
 
-class WebhooksRule(GitHubModel):
-    """branch protection rule
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest//github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
+
+    Issue Search Result Item
     """
 
-    admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    authorized_actor_names: list[str] = Field()
-    authorized_actors_only: bool = Field()
-    authorized_dismissal_actors_only: bool = Field()
-    create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    dismiss_stale_reviews_on_push: bool = Field()
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
     id: int = Field()
-    ignore_approvals_from_contributors: bool = Field()
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
+    node_id: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
-    lock_allows_fork_sync: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
     )
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
-    name: str = Field()
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    repository_id: int = Field()
-    require_code_owner_review: bool = Field()
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it",
-    )
-    required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_status_checks: list[str] = Field()
-    required_status_checks_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    signature_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    strict_required_status_checks_policy: bool = Field()
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
+    created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(WebhooksRule)
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
 
-__all__ = ("WebhooksRule",)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[IssueSearchResultItem] = Field()
+
+
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
+
+__all__ = (
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
+)

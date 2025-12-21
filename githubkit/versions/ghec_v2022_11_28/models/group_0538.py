@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,58 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0213 import MinimalRepository
-from .group_0305 import PullRequestMinimal
+from .group_0531 import SearchResultTextMatchesItems
 
 
-class SimpleCheckSuite(GitHubModel):
-    """SimpleCheckSuite
+class TopicSearchResultItem(GitHubModel):
+    """Topic Search Result Item
 
-    A suite of checks performed on the code of a given code change
+    Topic Search Result Item
     """
 
-    after: Missing[Union[str, None]] = Field(default=UNSET)
-    app: Missing[Union[Integration, None]] = Field(
-        default=UNSET,
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    name: str = Field()
+    display_name: Union[str, None] = Field()
+    short_description: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    created_by: Union[str, None] = Field()
+    released: Union[str, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    featured: bool = Field()
+    curated: bool = Field()
+    score: float = Field()
+    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
+    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    before: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(
-        default=UNSET, description="The SHA of the head commit that is being checked."
+    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
+        default=UNSET
     )
+    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
+        default=UNSET
+    )
+
+
+class TopicSearchResultItemPropRelatedItems(GitHubModel):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
     id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
-    repository: Missing[MinimalRepository] = Field(
-        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class TopicSearchResultItemPropAliasesItems(GitHubModel):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
     )
-    status: Missing[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(SimpleCheckSuite)
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
 
-__all__ = ("SimpleCheckSuite",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class SearchTopicsGetResponse200(GitHubModel):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[TopicSearchResultItem] = Field()
+
+
+model_rebuild(TopicSearchResultItem)
+model_rebuild(TopicSearchResultItemPropRelatedItems)
+model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
+model_rebuild(TopicSearchResultItemPropAliasesItems)
+model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
+model_rebuild(SearchTopicsGetResponse200)
+
+__all__ = (
+    "SearchTopicsGetResponse200",
+    "TopicSearchResultItem",
+    "TopicSearchResultItemPropAliasesItems",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
+    "TopicSearchResultItemPropRelatedItems",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
+)

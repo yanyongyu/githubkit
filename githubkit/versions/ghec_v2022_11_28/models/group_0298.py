@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,34 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    Repository actions caches
-    """
-
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
+    )
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
     )
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
-
-__all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
-)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

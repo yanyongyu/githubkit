@@ -9,80 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistHistory(GitHubModel):
-    """Gist History
+class PullRequestMinimal(GitHubModel):
+    """Pull Request Minimal"""
 
-    Gist History
-    """
-
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class GistHistoryPropChangeStatus(GitHubModel):
-    """GistHistoryPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-class GistSimplePropForkOf(GitHubModel):
-    """Gist
-
-    Gist
-    """
-
+    id: int = Field()
+    number: int = Field()
     url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: GistSimplePropForkOfPropFiles = Field()
-    public: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
 
 
-class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
-    """GistSimplePropForkOfPropFiles"""
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
 
 
-model_rebuild(GistHistory)
-model_rebuild(GistHistoryPropChangeStatus)
-model_rebuild(GistSimplePropForkOf)
-model_rebuild(GistSimplePropForkOfPropFiles)
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimal)
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
 
 __all__ = (
-    "GistHistory",
-    "GistHistoryPropChangeStatus",
-    "GistSimplePropForkOf",
-    "GistSimplePropForkOfPropFiles",
+    "PullRequestMinimal",
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
 )

@@ -10,28 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-    A tool that must provide code review results for this rule to pass.
-    """
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
-    name: Literal["CodeQL", "ESLint", "PMD"]
 
+class RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
-    """CopilotCodeReviewAnalysisTool
-
-    A tool that must provide code review results for this rule to pass.
-    """
-
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
+    "RepositoryRuleCommitAuthorEmailPatternPropParametersType",
+    "RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse",
 )

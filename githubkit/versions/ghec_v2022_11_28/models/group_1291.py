@@ -16,13 +16,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    message: str = Field(description="The commit message.")
+    content: str = Field(description="The new file content, using Base64 encoding.")
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+    )
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch name. Default: the repository’s default branch.",
+    )
+    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
+        default=UNSET,
+        description="The person that committed the file. Default: the authenticated user.",
+    )
+    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
+        default=UNSET,
+        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody)
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",)
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoContentsPathPutBody)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathPutBody",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
+)

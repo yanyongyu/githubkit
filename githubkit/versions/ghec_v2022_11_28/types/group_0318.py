@@ -11,53 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0319 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
-)
 
+class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
+    """Actions cache retention limit for a repository
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    GitHub Actions cache retention policy for a repository.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    max_cache_retention_days: NotRequired[int]
 
 
-class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
-    """Protected Branch Pull Request Review
+class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache retention limit for a repository
 
-    Protected Branch Pull Request Review
+    GitHub Actions cache retention policy for a repository.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewType",
-    "ProtectedBranchPullRequestReviewTypeForResponse",
+    "ActionsCacheRetentionLimitForRepositoryType",
+    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
 )

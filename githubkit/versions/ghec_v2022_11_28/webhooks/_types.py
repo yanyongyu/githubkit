@@ -53,6 +53,10 @@ from .dismissal_request_code_scanning import Event as DismissalRequestCodeScanni
 from .dismissal_request_code_scanning import (
     action_types as dismissal_request_code_scanning_action_types,
 )
+from .dismissal_request_dependabot import Event as DismissalRequestDependabotEvent
+from .dismissal_request_dependabot import (
+    action_types as dismissal_request_dependabot_action_types,
+)
 from .dismissal_request_secret_scanning import (
     Event as DismissalRequestSecretScanningEvent,
 )
@@ -231,6 +235,7 @@ WebhookEvent = Union[
     DiscussionEvent,
     DiscussionCommentEvent,
     DismissalRequestCodeScanningEvent,
+    DismissalRequestDependabotEvent,
     DismissalRequestSecretScanningEvent,
     ExemptionRequestPushRulesetEvent,
     ForkEvent,
@@ -315,6 +320,7 @@ webhook_action_types = {
     "discussion": discussion_action_types,
     "discussion_comment": discussion_comment_action_types,
     "dismissal_request_code_scanning": dismissal_request_code_scanning_action_types,
+    "dismissal_request_dependabot": dismissal_request_dependabot_action_types,
     "dismissal_request_secret_scanning": dismissal_request_secret_scanning_action_types,
     "exemption_request_push_ruleset": exemption_request_push_ruleset_action_types,
     "fork": fork_action_types,
@@ -399,6 +405,7 @@ webhook_event_types = {
     "discussion": DiscussionEvent,
     "discussion_comment": DiscussionCommentEvent,
     "dismissal_request_code_scanning": DismissalRequestCodeScanningEvent,
+    "dismissal_request_dependabot": DismissalRequestDependabotEvent,
     "dismissal_request_secret_scanning": DismissalRequestSecretScanningEvent,
     "exemption_request_push_ruleset": ExemptionRequestPushRulesetEvent,
     "fork": ForkEvent,

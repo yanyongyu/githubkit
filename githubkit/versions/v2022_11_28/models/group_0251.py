@@ -9,43 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0252 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    Repository actions caches
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
-    )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
+
+__all__ = (
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
+)

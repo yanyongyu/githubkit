@@ -11,44 +11,68 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0288 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A projects v2 project
     """
 
-    id: int
+    id: float
     node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[_dt.datetime, None]
     created_at: _dt.datetime
+    updated_at: _dt.datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[_dt.datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    is_template: NotRequired[bool]
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class ProjectsV2TypeForResponse(TypedDict):
+    """Projects v2 Project
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A projects v2 project
     """
 
-    id: int
+    id: float
     node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    owner: SimpleUserTypeForResponse
+    creator: SimpleUserTypeForResponse
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[str, None]
     created_at: str
+    updated_at: str
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[str, None]
+    deleted_by: Union[None, SimpleUserTypeForResponse]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[
+        Union[None, ProjectsV2StatusUpdateTypeForResponse]
+    ]
+    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "ProjectsV2Type",
+    "ProjectsV2TypeForResponse",
 )

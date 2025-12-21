@@ -9,28 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0154 import RepositoryRulesetConditionsPropRefName
-from .group_0156 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
+
+
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
+
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
+
+__all__ = (
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
 )
-
-
-class OrgRulesetConditionsOneof0(GitHubModel):
-    """repository_name_and_ref_name
-
-    Conditions to target repositories by name and refs by name
-    """
-
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
-
-
-model_rebuild(OrgRulesetConditionsOneof0)
-
-__all__ = ("OrgRulesetConditionsOneof0",)

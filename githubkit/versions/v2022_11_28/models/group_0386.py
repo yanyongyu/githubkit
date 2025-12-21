@@ -9,35 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0166 import RepositoryRuleUpdatePropParameters
+from .group_0019 import LicenseSimple
 
 
-class RepositoryRuleDetailedOneof1(GitHubModel):
-    """RepositoryRuleDetailedOneof1"""
+class LicenseContent(GitHubModel):
+    """License Content
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    License Content
+    """
+
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    size: int = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    git_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    type: str = Field()
+    content: str = Field()
+    encoding: str = Field()
+    links: LicenseContentPropLinks = Field(alias="_links")
+    license_: Union[None, LicenseSimple] = Field(alias="license")
 
 
-model_rebuild(RepositoryRuleDetailedOneof1)
+class LicenseContentPropLinks(GitHubModel):
+    """LicenseContentPropLinks"""
 
-__all__ = ("RepositoryRuleDetailedOneof1",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(LicenseContent)
+model_rebuild(LicenseContentPropLinks)
+
+__all__ = (
+    "LicenseContent",
+    "LicenseContentPropLinks",
+)

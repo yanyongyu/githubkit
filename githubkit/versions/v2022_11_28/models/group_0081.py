@@ -9,38 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0079 import MarketplaceListingPlan
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
+    is_installed: Missing[bool] = Field(default=UNSET)
+    effective_date: Missing[str] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
 
 
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
-    """
-
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
-    )
 
 
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
+model_rebuild(MarketplacePurchasePropMarketplacePurchase)
 
 __all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
+    "MarketplacePurchasePropMarketplacePendingChange",
+    "MarketplacePurchasePropMarketplacePurchase",
 )

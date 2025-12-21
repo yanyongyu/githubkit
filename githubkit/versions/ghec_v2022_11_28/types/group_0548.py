@@ -9,35 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class SocialAccountType(TypedDict):
+    """Social account
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
+    Social media account
+    """
+
+    provider: str
     url: str
 
 
-class WebhooksLabelTypeForResponse(TypedDict):
-    """Label"""
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
+    Social media account
+    """
+
+    provider: str
     url: str
 
 
 __all__ = (
-    "WebhooksLabelType",
-    "WebhooksLabelTypeForResponse",
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
 )

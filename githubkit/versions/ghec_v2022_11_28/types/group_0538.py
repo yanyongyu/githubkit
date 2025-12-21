@@ -10,93 +10,162 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0213 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0531 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class TopicSearchResultItemType(TypedDict):
+    """Topic Search Result Item
 
-    A suite of checks performed on the code of a given code change
+    Topic Search Result Item
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    name: str
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
+    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class TopicSearchResultItemTypeForResponse(TypedDict):
+    """Topic Search Result Item
 
-    A suite of checks performed on the code of a given code change
+    Topic Search Result Item
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
+    name: str
+    display_name: Union[str, None]
+    short_description: Union[str, None]
+    description: Union[str, None]
+    created_by: Union[str, None]
+    released: Union[str, None]
+    created_at: str
+    updated_at: str
+    featured: bool
+    curated: bool
+    score: float
+    repository_count: NotRequired[Union[int, None]]
+    logo_url: NotRequired[Union[str, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    related: NotRequired[
+        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
     ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
+    aliases: NotRequired[
+        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsType(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
     id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsType(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
     ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: NotRequired[
+        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
+    ]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    topic_id: NotRequired[int]
+    relation_type: NotRequired[str]
+
+
+class SearchTopicsGetResponse200Type(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemType]
+
+
+class SearchTopicsGetResponse200TypeForResponse(TypedDict):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[TopicSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "SearchTopicsGetResponse200Type",
+    "SearchTopicsGetResponse200TypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropAliasesItemsType",
+    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
+    "TopicSearchResultItemPropRelatedItemsType",
+    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
+    "TopicSearchResultItemType",
+    "TopicSearchResultItemTypeForResponse",
 )

@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+    Custom property name and associated value
+    """
+
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("CustomPropertyValue",)

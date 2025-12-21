@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,153 +18,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class DependencyGraphSpdxSbom(GitHubModel):
-    """Dependency Graph SPDX SBOM
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbom = Field()
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-class DependencyGraphSpdxSbomPropSbom(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbom"""
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-    spdxid: str = Field(
-        alias="SPDXID", description="The SPDX identifier for the SPDX document."
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
     )
-    spdx_version: str = Field(
-        alias="spdxVersion",
-        description="The version of the SPDX specification that this document conforms to.",
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="An optional comment about the SPDX document."
-    )
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfo = Field(
-        alias="creationInfo"
-    )
-    name: str = Field(description="The name of the SPDX document.")
-    data_license: str = Field(
-        alias="dataLicense",
-        description="The license under which the SPDX document is licensed.",
-    )
-    document_namespace: str = Field(
-        alias="documentNamespace", description="The namespace for the SPDX document."
-    )
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItems] = Field()
-    relationships: Missing[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItems]
-    ] = Field(default=UNSET)
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfo(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str = Field(description="The date and time the SPDX document was created.")
-    creators: list[str] = Field(
-        description="The tools that were used to generate the SPDX document."
-    )
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItems(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: Missing[str] = Field(
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="relationshipType",
-        description="The type of relationship between the two SPDX elements.",
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
     )
-    spdx_element_id: Missing[str] = Field(
-        default=UNSET,
-        alias="spdxElementId",
-        description="The SPDX identifier of the package that is the source of the relationship.",
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
     )
-    related_spdx_element: Missing[str] = Field(
-        default=UNSET,
-        alias="relatedSpdxElement",
-        description="The SPDX identifier of the package that is the target of the relationship.",
-    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-class DependencyGraphSpdxSbomPropSbomPropPackagesItems(GitHubModel):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: Missing[str] = Field(
-        default=UNSET,
-        alias="SPDXID",
-        description="A unique SPDX identifier for the package.",
-    )
-    name: Missing[str] = Field(default=UNSET, description="The name of the package.")
-    version_info: Missing[str] = Field(
-        default=UNSET,
-        alias="versionInfo",
-        description="The version of the package. If the package does not have an exact version specified,\na version range is given.",
-    )
-    download_location: Missing[str] = Field(
-        default=UNSET,
-        alias="downloadLocation",
-        description="The location where the package can be downloaded,\nor NOASSERTION if this has not been determined.",
-    )
-    files_analyzed: Missing[bool] = Field(
-        default=UNSET,
-        alias="filesAnalyzed",
-        description="Whether the package's file content has been subjected to\nanalysis during the creation of the SPDX document.",
-    )
-    license_concluded: Missing[str] = Field(
-        default=UNSET,
-        alias="licenseConcluded",
-        description="The license of the package as determined while creating the SPDX document.",
-    )
-    license_declared: Missing[str] = Field(
-        default=UNSET,
-        alias="licenseDeclared",
-        description="The license of the package as declared by its author, or NOASSERTION if this information\nwas not available when the SPDX document was created.",
-    )
-    supplier: Missing[str] = Field(
-        default=UNSET,
-        description="The distribution source of this package, or NOASSERTION if this was not determined.",
-    )
-    copyright_text: Missing[str] = Field(
-        default=UNSET,
-        alias="copyrightText",
-        description="The copyright holders of the package, and any dates present with those notices, if available.",
-    )
-    external_refs: Missing[
-        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems]
-    ] = Field(default=UNSET, alias="externalRefs")
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems(
-    GitHubModel
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str = Field(
-        alias="referenceCategory",
-        description="The category of reference to an external resource this reference refers to.",
-    )
-    reference_locator: str = Field(
-        alias="referenceLocator",
-        description="A locator for the particular external resource this reference refers to.",
-    )
-    reference_type: str = Field(
-        alias="referenceType",
-        description="The category of reference to an external resource this reference refers to.",
-    )
-
-
-model_rebuild(DependencyGraphSpdxSbom)
-model_rebuild(DependencyGraphSpdxSbomPropSbom)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropCreationInfo)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropRelationshipsItems)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItems)
-model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "DependencyGraphSpdxSbom",
-    "DependencyGraphSpdxSbomPropSbom",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItems",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

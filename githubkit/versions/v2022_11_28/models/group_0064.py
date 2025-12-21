@@ -9,47 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0063 import MinimalRepository
+from .group_0052 import PullRequestMinimal
+from .group_0065 import PullRequestReviewEventPropReview
 
 
-class Thread(GitHubModel):
-    """Thread
+class PullRequestReviewEvent(GitHubModel):
+    """PullRequestReviewEvent"""
 
-    Thread
-    """
-
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
+    action: str = Field()
+    review: PullRequestReviewEventPropReview = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+model_rebuild(PullRequestReviewEvent)
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
-
-
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
-
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("PullRequestReviewEvent",)

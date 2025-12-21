@@ -9,77 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0102 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0103 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0104 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class ActionsArtifactAndLogRetentionResponseType(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
+    days: int
+    maximum_allowed_days: int
 
 
-class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    days: int
+    maximum_allowed_days: int
 
 
 __all__ = (
-    "CodeScanningOrganizationAlertItemsType",
-    "CodeScanningOrganizationAlertItemsTypeForResponse",
+    "ActionsArtifactAndLogRetentionResponseType",
+    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
 )

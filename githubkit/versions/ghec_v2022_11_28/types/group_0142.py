@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0143 import (
-    RepositoryRuleBranchNamePatternPropParametersType,
-    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
+    RepositoryRuleCommitterEmailPatternPropParametersType,
+    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
 
-    Parameters to be used for the branch_name_pattern rule
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
-    """branch_name_pattern
+class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
+    """committer_email_pattern
 
-    Parameters to be used for the branch_name_pattern rule
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["branch_name_pattern"]
+    type: Literal["committer_email_pattern"]
     parameters: NotRequired[
-        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleBranchNamePatternType",
-    "RepositoryRuleBranchNamePatternTypeForResponse",
+    "RepositoryRuleCommitterEmailPatternType",
+    "RepositoryRuleCommitterEmailPatternTypeForResponse",
 )

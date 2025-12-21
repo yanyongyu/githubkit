@@ -9,34 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0220 import (
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+)
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class RepositoryRuleDetailedOneof20Type(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    Content Traffic
-    """
-
-    path: str
-    title: str
-    count: int
-    uniques: int
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ContentTrafficTypeForResponse(TypedDict):
-    """Content Traffic
+class RepositoryRuleDetailedOneof20TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof20"""
 
-    Content Traffic
-    """
-
-    path: str
-    title: str
-    count: int
-    uniques: int
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ContentTrafficType",
-    "ContentTrafficTypeForResponse",
+    "RepositoryRuleDetailedOneof20Type",
+    "RepositoryRuleDetailedOneof20TypeForResponse",
 )

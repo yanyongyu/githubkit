@@ -9,31 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class GitUserType(TypedDict):
+    """Git User
 
-    Successful deletion of a code scanning analysis
+    Metaproperties for Git author/committer information.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
-    """Analysis deletion
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    Successful deletion of a code scanning analysis
+    Metaproperties for Git author/committer information.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAnalysisDeletionType",
-    "CodeScanningAnalysisDeletionTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

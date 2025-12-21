@@ -17,18 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str = Field(
-        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag"
-    )
+from .group_0278 import DiffEntry
+from .group_0279 import Commit
 
 
-model_rebuild(DeploymentBranchPolicyNamePatternWithType)
+class CommitComparison(GitHubModel):
+    """Commit Comparison
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithType",)
+    Commit Comparison
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+
+
+model_rebuild(CommitComparison)
+
+__all__ = ("CommitComparison",)

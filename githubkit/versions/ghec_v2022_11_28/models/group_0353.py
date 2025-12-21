@@ -9,29 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
-    """CodeScanningDefaultSetupUpdateResponse
-
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
-    """
-
-    run_id: Missing[int] = Field(
-        default=UNSET, description="ID of the corresponding run."
-    )
-    run_url: Missing[str] = Field(
-        default=UNSET, description="URL of the corresponding run."
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0083 import Team
 
 
-model_rebuild(CodeScanningDefaultSetupUpdateResponse)
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponse",)
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+)

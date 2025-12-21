@@ -9,57 +9,159 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0045 import MilestoneType, MilestoneTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
+from .group_0159 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0161 import (
+    PullRequestSimplePropBaseType,
+    PullRequestSimplePropBaseTypeForResponse,
+    PullRequestSimplePropHeadType,
+    PullRequestSimplePropHeadTypeForResponse,
+)
+from .group_0162 import (
+    PullRequestSimplePropLinksType,
+    PullRequestSimplePropLinksTypeForResponse,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    Parameters for a targeting a repository property
+    Pull Request Simple
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserType]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[list[TeamType], None]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class PullRequestSimpleTypeForResponse(TypedDict):
+    """Pull Request Simple
 
-    Parameters for a targeting a repository property
+    Pull Request Simple
     """
 
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserTypeForResponse]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_teams: NotRequired[Union[list[TeamTypeForResponse], None]]
+    head: PullRequestSimplePropHeadTypeForResponse
+    base: PullRequestSimplePropBaseTypeForResponse
+    links: PullRequestSimplePropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    draft: NotRequired[bool]
+
+
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
     name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    description: Union[str, None]
+    color: str
+    default: bool
+
+
+class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
+    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimplePropLabelsItemsTypeForResponse",
+    "PullRequestSimpleType",
+    "PullRequestSimpleTypeForResponse",
 )

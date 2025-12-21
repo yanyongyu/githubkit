@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class StatusType(TypedDict):
+    """Status
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class StatusTypeForResponse(TypedDict):
+    """Status
 
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternWithTypeType",
-    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
+    "StatusType",
+    "StatusTypeForResponse",
 )

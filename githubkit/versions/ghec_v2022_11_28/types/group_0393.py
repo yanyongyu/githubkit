@@ -9,41 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BlobType(TypedDict):
-    """Blob
+class ContentFileType(TypedDict):
+    """Content File
 
-    Blob
+    Content File
     """
 
-    content: str
+    type: Literal["file"]
     encoding: str
-    url: str
+    size: int
+    name: str
+    path: str
+    content: str
     sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class BlobTypeForResponse(TypedDict):
-    """Blob
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    Blob
+    Content File
     """
 
-    content: str
+    type: Literal["file"]
     encoding: str
-    url: str
+    size: int
+    name: str
+    path: str
+    content: str
     sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "BlobType",
-    "BlobTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

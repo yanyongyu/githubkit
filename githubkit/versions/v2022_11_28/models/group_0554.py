@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,21 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0453 import EnterpriseWebhooks
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0456 import RepositoryWebhooks
-from .group_0466 import Discussion
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCategoryChanged(GitHubModel):
-    """discussion category changed event"""
+class WebhookCustomPropertyDeleted(GitHubModel):
+    """custom property deleted event"""
 
-    action: Literal["category_changed"] = Field()
-    changes: WebhookDiscussionCategoryChangedPropChanges = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["deleted"] = Field()
+    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,50 +43,21 @@ class WebhookDiscussionCategoryChanged(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookDiscussionCategoryChangedPropChanges(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategory = Field()
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
-        alias="from"
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
+    """WebhookCustomPropertyDeletedPropDefinition"""
 
-    created_at: _dt.datetime = Field()
-    description: str = Field()
-    emoji: str = Field()
-    id: int = Field()
-    is_answerable: bool = Field()
-    name: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: int = Field()
-    slug: str = Field()
-    updated_at: str = Field()
+    property_name: str = Field(description="The name of the property that was deleted.")
 
 
-model_rebuild(WebhookDiscussionCategoryChanged)
-model_rebuild(WebhookDiscussionCategoryChangedPropChanges)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategory)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom)
+model_rebuild(WebhookCustomPropertyDeleted)
+model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
 
 __all__ = (
-    "WebhookDiscussionCategoryChanged",
-    "WebhookDiscussionCategoryChangedPropChanges",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategory",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
+    "WebhookCustomPropertyDeleted",
+    "WebhookCustomPropertyDeletedPropDefinition",
 )

@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
+    Code of Conduct Simple
+    """
+
+    url: str
+    key: str
     name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    html_url: Union[str, None]
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
+    Code of Conduct Simple
+    """
+
+    url: str
+    key: str
     name: str
-    value: str
-    created_at: str
-    updated_at: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

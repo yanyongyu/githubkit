@@ -9,85 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0099 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
-class TeamType(TypedDict):
-    """Team
+class ActionsHostedRunnerType(TypedDict):
+    """GitHub-hosted hosted runner
 
-    Groups of organization members that gives permissions on specified repositories.
+    A Github-hosted hosted runner.
     """
 
     id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleType]
+    runner_group_id: NotRequired[int]
+    image_details: Union[None, ActionsHostedRunnerPoolImageType]
+    machine_size_details: ActionsHostedRunnerMachineSpecType
+    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
+    platform: str
+    maximum_runners: NotRequired[int]
+    public_ip_enabled: bool
+    public_ips: NotRequired[list[PublicIpType]]
+    last_active_on: NotRequired[Union[_dt.datetime, None]]
+    image_gen: NotRequired[bool]
 
 
-class TeamTypeForResponse(TypedDict):
-    """Team
+class ActionsHostedRunnerTypeForResponse(TypedDict):
+    """GitHub-hosted hosted runner
 
-    Groups of organization members that gives permissions on specified repositories.
+    A Github-hosted hosted runner.
     """
 
     id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleTypeForResponse]
+    runner_group_id: NotRequired[int]
+    image_details: Union[None, ActionsHostedRunnerPoolImageTypeForResponse]
+    machine_size_details: ActionsHostedRunnerMachineSpecTypeForResponse
+    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"]
+    platform: str
+    maximum_runners: NotRequired[int]
+    public_ip_enabled: bool
+    public_ips: NotRequired[list[PublicIpTypeForResponse]]
+    last_active_on: NotRequired[Union[str, None]]
+    image_gen: NotRequired[bool]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
+class ActionsHostedRunnerPoolImageType(TypedDict):
+    """GitHub-hosted runner image details.
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
+    version: NotRequired[str]
 
 
-class TeamPropPermissionsTypeForResponse(TypedDict):
-    """TeamPropPermissions"""
+class ActionsHostedRunnerPoolImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner image details.
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    Provides details of a hosted runner image
+    """
+
+    id: str
+    size_gb: int
+    display_name: str
+    source: Literal["github", "partner", "custom"]
+    version: NotRequired[str]
+
+
+class PublicIpType(TypedDict):
+    """Public IP for a GitHub-hosted larger runners.
+
+    Provides details of Public IP for a GitHub-hosted larger runners
+    """
+
+    enabled: NotRequired[bool]
+    prefix: NotRequired[str]
+    length: NotRequired[int]
+
+
+class PublicIpTypeForResponse(TypedDict):
+    """Public IP for a GitHub-hosted larger runners.
+
+    Provides details of Public IP for a GitHub-hosted larger runners
+    """
+
+    enabled: NotRequired[bool]
+    prefix: NotRequired[str]
+    length: NotRequired[int]
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamPropPermissionsTypeForResponse",
-    "TeamType",
-    "TeamTypeForResponse",
+    "ActionsHostedRunnerPoolImageType",
+    "ActionsHostedRunnerPoolImageTypeForResponse",
+    "ActionsHostedRunnerType",
+    "ActionsHostedRunnerTypeForResponse",
+    "PublicIpType",
+    "PublicIpTypeForResponse",
 )

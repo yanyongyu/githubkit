@@ -13,77 +13,37 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetConsumedLicensesType(TypedDict):
-    """Enterprise Consumed Licenses
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: NotRequired[int]
-    total_seats_purchased: NotRequired[int]
-    users: NotRequired[list[GetConsumedLicensesPropUsersItemsType]]
-
-
-class GetConsumedLicensesTypeForResponse(TypedDict):
-    """Enterprise Consumed Licenses
-
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: NotRequired[int]
-    total_seats_purchased: NotRequired[int]
-    users: NotRequired[list[GetConsumedLicensesPropUsersItemsTypeForResponse]]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
+    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-class GetConsumedLicensesPropUsersItemsType(TypedDict):
-    """GetConsumedLicensesPropUsersItems"""
+class EnterpriseSecurityAnalysisSettingsTypeForResponse(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    github_com_login: NotRequired[str]
-    github_com_name: NotRequired[Union[str, None]]
-    enterprise_server_user_ids: NotRequired[list[str]]
-    github_com_user: NotRequired[bool]
-    enterprise_server_user: NotRequired[Union[bool, None]]
-    visual_studio_subscription_user: NotRequired[bool]
-    license_type: NotRequired[str]
-    github_com_profile: NotRequired[Union[str, None]]
-    github_com_member_roles: NotRequired[list[str]]
-    github_com_enterprise_roles: NotRequired[list[str]]
-    github_com_verified_domain_emails: NotRequired[list[str]]
-    github_com_saml_name_id: NotRequired[Union[str, None]]
-    github_com_orgs_with_pending_invites: NotRequired[list[str]]
-    github_com_two_factor_auth: NotRequired[Union[bool, None]]
-    enterprise_server_emails: NotRequired[list[str]]
-    visual_studio_license_status: NotRequired[Union[str, None]]
-    visual_studio_subscription_email: NotRequired[Union[str, None]]
-    total_user_accounts: NotRequired[int]
-
-
-class GetConsumedLicensesPropUsersItemsTypeForResponse(TypedDict):
-    """GetConsumedLicensesPropUsersItems"""
-
-    github_com_login: NotRequired[str]
-    github_com_name: NotRequired[Union[str, None]]
-    enterprise_server_user_ids: NotRequired[list[str]]
-    github_com_user: NotRequired[bool]
-    enterprise_server_user: NotRequired[Union[bool, None]]
-    visual_studio_subscription_user: NotRequired[bool]
-    license_type: NotRequired[str]
-    github_com_profile: NotRequired[Union[str, None]]
-    github_com_member_roles: NotRequired[list[str]]
-    github_com_enterprise_roles: NotRequired[list[str]]
-    github_com_verified_domain_emails: NotRequired[list[str]]
-    github_com_saml_name_id: NotRequired[Union[str, None]]
-    github_com_orgs_with_pending_invites: NotRequired[list[str]]
-    github_com_two_factor_auth: NotRequired[Union[bool, None]]
-    enterprise_server_emails: NotRequired[list[str]]
-    visual_studio_license_status: NotRequired[Union[str, None]]
-    visual_studio_subscription_email: NotRequired[Union[str, None]]
-    total_user_accounts: NotRequired[int]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
+    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "GetConsumedLicensesPropUsersItemsType",
-    "GetConsumedLicensesPropUsersItemsTypeForResponse",
-    "GetConsumedLicensesType",
-    "GetConsumedLicensesTypeForResponse",
+    "EnterpriseSecurityAnalysisSettingsType",
+    "EnterpriseSecurityAnalysisSettingsTypeForResponse",
 )

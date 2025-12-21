@@ -9,76 +9,152 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    Removed from Project Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
 
-    Removed from Project Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
-    ]
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    id: int
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
 
 
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
 
-    id: int
+    sha: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
+    "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
+    "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
+    "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
+    "GitCommitType",
+    "GitCommitTypeForResponse",
 )

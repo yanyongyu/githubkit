@@ -10,118 +10,120 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0305 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0332 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0538 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
+from .group_0531 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
 
-    A check performed on the code of a given code change
+    User Search Result Item
     """
 
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[_dt.datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
+    login: str
     id: int
-    name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    A check performed on the code of a given code change
+    User Search Result Item
     """
 
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
+    login: str
     id: int
-    name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemType]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    total_count: int
+    incomplete_results: bool
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

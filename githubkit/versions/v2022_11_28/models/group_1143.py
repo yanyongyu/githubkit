@@ -18,27 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to provide to the originating repository.",
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment."
     )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="The password to provide to the originating repository.",
-    )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
-        default=UNSET,
-        description="The type of version control system you are migrating from.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
-    )
+    branch_policies: list[DeploymentBranchPolicy] = Field()
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+class DeploymentBranchPolicy(GitHubModel):
+    """Deployment branch policy
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+    Details of a deployment branch or tag policy.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the branch or tag policy."
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag."
+    )
+
+
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+)
+model_rebuild(DeploymentBranchPolicy)
+
+__all__ = (
+    "DeploymentBranchPolicy",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+)

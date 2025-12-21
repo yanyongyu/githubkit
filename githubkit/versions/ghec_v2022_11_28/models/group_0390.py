@@ -9,31 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0347 import DiffEntry
+from .group_0348 import Commit
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class CommitComparison(GitHubModel):
+    """Commit Comparison
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Commit Comparison
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
-    )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
-    )
+    url: str = Field()
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(CommitComparison)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("CommitComparison",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,56 +17,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
-
-    Configuration for code scanning default setup.
-    """
-
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0121 import Team
 
 
-model_rebuild(CodeScanningDefaultSetup)
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-__all__ = ("CodeScanningDefaultSetup",)
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+)

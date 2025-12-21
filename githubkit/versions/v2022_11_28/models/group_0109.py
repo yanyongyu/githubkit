@@ -9,85 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
-    """
-
-    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
-        title="Copilot Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
-        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
-    )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    send_write_tokens_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
     )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    send_secrets_and_variables: Missing[bool] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
     )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot in the CLI.",
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
     )
 
 
-class CopilotOrganizationSeatBreakdown(GitHubModel):
-    """Copilot Seat Breakdown
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
-    )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who have been invited to receive a Copilot seat through this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
-    )
-
-
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotOrganizationSeatBreakdown)
-
-__all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotOrganizationSeatBreakdown",
-)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

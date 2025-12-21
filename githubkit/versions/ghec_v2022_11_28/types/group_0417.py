@@ -9,76 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class BlobType(TypedDict):
+    """Blob
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
-
-    Moved Column in Project Issue Event
+    Blob
     """
 
-    id: int
-    node_id: str
+    content: str
+    encoding: str
     url: str
-    actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
-    """Moved Column in Project Issue Event
+class BlobTypeForResponse(TypedDict):
+    """Blob
 
-    Moved Column in Project Issue Event
+    Blob
     """
 
-    id: int
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["moved_columns_in_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
-    ]
-
-
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    highlighted_content: NotRequired[str]
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventTypeForResponse",
+    "BlobType",
+    "BlobTypeForResponse",
 )

@@ -17,47 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0083 import EnterpriseTeam
+from .group_0089 import DependabotAlertPackage
 
 
-class EnterpriseUserRoleAssignment(GitHubModel):
-    """An Enterprise Role Assignment for a User
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    The Relationship a User has with a role in an enterprise context.
+    Details for the vulnerable dependency.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    inherited_from: Missing[list[EnterpriseTeam]] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        description="Enterprise Team the user has gotten the role through",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-model_rebuild(EnterpriseUserRoleAssignment)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("EnterpriseUserRoleAssignment",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

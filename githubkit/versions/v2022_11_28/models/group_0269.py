@@ -9,48 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0063 import MinimalRepository
 
+class Autolink(GitHubModel):
+    """Autolink reference
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
+    An autolink reference.
     """
 
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
+model_rebuild(Autolink)
 
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
-    ] = Field(default=UNSET)
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int = Field()
-    setting: bool = Field()
-
-
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
-
-__all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
-)
+__all__ = ("Autolink",)

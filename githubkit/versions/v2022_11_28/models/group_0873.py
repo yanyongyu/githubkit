@@ -9,44 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
+from .group_0003 import SimpleUser
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class WebhookWorkflowDispatch(GitHubModel):
+    """workflow_dispatch event"""
 
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
-    )
-    target: Missing[str] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    target_id: Missing[int] = Field(
+    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    repositories: Missing[list[str]] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    ref: str = Field()
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow: str = Field()
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
+    """WebhookWorkflowDispatchPropInputs"""
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+
+model_rebuild(WebhookWorkflowDispatch)
+model_rebuild(WebhookWorkflowDispatchPropInputs)
+
+__all__ = (
+    "WebhookWorkflowDispatch",
+    "WebhookWorkflowDispatchPropInputs",
+)

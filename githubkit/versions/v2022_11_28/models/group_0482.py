@@ -13,35 +13,45 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksMembership(GitHubModel):
-    """Membership
+class WebhooksApprover(GitHubModel):
+    """WebhooksApprover"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
-    organization_url: str = Field()
-    role: str = Field()
-    direct_membership: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+
+class WebhooksReviewersItems(GitHubModel):
+    """WebhooksReviewersItems"""
+
+    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
+        default=UNSET, title="User"
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
-    )
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
+    type: Missing[Literal["User"]] = Field(default=UNSET)
 
 
-class WebhooksMembershipPropUser(GitHubModel):
+class WebhooksReviewersItemsPropReviewer(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -65,13 +75,14 @@ class WebhooksMembershipPropUser(GitHubModel):
     subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMembership)
-model_rebuild(WebhooksMembershipPropUser)
+model_rebuild(WebhooksApprover)
+model_rebuild(WebhooksReviewersItems)
+model_rebuild(WebhooksReviewersItemsPropReviewer)
 
 __all__ = (
-    "WebhooksMembership",
-    "WebhooksMembershipPropUser",
+    "WebhooksApprover",
+    "WebhooksReviewersItems",
+    "WebhooksReviewersItemsPropReviewer",
 )

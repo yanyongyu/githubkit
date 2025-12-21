@@ -9,139 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0197 import IssueType, IssueTypeForResponse
-from .group_0198 import IssueCommentType, IssueCommentTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadTypeForResponse(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
-    comment: NotRequired[IssueCommentTypeForResponse]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsTypeForResponse]]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class EventPropPayloadPropPagesItemsTypeForResponse(TypedDict):
-    """EventPropPayloadPropPagesItems"""
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
-class EventType(TypedDict):
-    """Event
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
 
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[_dt.datetime, None]
-
-
-class EventTypeForResponse(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: EventPropPayloadTypeForResponse
-    public: bool
-    created_at: Union[str, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class ActorTypeForResponse(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadPropPagesItemsTypeForResponse",
-    "EventPropPayloadType",
-    "EventPropPayloadTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

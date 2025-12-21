@@ -9,61 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0254 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0259 import CommitType, CommitTypeForResponse
+from typing_extensions import TypedDict
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class ReviewCustomGatesCommentRequiredType(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    Branch With Protection
-    """
-
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    environment_name: str
+    comment: str
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesCommentRequired"""
 
-    Branch With Protection
-    """
-
-    name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
-    protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
-
-
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
-
-    html: str
-    self_: str
-
-
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
-
-    html: str
-    self_: str
+    environment_name: str
+    comment: str
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "ReviewCustomGatesCommentRequiredType",
+    "ReviewCustomGatesCommentRequiredTypeForResponse",
 )

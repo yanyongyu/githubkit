@@ -15,37 +15,20 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0063 import MinimalRepository
 
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int = Field(description="Unique identifier of the repository invitation.")
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    invitee: Union[None, SimpleUser] = Field()
-    inviter: Union[None, SimpleUser] = Field()
-    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
-        description="The permission associated with the invitation."
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: _dt.datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    created_at: _dt.datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
-    )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
-    node_id: str = Field()
 
 
-model_rebuild(RepositoryInvitation)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("RepositoryInvitation",)
+__all__ = ("CodeScanningAutofix",)

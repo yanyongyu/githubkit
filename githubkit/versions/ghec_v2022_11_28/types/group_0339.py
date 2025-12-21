@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    Check Dependabot security updates
+    """
+
+    enabled: bool
+    paused: bool
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
+    """Check Dependabot security updates
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    Check Dependabot security updates
+    """
+
+    enabled: bool
+    paused: bool
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "CheckAutomatedSecurityFixesType",
+    "CheckAutomatedSecurityFixesTypeForResponse",
 )

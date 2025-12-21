@@ -10,41 +10,88 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0187 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    type: Literal["creation"]
 
 
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
+class RepositoryRuleCreationTypeForResponse(TypedDict):
+    """creation
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    type: Literal["creation"]
+
+
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleDeletionTypeForResponse(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleCreationType",
+    "RepositoryRuleCreationTypeForResponse",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleDeletionTypeForResponse",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleNonFastForwardTypeForResponse",
+    "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRuleRequiredSignaturesTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -19,86 +19,70 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksAnswer(GitHubModel):
-    """WebhooksAnswer"""
+class GpgKey(GitHubModel):
+    """GPG Key
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field()
-    child_comment_count: int = Field()
+    A unique encryption key
+    """
+
+    id: int = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    primary_key_id: Union[int, None] = Field()
+    key_id: str = Field()
+    public_key: str = Field()
+    emails: list[GpgKeyPropEmailsItems] = Field()
+    subkeys: list[GpgKeyPropSubkeysItems] = Field()
+    can_sign: bool = Field()
+    can_encrypt_comms: bool = Field()
+    can_encrypt_storage: bool = Field()
+    can_certify: bool = Field()
     created_at: _dt.datetime = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: Missing[WebhooksAnswerPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    repository_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
+    expires_at: Union[_dt.datetime, None] = Field()
+    revoked: bool = Field()
+    raw_key: Union[str, None] = Field()
 
 
-class WebhooksAnswerPropReactions(GitHubModel):
-    """Reactions"""
+class GpgKeyPropEmailsItems(GitHubModel):
+    """GpgKeyPropEmailsItems"""
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
 
 
-class WebhooksAnswerPropUser(GitHubModel):
-    """User"""
+class GpgKeyPropSubkeysItems(GitHubModel):
+    """GpgKeyPropSubkeysItems"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    primary_key_id: Missing[int] = Field(default=UNSET)
+    key_id: Missing[str] = Field(default=UNSET)
+    public_key: Missing[str] = Field(default=UNSET)
+    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[list[Any]] = Field(default=UNSET)
+    can_sign: Missing[bool] = Field(default=UNSET)
+    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
+    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
+    can_certify: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
+    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
+    revoked: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksAnswer)
-model_rebuild(WebhooksAnswerPropReactions)
-model_rebuild(WebhooksAnswerPropUser)
+class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(GpgKey)
+model_rebuild(GpgKeyPropEmailsItems)
+model_rebuild(GpgKeyPropSubkeysItems)
+model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
 
 __all__ = (
-    "WebhooksAnswer",
-    "WebhooksAnswerPropReactions",
-    "WebhooksAnswerPropUser",
+    "GpgKey",
+    "GpgKeyPropEmailsItems",
+    "GpgKeyPropSubkeysItems",
+    "GpgKeyPropSubkeysItemsPropEmailsItems",
 )

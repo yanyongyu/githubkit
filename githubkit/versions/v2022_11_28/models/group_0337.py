@@ -10,149 +10,89 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0047 import Issue
-from .group_0100 import Team
+from .group_0334 import Metadata
 
 
-class IssueEvent(GitHubModel):
-    """Issue Event
+class Snapshot(GitHubModel):
+    """snapshot
 
-    Issue Event
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
+    version: int = Field(
+        description="The version of the repository snapshot submission."
     )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
+    job: SnapshotPropJob = Field()
+    sha: str = Field(
+        min_length=40,
+        max_length=40,
+        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
+    )
+    ref: str = Field(
+        pattern="^refs/",
+        description="The repository branch that triggered this snapshot.",
+    )
+    detector: SnapshotPropDetector = Field(
+        description="A description of the detector used."
+    )
+    metadata: Missing[Metadata] = Field(
         default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
+    manifests: Missing[SnapshotPropManifests] = Field(
         default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
+        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
     )
-    project_card: Missing[IssueEventProjectCard] = Field(
-        default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
-    )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
-        default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    scanned: _dt.datetime = Field(
+        description="The time at which the snapshot was scanned."
     )
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+class SnapshotPropJob(GitHubModel):
+    """SnapshotPropJob"""
 
-    Issue Event Label
+    id: str = Field(description="The external ID of the job.")
+    correlator: str = Field(
+        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
+    )
+    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
+
+
+class SnapshotPropDetector(GitHubModel):
+    """SnapshotPropDetector
+
+    A description of the detector used.
     """
 
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
+    name: str = Field(description="The name of the detector used.")
+    version: str = Field(description="The version of the detector used.")
+    url: str = Field(description="The url of the detector used.")
 
 
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
+class SnapshotPropManifests(ExtraGitHubModel):
+    """SnapshotPropManifests
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
-
-    Issue Event Milestone
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
     """
 
-    title: str = Field()
 
-
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str = Field()
-    id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
+model_rebuild(Snapshot)
+model_rebuild(SnapshotPropJob)
+model_rebuild(SnapshotPropDetector)
+model_rebuild(SnapshotPropManifests)
 
 __all__ = (
-    "IssueEvent",
-    "IssueEventDismissedReview",
-    "IssueEventLabel",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
+    "Snapshot",
+    "SnapshotPropDetector",
+    "SnapshotPropJob",
+    "SnapshotPropManifests",
 )

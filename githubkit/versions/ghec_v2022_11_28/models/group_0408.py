@@ -9,35 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class DeploymentBranchPolicySettings(GitHubModel):
+    """DeploymentBranchPolicySettings
 
-class UnassignedIssueEvent(GitHubModel):
-    """Unassigned Issue Event
-
-    Unassigned Issue Event
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    protected_branches: bool = Field(
+        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
+    )
+    custom_branch_policies: bool = Field(
+        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
+    )
 
 
-model_rebuild(UnassignedIssueEvent)
+model_rebuild(DeploymentBranchPolicySettings)
 
-__all__ = ("UnassignedIssueEvent",)
+__all__ = ("DeploymentBranchPolicySettings",)

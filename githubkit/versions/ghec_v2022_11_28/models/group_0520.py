@@ -9,44 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0518 import Meta
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
+class ScimEnterpriseGroupResponseAllof1(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
     )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
+    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+        default=UNSET, description="The security group members."
     )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    meta: Missing[Meta] = Field(
+        default=UNSET,
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-model_rebuild(CodespaceExportDetails)
+class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
 
-__all__ = ("CodespaceExportDetails",)
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimEnterpriseGroupResponseAllof1)
+model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
+
+__all__ = (
+    "ScimEnterpriseGroupResponseAllof1",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
+)

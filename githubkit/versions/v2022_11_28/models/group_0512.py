@@ -9,22 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookCheckRunRequestedActionFormEncoded(GitHubModel):
-    """Check Run Requested Action Event
+class WebhooksReview(GitHubModel):
+    """WebhooksReview
 
-    The check_run.requested_action webhook encoded with URL encoding
+    The review that was affected.
     """
 
-    payload: str = Field(
-        description="A URL-encoded string of the check_run.requested_action JSON payload. The decoded payload is a JSON object."
+    links: WebhooksReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
     )
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    pull_request_url: str = Field()
+    state: str = Field()
+    submitted_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-model_rebuild(WebhookCheckRunRequestedActionFormEncoded)
+class WebhooksReviewPropUser(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookCheckRunRequestedActionFormEncoded",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhooksReviewPropLinks(GitHubModel):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+
+
+class WebhooksReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReview)
+model_rebuild(WebhooksReviewPropUser)
+model_rebuild(WebhooksReviewPropLinks)
+model_rebuild(WebhooksReviewPropLinksPropHtml)
+model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "WebhooksReview",
+    "WebhooksReviewPropLinks",
+    "WebhooksReviewPropLinksPropHtml",
+    "WebhooksReviewPropLinksPropPullRequest",
+    "WebhooksReviewPropUser",
+)

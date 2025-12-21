@@ -18,44 +18,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class Artifact(GitHubModel):
-    """Artifact
 
-    An artifact
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
+
+    A draft issue in a project
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
-    url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[_dt.datetime, None] = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    digest: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
     )
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field(description="The time the draft issue was created")
+    updated_at: _dt.datetime = Field(
+        description="The time the draft issue was last updated"
+    )
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+model_rebuild(ProjectsV2DraftIssue)
 
-    id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
-
-__all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
-)
+__all__ = ("ProjectsV2DraftIssue",)

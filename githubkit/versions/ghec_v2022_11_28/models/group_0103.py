@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class OrganizationCustomPropertyAllof1(GitHubModel):
+    """OrganizationCustomPropertyAllof1"""
 
-    Custom property name and associated value
-    """
-
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
-    )
+    values_editable_by: Missing[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(OrganizationCustomPropertyAllof1)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("OrganizationCustomPropertyAllof1",)

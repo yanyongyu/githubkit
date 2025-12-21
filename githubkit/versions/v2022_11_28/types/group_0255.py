@@ -9,54 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
-from .group_0254 import BranchProtectionType, BranchProtectionTypeForResponse
 
-
-class ShortBranchType(TypedDict):
-    """Short Branch
-
-    Short Branch
-    """
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
     name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ShortBranchTypeForResponse(TypedDict):
-    """Short Branch
-
-    Short Branch
-    """
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
     name: str
-    commit: ShortBranchPropCommitTypeForResponse
-    protected: bool
-    protection: NotRequired[BranchProtectionTypeForResponse]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-class ShortBranchPropCommitTypeForResponse(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    value: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchPropCommitTypeForResponse",
-    "ShortBranchType",
-    "ShortBranchTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

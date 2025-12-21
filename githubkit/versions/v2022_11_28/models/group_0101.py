@@ -9,71 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0100 import Team
 
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
+class ActionsHostedRunnerCuratedImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    The campaign metadata and alert stats.
+    Provides details of a hosted runner image
     """
 
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: _dt.datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    platform: str = Field(description="The operating system of the image.")
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
     )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    ends_at: _dt.datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    closed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
-    )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
-    )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
-    )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+model_rebuild(ActionsHostedRunnerCuratedImage)
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
-
-
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
-
-__all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
-)
+__all__ = ("ActionsHostedRunnerCuratedImage",)

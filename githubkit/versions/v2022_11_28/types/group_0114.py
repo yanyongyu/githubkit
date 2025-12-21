@@ -9,53 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
-
-    Organization Invitation
+    A label for a self hosted runner
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-class OrganizationInvitationTypeForResponse(TypedDict):
-    """Organization Invitation
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
 
-    Organization Invitation
+    A label for a self hosted runner
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserTypeForResponse
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "OrganizationInvitationType",
-    "OrganizationInvitationTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

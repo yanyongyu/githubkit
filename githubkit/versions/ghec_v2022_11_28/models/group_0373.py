@@ -9,67 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleViolationError(GitHubModel):
-    """RepositoryRuleViolationError
-
-    Repository rule violation was detected
-    """
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
+from .group_0073 import SimpleRepository
 
 
-class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    secret_scanning: Missing[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: Missing[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
-    GitHubModel
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    token_type: Missing[str] = Field(default=UNSET)
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
+    )
 
 
-model_rebuild(RepositoryRuleViolationError)
-model_rebuild(RepositoryRuleViolationErrorPropMetadata)
-model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
-model_rebuild(
-    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-)
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-__all__ = (
-    "RepositoryRuleViolationError",
-    "RepositoryRuleViolationErrorPropMetadata",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
-)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

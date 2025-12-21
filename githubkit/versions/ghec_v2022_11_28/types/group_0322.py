@@ -11,52 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0321 import BranchProtectionType, BranchProtectionTypeForResponse
 
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-class ShortBranchType(TypedDict):
-    """Short Branch
-
-    Short Branch
+    Actions OIDC subject customization for a repository
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-class ShortBranchTypeForResponse(TypedDict):
-    """Short Branch
+class OidcCustomSubRepoTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Short Branch
+    Actions OIDC subject customization for a repository
     """
 
-    name: str
-    commit: ShortBranchPropCommitTypeForResponse
-    protected: bool
-    protection: NotRequired[BranchProtectionTypeForResponse]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-class ShortBranchPropCommitTypeForResponse(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchPropCommitTypeForResponse",
-    "ShortBranchType",
-    "ShortBranchTypeForResponse",
+    "OidcCustomSubRepoType",
+    "OidcCustomSubRepoTypeForResponse",
 )

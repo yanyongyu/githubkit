@@ -9,139 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0047 import IssueType, IssueTypeForResponse
-from .group_0048 import IssueCommentType, IssueCommentTypeForResponse
 
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadTypeForResponse(TypedDict):
-    """EventPropPayload"""
-
-    action: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
-    comment: NotRequired[IssueCommentTypeForResponse]
-    pages: NotRequired[list[EventPropPayloadPropPagesItemsTypeForResponse]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventPropPayloadPropPagesItemsTypeForResponse(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
+    A value assigned to an issue field
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[_dt.datetime, None]
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
 
 
-class EventTypeForResponse(TypedDict):
-    """Event
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    Event
+    A value assigned to an issue field
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: EventPropPayloadTypeForResponse
-    public: bool
-    created_at: Union[str, None]
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
 
 
-class ActorType(TypedDict):
-    """Actor
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
 
-    Actor
+    Details about the selected option (only present for single_select fields)
     """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class ActorTypeForResponse(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
 
     id: int
     name: str
-    url: str
+    color: str
 
 
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
 
     id: int
     name: str
-    url: str
+    color: str
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "EventPropPayloadPropPagesItemsType",
-    "EventPropPayloadPropPagesItemsTypeForResponse",
-    "EventPropPayloadType",
-    "EventPropPayloadTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

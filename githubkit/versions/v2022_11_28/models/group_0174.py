@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0175 import RepositoryRuleRequiredStatusChecksPropParameters
 
+class RepositoryRulesetBypassActor(GitHubModel):
+    """Repository Ruleset Bypass Actor
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    An actor that can bypass rules in a ruleset
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
+    )
+    actor_type: Literal[
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+    ] = Field(description="The type of actor that can bypass a ruleset.")
+    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
+        default=UNSET,
+        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(RepositoryRulesetBypassActor)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("RepositoryRulesetBypassActor",)

@@ -9,34 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class Blob(GitHubModel):
+    """Blob
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
-
-    Locked Issue Event
+    Blob
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    content: str = Field()
+    encoding: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
+    node_id: str = Field()
+    highlighted_content: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(LockedIssueEvent)
+model_rebuild(Blob)
 
-__all__ = ("LockedIssueEvent",)
+__all__ = ("Blob",)

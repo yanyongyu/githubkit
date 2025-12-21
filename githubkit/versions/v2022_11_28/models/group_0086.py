@@ -9,25 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsForkPrContributorApproval(GitHubModel):
-    """ActionsForkPrContributorApproval"""
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ] = Field(
-        description="The policy that controls when fork PR workflows require approval from a maintainer."
-    )
+    Thread Subscription
+    """
+
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsForkPrContributorApproval)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("ActionsForkPrContributorApproval",)
+__all__ = ("ThreadSubscription",)

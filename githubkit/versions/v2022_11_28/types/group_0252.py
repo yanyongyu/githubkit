@@ -9,65 +9,124 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0100 import TeamType, TeamTypeForResponse
 
+class JobType(TypedDict):
+    """Job
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Information of a job execution in a workflow run
     """
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: _dt.datetime
+    started_at: _dt.datetime
+    completed_at: Union[_dt.datetime, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsType]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+class JobTypeForResponse(TypedDict):
+    """Job
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Information of a job execution in a workflow run
     """
 
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
+    url: str
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: str
+    started_at: str
+    completed_at: Union[str, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
+
+
+class JobPropStepsItemsType(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class JobPropStepsItemsTypeForResponse(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
+    "JobPropStepsItemsType",
+    "JobPropStepsItemsTypeForResponse",
+    "JobType",
+    "JobTypeForResponse",
 )

@@ -16,23 +16,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotUsageMetrics28DayReport(GitHubModel):
-    """Copilot Metrics 28 Day Report
+class CopilotUsageMetrics1DayReport(GitHubModel):
+    """Copilot Metrics 1 Day Report
 
-    Links to download the latest Copilot usage metrics report for an enterprise.
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
     download_links: list[str] = Field(
-        description="The URLs to download the latest Copilot usage metrics report for the enterprise."
+        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
     )
-    report_start_day: _dt.date = Field(
-        description="The start date of the report period in `YYYY-MM-DD` format."
-    )
-    report_end_day: _dt.date = Field(
-        description="The end date of the report period in `YYYY-MM-DD` format."
+    report_day: _dt.date = Field(
+        description="The day of the report in `YYYY-MM-DD` format."
     )
 
 
-model_rebuild(CopilotUsageMetrics28DayReport)
+model_rebuild(CopilotUsageMetrics1DayReport)
 
-__all__ = ("CopilotUsageMetrics28DayReport",)
+__all__ = ("CopilotUsageMetrics1DayReport",)

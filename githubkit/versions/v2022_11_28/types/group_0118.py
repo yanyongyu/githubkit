@@ -12,27 +12,35 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    API Insights usage summary stats for an organization
+    The public key used for setting Actions Secrets.
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
-    """Summary Stats
+class ActionsPublicKeyTypeForResponse(TypedDict):
+    """ActionsPublicKey
 
-    API Insights usage summary stats for an organization
+    The public key used for setting Actions Secrets.
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsSummaryStatsType",
-    "ApiInsightsSummaryStatsTypeForResponse",
+    "ActionsPublicKeyType",
+    "ActionsPublicKeyTypeForResponse",
 )

@@ -29,6 +29,7 @@ if TYPE_CHECKING:
 
     from ..models import (
         DependabotAlert,
+        DependabotAlertDismissalRequest,
         DependabotAlertWithRepository,
         DependabotPublicKey,
         DependabotRepositoryAccessDetails,
@@ -38,8 +39,10 @@ if TYPE_CHECKING:
         OrgsOrgDependabotSecretsGetResponse200,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
         ReposOwnerRepoDependabotSecretsGetResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
     )
     from ..types import (
+        DependabotAlertDismissalRequestTypeForResponse,
         DependabotAlertTypeForResponse,
         DependabotAlertWithRepositoryTypeForResponse,
         DependabotPublicKeyTypeForResponse,
@@ -56,6 +59,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
         ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
     )
 
 
@@ -1622,6 +1628,134 @@ class DependabotClient:
             error_models={},
         )
 
+    def list_dismissal_requests_for_org(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-org
+
+        GET /orgs/{org}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts in an organization.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the appropriate permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/dependabot"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_dismissal_requests_for_org(
+        self,
+        org: str,
+        *,
+        repository_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-org
+
+        GET /orgs/{org}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts in an organization.
+
+        Delegated alert dismissal must be enabled on repositories in the org and the user must be an org admin, security manager,
+        or have the appropriate permission to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-an-organization
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/orgs/{org}/dismissal-requests/dependabot"
+
+        params = {
+            "repository_name": repository_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_repo(
         self,
         owner: str,
@@ -2462,4 +2596,674 @@ class DependabotClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_dismissal_requests_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal["open", "approved", "expired", "denied", "all"]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[DependabotAlertDismissalRequest],
+        list[DependabotAlertDismissalRequestTypeForResponse],
+    ]:
+        """dependabot/list-dismissal-requests-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot
+
+        Lists dismissal requests for Dependabot alerts for a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#list-dismissal-requests-for-dependabot-alerts-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot"
+
+        params = {
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[DependabotAlertDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    def get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Gets a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/get-dismissal-request-for-repo
+
+        GET /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Gets a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#get-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError, DependabotAlertDismissalRequest
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    @overload
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        dismissed_reason: Literal[
+            "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+        ],
+        dismissed_comment: Missing[str] = UNSET,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    def create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/create-dismissal-request-for-repo
+
+        POST /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Creates a new dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotAlertDismissalRequest,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        dismissed_reason: Literal[
+            "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+        ],
+        dismissed_comment: Missing[str] = UNSET,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]: ...
+
+    async def async_create_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        DependabotAlertDismissalRequest, DependabotAlertDismissalRequestTypeForResponse
+    ]:
+        """dependabot/create-dismissal-request-for-repo
+
+        POST /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Creates a new dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must have permission to view Dependabot alerts to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#create-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotAlertDismissalRequest,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotAlertDismissalRequest,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def cancel_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependabot/cancel-dismissal-request-for-repo
+
+        DELETE /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Cancels a pending dismissal request for a Dependabot alert in a repository.
+
+        The authenticated user must be the requester of the dismissal request or have reviewer permissions (security manager or organization owner).
+        Delegated alert dismissal must be enabled on the repository.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_cancel_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependabot/cancel-dismissal-request-for-repo
+
+        DELETE /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Cancels a pending dismissal request for a Dependabot alert in a repository.
+
+        The authenticated user must be the requester of the dismissal request or have reviewer permissions (security manager or organization owner).
+        Delegated alert dismissal must be enabled on the repository.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#cancel-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    def review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]:
+        """dependabot/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        status: Literal["approve", "deny"],
+        message: str,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_review_dismissal_request_for_repo(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+        ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse,
+    ]:
+        """dependabot/review-dismissal-request-for-repo
+
+        PATCH /repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}
+
+        Approve or deny a dismissal request to dismiss a Dependabot alert in a repository.
+
+        Delegated alert dismissal must be enabled on the repository and the user must be a dismissal reviewer to access this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alert-dismissal-requests#review-a-dismissal-request-for-a-dependabot-alert-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody,
+            ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dismissal-requests/dependabot/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
         )

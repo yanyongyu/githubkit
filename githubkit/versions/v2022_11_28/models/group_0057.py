@@ -9,34 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0043 import Label
+from .group_0050 import Issue
 
 
-class License(GitHubModel):
-    """License
+class IssuesEvent(GitHubModel):
+    """IssuesEvent"""
 
-    License
-    """
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
-    key: str = Field()
-    name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: list[str] = Field()
-    conditions: list[str] = Field()
-    limitations: list[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
 
+model_rebuild(IssuesEvent)
 
-model_rebuild(License)
-
-__all__ = ("License",)
+__all__ = ("IssuesEvent",)

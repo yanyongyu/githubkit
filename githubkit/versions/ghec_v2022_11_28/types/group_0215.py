@@ -9,42 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0203 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0216 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
-    Thread Subscription
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[_dt.datetime, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    action: str
+    review: PullRequestReviewEventPropReviewType
+    pull_request: PullRequestMinimalType
 
 
-class ThreadSubscriptionTypeForResponse(TypedDict):
-    """Thread Subscription
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
 
-    Thread Subscription
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[str, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    action: str
+    review: PullRequestReviewEventPropReviewTypeForResponse
+    pull_request: PullRequestMinimalTypeForResponse
 
 
 __all__ = (
-    "ThreadSubscriptionType",
-    "ThreadSubscriptionTypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

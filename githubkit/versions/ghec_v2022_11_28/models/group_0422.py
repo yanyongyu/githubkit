@@ -9,26 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0197 import Issue
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+model_rebuild(HookResponse)
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+__all__ = ("HookResponse",)

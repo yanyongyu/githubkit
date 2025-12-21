@@ -13,16 +13,16 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class WebhooksReviewCommentType(TypedDict):
-    """Pull Request Review Comment
+
+class WebhooksIssueCommentType(TypedDict):
+    """issue comment
 
     The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    links: WebhooksReviewCommentPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -34,41 +34,25 @@ class WebhooksReviewCommentType(TypedDict):
         "OWNER",
     ]
     body: str
-    commit_id: str
     created_at: _dt.datetime
-    diff_hunk: str
     html_url: str
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
+    issue_url: str
     node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    performed_via_github_app: Union[IntegrationType, None]
+    reactions: WebhooksIssueCommentPropReactionsType
     updated_at: _dt.datetime
     url: str
-    user: Union[WebhooksReviewCommentPropUserType, None]
+    user: Union[WebhooksIssueCommentPropUserType, None]
 
 
-class WebhooksReviewCommentTypeForResponse(TypedDict):
-    """Pull Request Review Comment
+class WebhooksIssueCommentTypeForResponse(TypedDict):
+    """issue comment
 
     The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    links: WebhooksReviewCommentPropLinksTypeForResponse
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -80,33 +64,19 @@ class WebhooksReviewCommentTypeForResponse(TypedDict):
         "OWNER",
     ]
     body: str
-    commit_id: str
     created_at: str
-    diff_hunk: str
     html_url: str
     id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
+    issue_url: str
     node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsTypeForResponse
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
     updated_at: str
     url: str
-    user: Union[WebhooksReviewCommentPropUserTypeForResponse, None]
+    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
 
 
-class WebhooksReviewCommentPropReactionsType(TypedDict):
+class WebhooksIssueCommentPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -121,7 +91,7 @@ class WebhooksReviewCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
+class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -136,7 +106,7 @@ class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
     url: str
 
 
-class WebhooksReviewCommentPropUserType(TypedDict):
+class WebhooksIssueCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -158,12 +128,12 @@ class WebhooksReviewCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
+class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -185,76 +155,16 @@ class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksReviewCommentPropLinksType(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlType
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
-    self_: WebhooksReviewCommentPropLinksPropSelfType
-
-
-class WebhooksReviewCommentPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse
-    self_: WebhooksReviewCommentPropLinksPropSelfTypeForResponse
-
-
-class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhooksReviewCommentPropLinksPropHtmlType",
-    "WebhooksReviewCommentPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropPullRequestType",
-    "WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewCommentPropLinksPropSelfType",
-    "WebhooksReviewCommentPropLinksPropSelfTypeForResponse",
-    "WebhooksReviewCommentPropLinksType",
-    "WebhooksReviewCommentPropLinksTypeForResponse",
-    "WebhooksReviewCommentPropReactionsType",
-    "WebhooksReviewCommentPropReactionsTypeForResponse",
-    "WebhooksReviewCommentPropUserType",
-    "WebhooksReviewCommentPropUserTypeForResponse",
-    "WebhooksReviewCommentType",
-    "WebhooksReviewCommentTypeForResponse",
+    "WebhooksIssueCommentPropReactionsType",
+    "WebhooksIssueCommentPropReactionsTypeForResponse",
+    "WebhooksIssueCommentPropUserType",
+    "WebhooksIssueCommentPropUserTypeForResponse",
+    "WebhooksIssueCommentType",
+    "WebhooksIssueCommentTypeForResponse",
 )

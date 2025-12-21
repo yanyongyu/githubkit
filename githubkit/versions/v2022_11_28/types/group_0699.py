@@ -12,53 +12,46 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0700 import (
-    WebhookPackageUpdatedPropPackagePropPackageVersionType,
-    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0484 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0498 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookMembershipRemovedType(TypedDict):
+    """membership removed event"""
 
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookMembershipRemovedTypeForResponse(TypedDict):
+    """membership removed event"""
 
-    Information about the package.
-    """
-
-    created_at: str
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: str
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+class WebhookMembershipRemovedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -85,7 +78,7 @@ class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
+class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -110,33 +103,11 @@ class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
-class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
-    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackageTypeForResponse",
+    "WebhookMembershipRemovedPropSenderType",
+    "WebhookMembershipRemovedPropSenderTypeForResponse",
+    "WebhookMembershipRemovedType",
+    "WebhookMembershipRemovedTypeForResponse",
 )

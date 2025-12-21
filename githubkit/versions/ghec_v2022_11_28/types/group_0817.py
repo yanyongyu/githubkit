@@ -9,141 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0265 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0584 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectsV2ProjectEditedType(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
     sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-class WebhookProjectsV2ProjectEditedTypeForResponse(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-
-
-class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
-
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
-    ]
-    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
-    ]
-    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
-
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    public: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse
-    ]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse
-    ]
-    title: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse
-    ]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleTypeForResponse",
-    "WebhookProjectsV2ProjectEditedPropChangesType",
-    "WebhookProjectsV2ProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectsV2ProjectEditedType",
-    "WebhookProjectsV2ProjectEditedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
 )

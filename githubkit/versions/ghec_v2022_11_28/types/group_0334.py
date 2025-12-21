@@ -9,47 +9,162 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class WorkflowRunUsageType(TypedDict):
+    """Workflow Run Usage
 
-    Check Annotation
+    Workflow Run Usage
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    billable: WorkflowRunUsagePropBillableType
+    run_duration_ms: NotRequired[int]
 
 
-class CheckAnnotationTypeForResponse(TypedDict):
-    """Check Annotation
+class WorkflowRunUsageTypeForResponse(TypedDict):
+    """Workflow Run Usage
 
-    Check Annotation
+    Workflow Run Usage
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    billable: WorkflowRunUsagePropBillableTypeForResponse
+    run_duration_ms: NotRequired[int]
+
+
+class WorkflowRunUsagePropBillableType(TypedDict):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
+
+
+class WorkflowRunUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsTypeForResponse]
+
+
+class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int
+    jobs: int
+    job_runs: NotRequired[
+        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse]
+    ]
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse(TypedDict):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int
+    duration_ms: int
 
 
 __all__ = (
-    "CheckAnnotationType",
-    "CheckAnnotationTypeForResponse",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse",
+    "WorkflowRunUsagePropBillablePropMacosType",
+    "WorkflowRunUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse",
+    "WorkflowRunUsagePropBillablePropUbuntuType",
+    "WorkflowRunUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse",
+    "WorkflowRunUsagePropBillablePropWindowsType",
+    "WorkflowRunUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowRunUsagePropBillableType",
+    "WorkflowRunUsagePropBillableTypeForResponse",
+    "WorkflowRunUsageType",
+    "WorkflowRunUsageTypeForResponse",
 )

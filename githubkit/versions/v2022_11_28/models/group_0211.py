@@ -14,63 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SecretScanningLocationIssueTitle(GitHubModel):
-    """SecretScanningLocationIssueTitle
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
-    """
-
-    issue_title_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
     )
 
 
-class SecretScanningLocationIssueComment(GitHubModel):
-    """SecretScanningLocationIssueComment
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str = Field(
-        description="The API URL to get the issue comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestTitle(GitHubModel):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestReviewComment(GitHubModel):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str = Field(
-        description="The API URL to get the pull request review comment where the secret was detected."
-    )
-
-
-model_rebuild(SecretScanningLocationIssueTitle)
-model_rebuild(SecretScanningLocationIssueComment)
-model_rebuild(SecretScanningLocationPullRequestTitle)
-model_rebuild(SecretScanningLocationPullRequestReviewComment)
-
-__all__ = (
-    "SecretScanningLocationIssueComment",
-    "SecretScanningLocationIssueTitle",
-    "SecretScanningLocationPullRequestReviewComment",
-    "SecretScanningLocationPullRequestTitle",
-)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

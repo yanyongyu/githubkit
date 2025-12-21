@@ -16,22 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSummaryStats(GitHubModel):
-    """Summary Stats
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-    API Insights usage summary stats for an organization
+    The public key used for setting Actions Secrets.
     """
 
-    total_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests within the queried time period",
-    )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsSummaryStats)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("ApiInsightsSummaryStats",)
+__all__ = ("ActionsPublicKey",)

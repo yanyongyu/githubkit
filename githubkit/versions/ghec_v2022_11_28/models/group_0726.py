@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,79 +17,162 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0531 import EnterpriseWebhooks
-from .group_0532 import SimpleInstallation
-from .group_0533 import OrganizationSimpleWebhooks
-from .group_0534 import RepositoryWebhooks
-from .group_0548 import WebhooksLabel
-from .group_0727 import WebhookIssuesEditedPropIssue
 
+class WebhookIssueCommentEditedPropIssueAllof1(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1"""
 
-class WebhookIssuesEdited(GitHubModel):
-    """issues edited event"""
-
-    action: Literal["edited"] = Field()
-    changes: WebhookIssuesEditedPropChanges = Field(
-        description="The changes to the issue."
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[WebhookIssueCommentEditedPropIssueAllof1PropAssignee, None] = Field(
+        title="User"
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    assignees: Missing[
+        list[Union[WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems, None]]
+    ] = Field(default=UNSET)
+    author_association: Missing[str] = Field(default=UNSET)
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: Missing[int] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: list[WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems] = Field()
+    labels_url: Missing[str] = Field(default=UNSET)
+    locked: bool = Field()
+    milestone: Missing[
+        Union[WebhookIssueCommentEditedPropIssueAllof1PropMilestone, None]
+    ] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    number: Missing[int] = Field(default=UNSET)
+    performed_via_github_app: Missing[
+        Union[WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp, None]
+    ] = Field(default=UNSET)
+    reactions: Missing[WebhookIssueCommentEditedPropIssueAllof1PropReactions] = Field(
+        default=UNSET
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    repository_url: Missing[str] = Field(default=UNSET)
+    state: Literal["open", "closed"] = Field(
+        description="State of the issue; either 'open' or 'closed'"
     )
-    issue: WebhookIssuesEditedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
+    timeline_url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user: Missing[WebhookIssueCommentEditedPropIssueAllof1PropUser] = Field(
+        default=UNSET
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+
+
+class WebhookIssueCommentEditedPropIssueAllof1PropAssignee(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems(GitHubModel):
+    """Label"""
+
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhookIssuesEditedPropChanges(GitHubModel):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: Missing[WebhookIssuesEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookIssuesEditedPropChangesPropTitle] = Field(default=UNSET)
+class WebhookIssueCommentEditedPropIssueAllof1PropMilestone(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1PropMilestone"""
 
 
-class WebhookIssuesEditedPropChangesPropBody(GitHubModel):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
+class WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp"""
 
 
-class WebhookIssuesEditedPropChangesPropTitle(GitHubModel):
-    """WebhookIssuesEditedPropChangesPropTitle"""
+class WebhookIssueCommentEditedPropIssueAllof1PropReactions(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1PropReactions"""
 
-    from_: str = Field(alias="from", description="The previous version of the title.")
+    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
+    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
+    confused: Missing[int] = Field(default=UNSET)
+    eyes: Missing[int] = Field(default=UNSET)
+    heart: Missing[int] = Field(default=UNSET)
+    hooray: Missing[int] = Field(default=UNSET)
+    laugh: Missing[int] = Field(default=UNSET)
+    rocket: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssuesEdited)
-model_rebuild(WebhookIssuesEditedPropChanges)
-model_rebuild(WebhookIssuesEditedPropChangesPropBody)
-model_rebuild(WebhookIssuesEditedPropChangesPropTitle)
+class WebhookIssueCommentEditedPropIssueAllof1PropUser(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof1PropUser"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropAssignee)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropMilestone)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropReactions)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof1PropUser)
 
 __all__ = (
-    "WebhookIssuesEdited",
-    "WebhookIssuesEditedPropChanges",
-    "WebhookIssuesEditedPropChangesPropBody",
-    "WebhookIssuesEditedPropChangesPropTitle",
+    "WebhookIssueCommentEditedPropIssueAllof1",
+    "WebhookIssueCommentEditedPropIssueAllof1PropAssignee",
+    "WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems",
+    "WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems",
+    "WebhookIssueCommentEditedPropIssueAllof1PropMilestone",
+    "WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp",
+    "WebhookIssueCommentEditedPropIssueAllof1PropReactions",
+    "WebhookIssueCommentEditedPropIssueAllof1PropUser",
 )

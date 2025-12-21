@@ -9,62 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-class MilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    A GitHub organization.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
+    login: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class OrganizationSimpleTypeForResponse(TypedDict):
+    """Organization Simple
 
-    A collection of related issues and pull requests.
+    A GitHub organization.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
+    login: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "OrganizationSimpleType",
+    "OrganizationSimpleTypeForResponse",
 )

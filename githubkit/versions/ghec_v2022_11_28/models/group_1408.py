@@ -12,21 +12,58 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[list[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
+    )
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
     )
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: Missing[str] = Field(default=UNSET)
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+)

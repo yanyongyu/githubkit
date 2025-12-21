@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,107 +18,191 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
-from .group_0213 import MinimalRepository
-from .group_0305 import PullRequestMinimal
-from .group_0306 import SimpleCommit
+from .group_0083 import Team
+from .group_0306 import RepositoryAdvisoryCredit
 
 
-class WorkflowRun(GitHubModel):
-    """Workflow Run
+class RepositoryAdvisory(GitHubModel):
+    """RepositoryAdvisory
 
-    An invocation of a workflow
+    A repository security advisory.
     """
 
-    id: int = Field(description="The ID of the workflow run.")
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the workflow run."
+    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
+    cve_id: Union[str, None] = Field(
+        description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    node_id: str = Field()
-    check_suite_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the associated check suite."
+    url: str = Field(description="The API URL for the advisory.")
+    html_url: str = Field(description="The URL for the advisory.")
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    check_suite_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the associated check suite."
+    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
+        description="A detailed description of what the advisory entails."
     )
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that points to the version of the workflow being run."
+    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
+        description="The severity of the advisory."
     )
-    path: str = Field(description="The full path of the workflow")
-    run_number: int = Field(
-        description="The auto incrementing run number for the workflow run."
+    author: None = Field(description="The author of the advisory.")
+    publisher: None = Field(description="The publisher of the advisory.")
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
+        description="The state of the advisory."
     )
-    run_attempt: Missing[int] = Field(
-        default=UNSET,
-        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was created, in ISO 8601 format."
     )
-    referenced_workflows: Missing[Union[list[ReferencedWorkflow], None]] = Field(
-        default=UNSET
+    updated_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was last updated, in ISO 8601 format."
     )
-    event: str = Field()
-    status: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    workflow_id: int = Field(description="The ID of the parent workflow.")
-    url: str = Field(description="The URL to the workflow run.")
-    html_url: str = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field(
-        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
+    published_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was published, in ISO 8601 format."
     )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was closed, in ISO 8601 format."
     )
-    triggering_actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    withdrawn_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
-    run_started_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The start time of the latest run. Resets on re-run."
+    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
+    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
+    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
+        alias="credits"
     )
-    jobs_url: str = Field(description="The URL to the jobs for the workflow run.")
-    logs_url: str = Field(
-        description="The URL to download the logs for the workflow run."
+    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
+    collaborating_users: Union[list[SimpleUser], None] = Field(
+        description="A list of users that collaborate on the advisory."
     )
-    check_suite_url: str = Field(description="The URL to the associated check suite.")
-    artifacts_url: str = Field(
-        description="The URL to the artifacts for the workflow run."
+    collaborating_teams: Union[list[Team], None] = Field(
+        description="A list of teams that collaborate on the advisory."
     )
-    cancel_url: str = Field(description="The URL to cancel the workflow run.")
-    rerun_url: str = Field(description="The URL to rerun the workflow run.")
-    previous_attempt_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The URL to the previous attempted run of this workflow, if one exists.",
-    )
-    workflow_url: str = Field(description="The URL to the workflow.")
-    head_commit: Union[None, SimpleCommit] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    head_repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    display_title: str = Field(
-        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow."
+    private_fork: None = Field(
+        description="A temporary private fork of the advisory's repository for collaborating on a fix."
     )
 
 
-class ReferencedWorkflow(GitHubModel):
-    """Referenced workflow
+class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    A workflow referenced/reused by the initial caller workflow
+    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
+    value: str = Field(description="The identifier value.")
+
+
+class RepositoryAdvisoryPropSubmission(GitHubModel):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool = Field(
+        description="Whether a private vulnerability report was accepted by the repository's administrators."
+    )
+
+
+class RepositoryAdvisoryPropCvss(GitHubModel):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None] = Field(description="The CVSS vector.")
+    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
+        description="The CVSS score."
+    )
+
+
+class RepositoryAdvisoryPropCwesItems(GitHubModel):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
+    name: str = Field(description="The name of the CWE.")
+
+
+class RepositoryAdvisoryPropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: Missing[str] = Field(
+        default=UNSET, description="The username of the user credited."
+    )
+    type: Missing[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryVulnerability(GitHubModel):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
     """
 
-    path: str = Field()
-    sha: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Union[str, None] = Field(
+        description="The range of the package versions affected by the vulnerability."
+    )
+    patched_versions: Union[str, None] = Field(
+        description="The package version(s) that resolve the vulnerability."
+    )
+    vulnerable_functions: Union[list[str], None] = Field(
+        description="The functions in the package that are affected."
+    )
 
 
-model_rebuild(WorkflowRun)
-model_rebuild(ReferencedWorkflow)
+class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Union[str, None] = Field(
+        description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisory)
+model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
+model_rebuild(RepositoryAdvisoryPropSubmission)
+model_rebuild(RepositoryAdvisoryPropCvss)
+model_rebuild(RepositoryAdvisoryPropCwesItems)
+model_rebuild(RepositoryAdvisoryPropCreditsItems)
+model_rebuild(RepositoryAdvisoryVulnerability)
+model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
 
 __all__ = (
-    "ReferencedWorkflow",
-    "WorkflowRun",
+    "RepositoryAdvisory",
+    "RepositoryAdvisoryPropCreditsItems",
+    "RepositoryAdvisoryPropCvss",
+    "RepositoryAdvisoryPropCwesItems",
+    "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropSubmission",
+    "RepositoryAdvisoryVulnerability",
+    "RepositoryAdvisoryVulnerabilityPropPackage",
 )

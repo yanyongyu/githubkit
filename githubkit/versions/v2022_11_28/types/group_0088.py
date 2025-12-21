@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsForkPrWorkflowsPrivateReposRequestType",
-    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

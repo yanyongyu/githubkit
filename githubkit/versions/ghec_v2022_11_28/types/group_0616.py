@@ -9,50 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from typing_extensions import TypedDict
 
 
-class WebhookCreateType(TypedDict):
-    """create event"""
+class WebhookCheckRunCreatedFormEncodedType(TypedDict):
+    """Check Run Created Event
 
-    description: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    master_branch: str
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The check_run.created webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCreateTypeForResponse(TypedDict):
-    """create event"""
+class WebhookCheckRunCreatedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Created Event
 
-    description: Union[str, None]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    master_branch: str
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    The check_run.created webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookCreateType",
-    "WebhookCreateTypeForResponse",
+    "WebhookCheckRunCreatedFormEncodedType",
+    "WebhookCheckRunCreatedFormEncodedTypeForResponse",
 )

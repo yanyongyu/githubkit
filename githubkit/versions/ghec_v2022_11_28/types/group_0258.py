@@ -9,87 +9,159 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0257 import (
+    DismissalRequestResponseType,
+    DismissalRequestResponseTypeForResponse,
+)
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class CodeScanningAlertDismissalRequestType(TypedDict):
+    """Code scanning alert dismissal request
 
-    The Relationship a Team has with a role.
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
+class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request
 
-    The Relationship a Team has with a role.
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleTypeForResponse]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[
+        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
+    ]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
+class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropDataItemsType",
+    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropOrganizationType",
+    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRepositoryType",
+    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRequesterType",
+    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
+    "CodeScanningAlertDismissalRequestType",
+    "CodeScanningAlertDismissalRequestTypeForResponse",
 )

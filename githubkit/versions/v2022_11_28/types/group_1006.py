@@ -9,69 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
+    total_count: int
+    secrets: list[OrganizationDependabotSecretType]
+
+
+class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[OrganizationDependabotSecretTypeForResponse]
+
+
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrganizationDependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret for an Organization
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPostBodyType",
-    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
+    "OrganizationDependabotSecretType",
+    "OrganizationDependabotSecretTypeForResponse",
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
 )

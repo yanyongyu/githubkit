@@ -9,22 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0377 import TimelineCrossReferencedEventPropSource
 
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    Pull Request Merge Result
+    Timeline Cross Referenced Event
     """
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(PullRequestMergeResult)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("PullRequestMergeResult",)
+__all__ = ("TimelineCrossReferencedEvent",)

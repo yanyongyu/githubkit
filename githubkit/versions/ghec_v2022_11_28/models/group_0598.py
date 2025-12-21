@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +19,93 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0531 import EnterpriseWebhooks
-from .group_0532 import SimpleInstallation
-from .group_0533 import OrganizationSimpleWebhooks
-from .group_0534 import RepositoryWebhooks
-from .group_0539 import CheckRunWithSimpleCheckSuite
 
 
-class WebhookCheckRunRerequested(GitHubModel):
-    """Check Run Re-Requested Event"""
+class SecretScanningAlertWebhook(GitHubModel):
+    """SecretScanningAlertWebhook"""
 
-    action: Literal["rerequested"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    installation: Missing[SimpleInstallation] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description="The REST API URL of the code locations for this alert.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    resolution: Missing[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ] = Field(default=UNSET, description="The reason for resolving the alert.")
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET, description="An optional comment to resolve an alert."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the detected secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
+    )
+    assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookCheckRunRerequested)
+model_rebuild(SecretScanningAlertWebhook)
 
-__all__ = ("WebhookCheckRunRerequested",)
+__all__ = ("SecretScanningAlertWebhook",)

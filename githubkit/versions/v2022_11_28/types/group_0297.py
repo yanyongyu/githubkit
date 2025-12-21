@@ -12,48 +12,28 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
 
-class StatusType(TypedDict):
-    """Status
-
-    The status of a commit.
+    Successful deletion of a code scanning analysis
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
 
-    The status of a commit.
+    Successful deletion of a code scanning analysis
     """
 
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
 )

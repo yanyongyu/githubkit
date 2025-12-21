@@ -9,52 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Git references within a repository
+    An object describing a submodule
     """
 
-    ref: str
-    node_id: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    object_: GitRefPropObjectType
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
 
-    Git references within a repository
+    An object describing a submodule
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
     sha: str
     url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
 
-    type: str
-    sha: str
-    url: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

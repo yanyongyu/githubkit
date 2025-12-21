@@ -9,54 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0256 import GitUserType, GitUserTypeForResponse
-from .group_0257 import VerificationType, VerificationTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    An entry in the reviews log for environment deployments
+    """
 
-
-class CommitPropCommitTypeForResponse(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[None, GitUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
 
-    sha: str
-    url: str
+    An entry in the reviews log for environment deployments
+    """
+
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
 
 
-class CommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitPropCommitPropTree"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-    sha: str
-    url: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitPropTreeTypeForResponse",
-    "CommitPropCommitType",
-    "CommitPropCommitTypeForResponse",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

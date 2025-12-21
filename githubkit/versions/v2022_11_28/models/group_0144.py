@@ -18,20 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldSingleSelectOption(GitHubModel):
-    """ProjectsV2FieldSingleSelectOption"""
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The display name of the option."
+    Limit interactions to a specific type of user for a specified duration
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    color: Missing[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ] = Field(default=UNSET, description="The color associated with the option.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the option."
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
+        default=UNSET,
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
 
 
-model_rebuild(ProjectsV2FieldSingleSelectOption)
+model_rebuild(InteractionLimit)
 
-__all__ = ("ProjectsV2FieldSingleSelectOption",)
+__all__ = ("InteractionLimit",)

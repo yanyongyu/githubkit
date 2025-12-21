@@ -11,56 +11,120 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    Data related to a release.
+    Timeline Reviewed Event
     """
 
-    url: str
-    browser_download_url: str
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class TimelineReviewedEventTypeForResponse(TypedDict):
+    """Timeline Reviewed Event
 
-    Data related to a release.
+    Timeline Reviewed Event
     """
 
-    url: str
-    browser_download_url: str
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: str
-    updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksTypeForResponse",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventTypeForResponse",
 )

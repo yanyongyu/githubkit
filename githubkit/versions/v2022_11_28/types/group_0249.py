@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
+    """Actions cache retention limit for a repository
 
-    An autolink reference.
+    GitHub Actions cache retention policy for a repository.
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    max_cache_retention_days: NotRequired[int]
 
 
-class AutolinkTypeForResponse(TypedDict):
-    """Autolink reference
+class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache retention limit for a repository
 
-    An autolink reference.
+    GitHub Actions cache retention policy for a repository.
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[str, None]]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "AutolinkType",
-    "AutolinkTypeForResponse",
+    "ActionsCacheRetentionLimitForRepositoryType",
+    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
 )

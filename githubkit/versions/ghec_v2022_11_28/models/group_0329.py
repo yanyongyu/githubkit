@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,161 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0320 import BranchRestrictionPolicy
-from .group_0330 import ProtectedBranchPropRequiredPullRequestReviews
+from .group_0003 import SimpleUser
 
 
-class ProtectedBranch(GitHubModel):
-    """Protected Branch
+class EnvironmentApprovals(GitHubModel):
+    """Environment Approval
 
-    Branch protections protect branches
+    An entry in the reviews log for environment deployments
     """
 
-    url: str = Field()
-    required_status_checks: Missing[StatusCheckPolicy] = Field(
-        default=UNSET, title="Status Check Policy", description="Status Check Policy"
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+        description="The list of environments that were approved or rejected"
     )
-    required_pull_request_reviews: Missing[
-        ProtectedBranchPropRequiredPullRequestReviews
-    ] = Field(default=UNSET)
-    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
-        default=UNSET
+    state: Literal["approved", "rejected", "pending"] = Field(
+        description="Whether deployment to the environment(s) was approved or rejected or pending (with comments)"
     )
-    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
-    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
-        default=UNSET
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    comment: str = Field(description="The comment submitted with the deployment review")
+
+
+class EnvironmentApprovalsPropEnvironmentsItems(GitHubModel):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
+
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
     )
-    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
-        default=UNSET
-    )
-    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
-    restrictions: Missing[BranchRestrictionPolicy] = Field(
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        title="Branch Restriction Policy",
-        description="Branch Restriction Policy",
+        description="The time that the environment was created, in ISO 8601 format.",
     )
-    required_conversation_resolution: Missing[
-        ProtectedBranchPropRequiredConversationResolution
-    ] = Field(default=UNSET)
-    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
-    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
-    )
-    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
+        description="The time that the environment was last updated, in ISO 8601 format.",
     )
 
 
-class ProtectedBranchPropRequiredSignatures(GitHubModel):
-    """ProtectedBranchPropRequiredSignatures"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropEnforceAdmins(GitHubModel):
-    """ProtectedBranchPropEnforceAdmins"""
-
-    url: str = Field()
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
-    """ProtectedBranchPropRequiredLinearHistory"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowForcePushes(GitHubModel):
-    """ProtectedBranchPropAllowForcePushes"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropAllowDeletions(GitHubModel):
-    """ProtectedBranchPropAllowDeletions"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
-    """ProtectedBranchPropRequiredConversationResolution"""
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropBlockCreations(GitHubModel):
-    """ProtectedBranchPropBlockCreations"""
-
-    enabled: bool = Field()
-
-
-class ProtectedBranchPropLockBranch(GitHubModel):
-    """ProtectedBranchPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class ProtectedBranchPropAllowForkSyncing(GitHubModel):
-    """ProtectedBranchPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: Missing[bool] = Field(default=UNSET)
-
-
-class StatusCheckPolicy(GitHubModel):
-    """Status Check Policy
-
-    Status Check Policy
-    """
-
-    url: str = Field()
-    strict: bool = Field()
-    contexts: list[str] = Field()
-    checks: list[StatusCheckPolicyPropChecksItems] = Field()
-    contexts_url: str = Field()
-
-
-class StatusCheckPolicyPropChecksItems(GitHubModel):
-    """StatusCheckPolicyPropChecksItems"""
-
-    context: str = Field()
-    app_id: Union[int, None] = Field()
-
-
-model_rebuild(ProtectedBranch)
-model_rebuild(ProtectedBranchPropRequiredSignatures)
-model_rebuild(ProtectedBranchPropEnforceAdmins)
-model_rebuild(ProtectedBranchPropRequiredLinearHistory)
-model_rebuild(ProtectedBranchPropAllowForcePushes)
-model_rebuild(ProtectedBranchPropAllowDeletions)
-model_rebuild(ProtectedBranchPropRequiredConversationResolution)
-model_rebuild(ProtectedBranchPropBlockCreations)
-model_rebuild(ProtectedBranchPropLockBranch)
-model_rebuild(ProtectedBranchPropAllowForkSyncing)
-model_rebuild(StatusCheckPolicy)
-model_rebuild(StatusCheckPolicyPropChecksItems)
+model_rebuild(EnvironmentApprovals)
+model_rebuild(EnvironmentApprovalsPropEnvironmentsItems)
 
 __all__ = (
-    "ProtectedBranch",
-    "ProtectedBranchPropAllowDeletions",
-    "ProtectedBranchPropAllowForcePushes",
-    "ProtectedBranchPropAllowForkSyncing",
-    "ProtectedBranchPropBlockCreations",
-    "ProtectedBranchPropEnforceAdmins",
-    "ProtectedBranchPropLockBranch",
-    "ProtectedBranchPropRequiredConversationResolution",
-    "ProtectedBranchPropRequiredLinearHistory",
-    "ProtectedBranchPropRequiredSignatures",
-    "StatusCheckPolicy",
-    "StatusCheckPolicyPropChecksItems",
+    "EnvironmentApprovals",
+    "EnvironmentApprovalsPropEnvironmentsItems",
 )

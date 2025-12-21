@@ -9,23 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
-    )
+    Check Annotation
+    """
+
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CheckAnnotation)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CheckAnnotation",)

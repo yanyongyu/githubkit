@@ -9,70 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
+    An autolink reference.
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    Check suite configuration preferences for a repository.
+    An autolink reference.
     """
 
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

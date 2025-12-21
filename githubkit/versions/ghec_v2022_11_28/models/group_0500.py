@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,30 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
     )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
+    pattern_scope: Missing[str] = Field(
         default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
     )
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-__all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
-)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

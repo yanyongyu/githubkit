@@ -18,26 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
+    id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the rule used to detect the alert.",
+    )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
 
 
-model_rebuild(OrganizationCreateIssueType)
+model_rebuild(CodeScanningAlertRuleSummary)
 
-__all__ = ("OrganizationCreateIssueType",)
+__all__ = ("CodeScanningAlertRuleSummary",)

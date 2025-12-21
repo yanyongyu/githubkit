@@ -9,36 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0069 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    List of custom property values for a repository
+    Organization roles
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    List of custom property values for a repository
+    Organization roles
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
+    ]
+    source: NotRequired[
+        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
+    ]
+    permissions: list[str]
+    organization: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

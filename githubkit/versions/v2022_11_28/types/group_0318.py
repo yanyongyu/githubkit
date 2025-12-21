@@ -13,125 +13,74 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0317 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
-from .group_0319 import (
-    EnvironmentPropProtectionRulesItemsAnyof1Type,
-    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-)
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class EnvironmentType(TypedDict):
-    """Environment
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    Details of a deployment environment
+    Combined Commit Status
     """
 
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
+    url: str
+
+
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
+
+    Combined Commit Status
+    """
+
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
+    commit_url: str
+    url: str
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
     id: int
     node_id: str
-    name: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
     url: str
-    html_url: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
 
 
-class EnvironmentTypeForResponse(TypedDict):
-    """Environment
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
 
-    Details of a deployment environment
-    """
-
+    description: Union[str, None]
     id: int
     node_id: str
-    name: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
     url: str
-    html_url: str
     created_at: str
     updated_at: str
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentTypeForResponse]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
-    "EnvironmentType",
-    "EnvironmentTypeForResponse",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

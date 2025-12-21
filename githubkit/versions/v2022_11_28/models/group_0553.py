@@ -18,21 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0453 import EnterpriseWebhooks
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0456 import RepositoryWebhooks
-from .group_0465 import WebhooksAnswer
-from .group_0466 import Discussion
+from .group_0169 import CustomProperty
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionAnswered(GitHubModel):
-    """discussion answered event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
-    action: Literal["answered"] = Field()
-    answer: WebhooksAnswer = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
+    action: Literal["created"] = Field()
+    definition: CustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -49,13 +47,11 @@ class WebhookDiscussionAnswered(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionAnswered)
+model_rebuild(WebhookCustomPropertyCreated)
 
-__all__ = ("WebhookDiscussionAnswered",)
+__all__ = ("WebhookCustomPropertyCreated",)

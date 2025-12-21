@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,46 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    name: str = Field(min_length=1, description="The name of the artifact.")
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    artifact_url: Missing[str] = Field(
-        pattern="^https://",
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="The URL where the artifact is stored.",
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
     )
-    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
-    registry_url: str = Field(
-        min_length=1,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The repository name within the registry."
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
+        description="Whether the runner group can be used by `public` repositories.",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
+    restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)

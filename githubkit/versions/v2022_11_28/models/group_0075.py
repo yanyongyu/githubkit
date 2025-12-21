@@ -9,82 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class BillingUsageSummaryReportOrg(GitHubModel):
-    """BillingUsageSummaryReportOrg"""
+class GistComment(GitHubModel):
+    """Gist Comment
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
-    organization: str = Field(description="The unique identifier of the organization.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    A comment made to a gist.
+    """
 
-
-class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    body: str = Field(max_length=65535, description="The comment text.")
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
 
 
-class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+model_rebuild(GistComment)
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingUsageSummaryReportOrg)
-model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
-
-__all__ = (
-    "BillingUsageSummaryReportOrg",
-    "BillingUsageSummaryReportOrgPropTimePeriod",
-    "BillingUsageSummaryReportOrgPropUsageItemsItems",
-)
+__all__ = ("GistComment",)

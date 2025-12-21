@@ -9,30 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0207 import (
+    RepositoryRuleTagNamePatternPropParametersType,
+    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
+)
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-class RulesetVersionPropActorTypeForResponse(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
+    """tag_name_pattern
 
-    The actor who updated the ruleset
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RulesetVersionPropActorType",
-    "RulesetVersionPropActorTypeForResponse",
+    "RepositoryRuleTagNamePatternType",
+    "RepositoryRuleTagNamePatternTypeForResponse",
 )

@@ -19,27 +19,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
+class WebhooksAnswer(GitHubModel):
+    """WebhooksAnswer"""
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field()
+    child_comment_count: int = Field()
     created_at: _dt.datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
+    discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
-    name: str = Field(description="Name of the project")
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
+    parent_id: Union[int, None] = Field()
+    reactions: Missing[WebhooksAnswerPropReactions] = Field(
+        default=UNSET, title="Reactions"
     )
+    repository_url: str = Field()
     updated_at: _dt.datetime = Field()
+    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
+
+
+class WebhooksAnswerPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
     url: str = Field()
 
 
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksAnswerPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -66,10 +93,12 @@ class WebhooksProjectPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksAnswer)
+model_rebuild(WebhooksAnswerPropReactions)
+model_rebuild(WebhooksAnswerPropUser)
 
 __all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
+    "WebhooksAnswer",
+    "WebhooksAnswerPropReactions",
+    "WebhooksAnswerPropUser",
 )

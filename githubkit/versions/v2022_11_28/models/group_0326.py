@@ -9,30 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Blob(GitHubModel):
-    """Blob
+class ContentSubmodule(GitHubModel):
+    """Submodule Content
 
-    Blob
+    An object describing a submodule
     """
 
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
+    type: Literal["submodule"] = Field()
+    submodule_git_url: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
     sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSubmodulePropLinks = Field(alias="_links")
 
 
-model_rebuild(Blob)
+class ContentSubmodulePropLinks(GitHubModel):
+    """ContentSubmodulePropLinks"""
 
-__all__ = ("Blob",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentSubmodule)
+model_rebuild(ContentSubmodulePropLinks)
+
+__all__ = (
+    "ContentSubmodule",
+    "ContentSubmodulePropLinks",
+)

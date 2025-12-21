@@ -10,95 +10,157 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0066 import BypassResponseType, BypassResponseTypeForResponse
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class SecretScanningDismissalRequestType(TypedDict):
+    """Secret scanning alert dismissal request
+
+    A dismissal request made by a user asking to close a secret scanning alert in
+    this repository.
     """
 
-    id: int
-    name: str
-    url: str
-    package_html_url: str
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal["pending", "denied", "approved", "cancelled", "expired"]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[BypassResponseType], None]]
+    url: NotRequired[str]
     html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deleted_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class PackageVersionTypeForResponse(TypedDict):
-    """Package Version
+class SecretScanningDismissalRequestTypeForResponse(TypedDict):
+    """Secret scanning alert dismissal request
 
-    A version of a software package
+    A dismissal request made by a user asking to close a secret scanning alert in
+    this repository.
     """
 
-    id: int
-    name: str
-    url: str
-    package_html_url: str
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryTypeForResponse]
+    organization: NotRequired[
+        SecretScanningDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[SecretScanningDismissalRequestPropRequesterTypeForResponse]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[SecretScanningDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[
+        Literal["pending", "denied", "approved", "cancelled", "expired"]
+    ]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
+    url: NotRequired[str]
     html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: str
-    updated_at: str
-    deleted_at: NotRequired[str]
-    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
+    """SecretScanningDismissalRequestPropRepository
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+    The repository the dismissal request is for.
+    """
 
-
-class PackageVersionPropMetadataTypeForResponse(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
+class SecretScanningDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """SecretScanningDismissalRequestPropRepository
 
-    tags: list[str]
+    The repository the dismissal request is for.
+    """
 
-
-class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
-    """Docker Metadata"""
+class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
+    """SecretScanningDismissalRequestPropOrganization
 
-    tag: NotRequired[list[str]]
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """SecretScanningDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRequesterType(TypedDict):
+    """SecretScanningDismissalRequestPropRequester
+
+    The user who requested the dismissal.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """SecretScanningDismissalRequestPropRequester
+
+    The user who requested the dismissal.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
+    """SecretScanningDismissalRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+class SecretScanningDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """SecretScanningDismissalRequestPropDataItems"""
+
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropContainerTypeForResponse",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataPropDockerTypeForResponse",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataTypeForResponse",
-    "PackageVersionType",
-    "PackageVersionTypeForResponse",
+    "SecretScanningDismissalRequestPropDataItemsType",
+    "SecretScanningDismissalRequestPropDataItemsTypeForResponse",
+    "SecretScanningDismissalRequestPropOrganizationType",
+    "SecretScanningDismissalRequestPropOrganizationTypeForResponse",
+    "SecretScanningDismissalRequestPropRepositoryType",
+    "SecretScanningDismissalRequestPropRepositoryTypeForResponse",
+    "SecretScanningDismissalRequestPropRequesterType",
+    "SecretScanningDismissalRequestPropRequesterTypeForResponse",
+    "SecretScanningDismissalRequestType",
+    "SecretScanningDismissalRequestTypeForResponse",
 )

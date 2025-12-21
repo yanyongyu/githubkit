@@ -9,54 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0210 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
-)
+from .group_0201 import IssueType, IssueTypeForResponse
+from .group_0202 import IssueCommentType, IssueCommentTypeForResponse
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class IssueCommentEventType(TypedDict):
+    """IssueCommentEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    action: str
+    issue: IssueType
+    comment: IssueCommentType
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class IssueCommentEventTypeForResponse(TypedDict):
+    """IssueCommentEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+    action: str
+    issue: IssueTypeForResponse
+    comment: IssueCommentTypeForResponse
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "IssueCommentEventType",
+    "IssueCommentEventTypeForResponse",
 )

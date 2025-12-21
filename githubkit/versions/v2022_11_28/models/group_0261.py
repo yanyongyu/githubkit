@@ -12,42 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0254 import BranchProtection
-from .group_0259 import Commit
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class ReviewCustomGatesCommentRequired(GitHubModel):
+    """ReviewCustomGatesCommentRequired"""
 
-    Branch With Protection
-    """
-
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    comment: str = Field(
+        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    )
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+model_rebuild(ReviewCustomGatesCommentRequired)
 
-    html: str = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
-
-__all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
-)
+__all__ = ("ReviewCustomGatesCommentRequired",)

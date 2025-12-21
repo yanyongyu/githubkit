@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,25 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksChanges(GitHubModel):
-    """WebhooksChanges
+class KeySimple(GitHubModel):
+    """Key Simple
 
-    The changes to the comment.
+    Key Simple
     """
 
-    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
+    id: int = Field()
+    key: str = Field()
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-class WebhooksChangesPropBody(GitHubModel):
-    """WebhooksChangesPropBody"""
+model_rebuild(KeySimple)
 
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhooksChanges)
-model_rebuild(WebhooksChangesPropBody)
-
-__all__ = (
-    "WebhooksChanges",
-    "WebhooksChangesPropBody",
-)
+__all__ = ("KeySimple",)

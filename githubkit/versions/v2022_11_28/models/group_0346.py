@@ -9,47 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0100 import Team
+from .group_0345 import CustomDeploymentRuleApp
 
 
-class ReviewRequestRemovedIssueEvent(GitHubModel):
-    """Review Request Removed Issue Event
+class DeploymentProtectionRule(GitHubModel):
+    """Deployment protection rule
 
-    Review Request Removed Issue Event
+    Deployment protection rule
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_request_removed"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    review_requester: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
+    id: int = Field(
+        description="The unique identifier for the deployment protection rule."
     )
-    requested_team: Missing[Team] = Field(
+    node_id: str = Field(description="The node ID for the deployment protection rule.")
+    enabled: bool = Field(
+        description="Whether the deployment protection rule is enabled for the environment."
+    )
+    app: CustomDeploymentRuleApp = Field(
+        title="Custom deployment protection rule app",
+        description="A GitHub App that is providing a custom deployment protection rule.",
+    )
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: Missing[int] = Field(
         default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+        description="The number of enabled custom deployment protection rules for this environment",
     )
-    requested_reviewer: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReviewRequestRemovedIssueEvent)
+model_rebuild(DeploymentProtectionRule)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+)
 
-__all__ = ("ReviewRequestRemovedIssueEvent",)
+__all__ = (
+    "DeploymentProtectionRule",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
+)

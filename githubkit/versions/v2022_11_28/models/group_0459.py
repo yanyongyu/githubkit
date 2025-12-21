@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,77 +18,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0238 import PullRequestMinimal
-from .group_0265 import DeploymentSimple
-from .group_0458 import SimpleCheckSuite
 
+class CodespaceExportDetails(GitHubModel):
+    """Fetches information about an export of a codespace.
 
-class CheckRunWithSimpleCheckSuite(GitHubModel):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    state: Missing[Union[str, None]] = Field(
+        default=UNSET, description="State of the latest export"
     )
-    check_suite: SimpleCheckSuite = Field(
-        description="A suite of checks performed on the code of a given code change"
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Completion time of the last export operation"
     )
-    completed_at: Union[_dt.datetime, None] = Field()
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field()
-    deployment: Missing[DeploymentSimple] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+    branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Name of the exported branch"
     )
-    details_url: str = Field()
-    external_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    html_url: str = Field()
-    id: int = Field(description="The id of the check.")
-    name: str = Field(description="The name of the check.")
-    node_id: str = Field()
-    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: list[PullRequestMinimal] = Field()
-    started_at: _dt.datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
-        description="The phase of the lifecycle that the check is currently in."
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Git commit SHA of the exported branch"
     )
-    url: str = Field()
+    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
+    export_url: Missing[str] = Field(
+        default=UNSET, description="Url for fetching export details"
+    )
+    html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web url for the exported branch"
+    )
 
 
-class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+model_rebuild(CodespaceExportDetails)
 
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-
-
-model_rebuild(CheckRunWithSimpleCheckSuite)
-model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuite",
-    "CheckRunWithSimpleCheckSuitePropOutput",
-)
+__all__ = ("CodespaceExportDetails",)

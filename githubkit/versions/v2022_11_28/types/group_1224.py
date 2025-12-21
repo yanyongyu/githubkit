@@ -12,23 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    expected_head_sha: NotRequired[str]
 
 
-class TeamsTeamIdDiscussionsPostBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    expected_head_sha: NotRequired[str]
 
 
 __all__ = (
-    "TeamsTeamIdDiscussionsPostBodyType",
-    "TeamsTeamIdDiscussionsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
 )

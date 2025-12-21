@@ -14,24 +14,23 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    Team Membership
+    """
+
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
     )
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+model_rebuild(TeamMembership)
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+__all__ = ("TeamMembership",)

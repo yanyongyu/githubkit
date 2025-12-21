@@ -9,28 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningPushProtectionBypassType(TypedDict):
-    """SecretScanningPushProtectionBypass"""
-
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[_dt.datetime, None]]
-    token_type: NotRequired[str]
+from .group_0191 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
-class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
-    """SecretScanningPushProtectionBypass"""
+class RepositoryRuleDetailedOneof4Type(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
-    expire_at: NotRequired[Union[str, None]]
-    token_type: NotRequired[str]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof4TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
+
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningPushProtectionBypassType",
-    "SecretScanningPushProtectionBypassTypeForResponse",
+    "RepositoryRuleDetailedOneof4Type",
+    "RepositoryRuleDetailedOneof4TypeForResponse",
 )

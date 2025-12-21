@@ -9,22 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0102 import OrganizationCustomProperty
+from .group_0553 import EnterpriseWebhooks
 
 
-class WebhookPingFormEncoded(GitHubModel):
-    """WebhookPingFormEncoded
+class WebhookOrganizationCustomPropertyCreated(GitHubModel):
+    """organization custom property created event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str = Field(
-        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
+    action: Literal["created"] = Field()
+    definition: OrganizationCustomProperty = Field(
+        title="Custom Property for Organization",
+        description="Custom property defined for an organization",
+    )
+    enterprise: EnterpriseWebhooks = Field(
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookPingFormEncoded)
+model_rebuild(WebhookOrganizationCustomPropertyCreated)
 
-__all__ = ("WebhookPingFormEncoded",)
+__all__ = ("WebhookOrganizationCustomPropertyCreated",)

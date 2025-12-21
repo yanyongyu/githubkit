@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,95 +17,77 @@ from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
-
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
     )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing Copilot in the CLI.",
     )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-    Permissions requested, categorized by type of permission.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
 )

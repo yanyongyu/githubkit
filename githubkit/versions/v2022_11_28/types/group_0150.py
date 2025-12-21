@@ -9,35 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0120 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    Code of Conduct Simple
+    The Relationship a Team has with a role.
     """
 
-    url: str
-    key: str
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    id: int
+    node_id: str
     name: str
-    html_url: Union[str, None]
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class TeamRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a Team
 
-    Code of Conduct Simple
+    The Relationship a Team has with a role.
     """
 
-    url: str
-    key: str
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    id: int
+    node_id: str
     name: str
-    html_url: Union[str, None]
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleTypeForResponse]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentPropPermissionsTypeForResponse",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentTypeForResponse",
 )

@@ -9,58 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Data related to a release.
+    Timeline Assigned Issue Event
     """
 
-    url: str
-    browser_download_url: str
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
-
-
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
     url: str
-    browser_download_url: str
-    id: int
-    node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
+
+
+class TimelineAssignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Assigned Issue Event
+
+    Timeline Assigned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "TimelineAssignedIssueEventType",
+    "TimelineAssignedIssueEventTypeForResponse",
 )

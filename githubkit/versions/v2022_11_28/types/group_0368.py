@@ -9,30 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Page Build Status
+    Review Request Removed Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserType
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
+    """Review Request Removed Issue Event
 
-    Page Build Status
+    Review Request Removed Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    review_requester: SimpleUserTypeForResponse
+    requested_team: NotRequired[TeamTypeForResponse]
+    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "ReviewRequestRemovedIssueEventType",
+    "ReviewRequestRemovedIssueEventTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -19,61 +19,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0034 import SimpleRepository
+from .group_0123 import CodeScanningAlertRuleSummary
+from .group_0124 import CodeScanningAnalysisTool
+from .group_0126 import CodeScanningAlertInstance
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class CodeScanningOrganizationAlertItems(GitHubModel):
+    """CodeScanningOrganizationAlertItems"""
 
-    Organization roles
-    """
-
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Missing[
-        Union[None, Literal["read", "triage", "write", "maintain", "admin"]]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    source: Missing[
-        Union[None, Literal["Organization", "Enterprise", "Predefined"]]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[None, SimpleUser] = Field()
+    number: int = Field(description="The security alert number.")
     created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
-    )
-
-
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The total number of organization roles available to the organization.",
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    roles: Missing[list[OrganizationRole]] = Field(
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The list of organization roles available to the organization.",
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
+model_rebuild(CodeScanningOrganizationAlertItems)
 
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("CodeScanningOrganizationAlertItems",)

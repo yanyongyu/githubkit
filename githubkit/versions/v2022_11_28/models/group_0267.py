@@ -9,31 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-    Check Annotation
+    Workflow Usage
     """
 
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    billable: WorkflowUsagePropBillable = Field()
 
 
-model_rebuild(CheckAnnotation)
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
 
-__all__ = ("CheckAnnotation",)
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
+    )
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
+    )
+
+
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
+
+__all__ = (
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropWindows",
+)

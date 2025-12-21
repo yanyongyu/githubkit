@@ -18,19 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsSetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsSetDefaultWorkflowPermissions"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
+        Field(description="The type of scope for the budget")
     )
-    can_approve_pull_request_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
+    )
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+
+
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(ActionsSetDefaultWorkflowPermissions)
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
 
-__all__ = ("ActionsSetDefaultWorkflowPermissions",)
+__all__ = (
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
+)

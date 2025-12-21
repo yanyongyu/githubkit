@@ -7659,7 +7659,9 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -7753,7 +7755,9 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -8569,7 +8573,9 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -8648,7 +8654,9 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,

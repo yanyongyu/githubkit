@@ -9,39 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
+    )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class ActionsHostedRunnerCustomImageVersion(GitHubModel):
-    """GitHub-hosted runner custom image version details.
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-    Provides details of a hosted runner custom image version
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
     """
 
-    version: str = Field(description="The version of image.")
-    state: str = Field(description="The state of image version.")
-    size_gb: int = Field(description="Image version size in GB.")
-    created_on: str = Field(description="The creation date time of the image version.")
-    state_details: str = Field(description="The image version status details.")
 
-
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
-model_rebuild(ActionsHostedRunnerCustomImageVersion)
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersion",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
 )

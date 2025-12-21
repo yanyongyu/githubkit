@@ -9,60 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0082 import Team
 
+class ActionsCacheStorageLimitForRepository(GitHubModel):
+    """Actions cache storage limit for a repository
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    GitHub Actions cache storage policy for a repository.
     """
 
-    users: Missing[list[SimpleUser]] = Field(
+    max_cache_size_gb: Missing[int] = Field(
         default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
+        description="The maximum total cache size for this repository, in gigabytes.",
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+model_rebuild(ActionsCacheStorageLimitForRepository)
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
-)
+__all__ = ("ActionsCacheStorageLimitForRepository",)

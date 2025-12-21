@@ -12,22 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class ActionsCacheStorageLimitForRepository(GitHubModel):
+    """Actions cache storage limit for a repository
 
-    Check Dependabot security updates
+    GitHub Actions cache storage policy for a repository.
     """
 
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
-    )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
+    max_cache_size_gb: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum total cache size for this repository, in gigabytes.",
     )
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(ActionsCacheStorageLimitForRepository)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("ActionsCacheStorageLimitForRepository",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,33 +18,50 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0088 import DependabotAlertPackage
 
+class DependabotAlertDismissalRequestSimple(GitHubModel):
+    """Dependabot alert dismissal request
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    manifest_path: Missing[str] = Field(
+    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
+        default=UNSET, description="The current status of the dismissal request."
+    )
+    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal."
+    )
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="The date and time when the dismissal request was created.",
     )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ] = Field(
+    url: Missing[str] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description="The API URL to get more information about this dismissal request.",
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestSimplePropRequester
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+    The user who requested the dismissal.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the user."
+    )
+
+
+model_rebuild(DependabotAlertDismissalRequestSimple)
+model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
+
+__all__ = (
+    "DependabotAlertDismissalRequestSimple",
+    "DependabotAlertDismissalRequestSimplePropRequester",
+)

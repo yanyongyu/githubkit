@@ -9,53 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    Diff Entry
+    A commit.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class DiffEntryTypeForResponse(TypedDict):
-    """Diff Entry
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
 
-    Diff Entry
+    A commit.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+
+
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
+
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "DiffEntryType",
-    "DiffEntryTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

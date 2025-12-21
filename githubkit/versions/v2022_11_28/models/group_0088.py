@@ -16,26 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class ActionsCacheStorageLimitForOrganization(GitHubModel):
+    """Actions cache storage limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool = Field(
-        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
-    )
-    send_write_tokens_to_workflows: Missing[bool] = Field(
+    GitHub Actions cache storage policy for an organization.
+    """
+
+    max_cache_size_gb: Missing[int] = Field(
         default=UNSET,
-        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
-    )
-    send_secrets_and_variables: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
-    )
-    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
+        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
     )
 
 
-model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
+model_rebuild(ActionsCacheStorageLimitForOrganization)
 
-__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)
+__all__ = ("ActionsCacheStorageLimitForOrganization",)

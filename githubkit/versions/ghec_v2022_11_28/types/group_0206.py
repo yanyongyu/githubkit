@@ -9,30 +9,271 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0207 import DiscussionEventType, DiscussionEventTypeForResponse
+from .group_0208 import IssuesEventType, IssuesEventTypeForResponse
+from .group_0209 import IssueCommentEventType, IssueCommentEventTypeForResponse
+from .group_0210 import ForkEventType, ForkEventTypeForResponse
+from .group_0212 import MemberEventType, MemberEventTypeForResponse
+from .group_0213 import PullRequestEventType, PullRequestEventTypeForResponse
+from .group_0214 import (
+    PullRequestReviewCommentEventType,
+    PullRequestReviewCommentEventTypeForResponse,
+)
+from .group_0215 import (
+    PullRequestReviewEventType,
+    PullRequestReviewEventTypeForResponse,
+)
+from .group_0217 import CommitCommentEventType, CommitCommentEventTypeForResponse
+from .group_0219 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
+class EventType(TypedDict):
+    """Event
 
-    Gitignore Template
+    Event
     """
 
-    name: str
-    source: str
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: Union[
+        CreateEventType,
+        DeleteEventType,
+        DiscussionEventType,
+        IssuesEventType,
+        IssueCommentEventType,
+        ForkEventType,
+        GollumEventType,
+        MemberEventType,
+        PublicEventType,
+        PushEventType,
+        PullRequestEventType,
+        PullRequestReviewCommentEventType,
+        PullRequestReviewEventType,
+        CommitCommentEventType,
+        ReleaseEventType,
+        WatchEventType,
+    ]
+    public: bool
+    created_at: Union[_dt.datetime, None]
 
 
-class GitignoreTemplateTypeForResponse(TypedDict):
-    """Gitignore Template
+class EventTypeForResponse(TypedDict):
+    """Event
 
-    Gitignore Template
+    Event
     """
 
+    id: str
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: Union[
+        CreateEventTypeForResponse,
+        DeleteEventTypeForResponse,
+        DiscussionEventTypeForResponse,
+        IssuesEventTypeForResponse,
+        IssueCommentEventTypeForResponse,
+        ForkEventTypeForResponse,
+        GollumEventTypeForResponse,
+        MemberEventTypeForResponse,
+        PublicEventTypeForResponse,
+        PushEventTypeForResponse,
+        PullRequestEventTypeForResponse,
+        PullRequestReviewCommentEventTypeForResponse,
+        PullRequestReviewEventTypeForResponse,
+        CommitCommentEventTypeForResponse,
+        ReleaseEventTypeForResponse,
+        WatchEventTypeForResponse,
+    ]
+    public: bool
+    created_at: Union[str, None]
+
+
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
     name: str
-    source: str
+    url: str
+
+
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class CreateEventType(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class CreateEventTypeForResponse(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class DeleteEventType(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class DeleteEventTypeForResponse(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class PublicEventType(TypedDict):
+    """PublicEvent"""
+
+
+class PublicEventTypeForResponse(TypedDict):
+    """PublicEvent"""
+
+
+class PushEventType(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class PushEventTypeForResponse(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class WatchEventType(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class WatchEventTypeForResponse(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class GollumEventType(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsType]
+
+
+class GollumEventTypeForResponse(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsTypeForResponse]
+
+
+class GollumEventPropPagesItemsType(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class GollumEventPropPagesItemsTypeForResponse(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "GitignoreTemplateType",
-    "GitignoreTemplateTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "CreateEventType",
+    "CreateEventTypeForResponse",
+    "DeleteEventType",
+    "DeleteEventTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
+    "GollumEventPropPagesItemsType",
+    "GollumEventPropPagesItemsTypeForResponse",
+    "GollumEventType",
+    "GollumEventTypeForResponse",
+    "PublicEventType",
+    "PublicEventTypeForResponse",
+    "PushEventType",
+    "PushEventTypeForResponse",
+    "WatchEventType",
+    "WatchEventTypeForResponse",
 )

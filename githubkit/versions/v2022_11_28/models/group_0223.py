@@ -16,21 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamMembership(GitHubModel):
-    """Team Membership
+class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
+    """CopilotCodeReviewAnalysisTool
 
-    Team Membership
+    A tool that must provide code review results for this rule to pass.
     """
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
-    )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
+        description="The name of a code review analysis tool"
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
 
-__all__ = ("TeamMembership",)
+__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)

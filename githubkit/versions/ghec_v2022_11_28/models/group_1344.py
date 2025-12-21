@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1342 import ReposOwnerRepoPagesPostBodyPropSource
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
+
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
 
-    build_type: Literal["legacy", "workflow"] = Field(
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
-    )
-    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
-        default=UNSET,
-        description="The source branch and directory used to publish your Pages site.",
-    )
+    name: str = Field()
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
+)

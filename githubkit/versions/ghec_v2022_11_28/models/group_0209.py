@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0210 import (
-    MarketplacePurchasePropMarketplacePendingChange,
-    MarketplacePurchasePropMarketplacePurchase,
-)
+from .group_0201 import Issue
+from .group_0202 import IssueComment
 
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
+class IssueCommentEvent(GitHubModel):
+    """IssueCommentEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: IssueComment = Field(
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
 
 
-model_rebuild(MarketplacePurchase)
+model_rebuild(IssueCommentEvent)
 
-__all__ = ("MarketplacePurchase",)
+__all__ = ("IssueCommentEvent",)

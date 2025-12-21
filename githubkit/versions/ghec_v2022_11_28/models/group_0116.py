@@ -14,19 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0117 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationIdTarget(GitHubModel):
-    """Repository ruleset conditions for organization IDs
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for an organization ID condition
+    Parameters for a repository property condition
     """
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationIdTarget)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTarget",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

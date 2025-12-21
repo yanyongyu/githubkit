@@ -9,28 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class LinkType(TypedDict):
-    """Link
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
 
-    Hypermedia Link
+    Organization Invitation
     """
 
-    href: str
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
-class LinkTypeForResponse(TypedDict):
-    """Link
+class OrganizationInvitationTypeForResponse(TypedDict):
+    """Organization Invitation
 
-    Hypermedia Link
+    Organization Invitation
     """
 
-    href: str
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserTypeForResponse
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
 __all__ = (
-    "LinkType",
-    "LinkTypeForResponse",
+    "OrganizationInvitationType",
+    "OrganizationInvitationTypeForResponse",
 )

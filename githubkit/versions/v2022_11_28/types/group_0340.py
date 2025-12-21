@@ -9,52 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0339 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
+from .group_0341 import (
+    EnvironmentPropProtectionRulesItemsAnyof1Type,
+    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+)
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class EnvironmentType(TypedDict):
+    """Environment
 
-    Assigned Issue Event
+    Details of a deployment environment
     """
 
     id: int
     node_id: str
+    name: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
 
 
-class AssignedIssueEventTypeForResponse(TypedDict):
-    """Assigned Issue Event
+class EnvironmentTypeForResponse(TypedDict):
+    """Environment
 
-    Assigned Issue Event
+    Details of a deployment environment
     """
 
     id: int
     node_id: str
+    name: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    html_url: str
     created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    updated_at: str
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentTypeForResponse]]
 
 
 __all__ = (
-    "AssignedIssueEventType",
-    "AssignedIssueEventTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
+    "EnvironmentType",
+    "EnvironmentTypeForResponse",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
 )

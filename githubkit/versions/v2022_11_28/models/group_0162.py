@@ -12,25 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0154 import RepositoryRulesetConditionsPropRefName
-from .group_0158 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0158 import Link
 
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-    Conditions to target repositories by id and refs by name
-    """
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
-    )
 
+model_rebuild(PullRequestSimplePropLinks)
 
-model_rebuild(OrgRulesetConditionsOneof1)
-
-__all__ = ("OrgRulesetConditionsOneof1",)
+__all__ = ("PullRequestSimplePropLinks",)

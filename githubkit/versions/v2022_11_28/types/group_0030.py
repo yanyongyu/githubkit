@@ -36,6 +36,9 @@ class CodeSecurityConfigurationType(TypedDict):
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Union[None, Literal["enabled", "disabled", "not_set"]]
+    ]
     code_scanning_options: NotRequired[
         Union[CodeSecurityConfigurationPropCodeScanningOptionsType, None]
     ]
@@ -100,6 +103,9 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Union[None, Literal["enabled", "disabled", "not_set"]]
+    ]
     code_scanning_options: NotRequired[
         Union[CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse, None]
     ]

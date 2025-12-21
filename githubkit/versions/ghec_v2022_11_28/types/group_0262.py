@@ -9,135 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Information about an external group's usage and its members
     """
 
-    id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
-    """Organization Programmatic Access Grant
+class ExternalGroupTypeForResponse(TypedDict):
+    """ExternalGroup
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Information about an external group's usage and its members
     """
 
-    id: int
-    owner: SimpleUserTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
+    members: list[ExternalGroupPropMembersItemsTypeForResponse]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+    team_id: int
+    team_name: str
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropTeamsItems"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
-    ]
+    team_id: int
+    team_name: str
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
+class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropMembersItems"""
 
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantTypeForResponse",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropMembersItemsTypeForResponse",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropTeamsItemsTypeForResponse",
+    "ExternalGroupType",
+    "ExternalGroupTypeForResponse",
 )

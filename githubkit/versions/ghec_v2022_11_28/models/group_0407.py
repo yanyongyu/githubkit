@@ -9,38 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
+class DeploymentStatus(GitHubModel):
+    """Deployment Status
 
-    Assigned Issue Event
+    The status of a deployment.
     """
 
+    url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ] = Field(description="The state of the status.")
+    creator: Union[None, SimpleUser] = Field()
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
     )
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The environment of the deployment that the status is for.",
+    )
+    target_url: str = Field(
+        default="",
+        description="Closing down notice: the URL to associate with this status.",
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    deployment_url: str = Field()
+    repository_url: str = Field()
+    environment_url: Missing[str] = Field(
+        default=UNSET, description="The URL for accessing your environment."
+    )
+    log_url: Missing[str] = Field(
+        default=UNSET, description="The URL to associate with this status."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(AssignedIssueEvent)
+model_rebuild(DeploymentStatus)
 
-__all__ = ("AssignedIssueEvent",)
+__all__ = ("DeploymentStatus",)

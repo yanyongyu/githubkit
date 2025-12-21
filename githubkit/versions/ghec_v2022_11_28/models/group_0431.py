@@ -15,42 +15,32 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0019 import LicenseSimple
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class LicenseContent(GitHubModel):
-    """License Content
+class AssignedIssueEvent(GitHubModel):
+    """Assigned Issue Event
 
-    License Content
+    Assigned Issue Event
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+model_rebuild(AssignedIssueEvent)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
-
-__all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
-)
+__all__ = ("AssignedIssueEvent",)

@@ -9,20 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class DeleteBudget(GitHubModel):
-    """DeleteBudget"""
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+    Base Gist
+    """
+
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    id: str = Field(description="The ID of the deleted budget")
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(DeleteBudget)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
-__all__ = ("DeleteBudget",)
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
+
+__all__ = (
+    "BaseGist",
+    "BaseGistPropFiles",
+)

@@ -18,20 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsPermissionsPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsPutBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(OrgsOrgActionsPermissionsPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = ("OrgsOrgActionsPermissionsPutBody",)

@@ -9,30 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0189 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleMaxFilePathLength(GitHubModel):
-    """max_file_path_length
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
-        default=UNSET
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLength)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("RepositoryRuleMaxFilePathLength",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

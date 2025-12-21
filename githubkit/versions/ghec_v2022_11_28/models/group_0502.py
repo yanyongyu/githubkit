@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,28 +18,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserRoleItems(GitHubModel):
-    """UserRoleItems"""
+class PrivateVulnerabilityReportCreate(GitHubModel):
+    """PrivateVulnerabilityReportCreate"""
 
-    display: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    value: Literal[
-        "user",
-        "27d9891d-2c17-4f45-a262-781a0e55c80a",
-        "guest_collaborator",
-        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
-        "enterprise_owner",
-        "981df190-8801-4618-a08a-d91f6206c954",
-        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
-        "billing_manager",
-        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
-        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
-    ] = Field(description="The role value representing a user role in GitHub.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Is the role a primary role for the user."
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    vulnerabilities: Missing[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
+    ] = Field(
+        default=UNSET,
+        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
     )
 
 
-model_rebuild(UserRoleItems)
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-__all__ = ("UserRoleItems",)
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
+        Field(description="The name of the package affected by the vulnerability.")
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(PrivateVulnerabilityReportCreate)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItems)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage)
+
+__all__ = (
+    "PrivateVulnerabilityReportCreate",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
+)

@@ -9,33 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0312 import MetadataType, MetadataTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    id: int
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[None, SimpleUserTypeForResponse]
+    inviter: Union[None, SimpleUserTypeForResponse]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: str
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

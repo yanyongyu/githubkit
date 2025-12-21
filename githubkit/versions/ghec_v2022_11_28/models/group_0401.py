@@ -14,70 +14,38 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Import(GitHubModel):
-    """Import
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
 
-    A repository import from an external source.
-    """
-
-    vcs: Union[str, None] = Field()
-    use_lfs: Missing[bool] = Field(default=UNSET)
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    svc_root: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ] = Field()
-    status_text: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
-    error_message: Missing[Union[str, None]] = Field(default=UNSET)
-    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
-    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
-    has_large_files: Missing[bool] = Field(default=UNSET)
-    large_files_size: Missing[int] = Field(default=UNSET)
-    large_files_count: Missing[int] = Field(default=UNSET)
-    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    authors_url: str = Field()
-    repository_url: str = Field()
-    svn_root: Missing[str] = Field(default=UNSET)
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    )
 
 
-class ImportPropProjectChoicesItems(GitHubModel):
-    """ImportPropProjectChoicesItems"""
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    vcs: Missing[str] = Field(default=UNSET)
-    tfvc_project: Missing[str] = Field(default=UNSET)
-    human_name: Missing[str] = Field(default=UNSET)
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
 
 
-model_rebuild(Import)
-model_rebuild(ImportPropProjectChoicesItems)
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
 
 __all__ = (
-    "Import",
-    "ImportPropProjectChoicesItems",
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
 )

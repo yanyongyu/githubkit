@@ -9,42 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    The changes to the comment.
+    Key Simple
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    id: int
+    key: str
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    The changes to the comment.
+    Key Simple
     """
 
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
-
-
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    id: int
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

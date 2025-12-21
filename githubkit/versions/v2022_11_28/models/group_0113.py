@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,31 +17,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0063 import MinimalRepository
+
+class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+    )
+    can_approve_pull_request_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
+    )
 
 
-class Package(GitHubModel):
-    """Package
+model_rebuild(ActionsSetDefaultWorkflowPermissions)
 
-    A software package
-    """
-
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(Package)
-
-__all__ = ("Package",)
+__all__ = ("ActionsSetDefaultWorkflowPermissions",)

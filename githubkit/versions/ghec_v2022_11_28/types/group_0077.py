@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    Feature options for code scanning default setup
+    """
 
-
-class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
-
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeSecurityDefaultConfigurationsItemsType",
-    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
 )

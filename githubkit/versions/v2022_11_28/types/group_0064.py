@@ -9,67 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0065 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class ThreadType(TypedDict):
-    """Thread
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    action: str
+    review: PullRequestReviewEventPropReviewType
+    pull_request: PullRequestMinimalType
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
 
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    action: str
+    review: PullRequestReviewEventPropReviewTypeForResponse
+    pull_request: PullRequestMinimalTypeForResponse
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

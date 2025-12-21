@@ -12,19 +12,45 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0235 import MinimalRepository
 
 
-class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
-    """Codespaces Permissions Check
+class CheckSuitePreference(GitHubModel):
+    """Check Suite Preference
 
-    Permission check result for a given devcontainer config.
+    Check suite configuration preferences for a repository.
     """
 
-    accepted: bool = Field(
-        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    preferences: CheckSuitePreferencePropPreferences = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
 
 
-model_rebuild(CodespacesPermissionsCheckForDevcontainer)
+class CheckSuitePreferencePropPreferences(GitHubModel):
+    """CheckSuitePreferencePropPreferences"""
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainer",)
+    auto_trigger_checks: Missing[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
+    ] = Field(default=UNSET)
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int = Field()
+    setting: bool = Field()
+
+
+model_rebuild(CheckSuitePreference)
+model_rebuild(CheckSuitePreferencePropPreferences)
+model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+
+__all__ = (
+    "CheckSuitePreference",
+    "CheckSuitePreferencePropPreferences",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+)

@@ -10,298 +10,237 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0062 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
-
-
-class MinimalRepositoryType(TypedDict):
-    """Minimal Repository
-
-    Minimal Repository
-    """
-
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: NotRequired[str]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: NotRequired[str]
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: NotRequired[str]
-    mirror_url: NotRequired[Union[str, None]]
-    hooks_url: str
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    language: NotRequired[Union[str, None]]
-    forks_count: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    size: NotRequired[int]
-    default_branch: NotRequired[str]
-    open_issues_count: NotRequired[int]
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    visibility: NotRequired[str]
-    pushed_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    permissions: NotRequired[MinimalRepositoryPropPermissionsType]
-    role_name: NotRequired[str]
-    temp_clone_token: NotRequired[Union[str, None]]
-    delete_branch_on_merge: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    code_of_conduct: NotRequired[CodeOfConductType]
-    license_: NotRequired[Union[MinimalRepositoryPropLicenseType, None]]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
-    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesType]
+from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class MinimalRepositoryTypeForResponse(TypedDict):
-    """Minimal Repository
+class PullRequestReviewCommentEventType(TypedDict):
+    """PullRequestReviewCommentEvent"""
 
-    Minimal Repository
-    """
+    action: str
+    pull_request: PullRequestMinimalType
+    comment: PullRequestReviewCommentEventPropCommentType
+
+
+class PullRequestReviewCommentEventTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEvent"""
+
+    action: str
+    pull_request: PullRequestMinimalTypeForResponse
+    comment: PullRequestReviewCommentEventPropCommentTypeForResponse
+
+
+class PullRequestReviewCommentEventPropCommentType(TypedDict):
+    """PullRequestReviewCommentEventPropComment"""
 
     id: int
     node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserTypeForResponse
-    private: bool
+    url: str
+    pull_request_review_id: Union[int, None]
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    subject_type: NotRequired[Union[str, None]]
+    commit_id: str
+    user: Union[PullRequestReviewCommentEventPropCommentPropUserType, None]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     html_url: str
-    description: Union[str, None]
-    fork: bool
+    pull_request_url: str
+    links: PullRequestReviewCommentEventPropCommentPropLinksType
+    original_commit_id: str
+    reactions: PullRequestReviewCommentEventPropCommentPropReactionsType
+    in_reply_to_id: NotRequired[int]
+
+
+class PullRequestReviewCommentEventPropCommentTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEventPropComment"""
+
+    id: int
+    node_id: str
     url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: NotRequired[str]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: NotRequired[str]
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: NotRequired[str]
-    mirror_url: NotRequired[Union[str, None]]
-    hooks_url: str
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    language: NotRequired[Union[str, None]]
-    forks_count: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    size: NotRequired[int]
-    default_branch: NotRequired[str]
-    open_issues_count: NotRequired[int]
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    visibility: NotRequired[str]
-    pushed_at: NotRequired[Union[str, None]]
-    created_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    permissions: NotRequired[MinimalRepositoryPropPermissionsTypeForResponse]
-    role_name: NotRequired[str]
-    temp_clone_token: NotRequired[Union[str, None]]
-    delete_branch_on_merge: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    code_of_conduct: NotRequired[CodeOfConductTypeForResponse]
-    license_: NotRequired[Union[MinimalRepositoryPropLicenseTypeForResponse, None]]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
-    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesTypeForResponse]
+    pull_request_review_id: Union[int, None]
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    subject_type: NotRequired[Union[str, None]]
+    commit_id: str
+    user: Union[PullRequestReviewCommentEventPropCommentPropUserTypeForResponse, None]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse
+    original_commit_id: str
+    reactions: PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse
+    in_reply_to_id: NotRequired[int]
 
 
-class CodeOfConductType(TypedDict):
-    """Code Of Conduct
+class PullRequestReviewCommentEventPropCommentPropUserType(TypedDict):
+    """User"""
 
-    Code Of Conduct
-    """
-
-    key: str
-    name: str
-    url: str
-    body: NotRequired[str]
-    html_url: Union[str, None]
-
-
-class CodeOfConductTypeForResponse(TypedDict):
-    """Code Of Conduct
-
-    Code Of Conduct
-    """
-
-    key: str
-    name: str
-    url: str
-    body: NotRequired[str]
-    html_url: Union[str, None]
-
-
-class MinimalRepositoryPropPermissionsType(TypedDict):
-    """MinimalRepositoryPropPermissions"""
-
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
-
-
-class MinimalRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """MinimalRepositoryPropPermissions"""
-
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
-
-
-class MinimalRepositoryPropLicenseType(TypedDict):
-    """MinimalRepositoryPropLicense"""
-
-    key: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     name: NotRequired[str]
-    spdx_id: NotRequired[str]
-    url: NotRequired[str]
     node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class MinimalRepositoryPropLicenseTypeForResponse(TypedDict):
-    """MinimalRepositoryPropLicense"""
+class PullRequestReviewCommentEventPropCommentPropUserTypeForResponse(TypedDict):
+    """User"""
 
-    key: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     name: NotRequired[str]
-    spdx_id: NotRequired[str]
-    url: NotRequired[str]
     node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-MinimalRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""MinimalRepositoryPropCustomProperties
+class PullRequestReviewCommentEventPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
 
 
-MinimalRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""MinimalRepositoryPropCustomProperties
+class PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfType
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse
+    pull_request: (
+        PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse
+    )
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelfType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "CodeOfConductType",
-    "CodeOfConductTypeForResponse",
-    "MinimalRepositoryPropCustomPropertiesType",
-    "MinimalRepositoryPropCustomPropertiesTypeForResponse",
-    "MinimalRepositoryPropLicenseType",
-    "MinimalRepositoryPropLicenseTypeForResponse",
-    "MinimalRepositoryPropPermissionsType",
-    "MinimalRepositoryPropPermissionsTypeForResponse",
-    "MinimalRepositoryType",
-    "MinimalRepositoryTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksType",
+    "PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropReactionsType",
+    "PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropUserType",
+    "PullRequestReviewCommentEventPropCommentPropUserTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentType",
+    "PullRequestReviewCommentEventPropCommentTypeForResponse",
+    "PullRequestReviewCommentEventType",
+    "PullRequestReviewCommentEventTypeForResponse",
 )

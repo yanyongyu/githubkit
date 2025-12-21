@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,55 +18,146 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0683 import WebhookForkPropForkeeAllof0PropPermissions
 
-class WebhookIssueCommentCreatedPropIssueAllof1(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1"""
 
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[WebhookIssueCommentCreatedPropIssueAllof1PropAssignee, None] = (
-        Field(title="User")
+class WebhookForkPropForkee(GitHubModel):
+    """WebhookForkPropForkee
+
+    The created [`repository`](https://docs.github.com/enterprise-
+    cloud@latest//rest/repos/repos#get-a-repository) resource.
+    """
+
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow auto-merge for pull requests."
     )
-    assignees: Missing[
-        list[Union[WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: list[WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems] = Field()
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: bool = Field()
-    milestone: Missing[
-        Union[WebhookIssueCommentCreatedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssueCommentCreatedPropIssueAllof1PropReactions] = Field(
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow private forks"
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    archive_url: str = Field()
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    clone_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    created_at: _dt.datetime = Field()
+    default_branch: str = Field(description="The default branch of the repository.")
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    deployments_url: str = Field()
+    description: Union[Union[str, None], None] = Field()
+    disabled: Missing[bool] = Field(
+        default=UNSET, description="Returns whether or not this repository is disabled."
+    )
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: Literal[True] = Field()
+    forks: int = Field()
+    forks_count: int = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
+    )
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_pages: bool = Field()
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
+    )
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    homepage: Union[Union[str, None], None] = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    is_template: Missing[bool] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    language: Union[None, None] = Field()
+    languages_url: str = Field()
+    license_: Union[WebhookForkPropForkeeMergedLicense, None] = Field(alias="license")
+    master_branch: Missing[str] = Field(default=UNSET)
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    mirror_url: Union[None, None] = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    open_issues: int = Field()
+    open_issues_count: int = Field()
+    organization: Missing[str] = Field(default=UNSET)
+    owner: WebhookForkPropForkeeMergedOwner = Field()
+    permissions: Missing[WebhookForkPropForkeeAllof0PropPermissions] = Field(
         default=UNSET
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "closed"] = Field(
-        description="State of the issue; either 'open' or 'closed'"
-    )
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssueCommentCreatedPropIssueAllof1PropUser] = Field(
-        default=UNSET
+    private: bool = Field(description="Whether the repository is private or public.")
+    public: Missing[bool] = Field(default=UNSET)
+    pulls_url: str = Field()
+    pushed_at: _dt.datetime = Field()
+    releases_url: str = Field()
+    role_name: Missing[Union[str, None]] = Field(default=UNSET)
+    size: int = Field()
+    ssh_url: str = Field()
+    stargazers: Missing[int] = Field(default=UNSET)
+    stargazers_count: int = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    svn_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    topics: list[str] = Field()
+    trees_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    visibility: Literal["public", "private", "internal"] = Field()
+    watchers: int = Field()
+    watchers_count: int = Field()
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
     )
 
 
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssignee(GitHubModel):
-    """User"""
+class WebhookForkPropForkeeMergedLicense(GitHubModel):
+    """WebhookForkPropForkeeMergedLicense"""
+
+    key: str = Field()
+    name: str = Field()
+    node_id: str = Field()
+    spdx_id: str = Field()
+    url: Union[str, None] = Field()
+
+
+class WebhookForkPropForkeeMergedOwner(GitHubModel):
+    """WebhookForkPropForkeeMergedOwner"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -86,93 +178,17 @@ class WebhookIssueCommentCreatedPropIssueAllof1PropAssignee(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """Label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropMilestone(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentCreatedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssueCommentCreatedPropIssueAllof1PropUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof1PropUser)
+model_rebuild(WebhookForkPropForkee)
+model_rebuild(WebhookForkPropForkeeMergedLicense)
+model_rebuild(WebhookForkPropForkeeMergedOwner)
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof1",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssignee",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropMilestone",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropReactions",
-    "WebhookIssueCommentCreatedPropIssueAllof1PropUser",
+    "WebhookForkPropForkee",
+    "WebhookForkPropForkeeMergedLicense",
+    "WebhookForkPropForkeeMergedOwner",
 )

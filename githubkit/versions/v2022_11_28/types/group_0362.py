@@ -9,48 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
+class AssignedIssueEventType(TypedDict):
+    """Assigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Assigned Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[_dt.datetime, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[IntegrationType, None]
+    assignee: SimpleUserType
+    assigner: SimpleUserType
 
 
-class DeployKeyTypeForResponse(TypedDict):
-    """Deploy Key
+class AssignedIssueEventTypeForResponse(TypedDict):
+    """Assigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Assigned Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "DeployKeyType",
-    "DeployKeyTypeForResponse",
+    "AssignedIssueEventType",
+    "AssignedIssueEventTypeForResponse",
 )

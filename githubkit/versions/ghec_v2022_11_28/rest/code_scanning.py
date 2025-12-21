@@ -31,7 +31,7 @@ if TYPE_CHECKING:
     from ..models import (
         CodeScanningAlert,
         CodeScanningAlertDismissalRequest,
-        CodeScanningAlertInstance,
+        CodeScanningAlertInstanceList,
         CodeScanningAlertItems,
         CodeScanningAnalysis,
         CodeScanningAnalysisDeletion,
@@ -48,7 +48,7 @@ if TYPE_CHECKING:
     )
     from ..types import (
         CodeScanningAlertDismissalRequestTypeForResponse,
-        CodeScanningAlertInstanceTypeForResponse,
+        CodeScanningAlertInstanceListTypeForResponse,
         CodeScanningAlertItemsTypeForResponse,
         CodeScanningAlertTypeForResponse,
         CodeScanningAnalysisDeletionTypeForResponse,
@@ -66,6 +66,7 @@ if TYPE_CHECKING:
         CodeScanningVariantAnalysisTypeForResponse,
         EmptyObjectTypeForResponse,
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
@@ -102,6 +103,7 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -139,6 +141,7 @@ class CodeScanningClient:
             "direction": direction,
             "state": state,
             "sort": sort,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -169,6 +172,7 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -206,6 +210,7 @@ class CodeScanningClient:
             "direction": direction,
             "state": state,
             "sort": sort,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -239,6 +244,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -277,6 +283,7 @@ class CodeScanningClient:
             "state": state,
             "sort": sort,
             "severity": severity,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -310,6 +317,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -348,6 +356,7 @@ class CodeScanningClient:
             "state": state,
             "sort": sort,
             "severity": severity,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -516,6 +525,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -557,6 +567,7 @@ class CodeScanningClient:
             "sort": sort,
             "state": state,
             "severity": severity,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -594,6 +605,7 @@ class CodeScanningClient:
         severity: Missing[
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
+        assignees: Missing[str] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -635,6 +647,7 @@ class CodeScanningClient:
             "sort": sort,
             "state": state,
             "severity": severity,
+            "assignees": assignees,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -748,7 +761,10 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        data: Union[
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
@@ -767,6 +783,26 @@ class CodeScanningClient:
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "dismissed"]] = UNSET,
+        dismissed_reason: Missing[
+            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+        ] = UNSET,
+        dismissed_comment: Missing[Union[str, None]] = UNSET,
+        create_request: Missing[bool] = UNSET,
+        assignees: list[str],
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     def update_alert(
@@ -778,7 +814,10 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type
+            Union[
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
@@ -792,11 +831,14 @@ class CodeScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -810,7 +852,11 @@ class CodeScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0, json
+                Union[
+                    ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -838,7 +884,10 @@ class CodeScanningClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+        data: Union[
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     @overload
@@ -857,6 +906,26 @@ class CodeScanningClient:
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
         create_request: Missing[bool] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "dismissed"]] = UNSET,
+        dismissed_reason: Missing[
+            Union[None, Literal["false positive", "won't fix", "used in tests"]]
+        ] = UNSET,
+        dismissed_comment: Missing[Union[str, None]] = UNSET,
+        create_request: Missing[bool] = UNSET,
+        assignees: list[str],
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]: ...
 
     async def async_update_alert(
@@ -868,7 +937,10 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: Missing[
-            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type
+            Union[
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
         ] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert, CodeScanningAlertTypeForResponse]:
@@ -882,11 +954,14 @@ class CodeScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             CodeScanningAlert,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
         )
 
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
@@ -900,7 +975,11 @@ class CodeScanningClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0, json
+                Union[
+                    ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1312,7 +1391,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceTypeForResponse]
+        list[CodeScanningAlertInstanceList],
+        list[CodeScanningAlertInstanceListTypeForResponse],
     ]:
         """code-scanning/list-alert-instances
 
@@ -1327,7 +1407,7 @@ class CodeScanningClient:
 
         from ..models import (
             BasicError,
-            CodeScanningAlertInstance,
+            CodeScanningAlertInstanceList,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
         )
 
@@ -1348,7 +1428,7 @@ class CodeScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CodeScanningAlertInstance],
+            response_model=list[CodeScanningAlertInstanceList],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1369,7 +1449,8 @@ class CodeScanningClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
-        list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceTypeForResponse]
+        list[CodeScanningAlertInstanceList],
+        list[CodeScanningAlertInstanceListTypeForResponse],
     ]:
         """code-scanning/list-alert-instances
 
@@ -1384,7 +1465,7 @@ class CodeScanningClient:
 
         from ..models import (
             BasicError,
-            CodeScanningAlertInstance,
+            CodeScanningAlertInstanceList,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
         )
 
@@ -1405,7 +1486,7 @@ class CodeScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[CodeScanningAlertInstance],
+            response_model=list[CodeScanningAlertInstanceList],
             error_models={
                 "403": BasicError,
                 "404": BasicError,

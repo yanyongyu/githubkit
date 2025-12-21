@@ -9,53 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
+class GitRef(GitHubModel):
+    """Git Reference
 
-    Moved Column in Project Issue Event
+    Git references within a repository
     """
 
-    id: int = Field()
+    ref: str = Field()
     node_id: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    object_: GitRefPropObject = Field(alias="object")
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class GitRefPropObject(GitHubModel):
+    """GitRefPropObject"""
 
-    id: int = Field()
+    type: str = Field()
+    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
     url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
+model_rebuild(GitRef)
+model_rebuild(GitRefPropObject)
 
 __all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
+    "GitRef",
+    "GitRefPropObject",
 )

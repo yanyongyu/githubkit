@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +18,57 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
-
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: list[CodeownersErrorsPropErrorsItems] = Field()
+from .group_0003 import SimpleUser
+from .group_0123 import CodeScanningAlertRuleSummary
+from .group_0124 import CodeScanningAnalysisTool
+from .group_0126 import CodeScanningAlertInstance
 
 
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
+class CodeScanningAlertItems(GitHubModel):
+    """CodeScanningAlertItems"""
 
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
+    number: int = Field(description="The security alert number.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
     )
-    path: str = Field(description="The path of the file where the error occured.")
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningAlertItems)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningAlertItems",)

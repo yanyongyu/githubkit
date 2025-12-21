@@ -9,278 +9,124 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0318 import (
-    ProtectedBranchPullRequestReviewType,
-    ProtectedBranchPullRequestReviewTypeForResponse,
-)
-from .group_0320 import (
-    BranchRestrictionPolicyType,
-    BranchRestrictionPolicyTypeForResponse,
-)
 
+class JobType(TypedDict):
+    """Job
 
-class BranchProtectionType(TypedDict):
-    """Branch Protection
-
-    Branch Protection
+    Information of a job execution in a workflow run
     """
 
-    url: NotRequired[str]
-    enabled: NotRequired[bool]
-    required_status_checks: NotRequired[ProtectedBranchRequiredStatusCheckType]
-    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedType]
-    required_pull_request_reviews: NotRequired[ProtectedBranchPullRequestReviewType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_linear_history: NotRequired[BranchProtectionPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesType]
-    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsType]
-    block_creations: NotRequired[BranchProtectionPropBlockCreationsType]
-    required_conversation_resolution: NotRequired[
-        BranchProtectionPropRequiredConversationResolutionType
-    ]
-    name: NotRequired[str]
-    protection_url: NotRequired[str]
-    required_signatures: NotRequired[BranchProtectionPropRequiredSignaturesType]
-    lock_branch: NotRequired[BranchProtectionPropLockBranchType]
-    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
-
-
-class BranchProtectionTypeForResponse(TypedDict):
-    """Branch Protection
-
-    Branch Protection
-    """
-
-    url: NotRequired[str]
-    enabled: NotRequired[bool]
-    required_status_checks: NotRequired[
-        ProtectedBranchRequiredStatusCheckTypeForResponse
-    ]
-    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedTypeForResponse]
-    required_pull_request_reviews: NotRequired[
-        ProtectedBranchPullRequestReviewTypeForResponse
-    ]
-    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
-    required_linear_history: NotRequired[
-        BranchProtectionPropRequiredLinearHistoryTypeForResponse
-    ]
-    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesTypeForResponse]
-    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsTypeForResponse]
-    block_creations: NotRequired[BranchProtectionPropBlockCreationsTypeForResponse]
-    required_conversation_resolution: NotRequired[
-        BranchProtectionPropRequiredConversationResolutionTypeForResponse
-    ]
-    name: NotRequired[str]
-    protection_url: NotRequired[str]
-    required_signatures: NotRequired[
-        BranchProtectionPropRequiredSignaturesTypeForResponse
-    ]
-    lock_branch: NotRequired[BranchProtectionPropLockBranchTypeForResponse]
-    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingTypeForResponse]
-
-
-class ProtectedBranchAdminEnforcedType(TypedDict):
-    """Protected Branch Admin Enforced
-
-    Protected Branch Admin Enforced
-    """
-
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
     url: str
-    enabled: bool
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: _dt.datetime
+    started_at: _dt.datetime
+    completed_at: Union[_dt.datetime, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsType]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
 
 
-class ProtectedBranchAdminEnforcedTypeForResponse(TypedDict):
-    """Protected Branch Admin Enforced
+class JobTypeForResponse(TypedDict):
+    """Job
 
-    Protected Branch Admin Enforced
+    Information of a job execution in a workflow run
     """
 
+    id: int
+    run_id: int
+    run_url: str
+    run_attempt: NotRequired[int]
+    node_id: str
+    head_sha: str
     url: str
-    enabled: bool
-
-
-class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
-    """BranchProtectionPropRequiredLinearHistory"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredLinearHistoryTypeForResponse(TypedDict):
-    """BranchProtectionPropRequiredLinearHistory"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForcePushesType(TypedDict):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForcePushesTypeForResponse(TypedDict):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowDeletionsType(TypedDict):
-    """BranchProtectionPropAllowDeletions"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowDeletionsTypeForResponse(TypedDict):
-    """BranchProtectionPropAllowDeletions"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropBlockCreationsType(TypedDict):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropBlockCreationsTypeForResponse(TypedDict):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredConversationResolutionTypeForResponse(TypedDict):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredSignaturesType(TypedDict):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str
-    enabled: bool
-
-
-class BranchProtectionPropRequiredSignaturesTypeForResponse(TypedDict):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str
-    enabled: bool
-
-
-class BranchProtectionPropLockBranchType(TypedDict):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropLockBranchTypeForResponse(TypedDict):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForkSyncingType(TypedDict):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForkSyncingTypeForResponse(TypedDict):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckType(TypedDict):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: NotRequired[str]
-    enforcement_level: NotRequired[str]
-    contexts: list[str]
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
-    contexts_url: NotRequired[str]
-    strict: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckTypeForResponse(TypedDict):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
-    url: NotRequired[str]
-    enforcement_level: NotRequired[str]
-    contexts: list[str]
-    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse]
-    contexts_url: NotRequired[str]
-    strict: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
-
-
-class ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse(TypedDict):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
-
-    context: str
-    app_id: Union[int, None]
+    html_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    created_at: str
+    started_at: str
+    completed_at: Union[str, None]
+    name: str
+    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
+    check_run_url: str
+    labels: list[str]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    workflow_name: Union[str, None]
+    head_branch: Union[str, None]
+
+
+class JobPropStepsItemsType(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class JobPropStepsItemsTypeForResponse(TypedDict):
+    """JobPropStepsItems"""
+
+    status: Literal["queued", "in_progress", "completed"]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BranchProtectionPropAllowDeletionsType",
-    "BranchProtectionPropAllowDeletionsTypeForResponse",
-    "BranchProtectionPropAllowForcePushesType",
-    "BranchProtectionPropAllowForcePushesTypeForResponse",
-    "BranchProtectionPropAllowForkSyncingType",
-    "BranchProtectionPropAllowForkSyncingTypeForResponse",
-    "BranchProtectionPropBlockCreationsType",
-    "BranchProtectionPropBlockCreationsTypeForResponse",
-    "BranchProtectionPropLockBranchType",
-    "BranchProtectionPropLockBranchTypeForResponse",
-    "BranchProtectionPropRequiredConversationResolutionType",
-    "BranchProtectionPropRequiredConversationResolutionTypeForResponse",
-    "BranchProtectionPropRequiredLinearHistoryType",
-    "BranchProtectionPropRequiredLinearHistoryTypeForResponse",
-    "BranchProtectionPropRequiredSignaturesType",
-    "BranchProtectionPropRequiredSignaturesTypeForResponse",
-    "BranchProtectionType",
-    "BranchProtectionTypeForResponse",
-    "ProtectedBranchAdminEnforcedType",
-    "ProtectedBranchAdminEnforcedTypeForResponse",
-    "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
-    "ProtectedBranchRequiredStatusCheckPropChecksItemsTypeForResponse",
-    "ProtectedBranchRequiredStatusCheckType",
-    "ProtectedBranchRequiredStatusCheckTypeForResponse",
+    "JobPropStepsItemsType",
+    "JobPropStepsItemsTypeForResponse",
+    "JobType",
+    "JobTypeForResponse",
 )

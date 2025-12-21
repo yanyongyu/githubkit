@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,29 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class RunnerLabel(GitHubModel):
+    """Self hosted runner label
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
-
-    Organization Invitation
+    A label for a self hosted runner
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the label."
+    )
+    name: str = Field(description="Name of the label.")
+    type: Missing[Literal["read-only", "custom"]] = Field(
+        default=UNSET,
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+    )
 
 
-model_rebuild(OrganizationInvitation)
+model_rebuild(RunnerLabel)
 
-__all__ = ("OrganizationInvitation",)
+__all__ = ("RunnerLabel",)

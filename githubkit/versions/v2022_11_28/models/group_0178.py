@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0179 import RepositoryRuleCommitAuthorEmailPatternPropParameters
 
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
-    """
-
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
-        default=UNSET
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

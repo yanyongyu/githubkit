@@ -9,52 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0213 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+)
 
 
-class SecretScanningLocationDiscussionBodyType(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleFileExtensionRestrictionType(TypedDict):
+    """file_extension_restriction
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    discussion_body_url: str
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
 
 
-class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
+    """file_extension_restriction
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    discussion_body_url: str
-
-
-class SecretScanningLocationPullRequestCommentType(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
-
-
-class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "SecretScanningLocationDiscussionBodyType",
-    "SecretScanningLocationDiscussionBodyTypeForResponse",
-    "SecretScanningLocationPullRequestCommentType",
-    "SecretScanningLocationPullRequestCommentTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionType",
+    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
 )

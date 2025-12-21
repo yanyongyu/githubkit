@@ -9,102 +9,272 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
+from .group_0237 import (
+    RepositoryAdvisoryCreditType,
+    RepositoryAdvisoryCreditTypeForResponse,
+)
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class RepositoryAdvisoryType(TypedDict):
+    """RepositoryAdvisory
 
-    id: int
-    number: int
+    A repository security advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    published_at: Union[_dt.datetime, None]
+    closed_at: Union[_dt.datetime, None]
+    withdrawn_at: Union[_dt.datetime, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
+    cvss: Union[RepositoryAdvisoryPropCvssType, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[list[SimpleUserType], None]
+    collaborating_teams: Union[list[TeamType], None]
+    private_fork: None
 
 
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
+class RepositoryAdvisoryTypeForResponse(TypedDict):
+    """RepositoryAdvisory
 
-    id: int
-    number: int
+    A repository security advisory.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    published_at: Union[str, None]
+    closed_at: Union[str, None]
+    withdrawn_at: Union[str, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
+    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
+    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
+    collaborating_teams: Union[list[TeamTypeForResponse], None]
+    private_fork: None
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
-
-
-class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHead"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+    type: Literal["CVE", "GHSA"]
+    value: str
 
 
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    id: int
-    url: str
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropSubmissionType(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropCvssType(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCwesItemsType(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
     name: str
 
 
-class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
 
-    id: int
-    url: str
+    cwe_id: str
     name: str
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
+class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
 
 
-class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
+class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
 
-    id: int
-    url: str
-    name: str
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
+
+
+class RepositoryAdvisoryVulnerabilityType(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBasePropRepoTypeForResponse",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropBaseTypeForResponse",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadTypeForResponse",
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "RepositoryAdvisoryPropCreditsItemsType",
+    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryPropCvssType",
+    "RepositoryAdvisoryPropCvssTypeForResponse",
+    "RepositoryAdvisoryPropCwesItemsType",
+    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryPropSubmissionTypeForResponse",
+    "RepositoryAdvisoryType",
+    "RepositoryAdvisoryTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityType",
+    "RepositoryAdvisoryVulnerabilityTypeForResponse",
 )

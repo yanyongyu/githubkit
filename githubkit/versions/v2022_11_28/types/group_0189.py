@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    max_file_path_length: int
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    max_file_path_length: int
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleMaxFilePathLengthPropParametersType",
-    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

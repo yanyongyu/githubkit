@@ -9,33 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0320 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0003 import SimpleUser
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class Status(GitHubModel):
+    """Status
 
+    The status of a commit.
+    """
+
+    url: str = Field()
+    avatar_url: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
-    )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
-    )
+    state: str = Field()
+    description: Union[str, None] = Field()
+    target_url: Union[str, None] = Field()
+    context: str = Field()
+    created_at: str = Field()
+    updated_at: str = Field()
+    creator: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+model_rebuild(Status)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+__all__ = ("Status",)

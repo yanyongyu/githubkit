@@ -9,56 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class ApiInsightsSummaryStatsType(TypedDict):
+    """Summary Stats
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    API Insights usage summary stats for an organization
+    """
 
-
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryTypeForResponse]
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
+    """Summary Stats
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    API Insights usage summary stats for an organization
+    """
 
-
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[None, SimpleUserTypeForResponse]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "ApiInsightsSummaryStatsType",
+    "ApiInsightsSummaryStatsTypeForResponse",
 )

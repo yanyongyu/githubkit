@@ -9,41 +9,169 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0279 import CodeScanningVariantAnalysisSkippedRepoGroup
+from .group_0273 import BranchRestrictionPolicy
+from .group_0283 import ProtectedBranchPropRequiredPullRequestReviews
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class ProtectedBranch(GitHubModel):
+    """Protected Branch
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    Branch protections protect branches
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    url: str = Field()
+    required_status_checks: Missing[StatusCheckPolicy] = Field(
+        default=UNSET, title="Status Check Policy", description="Status Check Policy"
     )
-    repository_full_names: list[str] = Field(
-        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    required_pull_request_reviews: Missing[
+        ProtectedBranchPropRequiredPullRequestReviews
+    ] = Field(default=UNSET)
+    required_signatures: Missing[ProtectedBranchPropRequiredSignatures] = Field(
+        default=UNSET
+    )
+    enforce_admins: Missing[ProtectedBranchPropEnforceAdmins] = Field(default=UNSET)
+    required_linear_history: Missing[ProtectedBranchPropRequiredLinearHistory] = Field(
+        default=UNSET
+    )
+    allow_force_pushes: Missing[ProtectedBranchPropAllowForcePushes] = Field(
+        default=UNSET
+    )
+    allow_deletions: Missing[ProtectedBranchPropAllowDeletions] = Field(default=UNSET)
+    restrictions: Missing[BranchRestrictionPolicy] = Field(
+        default=UNSET,
+        title="Branch Restriction Policy",
+        description="Branch Restriction Policy",
+    )
+    required_conversation_resolution: Missing[
+        ProtectedBranchPropRequiredConversationResolution
+    ] = Field(default=UNSET)
+    block_creations: Missing[ProtectedBranchPropBlockCreations] = Field(default=UNSET)
+    lock_branch: Missing[ProtectedBranchPropLockBranch] = Field(
+        default=UNSET,
+        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.",
+    )
+    allow_fork_syncing: Missing[ProtectedBranchPropAllowForkSyncing] = Field(
+        default=UNSET,
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+class ProtectedBranchPropRequiredSignatures(GitHubModel):
+    """ProtectedBranchPropRequiredSignatures"""
+
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropEnforceAdmins(GitHubModel):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str = Field()
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredLinearHistory(GitHubModel):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowForcePushes(GitHubModel):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropAllowDeletions(GitHubModel):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropRequiredConversationResolution(GitHubModel):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropBlockCreations(GitHubModel):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool = Field()
+
+
+class ProtectedBranchPropLockBranch(GitHubModel):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class ProtectedBranchPropAllowForkSyncing(GitHubModel):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+class StatusCheckPolicy(GitHubModel):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str = Field()
+    strict: bool = Field()
+    contexts: list[str] = Field()
+    checks: list[StatusCheckPolicyPropChecksItems] = Field()
+    contexts_url: str = Field()
+
+
+class StatusCheckPolicyPropChecksItems(GitHubModel):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str = Field()
+    app_id: Union[int, None] = Field()
+
+
+model_rebuild(ProtectedBranch)
+model_rebuild(ProtectedBranchPropRequiredSignatures)
+model_rebuild(ProtectedBranchPropEnforceAdmins)
+model_rebuild(ProtectedBranchPropRequiredLinearHistory)
+model_rebuild(ProtectedBranchPropAllowForcePushes)
+model_rebuild(ProtectedBranchPropAllowDeletions)
+model_rebuild(ProtectedBranchPropRequiredConversationResolution)
+model_rebuild(ProtectedBranchPropBlockCreations)
+model_rebuild(ProtectedBranchPropLockBranch)
+model_rebuild(ProtectedBranchPropAllowForkSyncing)
+model_rebuild(StatusCheckPolicy)
+model_rebuild(StatusCheckPolicyPropChecksItems)
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositories",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+    "ProtectedBranch",
+    "ProtectedBranchPropAllowDeletions",
+    "ProtectedBranchPropAllowForcePushes",
+    "ProtectedBranchPropAllowForkSyncing",
+    "ProtectedBranchPropBlockCreations",
+    "ProtectedBranchPropEnforceAdmins",
+    "ProtectedBranchPropLockBranch",
+    "ProtectedBranchPropRequiredConversationResolution",
+    "ProtectedBranchPropRequiredLinearHistory",
+    "ProtectedBranchPropRequiredSignatures",
+    "StatusCheckPolicy",
+    "StatusCheckPolicyPropChecksItems",
 )

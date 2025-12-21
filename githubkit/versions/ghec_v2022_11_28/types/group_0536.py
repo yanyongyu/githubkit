@@ -9,40 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0531 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
 
-    A response to an exemption request by a delegated bypasser.
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class ExemptionResponseTypeForResponse(TypedDict):
-    """Exemption response
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    A response to an exemption request by a delegated bypasser.
+    Label Search Result Item
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    score: float
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemType]
+
+
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "ExemptionResponseType",
-    "ExemptionResponseTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

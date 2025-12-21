@@ -18,21 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0531 import EnterpriseWebhooks
-from .group_0532 import SimpleInstallation
-from .group_0533 import OrganizationSimpleWebhooks
-from .group_0534 import RepositoryWebhooks
-from .group_0551 import WebhooksIssueComment
-from .group_0552 import WebhooksChanges
-from .group_0696 import WebhookIssueCommentEditedPropIssue
+from .group_0553 import EnterpriseWebhooks
+from .group_0554 import SimpleInstallation
+from .group_0555 import OrganizationSimpleWebhooks
+from .group_0556 import RepositoryWebhooks
+from .group_0696 import WebhookIssueCommentCreatedPropComment
+from .group_0697 import WebhookIssueCommentCreatedPropIssue
 
 
-class WebhookIssueCommentEdited(GitHubModel):
-    """issue_comment edited event"""
+class WebhookIssueCommentCreated(GitHubModel):
+    """issue_comment created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhooksChanges = Field(description="The changes to the comment.")
-    comment: WebhooksIssueComment = Field(
+    action: Literal["created"] = Field()
+    comment: WebhookIssueCommentCreatedPropComment = Field(
         title="issue comment",
         description="The [comment](https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#get-an-issue-comment) itself.",
     )
@@ -46,7 +44,7 @@ class WebhookIssueCommentEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssueCommentEditedPropIssue = Field(
+    issue: WebhookIssueCommentCreatedPropIssue = Field(
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -61,6 +59,6 @@ class WebhookIssueCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentEdited)
+model_rebuild(WebhookIssueCommentCreated)
 
-__all__ = ("WebhookIssueCommentEdited",)
+__all__ = ("WebhookIssueCommentCreated",)

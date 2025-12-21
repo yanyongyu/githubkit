@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0156 import RepositoryRuleWorkflowsPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    )
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
+model_rebuild(RepositoryRuleMaxFileSizePropParameters)
 
-model_rebuild(RepositoryRuleWorkflows)
-
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleMaxFileSizePropParameters",)

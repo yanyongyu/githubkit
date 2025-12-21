@@ -9,47 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0100 import Team
 
 
-class ReviewRequestedIssueEvent(GitHubModel):
-    """Review Requested Issue Event
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Review Requested Issue Event
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_requested"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    review_requester: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
     )
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
     )
-    requested_reviewer: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
     )
 
 
-model_rebuild(ReviewRequestedIssueEvent)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = ("ReviewRequestedIssueEvent",)
+__all__ = ("CustomDeploymentRuleApp",)

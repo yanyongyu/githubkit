@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,42 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
+class OrganizationCreateIssueType(GitHubModel):
+    """OrganizationCreateIssueType"""
 
-    The configuration for iteration fields.
-    """
-
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the first iteration."
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
     )
-    duration: Missing[int] = Field(
-        default=UNSET,
-        description="The default duration for iterations in days. Individual iterations can override this value.",
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
     )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+model_rebuild(OrganizationCreateIssueType)
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the iteration."
-    )
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the iteration."
-    )
-    duration: Missing[int] = Field(
-        default=UNSET, description="The duration of the iteration in days."
-    )
-
-
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
-
-__all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
-)
+__all__ = ("OrganizationCreateIssueType",)

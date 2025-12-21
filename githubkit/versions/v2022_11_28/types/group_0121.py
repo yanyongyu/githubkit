@@ -9,34 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0120 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class TeamType(TypedDict):
+    """Team
 
-    Interaction limit settings.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: _dt.datetime
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleType]
 
 
-class InteractionLimitResponseTypeForResponse(TypedDict):
-    """Interaction Limits
+class TeamTypeForResponse(TypedDict):
+    """Team
 
-    Interaction limit settings.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: str
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[None, TeamSimpleTypeForResponse]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamPropPermissionsTypeForResponse(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "InteractionLimitResponseType",
-    "InteractionLimitResponseTypeForResponse",
+    "TeamPropPermissionsType",
+    "TeamPropPermissionsTypeForResponse",
+    "TeamType",
+    "TeamTypeForResponse",
 )

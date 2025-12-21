@@ -9,67 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0073 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0371 import (
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
+    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
+)
+from .group_0372 import (
+    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
+    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
+)
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
 
-    An object describing a symlink
+    A run of a CodeQL query against one or more repositories.
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    id: int
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack_url: str
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
+    """Variant Analysis
 
-    An object describing a symlink
+    A run of a CodeQL query against one or more repositories.
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
-
-
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    id: int
+    controller_repo: SimpleRepositoryTypeForResponse
+    actor: SimpleUserTypeForResponse
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack_url: str
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
+    ]
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "CodeScanningVariantAnalysisType",
+    "CodeScanningVariantAnalysisTypeForResponse",
 )

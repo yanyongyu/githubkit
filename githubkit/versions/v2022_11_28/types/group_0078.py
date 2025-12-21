@@ -9,34 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class LicenseType(TypedDict):
+    """License
 
-    Provides details of a particular machine spec.
+    License
     """
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
-    """Github-owned VM details.
+class LicenseTypeForResponse(TypedDict):
+    """License
 
-    Provides details of a particular machine spec.
+    License
     """
 
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    key: str
+    name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
 __all__ = (
-    "ActionsHostedRunnerMachineSpecType",
-    "ActionsHostedRunnerMachineSpecTypeForResponse",
+    "LicenseType",
+    "LicenseTypeForResponse",
 )

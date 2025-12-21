@@ -10,31 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Key(GitHubModel):
-    """Key
+class Traffic(GitHubModel):
+    """Traffic"""
 
-    Key
-    """
-
-    key: str = Field()
-    id: int = Field()
-    url: str = Field()
-    title: str = Field()
-    created_at: _dt.datetime = Field()
-    verified: bool = Field()
-    read_only: bool = Field()
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    timestamp: _dt.datetime = Field()
+    uniques: int = Field()
+    count: int = Field()
 
 
-model_rebuild(Key)
+model_rebuild(Traffic)
 
-__all__ = ("Key",)
+__all__ = ("Traffic",)

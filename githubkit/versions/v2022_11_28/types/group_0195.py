@@ -12,35 +12,84 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0196 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
-)
+
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
+    ]
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
+    ]
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
 
 
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
+    "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRulePullRequestPropParametersTypeForResponse",
 )

@@ -9,42 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0278 import CodeScanningVariantAnalysisRepository
+from .group_0274 import BranchProtection
+from .group_0279 import Commit
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
 
-    repository: CodeScanningVariantAnalysisRepository = Field(
-        title="Repository Identifier", description="Repository Identifier"
+    Branch With Protection
+    """
+
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
-    )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

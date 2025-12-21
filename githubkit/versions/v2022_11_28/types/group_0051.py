@@ -10,83 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    Base Gist
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    user: Union[None, SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    Base Gist
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    files: BaseGistPropFilesTypeForResponse
-    public: bool
+    user: Union[None, SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
-
-
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

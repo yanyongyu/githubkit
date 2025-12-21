@@ -9,33 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    Starred Repository
-    """
-
-    starred_at: _dt.datetime
-    repo: RepositoryType
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
-class StarredRepositoryTypeForResponse(TypedDict):
-    """Starred Repository
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    Starred Repository
-    """
-
-    starred_at: str
-    repo: RepositoryTypeForResponse
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "StarredRepositoryType",
-    "StarredRepositoryTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
 )

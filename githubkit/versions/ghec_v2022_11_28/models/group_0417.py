@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,45 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class Blob(GitHubModel):
+    """Blob
 
-class MovedColumnInProjectIssueEvent(GitHubModel):
-    """Moved Column in Project Issue Event
-
-    Moved Column in Project Issue Event
+    Blob
     """
 
-    id: int = Field()
+    content: str = Field()
+    encoding: str = Field()
+    url: str = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["moved_columns_in_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
-    )
+    highlighted_content: Missing[str] = Field(default=UNSET)
 
 
-class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+model_rebuild(Blob)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(MovedColumnInProjectIssueEvent)
-model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "MovedColumnInProjectIssueEvent",
-    "MovedColumnInProjectIssueEventPropProjectCard",
-)
+__all__ = ("Blob",)

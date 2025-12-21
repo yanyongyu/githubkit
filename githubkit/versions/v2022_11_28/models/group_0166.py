@@ -9,19 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
+    )
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
     )
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

@@ -12,27 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
-
-    key_id: str
-    key: str
+    all_: list[int]
+    owner: list[int]
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    The public key used for setting user Codespaces' Secrets.
-    """
-
-    key_id: str
-    key: str
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

@@ -9,46 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
+class PullRequestReviewEventPropReviewType(TypedDict):
+    """PullRequestReviewEventPropReview"""
 
-    Custom repository roles created by organization owners
-    """
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserType]]
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    html_url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
+    updated_at: NotRequired[str]
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+
+class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReview"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    html_url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
+    updated_at: NotRequired[str]
 
 
-class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
-    """Organization Custom Repository Role
+class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
 
-    Custom repository roles created by organization owners
-    """
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
+
+class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
+
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
+    pull_request: (
+        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
+    )
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleType",
-    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksType",
+    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
+    "PullRequestReviewEventPropReviewType",
+    "PullRequestReviewEventPropReviewTypeForResponse",
 )

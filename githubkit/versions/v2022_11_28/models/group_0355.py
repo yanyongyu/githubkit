@@ -12,23 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0047 import Issue
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
+class CheckImmutableReleases(GitHubModel):
+    """Check immutable releases
 
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    Check immutable releases
+    """
+
+    enabled: bool = Field(
+        description="Whether immutable releases are enabled for the repository."
+    )
+    enforced_by_owner: bool = Field(
+        description="Whether immutable releases are enforced by the repository owner."
     )
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+model_rebuild(CheckImmutableReleases)
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+__all__ = ("CheckImmutableReleases",)

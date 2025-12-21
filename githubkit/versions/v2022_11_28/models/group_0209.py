@@ -9,16 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RulesetVersionWithStateAllof1PropState(GitHubModel):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    The state of the ruleset version
-    """
+    restricted_file_paths: list[str] = Field(
+        description="The file paths that are restricted from being pushed to the commit graph."
+    )
 
 
-model_rebuild(RulesetVersionWithStateAllof1PropState)
+model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
 
-__all__ = ("RulesetVersionWithStateAllof1PropState",)
+__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)

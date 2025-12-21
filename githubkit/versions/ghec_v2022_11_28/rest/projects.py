@@ -41,7 +41,8 @@ if TYPE_CHECKING:
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-        OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
+        OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+        OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
         ProjectsV2FieldIterationConfigurationType,
         ProjectsV2FieldSingleSelectOptionType,
         ProjectsV2FieldTypeForResponse,
@@ -53,7 +54,8 @@ if TYPE_CHECKING:
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType,
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType,
-        UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
+        UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+        UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
         UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
     )
 
@@ -945,7 +947,10 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
+        data: Union[
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+        ],
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -961,6 +966,21 @@ class ProjectsClient:
         id: int,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
+    @overload
+    def add_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        type: Literal["Issue", "PullRequest"],
+        owner: str,
+        repo: str,
+        number: int,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
     def add_item_for_org(
         self,
         org: str,
@@ -968,7 +988,12 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OrgsOrgProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+                OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-org
@@ -980,9 +1005,12 @@ class ProjectsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-organization-owned-project
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
-            OrgsOrgProjectsV2ProjectNumberItemsPostBody,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
             ProjectsV2ItemSimple,
         )
 
@@ -997,7 +1025,11 @@ class ProjectsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                OrgsOrgProjectsV2ProjectNumberItemsPostBody, json
+                Union[
+                    OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
+                    OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1022,7 +1054,10 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OrgsOrgProjectsV2ProjectNumberItemsPostBodyType,
+        data: Union[
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+        ],
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -1038,6 +1073,21 @@ class ProjectsClient:
         id: int,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
+    @overload
+    async def async_add_item_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        type: Literal["Issue", "PullRequest"],
+        owner: str,
+        repo: str,
+        number: int,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
     async def async_add_item_for_org(
         self,
         org: str,
@@ -1045,7 +1095,12 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OrgsOrgProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+                OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-org
@@ -1057,9 +1112,12 @@ class ProjectsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-organization-owned-project
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
-            OrgsOrgProjectsV2ProjectNumberItemsPostBody,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
+            OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
             ProjectsV2ItemSimple,
         )
 
@@ -1074,7 +1132,11 @@ class ProjectsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                OrgsOrgProjectsV2ProjectNumberItemsPostBody, json
+                Union[
+                    OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
+                    OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1418,6 +1480,108 @@ class ProjectsClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def list_view_items_for_org(
+        self,
+        project_number: int,
+        org: str,
+        view_number: int,
+        *,
+        fields: Missing[Union[str, list[str]]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
+        """projects/list-view-items-for-org
+
+        GET /orgs/{org}/projectsV2/{project_number}/views/{view_number}/items
+
+        List items in an organization project with the saved view's filter applied.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-project-view
+        """
+
+        from ..models import BasicError, ProjectsV2ItemWithContent
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/views/{view_number}/items"
+
+        params = {
+            "fields": fields,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ProjectsV2ItemWithContent],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_view_items_for_org(
+        self,
+        project_number: int,
+        org: str,
+        view_number: int,
+        *,
+        fields: Missing[Union[str, list[str]]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
+        """projects/list-view-items-for-org
+
+        GET /orgs/{org}/projectsV2/{project_number}/views/{view_number}/items
+
+        List items in an organization project with the saved view's filter applied.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-an-organization-project-view
+        """
+
+        from ..models import BasicError, ProjectsV2ItemWithContent
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/views/{view_number}/items"
+
+        params = {
+            "fields": fields,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ProjectsV2ItemWithContent],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
             },
         )
 
@@ -2261,7 +2425,10 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
+        data: Union[
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+        ],
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -2277,6 +2444,21 @@ class ProjectsClient:
         id: int,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
+    @overload
+    def add_item_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        type: Literal["Issue", "PullRequest"],
+        owner: str,
+        repo: str,
+        number: int,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
     def add_item_for_user(
         self,
         username: str,
@@ -2284,7 +2466,12 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[UsersUsernameProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+                UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-user
@@ -2296,10 +2483,13 @@ class ProjectsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-user-owned-project
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             ProjectsV2ItemSimple,
-            UsersUsernameProjectsV2ProjectNumberItemsPostBody,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
         )
 
         url = f"/users/{username}/projectsV2/{project_number}/items"
@@ -2313,7 +2503,11 @@ class ProjectsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                UsersUsernameProjectsV2ProjectNumberItemsPostBody, json
+                Union[
+                    UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
+                    UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2338,7 +2532,10 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: UsersUsernameProjectsV2ProjectNumberItemsPostBodyType,
+        data: Union[
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+        ],
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -2354,6 +2551,21 @@ class ProjectsClient:
         id: int,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
+    @overload
+    async def async_add_item_for_user(
+        self,
+        username: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        type: Literal["Issue", "PullRequest"],
+        owner: str,
+        repo: str,
+        number: int,
+    ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
+
     async def async_add_item_for_user(
         self,
         username: str,
@@ -2361,7 +2573,12 @@ class ProjectsClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[UsersUsernameProjectsV2ProjectNumberItemsPostBodyType] = UNSET,
+        data: Missing[
+            Union[
+                UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type,
+                UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]:
         """projects/add-item-for-user
@@ -2373,10 +2590,13 @@ class ProjectsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#add-item-to-user-owned-project
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             ProjectsV2ItemSimple,
-            UsersUsernameProjectsV2ProjectNumberItemsPostBody,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
+            UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
         )
 
         url = f"/users/{username}/projectsV2/{project_number}/items"
@@ -2390,7 +2610,11 @@ class ProjectsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                UsersUsernameProjectsV2ProjectNumberItemsPostBody, json
+                Union[
+                    UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
+                    UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2738,5 +2962,107 @@ class ProjectsClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def list_view_items_for_user(
+        self,
+        project_number: int,
+        username: str,
+        view_number: int,
+        *,
+        fields: Missing[Union[str, list[str]]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
+        """projects/list-view-items-for-user
+
+        GET /users/{username}/projectsV2/{project_number}/views/{view_number}/items
+
+        List items in a user project with the saved view's filter applied.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-project-view
+        """
+
+        from ..models import BasicError, ProjectsV2ItemWithContent
+
+        url = f"/users/{username}/projectsV2/{project_number}/views/{view_number}/items"
+
+        params = {
+            "fields": fields,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ProjectsV2ItemWithContent],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_view_items_for_user(
+        self,
+        project_number: int,
+        username: str,
+        view_number: int,
+        *,
+        fields: Missing[Union[str, list[str]]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[ProjectsV2ItemWithContent], list[ProjectsV2ItemWithContentTypeForResponse]
+    ]:
+        """projects/list-view-items-for-user
+
+        GET /users/{username}/projectsV2/{project_number}/views/{view_number}/items
+
+        List items in a user project with the saved view's filter applied.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/items#list-items-for-a-user-project-view
+        """
+
+        from ..models import BasicError, ProjectsV2ItemWithContent
+
+        url = f"/users/{username}/projectsV2/{project_number}/views/{view_number}/items"
+
+        params = {
+            "fields": fields,
+            "before": before,
+            "after": after,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ProjectsV2ItemWithContent],
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
             },
         )

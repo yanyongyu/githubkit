@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class OrganizationFineGrainedPermission(GitHubModel):
+    """Organization Fine-Grained Permission
 
-    Code of Conduct Simple
+    A fine-grained permission that protects organization resources.
     """
 
-    url: str = Field()
-    key: str = Field()
     name: str = Field()
-    html_url: Union[str, None] = Field()
+    description: str = Field()
 
 
-model_rebuild(CodeOfConductSimple)
+model_rebuild(OrganizationFineGrainedPermission)
 
-__all__ = ("CodeOfConductSimple",)
+__all__ = ("OrganizationFineGrainedPermission",)

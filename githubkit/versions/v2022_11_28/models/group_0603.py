@@ -17,36 +17,68 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0018 import Installation
+from .group_0473 import EnterpriseWebhooks
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0484 import WebhooksUser
+from .group_0489 import WebhooksRepositoriesAddedItems
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
-    """User"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+class WebhookInstallationRepositoriesAdded(GitHubModel):
+    """installation_repositories added event"""
+
+    action: Literal["added"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    installation: Installation = Field(title="Installation", description="Installation")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repositories_added: list[WebhooksRepositoriesAddedItems] = Field(
+        description="An array of repository objects, which were added to the installation."
+    )
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems
+    ] = Field(
+        description="An array of repository objects, which were removed from the installation."
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    requester: Union[WebhooksUser, None] = Field(title="User")
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator)
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator",)
+    full_name: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the repository"
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    node_id: Missing[str] = Field(default=UNSET)
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the repository is private or public."
+    )
+
+
+model_rebuild(WebhookInstallationRepositoriesAdded)
+model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems)
+
+__all__ = (
+    "WebhookInstallationRepositoriesAdded",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems",
+)

@@ -9,67 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0353 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
+)
 
-class CodeScanningDefaultSetupUpdateType(TypedDict):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
-    """
+class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
     ]
 
 
-class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupUpdate
+class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    Configuration for code scanning default setup.
-    """
-
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
     ]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupUpdateType",
-    "CodeScanningDefaultSetupUpdateTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
 )

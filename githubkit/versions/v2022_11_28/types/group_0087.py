@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateRepos"""
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: bool
-    send_secrets_and_variables: bool
-    require_approval_for_fork_pr_workflows: bool
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
-class ActionsForkPrWorkflowsPrivateReposTypeForResponse(TypedDict):
-    """ActionsForkPrWorkflowsPrivateRepos"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: bool
-    send_secrets_and_variables: bool
-    require_approval_for_fork_pr_workflows: bool
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ActionsForkPrWorkflowsPrivateReposType",
-    "ActionsForkPrWorkflowsPrivateReposTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

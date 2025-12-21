@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -19,33 +19,56 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0213 import MinimalRepository
+from .group_0069 import CodeScanningAlertRuleSummary
+from .group_0070 import CodeScanningAnalysisTool
+from .group_0072 import CodeScanningAlertInstance
 
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
+class CodeScanningAlertItems(GitHubModel):
+    """CodeScanningAlertItems"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int = Field(description="Unique identifier of the repository invitation.")
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    number: int = Field(description="The security alert number.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    invitee: Union[None, SimpleUser] = Field()
-    inviter: Union[None, SimpleUser] = Field()
-    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
-        description="The permission associated with the invitation."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    created_at: _dt.datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
     )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
-    node_id: str = Field()
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryInvitation)
+model_rebuild(CodeScanningAlertItems)
 
-__all__ = ("RepositoryInvitation",)
+__all__ = ("CodeScanningAlertItems",)

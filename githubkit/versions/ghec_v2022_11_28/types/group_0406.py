@@ -9,66 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0403 import MetadataType, MetadataTypeForResponse
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Unlabeled Issue Event
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: _dt.datetime
 
 
-class UnlabeledIssueEventTypeForResponse(TypedDict):
-    """Unlabeled Issue Event
+class SnapshotTypeForResponse(TypedDict):
+    """snapshot
 
-    Unlabeled Issue Event
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    node_id: str
+    version: int
+    job: SnapshotPropJobTypeForResponse
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorTypeForResponse
+    metadata: NotRequired[MetadataTypeForResponse]
+    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
+    scanned: str
+
+
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropJobTypeForResponse(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: UnlabeledIssueEventPropLabelTypeForResponse
 
 
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class SnapshotPropDetectorTypeForResponse(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
 
     name: str
-    color: str
+    version: str
+    url: str
 
 
-class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
 
-    name: str
-    color: str
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventPropLabelTypeForResponse",
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventTypeForResponse",
+    "SnapshotPropDetectorType",
+    "SnapshotPropDetectorTypeForResponse",
+    "SnapshotPropJobType",
+    "SnapshotPropJobTypeForResponse",
+    "SnapshotPropManifestsType",
+    "SnapshotPropManifestsTypeForResponse",
+    "SnapshotType",
+    "SnapshotTypeForResponse",
 )

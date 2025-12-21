@@ -16,18 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
     )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
     )
 
 
-model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
 
-__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

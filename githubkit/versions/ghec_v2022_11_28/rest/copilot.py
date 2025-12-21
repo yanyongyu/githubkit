@@ -2800,6 +2800,390 @@ class CopilotClient:
             },
         )
 
+    def copilot_organization_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization usage metrics report for a specific day. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the specified day, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/organization-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization Copilot usage metrics report. The report provides comprehensive usage data for Copilot features across the organization.
+
+        The report contains aggregated metrics for the previous 28 days, including usage statistics for various Copilot features, user engagement data, and feature adoption metrics. Reports are generated daily and made available for download through signed URLs with a limited expiration time.
+
+        The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/organization-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_users_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_users_one_day_usage_metrics(
+        self,
+        org: str,
+        *,
+        day: _dt.date,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics1DayReport, CopilotUsageMetrics1DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-one-day-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-1-day
+
+        Use this endpoint to retrieve download links for the Copilot organization user usage metrics report for a specific day. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the specified day, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date of the report. The report covers a complete day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics-for-a-specific-day
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics1DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-1-day"
+
+        params = {
+            "day": day,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics1DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def copilot_organization_users_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_organization_users_usage_metrics(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotUsageMetrics28DayReport, CopilotUsageMetrics28DayReportTypeForResponse
+    ]:
+        """copilot/copilot-organization-users-usage-metrics
+
+        GET /orgs/{org}/copilot/metrics/reports/users-28-day/latest
+
+        Use this endpoint to retrieve download links for the latest 28-day organization users Copilot usage metrics report. The report provides detailed user-level usage data and engagement metrics for Copilot features across the organization.
+
+        The report contains user-specific metrics for the previous 28 days, including individual user engagement statistics, feature usage patterns, and adoption metrics broken down by user. This report allows authorized users to analyze Copilot usage at the user level to understand adoption patterns and identify opportunities for increased engagement.
+
+        Reports are generated daily and made available for download through signed URLs with a limited expiration time. The response includes download links to the report files, along with the specific date range covered by the report. The report covers a complete 28-day period ending on the most recent day for which data has been processed.
+
+        Organization owners and authorized users with fine-grained "View Organization Copilot Metrics" permission can retrieve Copilot metrics reports for the organization. OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
+
+        For more information about organization metrics attribution, see [How are metrics attributed across organizations](https://docs.github.com/enterprise-cloud@latest//copilot/concepts/copilot-metrics#how-are-metrics-attributed-across-organizations).
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage-metrics#get-copilot-organization-users-usage-metrics
+        """
+
+        from ..models import BasicError, CopilotUsageMetrics28DayReport
+
+        url = f"/orgs/{org}/copilot/metrics/reports/users-28-day/latest"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotUsageMetrics28DayReport,
+            error_models={
+                "500": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_copilot_seat_details_for_user(
         self,
         org: str,

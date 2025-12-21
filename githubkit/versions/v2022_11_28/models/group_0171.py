@@ -13,15 +13,23 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0090 import CustomPropertyValue
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    required_deployment_environments: list[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
+    """
+
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+__all__ = ("OrgRepoCustomPropertyValues",)

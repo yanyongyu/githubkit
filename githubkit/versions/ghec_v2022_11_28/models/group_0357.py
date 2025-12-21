@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +18,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
+from .group_0203 import PullRequestMinimal
+from .group_0235 import MinimalRepository
+from .group_0327 import SimpleCommit
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
 
-    A list of errors found in a repo's CODEOWNERS file
+class CheckSuite(GitHubModel):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    errors: list[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ] = Field(
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    path: str = Field(description="The path of the file where the error occured.")
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
 
 __all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
 )

@@ -9,267 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlert
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    The code scanning alert involved in the event.
-    """
-
-    assignees: NotRequired[list[SimpleUserType]]
-    created_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType, None
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    fixed_at: NotRequired[None]
-    html_url: str
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType
-    url: str
+    action: Literal["enabled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlert
+class WebhookBranchProtectionConfigurationEnabledTypeForResponse(TypedDict):
+    """branch protection configuration enabled event"""
 
-    The code scanning alert involved in the event.
-    """
-
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    created_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse,
-        None,
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    fixed_at: NotRequired[None]
-    html_url: str
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse
-    url: str
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType(
-    TypedDict
-):
-    """Alert Instance"""
-
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse(
-    TypedDict
-):
-    """Alert Instance"""
-
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
-    ion
-    """
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
-    ion
-    """
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
-    ge
-    """
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
-    ge
-    """
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
-
-    description: str
-    id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
-
-    description: str
-    id: str
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
-
-    name: str
-    version: Union[str, None]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
-
-    name: str
-    version: Union[str, None]
+    action: Literal["enabled"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse",
+    "WebhookBranchProtectionConfigurationEnabledType",
+    "WebhookBranchProtectionConfigurationEnabledTypeForResponse",
 )

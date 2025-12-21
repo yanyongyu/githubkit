@@ -9,73 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    License Content
+    Milestoned Issue Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    actor: SimpleUserType
+    event: Literal["milestoned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+class MilestonedIssueEventTypeForResponse(TypedDict):
+    """Milestoned Issue Event
 
-    License Content
+    Milestoned Issue Event
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    node_id: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
+    actor: SimpleUserTypeForResponse
+    event: Literal["milestoned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    title: str
 
 
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
+class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    title: str
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "MilestonedIssueEventPropMilestoneType",
+    "MilestonedIssueEventPropMilestoneTypeForResponse",
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventTypeForResponse",
 )

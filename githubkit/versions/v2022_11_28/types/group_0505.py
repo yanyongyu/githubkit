@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0455 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0457 import WebhooksRuleType, WebhooksRuleTypeForResponse
+
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: _dt.datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
-
-
-class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
-    """branch protection rule deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeletedType",
-    "WebhookBranchProtectionRuleDeletedTypeForResponse",
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
 )

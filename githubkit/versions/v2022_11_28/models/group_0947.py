@@ -9,111 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
 
-    logical_environment: Missing[str] = Field(
-        default=UNSET, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        default=UNSET, description="The physical region of the deployment."
-    )
-    deployments: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
-        ]
-    ] = Field(default=UNSET, description="The list of deployments to record.")
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
-    """
-
-    name: Missing[str] = Field(
-        min_length=1,
-        max_length=255,
-        default=UNSET,
-        description="The name of the artifact.",
-    )
-    digest: Missing[str] = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        default=UNSET,
-        description="The hex encoded digest of the artifact.",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    status: Missing[Literal["deployed", "decommissioned"]] = Field(
-        default=UNSET, description="The deployment status of the artifact."
-    )
-    deployment_name: Missing[str] = Field(
-        min_length=1,
-        max_length=128,
-        default=UNSET,
-        description="The name of the deployment.",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
-    tags: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
-    ] = Field(
-        default=UNSET, description="Key-value pairs to tag the deployment record."
-    )
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs that can access the runner group."
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
-    ExtraGitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    msPropTags
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody)
 
-    Key-value pairs to tag the deployment record.
-    """
-
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
-)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
-)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",)

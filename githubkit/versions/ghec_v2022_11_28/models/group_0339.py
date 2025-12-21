@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Dependabot security updates
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    Check Dependabot security updates
+    """
+
+    enabled: bool = Field(
+        description="Whether Dependabot security updates are enabled for the repository."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    paused: bool = Field(
+        description="Whether Dependabot security updates are paused for the repository."
     )
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("CheckAutomatedSecurityFixes",)

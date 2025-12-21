@@ -9,20 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Link(GitHubModel):
-    """Link
+class OrgHook(GitHubModel):
+    """Org Hook
 
-    Hypermedia Link
+    Org Hook
     """
 
-    href: str = Field()
+    id: int = Field()
+    url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(Link)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-__all__ = ("Link",)
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
+
+__all__ = (
+    "OrgHook",
+    "OrgHookPropConfig",
+)

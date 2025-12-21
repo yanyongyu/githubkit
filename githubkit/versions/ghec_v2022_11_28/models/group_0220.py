@@ -18,143 +18,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0198 import ReactionRollup
+from .group_0204 import ReleaseAsset
 
-class OrganizationFull(GitHubModel):
-    """Organization Full
 
-    Prevents users in the organization from using insecure methods of two-factor
-    authentication to fulfill a two-factor requirement.
-    Removes non-compliant outside collaborators from the organization and its
-    repositories.
+class ReleaseEventPropRelease(GitHubModel):
+    """ReleaseEventPropRelease"""
 
-    GitHub currently defines SMS as an insecure method of two-factor authentication.
-
-    If your users are managed by the enterprise this policy will not affect them.
-    The first admin account of the enterprise will still be affected.
-    """
-
-    login: str = Field()
+    url: str = Field()
+    html_url: str = Field()
+    assets_url: str = Field()
+    upload_url: str = Field()
+    tarball_url: Union[str, None] = Field()
+    zipball_url: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    is_verified: Missing[bool] = Field(default=UNSET)
-    has_organization_projects: bool = Field()
-    has_repository_projects: bool = Field()
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    html_url: str = Field()
-    type: str = Field()
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
-    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The number of collaborators on private repositories.\n\nThis field may be null if the number of private repositories is over 50,000.",
+    tag_name: str = Field(description="The name of the tag.")
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
     )
-    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    plan: Missing[OrganizationFullPropPlan] = Field(default=UNSET)
-    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
-    default_repository_branch: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The default branch for repositories created in this organization.",
+    name: Union[str, None] = Field()
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    draft: bool = Field(
+        description="true to create a draft (unpublished) release, false to create a published one."
     )
-    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
-    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
-    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
-    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
-    members_can_delete_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_change_repo_visibility: Missing[bool] = Field(default=UNSET)
-    members_can_invite_outside_collaborators: Missing[bool] = Field(default=UNSET)
-    members_can_delete_issues: Missing[bool] = Field(default=UNSET)
-    display_commenter_full_name_setting_enabled: Missing[bool] = Field(default=UNSET)
-    readers_can_create_discussions: Missing[bool] = Field(default=UNSET)
-    members_can_create_teams: Missing[bool] = Field(default=UNSET)
-    members_can_view_dependency_insights: Missing[bool] = Field(default=UNSET)
-    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
-        default=UNSET
+    prerelease: bool = Field(
+        description="Whether to identify the release as a prerelease or a full release."
     )
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether dependency graph is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
-    )
-    secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.",
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
-    )
-    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="**Endpoint closing down notice.** Please use [code security configurations](https://docs.github.com/enterprise-cloud@latest//rest/code-security/configurations) instead.\n\nWhether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this organization.",
+    immutable: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the release is immutable."
     )
     created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    archived_at: Union[_dt.datetime, None] = Field()
-    deploy_keys_enabled_for_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Controls whether or not deploy keys may be added and used for repositories in the organization.",
+    published_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assets: list[ReleaseAsset] = Field()
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    mentions_count: Missing[int] = Field(default=UNSET)
+    discussion_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the release discussion."
     )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-class OrganizationFullPropPlan(GitHubModel):
-    """OrganizationFullPropPlan"""
+model_rebuild(ReleaseEventPropRelease)
 
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(OrganizationFull)
-model_rebuild(OrganizationFullPropPlan)
-
-__all__ = (
-    "OrganizationFull",
-    "OrganizationFullPropPlan",
-)
+__all__ = ("ReleaseEventPropRelease",)

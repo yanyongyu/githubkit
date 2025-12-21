@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,35 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0044 import ReactionRollup
+from .group_0222 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class TeamDiscussionComment(GitHubModel):
-    """Team Discussion Comment
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    A reply to a discussion within a team.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the comment.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
     )
-    created_at: _dt.datetime = Field()
-    last_edited_at: Union[_dt.datetime, None] = Field()
-    discussion_url: str = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(
-        description="The unique sequence number of a team discussion comment."
-    )
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TeamDiscussionComment)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("TeamDiscussionComment",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

@@ -9,87 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
+    A response to an exemption request by a delegated bypasser.
+    """
 
-
-class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    A response to an exemption request by a delegated bypasser.
+    """
 
-
-class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksPreviousMarketplacePurchaseType",
-    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

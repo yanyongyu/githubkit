@@ -9,48 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0496 import MetaType, MetaTypeForResponse
+
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
+
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    id: NotRequired[str]
-    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
-    meta: NotRequired[MetaType]
-
-
-class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: NotRequired[str]
-    members: NotRequired[
-        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
-    ]
-    meta: NotRequired[MetaTypeForResponse]
-
-
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

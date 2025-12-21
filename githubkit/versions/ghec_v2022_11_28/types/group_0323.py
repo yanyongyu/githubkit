@@ -10,32 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    Metaproperties for Git author/committer information.
+    Set secrets for GitHub Actions.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class GitUserTypeForResponse(TypedDict):
-    """Git User
+class ActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret
 
-    Metaproperties for Git author/committer information.
+    Set secrets for GitHub Actions.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "GitUserType",
-    "GitUserTypeForResponse",
+    "ActionsSecretType",
+    "ActionsSecretTypeForResponse",
 )

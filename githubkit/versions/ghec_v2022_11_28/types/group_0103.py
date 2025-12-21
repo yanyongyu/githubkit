@@ -9,31 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class OrganizationCustomPropertyAllof1Type(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
 
-    Custom property name and associated value
-    """
-
-    property_name: str
-    value: Union[str, list[str], None]
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
 
-    Custom property name and associated value
-    """
-
-    property_name: str
-    value: Union[str, list[str], None]
+    values_editable_by: NotRequired[
+        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    ]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "OrganizationCustomPropertyAllof1Type",
+    "OrganizationCustomPropertyAllof1TypeForResponse",
 )

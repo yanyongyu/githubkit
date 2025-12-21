@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    update_allows_fetch_and_merge: bool
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    update_allows_fetch_and_merge: bool
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

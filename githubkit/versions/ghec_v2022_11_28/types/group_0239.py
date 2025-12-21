@@ -12,43 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    A list of external groups available to be connected to a team
+    GitHub Actions cache retention policy for an organization.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    max_cache_retention_days: NotRequired[int]
 
 
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    A list of external groups available to be connected to a team
+    GitHub Actions cache retention policy for an organization.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,37 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Group(GitHubModel):
-    """Group"""
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
+
+
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
     )
-    external_id: str = Field(
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
     )
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for a security group."
-    )
-    members: Missing[list[GroupPropMembersItems]] = Field(
-        default=UNSET, description="The group members."
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
     )
 
 
-class GroupPropMembersItems(GitHubModel):
-    """GroupPropMembersItems"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-    value: str = Field(description="The local unique identifier for the member")
-    display_name: str = Field(
-        alias="displayName", description="The display name associated with the member"
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
     )
 
 
-model_rebuild(Group)
-model_rebuild(GroupPropMembersItems)
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
 
 __all__ = (
-    "Group",
-    "GroupPropMembersItems",
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
 )

@@ -9,45 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleMergeQueuePropParameters(GitHubModel):
-    """RepositoryRuleMergeQueuePropParameters"""
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-    check_response_timeout_minutes: int = Field(
-        le=360.0,
-        ge=1.0,
-        description="Maximum time for a required status check to report a conclusion. After this much time has elapsed, checks that have not reported a conclusion will be assumed to have failed",
+    Custom property defined on an organization
+    """
+
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
     )
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"] = Field(
-        description="When set to ALLGREEN, the merge commit created by merge queue for each PR in the group must pass all required checks to merge. When set to HEADGREEN, only the commit at the head of the merge group, i.e. the commit containing changes from all of the PRs in the group, must pass its required checks to merge."
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
     )
-    max_entries_to_build: int = Field(
-        le=100.0,
-        description="Limit the number of queued pull requests requesting checks and workflow runs at the same time.",
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-    max_entries_to_merge: int = Field(
-        le=100.0,
-        description="The maximum number of PRs that will be merged together in a group.",
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
     )
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"] = Field(
-        description="Method to use when merging changes from queued pull requests."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
     )
-    min_entries_to_merge: int = Field(
-        le=100.0,
-        description="The minimum number of PRs that will be merged together in a group.",
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
-    min_entries_to_merge_wait_minutes: int = Field(
-        le=360.0,
-        description="The time merge queue should wait after the first PR is added to the queue for the minimum group size to be met. After this time has elapsed, the minimum group size will be ignored and a smaller group will be merged.",
-    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(RepositoryRuleMergeQueuePropParameters)
+model_rebuild(CustomProperty)
 
-__all__ = ("RepositoryRuleMergeQueuePropParameters",)
+__all__ = ("CustomProperty",)

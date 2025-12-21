@@ -13,17 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GitignoreTemplate(GitHubModel):
-    """Gitignore Template
-
-    Gitignore Template
-    """
-
-    name: str = Field()
-    source: str = Field()
+from .group_0044 import Discussion
 
 
-model_rebuild(GitignoreTemplate)
+class DiscussionEvent(GitHubModel):
+    """DiscussionEvent"""
 
-__all__ = ("GitignoreTemplate",)
+    action: str = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
+
+
+model_rebuild(DiscussionEvent)
+
+__all__ = ("DiscussionEvent",)

@@ -9,159 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0042 import MilestoneType, MilestoneTypeForResponse
-from .group_0100 import TeamType, TeamTypeForResponse
-from .group_0137 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0139 import (
-    PullRequestSimplePropBaseType,
-    PullRequestSimplePropBaseTypeForResponse,
-    PullRequestSimplePropHeadType,
-    PullRequestSimplePropHeadTypeForResponse,
-)
-from .group_0140 import (
-    PullRequestSimplePropLinksType,
-    PullRequestSimplePropLinksTypeForResponse,
-)
+
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
+
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    Pull Request Simple
-    """
-
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamType], None]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-
-
-class PullRequestSimpleTypeForResponse(TypedDict):
-    """Pull Request Simple
-
-    Pull Request Simple
-    """
-
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_teams: NotRequired[Union[list[TeamTypeForResponse], None]]
-    head: PullRequestSimplePropHeadTypeForResponse
-    base: PullRequestSimplePropBaseTypeForResponse
-    links: PullRequestSimplePropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-
-
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimplePropLabelsItemsTypeForResponse",
-    "PullRequestSimpleType",
-    "PullRequestSimpleTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

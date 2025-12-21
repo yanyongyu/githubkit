@@ -9,121 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ContentTreeType(TypedDict):
-    """Content Tree
 
-    Content Tree
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
+
+    A CodeQL database.
     """
 
-    type: str
-    size: int
+    id: int
     name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksType
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class ContentTreeTypeForResponse(TypedDict):
-    """Content Tree
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Content Tree
+    A CodeQL database.
     """
 
-    type: str
-    size: int
+    id: int
     name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksTypeForResponse
-
-
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropLinksTypeForResponse(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
     size: int
-    name: str
-    path: str
-    sha: str
+    created_at: str
+    updated_at: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
-
-
-class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropEntriesItemsTypeForResponse",
-    "ContentTreePropLinksType",
-    "ContentTreePropLinksTypeForResponse",
-    "ContentTreeType",
-    "ContentTreeTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

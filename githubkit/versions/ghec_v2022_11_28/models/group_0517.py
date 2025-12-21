@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,66 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0509 import SearchResultTextMatchesItems
 
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-class UserSearchResultItem(GitHubModel):
-    """User Search Result Item
-
-    User Search Result Item
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    score: float = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    events_url: str = Field()
-    public_repos: Missing[int] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-    followers: Missing[int] = Field(default=UNSET)
-    following: Missing[int] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    bio: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    site_admin: bool = Field()
-    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    suspended_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    external_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
+    )
 
 
-class SearchUsersGetResponse200(GitHubModel):
-    """SearchUsersGetResponse200"""
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[UserSearchResultItem] = Field()
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
 
 
-model_rebuild(UserSearchResultItem)
-model_rebuild(SearchUsersGetResponse200)
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "SearchUsersGetResponse200",
-    "UserSearchResultItem",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

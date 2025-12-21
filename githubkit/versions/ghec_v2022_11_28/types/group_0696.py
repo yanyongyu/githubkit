@@ -13,45 +13,16 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0193 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0195 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0698 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType,
-    WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType,
-    WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType,
-    WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse,
-)
-from .group_0704 import (
-    WebhookIssueCommentEditedPropIssueMergedMilestoneType,
-    WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse,
-)
-from .group_0705 import (
-    WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType,
-    WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class WebhookIssueCommentEditedPropIssueType(TypedDict):
-    """WebhookIssueCommentEditedPropIssue
+class WebhookIssueCommentCreatedPropCommentType(TypedDict):
+    """issue comment
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ]
-    assignee: Union[
-        Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType, None], None
-    ]
-    assignees: list[WebhookIssueCommentEditedPropIssueMergedAssigneesType]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -62,58 +33,26 @@ class WebhookIssueCommentEditedPropIssueType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[Union[str, None], None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
+    body: str
     created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
     html_url: str
     id: int
-    labels: list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType]
-    labels_url: str
-    locked: bool
-    milestone: Union[WebhookIssueCommentEditedPropIssueMergedMilestoneType, None]
+    issue_url: str
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType, None]
-    ]
-    pull_request: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType
-    ]
-    reactions: WebhookIssueCommentEditedPropIssueMergedReactionsType
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    state: Literal["open", "closed"]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
     updated_at: _dt.datetime
     url: str
-    user: WebhookIssueCommentEditedPropIssueMergedUserType
+    user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
 
 
-class WebhookIssueCommentEditedPropIssueTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssue
+class WebhookIssueCommentCreatedPropCommentTypeForResponse(TypedDict):
+    """issue comment
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) the comment belongs to.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ]
-    assignee: Union[
-        Union[
-            WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse, None
-        ],
-        None,
-    ]
-    assignees: list[WebhookIssueCommentEditedPropIssueMergedAssigneesTypeForResponse]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -124,102 +63,21 @@ class WebhookIssueCommentEditedPropIssueTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[Union[str, None], None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
+    body: str
     created_at: str
-    draft: NotRequired[bool]
-    events_url: str
     html_url: str
     id: int
-    labels: list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse]
-    labels_url: str
-    locked: bool
-    milestone: Union[
-        WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse, None
-    ]
+    issue_url: str
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
-    ]
-    pull_request: NotRequired[
-        WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse
-    ]
-    reactions: WebhookIssueCommentEditedPropIssueMergedReactionsTypeForResponse
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    state: Literal["open", "closed"]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse
     updated_at: str
     url: str
-    user: WebhookIssueCommentEditedPropIssueMergedUserTypeForResponse
+    user: Union[WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse, None]
 
 
-class WebhookIssueCommentEditedPropIssueMergedAssigneesType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedAssignees"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentEditedPropIssueMergedAssigneesTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedAssignees"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentEditedPropIssueMergedReactionsType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedReactions"""
+class WebhookIssueCommentCreatedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
 
     plus_one: int
     minus_one: int
@@ -233,8 +91,8 @@ class WebhookIssueCommentEditedPropIssueMergedReactionsType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueMergedReactionsTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedReactions"""
+class WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
     plus_one: int
     minus_one: int
@@ -248,8 +106,8 @@ class WebhookIssueCommentEditedPropIssueMergedReactionsTypeForResponse(TypedDict
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueMergedUserType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedUser"""
+class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -270,13 +128,13 @@ class WebhookIssueCommentEditedPropIssueMergedUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueMergedUserTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedUser"""
+class WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -297,18 +155,16 @@ class WebhookIssueCommentEditedPropIssueMergedUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueMergedAssigneesType",
-    "WebhookIssueCommentEditedPropIssueMergedAssigneesTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueMergedReactionsType",
-    "WebhookIssueCommentEditedPropIssueMergedReactionsTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueMergedUserType",
-    "WebhookIssueCommentEditedPropIssueMergedUserTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueType",
-    "WebhookIssueCommentEditedPropIssueTypeForResponse",
+    "WebhookIssueCommentCreatedPropCommentPropReactionsType",
+    "WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse",
+    "WebhookIssueCommentCreatedPropCommentPropUserType",
+    "WebhookIssueCommentCreatedPropCommentPropUserTypeForResponse",
+    "WebhookIssueCommentCreatedPropCommentType",
+    "WebhookIssueCommentCreatedPropCommentTypeForResponse",
 )

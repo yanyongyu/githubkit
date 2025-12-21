@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+class UserGpgKeysPostBodyType(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
+    name: NotRequired[str]
+    armored_public_key: str
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBody"""
+class UserGpgKeysPostBodyTypeForResponse(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
+    name: NotRequired[str]
+    armored_public_key: str
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyTypeForResponse",
+    "UserGpgKeysPostBodyType",
+    "UserGpgKeysPostBodyTypeForResponse",
 )

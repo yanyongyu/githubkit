@@ -9,27 +9,123 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0258 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class CheckSuiteTypeForResponse(TypedDict):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    repository: MinimalRepositoryTypeForResponse
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    head_commit: SimpleCommitTypeForResponse
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteType]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CheckSuiteType",
+    "CheckSuiteTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
 )

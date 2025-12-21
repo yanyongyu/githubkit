@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0089 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    Check immutable releases
+    Details for the vulnerable dependency.
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    Check immutable releases
+    Details for the vulnerable dependency.
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

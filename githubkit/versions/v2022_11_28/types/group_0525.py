@@ -9,259 +9,337 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0477 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlert
+class WebhookBranchProtectionRuleEditedType(TypedDict):
+    """branch protection rule edited event"""
 
-    The code scanning alert involved in the event.
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
+    sender: SimpleUserType
+
+
+class WebhookBranchProtectionRuleEditedTypeForResponse(TypedDict):
+    """branch protection rule edited event"""
+
+    action: Literal["edited"]
+    changes: NotRequired[WebhookBranchProtectionRuleEditedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookBranchProtectionRuleEditedPropChangesType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
+
+    If the action was `edited`, the changes to the rule.
     """
 
-    assignees: NotRequired[list[SimpleUserType]]
-    created_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedByType, None]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType
     ]
-    fixed_at: NotRequired[None]
-    html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType, None]
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType
     ]
-    number: int
-    rule: WebhookCodeScanningAlertFixedPropAlertPropRuleType
-    state: Union[None, Literal["fixed"]]
-    tool: WebhookCodeScanningAlertFixedPropAlertPropToolType
-    url: str
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType
+    ]
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType
+    ]
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType
+    ]
+    lock_branch_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType
+    ]
+    lock_allows_fork_sync: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType
+    ]
+    pull_request_reviews_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType
+    ]
+    require_last_push_approval: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType
+    ]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType
+    ]
 
 
-class WebhookCodeScanningAlertFixedPropAlertTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlert
+class WebhookBranchProtectionRuleEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChanges
 
-    The code scanning alert involved in the event.
+    If the action was `edited`, the changes to the rule.
     """
 
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    created_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertFixedPropAlertPropDismissedByTypeForResponse, None
+    admin_enforced: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    authorized_actor_names: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse
     ]
-    fixed_at: NotRequired[None]
-    html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceTypeForResponse,
-            None,
-        ]
+    authorized_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse
     ]
-    number: int
-    rule: WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["fixed"]]
-    tool: WebhookCodeScanningAlertFixedPropAlertPropToolTypeForResponse
-    url: str
-
-
-class WebhookCodeScanningAlertFixedPropAlertPropDismissedByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCodeScanningAlertFixedPropAlertPropDismissedByTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType(TypedDict):
-    """Alert Instance"""
-
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType
+    authorized_dismissal_actors_only: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse
     ]
-    message: NotRequired[
-        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType
+    linear_history_requirement_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse
     ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    lock_branch_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse
+    ]
+    lock_allows_fork_sync: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse
+    ]
+    pull_request_reviews_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse
+    ]
+    require_last_push_approval: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse
+    ]
+    required_status_checks: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse
+    ]
+    required_status_checks_enforcement_level: NotRequired[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse
+    ]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse(
     TypedDict
 ):
-    """Alert Instance"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationTypeForResponse
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageTypeForResponse
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    from_: Union[bool, None]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType(
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
+    from_: list[str]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse(
     TypedDict
 ):
-    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
+    from_: list[str]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType(
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType(
     TypedDict
 ):
-    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
 
-    text: NotRequired[str]
+    from_: Union[bool, None]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageTypeForResponse(
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse(
     TypedDict
 ):
-    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
 
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertFixedPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
+    from_: Union[bool, None]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlertPropRule"""
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
 
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
+    from_: Union[bool, None]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlertPropTool"""
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
 
-    guid: NotRequired[Union[str, None]]
-    name: str
-    version: Union[str, None]
+    from_: Union[bool, None]
 
 
-class WebhookCodeScanningAlertFixedPropAlertPropToolTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertFixedPropAlertPropTool"""
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
 
-    guid: NotRequired[Union[str, None]]
-    name: str
-    version: Union[str, None]
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType(TypedDict):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
+    el
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
+
+    from_: Union[bool, None]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: list[str]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse(
+    TypedDict
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"]
 
 
 __all__ = (
-    "WebhookCodeScanningAlertFixedPropAlertPropDismissedByType",
-    "WebhookCodeScanningAlertFixedPropAlertPropDismissedByTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocationTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessageTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstanceTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertPropRuleType",
-    "WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertPropToolType",
-    "WebhookCodeScanningAlertFixedPropAlertPropToolTypeForResponse",
-    "WebhookCodeScanningAlertFixedPropAlertType",
-    "WebhookCodeScanningAlertFixedPropAlertTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforcedTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNamesTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksTypeForResponse",
+    "WebhookBranchProtectionRuleEditedPropChangesType",
+    "WebhookBranchProtectionRuleEditedPropChangesTypeForResponse",
+    "WebhookBranchProtectionRuleEditedType",
+    "WebhookBranchProtectionRuleEditedTypeForResponse",
 )

@@ -9,38 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0136 import LinkType, LinkTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class ApiInsightsSummaryStatsType(TypedDict):
+    """Summary Stats
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
+    """Summary Stats
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "ApiInsightsSummaryStatsType",
+    "ApiInsightsSummaryStatsTypeForResponse",
 )

@@ -9,49 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-    Custom property defined on an organization
+    Custom property name and associated value
     """
 
     property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    value: Union[str, list[str], None]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class CustomPropertyValueTypeForResponse(TypedDict):
+    """Custom Property Value
 
-    Custom property defined on an organization
+    Custom property name and associated value
     """
 
     property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    value: Union[str, list[str], None]
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "CustomPropertyValueType",
+    "CustomPropertyValueTypeForResponse",
 )

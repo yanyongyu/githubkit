@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ApiInsightsRouteStatsItemsType(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
-class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsRouteStatsItems"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    http_method: NotRequired[str]
-    api_route: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "ApiInsightsRouteStatsItemsType",
-    "ApiInsightsRouteStatsItemsTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

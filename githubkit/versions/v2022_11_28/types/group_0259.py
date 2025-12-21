@@ -9,105 +9,131 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0258 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0260 import CommitPropCommitType, CommitPropCommitTypeForResponse
+from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0258 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class CommitType(TypedDict):
-    """Commit
+class WorkflowRunType(TypedDict):
+    """Workflow Run
 
-    Commit
+    An invocation of a workflow
     """
 
-    url: str
-    sha: str
+    id: int
+    name: NotRequired[Union[str, None]]
     node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
     html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    actor: NotRequired[SimpleUserType]
+    triggering_actor: NotRequired[SimpleUserType]
+    run_started_at: NotRequired[_dt.datetime]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitType]
+    repository: MinimalRepositoryType
+    head_repository: MinimalRepositoryType
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class CommitTypeForResponse(TypedDict):
-    """Commit
+class WorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run
 
-    Commit
+    An invocation of a workflow
     """
 
-    url: str
-    sha: str
+    id: int
+    name: NotRequired[Union[str, None]]
     node_id: str
+    check_suite_id: NotRequired[int]
+    check_suite_node_id: NotRequired[str]
+    head_branch: Union[str, None]
+    head_sha: str
+    path: str
+    run_number: int
+    run_attempt: NotRequired[int]
+    referenced_workflows: NotRequired[
+        Union[list[ReferencedWorkflowTypeForResponse], None]
+    ]
+    event: str
+    status: Union[str, None]
+    conclusion: Union[str, None]
+    workflow_id: int
+    url: str
     html_url: str
-    comments_url: str
-    commit: CommitPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    parents: list[CommitPropParentsItemsTypeForResponse]
-    stats: NotRequired[CommitPropStatsTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    created_at: str
+    updated_at: str
+    actor: NotRequired[SimpleUserTypeForResponse]
+    triggering_actor: NotRequired[SimpleUserTypeForResponse]
+    run_started_at: NotRequired[str]
+    jobs_url: str
+    logs_url: str
+    check_suite_url: str
+    artifacts_url: str
+    cancel_url: str
+    rerun_url: str
+    previous_attempt_url: NotRequired[Union[str, None]]
+    workflow_url: str
+    head_commit: Union[None, SimpleCommitTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    head_repository: MinimalRepositoryTypeForResponse
+    head_repository_id: NotRequired[int]
+    display_title: str
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class ReferencedWorkflowType(TypedDict):
+    """Referenced workflow
 
-    An object without any properties.
+    A workflow referenced/reused by the initial caller workflow
     """
 
+    path: str
+    sha: str
+    ref: NotRequired[str]
 
-class EmptyObjectTypeForResponse(TypedDict):
-    """Empty Object
 
-    An object without any properties.
+class ReferencedWorkflowTypeForResponse(TypedDict):
+    """Referenced workflow
+
+    A workflow referenced/reused by the initial caller workflow
     """
 
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
+    path: str
     sha: str
-    url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropParentsItemsTypeForResponse(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
-
-
-class CommitPropStatsTypeForResponse(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    ref: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropParentsItemsTypeForResponse",
-    "CommitPropStatsType",
-    "CommitPropStatsTypeForResponse",
-    "CommitType",
-    "CommitTypeForResponse",
-    "EmptyObjectType",
-    "EmptyObjectTypeForResponse",
+    "ReferencedWorkflowType",
+    "ReferencedWorkflowTypeForResponse",
+    "WorkflowRunType",
+    "WorkflowRunTypeForResponse",
 )

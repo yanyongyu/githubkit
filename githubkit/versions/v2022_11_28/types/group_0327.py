@@ -9,152 +9,205 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class FileCommitType(TypedDict):
+    """File Commit
 
-    Low-level Git commit operations within a repository
+    File Commit
     """
 
-    sha: str
-    node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: list[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
+    content: Union[FileCommitPropContentType, None]
+    commit: FileCommitPropCommitType
 
 
-class GitCommitTypeForResponse(TypedDict):
-    """Git Commit
+class FileCommitTypeForResponse(TypedDict):
+    """File Commit
 
-    Low-level Git commit operations within a repository
+    File Commit
     """
 
-    sha: str
-    node_id: str
-    url: str
-    author: GitCommitPropAuthorTypeForResponse
-    committer: GitCommitPropCommitterTypeForResponse
-    message: str
-    tree: GitCommitPropTreeTypeForResponse
-    parents: list[GitCommitPropParentsItemsTypeForResponse]
-    verification: GitCommitPropVerificationTypeForResponse
-    html_url: str
+    content: Union[FileCommitPropContentTypeForResponse, None]
+    commit: FileCommitPropCommitTypeForResponse
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
+class FileCommitPropContentType(TypedDict):
+    """FileCommitPropContent"""
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class GitCommitPropAuthorTypeForResponse(TypedDict):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksType]
 
 
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
+class FileCommitPropContentTypeForResponse(TypedDict):
+    """FileCommitPropContent"""
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterTypeForResponse(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
 
 
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
+class FileCommitPropContentPropLinksType(TypedDict):
+    """FileCommitPropContentPropLinks"""
 
-    sha: str
-    url: str
-
-
-class GitCommitPropTreeTypeForResponse(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
 
 
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
+class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
+    """FileCommitPropContentPropLinks"""
 
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropParentsItemsTypeForResponse(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
 
 
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
+class FileCommitPropCommitType(TypedDict):
+    """FileCommitPropCommit"""
 
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorType]
+    committer: NotRequired[FileCommitPropCommitPropCommitterType]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeType]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationType]
 
 
-class GitCommitPropVerificationTypeForResponse(TypedDict):
-    """GitCommitPropVerification"""
+class FileCommitPropCommitTypeForResponse(TypedDict):
+    """FileCommitPropCommit"""
 
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
+    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
+
+
+class FileCommitPropCommitPropAuthorType(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterType(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeType(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsType(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropVerificationType(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
+
+
+class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "GitCommitPropAuthorType",
-    "GitCommitPropAuthorTypeForResponse",
-    "GitCommitPropCommitterType",
-    "GitCommitPropCommitterTypeForResponse",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropParentsItemsTypeForResponse",
-    "GitCommitPropTreeType",
-    "GitCommitPropTreeTypeForResponse",
-    "GitCommitPropVerificationType",
-    "GitCommitPropVerificationTypeForResponse",
-    "GitCommitType",
-    "GitCommitTypeForResponse",
+    "FileCommitPropCommitPropAuthorType",
+    "FileCommitPropCommitPropAuthorTypeForResponse",
+    "FileCommitPropCommitPropCommitterType",
+    "FileCommitPropCommitPropCommitterTypeForResponse",
+    "FileCommitPropCommitPropParentsItemsType",
+    "FileCommitPropCommitPropParentsItemsTypeForResponse",
+    "FileCommitPropCommitPropTreeType",
+    "FileCommitPropCommitPropTreeTypeForResponse",
+    "FileCommitPropCommitPropVerificationType",
+    "FileCommitPropCommitPropVerificationTypeForResponse",
+    "FileCommitPropCommitType",
+    "FileCommitPropCommitTypeForResponse",
+    "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentPropLinksTypeForResponse",
+    "FileCommitPropContentType",
+    "FileCommitPropContentTypeForResponse",
+    "FileCommitType",
+    "FileCommitTypeForResponse",
 )

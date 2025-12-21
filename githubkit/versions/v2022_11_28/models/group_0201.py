@@ -14,19 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
 
-    A tool that must provide code review results for this rule to pass.
-    """
-
-    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
-        description="The name of a code review analysis tool"
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
+model_rebuild(RepositoryRuleCommitAuthorEmailPatternPropParameters)
 
-__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParameters",)

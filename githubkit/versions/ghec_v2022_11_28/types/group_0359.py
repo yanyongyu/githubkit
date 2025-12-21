@@ -14,46 +14,69 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0213 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0069 import (
+    CodeScanningAlertRuleSummaryType,
+    CodeScanningAlertRuleSummaryTypeForResponse,
+)
+from .group_0070 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0072 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    number: int
     created_at: _dt.datetime
-    expired: NotRequired[bool]
+    updated_at: NotRequired[_dt.datetime]
     url: str
     html_url: str
-    node_id: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeScanningAlertItemsTypeForResponse(TypedDict):
+    """CodeScanningAlertItems"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    number: int
     created_at: str
-    expired: NotRequired[bool]
+    updated_at: NotRequired[str]
     url: str
     html_url: str
-    node_id: str
+    instances_url: str
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeScanningAlertItemsType",
+    "CodeScanningAlertItemsTypeForResponse",
 )

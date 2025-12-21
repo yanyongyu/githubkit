@@ -9,113 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0153 import RepositoryRulesetConditions
+from .group_0003 import SimpleUser
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0513 import WebhooksRelease
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+class WebhookReleaseEdited(GitHubModel):
+    """release edited event"""
 
-    condition: Missing[RepositoryRulesetConditions] = Field(
+    action: Literal["edited"] = Field()
+    changes: WebhookReleaseEditedPropChanges = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    changes: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-    ] = Field(default=UNSET)
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
+class WebhookReleaseEditedPropChanges(GitHubModel):
+    """WebhookReleaseEditedPropChanges"""
 
-    condition_type: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-    ] = Field(default=UNSET)
-    target: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-    ] = Field(default=UNSET)
-    include: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-    ] = Field(default=UNSET)
-    exclude: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-    ] = Field(default=UNSET)
+    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
+    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
+    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
+        default=UNSET
+    )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
+class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropBody"""
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
+class WebhookReleaseEditedPropChangesPropName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropName"""
 
-    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
-
-    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-)
+class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the tag_name if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool = Field(
+        description="Whether this release was explicitly `edited` to be the latest."
+    )
+
+
+model_rebuild(WebhookReleaseEdited)
+model_rebuild(WebhookReleaseEditedPropChanges)
+model_rebuild(WebhookReleaseEditedPropChangesPropBody)
+model_rebuild(WebhookReleaseEditedPropChangesPropName)
+model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
+model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget",
+    "WebhookReleaseEdited",
+    "WebhookReleaseEditedPropChanges",
+    "WebhookReleaseEditedPropChangesPropBody",
+    "WebhookReleaseEditedPropChangesPropMakeLatest",
+    "WebhookReleaseEditedPropChangesPropName",
+    "WebhookReleaseEditedPropChangesPropTagName",
 )

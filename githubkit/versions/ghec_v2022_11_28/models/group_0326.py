@@ -9,69 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0325 import DiffEntry
-from .group_0327 import CommitPropCommit
 
 
-class Commit(GitHubModel):
-    """Commit
+class ActionsWorkflowAccessToRepository(GitHubModel):
+    """ActionsWorkflowAccessToRepository"""
 
-    Commit
-    """
-
-    url: str = Field()
-    sha: str = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitPropCommit = Field()
-    author: Union[SimpleUser, EmptyObject, None] = Field()
-    committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: list[CommitPropParentsItems] = Field()
-    stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
+    )
 
 
-class EmptyObject(GitHubModel):
-    """Empty Object
+model_rebuild(ActionsWorkflowAccessToRepository)
 
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItems(GitHubModel):
-    """CommitPropParentsItems"""
-
-    sha: str = Field()
-    url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class CommitPropStats(GitHubModel):
-    """CommitPropStats"""
-
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-    total: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(Commit)
-model_rebuild(EmptyObject)
-model_rebuild(CommitPropParentsItems)
-model_rebuild(CommitPropStats)
-
-__all__ = (
-    "Commit",
-    "CommitPropParentsItems",
-    "CommitPropStats",
-    "EmptyObject",
-)
+__all__ = ("ActionsWorkflowAccessToRepository",)

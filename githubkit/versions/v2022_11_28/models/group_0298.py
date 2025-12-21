@@ -18,49 +18,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
-from .group_0150 import CodeOfConductSimple
+from .group_0003 import SimpleUser
 
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
+class CodeScanningCodeqlDatabase(GitHubModel):
+    """CodeQL Database
 
-    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
-    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    contributing: Union[None, CommunityHealthFile] = Field()
-    readme: Union[None, CommunityHealthFile] = Field()
-    issue_template: Union[None, CommunityHealthFile] = Field()
-    pull_request_template: Union[None, CommunityHealthFile] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
+    A CodeQL database.
     """
 
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+    id: int = Field(description="The ID of the CodeQL database.")
+    name: str = Field(description="The name of the CodeQL database.")
+    language: str = Field(description="The language of the CodeQL database.")
+    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    content_type: str = Field(description="The MIME type of the CodeQL database file.")
+    size: int = Field(description="The size of the CodeQL database file in bytes.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
+    )
+    commit_oid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
+    )
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+model_rebuild(CodeScanningCodeqlDatabase)
 
-__all__ = (
-    "CommunityHealthFile",
-    "CommunityProfile",
-    "CommunityProfilePropFiles",
-)
+__all__ = ("CodeScanningCodeqlDatabase",)

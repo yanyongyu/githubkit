@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependabotPublicKey(GitHubModel):
-    """DependabotPublicKey
+class ActionsGetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    The public key used for setting Dependabot Secrets.
-    """
+    default_workflow_permissions: Literal["read", "write"] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
+    )
+    can_approve_pull_request_reviews: bool = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
+    )
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
 
+model_rebuild(ActionsGetDefaultWorkflowPermissions)
 
-model_rebuild(DependabotPublicKey)
-
-__all__ = ("DependabotPublicKey",)
+__all__ = ("ActionsGetDefaultWorkflowPermissions",)

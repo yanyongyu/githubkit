@@ -9,35 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class PageDeploymentType(TypedDict):
-    """GitHub Pages
 
-    The GitHub Pages deployment status.
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
+
+    Review Dismissed Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["review_dismissed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class PageDeploymentTypeForResponse(TypedDict):
-    """GitHub Pages
+class ReviewDismissedIssueEventTypeForResponse(TypedDict):
+    """Review Dismissed Issue Event
 
-    The GitHub Pages deployment status.
+    Review Dismissed Issue Event
     """
 
-    id: Union[int, str]
-    status_url: str
-    page_url: str
-    preview_url: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_dismissed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
+
+
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
+
+
+class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "PageDeploymentType",
-    "PageDeploymentTypeForResponse",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventTypeForResponse",
 )

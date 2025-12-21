@@ -14,43 +14,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
 
-    body: Union[str, None]
-    columns_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
     created_at: _dt.datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
+    discussion_id: int
     html_url: str
     id: int
-    name: str
     node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
+    parent_id: Union[int, None]
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
+    repository_url: str
     updated_at: _dt.datetime
-    url: str
+    user: Union[WebhooksAnswerPropUserType, None]
 
 
-class WebhooksProjectTypeForResponse(TypedDict):
-    """Project"""
+class WebhooksAnswerTypeForResponse(TypedDict):
+    """WebhooksAnswer"""
 
-    body: Union[str, None]
-    columns_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
     created_at: str
-    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
+    discussion_id: int
     html_url: str
     id: int
-    name: str
     node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
+    parent_id: Union[int, None]
+    reactions: NotRequired[WebhooksAnswerPropReactionsTypeForResponse]
+    repository_url: str
     updated_at: str
+    user: Union[WebhooksAnswerPropUserTypeForResponse, None]
+
+
+class WebhooksAnswerPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksAnswerPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +125,7 @@ class WebhooksProjectPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
+class WebhooksAnswerPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +153,10 @@ class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectPropCreatorTypeForResponse",
-    "WebhooksProjectType",
-    "WebhooksProjectTypeForResponse",
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropReactionsTypeForResponse",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerPropUserTypeForResponse",
+    "WebhooksAnswerType",
+    "WebhooksAnswerTypeForResponse",
 )

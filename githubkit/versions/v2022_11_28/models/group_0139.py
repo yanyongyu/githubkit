@@ -14,35 +14,22 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestSimplePropHead(GitHubModel):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestSimplePropBase(GitHubModel):
-    """PullRequestSimplePropBase"""
+class ApiInsightsSubjectStatsItems(GitHubModel):
+    """ApiInsightsSubjectStatsItems"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    subject_type: Missing[str] = Field(default=UNSET)
+    subject_name: Missing[str] = Field(default=UNSET)
+    subject_id: Missing[int] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestSimplePropHead)
-model_rebuild(PullRequestSimplePropBase)
+model_rebuild(ApiInsightsSubjectStatsItems)
 
-__all__ = (
-    "PullRequestSimplePropBase",
-    "PullRequestSimplePropHead",
-)
+__all__ = ("ApiInsightsSubjectStatsItems",)

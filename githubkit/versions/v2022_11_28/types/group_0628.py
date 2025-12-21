@@ -9,160 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0043 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0045 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0046 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0630 import (
-    WebhookIssuesClosedPropIssueAllof0PropMilestoneType,
-    WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse,
-)
-from .group_0632 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
-)
-from .group_0633 import (
-    WebhookIssuesClosedPropIssueAllof0PropPullRequestType,
-    WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse,
-)
 
+class WebhookIssueCommentDeletedPropIssueAllof1Type(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1"""
 
-class WebhookIssuesClosedPropIssueAllof0Type(TypedDict):
-    """Issue
-
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
-    """
-
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType, None]
+    assignees: NotRequired[
+        list[
+            Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType, None]
+        ]
     ]
-    assignee: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof0PropAssigneeType, None]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: list[WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType]
+    labels_url: NotRequired[str]
+    locked: bool
+    milestone: NotRequired[
+        Union[WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType, None]
     ]
-    assignees: list[
-        Union[WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsType, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
-    created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[list[WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType]]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhookIssuesClosedPropIssueAllof0PropMilestoneType, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType, None]
-    ]
-    pull_request: NotRequired[WebhookIssuesClosedPropIssueAllof0PropPullRequestType]
-    reactions: WebhookIssuesClosedPropIssueAllof0PropReactionsType
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhookIssuesClosedPropIssueAllof0PropUserType, None]
-
-
-class WebhookIssuesClosedPropIssueAllof0TypeForResponse(TypedDict):
-    """Issue
-
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
-    """
-
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[
-        Union[WebhookIssuesClosedPropIssueAllof0PropAssigneeTypeForResponse, None]
-    ]
-    assignees: list[
-        Union[WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsTypeForResponse, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
-    created_at: str
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[
-        list[WebhookIssuesClosedPropIssueAllof0PropLabelsItemsTypeForResponse]
-    ]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[
-        WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse, None
-    ]
-    node_id: str
-    number: int
+    node_id: NotRequired[str]
+    number: NotRequired[int]
     performed_via_github_app: NotRequired[
         Union[
-            WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+            WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType, None
+        ]
+    ]
+    reactions: NotRequired[WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["open", "closed"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssueCommentDeletedPropIssueAllof1PropUserType]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1TypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: Union[
+        WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeTypeForResponse, None
+    ]
+    assignees: NotRequired[
+        list[
+            Union[
+                WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsTypeForResponse,
+                None,
+            ]
+        ]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: list[
+        WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsTypeForResponse
+    ]
+    labels_url: NotRequired[str]
+    locked: bool
+    milestone: NotRequired[
+        Union[
+            WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneTypeForResponse, None
+        ]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
             None,
         ]
     ]
-    pull_request: NotRequired[
-        WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse
+    reactions: NotRequired[
+        WebhookIssueCommentDeletedPropIssueAllof1PropReactionsTypeForResponse
     ]
-    reactions: WebhookIssuesClosedPropIssueAllof0PropReactionsTypeForResponse
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
+    repository_url: NotRequired[str]
+    state: Literal["open", "closed"]
     timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    updated_at: str
-    url: str
-    user: Union[WebhookIssuesClosedPropIssueAllof0PropUserTypeForResponse, None]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssueCommentDeletedPropIssueAllof1PropUserTypeForResponse]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropAssigneeType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -189,7 +136,7 @@ class WebhookIssuesClosedPropIssueAllof0PropAssigneeType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -216,61 +163,17 @@ class WebhookIssuesClosedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems"""
 
 
-class WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems"""
 
 
-class WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType(TypedDict):
     """Label"""
 
     color: str
@@ -282,7 +185,9 @@ class WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType(TypedDict):
     url: str
 
 
-class WebhookIssuesClosedPropIssueAllof0PropLabelsItemsTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsTypeForResponse(
+    TypedDict
+):
     """Label"""
 
     color: str
@@ -294,51 +199,66 @@ class WebhookIssuesClosedPropIssueAllof0PropLabelsItemsTypeForResponse(TypedDict
     url: str
 
 
-class WebhookIssuesClosedPropIssueAllof0PropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+class WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropMilestone"""
 
 
-class WebhookIssuesClosedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+class WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropMilestone"""
 
 
-class WebhookIssuesClosedPropIssueAllof0PropUserType(TypedDict):
-    """User"""
+class WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropUser"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -346,26 +266,23 @@ class WebhookIssuesClosedPropIssueAllof0PropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[str]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueAllof0PropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssueCommentDeletedPropIssueAllof1PropUserTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropUser"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -373,22 +290,26 @@ class WebhookIssuesClosedPropIssueAllof0PropUserTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[str]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropAssigneeType",
-    "WebhookIssuesClosedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssuesClosedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0PropReactionsType",
-    "WebhookIssuesClosedPropIssueAllof0PropReactionsTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0PropUserType",
-    "WebhookIssuesClosedPropIssueAllof0PropUserTypeForResponse",
-    "WebhookIssuesClosedPropIssueAllof0Type",
-    "WebhookIssuesClosedPropIssueAllof0TypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropReactionsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropUserType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropUserTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof1Type",
+    "WebhookIssueCommentDeletedPropIssueAllof1TypeForResponse",
 )

@@ -9,42 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0105 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCheckRunRerequestedFormEncodedType(TypedDict):
+    """Check Run Re-Requested Event
 
-    action: Literal["updated"]
-    definition: CustomPropertyType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    The check_run.rerequested webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """custom property updated event"""
+class WebhookCheckRunRerequestedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Re-Requested Event
 
-    action: Literal["updated"]
-    definition: CustomPropertyTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    The check_run.rerequested webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookCustomPropertyUpdatedType",
-    "WebhookCustomPropertyUpdatedTypeForResponse",
+    "WebhookCheckRunRerequestedFormEncodedType",
+    "WebhookCheckRunRerequestedFormEncodedTypeForResponse",
 )

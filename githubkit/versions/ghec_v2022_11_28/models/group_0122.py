@@ -16,25 +16,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0111 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
+from .group_0113 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
 )
-from .group_0113 import RepositoryRulesetConditionsPropRefName
-from .group_0117 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-)
+from .group_0115 import RepositoryRulesetConditionsPropRefName
 
 
-class EnterpriseRulesetConditionsOneof2(GitHubModel):
-    """organization_id_and_repository_name
+class EnterpriseRulesetConditionsOneof0(GitHubModel):
+    """organization_name_and_repository_name
 
-    Conditions to target organizations by id and all repositories
+    Conditions to target organizations by name and all repositories
     """
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
     repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof2)
+model_rebuild(EnterpriseRulesetConditionsOneof0)
 
-__all__ = ("EnterpriseRulesetConditionsOneof2",)
+__all__ = ("EnterpriseRulesetConditionsOneof0",)

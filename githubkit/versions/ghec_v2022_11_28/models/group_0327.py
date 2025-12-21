@@ -9,41 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0323 import GitUser
-from .group_0324 import Verification
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    A commit.
+    """
+
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: _dt.datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
+    )
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
+    )
 
 
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-    sha: str = Field()
-    url: str = Field()
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

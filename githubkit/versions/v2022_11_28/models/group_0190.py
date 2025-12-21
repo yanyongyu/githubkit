@@ -17,22 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0191 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0191 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleFileExtensionRestriction(GitHubModel):
-    """file_extension_restriction
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleFileExtensionRestriction)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleFileExtensionRestriction",)
+__all__ = ("RepositoryRuleMergeQueue",)

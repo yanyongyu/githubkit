@@ -15,15 +15,33 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
 
-    access_level: Literal["none", "user", "organization"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization."
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("RepositoryAdvisoryCredit",)

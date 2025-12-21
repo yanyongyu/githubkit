@@ -16,43 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Timeline Unassigned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unassigned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    label: LabeledIssueEventPropLabelType
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class LabeledIssueEventTypeForResponse(TypedDict):
+    """Labeled Issue Event
 
-    Timeline Unassigned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    label: LabeledIssueEventPropLabelTypeForResponse
+
+
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
+
+
+class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """LabeledIssueEventPropLabel"""
+
+    name: str
+    color: str
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "LabeledIssueEventPropLabelType",
+    "LabeledIssueEventPropLabelTypeForResponse",
+    "LabeledIssueEventType",
+    "LabeledIssueEventTypeForResponse",
 )

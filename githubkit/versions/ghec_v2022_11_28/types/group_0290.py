@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class LinkType(TypedDict):
+    """Link
 
-    Team Membership
+    Hypermedia Link
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    href: str
 
 
-class TeamMembershipTypeForResponse(TypedDict):
-    """Team Membership
+class LinkTypeForResponse(TypedDict):
+    """Link
 
-    Team Membership
+    Hypermedia Link
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    href: str
 
 
 __all__ = (
-    "TeamMembershipType",
-    "TeamMembershipTypeForResponse",
+    "LinkType",
+    "LinkTypeForResponse",
 )

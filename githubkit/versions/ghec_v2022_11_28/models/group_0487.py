@@ -9,35 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0145 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class Tag(GitHubModel):
-    """Tag
+class RepositoryRuleDetailedOneof13(GitHubModel):
+    """RepositoryRuleDetailedOneof13"""
 
-    Tag
-    """
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
 
+model_rebuild(RepositoryRuleDetailedOneof13)
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
-
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("RepositoryRuleDetailedOneof13",)

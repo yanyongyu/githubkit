@@ -13,46 +13,54 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0042 import OrganizationSimple
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
 
-    Custom property defined on an organization
+class OrgMembership(GitHubModel):
+    """Org Membership
+
+    Org Membership
     """
 
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
+    url: str = Field()
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    )
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
+    )
+    direct_membership: Missing[bool] = Field(
         default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+        description="Whether the user has direct membership in the organization.",
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
-    )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
+    )
+    user: Union[None, SimpleUser] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-model_rebuild(CustomProperty)
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
 
-__all__ = ("CustomProperty",)
+    can_create_repository: bool = Field()
+
+
+model_rebuild(OrgMembership)
+model_rebuild(OrgMembershipPropPermissions)
+
+__all__ = (
+    "OrgMembership",
+    "OrgMembershipPropPermissions",
+)

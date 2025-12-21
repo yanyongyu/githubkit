@@ -1126,13 +1126,11 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        logical_environment: Missing[str] = UNSET,
+        logical_environment: str,
         physical_environment: Missing[str] = UNSET,
-        deployments: Missing[
-            list[
-                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
-            ]
-        ] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        ],
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
@@ -1158,6 +1156,9 @@ class OrgsClient:
         POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
 
         Set deployment records for a given cluster.
+        If proposed records in the 'deployments' field have identical 'cluster', 'logical_environment',
+        'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
+        If no existing records match, new records will be created.
 
         See also: https://docs.github.com/rest/orgs/artifact-metadata#set-cluster-deployment-records
         """
@@ -1214,13 +1215,11 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        logical_environment: Missing[str] = UNSET,
+        logical_environment: str,
         physical_environment: Missing[str] = UNSET,
-        deployments: Missing[
-            list[
-                OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
-            ]
-        ] = UNSET,
+        deployments: list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        ],
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
@@ -1246,6 +1245,9 @@ class OrgsClient:
         POST /orgs/{org}/artifacts/metadata/deployment-record/cluster/{cluster}
 
         Set deployment records for a given cluster.
+        If proposed records in the 'deployments' field have identical 'cluster', 'logical_environment',
+        'physical_environment', and 'deployment_name' values as existing records, the existing records will be updated.
+        If no existing records match, new records will be created.
 
         See also: https://docs.github.com/rest/orgs/artifact-metadata#set-cluster-deployment-records
         """
@@ -8787,7 +8789,9 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -8868,7 +8872,9 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        value_type: Literal["string", "single_select", "multi_select", "true_false"],
+        value_type: Literal[
+            "string", "single_select", "multi_select", "true_false", "url"
+        ],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,

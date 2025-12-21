@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
-class CodeScanningAnalysisToolTypeForResponse(TypedDict):
-    """CodeScanningAnalysisTool"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAnalysisToolTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

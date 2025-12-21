@@ -9,52 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0232 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
+    MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+)
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
 
-    Credential Authorization
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
+
+    Marketplace Purchase
     """
 
+    url: str
+    type: str
+    id: int
     login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: _dt.datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[_dt.datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class CredentialAuthorizationTypeForResponse(TypedDict):
-    """Credential Authorization
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
 
-    Credential Authorization
+    Marketplace Purchase
     """
 
+    url: str
+    type: str
+    id: int
     login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: str
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[str, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "CredentialAuthorizationType",
-    "CredentialAuthorizationTypeForResponse",
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
 )

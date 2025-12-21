@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Blob(GitHubModel):
-    """Blob
+class ContentFile(GitHubModel):
+    """Content File
 
-    Blob
+    Content File
     """
 
-    content: str = Field()
+    type: Literal["file"] = Field()
     encoding: str = Field()
-    url: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: str = Field()
     sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Blob)
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
-__all__ = ("Blob",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
+
+__all__ = (
+    "ContentFile",
+    "ContentFilePropLinks",
+)

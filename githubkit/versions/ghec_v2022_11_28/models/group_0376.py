@@ -9,41 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0088 import DependabotAlertPackage
 
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
-
-    Details for the vulnerable dependency.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
-        Field(
-            default=UNSET,
-            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-        )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

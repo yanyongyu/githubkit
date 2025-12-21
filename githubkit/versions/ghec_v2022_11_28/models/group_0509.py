@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
+class Tag(GitHubModel):
+    """Tag
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
-    )
+    Tag
+    """
 
-
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
 
 __all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
+    "Tag",
+    "TagPropCommit",
 )

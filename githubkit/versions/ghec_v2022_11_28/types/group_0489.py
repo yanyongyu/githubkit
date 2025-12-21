@@ -9,28 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0149 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
+)
 
 
-class TopicType(TypedDict):
-    """Topic
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    A topic aggregates entities that are related to a subject.
-    """
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
-    names: list[str]
 
+class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
-
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: list[str]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "RepositoryRuleDetailedOneof15Type",
+    "RepositoryRuleDetailedOneof15TypeForResponse",
 )

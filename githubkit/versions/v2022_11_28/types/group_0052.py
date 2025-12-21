@@ -9,130 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    Gist History
-    """
-
-    user: NotRequired[Union[None, SimpleUserType]]
-    version: NotRequired[str]
-    committed_at: NotRequired[_dt.datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
-    url: NotRequired[str]
-
-
-class GistHistoryTypeForResponse(TypedDict):
-    """Gist History
-
-    Gist History
-    """
-
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    version: NotRequired[str]
-    committed_at: NotRequired[str]
-    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
-    url: NotRequired[str]
-
-
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
+    id: int
+    number: int
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
 
-    Gist
-    """
-
+    id: int
+    number: int
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
 
 
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoType
 
 
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHead"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+
+
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
 
 
 __all__ = (
-    "GistHistoryPropChangeStatusType",
-    "GistHistoryPropChangeStatusTypeForResponse",
-    "GistHistoryType",
-    "GistHistoryTypeForResponse",
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "PullRequestMinimalPropBasePropRepoType",
+    "PullRequestMinimalPropBasePropRepoTypeForResponse",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBaseTypeForResponse",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

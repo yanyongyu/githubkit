@@ -9,25 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    Custom property name and associated value
+    """
+
+    property_name: str
+    value: Union[str, list[str], None]
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class CustomPropertyValueTypeForResponse(TypedDict):
+    """Custom Property Value
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    Custom property name and associated value
+    """
+
+    property_name: str
+    value: Union[str, list[str], None]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "CustomPropertyValueType",
+    "CustomPropertyValueTypeForResponse",
 )

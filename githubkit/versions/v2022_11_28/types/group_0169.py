@@ -9,35 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Custom property defined on an organization
+    """
+
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class CustomPropertyTypeForResponse(TypedDict):
+    """Organization Custom Property
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Custom property defined on an organization
+    """
+
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueuePropParametersType",
-    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
+    "CustomPropertyType",
+    "CustomPropertyTypeForResponse",
 )

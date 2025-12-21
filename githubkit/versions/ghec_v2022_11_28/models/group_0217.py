@@ -12,22 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0218 import CommitCommentEventPropComment
 
 
-class ActionsCacheRetentionLimitForOrganization(GitHubModel):
-    """Actions cache retention limit for an organization
+class CommitCommentEvent(GitHubModel):
+    """CommitCommentEvent"""
 
-    GitHub Actions cache retention policy for an organization.
-    """
-
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
-    )
+    action: str = Field()
+    comment: CommitCommentEventPropComment = Field()
 
 
-model_rebuild(ActionsCacheRetentionLimitForOrganization)
+model_rebuild(CommitCommentEvent)
 
-__all__ = ("ActionsCacheRetentionLimitForOrganization",)
+__all__ = ("CommitCommentEvent",)

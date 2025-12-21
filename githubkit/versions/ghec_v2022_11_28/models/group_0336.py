@@ -15,42 +15,58 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0213 import MinimalRepository
 
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
-
-    Check suite configuration preferences for a repository.
+    Workflow Usage
     """
 
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    billable: WorkflowUsagePropBillable = Field()
+
+
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
+    )
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
-    ] = Field(default=UNSET)
+    total_ms: Missing[int] = Field(default=UNSET)
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
 
-    app_id: int = Field()
-    setting: bool = Field()
+    total_ms: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
 
 __all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropWindows",
 )

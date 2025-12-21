@@ -9,82 +9,135 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class BillingUsageSummaryReportUser(GitHubModel):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriod = Field(alias="timePeriod")
-    user: str = Field(description="The unique identifier of the user.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0045 import Milestone
+from .group_0046 import IssueType
+from .group_0047 import ReactionRollup
+from .group_0048 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0049 import IssueFieldValue
+from .group_0448 import SearchResultTextMatchesItems
 
 
-class BillingUsageSummaryReportUserPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    Issue Search Result Item
+    """
+
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
     )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET, title="Issue Type", description="The type of issue."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class BillingUsageSummaryReportUserPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(BillingUsageSummaryReportUser)
-model_rebuild(BillingUsageSummaryReportUserPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportUserPropUsageItemsItems)
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[IssueSearchResultItem] = Field()
+
+
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
-    "BillingUsageSummaryReportUser",
-    "BillingUsageSummaryReportUserPropTimePeriod",
-    "BillingUsageSummaryReportUserPropUsageItemsItems",
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
 )

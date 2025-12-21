@@ -11,20 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
-
-    required_deployment_environments: list[str]
+from .group_0090 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
 
-    required_deployment_environments: list[str]
+    List of custom property values for a repository
+    """
+
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
+
+
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
+    """
+
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsPropParametersType",
-    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

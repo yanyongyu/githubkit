@@ -10,40 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class Artifact(GitHubModel):
+    """Artifact
 
-class Activity(GitHubModel):
-    """Activity
-
-    Activity
+    An artifact
     """
 
     id: int = Field()
     node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    name: str = Field(description="The name of the artifact.")
+    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
+    url: str = Field()
+    archive_download_url: str = Field()
+    expired: bool = Field(description="Whether or not the artifact has expired.")
+    created_at: Union[_dt.datetime, None] = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    digest: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
     )
-    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-model_rebuild(Activity)
+class ArtifactPropWorkflowRun(GitHubModel):
+    """ArtifactPropWorkflowRun"""
 
-__all__ = ("Activity",)
+    id: Missing[int] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    head_branch: Missing[str] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(Artifact)
+model_rebuild(ArtifactPropWorkflowRun)
+
+__all__ = (
+    "Artifact",
+    "ArtifactPropWorkflowRun",
+)

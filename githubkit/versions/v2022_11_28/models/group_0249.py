@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,23 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class ActionsCacheRetentionLimitForRepository(GitHubModel):
+    """Actions cache retention limit for a repository
 
-    An autolink reference.
+    GitHub Actions cache retention policy for a repository.
     """
 
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum number of days to keep caches in this repository.",
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(Autolink)
+model_rebuild(ActionsCacheRetentionLimitForRepository)
 
-__all__ = ("Autolink",)
+__all__ = ("ActionsCacheRetentionLimitForRepository",)

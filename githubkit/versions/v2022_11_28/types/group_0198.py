@@ -10,50 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0199 import (
+    RepositoryRuleCommitMessagePatternPropParametersType,
+    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
-
-
-class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
-
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
-
-
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
 
-class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
-    """CodeScanningTool
+class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
+    """commit_message_pattern
 
-    A tool that must provide code scanning results for this rule to pass.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
     ]
-    tool: str
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
-    "RepositoryRuleParamsCodeScanningToolType",
-    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
+    "RepositoryRuleCommitMessagePatternType",
+    "RepositoryRuleCommitMessagePatternTypeForResponse",
 )

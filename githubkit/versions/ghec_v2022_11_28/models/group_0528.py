@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0020 import Repository
-
-
-class StarredRepository(GitHubModel):
-    """Starred Repository
-
-    Starred Repository
-    """
-
-    starred_at: _dt.datetime = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(StarredRepository)
+class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-__all__ = ("StarredRepository",)
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+
+__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)

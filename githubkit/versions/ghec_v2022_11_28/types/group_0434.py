@@ -9,60 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Page Build
+    Demilestoned Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
-
-    Page Build
-    """
-
-    url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
+    actor: SimpleUserType
+    event: Literal["demilestoned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class DemilestonedIssueEventTypeForResponse(TypedDict):
+    """Demilestoned Issue Event
 
-    message: Union[str, None]
+    Demilestoned Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["demilestoned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
 
 
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
-    message: Union[str, None]
+    title: str
+
+
+class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventPropMilestoneTypeForResponse",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventTypeForResponse",
 )

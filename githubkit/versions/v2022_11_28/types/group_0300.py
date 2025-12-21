@@ -9,121 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0299 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class ContentTreeType(TypedDict):
-    """Content Tree
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Content Tree
-    """
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksType
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
 
-class ContentTreeTypeForResponse(TypedDict):
-    """Content Tree
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Content Tree
-    """
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksTypeForResponse
-
-
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropLinksTypeForResponse(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
-
-
-class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropEntriesItemsTypeForResponse",
-    "ContentTreePropLinksType",
-    "ContentTreePropLinksTypeForResponse",
-    "ContentTreeType",
-    "ContentTreeTypeForResponse",
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
 )

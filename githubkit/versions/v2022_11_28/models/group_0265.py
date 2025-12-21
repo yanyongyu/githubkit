@@ -9,49 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
 
+class WorkflowRunUsage(GitHubModel):
+    """Workflow Run Usage
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Workflow Run Usage
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    billable: WorkflowRunUsagePropBillable = Field()
+    run_duration_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillable(GitHubModel):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-model_rebuild(DeploymentSimple)
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-__all__ = ("DeploymentSimple",)
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+model_rebuild(WorkflowRunUsage)
+model_rebuild(WorkflowRunUsagePropBillable)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropMacos)
+model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropWindows)
+model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+
+__all__ = (
+    "WorkflowRunUsage",
+    "WorkflowRunUsagePropBillable",
+    "WorkflowRunUsagePropBillablePropMacos",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropWindows",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+)

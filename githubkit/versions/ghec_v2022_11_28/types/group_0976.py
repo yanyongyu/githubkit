@@ -9,24 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
+from .group_0009 import (
+    IntegrationPropPermissionsType,
+    IntegrationPropPermissionsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    selected_organization_ids: list[int]
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    client_id: str
+    owner: Union[SimpleUserType, EnterpriseType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    permissions: IntegrationPropPermissionsType
+    events: list[str]
+    installations_count: NotRequired[int]
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class AppManifestsCodeConversionsPostResponse201TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    selected_organization_ids: list[int]
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    client_id: str
+    owner: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    permissions: IntegrationPropPermissionsTypeForResponse
+    events: list[str]
+    installations_count: NotRequired[int]
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
+    "AppManifestsCodeConversionsPostResponse201Type",
+    "AppManifestsCodeConversionsPostResponse201TypeForResponse",
 )

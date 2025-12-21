@@ -11,28 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
-
-    Gitignore Template
-    """
-
-    name: str
-    source: str
+from .group_0044 import DiscussionType, DiscussionTypeForResponse
 
 
-class GitignoreTemplateTypeForResponse(TypedDict):
-    """Gitignore Template
+class DiscussionEventType(TypedDict):
+    """DiscussionEvent"""
 
-    Gitignore Template
-    """
+    action: str
+    discussion: DiscussionType
 
-    name: str
-    source: str
+
+class DiscussionEventTypeForResponse(TypedDict):
+    """DiscussionEvent"""
+
+    action: str
+    discussion: DiscussionTypeForResponse
 
 
 __all__ = (
-    "GitignoreTemplateType",
-    "GitignoreTemplateTypeForResponse",
+    "DiscussionEventType",
+    "DiscussionEventTypeForResponse",
 )

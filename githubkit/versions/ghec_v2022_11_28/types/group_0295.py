@@ -13,70 +13,40 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ArtifactType(TypedDict):
-    """Artifact
 
-    An artifact
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
+
+    A draft issue in a project
     """
 
-    id: int
+    id: float
     node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[_dt.datetime, None]
-    expires_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ArtifactTypeForResponse(TypedDict):
-    """Artifact
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
 
-    An artifact
+    A draft issue in a project
     """
 
-    id: int
+    id: float
     node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[str, None]
-    expires_at: Union[str, None]
-    updated_at: Union[str, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
-
-
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
-
-
-class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
-    """ArtifactPropWorkflowRun"""
-
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactPropWorkflowRunTypeForResponse",
-    "ArtifactType",
-    "ArtifactTypeForResponse",
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
 )

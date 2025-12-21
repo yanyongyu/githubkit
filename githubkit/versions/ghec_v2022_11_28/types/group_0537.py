@@ -10,351 +10,252 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0536 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0531 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class ExemptionRequestType(TypedDict):
-    """Exemption Request
+class RepoSearchResultItemType(TypedDict):
+    """Repo Search Result Item
 
-    A request from a user to be exempted from a set of rules.
+    Repo Search Result Item
     """
 
-    id: NotRequired[int]
-    number: NotRequired[Union[int, None]]
-    repository_id: NotRequired[int]
-    requester_id: NotRequired[int]
-    requester_login: NotRequired[str]
-    request_type: NotRequired[
-        Literal[
-            "push_ruleset_bypass",
-            "secret_scanning",
-            "secret_scanning_closure",
-            "code_scanning_alert_dismissal",
-        ]
-    ]
-    exemption_request_data: NotRequired[
-        Union[
-            ExemptionRequestPushRulesetBypassType,
-            ExemptionRequestSecretScanningType,
-            DismissalRequestSecretScanningType,
-            DismissalRequestCodeScanningType,
-        ]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
-    requester_comment: NotRequired[Union[str, None]]
-    metadata: NotRequired[
-        Union[
-            ExemptionRequestSecretScanningMetadataType,
-            DismissalRequestSecretScanningMetadataType,
-            DismissalRequestCodeScanningMetadataType,
-            None,
-        ]
-    ]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[ExemptionResponseType], None]]
-    html_url: NotRequired[str]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: Union[None, SimpleUserType]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    pushed_at: _dt.datetime
+    homepage: Union[str, None]
+    size: int
+    stargazers_count: int
+    watchers_count: int
+    language: Union[str, None]
+    forks_count: int
+    open_issues_count: int
+    master_branch: NotRequired[str]
+    default_branch: str
+    score: float
+    forks_url: str
+    keys_url: str
+    collaborators_url: str
+    teams_url: str
+    hooks_url: str
+    issue_events_url: str
+    events_url: str
+    assignees_url: str
+    branches_url: str
+    tags_url: str
+    blobs_url: str
+    git_tags_url: str
+    git_refs_url: str
+    trees_url: str
+    statuses_url: str
+    languages_url: str
+    stargazers_url: str
+    contributors_url: str
+    subscribers_url: str
+    subscription_url: str
+    commits_url: str
+    git_commits_url: str
+    comments_url: str
+    issue_comment_url: str
+    contents_url: str
+    compare_url: str
+    merges_url: str
+    archive_url: str
+    downloads_url: str
+    issues_url: str
+    pulls_url: str
+    milestones_url: str
+    notifications_url: str
+    labels_url: str
+    releases_url: str
+    deployments_url: str
+    git_url: str
+    ssh_url: str
+    clone_url: str
+    svn_url: str
+    forks: int
+    open_issues: int
+    watchers: int
+    topics: NotRequired[list[str]]
+    mirror_url: Union[str, None]
+    has_issues: bool
+    has_projects: bool
+    has_pages: bool
+    has_wiki: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    license_: Union[None, LicenseSimpleType]
+    permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
 
 
-class ExemptionRequestTypeForResponse(TypedDict):
-    """Exemption Request
+class RepoSearchResultItemTypeForResponse(TypedDict):
+    """Repo Search Result Item
 
-    A request from a user to be exempted from a set of rules.
+    Repo Search Result Item
     """
 
-    id: NotRequired[int]
-    number: NotRequired[Union[int, None]]
-    repository_id: NotRequired[int]
-    requester_id: NotRequired[int]
-    requester_login: NotRequired[str]
-    request_type: NotRequired[
-        Literal[
-            "push_ruleset_bypass",
-            "secret_scanning",
-            "secret_scanning_closure",
-            "code_scanning_alert_dismissal",
-        ]
-    ]
-    exemption_request_data: NotRequired[
-        Union[
-            ExemptionRequestPushRulesetBypassTypeForResponse,
-            ExemptionRequestSecretScanningTypeForResponse,
-            DismissalRequestSecretScanningTypeForResponse,
-            DismissalRequestCodeScanningTypeForResponse,
-        ]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
-    requester_comment: NotRequired[Union[str, None]]
-    metadata: NotRequired[
-        Union[
-            ExemptionRequestSecretScanningMetadataTypeForResponse,
-            DismissalRequestSecretScanningMetadataTypeForResponse,
-            DismissalRequestCodeScanningMetadataTypeForResponse,
-            None,
-        ]
-    ]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[ExemptionResponseTypeForResponse], None]]
-    html_url: NotRequired[str]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: Union[None, SimpleUserTypeForResponse]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    created_at: str
+    updated_at: str
+    pushed_at: str
+    homepage: Union[str, None]
+    size: int
+    stargazers_count: int
+    watchers_count: int
+    language: Union[str, None]
+    forks_count: int
+    open_issues_count: int
+    master_branch: NotRequired[str]
+    default_branch: str
+    score: float
+    forks_url: str
+    keys_url: str
+    collaborators_url: str
+    teams_url: str
+    hooks_url: str
+    issue_events_url: str
+    events_url: str
+    assignees_url: str
+    branches_url: str
+    tags_url: str
+    blobs_url: str
+    git_tags_url: str
+    git_refs_url: str
+    trees_url: str
+    statuses_url: str
+    languages_url: str
+    stargazers_url: str
+    contributors_url: str
+    subscribers_url: str
+    subscription_url: str
+    commits_url: str
+    git_commits_url: str
+    comments_url: str
+    issue_comment_url: str
+    contents_url: str
+    compare_url: str
+    merges_url: str
+    archive_url: str
+    downloads_url: str
+    issues_url: str
+    pulls_url: str
+    milestones_url: str
+    notifications_url: str
+    labels_url: str
+    releases_url: str
+    deployments_url: str
+    git_url: str
+    ssh_url: str
+    clone_url: str
+    svn_url: str
+    forks: int
+    open_issues: int
+    watchers: int
+    topics: NotRequired[list[str]]
+    mirror_url: Union[str, None]
+    has_issues: bool
+    has_projects: bool
+    has_pages: bool
+    has_wiki: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    permissions: NotRequired[RepoSearchResultItemPropPermissionsTypeForResponse]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_merge_commit: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+
+
+class RepoSearchResultItemPropPermissionsType(TypedDict):
+    """RepoSearchResultItemPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+class RepoSearchResultItemPropPermissionsTypeForResponse(TypedDict):
+    """RepoSearchResultItemPropPermissions"""
 
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
 
-class ExemptionRequestSecretScanningMetadataType(TypedDict):
-    """Secret Scanning Push Protection Exemption Request Metadata
 
-    Metadata for a secret scanning push protection exemption request.
-    """
+class SearchRepositoriesGetResponse200Type(TypedDict):
+    """SearchRepositoriesGetResponse200"""
 
-    label: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
+    total_count: int
+    incomplete_results: bool
+    items: list[RepoSearchResultItemType]
 
 
-class ExemptionRequestSecretScanningMetadataTypeForResponse(TypedDict):
-    """Secret Scanning Push Protection Exemption Request Metadata
+class SearchRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """SearchRepositoriesGetResponse200"""
 
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
-
-
-class DismissalRequestSecretScanningMetadataType(TypedDict):
-    """Secret scanning alert dismissal request metadata
-
-    Metadata for a secret scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-
-
-class DismissalRequestSecretScanningMetadataTypeForResponse(TypedDict):
-    """Secret scanning alert dismissal request metadata
-
-    Metadata for a secret scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-
-
-class DismissalRequestCodeScanningMetadataType(TypedDict):
-    """Code scanning alert dismissal request metadata
-
-    Metadata for a code scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
-
-
-class DismissalRequestCodeScanningMetadataTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request metadata
-
-    Metadata for a code scanning alert dismissal request.
-    """
-
-    alert_title: NotRequired[str]
-    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
-
-
-class ExemptionRequestPushRulesetBypassType(TypedDict):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
-
-
-class ExemptionRequestPushRulesetBypassTypeForResponse(TypedDict):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[
-        list[ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse]
-    ]
-
-
-class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse(TypedDict):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class DismissalRequestSecretScanningType(TypedDict):
-    """Secret scanning alert dismissal request data
-
-    Secret scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["secret_scanning_closure"]]
-    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsType]]
-
-
-class DismissalRequestSecretScanningTypeForResponse(TypedDict):
-    """Secret scanning alert dismissal request data
-
-    Secret scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["secret_scanning_closure"]]
-    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsTypeForResponse]]
-
-
-class DismissalRequestSecretScanningPropDataItemsType(TypedDict):
-    """DismissalRequestSecretScanningPropDataItems"""
-
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-    secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-
-
-class DismissalRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
-    """DismissalRequestSecretScanningPropDataItems"""
-
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
-    secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-
-
-class DismissalRequestCodeScanningType(TypedDict):
-    """Code scanning alert dismissal request data
-
-    Code scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
-    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsType]]
-
-
-class DismissalRequestCodeScanningTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request data
-
-    Code scanning alerts that have dismissal requests.
-    """
-
-    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
-    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsTypeForResponse]]
-
-
-class DismissalRequestCodeScanningPropDataItemsType(TypedDict):
-    """DismissalRequestCodeScanningPropDataItems"""
-
-    alert_number: NotRequired[str]
-
-
-class DismissalRequestCodeScanningPropDataItemsTypeForResponse(TypedDict):
-    """DismissalRequestCodeScanningPropDataItems"""
-
-    alert_number: NotRequired[str]
-
-
-class ExemptionRequestSecretScanningType(TypedDict):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
-
-
-class ExemptionRequestSecretScanningTypeForResponse(TypedDict):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsTypeForResponse]]
-
-
-class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: NotRequired[str]
-    locations: NotRequired[
-        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
-    ]
-
-
-class ExemptionRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: NotRequired[str]
-    locations: NotRequired[
-        list[
-            ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse
-        ]
-    ]
-
-
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
-
-    commit: NotRequired[str]
-    branch: NotRequired[str]
-    path: NotRequired[str]
-
-
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse(
-    TypedDict
-):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
-
-    commit: NotRequired[str]
-    branch: NotRequired[str]
-    path: NotRequired[str]
+    total_count: int
+    incomplete_results: bool
+    items: list[RepoSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "DismissalRequestCodeScanningMetadataType",
-    "DismissalRequestCodeScanningMetadataTypeForResponse",
-    "DismissalRequestCodeScanningPropDataItemsType",
-    "DismissalRequestCodeScanningPropDataItemsTypeForResponse",
-    "DismissalRequestCodeScanningType",
-    "DismissalRequestCodeScanningTypeForResponse",
-    "DismissalRequestSecretScanningMetadataType",
-    "DismissalRequestSecretScanningMetadataTypeForResponse",
-    "DismissalRequestSecretScanningPropDataItemsType",
-    "DismissalRequestSecretScanningPropDataItemsTypeForResponse",
-    "DismissalRequestSecretScanningType",
-    "DismissalRequestSecretScanningTypeForResponse",
-    "ExemptionRequestPushRulesetBypassPropDataItemsType",
-    "ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse",
-    "ExemptionRequestPushRulesetBypassType",
-    "ExemptionRequestPushRulesetBypassTypeForResponse",
-    "ExemptionRequestSecretScanningMetadataType",
-    "ExemptionRequestSecretScanningMetadataTypeForResponse",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse",
-    "ExemptionRequestSecretScanningPropDataItemsType",
-    "ExemptionRequestSecretScanningPropDataItemsTypeForResponse",
-    "ExemptionRequestSecretScanningType",
-    "ExemptionRequestSecretScanningTypeForResponse",
-    "ExemptionRequestType",
-    "ExemptionRequestTypeForResponse",
+    "RepoSearchResultItemPropPermissionsType",
+    "RepoSearchResultItemPropPermissionsTypeForResponse",
+    "RepoSearchResultItemType",
+    "RepoSearchResultItemTypeForResponse",
+    "SearchRepositoriesGetResponse200Type",
+    "SearchRepositoriesGetResponse200TypeForResponse",
 )

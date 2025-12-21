@@ -9,31 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class FeedType(TypedDict):
+    """Feed
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Feed
+    """
+
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksType
 
 
-class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
-    """ActionsOrganizationPermissions"""
+class FeedTypeForResponse(TypedDict):
+    """Feed
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Feed
+    """
+
+    timeline_url: str
+    user_url: str
+    current_user_public_url: NotRequired[str]
+    current_user_url: NotRequired[str]
+    current_user_actor_url: NotRequired[str]
+    current_user_organization_url: NotRequired[str]
+    current_user_organization_urls: NotRequired[list[str]]
+    security_advisories_url: NotRequired[str]
+    repository_discussions_url: NotRequired[str]
+    repository_discussions_category_url: NotRequired[str]
+    links: FeedPropLinksTypeForResponse
+
+
+class FeedPropLinksType(TypedDict):
+    """FeedPropLinks"""
+
+    timeline: LinkWithTypeType
+    user: LinkWithTypeType
+    security_advisories: NotRequired[LinkWithTypeType]
+    current_user: NotRequired[LinkWithTypeType]
+    current_user_public: NotRequired[LinkWithTypeType]
+    current_user_actor: NotRequired[LinkWithTypeType]
+    current_user_organization: NotRequired[LinkWithTypeType]
+    current_user_organizations: NotRequired[list[LinkWithTypeType]]
+    repository_discussions: NotRequired[LinkWithTypeType]
+    repository_discussions_category: NotRequired[LinkWithTypeType]
+
+
+class FeedPropLinksTypeForResponse(TypedDict):
+    """FeedPropLinks"""
+
+    timeline: LinkWithTypeTypeForResponse
+    user: LinkWithTypeTypeForResponse
+    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
+    current_user: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
+    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
+    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
+    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
+
+
+class LinkWithTypeType(TypedDict):
+    """Link With Type
+
+    Hypermedia Link with Type
+    """
+
+    href: str
+    type: str
+
+
+class LinkWithTypeTypeForResponse(TypedDict):
+    """Link With Type
+
+    Hypermedia Link with Type
+    """
+
+    href: str
+    type: str
 
 
 __all__ = (
-    "ActionsOrganizationPermissionsType",
-    "ActionsOrganizationPermissionsTypeForResponse",
+    "FeedPropLinksType",
+    "FeedPropLinksTypeForResponse",
+    "FeedType",
+    "FeedTypeForResponse",
+    "LinkWithTypeType",
+    "LinkWithTypeTypeForResponse",
 )

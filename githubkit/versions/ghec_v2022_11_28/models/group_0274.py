@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldSingleSelectOption(GitHubModel):
-    """ProjectsV2FieldSingleSelectOption"""
+class OrganizationCreateIssueType(GitHubModel):
+    """OrganizationCreateIssueType"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The display name of the option."
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
     )
     color: Missing[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ] = Field(default=UNSET, description="The color associated with the option.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the option."
-    )
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(ProjectsV2FieldSingleSelectOption)
+model_rebuild(OrganizationCreateIssueType)
 
-__all__ = ("ProjectsV2FieldSingleSelectOption",)
+__all__ = ("OrganizationCreateIssueType",)

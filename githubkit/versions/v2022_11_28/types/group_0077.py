@@ -12,21 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class GitignoreTemplateType(TypedDict):
+    """Gitignore Template
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Gitignore Template
+    """
+
+    name: str
+    source: str
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class GitignoreTemplateTypeForResponse(TypedDict):
+    """Gitignore Template
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Gitignore Template
+    """
+
+    name: str
+    source: str
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "GitignoreTemplateType",
+    "GitignoreTemplateTypeForResponse",
 )

@@ -17,27 +17,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0173 import RepositoryRulePullRequestPropParameters
+
+class PagesDeploymentStatus(GitHubModel):
+    """GitHub Pages deployment status"""
+
+    status: Missing[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ] = Field(default=UNSET, description="The current status of the deployment.")
 
 
-class RepositoryRuleDetailedOneof7(GitHubModel):
-    """RepositoryRuleDetailedOneof7"""
+model_rebuild(PagesDeploymentStatus)
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
-
-
-model_rebuild(RepositoryRuleDetailedOneof7)
-
-__all__ = ("RepositoryRuleDetailedOneof7",)
+__all__ = ("PagesDeploymentStatus",)

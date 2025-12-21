@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,59 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllBudgets(GitHubModel):
-    """GetAllBudgets"""
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
 
-    budgets: list[Budget] = Field(
-        description="Array of budget objects for the enterprise"
-    )
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more pages of results available (maps to hasNextPage from billing platform)",
-    )
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-class Budget(GitHubModel):
-    """Budget"""
+model_rebuild(ReleaseEventPropReleaseAllof1)
 
-    id: str = Field(description="The unique identifier for the budget")
-    budget_type: Literal["SkuPricing", "ProductPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_amount: int = Field(
-        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="The type of limit enforcement for the budget"
-    )
-    budget_scope: str = Field(
-        description="The scope of the budget (enterprise, organization, repository, cost center)"
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the entity for the budget (enterprise does not require a name).",
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_alerting: BudgetPropBudgetAlerting = Field()
-
-
-class BudgetPropBudgetAlerting(GitHubModel):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(GetAllBudgets)
-model_rebuild(Budget)
-model_rebuild(BudgetPropBudgetAlerting)
-
-__all__ = (
-    "Budget",
-    "BudgetPropBudgetAlerting",
-    "GetAllBudgets",
-)
+__all__ = ("ReleaseEventPropReleaseAllof1",)

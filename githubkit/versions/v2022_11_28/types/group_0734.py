@@ -9,79 +9,171 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0455 import (
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0488 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectCardMovedType(TypedDict):
+    """project_card moved event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["moved"]
+    changes: NotRequired[WebhookProjectCardMovedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhookProjectCardMovedPropProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectCardMovedTypeForResponse(TypedDict):
+    """project_card moved event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
+    action: Literal["moved"]
+    changes: NotRequired[WebhookProjectCardMovedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhookProjectCardMovedPropProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectCardMovedPropChangesType(TypedDict):
+    """WebhookProjectCardMovedPropChanges"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    column_id: WebhookProjectCardMovedPropChangesPropColumnIdType
+
+
+class WebhookProjectCardMovedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropChanges"""
+
+    column_id: WebhookProjectCardMovedPropChangesPropColumnIdTypeForResponse
+
+
+class WebhookProjectCardMovedPropChangesPropColumnIdType(TypedDict):
+    """WebhookProjectCardMovedPropChangesPropColumnId"""
+
+    from_: int
+
+
+class WebhookProjectCardMovedPropChangesPropColumnIdTypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropChangesPropColumnId"""
+
+    from_: int
+
+
+class WebhookProjectCardMovedPropProjectCardType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCard"""
+
+    after_id: Union[Union[int, None], None]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: _dt.datetime
+    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[Union[str, None], None]
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
+
+
+class WebhookProjectCardMovedPropProjectCardTypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropProjectCard"""
+
+    after_id: Union[Union[int, None], None]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: str
+    creator: Union[
+        WebhookProjectCardMovedPropProjectCardMergedCreatorTypeForResponse, None
     ]
+    id: int
+    node_id: str
+    note: Union[Union[str, None], None]
+    project_url: str
+    updated_at: str
+    url: str
 
 
-class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
 
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
-    ]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+class WebhookProjectCardMovedPropProjectCardMergedCreatorTypeForResponse(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemReorderedType",
-    "WebhookProjectsV2ItemReorderedTypeForResponse",
+    "WebhookProjectCardMovedPropChangesPropColumnIdType",
+    "WebhookProjectCardMovedPropChangesPropColumnIdTypeForResponse",
+    "WebhookProjectCardMovedPropChangesType",
+    "WebhookProjectCardMovedPropChangesTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardMergedCreatorType",
+    "WebhookProjectCardMovedPropProjectCardMergedCreatorTypeForResponse",
+    "WebhookProjectCardMovedPropProjectCardType",
+    "WebhookProjectCardMovedPropProjectCardTypeForResponse",
+    "WebhookProjectCardMovedType",
+    "WebhookProjectCardMovedTypeForResponse",
 )

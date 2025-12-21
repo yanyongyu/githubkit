@@ -9,102 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0078 import ActionsHostedRunnerMachineSpec
 
 
-class ActionsHostedRunner(GitHubModel):
-    """GitHub-hosted hosted runner
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    A Github-hosted hosted runner.
+    Marketplace Listing Plan
     """
 
-    id: int = Field(description="The unique identifier of the hosted runner.")
-    name: str = Field(description="The name of the hosted runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the group that the hosted runner belongs to.",
-    )
-    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
-    machine_size_details: ActionsHostedRunnerMachineSpec = Field(
-        title="Github-owned VM details.",
-        description="Provides details of a particular machine spec.",
-    )
-    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"] = Field(
-        description="The status of the runner."
-    )
-    platform: str = Field(description="The operating system of the image.")
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
-    )
-    public_ip_enabled: bool = Field(
-        description="Whether public IP is enabled for the hosted runners."
-    )
-    public_ips: Missing[list[PublicIp]] = Field(
-        default=UNSET,
-        description="The public IP ranges when public IP is enabled for the hosted runners.",
-    )
-    last_active_on: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time at which the runner was last used, in ISO 8601 format.",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether custom image generation is enabled for the hosted runners.",
-    )
+    url: str = Field()
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: list[str] = Field()
 
 
-class ActionsHostedRunnerPoolImage(GitHubModel):
-    """GitHub-hosted runner image details.
+model_rebuild(MarketplaceListingPlan)
 
-    Provides details of a hosted runner image
-    """
-
-    id: str = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
-    )
-    size_gb: int = Field(description="Image size in GB.")
-    display_name: str = Field(description="Display name for this image.")
-    source: Literal["github", "partner", "custom"] = Field(
-        description="The image provider."
-    )
-    version: Missing[str] = Field(
-        default=UNSET, description="The image version of the hosted runner pool."
-    )
-
-
-class PublicIp(GitHubModel):
-    """Public IP for a GitHub-hosted larger runners.
-
-    Provides details of Public IP for a GitHub-hosted larger runners
-    """
-
-    enabled: Missing[bool] = Field(
-        default=UNSET, description="Whether public IP is enabled."
-    )
-    prefix: Missing[str] = Field(
-        default=UNSET, description="The prefix for the public IP."
-    )
-    length: Missing[int] = Field(
-        default=UNSET, description="The length of the IP prefix."
-    )
-
-
-model_rebuild(ActionsHostedRunner)
-model_rebuild(ActionsHostedRunnerPoolImage)
-model_rebuild(PublicIp)
-
-__all__ = (
-    "ActionsHostedRunner",
-    "ActionsHostedRunnerPoolImage",
-    "PublicIp",
-)
+__all__ = ("MarketplaceListingPlan",)

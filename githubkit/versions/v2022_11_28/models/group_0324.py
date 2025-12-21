@@ -9,58 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0323 import CustomDeploymentRuleApp
 
+class ContentFile(GitHubModel):
+    """Content File
 
-class DeploymentProtectionRule(GitHubModel):
-    """Deployment protection rule
-
-    Deployment protection rule
+    Content File
     """
 
-    id: int = Field(
-        description="The unique identifier for the deployment protection rule."
-    )
-    node_id: str = Field(description="The node ID for the deployment protection rule.")
-    enabled: bool = Field(
-        description="Whether the deployment protection rule is enabled for the environment."
-    )
-    app: CustomDeploymentRuleApp = Field(
-        title="Custom deployment protection rule app",
-        description="A GitHub App that is providing a custom deployment protection rule.",
-    )
+    type: Literal["file"] = Field()
+    encoding: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of enabled custom deployment protection rules for this environment",
-    )
-    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
-        default=UNSET
-    )
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(DeploymentProtectionRule)
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-)
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
 
 __all__ = (
-    "DeploymentProtectionRule",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
+    "ContentFile",
+    "ContentFilePropLinks",
 )

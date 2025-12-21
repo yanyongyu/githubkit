@@ -9,55 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0213 import MinimalRepository
 
+class CodeScanningAutofixCommitsResponse(GitHubModel):
+    """CodeScanningAutofixCommitsResponse"""
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
-
-    Combined Commit Status
-    """
-
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    target_ref: Missing[str] = Field(
+        default=UNSET,
+        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    commit_url: str = Field()
-    url: str = Field()
+    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
+model_rebuild(CodeScanningAutofixCommitsResponse)
 
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
-
-__all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
-)
+__all__ = ("CodeScanningAutofixCommitsResponse",)

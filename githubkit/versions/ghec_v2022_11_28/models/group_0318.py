@@ -15,37 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0319 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
+class ActionsCacheRetentionLimitForRepository(GitHubModel):
+    """Actions cache retention limit for a repository
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    GitHub Actions cache retention policy for a repository.
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
+    max_cache_retention_days: Missing[int] = Field(
         default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
-    )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+        description="The maximum number of days to keep caches in this repository.",
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(ActionsCacheRetentionLimitForRepository)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = ("ActionsCacheRetentionLimitForRepository",)

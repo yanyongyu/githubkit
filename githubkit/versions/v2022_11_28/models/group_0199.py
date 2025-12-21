@@ -17,23 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0200 import RepositoryRuleCopilotCodeReviewPropParameters
 
+class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
-
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
-    """
-
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)

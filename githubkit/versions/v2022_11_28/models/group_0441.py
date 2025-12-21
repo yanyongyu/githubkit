@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Email(GitHubModel):
-    """Email
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    Email
+    Tag protection
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-model_rebuild(Email)
+model_rebuild(TagProtection)
 
-__all__ = ("Email",)
+__all__ = ("TagProtection",)

@@ -9,38 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0266 import LinkType, LinkTypeForResponse
-
-
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PullRequestPropLinksTypeForResponse(TypedDict):
-    """PullRequestPropLinks"""
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    Removed from Project Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+
+
+class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
+    """Removed from Project Issue Event
+
+    Removed from Project Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    project_card: NotRequired[
+        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
+    ]
+
+
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestPropLinksType",
-    "PullRequestPropLinksTypeForResponse",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
+    "RemovedFromProjectIssueEventType",
+    "RemovedFromProjectIssueEventTypeForResponse",
 )

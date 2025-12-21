@@ -13,25 +13,77 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
+    )
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    status: Literal["deployed", "decommissioned"] = Field(
+        description="The status of the artifact. Can be either deployed or decommissioned."
+    )
+    logical_environment: str = Field(
+        min_length=1, max_length=64, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        min_length=1,
+        max_length=64,
         default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+        description="The physical region of the deployment.",
+    )
+    cluster: Missing[str] = Field(default=UNSET, description="The deployment cluster.")
+    deployment_name: str = Field(description="The name of the deployment.")
+    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
+        default=UNSET, description="The tags associated with the deployment."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+    The tags associated with the deployment.
+    """
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
+
+__all__ = (
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
+)

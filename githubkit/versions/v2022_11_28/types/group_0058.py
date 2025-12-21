@@ -9,53 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
-
-    Marketplace Listing Plan
-    """
-
-    url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+from .group_0050 import IssueType, IssueTypeForResponse
+from .group_0051 import IssueCommentType, IssueCommentTypeForResponse
 
 
-class MarketplaceListingPlanTypeForResponse(TypedDict):
-    """Marketplace Listing Plan
+class IssueCommentEventType(TypedDict):
+    """IssueCommentEvent"""
 
-    Marketplace Listing Plan
-    """
+    action: str
+    issue: IssueType
+    comment: IssueCommentType
 
-    url: str
-    accounts_url: str
-    id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+
+class IssueCommentEventTypeForResponse(TypedDict):
+    """IssueCommentEvent"""
+
+    action: str
+    issue: IssueTypeForResponse
+    comment: IssueCommentTypeForResponse
 
 
 __all__ = (
-    "MarketplaceListingPlanType",
-    "MarketplaceListingPlanTypeForResponse",
+    "IssueCommentEventType",
+    "IssueCommentEventTypeForResponse",
 )

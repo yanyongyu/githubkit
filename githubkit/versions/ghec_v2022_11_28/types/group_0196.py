@@ -9,65 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class MilestoneType(TypedDict):
+    """Milestone
 
-    A value assigned to an issue field
+    A collection of related issues and pull requests.
     """
 
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-
-
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
-
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    node_id: str
-    data_type: Literal["text", "single_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
+    url: str
+    html_url: str
+    labels_url: str
     id: int
-    name: str
-    color: str
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Details about the selected option (only present for single_select fields)
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
-    name: str
-    color: str
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserTypeForResponse]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

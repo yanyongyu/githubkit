@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,37 +17,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0531 import SearchResultTextMatchesItems
 
-class ExemptionResponse(GitHubModel):
-    """Exemption response
 
-    A response to an exemption request by a delegated bypasser.
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption response."
-    )
-    reviewer_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user who reviewed the exemption request.",
-    )
-    reviewer_login: Missing[str] = Field(
-        default=UNSET,
-        description="The login of the user who reviewed the exemption request.",
-    )
-    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
-        default=UNSET, description="The status of the exemption response."
-    )
-    reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the reviewer provided when responding to the exemption request.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
 
 
-model_rebuild(ExemptionResponse)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
-__all__ = ("ExemptionResponse",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
+
+__all__ = (
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
+)

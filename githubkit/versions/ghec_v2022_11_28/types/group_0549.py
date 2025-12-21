@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    full_name: str
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
     id: int
-    name: str
-    node_id: str
-    private: bool
+    title: str
+    created_at: _dt.datetime
 
 
-class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesItems"""
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    full_name: str
+    A public SSH key used to sign Git commits
+    """
+
+    key: str
     id: int
-    name: str
-    node_id: str
-    private: bool
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "WebhooksRepositoriesItemsType",
-    "WebhooksRepositoriesItemsTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

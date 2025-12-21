@@ -16,28 +16,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class RepositoryRuleWorkflowsPropParameters(GitHubModel):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    A hosted compute network settings resource.
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
+        description="Workflows that must pass for this rule to pass."
+    )
+
+
+class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    path: str = Field(description="The path to the workflow file")
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
     )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
+    repository_id: int = Field(
+        description="The ID of the repository where the workflow is defined"
     )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    sha: Missing[str] = Field(
+        default=UNSET, description="The commit SHA of the workflow file to use"
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(RepositoryRuleWorkflowsPropParameters)
+model_rebuild(RepositoryRuleParamsWorkflowFileReference)
 
-__all__ = ("NetworkSettings",)
+__all__ = (
+    "RepositoryRuleParamsWorkflowFileReference",
+    "RepositoryRuleWorkflowsPropParameters",
+)

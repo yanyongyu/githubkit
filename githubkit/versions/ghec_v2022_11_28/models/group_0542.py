@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,71 +19,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksApprover(GitHubModel):
-    """WebhooksApprover"""
+class CodespaceExportDetails(GitHubModel):
+    """Fetches information about an export of a codespace.
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
+    """
 
-
-class WebhooksReviewersItems(GitHubModel):
-    """WebhooksReviewersItems"""
-
-    reviewer: Missing[Union[WebhooksReviewersItemsPropReviewer, None]] = Field(
-        default=UNSET, title="User"
+    state: Missing[Union[str, None]] = Field(
+        default=UNSET, description="State of the latest export"
     )
-    type: Missing[Literal["User"]] = Field(default=UNSET)
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Completion time of the last export operation"
+    )
+    branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Name of the exported branch"
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Git commit SHA of the exported branch"
+    )
+    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
+    export_url: Missing[str] = Field(
+        default=UNSET, description="Url for fetching export details"
+    )
+    html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web url for the exported branch"
+    )
 
 
-class WebhooksReviewersItemsPropReviewer(GitHubModel):
-    """User"""
+model_rebuild(CodespaceExportDetails)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksApprover)
-model_rebuild(WebhooksReviewersItems)
-model_rebuild(WebhooksReviewersItemsPropReviewer)
-
-__all__ = (
-    "WebhooksApprover",
-    "WebhooksReviewersItems",
-    "WebhooksReviewersItemsPropReviewer",
-)
+__all__ = ("CodespaceExportDetails",)

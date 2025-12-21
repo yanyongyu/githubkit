@@ -9,33 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
+from .group_0105 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
 
-    Set secrets for GitHub Actions.
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Set secrets for GitHub Actions.
+    List of custom property values for a repository
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    The state of the ruleset version
-    """
+    restricted_file_paths: list[str]
 
 
-class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    The state of the ruleset version
-    """
+    restricted_file_paths: list[str]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1PropStateType",
-    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
 )

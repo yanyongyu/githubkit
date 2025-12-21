@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0292 import RateLimit
-from .group_0294 import RateLimitOverviewPropResources
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    Rate Limit Overview
-    """
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
+
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(RateLimitOverview)
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
 
-__all__ = ("RateLimitOverview",)
+__all__ = (
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
+)

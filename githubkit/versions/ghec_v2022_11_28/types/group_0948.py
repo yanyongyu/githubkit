@@ -14,125 +14,386 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0312 import DeploymentType, DeploymentTypeForResponse
-from .group_0531 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0532 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0533 import (
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0534 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobQueuedType(TypedDict):
-    """workflow_job queued event"""
+class WebhookStatusType(TypedDict):
+    """status event"""
 
-    action: Literal["queued"]
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsType]
+    commit: WebhookStatusPropCommitType
+    context: str
+    created_at: str
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
     installation: NotRequired[SimpleInstallationType]
+    name: str
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
 
 
-class WebhookWorkflowJobQueuedTypeForResponse(TypedDict):
-    """workflow_job queued event"""
+class WebhookStatusTypeForResponse(TypedDict):
+    """status event"""
 
-    action: Literal["queued"]
+    avatar_url: NotRequired[Union[str, None]]
+    branches: list[WebhookStatusPropBranchesItemsTypeForResponse]
+    commit: WebhookStatusPropCommitTypeForResponse
+    context: str
+    created_at: str
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    name: str
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse
-    deployment: NotRequired[DeploymentTypeForResponse]
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookStatusPropBranchesItemsType(TypedDict):
+    """WebhookStatusPropBranchesItems"""
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
+    commit: WebhookStatusPropBranchesItemsPropCommitType
     name: str
+    protected: bool
+
+
+class WebhookStatusPropBranchesItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItems"""
+
+    commit: WebhookStatusPropBranchesItemsPropCommitTypeForResponse
+    name: str
+    protected: bool
+
+
+class WebhookStatusPropBranchesItemsPropCommitType(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropBranchesItemsPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
+    url: Union[str, None]
+
+
+class WebhookStatusPropCommitType(TypedDict):
+    """WebhookStatusPropCommit"""
+
+    author: Union[WebhookStatusPropCommitPropAuthorType, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitType
+    committer: Union[WebhookStatusPropCommitPropCommitterType, None]
+    html_url: str
     node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
+    parents: list[WebhookStatusPropCommitPropParentsItemsType]
+    sha: str
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookStatusPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommit"""
 
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
+    author: Union[WebhookStatusPropCommitPropAuthorTypeForResponse, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitTypeForResponse
+    committer: Union[WebhookStatusPropCommitPropCommitterTypeForResponse, None]
     html_url: str
-    id: int
-    labels: list[str]
-    name: str
     node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse]
+    parents: list[WebhookStatusPropCommitPropParentsItemsTypeForResponse]
+    sha: str
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookStatusPropCommitPropAuthorType(TypedDict):
+    """User"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropAuthorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitterType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitterTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropParentsItemsType(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
+
+    html_url: str
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitType(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorType
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterType
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeType
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationType
+
+
+class WebhookStatusPropCommitPropCommitTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeTypeForResponse
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: _dt.datetime
+    email: str
     name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
+    username: NotRequired[str]
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
-    """Workflow Step"""
+class WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    date: str
+    email: str
     name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: _dt.datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: str
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropTreeType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
+    ]
+    signature: Union[str, None]
+    verified: bool
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobQueuedPropWorkflowJobType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobQueuedType",
-    "WebhookWorkflowJobQueuedTypeForResponse",
+    "WebhookStatusPropBranchesItemsPropCommitType",
+    "WebhookStatusPropBranchesItemsPropCommitTypeForResponse",
+    "WebhookStatusPropBranchesItemsType",
+    "WebhookStatusPropBranchesItemsTypeForResponse",
+    "WebhookStatusPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropCommitPropAuthorTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropTreeType",
+    "WebhookStatusPropCommitPropCommitPropTreeTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropVerificationType",
+    "WebhookStatusPropCommitPropCommitPropVerificationTypeForResponse",
+    "WebhookStatusPropCommitPropCommitType",
+    "WebhookStatusPropCommitPropCommitTypeForResponse",
+    "WebhookStatusPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitterTypeForResponse",
+    "WebhookStatusPropCommitPropParentsItemsType",
+    "WebhookStatusPropCommitPropParentsItemsTypeForResponse",
+    "WebhookStatusPropCommitType",
+    "WebhookStatusPropCommitTypeForResponse",
+    "WebhookStatusType",
+    "WebhookStatusTypeForResponse",
 )

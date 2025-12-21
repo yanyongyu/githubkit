@@ -9,53 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0043 import LabelType, LabelTypeForResponse
+from .group_0050 import IssueType, IssueTypeForResponse
 
 
-class LicenseType(TypedDict):
-    """License
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
-    License
-    """
-
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
-    node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    action: str
+    issue: IssueType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class LicenseTypeForResponse(TypedDict):
-    """License
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
-    License
-    """
-
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
-    node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    action: str
+    issue: IssueTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "LicenseType",
-    "LicenseTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

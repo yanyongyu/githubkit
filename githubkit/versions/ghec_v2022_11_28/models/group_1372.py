@@ -9,91 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0107 import RepositoryRulesetBypassActor
-from .group_0112 import RepositoryRulesetConditions
-from .group_0126 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0127 import RepositoryRuleUpdate
-from .group_0129 import RepositoryRuleRequiredLinearHistory
-from .group_0130 import RepositoryRuleRequiredDeployments
-from .group_0132 import RepositoryRulePullRequest
-from .group_0134 import RepositoryRuleRequiredStatusChecks
-from .group_0136 import RepositoryRuleCommitMessagePattern
-from .group_0138 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0140 import RepositoryRuleCommitterEmailPattern
-from .group_0142 import RepositoryRuleBranchNamePattern
-from .group_0144 import RepositoryRuleTagNamePattern
-from .group_0146 import RepositoryRuleFilePathRestriction
-from .group_0148 import RepositoryRuleMaxFilePathLength
-from .group_0150 import RepositoryRuleFileExtensionRestriction
-from .group_0152 import RepositoryRuleMaxFileSize
-from .group_0155 import RepositoryRuleWorkflows
-from .group_0157 import RepositoryRuleCodeScanning
-from .group_0159 import RepositoryRuleCopilotCodeReview
-from .group_0166 import RepositoryRuleMergeQueue
 
+class ReposOwnerRepoPullsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPostBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    title: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The title of the new pull request. Required unless `issue` is specified.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    head: str = Field(
+        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
+    )
+    head_repo: Missing[str] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    base: str = Field(
+        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+    )
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/enterprise-cloud@latest//articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
+    )
+    issue: Missing[int] = Field(
+        default=UNSET,
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPullsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPostBody",)

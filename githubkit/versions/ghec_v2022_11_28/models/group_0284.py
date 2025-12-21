@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,21 +19,61 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
+class PackageVersion(GitHubModel):
+    """Package Version
 
-    Check immutable releases settings for an organization.
+    A version of a software package
     """
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    id: int = Field(description="Unique identifier of the package version.")
+    name: str = Field(description="The name of the package version.")
+    url: str = Field()
+    package_html_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    description: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    metadata: Missing[PackageVersionPropMetadata] = Field(
+        default=UNSET, title="Package Version Metadata"
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+
+
+class PackageVersionPropMetadata(GitHubModel):
+    """Package Version Metadata"""
+
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
+        default=UNSET, title="Container Metadata"
+    )
+    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
+        default=UNSET, title="Docker Metadata"
     )
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+class PackageVersionPropMetadataPropContainer(GitHubModel):
+    """Container Metadata"""
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+    tags: list[str] = Field()
+
+
+class PackageVersionPropMetadataPropDocker(GitHubModel):
+    """Docker Metadata"""
+
+    tag: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(PackageVersion)
+model_rebuild(PackageVersionPropMetadata)
+model_rebuild(PackageVersionPropMetadataPropContainer)
+model_rebuild(PackageVersionPropMetadataPropDocker)
+
+__all__ = (
+    "PackageVersion",
+    "PackageVersionPropMetadata",
+    "PackageVersionPropMetadataPropContainer",
+    "PackageVersionPropMetadataPropDocker",
+)

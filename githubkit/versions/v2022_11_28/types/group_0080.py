@@ -9,37 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0081 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
+    MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+)
 
 
-class ActionsHostedRunnerCuratedImageType(TypedDict):
-    """GitHub-hosted runner image details.
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
 
-    Provides details of a hosted runner image
+    Marketplace Purchase
     """
 
-    id: str
-    platform: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
+    url: str
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner image details.
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
 
-    Provides details of a hosted runner image
+    Marketplace Purchase
     """
 
-    id: str
-    platform: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
+    url: str
+    type: str
+    id: int
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "ActionsHostedRunnerCuratedImageType",
-    "ActionsHostedRunnerCuratedImageTypeForResponse",
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
 )

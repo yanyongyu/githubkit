@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,126 +17,120 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0042 import Milestone
-from .group_0043 import IssueType
-from .group_0044 import ReactionRollup
-from .group_0045 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0046 import IssueFieldValue
-from .group_0428 import SearchResultTextMatchesItems
+
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
+
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+    )
 
 
-class IssueSearchResultItem(GitHubModel):
-    """Issue Search Result Item
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    Issue Search Result Item
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    url: str = Field()
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    title: str = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
     )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    state: str = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[None, SimpleUser] = Field()
-    milestone: Union[None, Milestone] = Field()
-    comments: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    score: float = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    draft: Missing[bool] = Field(default=UNSET)
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-class SearchIssuesGetResponse200(GitHubModel):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[IssueSearchResultItem] = Field()
-
-
-model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
-model_rebuild(IssueSearchResultItemPropPullRequest)
-model_rebuild(SearchIssuesGetResponse200)
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "IssueSearchResultItem",
-    "IssueSearchResultItemPropLabelsItems",
-    "IssueSearchResultItemPropPullRequest",
-    "SearchIssuesGetResponse200",
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
 )

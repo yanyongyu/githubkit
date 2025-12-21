@@ -10,56 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0194 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
 
-    A reply to a discussion within a team.
+    An status update belonging to a project
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
+    id: float
+    node_id: str
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
     updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
+    body: NotRequired[Union[str, None]]
 
 
-class TeamDiscussionCommentTypeForResponse(TypedDict):
-    """Team Discussion Comment
+class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
+    """Projects v2 Status Update
 
-    A reply to a discussion within a team.
+    An status update belonging to a project
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    discussion_url: str
-    html_url: str
+    id: float
     node_id: str
-    number: int
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
     updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[str]
+    target_date: NotRequired[str]
+    body: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamDiscussionCommentType",
-    "TeamDiscussionCommentTypeForResponse",
+    "ProjectsV2StatusUpdateType",
+    "ProjectsV2StatusUpdateTypeForResponse",
 )

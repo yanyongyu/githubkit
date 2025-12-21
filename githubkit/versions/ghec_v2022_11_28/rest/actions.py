@@ -110,6 +110,7 @@ if TYPE_CHECKING:
         SelectedActions,
         SelfHostedRunnersSettings,
         Workflow,
+        WorkflowDispatchResponse,
         WorkflowRun,
         WorkflowRunUsage,
         WorkflowUsage,
@@ -251,6 +252,7 @@ if TYPE_CHECKING:
         SelectedActionsType,
         SelectedActionsTypeForResponse,
         SelfHostedRunnersSettingsTypeForResponse,
+        WorkflowDispatchResponseTypeForResponse,
         WorkflowRunTypeForResponse,
         WorkflowRunUsageTypeForResponse,
         WorkflowTypeForResponse,
@@ -18995,7 +18997,9 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-    ) -> Response: ...
+    ) -> Response[
+        WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse
+    ]: ...
 
     @overload
     def create_workflow_dispatch(
@@ -19011,7 +19015,9 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
-    ) -> Response: ...
+    ) -> Response[
+        WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse
+    ]: ...
 
     def create_workflow_dispatch(
         self,
@@ -19025,7 +19031,7 @@ class ActionsClient:
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response:
+    ) -> Response[WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse]:
         """actions/create-workflow-dispatch
 
         POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
@@ -19039,7 +19045,10 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#create-a-workflow-dispatch-event
         """
 
-        from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
+        from ..models import (
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
+            WorkflowDispatchResponse,
+        )
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
@@ -19062,6 +19071,7 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+            response_model=WorkflowDispatchResponse,
         )
 
     @overload
@@ -19074,7 +19084,9 @@ class ActionsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-    ) -> Response: ...
+    ) -> Response[
+        WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse
+    ]: ...
 
     @overload
     async def async_create_workflow_dispatch(
@@ -19090,7 +19102,9 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
-    ) -> Response: ...
+    ) -> Response[
+        WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse
+    ]: ...
 
     async def async_create_workflow_dispatch(
         self,
@@ -19104,7 +19118,7 @@ class ActionsClient:
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response:
+    ) -> Response[WorkflowDispatchResponse, WorkflowDispatchResponseTypeForResponse]:
         """actions/create-workflow-dispatch
 
         POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches
@@ -19118,7 +19132,10 @@ class ActionsClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#create-a-workflow-dispatch-event
         """
 
-        from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody
+        from ..models import (
+            ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
+            WorkflowDispatchResponse,
+        )
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
@@ -19141,6 +19158,7 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+            response_model=WorkflowDispatchResponse,
         )
 
     def enable_workflow(

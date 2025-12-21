@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class TagProtection(GitHubModel):
-    """Tag protection
-
-    Tag protection
-    """
-
-    id: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    pattern: str = Field()
+from .group_0211 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-model_rebuild(TagProtection)
+class RepositoryRuleDetailedOneof16(GitHubModel):
+    """RepositoryRuleDetailedOneof16"""
 
-__all__ = ("TagProtection",)
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
+
+
+model_rebuild(RepositoryRuleDetailedOneof16)
+
+__all__ = ("RepositoryRuleDetailedOneof16",)

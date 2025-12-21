@@ -12,19 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
-    )
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ReleaseEventPropReleaseAllof1)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ReleaseEventPropReleaseAllof1",)

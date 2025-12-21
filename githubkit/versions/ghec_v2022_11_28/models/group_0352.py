@@ -9,55 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0353 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
+)
 
-class CodeScanningDefaultSetupUpdate(GitHubModel):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
-    """
+class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code scanning default setup."
-    )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    url: str = Field()
+    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
+    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
+    dismissal_restrictions: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+    ] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningDefaultSetupUpdate)
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
 
-__all__ = ("CodeScanningDefaultSetupUpdate",)
+__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)

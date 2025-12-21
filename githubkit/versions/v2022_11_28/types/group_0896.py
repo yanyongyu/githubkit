@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
-
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
-
-
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
-
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

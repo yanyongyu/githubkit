@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0518 import Meta
+from .group_0528 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class SshSigningKey(GitHubModel):
-    """SSH Signing Key
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    A public SSH key used to sign Git commits
-    """
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
-    key: str = Field()
-    id: int = Field()
-    title: str = Field()
-    created_at: _dt.datetime = Field()
 
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-model_rebuild(SshSigningKey)
-
-__all__ = ("SshSigningKey",)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

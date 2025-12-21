@@ -9,27 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsHostedRunnerMachineSpec(GitHubModel):
-    """Github-owned VM details.
+class License(GitHubModel):
+    """License
 
-    Provides details of a particular machine spec.
+    License
     """
 
-    id: str = Field(
-        description="The ID used for the `size` parameter when creating a new runner."
-    )
-    cpu_cores: int = Field(description="The number of cores.")
-    memory_gb: int = Field(description="The available RAM for the machine spec.")
-    storage_gb: int = Field(
-        description="The available SSD storage for the machine spec."
-    )
+    key: str = Field()
+    name: str = Field()
+    spdx_id: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    description: str = Field()
+    implementation: str = Field()
+    permissions: list[str] = Field()
+    conditions: list[str] = Field()
+    limitations: list[str] = Field()
+    body: str = Field()
+    featured: bool = Field()
 
 
-model_rebuild(ActionsHostedRunnerMachineSpec)
+model_rebuild(License)
 
-__all__ = ("ActionsHostedRunnerMachineSpec",)
+__all__ = ("License",)

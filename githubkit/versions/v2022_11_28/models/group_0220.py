@@ -9,52 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0044 import ReactionRollup
 
 
-class TeamDiscussion(GitHubModel):
-    """Team Discussion
+class RepositoryRuleCodeScanningPropParameters(GitHubModel):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
+        description="Tools that must provide code scanning results for this rule to pass."
+    )
+
+
+class RepositoryRuleParamsCodeScanningTool(GitHubModel):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    author: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The main text of the discussion.")
-    body_html: str = Field()
-    body_version: str = Field(
-        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
+        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-    comments_count: int = Field()
-    comments_url: str = Field()
-    created_at: _dt.datetime = Field()
-    last_edited_at: Union[_dt.datetime, None] = Field()
-    html_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The unique sequence number of a team discussion.")
-    pinned: bool = Field(
-        description="Whether or not this discussion should be pinned for easy retrieval."
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ] = Field(
+        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-    private: bool = Field(
-        description="Whether or not this discussion should be restricted to team members and organization owners."
-    )
-    team_url: str = Field()
-    title: str = Field(description="The title of the discussion.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    tool: str = Field(description="The name of a code scanning tool")
 
 
-model_rebuild(TeamDiscussion)
+model_rebuild(RepositoryRuleCodeScanningPropParameters)
+model_rebuild(RepositoryRuleParamsCodeScanningTool)
 
-__all__ = ("TeamDiscussion",)
+__all__ = (
+    "RepositoryRuleCodeScanningPropParameters",
+    "RepositoryRuleParamsCodeScanningTool",
+)

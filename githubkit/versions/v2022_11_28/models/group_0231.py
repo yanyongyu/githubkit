@@ -9,43 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
+class RulesetVersionWithStateAllof1PropState(GitHubModel):
+    """RulesetVersionWithStateAllof1PropState
 
-    Repository actions caches
+    The state of the ruleset version
     """
 
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
-    )
 
+model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
-
-__all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
-)
+__all__ = ("RulesetVersionWithStateAllof1PropState",)

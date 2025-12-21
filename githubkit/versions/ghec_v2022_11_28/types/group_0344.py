@@ -9,50 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0343 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    A CodeQL database.
+    Short Branch
     """
 
-    id: int
     name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
-    """CodeQL Database
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
 
-    A CodeQL database.
+    Short Branch
     """
 
-    id: int
     name: str
-    language: str
-    uploader: SimpleUserTypeForResponse
-    content_type: str
-    size: int
-    created_at: str
-    updated_at: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
     url: str
-    commit_oid: NotRequired[Union[str, None]]
+
+
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CodeScanningCodeqlDatabaseType",
-    "CodeScanningCodeqlDatabaseTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

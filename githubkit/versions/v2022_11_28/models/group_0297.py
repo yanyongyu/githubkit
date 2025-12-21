@@ -15,28 +15,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class CodeScanningAnalysisDeletion(GitHubModel):
+    """Analysis deletion
 
-class Status(GitHubModel):
-    """Status
-
-    The status of a commit.
+    Successful deletion of a code scanning analysis
     """
 
-    url: str = Field()
-    avatar_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    next_analysis_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, without last analysis deletion confirmation"
+    )
+    confirm_delete_url: Union[str, None] = Field(
+        description="Next deletable analysis in chain, with last analysis deletion confirmation"
+    )
 
 
-model_rebuild(Status)
+model_rebuild(CodeScanningAnalysisDeletion)
 
-__all__ = ("Status",)
+__all__ = ("CodeScanningAnalysisDeletion",)

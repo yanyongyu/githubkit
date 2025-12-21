@@ -9,49 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
 
+class BillingUsageSummaryReportOrg(GitHubModel):
+    """BillingUsageSummaryReportOrg"""
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
-
-    Authentication Token
-    """
-
-    token: str = Field(description="The token used for authentication")
-    expires_at: _dt.datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
+    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
+    organization: str = Field(description="The unique identifier of the organization.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
     )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
-        default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
+    )
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
 
 
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
+class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingUsageSummaryReportOrg)
+model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
+model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
 
 __all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
+    "BillingUsageSummaryReportOrg",
+    "BillingUsageSummaryReportOrgPropTimePeriod",
+    "BillingUsageSummaryReportOrgPropUsageItemsItems",
 )

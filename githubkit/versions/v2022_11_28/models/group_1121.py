@@ -18,40 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class ReposOwnerRepoCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ] = Field(
-        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
-    )
-    target_url: Missing[str] = Field(
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
+        description="Git ref (typically a branch name) for this codespace",
     )
-    log_url: Missing[str] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    description: Missing[str] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="A short description of the status. The maximum description length is 140 characters.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    environment: Missing[str] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
+        description="IP for location auto-detection when proxying a request",
     )
-    environment_url: Missing[str] = Field(
-        default=UNSET,
-        description='Sets the URL for accessing your environment. Default: `""`',
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
     )
-    auto_inactive: Missing[bool] = Field(
+    devcontainer_path: Missing[str] = Field(
         default=UNSET,
-        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to authorize requested permissions from devcontainer.json",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
+model_rebuild(ReposOwnerRepoCodespacesPostBody)
 
-__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)
+__all__ = ("ReposOwnerRepoCodespacesPostBody",)

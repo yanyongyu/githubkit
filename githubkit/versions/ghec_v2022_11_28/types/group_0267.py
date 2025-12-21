@@ -9,37 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    The status of auto merging a pull request.
-    """
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
 
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-class AutoMergeTypeForResponse(TypedDict):
-    """Auto merge
-
-    The status of auto merging a pull request.
-    """
-
-    enabled_by: SimpleUserTypeForResponse
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "AutoMergeType",
-    "AutoMergeTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

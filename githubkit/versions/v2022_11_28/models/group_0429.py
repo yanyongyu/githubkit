@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,47 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0063 import MinimalRepository
-from .group_0428 import SearchResultTextMatchesItems
 
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
-
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
-    line_numbers: Missing[list[str]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+model_rebuild(SecretScanningPushProtectionBypass)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CodeSearchResultItem] = Field()
-
-
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
-
-__all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
-)
+__all__ = ("SecretScanningPushProtectionBypass",)

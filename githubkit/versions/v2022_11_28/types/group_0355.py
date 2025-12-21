@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0047 import IssueType, IssueTypeForResponse
+from typing_extensions import TypedDict
 
 
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+    Check immutable releases
+    """
+
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
+    Check immutable releases
+    """
+
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "TimelineCrossReferencedEventPropSourceType",
-    "TimelineCrossReferencedEventPropSourceTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )

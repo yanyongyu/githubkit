@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,71 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class PrivateUser(GitHubModel):
-    """Private User
 
-    Private User
+class ContributorActivity(GitHubModel):
+    """Contributor Activity
+
+    Contributor Activity
     """
 
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    private_gists: int = Field()
-    total_private_repos: int = Field()
-    owned_private_repos: int = Field()
-    disk_usage: int = Field()
-    collaborators: int = Field()
-    two_factor_authentication: bool = Field()
-    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
-    business_plus: Missing[bool] = Field(default=UNSET)
-    ldap_dn: Missing[str] = Field(default=UNSET)
+    author: Union[None, SimpleUser] = Field()
+    total: int = Field()
+    weeks: list[ContributorActivityPropWeeksItems] = Field()
 
 
-class PrivateUserPropPlan(GitHubModel):
-    """PrivateUserPropPlan"""
+class ContributorActivityPropWeeksItems(GitHubModel):
+    """ContributorActivityPropWeeksItems"""
 
-    collaborators: int = Field()
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    w: Missing[int] = Field(default=UNSET)
+    a: Missing[int] = Field(default=UNSET)
+    d: Missing[int] = Field(default=UNSET)
+    c: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(PrivateUser)
-model_rebuild(PrivateUserPropPlan)
+model_rebuild(ContributorActivity)
+model_rebuild(ContributorActivityPropWeeksItems)
 
 __all__ = (
-    "PrivateUser",
-    "PrivateUserPropPlan",
+    "ContributorActivity",
+    "ContributorActivityPropWeeksItems",
 )

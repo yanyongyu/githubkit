@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryRuleDetailedOneof6Type(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    type: Literal["required_signatures"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    type: Literal["required_signatures"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "RepositoryRuleDetailedOneof6Type",
+    "RepositoryRuleDetailedOneof6TypeForResponse",
 )

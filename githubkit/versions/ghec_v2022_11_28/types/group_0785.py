@@ -12,57 +12,46 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0786 import (
-    WebhookPackagePublishedPropPackagePropPackageVersionType,
-    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
+from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0555 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0566 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0580 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookPackagePublishedPropPackageType(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    Information about the package.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionType, None
-    ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
-    updated_at: Union[str, None]
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookMembershipAddedTypeForResponse(TypedDict):
+    """membership added event"""
 
-    Information about the package.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
-    ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: Union[str, None]
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
-class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
+class WebhookMembershipAddedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -89,7 +78,7 @@ class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
+class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -114,33 +103,11 @@ class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
-
-
-class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
 
 
 __all__ = (
-    "WebhookPackagePublishedPropPackagePropOwnerType",
-    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackagePublishedPropPackagePropRegistryType",
-    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackagePublishedPropPackageType",
-    "WebhookPackagePublishedPropPackageTypeForResponse",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropSenderTypeForResponse",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedTypeForResponse",
 )

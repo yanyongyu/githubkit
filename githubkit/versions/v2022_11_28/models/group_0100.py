@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,56 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0099 import TeamSimple
+from .group_0099 import ActionsHostedRunnerMachineSpec
 
 
-class Team(GitHubModel):
-    """Team
+class ActionsHostedRunner(GitHubModel):
+    """GitHub-hosted hosted runner
 
-    Groups of organization members that gives permissions on specified repositories.
+    A Github-hosted hosted runner.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
+    id: int = Field(description="The unique identifier of the hosted runner.")
+    name: str = Field(description="The name of the hosted runner.")
+    runner_group_id: Missing[int] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="The unique identifier of the group that the hosted runner belongs to.",
     )
-    enterprise_id: Missing[int] = Field(
+    image_details: Union[None, ActionsHostedRunnerPoolImage] = Field()
+    machine_size_details: ActionsHostedRunnerMachineSpec = Field(
+        title="Github-owned VM details.",
+        description="Provides details of a particular machine spec.",
+    )
+    status: Literal["Ready", "Provisioning", "Shutdown", "Deleting", "Stuck"] = Field(
+        description="The status of the runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
     )
-    parent: Union[None, TeamSimple] = Field()
+    public_ip_enabled: bool = Field(
+        description="Whether public IP is enabled for the hosted runners."
+    )
+    public_ips: Missing[list[PublicIp]] = Field(
+        default=UNSET,
+        description="The public IP ranges when public IP is enabled for the hosted runners.",
+    )
+    last_active_on: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time at which the runner was last used, in ISO 8601 format.",
+    )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether custom image generation is enabled for the hosted runners.",
+    )
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+class ActionsHostedRunnerPoolImage(GitHubModel):
+    """GitHub-hosted runner image details.
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
+    Provides details of a hosted runner image
+    """
+
+    id: str = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    size_gb: int = Field(description="Image size in GB.")
+    display_name: str = Field(description="Display name for this image.")
+    source: Literal["github", "partner", "custom"] = Field(
+        description="The image provider."
+    )
+    version: Missing[str] = Field(
+        default=UNSET, description="The image version of the hosted runner pool."
+    )
 
 
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
+class PublicIp(GitHubModel):
+    """Public IP for a GitHub-hosted larger runners.
+
+    Provides details of Public IP for a GitHub-hosted larger runners
+    """
+
+    enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether public IP is enabled."
+    )
+    prefix: Missing[str] = Field(
+        default=UNSET, description="The prefix for the public IP."
+    )
+    length: Missing[int] = Field(
+        default=UNSET, description="The length of the IP prefix."
+    )
+
+
+model_rebuild(ActionsHostedRunner)
+model_rebuild(ActionsHostedRunnerPoolImage)
+model_rebuild(PublicIp)
 
 __all__ = (
-    "Team",
-    "TeamPropPermissions",
+    "ActionsHostedRunner",
+    "ActionsHostedRunnerPoolImage",
+    "PublicIp",
 )

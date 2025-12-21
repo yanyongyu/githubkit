@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,150 +17,67 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0194 import ReactionRollup
 
+class Import(GitHubModel):
+    """Import
 
-class PullRequestReviewComment(GitHubModel):
-    """Pull Request Review Comment
-
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
+    A repository import from an external source.
     """
 
-    url: str = Field(description="URL for the pull request review comment")
-    pull_request_review_id: Union[int, None] = Field(
-        description="The ID of the pull request review to which the comment belongs."
-    )
-    id: int = Field(description="The ID of the pull request review comment.")
-    node_id: str = Field(description="The node ID of the pull request review comment.")
-    diff_hunk: str = Field(
-        description="The diff of the line that the comment refers to."
-    )
-    path: str = Field(
-        description="The relative path of the file to which the comment applies."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description="The line index in the diff to which the comment applies. This field is closing down; use `line` instead.",
-    )
-    original_position: Missing[int] = Field(
-        default=UNSET,
-        description="The index of the original line in the diff to which the comment applies. This field is closing down; use `original_line` instead.",
-    )
-    commit_id: str = Field(
-        description="The SHA of the commit to which the comment applies."
-    )
-    original_commit_id: str = Field(
-        description="The SHA of the original commit to which the comment applies."
-    )
-    in_reply_to_id: Missing[int] = Field(
-        default=UNSET, description="The comment ID to reply to."
-    )
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: str = Field(description="The text of the comment.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    html_url: str = Field(description="HTML URL for the pull request review comment.")
-    pull_request_url: str = Field(
-        description="URL for the pull request that the review comment belongs to."
-    )
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: PullRequestReviewCommentPropLinks = Field(alias="_links")
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
+    vcs: Union[str, None] = Field()
+    use_lfs: Missing[bool] = Field(default=UNSET)
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    svc_root: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ] = Field()
+    status_text: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
+    error_message: Missing[Union[str, None]] = Field(default=UNSET)
+    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    has_large_files: Missing[bool] = Field(default=UNSET)
+    large_files_size: Missing[int] = Field(default=UNSET)
+    large_files_count: Missing[int] = Field(default=UNSET)
+    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    authors_url: str = Field()
+    repository_url: str = Field()
+    svn_root: Missing[str] = Field(default=UNSET)
 
 
-class PullRequestReviewCommentPropLinks(GitHubModel):
-    """PullRequestReviewCommentPropLinks"""
+class ImportPropProjectChoicesItems(GitHubModel):
+    """ImportPropProjectChoicesItems"""
 
-    self_: PullRequestReviewCommentPropLinksPropSelf = Field(alias="self")
-    html: PullRequestReviewCommentPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropSelf"""
-
-    href: str = Field()
+    vcs: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    human_name: Missing[str] = Field(default=UNSET)
 
 
-class PullRequestReviewCommentPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class PullRequestReviewCommentPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-class TimelineLineCommentedEvent(GitHubModel):
-    """Timeline Line Commented Event
-
-    Timeline Line Commented Event
-    """
-
-    event: Missing[Literal["line_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[list[PullRequestReviewComment]] = Field(default=UNSET)
-
-
-model_rebuild(PullRequestReviewComment)
-model_rebuild(PullRequestReviewCommentPropLinks)
-model_rebuild(PullRequestReviewCommentPropLinksPropSelf)
-model_rebuild(PullRequestReviewCommentPropLinksPropHtml)
-model_rebuild(PullRequestReviewCommentPropLinksPropPullRequest)
-model_rebuild(TimelineLineCommentedEvent)
+model_rebuild(Import)
+model_rebuild(ImportPropProjectChoicesItems)
 
 __all__ = (
-    "PullRequestReviewComment",
-    "PullRequestReviewCommentPropLinks",
-    "PullRequestReviewCommentPropLinksPropHtml",
-    "PullRequestReviewCommentPropLinksPropPullRequest",
-    "PullRequestReviewCommentPropLinksPropSelf",
-    "TimelineLineCommentedEvent",
+    "Import",
+    "ImportPropProjectChoicesItems",
 )

@@ -9,69 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0114 import RunnerLabelType, RunnerLabelTypeForResponse
 
-class OrgHookType(TypedDict):
-    """Org Hook
 
-    Org Hook
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
+    runner_group_id: NotRequired[int]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    type: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
 
 
-class OrgHookTypeForResponse(TypedDict):
-    """Org Hook
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    Org Hook
+    A self hosted runner
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
+    runner_group_id: NotRequired[int]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    type: str
-
-
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-class OrgHookPropConfigTypeForResponse(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookPropConfigTypeForResponse",
-    "OrgHookType",
-    "OrgHookTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

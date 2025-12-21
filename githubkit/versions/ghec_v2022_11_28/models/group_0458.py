@@ -9,32 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class RepositoryRuleDetailedOneof6(GitHubModel):
-    """RepositoryRuleDetailedOneof6"""
+class PageBuild(GitHubModel):
+    """Page Build
 
-    type: Literal["required_signatures"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    Page Build
+    """
+
+    url: str = Field()
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(RepositoryRuleDetailedOneof6)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
 
-__all__ = ("RepositoryRuleDetailedOneof6",)
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
+
+__all__ = (
+    "PageBuild",
+    "PageBuildPropError",
+)

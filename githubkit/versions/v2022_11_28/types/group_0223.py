@@ -13,29 +13,25 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    Team Membership
+    A tool that must provide code review results for this rule to pass.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
-class TeamMembershipTypeForResponse(TypedDict):
-    """Team Membership
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    Team Membership
+    A tool that must provide code review results for this rule to pass.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
 __all__ = (
-    "TeamMembershipType",
-    "TeamMembershipTypeForResponse",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
 )

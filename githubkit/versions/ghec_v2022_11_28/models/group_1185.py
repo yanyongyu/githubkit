@@ -16,17 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
     )
     body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)

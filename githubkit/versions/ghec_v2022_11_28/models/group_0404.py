@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,141 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0082 import Team
-from .group_0197 import Issue
+from .group_0403 import Metadata
 
 
-class IssueEvent(GitHubModel):
-    """Issue Event
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
-    )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
         default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
+    metadata: Missing[Metadata] = Field(
         default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    project_card: Missing[IssueEventProjectCard] = Field(
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
         default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
     )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
+    scope: Missing[Literal["runtime", "development"]] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
     )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+model_rebuild(Dependency)
 
-    Issue Event Label
-    """
-
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
-
-
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
-
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
-
-    Issue Event Milestone
-    """
-
-    title: str = Field()
-
-
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
-
-    Issue Event Project Card
-    """
-
-    url: str = Field()
-    id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
-
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
-
-__all__ = (
-    "IssueEvent",
-    "IssueEventDismissedReview",
-    "IssueEventLabel",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
-)
+__all__ = ("Dependency",)

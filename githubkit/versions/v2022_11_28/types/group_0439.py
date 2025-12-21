@@ -11,42 +11,38 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Repository invitations let you manage who you collaborate with.
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Repository invitations let you manage who you collaborate with.
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

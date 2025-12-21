@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,36 +19,55 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Contributor(GitHubModel):
-    """Contributor
+class CodeScanningDefaultSetup(GitHubModel):
+    """CodeScanningDefaultSetup
 
-    Contributor
+    Configuration for code scanning default setup.
     """
 
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    site_admin: Missing[bool] = Field(default=UNSET)
-    contributions: int = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET,
+        description="Code scanning default setup has been configured or not.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
+    )
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
+    )
 
 
-model_rebuild(Contributor)
+model_rebuild(CodeScanningDefaultSetup)
 
-__all__ = ("Contributor",)
+__all__ = ("CodeScanningDefaultSetup",)

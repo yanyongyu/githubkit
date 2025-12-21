@@ -9,112 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0455 import (
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0456 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0466 import DiscussionType, DiscussionTypeForResponse
 
 
-class WebhookDiscussionCategoryChangedType(TypedDict):
-    """discussion category changed event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesType
-    discussion: DiscussionType
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
-    """discussion category changed event"""
+class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["category_changed"]
-    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
-    discussion: DiscussionTypeForResponse
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
 
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
-
-
-class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
+    property_name: str
 
 
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
 
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: (
-        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
-    )
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: _dt.datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
-    TypedDict
-):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: str
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
+    property_name: str
 
 
 __all__ = (
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
-    "WebhookDiscussionCategoryChangedPropChangesType",
-    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
-    "WebhookDiscussionCategoryChangedType",
-    "WebhookDiscussionCategoryChangedTypeForResponse",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedTypeForResponse",
 )

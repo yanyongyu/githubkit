@@ -17,30 +17,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0700 import WebhookPackageUpdatedPropPackagePropPackageVersion
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0484 import WebhooksUser
+from .group_0498 import WebhooksTeam
 
 
-class WebhookPackageUpdatedPropPackage(GitHubModel):
-    """WebhookPackageUpdatedPropPackage
+class WebhookMembershipRemoved(GitHubModel):
+    """membership removed event"""
 
-    Information about the package.
-    """
+    action: Literal["removed"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    member: Union[WebhooksUser, None] = Field(title="User")
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    scope: Literal["team", "organization"] = Field(
+        description="The scope of the membership. Currently, can only be `team`."
+    )
+    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
+    team: WebhooksTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
 
-    created_at: str = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
-    package_type: str = Field()
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
-    updated_at: str = Field()
 
-
-class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
+class WebhookMembershipRemovedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -67,22 +86,10 @@ class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
-
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackageUpdatedPropPackage)
-model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
-model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
+model_rebuild(WebhookMembershipRemoved)
+model_rebuild(WebhookMembershipRemovedPropSender)
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackage",
-    "WebhookPackageUpdatedPropPackagePropOwner",
-    "WebhookPackageUpdatedPropPackagePropRegistry",
+    "WebhookMembershipRemoved",
+    "WebhookMembershipRemovedPropSender",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,39 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
-    )
+    total_count: Missing[int] = Field(default=UNSET)
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Union[str, None]] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
+model_rebuild(
+    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+)
 
 __all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
 )

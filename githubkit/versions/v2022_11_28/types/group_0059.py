@@ -9,54 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0060 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
-)
+from .group_0060 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class ForkEventType(TypedDict):
+    """ForkEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    action: str
+    forkee: ForkEventPropForkeeType
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class ForkEventTypeForResponse(TypedDict):
+    """ForkEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+    action: str
+    forkee: ForkEventPropForkeeTypeForResponse
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "ForkEventType",
+    "ForkEventTypeForResponse",
 )

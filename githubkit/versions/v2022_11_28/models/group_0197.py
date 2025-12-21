@@ -9,29 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0198 import RepositoryRuleCodeScanningPropParameters
+
+class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+        description="Status checks that are required."
+    )
+    strict_required_status_checks_policy: bool = Field(
+        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
+    )
 
 
-class RepositoryRuleCodeScanning(GitHubModel):
-    """code_scanning
+class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
+    """StatusCheckConfiguration
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Required status check
     """
 
-    type: Literal["code_scanning"] = Field()
-    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    context: str = Field(
+        description="The status check context name that must be present on the commit."
+    )
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The optional integration ID that this status check must originate from.",
+    )
 
 
-model_rebuild(RepositoryRuleCodeScanning)
+model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
+model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
 
-__all__ = ("RepositoryRuleCodeScanning",)
+__all__ = (
+    "RepositoryRuleParamsStatusCheckConfiguration",
+    "RepositoryRuleRequiredStatusChecksPropParameters",
+)

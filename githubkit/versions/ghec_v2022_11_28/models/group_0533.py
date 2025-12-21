@@ -14,31 +14,62 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0235 import MinimalRepository
+from .group_0345 import GitUser
+from .group_0531 import SearchResultTextMatchesItems
+from .group_0534 import CommitSearchResultItemPropCommit
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class CommitSearchResultItem(GitHubModel):
+    """Commit Search Result Item
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    Commit Search Result Item
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
     url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    sha: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitSearchResultItemPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    parents: list[CommitSearchResultItemPropParentsItems] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    node_id: str = Field()
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+class CommitSearchResultItemPropParentsItems(GitHubModel):
+    """CommitSearchResultItemPropParentsItems"""
 
-__all__ = ("OrganizationSimpleWebhooks",)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class SearchCommitsGetResponse200(GitHubModel):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[CommitSearchResultItem] = Field()
+
+
+model_rebuild(CommitSearchResultItem)
+model_rebuild(CommitSearchResultItemPropParentsItems)
+model_rebuild(SearchCommitsGetResponse200)
+
+__all__ = (
+    "CommitSearchResultItem",
+    "CommitSearchResultItemPropParentsItems",
+    "SearchCommitsGetResponse200",
+)

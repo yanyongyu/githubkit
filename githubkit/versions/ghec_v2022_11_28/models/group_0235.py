@@ -10,189 +10,178 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0234 import SecurityAndAnalysis
 
-class CodeScanningAlertDismissalRequest(GitHubModel):
-    """Code scanning alert dismissal request
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+class MinimalRepository(GitHubModel):
+    """Minimal Repository
+
+    Minimal Repository
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
-    )
-    number: Missing[int] = Field(
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
+    hooks_url: str = Field()
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[Union[str, None]] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
     )
-    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
+    role_name: Missing[str] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    code_of_conduct: Missing[CodeOfConduct] = Field(
+        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
     )
-    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
+    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
+        default=UNSET, alias="license"
+    )
+    forks: Missing[int] = Field(default=UNSET)
+    open_issues: Missing[int] = Field(default=UNSET)
+    watchers: Missing[int] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
+    custom_properties: Missing[MinimalRepositoryPropCustomProperties] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
-    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal request."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET, description="Data describing the dismissal request metadata."
-        )
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the dismissal request.",
-    )
-    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
-        default=UNSET, description="The status of the dismissal request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
+
+
+class CodeOfConduct(GitHubModel):
+    """Code Of Conduct
+
+    Code Of Conduct
+    """
+
+    key: str = Field()
+    name: str = Field()
+    url: str = Field()
+    body: Missing[str] = Field(default=UNSET)
+    html_url: Union[str, None] = Field()
+
+
+class MinimalRepositoryPropPermissions(GitHubModel):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
+
+
+class MinimalRepositoryPropLicense(GitHubModel):
+    """MinimalRepositoryPropLicense"""
+
+    key: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    spdx_id: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
-    )
+    node_id: Missing[str] = Field(default=UNSET)
 
 
-class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRepository
+class MinimalRepositoryPropCustomProperties(ExtraGitHubModel):
+    """MinimalRepositoryPropCustomProperties
 
-    The repository the dismissal request is for.
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the dismissal request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
-    )
 
-
-class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the dismissal request.",
-    )
-
-
-class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: Missing[str] = Field(
-        default=UNSET, description="The reason for the dismissal request."
-    )
-    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
-    pr_review_thread_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the pull request review thread."
-    )
-
-
-class DismissalRequestResponse(GitHubModel):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the dismissal request."
-    )
-    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the dismissal request."
-    )
-    message: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The response comment of the reviewer."
-    )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
-        default=UNSET,
-        description="The response status to the dismissal request until dismissed.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the dismissal request was created.",
-    )
-
-
-class DismissalRequestResponsePropReviewer(GitHubModel):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the dismissal request.",
-    )
-
-
-model_rebuild(CodeScanningAlertDismissalRequest)
-model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
-model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
-model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
-model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
-model_rebuild(DismissalRequestResponse)
-model_rebuild(DismissalRequestResponsePropReviewer)
+model_rebuild(MinimalRepository)
+model_rebuild(CodeOfConduct)
+model_rebuild(MinimalRepositoryPropPermissions)
+model_rebuild(MinimalRepositoryPropLicense)
+model_rebuild(MinimalRepositoryPropCustomProperties)
 
 __all__ = (
-    "CodeScanningAlertDismissalRequest",
-    "CodeScanningAlertDismissalRequestPropDataItems",
-    "CodeScanningAlertDismissalRequestPropOrganization",
-    "CodeScanningAlertDismissalRequestPropRepository",
-    "CodeScanningAlertDismissalRequestPropRequester",
-    "DismissalRequestResponse",
-    "DismissalRequestResponsePropReviewer",
+    "CodeOfConduct",
+    "MinimalRepository",
+    "MinimalRepositoryPropCustomProperties",
+    "MinimalRepositoryPropLicense",
+    "MinimalRepositoryPropPermissions",
 )

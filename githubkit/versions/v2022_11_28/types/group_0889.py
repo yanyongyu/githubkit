@@ -9,45 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
-
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class GistsGistIdGetResponse403TypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403PropBlockTypeForResponse",
-    "GistsGistIdGetResponse403Type",
-    "GistsGistIdGetResponse403TypeForResponse",
+    "AppInstallationsInstallationIdAccessTokensPostBodyType",
+    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
 )

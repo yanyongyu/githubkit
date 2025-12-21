@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,279 +18,139 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0536 import ExemptionResponse
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
+from .group_0531 import SearchResultTextMatchesItems
 
 
-class ExemptionRequest(GitHubModel):
-    """Exemption Request
+class RepoSearchResultItem(GitHubModel):
+    """Repo Search Result Item
 
-    A request from a user to be exempted from a set of rules.
+    Repo Search Result Item
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption request."
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
+    owner: Union[None, SimpleUser] = Field()
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    pushed_at: _dt.datetime = Field()
+    homepage: Union[str, None] = Field()
+    size: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    open_issues_count: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    default_branch: str = Field()
+    score: float = Field()
+    forks_url: str = Field()
+    keys_url: str = Field()
+    collaborators_url: str = Field()
+    teams_url: str = Field()
+    hooks_url: str = Field()
+    issue_events_url: str = Field()
+    events_url: str = Field()
+    assignees_url: str = Field()
+    branches_url: str = Field()
+    tags_url: str = Field()
+    blobs_url: str = Field()
+    git_tags_url: str = Field()
+    git_refs_url: str = Field()
+    trees_url: str = Field()
+    statuses_url: str = Field()
+    languages_url: str = Field()
+    stargazers_url: str = Field()
+    contributors_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    commits_url: str = Field()
+    git_commits_url: str = Field()
+    comments_url: str = Field()
+    issue_comment_url: str = Field()
+    contents_url: str = Field()
+    compare_url: str = Field()
+    merges_url: str = Field()
+    archive_url: str = Field()
+    downloads_url: str = Field()
+    issues_url: str = Field()
+    pulls_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    labels_url: str = Field()
+    releases_url: str = Field()
+    deployments_url: str = Field()
+    git_url: str = Field()
+    ssh_url: str = Field()
+    clone_url: str = Field()
+    svn_url: str = Field()
+    forks: int = Field()
+    open_issues: int = Field()
+    watchers: int = Field()
+    topics: Missing[list[str]] = Field(default=UNSET)
+    mirror_url: Union[str, None] = Field()
+    has_issues: bool = Field()
+    has_projects: bool = Field()
+    has_pages: bool = Field()
+    has_wiki: bool = Field()
+    has_downloads: bool = Field()
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    archived: bool = Field()
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
     )
-    number: Missing[Union[int, None]] = Field(
+    visibility: Missing[str] = Field(
         default=UNSET,
-        description="The number uniquely identifying the exemption request within it's repository.",
+        description="The repository visibility: public, private, or internal.",
     )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the exemption request is for.",
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
     )
-    requester_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who requested the exemption."
-    )
-    requester_login: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the exemption."
-    )
-    request_type: Missing[
-        Literal[
-            "push_ruleset_bypass",
-            "secret_scanning",
-            "secret_scanning_closure",
-            "code_scanning_alert_dismissal",
-        ]
-    ] = Field(default=UNSET, description="The type of request.")
-    exemption_request_data: Missing[
-        Union[
-            ExemptionRequestPushRulesetBypass,
-            ExemptionRequestSecretScanning,
-            DismissalRequestSecretScanning,
-            DismissalRequestCodeScanning,
-        ]
-    ] = Field(default=UNSET)
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
-    )
-    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
-        default=UNSET, description="The status of the exemption request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the exemption request.",
-    )
-    metadata: Missing[
-        Union[
-            ExemptionRequestSecretScanningMetadata,
-            DismissalRequestSecretScanningMetadata,
-            DismissalRequestCodeScanningMetadata,
-            None,
-        ]
-    ] = Field(default=UNSET, description="Metadata about the exemption request.")
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request will expire.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
-    )
-    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
-        default=UNSET, description="The responses to the exemption request."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the exemption request in a browser."
-    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
 
 
-class ExemptionRequestSecretScanningMetadata(GitHubModel):
-    """Secret Scanning Push Protection Exemption Request Metadata
+class RepoSearchResultItemPropPermissions(GitHubModel):
+    """RepoSearchResultItemPropPermissions"""
 
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: Missing[str] = Field(
-        default=UNSET, description="The label for the secret type"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
-        default=UNSET, description="The reason for the exemption request"
-    )
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
 
 
-class DismissalRequestSecretScanningMetadata(GitHubModel):
-    """Secret scanning alert dismissal request metadata
+class SearchRepositoriesGetResponse200(GitHubModel):
+    """SearchRepositoriesGetResponse200"""
 
-    Metadata for a secret scanning alert dismissal request.
-    """
-
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the secret alert"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(default=UNSET, description="The reason for the dismissal request")
-    )
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[RepoSearchResultItem] = Field()
 
 
-class DismissalRequestCodeScanningMetadata(GitHubModel):
-    """Code scanning alert dismissal request metadata
-
-    Metadata for a code scanning alert dismissal request.
-    """
-
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the code scanning alert"
-    )
-    reason: Missing[Literal["false positive", "won't fix", "used in tests"]] = Field(
-        default=UNSET, description="The reason for the dismissal request"
-    )
-
-
-class ExemptionRequestPushRulesetBypass(GitHubModel):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["push_ruleset_bypass"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the push rules that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the ruleset for the rules that were violated",
-    )
-    ruleset_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the ruleset for the rules that were violated",
-    )
-    total_violations: Missing[int] = Field(
-        default=UNSET, description="The number of violations"
-    )
-    rule_type: Missing[str] = Field(
-        default=UNSET, description="The type of rule that was violated"
-    )
-
-
-class DismissalRequestSecretScanning(GitHubModel):
-    """Secret scanning alert dismissal request data
-
-    Secret scanning alerts that have dismissal requests.
-    """
-
-    type: Missing[Literal["secret_scanning_closure"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[DismissalRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data related to the secret scanning alerts that have dismissal requests.",
-    )
-
-
-class DismissalRequestSecretScanningPropDataItems(GitHubModel):
-    """DismissalRequestSecretScanningPropDataItems"""
-
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(default=UNSET, description="The reason for the dismissal request")
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    alert_number: Missing[str] = Field(
-        default=UNSET, description="The number of the alert that was detected"
-    )
-
-
-class DismissalRequestCodeScanning(GitHubModel):
-    """Code scanning alert dismissal request data
-
-    Code scanning alerts that have dismissal requests.
-    """
-
-    type: Missing[Literal["code_scanning_alert_dismissal"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[DismissalRequestCodeScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data related to the code scanning alerts that have dismissal requests.",
-    )
-
-
-class DismissalRequestCodeScanningPropDataItems(GitHubModel):
-    """DismissalRequestCodeScanningPropDataItems"""
-
-    alert_number: Missing[str] = Field(
-        default=UNSET, description="The number of the alert to be dismissed"
-    )
-
-
-class ExemptionRequestSecretScanning(GitHubModel):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["secret_scanning"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    locations: Missing[
-        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItems]
-    ] = Field(
-        default=UNSET, description="The location data of the secret that was detected"
-    )
-
-
-class ExemptionRequestSecretScanningPropDataItemsPropLocationsItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
-
-    commit: Missing[str] = Field(
-        default=UNSET, description="The commit SHA where the secret was detected"
-    )
-    branch: Missing[str] = Field(
-        default=UNSET, description="The branch where the secret was detected"
-    )
-    path: Missing[str] = Field(
-        default=UNSET, description="The path of the file where the secret was detected"
-    )
-
-
-model_rebuild(ExemptionRequest)
-model_rebuild(ExemptionRequestSecretScanningMetadata)
-model_rebuild(DismissalRequestSecretScanningMetadata)
-model_rebuild(DismissalRequestCodeScanningMetadata)
-model_rebuild(ExemptionRequestPushRulesetBypass)
-model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
-model_rebuild(DismissalRequestSecretScanning)
-model_rebuild(DismissalRequestSecretScanningPropDataItems)
-model_rebuild(DismissalRequestCodeScanning)
-model_rebuild(DismissalRequestCodeScanningPropDataItems)
-model_rebuild(ExemptionRequestSecretScanning)
-model_rebuild(ExemptionRequestSecretScanningPropDataItems)
-model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
+model_rebuild(RepoSearchResultItem)
+model_rebuild(RepoSearchResultItemPropPermissions)
+model_rebuild(SearchRepositoriesGetResponse200)
 
 __all__ = (
-    "DismissalRequestCodeScanning",
-    "DismissalRequestCodeScanningMetadata",
-    "DismissalRequestCodeScanningPropDataItems",
-    "DismissalRequestSecretScanning",
-    "DismissalRequestSecretScanningMetadata",
-    "DismissalRequestSecretScanningPropDataItems",
-    "ExemptionRequest",
-    "ExemptionRequestPushRulesetBypass",
-    "ExemptionRequestPushRulesetBypassPropDataItems",
-    "ExemptionRequestSecretScanning",
-    "ExemptionRequestSecretScanningMetadata",
-    "ExemptionRequestSecretScanningPropDataItems",
-    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItems",
+    "RepoSearchResultItem",
+    "RepoSearchResultItemPropPermissions",
+    "SearchRepositoriesGetResponse200",
 )

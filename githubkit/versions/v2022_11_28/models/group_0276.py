@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class GitUser(GitHubModel):
+    """Git User
 
-    Successful deletion of a code scanning analysis
+    Metaproperties for Git author/committer information.
     """
 
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
-    )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
-    )
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(GitUser)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("GitUser",)

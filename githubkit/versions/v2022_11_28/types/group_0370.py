@@ -9,51 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    Locked Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["locked"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    lock_reason: Union[str, None]
 
 
-class PagesDeploymentStatusTypeForResponse(TypedDict):
-    """GitHub Pages deployment status"""
+class LockedIssueEventTypeForResponse(TypedDict):
+    """Locked Issue Event
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    Locked Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["locked"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    lock_reason: Union[str, None]
 
 
 __all__ = (
-    "PagesDeploymentStatusType",
-    "PagesDeploymentStatusTypeForResponse",
+    "LockedIssueEventType",
+    "LockedIssueEventTypeForResponse",
 )

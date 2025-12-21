@@ -9,43 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0284 import (
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
 
-    repository: SimpleRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
     ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
-
-
-class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
-
-    repository: SimpleRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
     ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredPullRequestReviews"""
+
+    url: str
+    dismiss_stale_reviews: NotRequired[bool]
+    require_code_owner_reviews: NotRequired[bool]
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
+    ]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepoTaskType",
-    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
 )

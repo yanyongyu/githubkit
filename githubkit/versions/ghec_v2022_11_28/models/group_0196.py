@@ -9,52 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class Milestone(GitHubModel):
+    """Milestone
 
-    A value assigned to an issue field
+    A collection of related issues and pull requests.
     """
 
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
     )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
-    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+model_rebuild(Milestone)
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-
-__all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
-)
+__all__ = ("Milestone",)

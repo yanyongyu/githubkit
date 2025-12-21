@@ -9,39 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
+    """RepositoryRuleMaxFileSizePropParameters"""
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
-    """
-
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(RepositoryRuleMaxFileSizePropParameters)
 
-__all__ = ("RepositoryAdvisoryCredit",)
+__all__ = ("RepositoryRuleMaxFileSizePropParameters",)

@@ -9,32 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0158 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class RepositoryRuleDetailedOneof19Type(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-    Referrer Traffic
-    """
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
-    referrer: str
-    count: int
-    uniques: int
 
+class RepositoryRuleDetailedOneof19TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof19"""
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
-
-    Referrer Traffic
-    """
-
-    referrer: str
-    count: int
-    uniques: int
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "RepositoryRuleDetailedOneof19Type",
+    "RepositoryRuleDetailedOneof19TypeForResponse",
 )

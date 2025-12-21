@@ -12,24 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
+class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    The public key used for setting Codespaces secrets.
-    """
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    )
+    send_write_tokens_to_workflows: bool = Field(
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
+    )
+    send_secrets_and_variables: bool = Field(
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
+    )
+    require_approval_for_fork_pr_workflows: bool = Field(
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    )
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
 
+model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
 
-model_rebuild(CodespacesPublicKey)
-
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)

@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0154 import RepositoryRulesetConditionsPropRefName
-from .group_0160 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
+from .group_0003 import SimpleUser
 
 
-class OrgRulesetConditionsOneof2(GitHubModel):
-    """repository_property_and_ref_name
+class ProjectsV2DraftIssue(GitHubModel):
+    """Draft Issue
 
-    Conditions to target repositories by property and refs by name
+    A draft issue in a project
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    id: float = Field(description="The ID of the draft issue")
+    node_id: str = Field(description="The node ID of the draft issue")
+    title: str = Field(description="The title of the draft issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The body content of the draft issue"
+    )
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field(description="The time the draft issue was created")
+    updated_at: _dt.datetime = Field(
+        description="The time the draft issue was last updated"
+    )
 
 
-model_rebuild(OrgRulesetConditionsOneof2)
+model_rebuild(ProjectsV2DraftIssue)
 
-__all__ = ("OrgRulesetConditionsOneof2",)
+__all__ = ("ProjectsV2DraftIssue",)

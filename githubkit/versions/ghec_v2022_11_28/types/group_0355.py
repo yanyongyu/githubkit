@@ -9,27 +9,128 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0203 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0354 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    A check performed on the code of a given code change
+    """
+
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
+
+
+class CheckRunTypeForResponse(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
+    """
+
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[str, None]
+    completed_at: Union[str, None]
+    output: CheckRunPropOutputTypeForResponse
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+
+
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropOutputTypeForResponse(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropCheckSuiteTypeForResponse",
+    "CheckRunPropOutputType",
+    "CheckRunPropOutputTypeForResponse",
+    "CheckRunType",
+    "CheckRunTypeForResponse",
 )

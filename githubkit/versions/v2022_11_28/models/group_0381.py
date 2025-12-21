@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,32 +16,27 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class TimelineAssignedIssueEvent(GitHubModel):
+    """Timeline Assigned Issue Event
 
-    Data related to a release.
+    Timeline Assigned Issue Event
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
-    )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["assigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(TimelineAssignedIssueEvent)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("TimelineAssignedIssueEvent",)

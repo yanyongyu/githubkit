@@ -9,82 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BillingUsageSummaryReportOrgType(TypedDict):
-    """BillingUsageSummaryReportOrg"""
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodType
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsType]
+    A comment made to a gist.
+    """
 
-
-class BillingUsageSummaryReportOrgTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrg"""
-
-    time_period: BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse
-    organization: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse]
-
-
-class BillingUsageSummaryReportOrgPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropTimePeriod"""
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    A comment made to a gist.
+    """
 
-
-class BillingUsageSummaryReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[None, SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "BillingUsageSummaryReportOrgPropTimePeriodType",
-    "BillingUsageSummaryReportOrgPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsType",
-    "BillingUsageSummaryReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportOrgType",
-    "BillingUsageSummaryReportOrgTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

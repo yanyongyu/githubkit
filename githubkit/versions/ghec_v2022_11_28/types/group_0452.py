@@ -9,29 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleDetailedOneof0Type(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
-
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class RepositoryRuleDetailedOneof0TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    State Change Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+
+
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
+
+    State Change Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof0Type",
-    "RepositoryRuleDetailedOneof0TypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

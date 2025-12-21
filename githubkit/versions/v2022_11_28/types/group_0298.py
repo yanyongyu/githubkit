@@ -13,81 +13,46 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-from .group_0150 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
-
-
-class CommunityProfilePropFilesTypeForResponse(TypedDict):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
-    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    contributing: Union[None, CommunityHealthFileTypeForResponse]
-    readme: Union[None, CommunityHealthFileTypeForResponse]
-    issue_template: Union[None, CommunityHealthFileTypeForResponse]
-    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityHealthFileTypeForResponse(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    A CodeQL database.
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[_dt.datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CommunityProfileTypeForResponse(TypedDict):
-    """Community Profile
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Community Profile
+    A CodeQL database.
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesTypeForResponse
-    updated_at: Union[str, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityHealthFileTypeForResponse",
-    "CommunityProfilePropFilesType",
-    "CommunityProfilePropFilesTypeForResponse",
-    "CommunityProfileType",
-    "CommunityProfileTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

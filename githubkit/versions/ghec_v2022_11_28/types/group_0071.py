@@ -9,50 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
-
-
-class CodeScanningAlertInstanceType(TypedDict):
-    """CodeScanningAlertInstance"""
-
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
-
-
-class CodeScanningAlertInstanceTypeForResponse(TypedDict):
-    """CodeScanningAlertInstance"""
-
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ]
 
 
 class CodeScanningAlertLocationType(TypedDict):
@@ -81,23 +38,7 @@ class CodeScanningAlertLocationTypeForResponse(TypedDict):
     end_column: NotRequired[int]
 
 
-class CodeScanningAlertInstancePropMessageType(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
 __all__ = (
-    "CodeScanningAlertInstancePropMessageType",
-    "CodeScanningAlertInstancePropMessageTypeForResponse",
-    "CodeScanningAlertInstanceType",
-    "CodeScanningAlertInstanceTypeForResponse",
     "CodeScanningAlertLocationType",
     "CodeScanningAlertLocationTypeForResponse",
 )

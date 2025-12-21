@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0073 import SimpleRepository
 
 
-class RepositoryFineGrainedPermission(GitHubModel):
-    """Repository Fine-Grained Permission
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
 
-    A fine-grained permission that protects repository resources.
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    name: str = Field()
-    description: str = Field()
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
+        default=UNSET,
+        description="The default repository access level for Dependabot updates.",
+    )
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryFineGrainedPermission)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("RepositoryFineGrainedPermission",)
+__all__ = ("DependabotRepositoryAccessDetails",)

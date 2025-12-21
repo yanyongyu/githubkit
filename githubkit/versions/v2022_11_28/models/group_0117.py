@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,19 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ApiInsightsSubjectStatsItems(GitHubModel):
-    """ApiInsightsSubjectStatsItems"""
-
-    subject_type: Missing[str] = Field(default=UNSET)
-    subject_name: Missing[str] = Field(default=UNSET)
-    subject_id: Missing[int] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+from .group_0020 import Repository
 
 
-model_rebuild(ApiInsightsSubjectStatsItems)
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
 
-__all__ = ("ApiInsightsSubjectStatsItems",)
+    Authentication Token
+    """
+
+    token: str = Field(description="The token used for authentication")
+    expires_at: _dt.datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
+    )
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
+        default=UNSET,
+        description="Describe whether all repositories have been selected or there's a selection involved",
+    )
+
+
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

@@ -9,48 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
-
-
-class WebhooksProjectCardPropCreatorType(TypedDict):
+class WebhooksUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +40,7 @@ class WebhooksProjectCardPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
+class WebhooksUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +68,6 @@ class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "WebhooksUserType",
+    "WebhooksUserTypeForResponse",
 )

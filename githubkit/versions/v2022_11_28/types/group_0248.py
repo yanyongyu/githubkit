@@ -10,59 +10,73 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActivityType(TypedDict):
-    """Activity
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Activity
+    An artifact
     """
 
     id: int
     node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[_dt.datetime, None]
+    expires_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class ArtifactTypeForResponse(TypedDict):
+    """Artifact
 
-    Activity
+    An artifact
     """
 
     id: int
     node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[str, None]
+    expires_at: Union[str, None]
+    updated_at: Union[str, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
+
+
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
+
+
+class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
+    """ArtifactPropWorkflowRun"""
+
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactPropWorkflowRunTypeForResponse",
+    "ArtifactType",
+    "ArtifactTypeForResponse",
 )

@@ -9,27 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0120 import TeamSimple
 
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
+class Team(GitHubModel):
+    """Team
 
-    Interaction limit settings.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    origin: str = Field()
-    expires_at: _dt.datetime = Field()
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
+    parent: Union[None, TeamSimple] = Field()
 
 
-model_rebuild(InteractionLimitResponse)
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-__all__ = ("InteractionLimitResponse",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
+
+__all__ = (
+    "Team",
+    "TeamPropPermissions",
+)

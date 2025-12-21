@@ -14,63 +14,31 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0099 import TeamSimple
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    The Relationship a Team has with a role.
+    A description of the machine powering a codespace.
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
     )
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
     )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
     )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+model_rebuild(CodespaceMachine)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
-
-__all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
-)
+__all__ = ("CodespaceMachine",)

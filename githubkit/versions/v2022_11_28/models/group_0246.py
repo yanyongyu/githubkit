@@ -12,101 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0245 import RateLimit
+from .group_0247 import RateLimitOverviewPropResources
 
 
-class WorkflowRunUsage(GitHubModel):
-    """Workflow Run Usage
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    Workflow Run Usage
+    Rate Limit Overview
     """
 
-    billable: WorkflowRunUsagePropBillable = Field()
-    run_duration_ms: Missing[int] = Field(default=UNSET)
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-class WorkflowRunUsagePropBillable(GitHubModel):
-    """WorkflowRunUsagePropBillable"""
+model_rebuild(RateLimitOverview)
 
-    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
-    )
-    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
-    )
-
-
-class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-model_rebuild(WorkflowRunUsage)
-model_rebuild(WorkflowRunUsagePropBillable)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropMacos)
-model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropWindows)
-model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
-
-__all__ = (
-    "WorkflowRunUsage",
-    "WorkflowRunUsagePropBillable",
-    "WorkflowRunUsagePropBillablePropMacos",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropUbuntu",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropWindows",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
-)
+__all__ = ("RateLimitOverview",)

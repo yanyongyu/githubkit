@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,70 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GpgKey(GitHubModel):
-    """GPG Key
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-    A unique encryption key
-    """
-
-    id: int = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    primary_key_id: Union[int, None] = Field()
-    key_id: str = Field()
-    public_key: str = Field()
-    emails: list[GpgKeyPropEmailsItems] = Field()
-    subkeys: list[GpgKeyPropSubkeysItems] = Field()
-    can_sign: bool = Field()
-    can_encrypt_comms: bool = Field()
-    can_encrypt_storage: bool = Field()
-    can_certify: bool = Field()
-    created_at: _dt.datetime = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    revoked: bool = Field()
-    raw_key: Union[str, None] = Field()
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    )
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
+    )
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    )
 
 
-class GpgKeyPropEmailsItems(GitHubModel):
-    """GpgKeyPropEmailsItems"""
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-class GpgKeyPropSubkeysItems(GitHubModel):
-    """GpgKeyPropSubkeysItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    primary_key_id: Missing[int] = Field(default=UNSET)
-    key_id: Missing[str] = Field(default=UNSET)
-    public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[list[Any]] = Field(default=UNSET)
-    can_sign: Missing[bool] = Field(default=UNSET)
-    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
-    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
-    can_certify: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
-    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
-    revoked: Missing[bool] = Field(default=UNSET)
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: Missing[str] = Field(default=UNSET)
-    verified: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(GpgKey)
-model_rebuild(GpgKeyPropEmailsItems)
-model_rebuild(GpgKeyPropSubkeysItems)
-model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
 
 __all__ = (
-    "GpgKey",
-    "GpgKeyPropEmailsItems",
-    "GpgKeyPropSubkeysItems",
-    "GpgKeyPropSubkeysItemsPropEmailsItems",
+    "UserEmailsResponseItems",
+    "UserNameResponse",
 )

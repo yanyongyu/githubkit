@@ -13,22 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateBudgetType(TypedDict):
-    """UpdateBudget"""
+class CreateBudgetType(TypedDict):
+    """CreateBudget"""
 
     message: str
-    budget: UpdateBudgetPropBudgetType
+    budget: CreateBudgetPropBudgetType
 
 
-class UpdateBudgetTypeForResponse(TypedDict):
-    """UpdateBudget"""
+class CreateBudgetTypeForResponse(TypedDict):
+    """CreateBudget"""
 
     message: str
-    budget: UpdateBudgetPropBudgetTypeForResponse
+    budget: CreateBudgetPropBudgetTypeForResponse
 
 
-class UpdateBudgetPropBudgetType(TypedDict):
-    """UpdateBudgetPropBudget"""
+class CreateBudgetPropBudgetType(TypedDict):
+    """CreateBudgetPropBudget"""
 
     id: NotRequired[str]
     budget_scope: NotRequired[
@@ -39,11 +39,11 @@ class UpdateBudgetPropBudgetType(TypedDict):
     prevent_further_usage: NotRequired[bool]
     budget_product_sku: NotRequired[str]
     budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
+    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
 
 
-class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
-    """UpdateBudgetPropBudget"""
+class CreateBudgetPropBudgetTypeForResponse(TypedDict):
+    """CreateBudgetPropBudget"""
 
     id: NotRequired[str]
     budget_scope: NotRequired[
@@ -55,29 +55,29 @@ class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
     budget_product_sku: NotRequired[str]
     budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
     budget_alerting: NotRequired[
-        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
     ]
 
 
-class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
-class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "UpdateBudgetPropBudgetPropBudgetAlertingType",
-    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "UpdateBudgetPropBudgetType",
-    "UpdateBudgetPropBudgetTypeForResponse",
-    "UpdateBudgetType",
-    "UpdateBudgetTypeForResponse",
+    "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "CreateBudgetPropBudgetType",
+    "CreateBudgetPropBudgetTypeForResponse",
+    "CreateBudgetType",
+    "CreateBudgetTypeForResponse",
 )

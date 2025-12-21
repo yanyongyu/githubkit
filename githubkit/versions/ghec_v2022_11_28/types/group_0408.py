@@ -9,52 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
-
-    Unassigned Issue Event
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class UnassignedIssueEventTypeForResponse(TypedDict):
-    """Unassigned Issue Event
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    Unassigned Issue Event
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "UnassignedIssueEventType",
-    "UnassignedIssueEventTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

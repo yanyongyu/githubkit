@@ -9,21 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0209 import RulesetVersionWithStateAllof1PropState
+from .group_0209 import RepositoryRuleFilePathRestrictionPropParameters
 
 
-class RulesetVersionWithStateAllof1(GitHubModel):
-    """RulesetVersionWithStateAllof1"""
+class RepositoryRuleFilePathRestriction(GitHubModel):
+    """file_path_restriction
 
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
+    """
+
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RulesetVersionWithStateAllof1)
+model_rebuild(RepositoryRuleFilePathRestriction)
 
-__all__ = ("RulesetVersionWithStateAllof1",)
+__all__ = ("RepositoryRuleFilePathRestriction",)

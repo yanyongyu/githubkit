@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhooksRepositoriesAddedItems(GitHubModel):
-    """WebhooksRepositoriesAddedItems"""
-
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+from .group_0020 import Repository
 
 
-model_rebuild(WebhooksRepositoriesAddedItems)
+class StarredRepository(GitHubModel):
+    """Starred Repository
 
-__all__ = ("WebhooksRepositoriesAddedItems",)
+    Starred Repository
+    """
+
+    starred_at: _dt.datetime = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+
+
+model_rebuild(StarredRepository)
+
+__all__ = ("StarredRepository",)

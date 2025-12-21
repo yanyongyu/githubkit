@@ -9,64 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
-
-    An entry in the reviews log for environment deployments
+    Check immutable releases settings for an organization.
     """
 
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class EnvironmentApprovalsTypeForResponse(TypedDict):
-    """Environment Approval
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    An entry in the reviews log for environment deployments
+    Check immutable releases settings for an organization.
     """
 
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserTypeForResponse
-    comment: str
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
-    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
-    "EnvironmentApprovalsType",
-    "EnvironmentApprovalsTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

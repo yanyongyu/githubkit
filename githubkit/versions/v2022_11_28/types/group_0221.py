@@ -9,57 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0222 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+)
 
 
-class TeamDiscussionCommentType(TypedDict):
-    """Team Discussion Comment
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    A reply to a discussion within a team.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: _dt.datetime
-    url: str
-    reactions: NotRequired[ReactionRollupType]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
 
 
-class TeamDiscussionCommentTypeForResponse(TypedDict):
-    """Team Discussion Comment
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
 
-    A reply to a discussion within a team.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    discussion_url: str
-    html_url: str
-    node_id: str
-    number: int
-    updated_at: str
-    url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "TeamDiscussionCommentType",
-    "TeamDiscussionCommentTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
 )

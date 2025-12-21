@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0490 import Traffic
-
-
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
-
-    Clone Traffic
-    """
-
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
+from .group_0153 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-model_rebuild(CloneTraffic)
+class RepositoryRuleDetailedOneof17(GitHubModel):
+    """RepositoryRuleDetailedOneof17"""
 
-__all__ = ("CloneTraffic",)
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
+
+
+model_rebuild(RepositoryRuleDetailedOneof17)
+
+__all__ = ("RepositoryRuleDetailedOneof17",)

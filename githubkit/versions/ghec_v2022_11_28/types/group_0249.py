@@ -9,35 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    Limit interactions to a specific type of user for a specified duration
+    A description of the machine powering a codespace.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-class InteractionLimitTypeForResponse(TypedDict):
-    """Interaction Restrictions
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    Limit interactions to a specific type of user for a specified duration
+    A description of the machine powering a codespace.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
 __all__ = (
-    "InteractionLimitType",
-    "InteractionLimitTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

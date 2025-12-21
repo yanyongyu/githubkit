@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryRuleDetailedOneof6(GitHubModel):
+    """RepositoryRuleDetailedOneof6"""
 
-    pattern_name: Missing[str] = Field(
-        default=UNSET, description="Name of the custom pattern for custom pattern scans"
-    )
-    pattern_scope: Missing[str] = Field(
+    type: Literal["required_signatures"] = Field()
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
+model_rebuild(RepositoryRuleDetailedOneof6)
 
-__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)
+__all__ = ("RepositoryRuleDetailedOneof6",)

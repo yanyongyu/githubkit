@@ -11,19 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+    machine: Missing[str] = Field(
+        default=UNSET, description="A valid machine to transition this codespace to."
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    recent_folders: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(UserCodespacesCodespaceNamePatchBody)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("UserCodespacesCodespaceNamePatchBody",)

@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhooksWorkflowJobRun(GitHubModel):
-    """WebhooksWorkflowJobRun"""
+class Key(GitHubModel):
+    """Key
 
-    conclusion: None = Field()
-    created_at: str = Field()
-    environment: str = Field()
-    html_url: str = Field()
+    Key
+    """
+
+    key: str = Field()
     id: int = Field()
-    name: None = Field()
-    status: str = Field()
-    updated_at: str = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: _dt.datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksWorkflowJobRun)
+model_rebuild(Key)
 
-__all__ = ("WebhooksWorkflowJobRun",)
+__all__ = ("Key",)

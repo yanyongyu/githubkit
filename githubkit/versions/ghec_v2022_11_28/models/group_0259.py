@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,46 +18,138 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0081 import TeamSimple
+from .group_0257 import DismissalRequestResponse
 
 
-class UserRoleAssignment(GitHubModel):
-    """A Role Assignment for a User
+class DependabotAlertDismissalRequest(GitHubModel):
+    """Dependabot alert dismissal request
 
-    The Relationship a User has with a role.
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
+    )
+    number: Missing[int] = Field(
         default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+        description="The number uniquely identifying the dismissal request within its repository.",
     )
-    inherited_from: Missing[list[TeamSimple]] = Field(
-        default=UNSET, description="Team the user has gotten the role through"
+    repository: Missing[DependabotAlertDismissalRequestPropRepository] = Field(
+        default=UNSET, description="The repository the dismissal request is for."
     )
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    organization: Missing[DependabotAlertDismissalRequestPropOrganization] = Field(
+        default=UNSET,
+        description="The organization associated with the repository the dismissal request is for.",
+    )
+    requester: Missing[DependabotAlertDismissalRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal request."
+    )
+    request_type: Missing[str] = Field(
+        default=UNSET, description="The type of request."
+    )
+    data: Missing[Union[list[DependabotAlertDismissalRequestPropDataItems], None]] = (
+        Field(
+            default=UNSET, description="Data describing the dismissal request metadata."
+        )
+    )
+    resource_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier for the request type of the dismissal request.",
+    )
+    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
+        default=UNSET, description="The status of the dismissal request."
+    )
+    requester_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the requester provided when creating the dismissal request.",
+    )
+    expires_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the dismissal request will expire.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the dismissal request was created.",
+    )
+    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
+        default=UNSET, description="The responses to the dismissal request."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the dismissal request in a browser."
+    )
 
 
-model_rebuild(UserRoleAssignment)
+class DependabotAlertDismissalRequestPropRepository(GitHubModel):
+    """DependabotAlertDismissalRequestPropRepository
 
-__all__ = ("UserRoleAssignment",)
+    The repository the dismissal request is for.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository the dismissal request is for.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository the dismissal request is for.",
+    )
+    full_name: Missing[str] = Field(
+        default=UNSET,
+        description="The full name of the repository the dismissal request is for.",
+    )
+
+
+class DependabotAlertDismissalRequestPropOrganization(GitHubModel):
+    """DependabotAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the organization."
+    )
+
+
+class DependabotAlertDismissalRequestPropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who requested the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who requested the dismissal request.",
+    )
+
+
+class DependabotAlertDismissalRequestPropDataItems(GitHubModel):
+    """DependabotAlertDismissalRequestPropDataItems"""
+
+    reason: Missing[str] = Field(
+        default=UNSET, description="The reason for the dismissal request."
+    )
+    alert_number: Missing[str] = Field(default=UNSET, description="The alert number.")
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the alert."
+    )
+
+
+model_rebuild(DependabotAlertDismissalRequest)
+model_rebuild(DependabotAlertDismissalRequestPropRepository)
+model_rebuild(DependabotAlertDismissalRequestPropOrganization)
+model_rebuild(DependabotAlertDismissalRequestPropRequester)
+model_rebuild(DependabotAlertDismissalRequestPropDataItems)
+
+__all__ = (
+    "DependabotAlertDismissalRequest",
+    "DependabotAlertDismissalRequestPropDataItems",
+    "DependabotAlertDismissalRequestPropOrganization",
+    "DependabotAlertDismissalRequestPropRepository",
+    "DependabotAlertDismissalRequestPropRequester",
+)

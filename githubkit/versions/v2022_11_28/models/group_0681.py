@@ -18,73 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0453 import EnterpriseWebhooks
-from .group_0454 import SimpleInstallation
-from .group_0455 import OrganizationSimpleWebhooks
-from .group_0456 import RepositoryWebhooks
+from .group_0473 import EnterpriseWebhooks
+from .group_0474 import SimpleInstallation
+from .group_0475 import OrganizationSimpleWebhooks
+from .group_0476 import RepositoryWebhooks
+from .group_0492 import WebhooksIssue
+from .group_0495 import WebhooksUserMannequin
 
 
-class WebhookMetaDeleted(GitHubModel):
-    """meta deleted event"""
+class WebhookIssuesUnassigned(GitHubModel):
+    """issues unassigned event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["unassigned"] = Field(description="The action that was performed.")
+    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
+        default=UNSET, title="User"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    hook: WebhookMetaDeletedPropHook = Field(
-        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
-    )
-    hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMetaDeletedPropHook(GitHubModel):
-    """WebhookMetaDeletedPropHook
+model_rebuild(WebhookIssuesUnassigned)
 
-    The deleted webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool = Field()
-    config: WebhookMetaDeletedPropHookPropConfig = Field()
-    created_at: str = Field()
-    events: list[str] = Field(description="")
-    id: int = Field()
-    name: str = Field()
-    type: str = Field()
-    updated_at: str = Field()
-
-
-class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"] = Field()
-    insecure_ssl: str = Field()
-    secret: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-
-
-model_rebuild(WebhookMetaDeleted)
-model_rebuild(WebhookMetaDeletedPropHook)
-model_rebuild(WebhookMetaDeletedPropHookPropConfig)
-
-__all__ = (
-    "WebhookMetaDeleted",
-    "WebhookMetaDeletedPropHook",
-    "WebhookMetaDeletedPropHookPropConfig",
-)
+__all__ = ("WebhookIssuesUnassigned",)

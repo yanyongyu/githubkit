@@ -10,203 +10,298 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0234 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
+class MinimalRepositoryType(TypedDict):
+    """Minimal Repository
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Minimal Repository
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsType]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductType]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseType, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesType]
+
+
+class MinimalRepositoryTypeForResponse(TypedDict):
+    """Minimal Repository
+
+    Minimal Repository
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[str, None]]
+    created_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsTypeForResponse]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductTypeForResponse]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseTypeForResponse, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesTypeForResponse]
+
+
+class CodeOfConductType(TypedDict):
+    """Code Of Conduct
+
+    Code Of Conduct
+    """
+
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
+
+
+class CodeOfConductTypeForResponse(TypedDict):
+    """Code Of Conduct
+
+    Code Of Conduct
+    """
+
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
+
+
+class MinimalRepositoryPropPermissionsType(TypedDict):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
+class MinimalRepositoryPropPermissionsTypeForResponse(TypedDict):
+    """MinimalRepositoryPropPermissions"""
+
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
+
+
+class MinimalRepositoryPropLicenseType(TypedDict):
+    """MinimalRepositoryPropLicense"""
+
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
     url: NotRequired[str]
-    html_url: NotRequired[str]
+    node_id: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request
+class MinimalRepositoryPropLicenseTypeForResponse(TypedDict):
+    """MinimalRepositoryPropLicense"""
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[
-        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
-    ]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
     url: NotRequired[str]
-    html_url: NotRequired[str]
+    node_id: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+MinimalRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+MinimalRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class DismissalRequestResponseType(TypedDict):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
-
-
-class DismissalRequestResponseTypeForResponse(TypedDict):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class DismissalRequestResponsePropReviewerType(TypedDict):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
-    """DismissalRequestResponsePropReviewer
-
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
-    "CodeScanningAlertDismissalRequestType",
-    "CodeScanningAlertDismissalRequestTypeForResponse",
-    "DismissalRequestResponsePropReviewerType",
-    "DismissalRequestResponsePropReviewerTypeForResponse",
-    "DismissalRequestResponseType",
-    "DismissalRequestResponseTypeForResponse",
+    "CodeOfConductType",
+    "CodeOfConductTypeForResponse",
+    "MinimalRepositoryPropCustomPropertiesType",
+    "MinimalRepositoryPropCustomPropertiesTypeForResponse",
+    "MinimalRepositoryPropLicenseType",
+    "MinimalRepositoryPropLicenseTypeForResponse",
+    "MinimalRepositoryPropPermissionsType",
+    "MinimalRepositoryPropPermissionsTypeForResponse",
+    "MinimalRepositoryType",
+    "MinimalRepositoryTypeForResponse",
 )

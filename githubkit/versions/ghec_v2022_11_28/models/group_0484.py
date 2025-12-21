@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,33 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0139 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class ContributorActivity(GitHubModel):
-    """Contributor Activity
+class RepositoryRuleDetailedOneof10(GitHubModel):
+    """RepositoryRuleDetailedOneof10"""
 
-    Contributor Activity
-    """
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
-    author: Union[None, SimpleUser] = Field()
-    total: int = Field()
-    weeks: list[ContributorActivityPropWeeksItems] = Field()
 
+model_rebuild(RepositoryRuleDetailedOneof10)
 
-class ContributorActivityPropWeeksItems(GitHubModel):
-    """ContributorActivityPropWeeksItems"""
-
-    w: Missing[int] = Field(default=UNSET)
-    a: Missing[int] = Field(default=UNSET)
-    d: Missing[int] = Field(default=UNSET)
-    c: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ContributorActivity)
-model_rebuild(ContributorActivityPropWeeksItems)
-
-__all__ = (
-    "ContributorActivity",
-    "ContributorActivityPropWeeksItems",
-)
+__all__ = ("RepositoryRuleDetailedOneof10",)

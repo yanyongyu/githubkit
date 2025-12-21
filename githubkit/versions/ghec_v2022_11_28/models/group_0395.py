@@ -9,35 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class ContentSubmodule(GitHubModel):
+    """Submodule Content
 
-    Git references within a repository
+    An object describing a submodule
     """
 
-    ref: str = Field()
-    node_id: str = Field()
+    type: Literal["submodule"] = Field()
+    submodule_git_url: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
     url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSubmodulePropLinks = Field(alias="_links")
 
 
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
+class ContentSubmodulePropLinks(GitHubModel):
+    """ContentSubmodulePropLinks"""
 
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+model_rebuild(ContentSubmodule)
+model_rebuild(ContentSubmodulePropLinks)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "ContentSubmodule",
+    "ContentSubmodulePropLinks",
 )

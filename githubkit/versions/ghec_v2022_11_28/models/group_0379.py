@@ -9,17 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0075 import CodeSecurityConfiguration
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Code security configuration associated with a repository and attachment status
     """
 
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+model_rebuild(CodeSecurityConfigurationForRepository)
+
+__all__ = ("CodeSecurityConfigurationForRepository",)

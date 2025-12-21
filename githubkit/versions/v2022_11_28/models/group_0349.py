@@ -9,53 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
 
-class AddedToProjectIssueEvent(GitHubModel):
-    """Added to Project Issue Event
+class GitCommit(GitHubModel):
+    """Git Commit
 
-    Added to Project Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int = Field()
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["added_to_project"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: list[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
-    """AddedToProjectIssueEventPropProjectCard"""
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
 
-    id: int = Field()
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
     url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AddedToProjectIssueEvent)
-model_rebuild(AddedToProjectIssueEventPropProjectCard)
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
 
 __all__ = (
-    "AddedToProjectIssueEvent",
-    "AddedToProjectIssueEventPropProjectCard",
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropParentsItems",
+    "GitCommitPropTree",
+    "GitCommitPropVerification",
 )

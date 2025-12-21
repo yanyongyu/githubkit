@@ -9,44 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0088 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class DependabotAlertDismissalRequestSimpleType(TypedDict):
+    """Dependabot alert dismissal request
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
+    created_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    Details for the vulnerable dependency.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[
+        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
     ]
+    created_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryPropDependencyType",
-    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
+    "DependabotAlertDismissalRequestSimplePropRequesterType",
+    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestSimpleType",
+    "DependabotAlertDismissalRequestSimpleTypeForResponse",
 )

@@ -9,39 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0320 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class StatusType(TypedDict):
+    """Status
 
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
     id: int
     node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class StatusTypeForResponse(TypedDict):
+    """Status
 
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
     id: int
     node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "StatusType",
+    "StatusTypeForResponse",
 )

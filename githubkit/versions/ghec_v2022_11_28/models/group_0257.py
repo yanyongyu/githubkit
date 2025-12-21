@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,28 +19,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    A response made by a requester to dismiss the request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
     )
-    description: Missing[str] = Field(
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
         default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
+        description="The response status to the dismissal request until dismissed.",
     )
-    permissions: Missing[list[str]] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="A list of additional permissions included in this role.",
+        description="The date and time the response to the dismissal request was created.",
     )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ] = Field(
+
+
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
         default=UNSET,
-        description="The system role from which this role can inherit permissions.",
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
     )
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+__all__ = (
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
+)

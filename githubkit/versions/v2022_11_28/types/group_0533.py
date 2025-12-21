@@ -9,55 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0453 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0454 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0455 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookCustomPropertyDeletedType(TypedDict):
-    """custom property deleted event"""
+class WebhookCheckRunRerequestedFormEncodedType(TypedDict):
+    """Check Run Re-Requested Event
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    The check_run.rerequested webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCustomPropertyDeletedTypeForResponse(TypedDict):
-    """custom property deleted event"""
+class WebhookCheckRunRerequestedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Re-Requested Event
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    The check_run.rerequested webhook encoded with URL encoding
+    """
 
-
-class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-class WebhookCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
+    payload: str
 
 
 __all__ = (
-    "WebhookCustomPropertyDeletedPropDefinitionType",
-    "WebhookCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookCustomPropertyDeletedType",
-    "WebhookCustomPropertyDeletedTypeForResponse",
+    "WebhookCheckRunRerequestedFormEncodedType",
+    "WebhookCheckRunRerequestedFormEncodedTypeForResponse",
 )

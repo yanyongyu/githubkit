@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAlertInstance(GitHubModel):
-    """CodeScanningAlertInstance"""
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    ref: Missing[str] = Field(
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
+    )
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    analysis_key: Missing[str] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    environment: Missing[str] = Field(
+    selected_actions_url: Missing[str] = Field(
         default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
-    category: Missing[str] = Field(
+    sha_pinning_required: Missing[bool] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "dismissed", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstancePropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
+model_rebuild(ActionsOrganizationPermissions)
 
-    Describe a region within a file for the alert.
-    """
-
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
-
-
-class CodeScanningAlertInstancePropMessage(GitHubModel):
-    """CodeScanningAlertInstancePropMessage"""
-
-    text: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(CodeScanningAlertInstance)
-model_rebuild(CodeScanningAlertLocation)
-model_rebuild(CodeScanningAlertInstancePropMessage)
-
-__all__ = (
-    "CodeScanningAlertInstance",
-    "CodeScanningAlertInstancePropMessage",
-    "CodeScanningAlertLocation",
-)
+__all__ = ("ActionsOrganizationPermissions",)

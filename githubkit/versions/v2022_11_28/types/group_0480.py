@@ -9,38 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import SimpleCommitType, SimpleCommitTypeForResponse
 
+class WebhooksDeployKeyType(TypedDict):
+    """WebhooksDeployKey
 
-class MergeGroupType(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
-class MergeGroupTypeForResponse(TypedDict):
-    """Merge Group
+class WebhooksDeployKeyTypeForResponse(TypedDict):
+    """WebhooksDeployKey
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitTypeForResponse
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "MergeGroupType",
-    "MergeGroupTypeForResponse",
+    "WebhooksDeployKeyType",
+    "WebhooksDeployKeyTypeForResponse",
 )

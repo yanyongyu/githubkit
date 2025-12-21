@@ -10,33 +10,74 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    Interaction limit settings.
+    The campaign metadata and alert stats.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: _dt.datetime
+    number: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class InteractionLimitResponseTypeForResponse(TypedDict):
-    """Interaction Limits
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    Interaction limit settings.
+    The campaign metadata and alert stats.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: str
+    number: int
+    created_at: str
+    updated_at: str
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
+
+
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
+
+
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "InteractionLimitResponseType",
-    "InteractionLimitResponseTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

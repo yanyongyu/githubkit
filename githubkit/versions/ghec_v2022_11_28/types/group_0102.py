@@ -13,14 +13,18 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyPayloadType(TypedDict):
-    """Organization Custom Property Payload
+class OrganizationCustomPropertyType(TypedDict):
+    """Custom Property for Organization
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Custom property defined for an organization
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    ]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
@@ -30,14 +34,18 @@ class OrganizationCustomPropertyPayloadType(TypedDict):
     ]
 
 
-class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
-    """Organization Custom Property Payload
+class OrganizationCustomPropertyTypeForResponse(TypedDict):
+    """Custom Property for Organization
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Custom property defined for an organization
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    ]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
@@ -48,6 +56,6 @@ class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrganizationCustomPropertyPayloadType",
-    "OrganizationCustomPropertyPayloadTypeForResponse",
+    "OrganizationCustomPropertyType",
+    "OrganizationCustomPropertyTypeForResponse",
 )

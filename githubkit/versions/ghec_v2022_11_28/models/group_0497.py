@@ -17,80 +17,69 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0496 import Meta
+from .group_0177 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0178 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0179 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
 
 
-class ScimEnterpriseGroupResponse(GitHubModel):
-    """ScimEnterpriseGroupResponse"""
+class SecretScanningLocation(GitHubModel):
+    """SecretScanningLocation"""
 
-    schemas: list[
+    type: Missing[
         Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
         ]
     ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
     )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
-    )
-    members: Missing[list[ScimEnterpriseGroupResponseMergedMembers]] = Field(
-        default=UNSET, description="The group members."
-    )
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
+    details: Missing[
+        Union[
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+        ]
+    ] = Field(default=UNSET)
 
 
-class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+model_rebuild(SecretScanningLocation)
 
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
-    )
-
-
-class ScimEnterpriseGroupList(GitHubModel):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
-        Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
-        )
-    )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
-    )
-    resources: list[ScimEnterpriseGroupResponse] = Field(
-        alias="Resources", description="Information about each provisioned group."
-    )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
-    )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
-    )
-
-
-model_rebuild(ScimEnterpriseGroupResponse)
-model_rebuild(ScimEnterpriseGroupResponseMergedMembers)
-model_rebuild(ScimEnterpriseGroupList)
-
-__all__ = (
-    "ScimEnterpriseGroupList",
-    "ScimEnterpriseGroupResponse",
-    "ScimEnterpriseGroupResponseMergedMembers",
-)
+__all__ = ("SecretScanningLocation",)

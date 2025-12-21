@@ -9,56 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class GitTree(GitHubModel):
+    """Git Tree
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
-    """Converted Note to Issue Issue Event
-
-    Converted Note to Issue Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["converted_note_to_issue"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
-        default=UNSET
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
     )
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
+    path: str = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ConvertedNoteToIssueIssueEvent)
-model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEvent",
-    "ConvertedNoteToIssueIssueEventPropProjectCard",
+    "GitTree",
+    "GitTreePropTreeItems",
 )

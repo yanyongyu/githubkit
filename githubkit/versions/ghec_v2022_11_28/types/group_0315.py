@@ -9,60 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0314 import RateLimitType, RateLimitTypeForResponse
+from .group_0316 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class ActivityType(TypedDict):
-    """Activity
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Activity
+    Rate Limit Overview
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    Activity
+    Rate Limit Overview
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

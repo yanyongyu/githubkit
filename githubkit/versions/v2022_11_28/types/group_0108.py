@@ -9,38 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
-class CodespacesPublicKeyTypeForResponse(TypedDict):
-    """CodespacesPublicKey
+class ActionsForkPrWorkflowsPrivateReposTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    The public key used for setting Codespaces secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
 __all__ = (
-    "CodespacesPublicKeyType",
-    "CodespacesPublicKeyTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposType",
+    "ActionsForkPrWorkflowsPrivateReposTypeForResponse",
 )

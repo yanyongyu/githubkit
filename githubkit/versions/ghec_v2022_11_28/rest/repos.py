@@ -2680,7 +2680,7 @@ class ReposClient:
 
         Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-an-attestation
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#create-an-attestation
         """
 
         from ..models import (
@@ -2768,7 +2768,7 @@ class ReposClient:
 
         Artifact attestations are meant to be created using the [attest action](https://github.com/actions/attest). For more information, see our guide on [using artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#create-an-attestation
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#create-an-attestation
         """
 
         from ..models import (
@@ -2830,7 +2830,7 @@ class ReposClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#list-attestations
         """
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
@@ -2881,7 +2881,7 @@ class ReposClient:
 
         **Please note:** in order to offer meaningful security benefits, an attestation's signature and timestamps **must** be cryptographically verified, and the identity of the attestation signer **must** be validated. Attestations can be verified using the [GitHub CLI `attestation verify` command](https://cli.github.com/manual/gh_attestation_verify). For more information, see [our guide on how to use artifact attestations to establish a build's provenance](https://docs.github.com/enterprise-cloud@latest//actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
 
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-attestations
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/attestations#list-attestations
         """
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200

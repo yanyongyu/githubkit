@@ -10,178 +10,144 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0062 import SecurityAndAnalysis
+from .group_0052 import PullRequestMinimal
 
 
-class MinimalRepository(GitHubModel):
-    """Minimal Repository
+class PullRequestReviewCommentEvent(GitHubModel):
+    """PullRequestReviewCommentEvent"""
 
-    Minimal Repository
-    """
+    action: str = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    comment: PullRequestReviewCommentEventPropComment = Field()
+
+
+class PullRequestReviewCommentEventPropComment(GitHubModel):
+    """PullRequestReviewCommentEventPropComment"""
 
     id: int = Field()
     node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field()
+    url: str = Field()
+    pull_request_review_id: Union[int, None] = Field()
+    diff_hunk: str = Field()
+    path: str = Field()
+    position: Union[int, None] = Field()
+    original_position: int = Field()
+    subject_type: Missing[Union[str, None]] = Field(default=UNSET)
+    commit_id: str = Field()
+    user: Union[PullRequestReviewCommentEventPropCommentPropUser, None] = Field(
+        title="User"
+    )
+    body: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
     html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: Missing[str] = Field(default=UNSET)
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: Missing[str] = Field(default=UNSET)
-    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
-    hooks_url: str = Field()
-    svn_url: Missing[str] = Field(default=UNSET)
-    homepage: Missing[Union[str, None]] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    forks_count: Missing[int] = Field(default=UNSET)
-    stargazers_count: Missing[int] = Field(default=UNSET)
-    watchers_count: Missing[int] = Field(default=UNSET)
-    size: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
+    pull_request_url: str = Field()
+    links: PullRequestReviewCommentEventPropCommentPropLinks = Field(alias="_links")
+    original_commit_id: str = Field()
+    reactions: PullRequestReviewCommentEventPropCommentPropReactions = Field(
+        title="Reactions"
     )
-    default_branch: Missing[str] = Field(default=UNSET)
-    open_issues_count: Missing[int] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: Missing[bool] = Field(default=UNSET)
-    has_projects: Missing[bool] = Field(default=UNSET)
-    has_wiki: Missing[bool] = Field(default=UNSET)
-    has_pages: Missing[bool] = Field(default=UNSET)
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    archived: Missing[bool] = Field(default=UNSET)
-    disabled: Missing[bool] = Field(default=UNSET)
-    visibility: Missing[str] = Field(default=UNSET)
-    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
-    role_name: Missing[str] = Field(default=UNSET)
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    subscribers_count: Missing[int] = Field(default=UNSET)
-    network_count: Missing[int] = Field(default=UNSET)
-    code_of_conduct: Missing[CodeOfConduct] = Field(
-        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
-    )
-    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
-        default=UNSET, alias="license"
-    )
-    forks: Missing[int] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    watchers: Missing[int] = Field(default=UNSET)
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
-    )
-    custom_properties: Missing[MinimalRepositoryPropCustomProperties] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
-    )
+    in_reply_to_id: Missing[int] = Field(default=UNSET)
 
 
-class CodeOfConduct(GitHubModel):
-    """Code Of Conduct
+class PullRequestReviewCommentEventPropCommentPropUser(GitHubModel):
+    """User"""
 
-    Code Of Conduct
-    """
-
-    key: str = Field()
-    name: str = Field()
-    url: str = Field()
-    body: Missing[str] = Field(default=UNSET)
-    html_url: Union[str, None] = Field()
-
-
-class MinimalRepositoryPropPermissions(GitHubModel):
-    """MinimalRepositoryPropPermissions"""
-
-    admin: Missing[bool] = Field(default=UNSET)
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: Missing[bool] = Field(default=UNSET)
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: Missing[bool] = Field(default=UNSET)
-
-
-class MinimalRepositoryPropLicense(GitHubModel):
-    """MinimalRepositoryPropLicense"""
-
-    key: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
-    spdx_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class MinimalRepositoryPropCustomProperties(ExtraGitHubModel):
-    """MinimalRepositoryPropCustomProperties
+class PullRequestReviewCommentEventPropCommentPropReactions(GitHubModel):
+    """Reactions"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
+    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
+    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
+    confused: Missing[int] = Field(default=UNSET)
+    eyes: Missing[int] = Field(default=UNSET)
+    heart: Missing[int] = Field(default=UNSET)
+    hooray: Missing[int] = Field(default=UNSET)
+    laugh: Missing[int] = Field(default=UNSET)
+    rocket: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MinimalRepository)
-model_rebuild(CodeOfConduct)
-model_rebuild(MinimalRepositoryPropPermissions)
-model_rebuild(MinimalRepositoryPropLicense)
-model_rebuild(MinimalRepositoryPropCustomProperties)
+class PullRequestReviewCommentEventPropCommentPropLinks(GitHubModel):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtml = Field(
+        title="Link"
+    )
+    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest = (
+        Field(title="Link")
+    )
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelf = Field(
+        alias="self", title="Link"
+    )
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelf(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewCommentEvent)
+model_rebuild(PullRequestReviewCommentEventPropComment)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropUser)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropReactions)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinks)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropHtml)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropSelf)
 
 __all__ = (
-    "CodeOfConduct",
-    "MinimalRepository",
-    "MinimalRepositoryPropCustomProperties",
-    "MinimalRepositoryPropLicense",
-    "MinimalRepositoryPropPermissions",
+    "PullRequestReviewCommentEvent",
+    "PullRequestReviewCommentEventPropComment",
+    "PullRequestReviewCommentEventPropCommentPropLinks",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtml",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelf",
+    "PullRequestReviewCommentEventPropCommentPropReactions",
+    "PullRequestReviewCommentEventPropCommentPropUser",
 )

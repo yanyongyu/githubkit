@@ -9,32 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class InteractionLimit(GitHubModel):
-    """Interaction Restrictions
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    Limit interactions to a specific type of user for a specified duration
+    A description of the machine powering a codespace.
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
     )
-    expiry: Missing[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ] = Field(
-        default=UNSET,
-        description="The duration of the interaction restriction. Default: `one_day`.",
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
+    )
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
+    )
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-model_rebuild(InteractionLimit)
+model_rebuild(CodespaceMachine)
 
-__all__ = ("InteractionLimit",)
+__all__ = ("CodespaceMachine",)

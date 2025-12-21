@@ -9,50 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
-
-    Timeline Unassigned Issue Event
+    Porter Large File
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class PorterLargeFileTypeForResponse(TypedDict):
+    """Porter Large File
 
-    Timeline Unassigned Issue Event
+    Porter Large File
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "PorterLargeFileType",
+    "PorterLargeFileTypeForResponse",
 )

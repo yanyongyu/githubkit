@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,46 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RuleSuitesItems(GitHubModel):
-    """RuleSuitesItems"""
+class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
+    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The number that identifies the user."
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-    actor_name: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
-    )
-    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
-    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RuleSuitesItems)
+model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
 
-__all__ = ("RuleSuitesItems",)
+__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)

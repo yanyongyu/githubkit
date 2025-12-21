@@ -12,22 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0231 import RulesetVersionWithStateAllof1PropState
 
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
 
-    GitHub Actions cache storage policy for a repository.
-    """
-
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+model_rebuild(RulesetVersionWithStateAllof1)
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+__all__ = ("RulesetVersionWithStateAllof1",)

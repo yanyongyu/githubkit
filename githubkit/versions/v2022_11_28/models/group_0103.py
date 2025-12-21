@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("OidcCustomSub",)

@@ -12,16 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
-    """ReposOwnerRepoTagsProtectionPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    pattern: str = Field(
-        description="An optional glob pattern to match against when enforcing tag protection."
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be removed."
+    )
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
     )
 
 
-model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

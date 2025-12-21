@@ -9,87 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
+    A suite of checks performed on the code of a given code change
+    """
 
-
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
 
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksPreviousMarketplacePurchaseType",
-    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
 )

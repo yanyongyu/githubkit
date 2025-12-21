@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0228 import RulesetVersionPropActor
+from .group_0231 import RulesetVersionWithStateAllof1PropState
 
 
-class ActionsCacheRetentionLimitForRepository(GitHubModel):
-    """Actions cache retention limit for a repository
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
 
-    GitHub Actions cache retention policy for a repository.
-    """
-
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum number of days to keep caches in this repository.",
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
+    )
+    updated_at: _dt.datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
 
 
-model_rebuild(ActionsCacheRetentionLimitForRepository)
+model_rebuild(RulesetVersionWithState)
 
-__all__ = ("ActionsCacheRetentionLimitForRepository",)
+__all__ = ("RulesetVersionWithState",)

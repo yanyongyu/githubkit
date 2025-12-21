@@ -9,37 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class OrgHookType(TypedDict):
+    """Org Hook
 
-    The status of auto merging a pull request.
+    Org Hook
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    type: str
 
 
-class AutoMergeTypeForResponse(TypedDict):
-    """Auto merge
+class OrgHookTypeForResponse(TypedDict):
+    """Org Hook
 
-    The status of auto merging a pull request.
+    Org Hook
     """
 
-    enabled_by: SimpleUserTypeForResponse
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    type: str
+
+
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+class OrgHookPropConfigTypeForResponse(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
 __all__ = (
-    "AutoMergeType",
-    "AutoMergeTypeForResponse",
+    "OrgHookPropConfigType",
+    "OrgHookPropConfigTypeForResponse",
+    "OrgHookType",
+    "OrgHookTypeForResponse",
 )

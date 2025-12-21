@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0034 import SimpleRepository
+from .group_0069 import ReleaseEventPropRelease
 
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
+class ReleaseEvent(GitHubModel):
+    """ReleaseEvent"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
-
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
-        default=UNSET,
-        description="The default repository access level for Dependabot updates.",
-    )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
-        default=UNSET
-    )
+    action: str = Field()
+    release: ReleaseEventPropRelease = Field()
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+model_rebuild(ReleaseEvent)
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+__all__ = ("ReleaseEvent",)

@@ -13,29 +13,53 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesAccessPutBody(GitHubModel):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ] = Field(
-        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    selected_usernames: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    )
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    artifact_url: Missing[str] = Field(
+        pattern="^https://",
         default=UNSET,
-        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
+        description="The URL where the artifact is stored.",
+    )
+    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
+    registry_url: str = Field(
+        min_length=1,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
+    )
+    repository: Missing[str] = Field(
+        default=UNSET, description="The repository name within the registry."
+    )
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+        default=UNSET,
+        description="The status of the artifact (e.g., active, inactive).",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessPutBody)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgCodespacesAccessPutBody",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

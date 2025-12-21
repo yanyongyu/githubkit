@@ -9,47 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class DeleteBudgetType(TypedDict):
+    """DeleteBudget"""
 
+    message: str
     id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
 
 
-class GetCostCenterTypeForResponse(TypedDict):
-    """GetCostCenter"""
+class DeleteBudgetTypeForResponse(TypedDict):
+    """DeleteBudget"""
 
+    message: str
     id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
-
-
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
 
 
 __all__ = (
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterPropResourcesItemsTypeForResponse",
-    "GetCostCenterType",
-    "GetCostCenterTypeForResponse",
+    "DeleteBudgetType",
+    "DeleteBudgetTypeForResponse",
 )

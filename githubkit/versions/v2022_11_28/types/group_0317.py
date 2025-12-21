@@ -12,29 +12,45 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Branch Short
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
-    """DeploymentBranchPolicySettings
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Branch Short
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "DeploymentBranchPolicySettingsType",
-    "DeploymentBranchPolicySettingsTypeForResponse",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

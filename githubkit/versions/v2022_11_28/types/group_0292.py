@@ -11,49 +11,26 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0063 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: _dt.datetime
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeScanningAutofixTypeForResponse(TypedDict):
+    """CodeScanningAutofix"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: str
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeScanningAutofixType",
+    "CodeScanningAutofixTypeForResponse",
 )

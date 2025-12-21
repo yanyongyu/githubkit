@@ -9,44 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ApiInsightsUserStatsItemsType(TypedDict):
+    """ApiInsightsUserStatsItems"""
+
+    actor_type: NotRequired[str]
+    actor_name: NotRequired[str]
+    actor_id: NotRequired[int]
+    integration_id: NotRequired[Union[int, None]]
+    oauth_application_id: NotRequired[Union[int, None]]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsUserStatsItems"""
 
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
-
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
+    actor_type: NotRequired[str]
+    actor_name: NotRequired[str]
+    actor_id: NotRequired[int]
+    integration_id: NotRequired[Union[int, None]]
+    oauth_application_id: NotRequired[Union[int, None]]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "ApiInsightsUserStatsItemsType",
+    "ApiInsightsUserStatsItemsTypeForResponse",
 )

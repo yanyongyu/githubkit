@@ -365,6 +365,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeScanningAlertInstance as CodeScanningAlertInstance,
     )
     from githubkit.versions.v2022_11_28.models import (
+        CodeScanningAlertInstanceList as CodeScanningAlertInstanceList,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeScanningAlertInstanceListPropMessage as CodeScanningAlertInstanceListPropMessage,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CodeScanningAlertInstancePropMessage as CodeScanningAlertInstancePropMessage,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -523,6 +529,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import CommitActivity as CommitActivity
     from githubkit.versions.v2022_11_28.models import CommitComment as CommitComment
     from githubkit.versions.v2022_11_28.models import (
+        CommitCommentEvent as CommitCommentEvent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CommitCommentEventPropComment as CommitCommentEventPropComment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CommitComparison as CommitComparison,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -652,6 +664,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         CopilotUsageMetricsDay as CopilotUsageMetricsDay,
     )
+    from githubkit.versions.v2022_11_28.models import CreateEvent as CreateEvent
     from githubkit.versions.v2022_11_28.models import (
         CredentialsRevokePostBody as CredentialsRevokePostBody,
     )
@@ -673,6 +686,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         CvssSeveritiesPropCvssV4 as CvssSeveritiesPropCvssV4,
     )
     from githubkit.versions.v2022_11_28.models import DeleteBudget as DeleteBudget
+    from githubkit.versions.v2022_11_28.models import DeleteEvent as DeleteEvent
     from githubkit.versions.v2022_11_28.models import (
         DemilestonedIssueEvent as DemilestonedIssueEvent,
     )
@@ -680,6 +694,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         DemilestonedIssueEventPropMilestone as DemilestonedIssueEventPropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import DependabotAlert as DependabotAlert
+    from githubkit.versions.v2022_11_28.models import (
+        DependabotAlertDismissalRequestSimple as DependabotAlertDismissalRequestSimple,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        DependabotAlertDismissalRequestSimplePropRequester as DependabotAlertDismissalRequestSimplePropRequester,
+    )
     from githubkit.versions.v2022_11_28.models import (
         DependabotAlertPackage as DependabotAlertPackage,
     )
@@ -775,6 +795,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import DiffEntry as DiffEntry
     from githubkit.versions.v2022_11_28.models import Discussion as Discussion
+    from githubkit.versions.v2022_11_28.models import DiscussionEvent as DiscussionEvent
     from githubkit.versions.v2022_11_28.models import (
         DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy,
     )
@@ -856,12 +877,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         EnvironmentPropProtectionRulesItemsAnyof2 as EnvironmentPropProtectionRulesItemsAnyof2,
     )
     from githubkit.versions.v2022_11_28.models import Event as Event
-    from githubkit.versions.v2022_11_28.models import (
-        EventPropPayload as EventPropPayload,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        EventPropPayloadPropPagesItems as EventPropPayloadPropPagesItems,
-    )
     from githubkit.versions.v2022_11_28.models import EventPropRepo as EventPropRepo
     from githubkit.versions.v2022_11_28.models import (
         EventsGetResponse503 as EventsGetResponse503,
@@ -892,6 +907,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         FileCommitPropContentPropLinks as FileCommitPropContentPropLinks,
+    )
+    from githubkit.versions.v2022_11_28.models import ForkEvent as ForkEvent
+    from githubkit.versions.v2022_11_28.models import (
+        ForkEventPropForkee as ForkEventPropForkee,
     )
     from githubkit.versions.v2022_11_28.models import FullRepository as FullRepository
     from githubkit.versions.v2022_11_28.models import (
@@ -1000,6 +1019,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         GlobalAdvisoryPropIdentifiersItems as GlobalAdvisoryPropIdentifiersItems,
     )
+    from githubkit.versions.v2022_11_28.models import GollumEvent as GollumEvent
+    from githubkit.versions.v2022_11_28.models import (
+        GollumEventPropPagesItems as GollumEventPropPagesItems,
+    )
     from githubkit.versions.v2022_11_28.models import GpgKey as GpgKey
     from githubkit.versions.v2022_11_28.models import (
         GpgKeyPropEmailsItems as GpgKeyPropEmailsItems,
@@ -1065,6 +1088,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import Issue as Issue
     from githubkit.versions.v2022_11_28.models import IssueComment as IssueComment
     from githubkit.versions.v2022_11_28.models import (
+        IssueCommentEvent as IssueCommentEvent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         IssueDependenciesSummary as IssueDependenciesSummary,
     )
     from githubkit.versions.v2022_11_28.models import IssueEvent as IssueEvent
@@ -1100,6 +1126,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
     )
+    from githubkit.versions.v2022_11_28.models import IssuesEvent as IssuesEvent
     from githubkit.versions.v2022_11_28.models import IssueType as IssueType
     from githubkit.versions.v2022_11_28.models import Job as Job
     from githubkit.versions.v2022_11_28.models import (
@@ -1154,6 +1181,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         MarketplacePurchasePropMarketplacePurchase as MarketplacePurchasePropMarketplacePurchase,
     )
+    from githubkit.versions.v2022_11_28.models import MemberEvent as MemberEvent
     from githubkit.versions.v2022_11_28.models import MergedUpstream as MergedUpstream
     from githubkit.versions.v2022_11_28.models import MergeGroup as MergeGroup
     from githubkit.versions.v2022_11_28.models import Metadata as Metadata
@@ -1719,7 +1747,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgProjectsV2ProjectNumberItemsPostBody as OrgsOrgProjectsV2ProjectNumberItemsPostBody,
+        OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
@@ -1776,19 +1807,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsPostBody,
@@ -2014,12 +2033,16 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchRequiredStatusCheckPropChecksItems as ProtectedBranchRequiredStatusCheckPropChecksItems,
     )
+    from githubkit.versions.v2022_11_28.models import PublicEvent as PublicEvent
     from githubkit.versions.v2022_11_28.models import PublicIp as PublicIp
     from githubkit.versions.v2022_11_28.models import PublicUser as PublicUser
     from githubkit.versions.v2022_11_28.models import (
         PublicUserPropPlan as PublicUserPropPlan,
     )
     from githubkit.versions.v2022_11_28.models import PullRequest as PullRequest
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestEvent as PullRequestEvent,
+    )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestMergeResult as PullRequestMergeResult,
     )
@@ -2057,6 +2080,30 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestReviewComment as PullRequestReviewComment,
     )
     from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropComment as PullRequestReviewCommentEventPropComment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropLinks as PullRequestReviewCommentEventPropCommentPropLinks,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropLinksPropHtml as PullRequestReviewCommentEventPropCommentPropLinksPropHtml,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest as PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropLinksPropSelf as PullRequestReviewCommentEventPropCommentPropLinksPropSelf,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropReactions as PullRequestReviewCommentEventPropCommentPropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewCommentEventPropCommentPropUser as PullRequestReviewCommentEventPropCommentPropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         PullRequestReviewCommentPropLinks as PullRequestReviewCommentPropLinks,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2067,6 +2114,21 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestReviewCommentPropLinksPropSelf as PullRequestReviewCommentPropLinksPropSelf,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewEvent as PullRequestReviewEvent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewEventPropReview as PullRequestReviewEventPropReview,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewEventPropReviewPropLinks as PullRequestReviewEventPropReviewPropLinks,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewEventPropReviewPropLinksPropHtml as PullRequestReviewEventPropReviewPropLinksPropHtml,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestReviewEventPropReviewPropLinksPropPullRequest as PullRequestReviewEventPropReviewPropLinksPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestReviewPropLinks as PullRequestReviewPropLinks,
@@ -2101,6 +2163,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         PullRequestWebhookAllof1 as PullRequestWebhookAllof1,
     )
+    from githubkit.versions.v2022_11_28.models import PushEvent as PushEvent
     from githubkit.versions.v2022_11_28.models import RateLimit as RateLimit
     from githubkit.versions.v2022_11_28.models import (
         RateLimitOverview as RateLimitOverview,
@@ -2116,6 +2179,13 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import ReferrerTraffic as ReferrerTraffic
     from githubkit.versions.v2022_11_28.models import Release as Release
     from githubkit.versions.v2022_11_28.models import ReleaseAsset as ReleaseAsset
+    from githubkit.versions.v2022_11_28.models import ReleaseEvent as ReleaseEvent
+    from githubkit.versions.v2022_11_28.models import (
+        ReleaseEventPropRelease as ReleaseEventPropRelease,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReleaseEventPropReleaseAllof1 as ReleaseEventPropReleaseAllof1,
+    )
     from githubkit.versions.v2022_11_28.models import (
         ReleaseNotesContent as ReleaseNotesContent,
     )
@@ -2722,6 +2792,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
@@ -3445,9 +3518,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import TagProtection as TagProtection
     from githubkit.versions.v2022_11_28.models import Team as Team
     from githubkit.versions.v2022_11_28.models import TeamDiscussion as TeamDiscussion
-    from githubkit.versions.v2022_11_28.models import (
-        TeamDiscussionComment as TeamDiscussionComment,
-    )
     from githubkit.versions.v2022_11_28.models import TeamFull as TeamFull
     from githubkit.versions.v2022_11_28.models import TeamMembership as TeamMembership
     from githubkit.versions.v2022_11_28.models import (
@@ -3471,19 +3541,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import TeamSimple as TeamSimple
     from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdDiscussionsDiscussionNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdDiscussionsPostBody as TeamsTeamIdDiscussionsPostBody,
@@ -3715,7 +3773,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        UsersUsernameProjectsV2ProjectNumberItemsPostBody as UsersUsernameProjectsV2ProjectNumberItemsPostBody,
+        UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBody as UserUserIdProjectsV2ProjectNumberDraftsPostBody,
@@ -3733,6 +3794,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         VulnerabilityPropPackage as VulnerabilityPropPackage,
     )
+    from githubkit.versions.v2022_11_28.models import WatchEvent as WatchEvent
     from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionConfigurationDisabled as WebhookBranchProtectionConfigurationDisabled,
     )
@@ -4068,6 +4130,30 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropTool as WebhookCodeScanningAlertReopenedPropAlertPropTool,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignment as WebhookCodeScanningAlertUpdatedAssignment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlert as WebhookCodeScanningAlertUpdatedAssignmentPropAlert,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCommitCommentCreated as WebhookCommitCommentCreated,
@@ -9950,6 +10036,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
     )
     from githubkit.versions.v2022_11_28.models import Workflow as Workflow
+    from githubkit.versions.v2022_11_28.models import (
+        WorkflowDispatchResponse as WorkflowDispatchResponse,
+    )
     from githubkit.versions.v2022_11_28.models import WorkflowRun as WorkflowRun
     from githubkit.versions.v2022_11_28.models import (
         WorkflowRunUsage as WorkflowRunUsage,
@@ -10061,9 +10150,17 @@ else:
             "DependabotAlertSecurityAdvisoryPropCwesItems",
             "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
             "DependabotAlertSecurityAdvisoryPropReferencesItems",
+            "DependabotAlertDismissalRequestSimple",
+            "DependabotAlertDismissalRequestSimplePropRequester",
             "DependabotAlertWithRepository",
             "DependabotAlertWithRepositoryPropDependency",
             "OrganizationSimple",
+            "Label",
+            "Discussion",
+            "DiscussionPropAnswerChosenBy",
+            "DiscussionPropCategory",
+            "DiscussionPropReactions",
+            "DiscussionPropUser",
             "Milestone",
             "IssueType",
             "ReactionRollup",
@@ -10075,11 +10172,48 @@ else:
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
             "IssueComment",
-            "EventPropPayload",
-            "EventPropPayloadPropPagesItems",
+            "PullRequestMinimal",
+            "PullRequestMinimalPropHead",
+            "PullRequestMinimalPropHeadPropRepo",
+            "PullRequestMinimalPropBase",
+            "PullRequestMinimalPropBasePropRepo",
+            "ReleaseAsset",
+            "Release",
             "Event",
             "Actor",
             "EventPropRepo",
+            "CreateEvent",
+            "DeleteEvent",
+            "PublicEvent",
+            "PushEvent",
+            "WatchEvent",
+            "GollumEvent",
+            "GollumEventPropPagesItems",
+            "DiscussionEvent",
+            "IssuesEvent",
+            "IssueCommentEvent",
+            "ForkEvent",
+            "ForkEventPropForkee",
+            "MemberEvent",
+            "PullRequestEvent",
+            "PullRequestReviewCommentEvent",
+            "PullRequestReviewCommentEventPropComment",
+            "PullRequestReviewCommentEventPropCommentPropUser",
+            "PullRequestReviewCommentEventPropCommentPropReactions",
+            "PullRequestReviewCommentEventPropCommentPropLinks",
+            "PullRequestReviewCommentEventPropCommentPropLinksPropHtml",
+            "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest",
+            "PullRequestReviewCommentEventPropCommentPropLinksPropSelf",
+            "PullRequestReviewEvent",
+            "PullRequestReviewEventPropReview",
+            "PullRequestReviewEventPropReviewPropLinks",
+            "PullRequestReviewEventPropReviewPropLinksPropHtml",
+            "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
+            "CommitCommentEvent",
+            "CommitCommentEventPropComment",
+            "ReleaseEvent",
+            "ReleaseEventPropRelease",
+            "ReleaseEventPropReleaseAllof1",
             "Feed",
             "FeedPropLinks",
             "LinkWithType",
@@ -10178,8 +10312,8 @@ else:
             "CampaignSummaryPropAlertStats",
             "CodeScanningAlertRuleSummary",
             "CodeScanningAnalysisTool",
-            "CodeScanningAlertInstance",
             "CodeScanningAlertLocation",
+            "CodeScanningAlertInstance",
             "CodeScanningAlertInstancePropMessage",
             "CodeScanningOrganizationAlertItems",
             "CodespaceMachine",
@@ -10377,8 +10511,6 @@ else:
             "TeamOrganization",
             "TeamOrganizationPropPlan",
             "TeamDiscussion",
-            "TeamDiscussionComment",
-            "Reaction",
             "TeamMembership",
             "TeamRepository",
             "TeamRepositoryPropPermissions",
@@ -10398,11 +10530,6 @@ else:
             "ActionsVariable",
             "ActionsRepositoryPermissions",
             "ActionsWorkflowAccessToRepository",
-            "PullRequestMinimal",
-            "PullRequestMinimalPropHead",
-            "PullRequestMinimalPropHeadPropRepo",
-            "PullRequestMinimalPropBase",
-            "PullRequestMinimalPropBasePropRepo",
             "SimpleCommit",
             "SimpleCommitPropAuthor",
             "SimpleCommitPropCommitter",
@@ -10425,6 +10552,7 @@ else:
             "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
             "WorkflowRunUsagePropBillablePropWindows",
             "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+            "WorkflowDispatchResponse",
             "WorkflowUsage",
             "WorkflowUsagePropBillable",
             "WorkflowUsagePropBillablePropUbuntu",
@@ -10497,6 +10625,8 @@ else:
             "CodeScanningAutofix",
             "CodeScanningAutofixCommits",
             "CodeScanningAutofixCommitsResponse",
+            "CodeScanningAlertInstanceList",
+            "CodeScanningAlertInstanceListPropMessage",
             "CodeScanningAnalysis",
             "CodeScanningAnalysisDeletion",
             "CodeScanningCodeqlDatabase",
@@ -10522,6 +10652,7 @@ else:
             "CollaboratorPropPermissions",
             "CommitComment",
             "TimelineCommitCommentedEvent",
+            "Reaction",
             "BranchShort",
             "BranchShortPropCommit",
             "CombinedCommitStatus",
@@ -10693,8 +10824,6 @@ else:
             "PullRequestReviewPropLinksPropPullRequest",
             "ReviewComment",
             "ReviewCommentPropLinks",
-            "ReleaseAsset",
-            "Release",
             "ReleaseNotesContent",
             "RepositoryRuleRulesetInfo",
             "RepositoryRuleDetailedOneof0",
@@ -10831,12 +10960,6 @@ else:
             "WebhooksAnswer",
             "WebhooksAnswerPropReactions",
             "WebhooksAnswerPropUser",
-            "Discussion",
-            "Label",
-            "DiscussionPropAnswerChosenBy",
-            "DiscussionPropCategory",
-            "DiscussionPropReactions",
-            "DiscussionPropUser",
             "WebhooksComment",
             "WebhooksCommentPropReactions",
             "WebhooksCommentPropUser",
@@ -11103,6 +11226,14 @@ else:
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage",
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropRule",
             "WebhookCodeScanningAlertReopenedByUserPropAlertPropTool",
+            "WebhookCodeScanningAlertUpdatedAssignment",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlert",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule",
+            "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool",
             "WebhookCommitCommentCreated",
             "WebhookCommitCommentCreatedPropComment",
             "WebhookCommitCommentCreatedPropCommentPropReactions",
@@ -13121,7 +13252,8 @@ else:
             "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",
             "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",
             "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3",
-            "OrgsOrgProjectsV2ProjectNumberItemsPostBody",
+            "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",
+            "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
             "OrgsOrgPropertiesSchemaPatchBody",
@@ -13145,10 +13277,6 @@ else:
             "OrgsOrgTeamsTeamSlugPatchBody",
             "OrgsOrgTeamsTeamSlugDiscussionsPostBody",
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",
-            "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",
-            "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
-            "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
-            "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",
             "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",
             "OrgsOrgSecurityProductEnablementPostBody",
@@ -13241,6 +13369,7 @@ else:
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
             "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",
+            "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",
@@ -13392,10 +13521,6 @@ else:
             "TeamsTeamIdPatchBody",
             "TeamsTeamIdDiscussionsPostBody",
             "TeamsTeamIdDiscussionsDiscussionNumberPatchBody",
-            "TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",
-            "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
-            "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
-            "TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",
             "TeamsTeamIdMembershipsUsernamePutBody",
             "TeamsTeamIdReposOwnerRepoPutBody",
             "UserPatchBody",
@@ -13440,7 +13565,8 @@ else:
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",
             "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",
-            "UsersUsernameProjectsV2ProjectNumberItemsPostBody",
+            "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",
+            "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
         )

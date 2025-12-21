@@ -12,23 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0266 import Link
-
-
-class PullRequestSimplePropLinks(GitHubModel):
-    """PullRequestSimplePropLinks"""
-
-    comments: Link = Field(title="Link", description="Hypermedia Link")
-    commits: Link = Field(title="Link", description="Hypermedia Link")
-    statuses: Link = Field(title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    issue: Link = Field(title="Link", description="Hypermedia Link")
-    review_comments: Link = Field(title="Link", description="Hypermedia Link")
-    review_comment: Link = Field(title="Link", description="Hypermedia Link")
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestSimplePropLinks)
+class ApiInsightsTimeStatsItems(GitHubModel):
+    """ApiInsightsTimeStatsItems"""
 
-__all__ = ("PullRequestSimplePropLinks",)
+    timestamp: Missing[str] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ApiInsightsTimeStatsItems)
+
+__all__ = ("ApiInsightsTimeStatsItems",)

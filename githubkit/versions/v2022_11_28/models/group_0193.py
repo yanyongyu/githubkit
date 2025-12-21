@@ -14,16 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    required_deployment_environments: list[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
     )
 
 
-model_rebuild(RepositoryRuleMaxFileSizePropParameters)
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-__all__ = ("RepositoryRuleMaxFileSizePropParameters",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

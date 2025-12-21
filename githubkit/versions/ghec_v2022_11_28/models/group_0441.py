@@ -9,40 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
+from .group_0010 import Integration
 
 
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
+class MovedColumnInProjectIssueEvent(GitHubModel):
+    """Moved Column in Project Issue Event
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[None, Repository] = Field()
-    sha: str = Field()
-    user: Union[None, SimpleUser] = Field()
+    Moved Column in Project Issue Event
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["moved_columns_in_project"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
+    )
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+model_rebuild(MovedColumnInProjectIssueEvent)
+model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
+    "MovedColumnInProjectIssueEvent",
+    "MovedColumnInProjectIssueEventPropProjectCard",
 )

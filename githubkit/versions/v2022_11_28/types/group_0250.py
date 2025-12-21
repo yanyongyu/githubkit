@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class ActionsCacheStorageLimitForRepositoryType(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Check Dependabot security updates
+    GitHub Actions cache storage policy for a repository.
     """
 
-    enabled: bool
-    paused: bool
+    max_cache_size_gb: NotRequired[int]
 
 
-class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
-    """Check Dependabot security updates
+class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Check Dependabot security updates
+    GitHub Actions cache storage policy for a repository.
     """
 
-    enabled: bool
-    paused: bool
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "CheckAutomatedSecurityFixesType",
-    "CheckAutomatedSecurityFixesTypeForResponse",
+    "ActionsCacheStorageLimitForRepositoryType",
+    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
 )

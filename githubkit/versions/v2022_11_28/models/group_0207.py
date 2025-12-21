@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0206 import RulesetVersionPropActor
-from .group_0209 import RulesetVersionWithStateAllof1PropState
 
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-class RulesetVersionWithState(GitHubModel):
-    """RulesetVersionWithState"""
-
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-    updated_at: _dt.datetime = Field()
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RulesetVersionWithState)
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-__all__ = ("RulesetVersionWithState",)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

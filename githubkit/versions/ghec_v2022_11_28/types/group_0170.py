@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0171 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
 
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
-
-    The historical version of a ruleset
+    A tool that must provide code review results for this rule to pass.
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
-class RulesetVersionTypeForResponse(TypedDict):
-    """Ruleset version
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    The historical version of a ruleset
+    A tool that must provide code review results for this rule to pass.
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
 __all__ = (
-    "RulesetVersionType",
-    "RulesetVersionTypeForResponse",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
 )
