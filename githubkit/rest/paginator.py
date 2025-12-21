@@ -38,6 +38,7 @@ NEXT_LINK_PATTERN = r'<([^<>]+)>;\s*rel="next"'
 
 
 class PaginatorState(TypedDict):
+    response: Response[Any]
     next_link: Optional[httpx.URL]
     request_method: str
     response_model: Any
@@ -88,6 +89,11 @@ class Paginator(Generic[RT]):
 
         self._index: int = 0
         self._cached_data: list[RT] = []
+
+    @property
+    def latest_response(self) -> Optional[Response[Any]]:
+        """The latest API response of the paginator."""
+        return self._state["response"] if self._state is not None else None
 
     @property
     def finalized(self) -> bool:
@@ -180,6 +186,7 @@ class Paginator(Generic[RT]):
             )
 
         self._state = PaginatorState(
+            response=response,
             next_link=self._find_next_link(response),
             request_method=response.raw_request.method,
             response_model=response._data_model,
@@ -209,6 +216,7 @@ class Paginator(Generic[RT]):
             )
 
         self._state = PaginatorState(
+            response=response,
             next_link=self._find_next_link(response),
             request_method=response.raw_request.method,
             response_model=response._data_model,
