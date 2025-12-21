@@ -97,6 +97,7 @@ def test_paginate(g: GitHub):
     )
     count = 0
     for issue in paginator:
+        assert paginator.latest_response is not None
         assert isinstance(issue, Issue)
         if not issue.pull_request:
             count += 1
@@ -124,6 +125,7 @@ async def test_async_paginate(g: GitHub):
     )
     count = 0
     async for issue in paginator:
+        assert paginator.latest_response is not None
         assert isinstance(issue, Issue)
         if not issue.pull_request:
             count += 1
