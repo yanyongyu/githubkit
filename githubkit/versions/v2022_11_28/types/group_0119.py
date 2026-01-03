@@ -9,81 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ArtifactDeploymentRecordType(TypedDict):
-    """Artifact Deployment Record
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-    Artifact Metadata Deployment Record
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class ArtifactDeploymentRecordTypeForResponse(TypedDict):
-    """Artifact Deployment Record
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
 
-    Artifact Metadata Deployment Record
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
-
-
-ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
-
-
-ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "ArtifactDeploymentRecordPropTagsType",
-    "ArtifactDeploymentRecordPropTagsTypeForResponse",
-    "ArtifactDeploymentRecordType",
-    "ArtifactDeploymentRecordTypeForResponse",
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
 )

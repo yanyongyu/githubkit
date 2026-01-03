@@ -9,55 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0073 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-class CodeSecurityConfigurationRepositoriesType(TypedDict):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
     ]
-    repository: NotRequired[SimpleRepositoryType]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
-class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationRepositories
+class EnterpriseSecurityAnalysisSettingsTypeForResponse(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    Repositories associated with a code security configuration and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
     ]
-    repository: NotRequired[SimpleRepositoryTypeForResponse]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "CodeSecurityConfigurationRepositoriesType",
-    "CodeSecurityConfigurationRepositoriesTypeForResponse",
+    "EnterpriseSecurityAnalysisSettingsType",
+    "EnterpriseSecurityAnalysisSettingsTypeForResponse",
 )

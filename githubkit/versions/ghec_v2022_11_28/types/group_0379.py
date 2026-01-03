@@ -9,58 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0075 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Code security configuration associated with a repository and attachment status
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

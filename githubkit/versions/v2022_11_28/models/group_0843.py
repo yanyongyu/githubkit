@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0517 import WebhooksSecurityAdvisory
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0844 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
 
 
-class WebhookSecurityAdvisoryUpdated(GitHubModel):
-    """security_advisory updated event"""
+class WebhookSecurityAdvisoryWithdrawn(GitHubModel):
+    """security_advisory withdrawn event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["withdrawn"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,7 +49,7 @@ class WebhookSecurityAdvisoryUpdated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    security_advisory: WebhooksSecurityAdvisory = Field(
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory = Field(
         description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUser] = Field(
@@ -57,6 +57,6 @@ class WebhookSecurityAdvisoryUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryUpdated)
+model_rebuild(WebhookSecurityAdvisoryWithdrawn)
 
-__all__ = ("WebhookSecurityAdvisoryUpdated",)
+__all__ = ("WebhookSecurityAdvisoryWithdrawn",)

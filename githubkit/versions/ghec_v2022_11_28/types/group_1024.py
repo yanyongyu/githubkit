@@ -12,18 +12,21 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0076 import CodeScanningOptionsType, CodeScanningOptionsTypeForResponse
-from .group_0077 import (
+from .group_0076 import (
     CodeScanningDefaultSetupOptionsType,
     CodeScanningDefaultSetupOptionsTypeForResponse,
+    CodeScanningOptionsType,
+    CodeScanningOptionsTypeForResponse,
 )
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str
-    description: str
+    name: NotRequired[str]
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -33,15 +36,15 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
         Literal["enabled", "disabled", "not_set"]
     ]
     dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
     code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
     code_scanning_default_setup_options: NotRequired[
         Union[CodeScanningDefaultSetupOptionsType, None]
     ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
     code_scanning_delegated_alert_dismissal: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
@@ -68,11 +71,13 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType(TypedDict):
     enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str
-    description: str
+    name: NotRequired[str]
+    description: NotRequired[str]
     advanced_security: NotRequired[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
@@ -82,15 +87,15 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyTypeForResponse(Typ
         Literal["enabled", "disabled", "not_set"]
     ]
     dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
     code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
     code_scanning_default_setup_options: NotRequired[
         Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
     ]
+    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
     code_scanning_delegated_alert_dismissal: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
@@ -117,11 +122,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyTypeForResponse(Typ
     enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -129,11 +134,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraph
     labeled_runners: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -142,8 +147,8 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraph
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
 )

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    ref: str
     sha: str
+    force: NotRequired[bool]
 
 
-class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    ref: str
     sha: str
+    force: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsPostBodyType",
-    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
 )

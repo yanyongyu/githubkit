@@ -13,150 +13,118 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
+
+    Timeline Reviewed Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    event: Literal["reviewed"]
+    id: int
     node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
     html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class TimelineCommittedEventTypeForResponse(TypedDict):
-    """Timeline Committed Event
+class TimelineReviewedEventTypeForResponse(TypedDict):
+    """Timeline Reviewed Event
 
-    Timeline Committed Event
+    Timeline Reviewed Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    event: Literal["reviewed"]
+    id: int
     node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorTypeForResponse
-    committer: TimelineCommittedEventPropCommitterTypeForResponse
-    message: str
-    tree: TimelineCommittedEventPropTreeTypeForResponse
-    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
-    verification: TimelineCommittedEventPropVerificationTypeForResponse
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    state: str
     html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
 
 
-class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinks"""
 
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
+    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
 
 
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
+    href: str
 
 
-class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropCommitter
+class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
 
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
+    href: str
 
 
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
 
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
+    href: str
 
 
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
+class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
 
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    href: str
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropAuthorTypeForResponse",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropCommitterTypeForResponse",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropParentsItemsTypeForResponse",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropTreeTypeForResponse",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventPropVerificationTypeForResponse",
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventTypeForResponse",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksTypeForResponse",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventTypeForResponse",
 )

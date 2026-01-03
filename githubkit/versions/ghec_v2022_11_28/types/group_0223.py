@@ -16,10 +16,52 @@ from typing_extensions import NotRequired, TypeAlias, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    Base Gist
+    Gist History
+    """
+
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[_dt.datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
+
+
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
+
+    Gist History
+    """
+
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
     """
 
     url: str
@@ -30,7 +72,7 @@ class BaseGistType(TypedDict):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
+    files: GistSimplePropForkOfPropFilesType
     public: bool
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -39,16 +81,16 @@ class BaseGistType(TypedDict):
     comments_enabled: NotRequired[bool]
     user: Union[None, SimpleUserType]
     comments_url: str
-    owner: NotRequired[SimpleUserType]
+    owner: NotRequired[Union[None, SimpleUserType]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Base Gist
+    Gist
     """
 
     url: str
@@ -59,7 +101,7 @@ class BaseGistTypeForResponse(TypedDict):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: BaseGistPropFilesTypeForResponse
+    files: GistSimplePropForkOfPropFilesTypeForResponse
     public: bool
     created_at: str
     updated_at: str
@@ -68,25 +110,29 @@ class BaseGistTypeForResponse(TypedDict):
     comments_enabled: NotRequired[bool]
     user: Union[None, SimpleUserTypeForResponse]
     comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
     truncated: NotRequired[bool]
     forks: NotRequired[list[Any]]
     history: NotRequired[list[Any]]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
+    "GistHistoryType",
+    "GistHistoryTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

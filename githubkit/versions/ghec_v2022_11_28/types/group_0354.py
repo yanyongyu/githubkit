@@ -10,59 +10,127 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0202 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0353 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    A check performed on the code of a given code change
     """
 
-    url: str
     id: int
+    head_sha: str
     node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-class DeploymentSimpleTypeForResponse(TypedDict):
-    """Deployment
+class CheckRunTypeForResponse(TypedDict):
+    """CheckRun
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    A check performed on the code of a given code change
     """
 
-    url: str
     id: int
+    head_sha: str
     node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    external_id: Union[str, None]
+    url: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[str, None]
+    completed_at: Union[str, None]
+    output: CheckRunPropOutputTypeForResponse
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+
+
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropOutputTypeForResponse(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
 
 
 __all__ = (
-    "DeploymentSimpleType",
-    "DeploymentSimpleTypeForResponse",
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropCheckSuiteTypeForResponse",
+    "CheckRunPropOutputType",
+    "CheckRunPropOutputTypeForResponse",
+    "CheckRunType",
+    "CheckRunTypeForResponse",
 )

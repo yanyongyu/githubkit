@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
-
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
-    )
+from .group_0098 import NetworkConfiguration
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
+
+
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)

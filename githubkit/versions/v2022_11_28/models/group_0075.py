@@ -10,43 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class GistComment(GitHubModel):
-    """Gist Comment
+class GistCommit(GitHubModel):
+    """Gist Commit
 
-    A comment made to a gist.
+    Gist Commit
     """
 
-    id: int = Field()
-    node_id: str = Field()
     url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
+    version: str = Field()
     user: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: _dt.datetime = Field()
 
 
-model_rebuild(GistComment)
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
 
-__all__ = ("GistComment",)
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
+
+__all__ = (
+    "GistCommit",
+    "GistCommitPropChangeStatus",
+)

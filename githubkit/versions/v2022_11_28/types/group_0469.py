@@ -9,36 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    Key Simple
-    """
-
-    id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    Key Simple
-    """
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
+    ]
 
-    id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportUserType",
+    "BillingPremiumRequestUsageReportUserTypeForResponse",
 )

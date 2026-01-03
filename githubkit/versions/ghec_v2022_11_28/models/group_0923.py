@@ -18,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
-from .group_0598 import SecretScanningAlertWebhook
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
+from .group_0597 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertAssigned(GitHubModel):
-    """secret_scanning_alert assigned event"""
+class WebhookSecretScanningAlertCreated(GitHubModel):
+    """secret_scanning_alert created event"""
 
-    action: Literal["assigned"] = Field()
+    action: Literal["created"] = Field()
     alert: SecretScanningAlertWebhook = Field()
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +54,6 @@ class WebhookSecretScanningAlertAssigned(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertAssigned)
+model_rebuild(WebhookSecretScanningAlertCreated)
 
-__all__ = ("WebhookSecretScanningAlertAssigned",)
+__all__ = ("WebhookSecretScanningAlertCreated",)

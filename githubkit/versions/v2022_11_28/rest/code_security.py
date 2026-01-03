@@ -730,6 +730,7 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -866,6 +867,7 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2250,6 +2252,7 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2383,6 +2386,7 @@ class CodeSecurityClient:
         code_scanning_default_setup_options: Missing[
             Union[CodeScanningDefaultSetupOptionsType, None]
         ] = UNSET,
+        code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,

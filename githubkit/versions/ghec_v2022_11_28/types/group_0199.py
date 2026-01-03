@@ -9,46 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    total: int
-    completed: int
-    percent_completed: int
+    A value assigned to an issue field
+    """
 
-
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
-
-    total: int
-    completed: int
-    percent_completed: int
-
-
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
 
 
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    A value assigned to an issue field
+    """
+
+    issue_field_id: int
+    node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+
+
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

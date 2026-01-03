@@ -13,38 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0475 import (
+from .group_0043 import DiscussionType, DiscussionTypeForResponse
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0485 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0486 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
-    action: Literal["unanswered"]
+    action: Literal["unlabeled"]
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
+    """discussion unlabeled event"""
 
-    action: Literal["unanswered"]
+    action: Literal["unlabeled"]
     discussion: DiscussionTypeForResponse
-    old_answer: WebhooksAnswerTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredTypeForResponse",
+    "WebhookDiscussionUnlabeledType",
+    "WebhookDiscussionUnlabeledTypeForResponse",
 )

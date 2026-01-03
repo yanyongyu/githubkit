@@ -12,84 +12,74 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0120 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0119 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
 
-    The Relationship a Team has with a role.
+    The Relationship a User has with a role.
     """
 
     assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleType]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
     node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
     html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
+class UserRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a User
 
-    The Relationship a Team has with a role.
+    The Relationship a User has with a role.
     """
 
     assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
     node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
     html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleTypeForResponse]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "UserRoleAssignmentType",
+    "UserRoleAssignmentTypeForResponse",
 )

@@ -13,21 +13,21 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0566 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMemberAddedType(TypedDict):
-    """member added event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesType]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
@@ -36,11 +36,11 @@ class WebhookMemberAddedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMemberAddedTypeForResponse(TypedDict):
-    """member added event"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["added"]
-    changes: NotRequired[WebhookMemberAddedPropChangesTypeForResponse]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     member: Union[WebhooksUserTypeForResponse, None]
@@ -49,75 +49,61 @@ class WebhookMemberAddedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMemberAddedPropChangesType(TypedDict):
-    """WebhookMemberAddedPropChanges"""
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
 
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
-
-
-class WebhookMemberAddedPropChangesTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChanges"""
-
-    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionTypeForResponse]
-    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameTypeForResponse]
-
-
-class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
-
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
+    The changes to the collaborator permissions
     """
 
-    to: Literal["write", "admin", "read"]
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
 
 
-class WebhookMemberAddedPropChangesPropPermissionTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChangesPropPermission
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
 
-    This field is included for legacy purposes; use the `role_name` field instead.
-    The `maintain`
-    role is mapped to `write` and the `triage` role is mapped to `read`. To
-    determine the role
-    assigned to the collaborator, use the `role_name` field instead, which will
-    provide the full
-    role name, including custom roles.
+    The changes to the collaborator permissions
     """
 
-    to: Literal["write", "admin", "read"]
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
 
 
-class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
-    The role assigned to the collaborator.
-    """
-
-    to: str
+    from_: str
 
 
-class WebhookMemberAddedPropChangesPropRoleNameTypeForResponse(TypedDict):
-    """WebhookMemberAddedPropChangesPropRoleName
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
 
-    The role assigned to the collaborator.
-    """
+    from_: str
 
-    to: str
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookMemberAddedPropChangesPropPermissionType",
-    "WebhookMemberAddedPropChangesPropPermissionTypeForResponse",
-    "WebhookMemberAddedPropChangesPropRoleNameType",
-    "WebhookMemberAddedPropChangesPropRoleNameTypeForResponse",
-    "WebhookMemberAddedPropChangesType",
-    "WebhookMemberAddedPropChangesTypeForResponse",
-    "WebhookMemberAddedType",
-    "WebhookMemberAddedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

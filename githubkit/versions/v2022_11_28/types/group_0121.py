@@ -9,85 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0120 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0120 import TeamType, TeamTypeForResponse
 
 
-class TeamType(TypedDict):
-    """Team
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    Groups of organization members that gives permissions on specified repositories.
+    The campaign metadata and alert stats.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleType]
+    number: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class TeamTypeForResponse(TypedDict):
-    """Team
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    Groups of organization members that gives permissions on specified repositories.
+    The campaign metadata and alert stats.
     """
 
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleTypeForResponse]
+    number: int
+    created_at: str
+    updated_at: str
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
-class TeamPropPermissionsTypeForResponse(TypedDict):
-    """TeamPropPermissions"""
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamPropPermissionsTypeForResponse",
-    "TeamType",
-    "TeamTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

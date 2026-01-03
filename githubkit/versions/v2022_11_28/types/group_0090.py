@@ -9,31 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    Custom property name and associated value
-    """
-
-    property_name: str
-    value: Union[str, list[str], None]
+    budgets: list[BudgetType]
+    has_next_page: NotRequired[bool]
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
 
-    Custom property name and associated value
-    """
+    budgets: list[BudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
 
-    property_name: str
-    value: Union[str, list[str], None]
+
+class BudgetType(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

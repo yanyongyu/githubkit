@@ -9,48 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0518 import MetaType, MetaTypeForResponse
+
+class GroupType(TypedDict):
+    """Group"""
+
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsType]]
 
 
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class GroupTypeForResponse(TypedDict):
+    """Group"""
 
-    id: NotRequired[str]
-    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
-    meta: NotRequired[MetaType]
-
-
-class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: NotRequired[str]
-    members: NotRequired[
-        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
-    ]
-    meta: NotRequired[MetaTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    value: str
+    display_name: str
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class GroupPropMembersItemsTypeForResponse(TypedDict):
+    """GroupPropMembersItems"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    value: str
+    display_name: str
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+    "GroupPropMembersItemsType",
+    "GroupPropMembersItemsTypeForResponse",
+    "GroupType",
+    "GroupTypeForResponse",
 )

@@ -10,130 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0258 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    An invocation of a workflow
+    An entry in the reviews log for environment deployments
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[_dt.datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class WorkflowRunTypeForResponse(TypedDict):
-    """Workflow Run
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
 
-    An invocation of a workflow
+    An entry in the reviews log for environment deployments
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[
-        Union[list[ReferencedWorkflowTypeForResponse], None]
-    ]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    created_at: str
-    updated_at: str
-    actor: NotRequired[SimpleUserTypeForResponse]
-    triggering_actor: NotRequired[SimpleUserTypeForResponse]
-    run_started_at: NotRequired[str]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    head_repository: MinimalRepositoryTypeForResponse
-    head_repository_id: NotRequired[int]
-    display_title: str
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-    A workflow referenced/reused by the initial caller workflow
-    """
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
 
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
-class ReferencedWorkflowTypeForResponse(TypedDict):
-    """Referenced workflow
-
-    A workflow referenced/reused by the initial caller workflow
-    """
-
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "ReferencedWorkflowTypeForResponse",
-    "WorkflowRunType",
-    "WorkflowRunTypeForResponse",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

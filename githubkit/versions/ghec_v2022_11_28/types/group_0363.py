@@ -9,24 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
-
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+from .group_0071 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAlertInstanceListType(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceList"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstanceListPropMessageType(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
+
+
+class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsResponseType",
-    "CodeScanningAutofixCommitsResponseTypeForResponse",
+    "CodeScanningAlertInstanceListPropMessageType",
+    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
+    "CodeScanningAlertInstanceListType",
+    "CodeScanningAlertInstanceListTypeForResponse",
 )

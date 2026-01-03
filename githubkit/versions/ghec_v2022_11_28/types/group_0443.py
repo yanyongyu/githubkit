@@ -9,76 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0197 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Converted Note to Issue Issue Event
+    Timeline Comment Event
     """
 
-    id: int
-    node_id: str
-    url: str
+    event: Literal["commented"]
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
-
-
-class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
-    """Converted Note to Issue Issue Event
-
-    Converted Note to Issue Issue Event
-    """
-
     id: int
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
+    Timeline Comment Event
+    """
+
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
     id: int
+    node_id: str
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

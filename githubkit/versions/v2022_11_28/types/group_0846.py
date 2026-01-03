@@ -11,43 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0173 import FullRepositoryType, FullRepositoryTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
 from .group_0847 import (
-    WebhookSecurityAndAnalysisPropChangesType,
-    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+    WebhookSecurityAndAnalysisPropChangesPropFromType,
+    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
 )
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
-    sender: NotRequired[SimpleUserType]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
-    """security_and_analysis event"""
+class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: FullRepositoryTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisType",
-    "WebhookSecurityAndAnalysisTypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesType",
+    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
 )

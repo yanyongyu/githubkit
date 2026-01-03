@@ -19,57 +19,76 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0010 import Integration
-from .group_0052 import PullRequestMinimal
-from .group_0084 import MinimalRepository
+from .group_0051 import PullRequestMinimal
+from .group_0284 import DeploymentSimple
+from .group_0477 import SimpleCheckSuite
 
 
-class SimpleCheckSuite(GitHubModel):
-    """SimpleCheckSuite
+class CheckRunWithSimpleCheckSuite(GitHubModel):
+    """CheckRun
 
-    A suite of checks performed on the code of a given code change
+    A check performed on the code of a given code change
     """
 
-    after: Missing[Union[str, None]] = Field(default=UNSET)
-    app: Missing[Union[Integration, None]] = Field(
-        default=UNSET,
+    app: Union[Integration, None] = Field(
         title="GitHub app",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    before: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(
-        default=UNSET, description="The SHA of the head commit that is being checked."
+    check_suite: SimpleCheckSuite = Field(
+        description="A suite of checks performed on the code of a given code change"
     )
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
-    repository: Missing[MinimalRepository] = Field(
-        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    completed_at: Union[_dt.datetime, None] = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    deployment: Missing[DeploymentSimple] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
-    status: Missing[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    details_url: str = Field()
+    external_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    html_url: str = Field()
+    id: int = Field(description="The id of the check.")
+    name: str = Field(description="The name of the check.")
+    node_id: str = Field()
+    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
+    pull_requests: list[PullRequestMinimal] = Field()
+    started_at: _dt.datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
+        description="The phase of the lifecycle that the check is currently in."
+    )
+    url: str = Field()
 
 
-model_rebuild(SimpleCheckSuite)
+class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-__all__ = ("SimpleCheckSuite",)
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+
+
+model_rebuild(CheckRunWithSimpleCheckSuite)
+model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
+
+__all__ = (
+    "CheckRunWithSimpleCheckSuite",
+    "CheckRunWithSimpleCheckSuitePropOutput",
+)

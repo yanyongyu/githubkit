@@ -18,13 +18,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0257 import DismissalRequestResponse
+from .group_0256 import DismissalRequestResponse
 
 
-class CodeScanningAlertDismissalRequest(GitHubModel):
-    """Code scanning alert dismissal request
+class DependabotAlertDismissalRequest(GitHubModel):
+    """Dependabot alert dismissal request
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
     id: Missing[int] = Field(
@@ -34,20 +34,20 @@ class CodeScanningAlertDismissalRequest(GitHubModel):
         default=UNSET,
         description="The number uniquely identifying the dismissal request within its repository.",
     )
-    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
+    repository: Missing[DependabotAlertDismissalRequestPropRepository] = Field(
         default=UNSET, description="The repository the dismissal request is for."
     )
-    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
+    organization: Missing[DependabotAlertDismissalRequestPropOrganization] = Field(
         default=UNSET,
         description="The organization associated with the repository the dismissal request is for.",
     )
-    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
+    requester: Missing[DependabotAlertDismissalRequestPropRequester] = Field(
         default=UNSET, description="The user who requested the dismissal request."
     )
     request_type: Missing[str] = Field(
         default=UNSET, description="The type of request."
     )
-    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
+    data: Missing[Union[list[DependabotAlertDismissalRequestPropDataItems], None]] = (
         Field(
             default=UNSET, description="Data describing the dismissal request metadata."
         )
@@ -80,8 +80,8 @@ class CodeScanningAlertDismissalRequest(GitHubModel):
     )
 
 
-class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRepository
+class DependabotAlertDismissalRequestPropRepository(GitHubModel):
+    """DependabotAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -100,8 +100,8 @@ class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
     )
 
 
-class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropOrganization
+class DependabotAlertDismissalRequestPropOrganization(GitHubModel):
+    """DependabotAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -112,8 +112,8 @@ class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
     )
 
 
-class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRequester
+class DependabotAlertDismissalRequestPropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestPropRequester
 
     The user who requested the dismissal request.
     """
@@ -128,28 +128,28 @@ class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
     )
 
 
-class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
+class DependabotAlertDismissalRequestPropDataItems(GitHubModel):
+    """DependabotAlertDismissalRequestPropDataItems"""
 
     reason: Missing[str] = Field(
         default=UNSET, description="The reason for the dismissal request."
     )
-    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
-    pr_review_thread_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the pull request review thread."
+    alert_number: Missing[str] = Field(default=UNSET, description="The alert number.")
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the alert."
     )
 
 
-model_rebuild(CodeScanningAlertDismissalRequest)
-model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
-model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
-model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
-model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
+model_rebuild(DependabotAlertDismissalRequest)
+model_rebuild(DependabotAlertDismissalRequestPropRepository)
+model_rebuild(DependabotAlertDismissalRequestPropOrganization)
+model_rebuild(DependabotAlertDismissalRequestPropRequester)
+model_rebuild(DependabotAlertDismissalRequestPropDataItems)
 
 __all__ = (
-    "CodeScanningAlertDismissalRequest",
-    "CodeScanningAlertDismissalRequestPropDataItems",
-    "CodeScanningAlertDismissalRequestPropOrganization",
-    "CodeScanningAlertDismissalRequestPropRepository",
-    "CodeScanningAlertDismissalRequestPropRequester",
+    "DependabotAlertDismissalRequest",
+    "DependabotAlertDismissalRequestPropDataItems",
+    "DependabotAlertDismissalRequestPropOrganization",
+    "DependabotAlertDismissalRequestPropRepository",
+    "DependabotAlertDismissalRequestPropRequester",
 )

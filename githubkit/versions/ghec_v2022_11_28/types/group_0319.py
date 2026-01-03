@@ -9,28 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheStorageLimitForRepositoryType(TypedDict):
-    """Actions cache storage limit for a repository
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    GitHub Actions cache storage policy for a repository.
+    Repository actions caches
     """
 
-    max_cache_size_gb: NotRequired[int]
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache storage limit for a repository
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
 
-    GitHub Actions cache storage policy for a repository.
+    Repository actions caches
     """
 
-    max_cache_size_gb: NotRequired[int]
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+
+
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    size_in_bytes: NotRequired[int]
+
+
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForRepositoryType",
-    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
+    "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

@@ -9,53 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0231 import (
+    MarketplacePurchasePropMarketplacePendingChangeType,
+    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
+    MarketplacePurchasePropMarketplacePurchaseType,
+    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+)
 
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
+class MarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase
 
-    Marketplace Listing Plan
+    Marketplace Purchase
     """
 
     url: str
-    accounts_url: str
+    type: str
     id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
 
 
-class MarketplaceListingPlanTypeForResponse(TypedDict):
-    """Marketplace Listing Plan
+class MarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase
 
-    Marketplace Listing Plan
+    Marketplace Purchase
     """
 
     url: str
-    accounts_url: str
+    type: str
     id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    login: str
+    organization_billing_email: NotRequired[str]
+    email: NotRequired[Union[str, None]]
+    marketplace_pending_change: NotRequired[
+        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
+    ]
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
 
 
 __all__ = (
-    "MarketplaceListingPlanType",
-    "MarketplaceListingPlanTypeForResponse",
+    "MarketplacePurchaseType",
+    "MarketplacePurchaseTypeForResponse",
 )

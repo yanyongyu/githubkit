@@ -17,18 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
-from .group_0566 import WebhooksUser
-from .group_0580 import WebhooksTeam
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
+from .group_0565 import WebhooksUser
+from .group_0579 import WebhooksTeam
 
 
-class WebhookMembershipAdded(GitHubModel):
-    """membership added event"""
+class WebhookMembershipRemoved(GitHubModel):
+    """membership removed event"""
 
-    action: Literal["added"] = Field()
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,17 +49,17 @@ class WebhookMembershipAdded(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    scope: Literal["team"] = Field(
+    scope: Literal["team", "organization"] = Field(
         description="The scope of the membership. Currently, can only be `team`."
     )
-    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
+    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
     team: WebhooksTeam = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
     )
 
 
-class WebhookMembershipAddedPropSender(GitHubModel):
+class WebhookMembershipRemovedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -86,10 +86,10 @@ class WebhookMembershipAddedPropSender(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMembershipAdded)
-model_rebuild(WebhookMembershipAddedPropSender)
+model_rebuild(WebhookMembershipRemoved)
+model_rebuild(WebhookMembershipRemovedPropSender)
 
 __all__ = (
-    "WebhookMembershipAdded",
-    "WebhookMembershipAddedPropSender",
+    "WebhookMembershipRemoved",
+    "WebhookMembershipRemovedPropSender",
 )

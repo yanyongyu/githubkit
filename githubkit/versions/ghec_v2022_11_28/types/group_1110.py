@@ -9,54 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
-
-
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
-
-
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
-
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgActionsSecretsSecretNamePutBodyType",
+    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
 )

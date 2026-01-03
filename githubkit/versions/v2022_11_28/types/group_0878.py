@@ -10,102 +10,94 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
-    """Workflow Job
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
-    url: str
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
+    url: NotRequired[str]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse(TypedDict):
-    """Workflow Job
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
     steps: list[
-        WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse
+        WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse
     ]
-    url: str
+    url: NotRequired[str]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[str, None]
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
     TypedDict
 ):
     """Workflow Step"""
 
     completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    conclusion: Union[str, None]
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse",
 )

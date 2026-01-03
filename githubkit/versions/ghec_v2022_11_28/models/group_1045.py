@@ -13,22 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0105 import CustomPropertyValue
+from .group_0106 import CustomProperty
 
 
-class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    organization_logins: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="The names of organizations that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the organizations."
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

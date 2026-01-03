@@ -14,20 +14,20 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCheckSuiteRequestedType(TypedDict):
-    """check_suite requested event"""
+class WebhookCheckSuiteRerequestedType(TypedDict):
+    """check_suite rerequested event"""
 
-    action: Literal["requested"]
-    check_suite: WebhookCheckSuiteRequestedPropCheckSuiteType
+    action: Literal["rerequested"]
+    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +35,11 @@ class WebhookCheckSuiteRequestedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCheckSuiteRequestedTypeForResponse(TypedDict):
-    """check_suite requested event"""
+class WebhookCheckSuiteRerequestedTypeForResponse(TypedDict):
+    """check_suite rerequested event"""
 
-    action: Literal["requested"]
-    check_suite: WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse
+    action: Literal["rerequested"]
+    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,15 +47,15 @@ class WebhookCheckSuiteRequestedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
-    """WebhookCheckSuiteRequestedPropCheckSuite
+class WebhookCheckSuiteRerequestedPropCheckSuiteType(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuite
 
     The [check_suite](https://docs.github.com/enterprise-
     cloud@latest//rest/checks/suites#get-a-check-suite).
     """
 
     after: Union[str, None]
-    app: WebhookCheckSuiteRequestedPropCheckSuitePropAppType
+    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppType
     before: Union[str, None]
     check_runs_url: str
     conclusion: Union[
@@ -68,18 +68,17 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
             "timed_out",
             "action_required",
             "stale",
-            "skipped",
         ],
     ]
     created_at: _dt.datetime
     head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitType
+    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType
     head_sha: str
     id: int
     latest_check_runs_count: int
     node_id: str
     pull_requests: list[
-        WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsType
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType
     ]
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
@@ -88,15 +87,15 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
-    """WebhookCheckSuiteRequestedPropCheckSuite
+class WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuite
 
     The [check_suite](https://docs.github.com/enterprise-
     cloud@latest//rest/checks/suites#get-a-check-suite).
     """
 
     after: Union[str, None]
-    app: WebhookCheckSuiteRequestedPropCheckSuitePropAppTypeForResponse
+    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse
     before: Union[str, None]
     check_runs_url: str
     conclusion: Union[
@@ -109,18 +108,17 @@ class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
             "timed_out",
             "action_required",
             "stale",
-            "skipped",
         ],
     ]
     created_at: str
     head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitTypeForResponse
+    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse
     head_sha: str
     id: int
     latest_check_runs_count: int
     node_id: str
     pull_requests: list[
-        WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsTypeForResponse
+        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse
     ]
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
@@ -129,7 +127,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse(TypedDict):
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppType(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppType(TypedDict):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -147,15 +145,15 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppType(TypedDict):
     client_id: NotRequired[Union[str, None]]
     name: str
     node_id: str
-    owner: Union[WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerType, None]
+    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType, None]
     permissions: NotRequired[
-        WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsType
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppTypeForResponse(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse(TypedDict):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -174,16 +172,16 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppTypeForResponse(TypedDict):
     name: str
     node_id: str
     owner: Union[
-        WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerTypeForResponse, None
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse, None
     ]
     permissions: NotRequired[
-        WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsTypeForResponse
+        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse
     ]
     slug: NotRequired[str]
     updated_at: Union[str, None]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -210,7 +208,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -239,8 +237,8 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsType(TypedDict):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType(TypedDict):
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -287,10 +285,10 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsType(TypedDi
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -337,31 +335,31 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsTypeForRespo
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitType(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType(TypedDict):
     """SimpleCommit"""
 
-    author: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorType
-    committer: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterType
+    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType
+    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType
     id: str
     message: str
     timestamp: str
     tree_id: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitTypeForResponse(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse(
+    TypedDict
+):
     """SimpleCommit"""
 
-    author: (
-        WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse
-    )
-    committer: WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse
+    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse
+    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse
     id: str
     message: str
     timestamp: str
     tree_id: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -373,7 +371,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorType(Typed
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse(
     TypedDict
 ):
     """Committer
@@ -387,7 +385,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorTypeForRes
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterType(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType(
     TypedDict
 ):
     """Committer
@@ -401,7 +399,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterType(
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse(
     TypedDict
 ):
     """Committer
@@ -415,49 +413,49 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterTypeFor
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsType(TypedDict):
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType(TypedDict):
     """Check Run Pull Request"""
 
-    base: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseType
-    head: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadType
+    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType
+    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType
     id: int
     number: int
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse(
     TypedDict
 ):
     """Check Run Pull Request"""
 
-    base: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse
-    head: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse
+    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse
+    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse
     id: int
     number: int
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseType(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType(
     TypedDict
 ):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
     sha: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse(
     TypedDict
 ):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse
     sha: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -467,7 +465,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropR
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse(
     TypedDict
 ):
     """Repo Ref"""
@@ -477,27 +475,27 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropR
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadType(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType(
     TypedDict
 ):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
     sha: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse(
     TypedDict
 ):
-    """WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse
+    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse
     sha: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -507,7 +505,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropR
     url: str
 
 
-class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse(
+class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse(
     TypedDict
 ):
     """Repo Ref"""
@@ -518,30 +516,30 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropR
 
 
 __all__ = (
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwnerTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissionsTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropAppTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsType",
-    "WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsTypeForResponse",
-    "WebhookCheckSuiteRequestedPropCheckSuiteType",
-    "WebhookCheckSuiteRequestedPropCheckSuiteTypeForResponse",
-    "WebhookCheckSuiteRequestedType",
-    "WebhookCheckSuiteRequestedTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType",
+    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsTypeForResponse",
+    "WebhookCheckSuiteRerequestedPropCheckSuiteType",
+    "WebhookCheckSuiteRerequestedPropCheckSuiteTypeForResponse",
+    "WebhookCheckSuiteRerequestedType",
+    "WebhookCheckSuiteRerequestedTypeForResponse",
 )

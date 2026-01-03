@@ -9,41 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class ActionsCacheRetentionLimitForOrganization(GitHubModel):
+    """Actions cache retention limit for an organization
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
+    GitHub Actions cache retention policy for an organization.
     """
 
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+    max_cache_retention_days: Missing[int] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
+model_rebuild(ActionsCacheRetentionLimitForOrganization)
 
-__all__ = ("OrganizationCustomRepositoryRole",)
+__all__ = ("ActionsCacheRetentionLimitForOrganization",)

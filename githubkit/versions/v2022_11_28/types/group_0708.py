@@ -13,20 +13,20 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0484 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0483 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrgBlockBlockedType(TypedDict):
-    """org_block blocked event"""
+class WebhookOrgBlockUnblockedType(TypedDict):
+    """org_block unblocked event"""
 
-    action: Literal["blocked"]
+    action: Literal["unblocked"]
     blocked_user: Union[WebhooksUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookOrgBlockBlockedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
-    """org_block blocked event"""
+class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
+    """org_block unblocked event"""
 
-    action: Literal["blocked"]
+    action: Literal["unblocked"]
     blocked_user: Union[WebhooksUserTypeForResponse, None]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookOrgBlockBlockedType",
-    "WebhookOrgBlockBlockedTypeForResponse",
+    "WebhookOrgBlockUnblockedType",
+    "WebhookOrgBlockUnblockedTypeForResponse",
 )

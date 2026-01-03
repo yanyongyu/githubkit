@@ -12,37 +12,43 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class ReactionRollupTypeForResponse(TypedDict):
-    """Reaction Rollup"""
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    total: int
+    completed: int
+    percent_completed: int
+
+
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
+
+
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "ReactionRollupType",
-    "ReactionRollupTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

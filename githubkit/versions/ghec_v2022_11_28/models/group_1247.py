@@ -16,97 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    dismissal_restrictions: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+    strict: Missing[bool] = Field(
+        default=UNSET, description="Require branches to be up to date before merging."
+    )
+    contexts: Missing[list[str]] = Field(
+        default=UNSET,
+        description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.",
+    )
+    checks: Missing[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+        ]
     ] = Field(
         default=UNSET,
-        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
-    )
-    dismiss_stale_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
-    )
-    require_code_owner_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) have reviewed.",
-    )
-    required_approving_review_count: Missing[int] = Field(
-        default=UNSET,
-        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
-    )
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
-    )
-    bypass_pull_request_allowances: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems(
     GitHubModel
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
-
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
     """
 
-    users: Missing[list[str]] = Field(
-        default=UNSET, description="The list of user `login`s with dismissal access"
-    )
-    teams: Missing[list[str]] = Field(
-        default=UNSET, description="The list of team `slug`s with dismissal access"
-    )
-    apps: Missing[list[str]] = Field(
-        default=UNSET, description="The list of app `slug`s with dismissal access"
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[list[str]] = Field(
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
         default=UNSET,
-        description="The list of user `login`s allowed to bypass pull request requirements.",
-    )
-    teams: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of team `slug`s allowed to bypass pull request requirements.",
-    )
-    apps: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of app `slug`s allowed to bypass pull request requirements.",
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
     )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody)
 model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
 )
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
 )

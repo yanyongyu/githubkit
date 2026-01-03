@@ -18,13 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRulesetInfo(GitHubModel):
-    """repository ruleset data for rule
+class RepositoryRuleDetailedOneof0(GitHubModel):
+    """RepositoryRuleDetailedOneof0"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
-
+    type: Literal["creation"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +35,6 @@ class RepositoryRuleRulesetInfo(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleRulesetInfo)
+model_rebuild(RepositoryRuleDetailedOneof0)
 
-__all__ = ("RepositoryRuleRulesetInfo",)
+__all__ = ("RepositoryRuleDetailedOneof0",)

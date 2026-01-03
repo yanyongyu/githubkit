@@ -9,24 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0443 import Traffic
-
-
-class ViewTraffic(GitHubModel):
-    """View Traffic
-
-    View Traffic
-    """
-
-    count: int = Field()
-    uniques: int = Field()
-    views: list[Traffic] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ViewTraffic)
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-__all__ = ("ViewTraffic",)
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
+    )
+
+
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
+
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[list[int]] = Field(default=UNSET)
+
+
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
+
+__all__ = (
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
+)

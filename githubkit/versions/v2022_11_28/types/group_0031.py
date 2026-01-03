@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -31,7 +31,29 @@ class CodeScanningOptionsTypeForResponse(TypedDict):
     allow_advanced: NotRequired[Union[bool, None]]
 
 
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
 __all__ = (
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
     "CodeScanningOptionsType",
     "CodeScanningOptionsTypeForResponse",
 )

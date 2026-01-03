@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0518 import WebhooksSponsorship
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0517 import WebhooksSponsorship
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookSponsorshipPendingCancellation(GitHubModel):
+    """sponsorship pending_cancellation event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    action: Literal["pending_cancellation"] = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,29 +57,6 @@ class WebhookSponsorshipEdited(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
+model_rebuild(WebhookSponsorshipPendingCancellation)
 
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
-
-
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
-
-__all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
-)
+__all__ = ("WebhookSponsorshipPendingCancellation",)

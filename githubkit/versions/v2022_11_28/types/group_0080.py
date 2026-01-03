@@ -12,51 +12,61 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0081 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
+from .group_0078 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
 )
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Marketplace Purchase
-    """
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
+
+
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
+    "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

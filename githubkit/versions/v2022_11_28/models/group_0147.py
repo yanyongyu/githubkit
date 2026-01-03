@@ -9,58 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0042 import OrganizationSimple
+from .group_0020 import Repository
 
 
-class OrgMembership(GitHubModel):
-    """Org Membership
+class Migration(GitHubModel):
+    """Migration
 
-    Org Membership
+    A migration.
     """
 
+    id: int = Field()
+    owner: Union[None, SimpleUser] = Field()
+    guid: str = Field()
+    state: str = Field()
+    lock_repositories: bool = Field()
+    exclude_metadata: bool = Field()
+    exclude_git_data: bool = Field()
+    exclude_attachments: bool = Field()
+    exclude_releases: bool = Field()
+    exclude_owner_projects: bool = Field()
+    org_metadata_only: bool = Field()
+    repositories: list[Repository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations."
+    )
     url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
-    )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    direct_membership: Missing[bool] = Field(
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    node_id: str = Field()
+    archive_url: Missing[str] = Field(default=UNSET)
+    exclude: Missing[list[str]] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
-    )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
-    )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
+model_rebuild(Migration)
 
-    can_create_repository: bool = Field()
-
-
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
-
-__all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
-)
+__all__ = ("Migration",)

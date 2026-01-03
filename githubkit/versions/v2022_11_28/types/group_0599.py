@@ -13,62 +13,47 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0483 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0487 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
+)
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: list[WebhookGollumPropPagesItemsType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[Union[WebhooksUserType, None]]
     sender: SimpleUserType
 
 
-class WebhookGollumTypeForResponse(TypedDict):
-    """gollum event"""
+class WebhookInstallationCreatedTypeForResponse(TypedDict):
+    """installation created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
 __all__ = (
-    "WebhookGollumPropPagesItemsType",
-    "WebhookGollumPropPagesItemsTypeForResponse",
-    "WebhookGollumType",
-    "WebhookGollumTypeForResponse",
+    "WebhookInstallationCreatedType",
+    "WebhookInstallationCreatedTypeForResponse",
 )

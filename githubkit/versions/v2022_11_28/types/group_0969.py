@@ -9,33 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0119 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
-
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
 )

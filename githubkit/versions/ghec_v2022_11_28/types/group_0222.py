@@ -9,102 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class FeedType(TypedDict):
-    """Feed
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    Feed
+    Base Gist
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class FeedTypeForResponse(TypedDict):
-    """Feed
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
-    Feed
+    Base Gist
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksTypeForResponse
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
-class FeedPropLinksTypeForResponse(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeTypeForResponse
-    user: LinkWithTypeTypeForResponse
-    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
-    current_user: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
-    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
-    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
-
-
-class LinkWithTypeType(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
-
-
-class LinkWithTypeTypeForResponse(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedPropLinksTypeForResponse",
-    "FeedType",
-    "FeedTypeForResponse",
-    "LinkWithTypeType",
-    "LinkWithTypeTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

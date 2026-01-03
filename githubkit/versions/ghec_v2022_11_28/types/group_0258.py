@@ -13,26 +13,26 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0257 import (
+from .group_0256 import (
     DismissalRequestResponseType,
     DismissalRequestResponseTypeForResponse,
 )
 
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
+class DependabotAlertDismissalRequestType(TypedDict):
+    """Dependabot alert dismissal request
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
+    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
     request_type: NotRequired[str]
     data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
     ]
     resource_identifier: NotRequired[str]
     status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
@@ -44,26 +44,24 @@ class CodeScanningAlertDismissalRequestType(TypedDict):
     html_url: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request
+class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
     repository: NotRequired[
-        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
     ]
     organization: NotRequired[
-        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
+        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
     ]
-    requester: NotRequired[
-        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
-    ]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
     request_type: NotRequired[str]
     data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
+        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
     ]
     resource_identifier: NotRequired[str]
     status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
@@ -75,8 +73,8 @@ class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
     html_url: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -86,8 +84,8 @@ class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
     full_name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -97,8 +95,8 @@ class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
     full_name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
+class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -107,8 +105,8 @@ class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
     name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
+class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -117,8 +115,8 @@ class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict
     name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
+class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
 
     The user who requested the dismissal request.
     """
@@ -127,8 +125,8 @@ class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
     actor_name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
+class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
 
     The user who requested the dismissal request.
     """
@@ -137,31 +135,31 @@ class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
     actor_name: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
+class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
 
     reason: NotRequired[str]
     alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
+    alert_title: NotRequired[str]
 
 
-class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
+class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
 
     reason: NotRequired[str]
     alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
+    alert_title: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
-    "CodeScanningAlertDismissalRequestType",
-    "CodeScanningAlertDismissalRequestTypeForResponse",
+    "DependabotAlertDismissalRequestPropDataItemsType",
+    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
+    "DependabotAlertDismissalRequestPropOrganizationType",
+    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
+    "DependabotAlertDismissalRequestPropRepositoryType",
+    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
+    "DependabotAlertDismissalRequestPropRequesterType",
+    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestType",
+    "DependabotAlertDismissalRequestTypeForResponse",
 )

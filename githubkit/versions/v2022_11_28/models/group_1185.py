@@ -16,20 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoKeysPostBody(GitHubModel):
+    """ReposOwnerRepoKeysPostBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
-    after_id: Missing[int] = Field(
+    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
+    key: str = Field(description="The contents of the key.")
+    read_only: Missing[bool] = Field(
         default=UNSET,
-        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
-    )
-    before_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
+        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/)."',
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
+model_rebuild(ReposOwnerRepoKeysPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)
+__all__ = ("ReposOwnerRepoKeysPostBody",)

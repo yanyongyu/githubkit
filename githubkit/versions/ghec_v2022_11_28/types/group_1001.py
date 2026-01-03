@@ -9,24 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseType]
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    disable_self_hosted_runners_for_all_orgs: bool
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseTypeForResponse]
+
+
+class RunnerGroupsEnterpriseType(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+
+
+class RunnerGroupsEnterpriseTypeForResponse(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsEnterpriseType",
+    "RunnerGroupsEnterpriseTypeForResponse",
 )

@@ -13,27 +13,37 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberPatchBodyType",
-    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse",
 )

@@ -16,13 +16,79 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReleaseEventPropReleaseAllof1(GitHubModel):
-    """ReleaseEventPropReleaseAllof1"""
+class Feed(GitHubModel):
+    """Feed
 
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
+    Feed
+    """
+
+    timeline_url: str = Field()
+    user_url: str = Field()
+    current_user_public_url: Missing[str] = Field(default=UNSET)
+    current_user_url: Missing[str] = Field(default=UNSET)
+    current_user_actor_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
+    security_advisories_url: Missing[str] = Field(default=UNSET)
+    repository_discussions_url: Missing[str] = Field(
+        default=UNSET, description="A feed of discussions for a given repository."
+    )
+    repository_discussions_category_url: Missing[str] = Field(
+        default=UNSET,
+        description="A feed of discussions for a given repository and category.",
+    )
+    links: FeedPropLinks = Field(alias="_links")
 
 
-model_rebuild(ReleaseEventPropReleaseAllof1)
+class FeedPropLinks(GitHubModel):
+    """FeedPropLinks"""
 
-__all__ = ("ReleaseEventPropReleaseAllof1",)
+    timeline: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    user: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    security_advisories: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_public: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_actor: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organization: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    repository_discussions_category: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+
+
+class LinkWithType(GitHubModel):
+    """Link With Type
+
+    Hypermedia Link with Type
+    """
+
+    href: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Feed)
+model_rebuild(FeedPropLinks)
+model_rebuild(LinkWithType)
+
+__all__ = (
+    "Feed",
+    "FeedPropLinks",
+    "LinkWithType",
+)

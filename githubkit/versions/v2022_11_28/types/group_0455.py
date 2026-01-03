@@ -13,159 +13,117 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0448 import (
+from .group_0447 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class TopicSearchResultItemType(TypedDict):
-    """Topic Search Result Item
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
 
-    Topic Search Result Item
+    User Search Result Item
     """
 
-    name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    featured: bool
-    curated: bool
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
     score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
-    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[_dt.datetime, None]]
+    user_view_type: NotRequired[str]
 
 
-class TopicSearchResultItemTypeForResponse(TypedDict):
-    """Topic Search Result Item
+class UserSearchResultItemTypeForResponse(TypedDict):
+    """User Search Result Item
 
-    Topic Search Result Item
+    User Search Result Item
     """
 
-    name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: str
-    updated_at: str
-    featured: bool
-    curated: bool
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    received_events_url: str
+    type: str
     score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    site_admin: bool
+    hireable: NotRequired[Union[bool, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    related: NotRequired[
-        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
-    ]
-    aliases: NotRequired[
-        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
-    ]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    suspended_at: NotRequired[Union[str, None]]
+    user_view_type: NotRequired[str]
 
 
-class TopicSearchResultItemPropRelatedItemsType(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsType(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class SearchTopicsGetResponse200Type(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[TopicSearchResultItemType]
+    items: list[UserSearchResultItemType]
 
 
-class SearchTopicsGetResponse200TypeForResponse(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchUsersGetResponse200TypeForResponse(TypedDict):
+    """SearchUsersGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[TopicSearchResultItemTypeForResponse]
+    items: list[UserSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "SearchTopicsGetResponse200Type",
-    "SearchTopicsGetResponse200TypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
-    "TopicSearchResultItemType",
-    "TopicSearchResultItemTypeForResponse",
+    "SearchUsersGetResponse200Type",
+    "SearchUsersGetResponse200TypeForResponse",
+    "UserSearchResultItemType",
+    "UserSearchResultItemTypeForResponse",
 )

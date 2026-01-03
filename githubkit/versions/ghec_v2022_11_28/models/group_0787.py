@@ -18,16 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
-from .group_0581 import MergeGroup
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
+from .group_0580 import MergeGroup
 
 
-class WebhookMergeGroupChecksRequested(GitHubModel):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMergeGroupDestroyed(GitHubModel):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["checks_requested"] = Field()
+    action: Literal["destroyed"] = Field()
+    reason: Missing[Literal["merged", "invalidated", "dequeued"]] = Field(
+        default=UNSET,
+        description="Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -52,6 +56,6 @@ class WebhookMergeGroupChecksRequested(GitHubModel):
     )
 
 
-model_rebuild(WebhookMergeGroupChecksRequested)
+model_rebuild(WebhookMergeGroupDestroyed)
 
-__all__ = ("WebhookMergeGroupChecksRequested",)
+__all__ = ("WebhookMergeGroupDestroyed",)

@@ -9,53 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class DeleteBudgetType(TypedDict):
+    """DeleteBudget"""
 
+    message: str
     id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class DeleteBudgetTypeForResponse(TypedDict):
+    """DeleteBudget"""
 
+    message: str
     id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
-
-
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "DeleteBudgetType",
+    "DeleteBudgetTypeForResponse",
 )

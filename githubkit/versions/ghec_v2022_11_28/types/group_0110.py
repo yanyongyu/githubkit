@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0111 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
-    """Repository ruleset conditions for organization names
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Parameters for an organization name condition
-    """
-
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization names
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Parameters for an organization name condition
-    """
-
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
 )

@@ -13,8 +13,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class OrganizationUpdateIssueTypeType(TypedDict):
+    """OrganizationUpdateIssueType"""
 
     name: str
     is_enabled: bool
@@ -29,8 +29,8 @@ class OrganizationCreateIssueTypeType(TypedDict):
     ]
 
 
-class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
-    """OrganizationCreateIssueType"""
+class OrganizationUpdateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueType"""
 
     name: str
     is_enabled: bool
@@ -46,6 +46,6 @@ class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrganizationCreateIssueTypeType",
-    "OrganizationCreateIssueTypeTypeForResponse",
+    "OrganizationUpdateIssueTypeType",
+    "OrganizationUpdateIssueTypeTypeForResponse",
 )

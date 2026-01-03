@@ -9,34 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0512 import TrafficType, TrafficTypeForResponse
-
-
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
-    """
-
-    count: int
-    uniques: int
-    views: list[TrafficType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ViewTrafficTypeForResponse(TypedDict):
-    """View Traffic
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
-    View Traffic
-    """
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
-    count: int
-    uniques: int
-    views: list[TrafficTypeForResponse]
+
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+
+
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "ViewTrafficType",
-    "ViewTrafficTypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

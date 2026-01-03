@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    title: NotRequired[str]
+    body: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
-    "OrgsOrgTeamsTeamSlugDiscussionsPostBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyTypeForResponse",
 )

@@ -11,101 +11,44 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0198 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
+class ReactionType(TypedDict):
+    """Reaction
 
-    Commit Comment
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    html_url: str
-    url: str
     id: int
     node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
     user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    reactions: NotRequired[ReactionRollupType]
+    created_at: _dt.datetime
 
 
-class CommitCommentTypeForResponse(TypedDict):
-    """Commit Comment
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    Commit Comment
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    html_url: str
-    url: str
     id: int
     node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
     user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
-
-
-class TimelineCommitCommentedEventTypeForResponse(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentTypeForResponse]]
+    created_at: str
 
 
 __all__ = (
-    "CommitCommentType",
-    "CommitCommentTypeForResponse",
-    "TimelineCommitCommentedEventType",
-    "TimelineCommitCommentedEventTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

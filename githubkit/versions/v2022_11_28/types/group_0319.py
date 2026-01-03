@@ -9,51 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0171 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
 
-class StatusType(TypedDict):
-    """Status
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    The status of a commit.
-    """
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleTypeForResponse]
+    code_of_conduct_file: Union[None, CommunityHealthFileTypeForResponse]
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    contributing: Union[None, CommunityHealthFileTypeForResponse]
+    readme: Union[None, CommunityHealthFileTypeForResponse]
+    issue_template: Union[None, CommunityHealthFileTypeForResponse]
+    pull_request_template: Union[None, CommunityHealthFileTypeForResponse]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
 
     url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    html_url: str
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
-
-    The status of a commit.
-    """
+class CommunityHealthFileTypeForResponse(TypedDict):
+    """Community Health File"""
 
     url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
     description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserTypeForResponse]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[_dt.datetime, None]
+    content_reports_enabled: NotRequired[bool]
+
+
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
+    "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
+    "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

@@ -9,26 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0193 import LabelType, LabelTypeForResponse
+from .group_0202 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class MemberEventType(TypedDict):
-    """MemberEvent"""
-
-    action: str
-    member: SimpleUserType
-
-
-class MemberEventTypeForResponse(TypedDict):
-    """MemberEvent"""
+class PullRequestEventType(TypedDict):
+    """PullRequestEvent"""
 
     action: str
-    member: SimpleUserTypeForResponse
+    number: int
+    pull_request: PullRequestMinimalType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
+
+
+class PullRequestEventTypeForResponse(TypedDict):
+    """PullRequestEvent"""
+
+    action: str
+    number: int
+    pull_request: PullRequestMinimalTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "MemberEventType",
-    "MemberEventTypeForResponse",
+    "PullRequestEventType",
+    "PullRequestEventTypeForResponse",
 )

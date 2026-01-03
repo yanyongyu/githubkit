@@ -9,30 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0340 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
+)
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
 
-    Check Dependabot security updates
+    Protected Branch Pull Request Review
     """
 
-    enabled: bool
-    paused: bool
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
-    """Check Dependabot security updates
+class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
+    """Protected Branch Pull Request Review
 
-    Check Dependabot security updates
+    Protected Branch Pull Request Review
     """
 
-    enabled: bool
-    paused: bool
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
 __all__ = (
-    "CheckAutomatedSecurityFixesType",
-    "CheckAutomatedSecurityFixesTypeForResponse",
+    "ProtectedBranchPullRequestReviewType",
+    "ProtectedBranchPullRequestReviewTypeForResponse",
 )

@@ -15,19 +15,34 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-model_rebuild(PullRequestPropLabelsItems)
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
 
-__all__ = ("PullRequestPropLabelsItems",)
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
+
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropBase)
+
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropHead",
+)

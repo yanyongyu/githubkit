@@ -13,47 +13,39 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class LabelType(TypedDict):
+    """Label
 
-    A GitHub organization.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
     description: Union[str, None]
+    color: str
+    default: bool
 
 
-class OrganizationSimpleTypeForResponse(TypedDict):
-    """Organization Simple
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    A GitHub organization.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
     description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "OrganizationSimpleType",
-    "OrganizationSimpleTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

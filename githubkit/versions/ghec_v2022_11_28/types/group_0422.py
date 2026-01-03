@@ -9,27 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0421 import HookResponseType, HookResponseTypeForResponse
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class HookType(TypedDict):
+    """Webhook
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class HookResponseTypeForResponse(TypedDict):
-    """Hook Response"""
+class HookTypeForResponse(TypedDict):
+    """Webhook
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Webhooks for repositories.
+    """
+
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
 
 
 __all__ = (
-    "HookResponseType",
-    "HookResponseTypeForResponse",
+    "HookType",
+    "HookTypeForResponse",
 )

@@ -964,6 +964,9 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
+        owner: Missing[str] = UNSET,
+        repo: Missing[str] = UNSET,
+        number: Missing[int] = UNSET,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -976,6 +979,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
+        id: Missing[int] = UNSET,
         owner: str,
         repo: str,
         number: int,
@@ -1071,6 +1075,9 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
+        owner: Missing[str] = UNSET,
+        repo: Missing[str] = UNSET,
+        number: Missing[int] = UNSET,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -1083,6 +1090,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
+        id: Missing[int] = UNSET,
         owner: str,
         repo: str,
         number: int,
@@ -2442,6 +2450,9 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
+        owner: Missing[str] = UNSET,
+        repo: Missing[str] = UNSET,
+        number: Missing[int] = UNSET,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -2454,6 +2465,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
+        id: Missing[int] = UNSET,
         owner: str,
         repo: str,
         number: int,
@@ -2549,6 +2561,9 @@ class ProjectsClient:
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
         id: int,
+        owner: Missing[str] = UNSET,
+        repo: Missing[str] = UNSET,
+        number: Missing[int] = UNSET,
     ) -> Response[ProjectsV2ItemSimple, ProjectsV2ItemSimpleTypeForResponse]: ...
 
     @overload
@@ -2561,6 +2576,7 @@ class ProjectsClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         type: Literal["Issue", "PullRequest"],
+        id: Missing[int] = UNSET,
         owner: str,
         repo: str,
         number: int,

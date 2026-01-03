@@ -13,45 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0101 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
-    """organization custom property deleted event"""
+class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
+    """organization custom property updated event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyType
     enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
-    """organization custom property deleted event"""
+class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """organization custom property updated event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
+    action: Literal["updated"]
+    definition: OrganizationCustomPropertyTypeForResponse
     enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
 __all__ = (
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookOrganizationCustomPropertyDeletedType",
-    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
+    "WebhookOrganizationCustomPropertyUpdatedType",
+    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
 )

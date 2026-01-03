@@ -17,47 +17,48 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0109 import RepositoryRulesetBypassActor
-from .group_0122 import EnterpriseRulesetConditionsOneof0
-from .group_0123 import EnterpriseRulesetConditionsOneof1
-from .group_0124 import EnterpriseRulesetConditionsOneof2
-from .group_0125 import EnterpriseRulesetConditionsOneof3
-from .group_0126 import EnterpriseRulesetConditionsOneof4
-from .group_0127 import EnterpriseRulesetConditionsOneof5
-from .group_0128 import (
+from .group_0108 import RepositoryRulesetBypassActor
+from .group_0121 import EnterpriseRulesetConditionsOneof0
+from .group_0122 import EnterpriseRulesetConditionsOneof1
+from .group_0123 import EnterpriseRulesetConditionsOneof2
+from .group_0124 import EnterpriseRulesetConditionsOneof3
+from .group_0125 import EnterpriseRulesetConditionsOneof4
+from .group_0126 import EnterpriseRulesetConditionsOneof5
+from .group_0127 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0129 import RepositoryRuleUpdate
-from .group_0131 import RepositoryRuleRequiredLinearHistory
-from .group_0132 import RepositoryRuleRequiredDeployments
-from .group_0134 import RepositoryRulePullRequest
-from .group_0136 import RepositoryRuleRequiredStatusChecks
-from .group_0138 import RepositoryRuleCommitMessagePattern
-from .group_0140 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0142 import RepositoryRuleCommitterEmailPattern
-from .group_0144 import RepositoryRuleBranchNamePattern
-from .group_0146 import RepositoryRuleTagNamePattern
-from .group_0148 import RepositoryRuleFilePathRestriction
-from .group_0150 import RepositoryRuleMaxFilePathLength
-from .group_0152 import RepositoryRuleFileExtensionRestriction
-from .group_0154 import RepositoryRuleMaxFileSize
-from .group_0157 import RepositoryRuleWorkflows
-from .group_0159 import RepositoryRuleCodeScanning
-from .group_0161 import RepositoryRuleCopilotCodeReview
+from .group_0128 import RepositoryRuleUpdate
+from .group_0130 import RepositoryRuleRequiredLinearHistory
+from .group_0131 import RepositoryRuleRequiredDeployments
+from .group_0133 import RepositoryRulePullRequest
+from .group_0135 import RepositoryRuleRequiredStatusChecks
+from .group_0137 import RepositoryRuleCommitMessagePattern
+from .group_0139 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0141 import RepositoryRuleCommitterEmailPattern
+from .group_0143 import RepositoryRuleBranchNamePattern
+from .group_0145 import RepositoryRuleTagNamePattern
+from .group_0147 import RepositoryRuleFilePathRestriction
+from .group_0149 import RepositoryRuleMaxFilePathLength
+from .group_0151 import RepositoryRuleFileExtensionRestriction
+from .group_0153 import RepositoryRuleMaxFileSize
+from .group_0156 import RepositoryRuleWorkflows
+from .group_0158 import RepositoryRuleCodeScanning
+from .group_0160 import RepositoryRuleCopilotCodeReview
 
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -106,6 +107,6 @@ class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+model_rebuild(EnterprisesEnterpriseRulesetsRulesetIdPutBody)
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBody",)

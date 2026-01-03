@@ -9,34 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0105 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
-    """Enterprise Organization Custom Property Values
-
-    List of custom property values for an organization
+    Custom property defined on an organization
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueType]
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
-    """Enterprise Organization Custom Property Values
+class CustomPropertyTypeForResponse(TypedDict):
+    """Organization Custom Property
 
-    List of custom property values for an organization
+    Custom property defined on an organization
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
 __all__ = (
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
+    "CustomPropertyType",
+    "CustomPropertyTypeForResponse",
 )

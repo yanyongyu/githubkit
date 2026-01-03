@@ -16,26 +16,28 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
+class Label(GitHubModel):
+    """Label
 
-    A GitHub organization.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    login: str = Field()
-    id: int = Field()
+    id: int = Field(description="Unique identifier for the label.")
     node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
+    )
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
+    )
 
 
-model_rebuild(OrganizationSimple)
+model_rebuild(Label)
 
-__all__ = ("OrganizationSimple",)
+__all__ = ("Label",)

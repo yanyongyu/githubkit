@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0518 import WebhooksSponsorship
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0517 import WebhooksSponsorship
 
 
-class WebhookSponsorshipCancelled(GitHubModel):
-    """sponsorship cancelled event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookSponsorshipCancelled(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipCancelled)
+model_rebuild(WebhookSponsorshipCreated)
 
-__all__ = ("WebhookSponsorshipCancelled",)
+__all__ = ("WebhookSponsorshipCreated",)

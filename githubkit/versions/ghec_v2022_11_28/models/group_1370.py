@@ -13,15 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0104 import CustomPropertyValue
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

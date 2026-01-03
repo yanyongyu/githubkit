@@ -9,85 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0082 import TeamSimpleType, TeamSimpleTypeForResponse
 
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-class TeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    Group of enterprise owners and/or members
     """
 
     id: int
-    node_id: str
     name: str
+    description: NotRequired[str]
     slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
     url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
     members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class TeamTypeForResponse(TypedDict):
-    """Team
+class EnterpriseTeamTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    Groups of organization members that gives permissions on specified repositories.
+    Group of enterprise owners and/or members
     """
 
     id: int
-    node_id: str
     name: str
+    description: NotRequired[str]
     slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
     url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
     members_url: str
-    repositories_url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    parent: Union[None, TeamSimpleTypeForResponse]
-
-
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamPropPermissionsTypeForResponse(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "TeamPropPermissionsType",
-    "TeamPropPermissionsTypeForResponse",
-    "TeamType",
-    "TeamTypeForResponse",
+    "EnterpriseTeamType",
+    "EnterpriseTeamTypeForResponse",
 )

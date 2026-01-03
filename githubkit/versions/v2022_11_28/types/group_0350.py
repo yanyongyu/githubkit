@@ -9,52 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0276 import VerificationType, VerificationTypeForResponse
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Git references within a repository
+    Metadata for a Git tag
     """
 
-    ref: str
     node_id: str
+    tag: str
+    sha: str
     url: str
-    object_: GitRefPropObjectType
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    Git references within a repository
+    Metadata for a Git tag
     """
 
-    ref: str
     node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
+    tag: str
     sha: str
     url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    type: str
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
     sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
     url: str
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

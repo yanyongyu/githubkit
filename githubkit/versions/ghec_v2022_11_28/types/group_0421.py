@@ -9,58 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
-
-
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

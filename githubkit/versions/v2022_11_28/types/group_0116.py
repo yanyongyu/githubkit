@@ -9,38 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
 
-    Runner Application
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-class RunnerApplicationTypeForResponse(TypedDict):
-    """Runner Application
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
 
-    Runner Application
+    Authentication Token
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 __all__ = (
-    "RunnerApplicationType",
-    "RunnerApplicationTypeForResponse",
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

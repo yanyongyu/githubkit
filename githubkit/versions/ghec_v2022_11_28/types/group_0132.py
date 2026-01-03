@@ -9,40 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0133 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    required_deployment_environments: list[str]
 
 
-class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
-    """required_deployments
+class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
-    ]
+    required_deployment_environments: list[str]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsType",
-    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsPropParametersType",
+    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
 )

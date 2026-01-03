@@ -9,83 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from githubkit.typing import UniqueList
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
-
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
-
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
-
-The tags associated with the deployment.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
-    dict[str, Any]
+from .group_0118 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
 )
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-The tags associated with the deployment.
-"""
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

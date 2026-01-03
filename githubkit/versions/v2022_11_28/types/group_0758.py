@@ -13,31 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0156 import (
+from .group_0155 import (
     ProjectsV2StatusUpdateType,
     ProjectsV2StatusUpdateTypeForResponse,
 )
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
-    """Projects v2 Status Update Created Event"""
+class WebhookProjectsV2StatusUpdateDeletedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
@@ -45,6 +45,6 @@ class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateCreatedType",
-    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
+    "WebhookProjectsV2StatusUpdateDeletedType",
+    "WebhookProjectsV2StatusUpdateDeletedTypeForResponse",
 )

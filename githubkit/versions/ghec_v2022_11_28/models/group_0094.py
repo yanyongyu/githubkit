@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,33 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0089 import DependabotAlertPackage
+from .group_0008 import Enterprise
 
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
 
-    Details for the vulnerable dependency.
+    Enterprise custom roles
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ] = Field(
+    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description='Source answers the question, "where did this role come from?"',
+    )
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    enterprise: Union[None, Enterprise] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of enterprise roles available to the enterprise.",
+    )
+    roles: Missing[list[EnterpriseRole]] = Field(
+        default=UNSET,
+        description="The list of enterprise roles available to the enterprise.",
+    )
+
+
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
+
+__all__ = (
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
+)

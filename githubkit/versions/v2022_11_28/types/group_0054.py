@@ -13,78 +13,267 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0053 import ReleaseAssetType, ReleaseAssetTypeForResponse
+from .group_0055 import DiscussionEventType, DiscussionEventTypeForResponse
+from .group_0056 import IssuesEventType, IssuesEventTypeForResponse
+from .group_0057 import IssueCommentEventType, IssueCommentEventTypeForResponse
+from .group_0058 import ForkEventType, ForkEventTypeForResponse
+from .group_0060 import MemberEventType, MemberEventTypeForResponse
+from .group_0061 import PullRequestEventType, PullRequestEventTypeForResponse
+from .group_0062 import (
+    PullRequestReviewCommentEventType,
+    PullRequestReviewCommentEventTypeForResponse,
+)
+from .group_0063 import (
+    PullRequestReviewEventType,
+    PullRequestReviewEventTypeForResponse,
+)
+from .group_0065 import CommitCommentEventType, CommitCommentEventTypeForResponse
+from .group_0067 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class ReleaseType(TypedDict):
-    """Release
+class EventType(TypedDict):
+    """Event
 
-    A release.
+    Event
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    id: str
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: Union[
+        CreateEventType,
+        DeleteEventType,
+        DiscussionEventType,
+        IssuesEventType,
+        IssueCommentEventType,
+        ForkEventType,
+        GollumEventType,
+        MemberEventType,
+        PublicEventType,
+        PushEventType,
+        PullRequestEventType,
+        PullRequestReviewCommentEventType,
+        PullRequestReviewEventType,
+        CommitCommentEventType,
+        ReleaseEventType,
+        WatchEventType,
+    ]
+    public: bool
+    created_at: Union[_dt.datetime, None]
 
 
-class ReleaseTypeForResponse(TypedDict):
-    """Release
+class EventTypeForResponse(TypedDict):
+    """Event
 
-    A release.
+    Event
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
+    id: str
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: Union[
+        CreateEventTypeForResponse,
+        DeleteEventTypeForResponse,
+        DiscussionEventTypeForResponse,
+        IssuesEventTypeForResponse,
+        IssueCommentEventTypeForResponse,
+        ForkEventTypeForResponse,
+        GollumEventTypeForResponse,
+        MemberEventTypeForResponse,
+        PublicEventTypeForResponse,
+        PushEventTypeForResponse,
+        PullRequestEventTypeForResponse,
+        PullRequestReviewCommentEventTypeForResponse,
+        PullRequestReviewEventTypeForResponse,
+        CommitCommentEventTypeForResponse,
+        ReleaseEventTypeForResponse,
+        WatchEventTypeForResponse,
+    ]
+    public: bool
+    created_at: Union[str, None]
+
+
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
     id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class CreateEventType(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class CreateEventTypeForResponse(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class DeleteEventType(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class DeleteEventTypeForResponse(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class PublicEventType(TypedDict):
+    """PublicEvent"""
+
+
+class PublicEventTypeForResponse(TypedDict):
+    """PublicEvent"""
+
+
+class PushEventType(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class PushEventTypeForResponse(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class WatchEventType(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class WatchEventTypeForResponse(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class GollumEventType(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsType]
+
+
+class GollumEventTypeForResponse(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsTypeForResponse]
+
+
+class GollumEventPropPagesItemsType(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class GollumEventPropPagesItemsTypeForResponse(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ReleaseType",
-    "ReleaseTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "CreateEventType",
+    "CreateEventTypeForResponse",
+    "DeleteEventType",
+    "DeleteEventTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
+    "GollumEventPropPagesItemsType",
+    "GollumEventPropPagesItemsTypeForResponse",
+    "GollumEventType",
+    "GollumEventTypeForResponse",
+    "PublicEventType",
+    "PublicEventTypeForResponse",
+    "PushEventType",
+    "PushEventTypeForResponse",
+    "WatchEventType",
+    "WatchEventTypeForResponse",
 )

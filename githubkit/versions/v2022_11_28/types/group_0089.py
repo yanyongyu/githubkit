@@ -9,37 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom property name and associated value
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class CustomPropertyValueTypeForResponse(TypedDict):
+    """Custom Property Value
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom property name and associated value
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
-    ]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "CustomPropertyValueType",
+    "CustomPropertyValueTypeForResponse",
 )

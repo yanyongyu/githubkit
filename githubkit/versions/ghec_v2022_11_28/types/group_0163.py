@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0164 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Parameters for a repository ID condition
-    """
-
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    repository_ids: NotRequired[list[int]]
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    Parameters for a repository ID condition
-    """
-
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
-    )
+    repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetType",
-    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+    "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse",
 )

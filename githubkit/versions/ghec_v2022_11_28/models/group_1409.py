@@ -13,75 +13,37 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
     ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        alias="Operations",
-        description="Set of operations to be performed",
+        default=UNSET,
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+    )
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+model_rebuild(TeamsTeamIdPatchBody)
 
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ]
-    ] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Missing[Union[bool, None]] = Field(default=UNSET)
-    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
-)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
-)
+__all__ = ("TeamsTeamIdPatchBody",)

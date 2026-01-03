@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0569 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0574 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0770 import (
+    WebhookIssuesUnlockedPropIssueType,
+    WebhookIssuesUnlockedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesUnlabeledType(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    label: NotRequired[WebhooksLabelType]
+    issue: WebhookIssuesUnlockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnlabeledTypeForResponse(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesUnlockedTypeForResponse(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
+    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnlabeledType",
-    "WebhookIssuesUnlabeledTypeForResponse",
+    "WebhookIssuesUnlockedType",
+    "WebhookIssuesUnlockedTypeForResponse",
 )

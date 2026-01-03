@@ -9,55 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-    A list of errors found in a repo's CODEOWNERS file
+    Permission check result for a given devcontainer config.
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    accepted: bool
 
 
-class CodeownersErrorsTypeForResponse(TypedDict):
-    """CODEOWNERS errors
+class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
+    """Codespaces Permissions Check
 
-    A list of errors found in a repo's CODEOWNERS file
+    Permission check result for a given devcontainer config.
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
-
-
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    accepted: bool
 
 
 __all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsPropErrorsItemsTypeForResponse",
-    "CodeownersErrorsType",
-    "CodeownersErrorsTypeForResponse",
+    "CodespacesPermissionsCheckForDevcontainerType",
+    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
 )

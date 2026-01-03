@@ -9,214 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimUserListType(TypedDict):
-    """SCIM User List
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    SCIM User List
-    """
-
-    schemas: list[str]
-    total_results: int
-    items_per_page: int
-    start_index: int
-    resources: list[ScimUserType]
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class ScimUserListTypeForResponse(TypedDict):
-    """SCIM User List
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    SCIM User List
-    """
-
-    schemas: list[str]
-    total_results: int
-    items_per_page: int
-    start_index: int
-    resources: list[ScimUserTypeForResponse]
-
-
-class ScimUserType(TypedDict):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: list[str]
-    id: str
-    external_id: NotRequired[Union[str, None]]
-    user_name: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    name: NotRequired[ScimUserPropNameType]
-    emails: list[ScimUserPropEmailsItemsType]
-    active: bool
-    meta: ScimUserPropMetaType
-    organization_id: NotRequired[int]
-    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
-    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
-    roles: NotRequired[list[ScimUserPropRolesItemsType]]
-
-
-class ScimUserTypeForResponse(TypedDict):
-    """SCIM /Users
-
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: list[str]
-    id: str
-    external_id: NotRequired[Union[str, None]]
-    user_name: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    name: NotRequired[ScimUserPropNameTypeForResponse]
-    emails: list[ScimUserPropEmailsItemsTypeForResponse]
-    active: bool
-    meta: ScimUserPropMetaTypeForResponse
-    organization_id: NotRequired[int]
-    operations: NotRequired[list[ScimUserPropOperationsItemsTypeForResponse]]
-    groups: NotRequired[list[ScimUserPropGroupsItemsTypeForResponse]]
-    roles: NotRequired[list[ScimUserPropRolesItemsTypeForResponse]]
-
-
-class ScimUserPropNameType(TypedDict):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-    formatted: NotRequired[Union[str, None]]
-
-
-class ScimUserPropNameTypeForResponse(TypedDict):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-    formatted: NotRequired[Union[str, None]]
-
-
-class ScimUserPropEmailsItemsType(TypedDict):
-    """ScimUserPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimUserPropEmailsItemsTypeForResponse(TypedDict):
-    """ScimUserPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimUserPropMetaType(TypedDict):
-    """ScimUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[_dt.datetime]
-    last_modified: NotRequired[_dt.datetime]
-    location: NotRequired[str]
-
-
-class ScimUserPropMetaTypeForResponse(TypedDict):
-    """ScimUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
-
-
-class ScimUserPropGroupsItemsType(TypedDict):
-    """ScimUserPropGroupsItems"""
-
-    value: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropGroupsItemsTypeForResponse(TypedDict):
-    """ScimUserPropGroupsItems"""
-
-    value: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropRolesItemsType(TypedDict):
-    """ScimUserPropRolesItems"""
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropRolesItemsTypeForResponse(TypedDict):
-    """ScimUserPropRolesItems"""
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropOperationsItemsType(TypedDict):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
     ]
 
 
-class ScimUserPropOperationsItemsTypeForResponse(TypedDict):
-    """ScimUserPropOperationsItems"""
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1TypeForResponse, list[Any]]
-    ]
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
-class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-
-class ScimUserPropOperationsItemsPropValueOneof1TypeForResponse(TypedDict):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "ScimUserListType",
-    "ScimUserListTypeForResponse",
-    "ScimUserPropEmailsItemsType",
-    "ScimUserPropEmailsItemsTypeForResponse",
-    "ScimUserPropGroupsItemsType",
-    "ScimUserPropGroupsItemsTypeForResponse",
-    "ScimUserPropMetaType",
-    "ScimUserPropMetaTypeForResponse",
-    "ScimUserPropNameType",
-    "ScimUserPropNameTypeForResponse",
-    "ScimUserPropOperationsItemsPropValueOneof1Type",
-    "ScimUserPropOperationsItemsPropValueOneof1TypeForResponse",
-    "ScimUserPropOperationsItemsType",
-    "ScimUserPropOperationsItemsTypeForResponse",
-    "ScimUserPropRolesItemsType",
-    "ScimUserPropRolesItemsTypeForResponse",
-    "ScimUserType",
-    "ScimUserTypeForResponse",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

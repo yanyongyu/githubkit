@@ -16,23 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    organization: Missing[str] = Field(
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
         default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

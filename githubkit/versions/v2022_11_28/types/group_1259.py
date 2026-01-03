@@ -12,8 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
 
     Examples:
         {'emails': ['octocat@github.com', 'mona@github.com']}
@@ -22,8 +27,13 @@ class UserEmailsPostBodyOneof0Type(TypedDict):
     emails: list[str]
 
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
 
     Examples:
         {'emails': ['octocat@github.com', 'mona@github.com']}
@@ -33,6 +43,6 @@ class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "UserEmailsDeleteBodyOneof0Type",
+    "UserEmailsDeleteBodyOneof0TypeForResponse",
 )

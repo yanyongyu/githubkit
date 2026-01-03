@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,20 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldSingleSelectOption(GitHubModel):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The display name of the option."
+    The configuration for iteration fields.
+    """
+
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the first iteration."
     )
-    color: Missing[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ] = Field(default=UNSET, description="The color associated with the option.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the option."
+    duration: Missing[int] = Field(
+        default=UNSET,
+        description="The default duration for iterations in days. Individual iterations can override this value.",
+    )
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the iteration."
+    )
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the iteration."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
     )
 
 
-model_rebuild(ProjectsV2FieldSingleSelectOption)
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
 
-__all__ = ("ProjectsV2FieldSingleSelectOption",)
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0050 import RunnerLabelType, RunnerLabelTypeForResponse
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: list[RunnerLabelType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    total_count: int
-    labels: list[RunnerLabelTypeForResponse]
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
 )

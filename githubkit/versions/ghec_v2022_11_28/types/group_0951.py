@@ -9,36 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
-    """Committer
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[_dt.datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse(TypedDict):
-    """Committer
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[str]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof0TypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
 )

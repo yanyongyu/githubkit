@@ -13,83 +13,85 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0496 import (
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0495 import (
     WebhooksMarketplacePurchaseType,
     WebhooksMarketplacePurchaseTypeForResponse,
 )
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookMarketplacePurchasePendingChangeType(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["changed"]
+    action: Literal["pending_change"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     marketplace_purchase: WebhooksMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
     ]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchaseChangedTypeForResponse(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookMarketplacePurchasePendingChangeTypeForResponse(TypedDict):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["changed"]
+    action: Literal["pending_change"]
     effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseTypeForResponse
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse
     ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseTypeForResponse(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
     TypedDict
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountTypeForResponse
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
     billing_cycle: str
     free_trial_ends_on: Union[str, None]
     next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTypeForResponse
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
     unit_count: int
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
 
     id: int
     login: str
@@ -98,10 +100,12 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccoun
     type: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountTypeForResponse(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
 
     id: int
     login: str
@@ -110,10 +114,10 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccoun
     type: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
 
     bullets: list[str]
     description: str
@@ -126,10 +130,10 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTy
     yearly_price_in_cents: int
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTypeForResponse(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
 
     bullets: list[str]
     description: str
@@ -143,12 +147,12 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTy
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseTypeForResponse",
-    "WebhookMarketplacePurchaseChangedType",
-    "WebhookMarketplacePurchaseChangedTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseTypeForResponse",
+    "WebhookMarketplacePurchasePendingChangeType",
+    "WebhookMarketplacePurchasePendingChangeTypeForResponse",
 )

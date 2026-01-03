@@ -13,41 +13,53 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesPostBodyOneof0Type(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    repository_id: int
-    ref: NotRequired[str]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
     location: NotRequired[str]
     geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
     working_directory: NotRequired[str]
     idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
 
 
-class UserCodespacesPostBodyOneof0TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    repository_id: int
-    ref: NotRequired[str]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
     location: NotRequired[str]
     geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
     machine: NotRequired[str]
     devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
     working_directory: NotRequired[str]
     idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof0Type",
-    "UserCodespacesPostBodyOneof0TypeForResponse",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1TypeForResponse",
 )

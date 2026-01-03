@@ -9,26 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0044 import Discussion
-from .group_0476 import RepositoryWebhooks
+from .group_0003 import SimpleUser
+from .group_0043 import Discussion
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0484 import WebhooksAnswer
 
 
-class WebhookDiscussionTransferredPropChanges(GitHubModel):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionUnanswered(GitHubModel):
+    """discussion unanswered event"""
 
-    new_discussion: Discussion = Field(
+    action: Literal["unanswered"] = Field()
+    discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
-    new_repository: RepositoryWebhooks = Field(
+    old_answer: WebhooksAnswer = Field()
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookDiscussionTransferredPropChanges)
+model_rebuild(WebhookDiscussionUnanswered)
 
-__all__ = ("WebhookDiscussionTransferredPropChanges",)
+__all__ = ("WebhookDiscussionUnanswered",)

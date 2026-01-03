@@ -9,42 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0075 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
-    """
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
-    """
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse",
 )

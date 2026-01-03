@@ -13,16 +13,24 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0035 import ActionsHostedRunnerCustomImage
+from .group_0036 import ActionsHostedRunnerCustomImageVersion
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
     total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
+)

@@ -10,97 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest//github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: _dt.datetime
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: _dt.datetime
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class WebhooksRuleTypeForResponse(TypedDict):
-    """branch protection rule
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest//github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: str
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
-    updated_at: str
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksRuleType",
-    "WebhooksRuleTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

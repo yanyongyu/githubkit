@@ -9,74 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-class ProjectsV2ItemWithContent(GitHubModel):
-    """Projects v2 Item
-
-    An item belonging to a project
+    Custom property defined on an organization
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
         default=UNSET,
-        description="The content of the item, which varies by content type.",
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
     )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
     )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
     )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+model_rebuild(CustomProperty)
 
-    The content of the item, which varies by content type.
-    """
-
-
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
-
-__all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
-)
+__all__ = ("CustomProperty",)

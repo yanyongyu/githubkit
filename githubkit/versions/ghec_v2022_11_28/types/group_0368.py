@@ -9,40 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
-
-    Repository Identifier
-    """
-
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[_dt.datetime, None]
+from .group_0367 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
-    """Repository Identifier
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Repository Identifier
-    """
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[str, None]
+
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepositoryType",
-    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
 )

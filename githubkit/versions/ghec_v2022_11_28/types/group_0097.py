@@ -9,27 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0084 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
+
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    ]
 
 
-class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class GetLicenseSyncStatusTypeForResponse(TypedDict):
+    """License Sync Status
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamType]]
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
+    ]
 
 
-class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+    TypedDict
+):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseUserRoleAssignmentAllof1Type",
-    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
+    "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusTypeForResponse",
 )

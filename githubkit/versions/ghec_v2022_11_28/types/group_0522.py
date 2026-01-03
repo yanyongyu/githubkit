@@ -9,43 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class UserNameResponseType(TypedDict):
+    """UserNameResponse"""
 
-    operations: list[PatchSchemaPropOperationsItemsType]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
-
-
-class PatchSchemaTypeForResponse(TypedDict):
-    """PatchSchema"""
-
-    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
 
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class UserNameResponseTypeForResponse(TypedDict):
+    """UserNameResponse"""
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    formatted: NotRequired[str]
+    family_name: NotRequired[str]
+    given_name: NotRequired[str]
+    middle_name: NotRequired[str]
 
 
-class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
-    """PatchSchemaPropOperationsItems"""
+class UserEmailsResponseItemsType(TypedDict):
+    """UserEmailsResponseItems"""
 
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
+
+
+class UserEmailsResponseItemsTypeForResponse(TypedDict):
+    """UserEmailsResponseItems"""
+
+    value: str
+    type: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "PatchSchemaPropOperationsItemsType",
-    "PatchSchemaPropOperationsItemsTypeForResponse",
-    "PatchSchemaType",
-    "PatchSchemaTypeForResponse",
+    "UserEmailsResponseItemsType",
+    "UserEmailsResponseItemsTypeForResponse",
+    "UserNameResponseType",
+    "UserNameResponseTypeForResponse",
 )

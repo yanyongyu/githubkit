@@ -9,40 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0197 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
-
-
-class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
     ]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
+
+
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksType",
-    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
 )

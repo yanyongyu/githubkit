@@ -9,78 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class StatusType(TypedDict):
+    """Status
 
-    Combined Commit Status
+    The status of a commit.
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
     url: str
-
-
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
-    """
-
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
-
-
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
+    avatar_url: Union[str, None]
     id: int
     node_id: str
     state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
-
     description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
     target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
+    context: str
     created_at: str
     updated_at: str
+    creator: Union[None, SimpleUserType]
+
+
+class StatusTypeForResponse(TypedDict):
+    """Status
+
+    The status of a commit.
+    """
+
+    url: str
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "StatusType",
+    "StatusTypeForResponse",
 )

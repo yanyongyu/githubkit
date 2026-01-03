@@ -13,117 +13,130 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0448 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
 
+class PrivateUserType(TypedDict):
+    """Private User
 
-class UserSearchResultItemType(TypedDict):
-    """User Search Result Item
-
-    User Search Result Item
+    Private User
     """
 
     login: str
     id: int
+    user_view_type: NotRequired[str]
     node_id: str
     avatar_url: str
     gravatar_id: Union[str, None]
     url: str
     html_url: str
     followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
-    score: float
     following_url: str
     gists_url: str
     starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
     events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
+    received_events_url: str
+    type: str
     site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[_dt.datetime, None]]
-    user_view_type: NotRequired[str]
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanType]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
 
 
-class UserSearchResultItemTypeForResponse(TypedDict):
-    """User Search Result Item
+class PrivateUserTypeForResponse(TypedDict):
+    """Private User
 
-    User Search Result Item
+    Private User
     """
 
     login: str
     id: int
+    user_view_type: NotRequired[str]
     node_id: str
     avatar_url: str
     gravatar_id: Union[str, None]
     url: str
     html_url: str
     followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
-    score: float
     following_url: str
     gists_url: str
     starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
     events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
+    received_events_url: str
+    type: str
     site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[str, None]]
-    user_view_type: NotRequired[str]
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: str
+    updated_at: str
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
 
 
-class SearchUsersGetResponse200Type(TypedDict):
-    """SearchUsersGetResponse200"""
+class PrivateUserPropPlanType(TypedDict):
+    """PrivateUserPropPlan"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[UserSearchResultItemType]
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
-class SearchUsersGetResponse200TypeForResponse(TypedDict):
-    """SearchUsersGetResponse200"""
+class PrivateUserPropPlanTypeForResponse(TypedDict):
+    """PrivateUserPropPlan"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[UserSearchResultItemTypeForResponse]
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "SearchUsersGetResponse200Type",
-    "SearchUsersGetResponse200TypeForResponse",
-    "UserSearchResultItemType",
-    "UserSearchResultItemTypeForResponse",
+    "PrivateUserPropPlanType",
+    "PrivateUserPropPlanTypeForResponse",
+    "PrivateUserType",
+    "PrivateUserTypeForResponse",
 )

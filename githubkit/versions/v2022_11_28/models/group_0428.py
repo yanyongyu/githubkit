@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,69 +18,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0232 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
-)
-from .group_0233 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0234 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
 
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-class SecretScanningLocation(GitHubModel):
-    """SecretScanningLocation"""
-
-    type: Missing[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    details: Missing[
-        Union[
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
+    )
 
 
-model_rebuild(SecretScanningLocation)
+model_rebuild(SecretScanningPushProtectionBypass)
 
-__all__ = ("SecretScanningLocation",)
+__all__ = ("SecretScanningPushProtectionBypass",)

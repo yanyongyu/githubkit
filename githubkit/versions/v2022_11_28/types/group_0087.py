@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
-    """Actions cache retention limit for an organization
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    GitHub Actions cache retention policy for an organization.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache retention limit for an organization
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    GitHub Actions cache retention policy for an organization.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForOrganizationType",
-    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

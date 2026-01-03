@@ -13,87 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0195 import DiscussionType, DiscussionTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0194 import DiscussionType, DiscussionTypeForResponse
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0568 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookDiscussionEditedType(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionLabeledType(TypedDict):
+    """discussion labeled event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    action: Literal["labeled"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionEditedTypeForResponse(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionLabeledTypeForResponse(TypedDict):
+    """discussion labeled event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesTypeForResponse]
+    action: Literal["labeled"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionEditedPropChangesType(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
-
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
-
-
-class WebhookDiscussionEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
-
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyTypeForResponse]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookDiscussionEditedPropChangesPropBodyType",
-    "WebhookDiscussionEditedPropChangesPropBodyTypeForResponse",
-    "WebhookDiscussionEditedPropChangesPropTitleType",
-    "WebhookDiscussionEditedPropChangesPropTitleTypeForResponse",
-    "WebhookDiscussionEditedPropChangesType",
-    "WebhookDiscussionEditedPropChangesTypeForResponse",
-    "WebhookDiscussionEditedType",
-    "WebhookDiscussionEditedTypeForResponse",
+    "WebhookDiscussionLabeledType",
+    "WebhookDiscussionLabeledTypeForResponse",
 )

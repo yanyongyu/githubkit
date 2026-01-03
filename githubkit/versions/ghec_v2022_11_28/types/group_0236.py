@@ -9,67 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0235 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ThreadType(TypedDict):
-    """Thread
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    Thread
+    Thread Subscription
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
     url: str
-    subscription_url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
 
-    Thread
+    Thread Subscription
     """
 
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
     url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
 )

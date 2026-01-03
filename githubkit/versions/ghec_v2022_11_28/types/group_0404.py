@@ -9,33 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0403 import MetadataType, MetadataTypeForResponse
+from .group_0402 import MetadataType, MetadataTypeForResponse
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    package_url: NotRequired[str]
+    name: str
+    file: NotRequired[ManifestPropFileType]
     metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    package_url: NotRequired[str]
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
     metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

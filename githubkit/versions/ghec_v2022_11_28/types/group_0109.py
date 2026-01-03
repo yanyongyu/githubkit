@@ -9,47 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0110 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    An actor that can bypass rules in a ruleset
+    Parameters for an organization name condition
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
 
 
-class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
-    """Repository Ruleset Bypass Actor
+class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    An actor that can bypass rules in a ruleset
+    Parameters for an organization name condition
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetBypassActorType",
-    "RepositoryRulesetBypassActorTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
 )

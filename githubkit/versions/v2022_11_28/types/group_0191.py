@@ -10,34 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0192 import (
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueuePropParametersType",
-    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

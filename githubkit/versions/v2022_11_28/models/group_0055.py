@@ -9,159 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0056 import DiscussionEvent
-from .group_0057 import IssuesEvent
-from .group_0058 import IssueCommentEvent
-from .group_0059 import ForkEvent
-from .group_0061 import MemberEvent
-from .group_0062 import PullRequestEvent
-from .group_0063 import PullRequestReviewCommentEvent
-from .group_0064 import PullRequestReviewEvent
-from .group_0066 import CommitCommentEvent
-from .group_0068 import ReleaseEvent
+from .group_0043 import Discussion
 
 
-class Event(GitHubModel):
-    """Event
-
-    Event
-    """
-
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: Union[
-        CreateEvent,
-        DeleteEvent,
-        DiscussionEvent,
-        IssuesEvent,
-        IssueCommentEvent,
-        ForkEvent,
-        GollumEvent,
-        MemberEvent,
-        PublicEvent,
-        PushEvent,
-        PullRequestEvent,
-        PullRequestReviewCommentEvent,
-        PullRequestReviewEvent,
-        CommitCommentEvent,
-        ReleaseEvent,
-        WatchEvent,
-    ] = Field()
-    public: bool = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
-
-
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class CreateEvent(GitHubModel):
-    """CreateEvent"""
-
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    master_branch: str = Field()
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    pusher_type: str = Field()
-
-
-class DeleteEvent(GitHubModel):
-    """DeleteEvent"""
-
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    pusher_type: str = Field()
-
-
-class PublicEvent(GitHubModel):
-    """PublicEvent"""
-
-
-class PushEvent(GitHubModel):
-    """PushEvent"""
-
-    repository_id: int = Field()
-    push_id: int = Field()
-    ref: str = Field()
-    head: str = Field()
-    before: str = Field()
-
-
-class WatchEvent(GitHubModel):
-    """WatchEvent"""
+class DiscussionEvent(GitHubModel):
+    """DiscussionEvent"""
 
     action: str = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
 
 
-class GollumEvent(GitHubModel):
-    """GollumEvent"""
+model_rebuild(DiscussionEvent)
 
-    pages: list[GollumEventPropPagesItems] = Field()
-
-
-class GollumEventPropPagesItems(GitHubModel):
-    """GollumEventPropPagesItems"""
-
-    page_name: Missing[Union[str, None]] = Field(default=UNSET)
-    title: Missing[Union[str, None]] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
-model_rebuild(CreateEvent)
-model_rebuild(DeleteEvent)
-model_rebuild(PublicEvent)
-model_rebuild(PushEvent)
-model_rebuild(WatchEvent)
-model_rebuild(GollumEvent)
-model_rebuild(GollumEventPropPagesItems)
-
-__all__ = (
-    "Actor",
-    "CreateEvent",
-    "DeleteEvent",
-    "Event",
-    "EventPropRepo",
-    "GollumEvent",
-    "GollumEventPropPagesItems",
-    "PublicEvent",
-    "PushEvent",
-    "WatchEvent",
-)
+__all__ = ("DiscussionEvent",)

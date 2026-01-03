@@ -18,15 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
+from .group_0101 import OrganizationCustomProperty
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
 
 
-class WebhookOrganizationCustomPropertyDeleted(GitHubModel):
-    """organization custom property deleted event"""
+class WebhookOrganizationCustomPropertyUpdated(GitHubModel):
+    """organization custom property updated event"""
 
-    action: Literal["deleted"] = Field()
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinition = Field()
+    action: Literal["updated"] = Field()
+    definition: OrganizationCustomProperty = Field(
+        title="Custom Property for Organization",
+        description="Custom property defined for an organization",
+    )
     enterprise: EnterpriseWebhooks = Field(
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
@@ -41,16 +45,6 @@ class WebhookOrganizationCustomPropertyDeleted(GitHubModel):
     )
 
 
-class WebhookOrganizationCustomPropertyDeletedPropDefinition(GitHubModel):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
+model_rebuild(WebhookOrganizationCustomPropertyUpdated)
 
-    property_name: str = Field(description="The name of the property that was deleted.")
-
-
-model_rebuild(WebhookOrganizationCustomPropertyDeleted)
-model_rebuild(WebhookOrganizationCustomPropertyDeletedPropDefinition)
-
-__all__ = (
-    "WebhookOrganizationCustomPropertyDeleted",
-    "WebhookOrganizationCustomPropertyDeletedPropDefinition",
-)
+__all__ = ("WebhookOrganizationCustomPropertyUpdated",)

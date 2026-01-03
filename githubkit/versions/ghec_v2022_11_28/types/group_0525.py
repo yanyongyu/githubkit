@@ -12,17 +12,22 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0523 import (
+from .group_0517 import MetaType, MetaTypeForResponse
+from .group_0522 import (
     UserEmailsResponseItemsType,
     UserEmailsResponseItemsTypeForResponse,
     UserNameResponseType,
     UserNameResponseTypeForResponse,
 )
-from .group_0524 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0523 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0527 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
     external_id: NotRequired[Union[str, None]]
@@ -32,10 +37,13 @@ class UserResponseType(TypedDict):
     display_name: NotRequired[Union[str, None]]
     emails: list[UserEmailsResponseItemsType]
     roles: NotRequired[list[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class ScimEnterpriseUserResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
     external_id: NotRequired[Union[str, None]]
@@ -45,9 +53,36 @@ class UserResponseTypeForResponse(TypedDict):
     display_name: NotRequired[Union[str, None]]
     emails: list[UserEmailsResponseItemsTypeForResponse]
     roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
+
+
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
+
+
+class ScimEnterpriseUserListTypeForResponse(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "ScimEnterpriseUserListType",
+    "ScimEnterpriseUserListTypeForResponse",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserResponseTypeForResponse",
 )

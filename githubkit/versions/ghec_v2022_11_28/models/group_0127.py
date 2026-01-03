@@ -9,32 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0115 import RepositoryRulesetConditionsPropRefName
-from .group_0117 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
-from .group_0121 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-)
 
 
-class EnterpriseRulesetConditionsOneof5(GitHubModel):
-    """organization_property_and_repository_property
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-    Conditions to target organizations by property and repositories by property
+    Only allow users with bypass permission to create matching refs.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof5)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("EnterpriseRulesetConditionsOneof5",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleRequiredSignatures",
+)

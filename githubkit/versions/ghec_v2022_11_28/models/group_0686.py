@@ -18,57 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
+from .group_0018 import Installation
+from .group_0552 import EnterpriseWebhooks
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
+from .group_0565 import WebhooksUser
+from .group_0569 import WebhooksRepositoriesItems
 
 
-class WebhookGollum(GitHubModel):
-    """gollum event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
+    installation: Installation = Field(title="Installation", description="Installation")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pages: list[WebhookGollumPropPagesItems] = Field(
-        description="The pages that were updated."
+    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
+        default=UNSET,
+        description="An array of repository objects that the installation can access.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requester: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookGollumPropPagesItems(GitHubModel):
-    """WebhookGollumPropPagesItems"""
+model_rebuild(WebhookInstallationCreated)
 
-    action: Literal["created", "edited"] = Field(
-        description="The action that was performed on the page. Can be `created` or `edited`."
-    )
-    html_url: str = Field(description="Points to the HTML wiki page.")
-    page_name: str = Field(description="The name of the page.")
-    sha: str = Field(description="The latest commit SHA of the page.")
-    summary: Union[str, None] = Field()
-    title: str = Field(description="The current page title.")
-
-
-model_rebuild(WebhookGollum)
-model_rebuild(WebhookGollumPropPagesItems)
-
-__all__ = (
-    "WebhookGollum",
-    "WebhookGollumPropPagesItems",
-)
+__all__ = ("WebhookInstallationCreated",)

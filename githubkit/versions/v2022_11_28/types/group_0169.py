@@ -13,15 +13,12 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-    Custom property defined on an organization
+    Custom property set payload
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
@@ -32,15 +29,12 @@ class CustomPropertyType(TypedDict):
     ]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
 
-    Custom property defined on an organization
+    Custom property set payload
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
@@ -52,6 +46,6 @@ class CustomPropertyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
 )

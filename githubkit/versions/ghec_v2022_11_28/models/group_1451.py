@@ -9,24 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems
+    ] = Field(description="A list of field updates to apply.")
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(
+    GitHubModel
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = (
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
+)

@@ -13,33 +13,33 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    state: Literal["open", "dismissed"]
+    state: NotRequired[Literal["open", "dismissed"]]
     dismissed_reason: NotRequired[
         Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]
-    assignees: NotRequired[list[str]]
+    assignees: list[str]
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    state: Literal["open", "dismissed"]
+    state: NotRequired[Literal["open", "dismissed"]]
     dismissed_reason: NotRequired[
         Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]
-    assignees: NotRequired[list[str]]
+    assignees: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

@@ -13,41 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0156 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0506 import (
-    WebhooksProjectChangesType,
-    WebhooksProjectChangesTypeForResponse,
-)
-from .group_0507 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ProjectReopenedType(TypedDict):
+    """Projects v2 Project Reopened Event"""
 
-    action: Literal["restored"]
-    changes: WebhooksProjectChangesType
+    action: Literal["reopened"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ProjectReopenedTypeForResponse(TypedDict):
+    """Projects v2 Project Reopened Event"""
 
-    action: Literal["restored"]
-    changes: WebhooksProjectChangesTypeForResponse
+    action: Literal["reopened"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    projects_v2: ProjectsV2TypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2ItemRestoredType",
-    "WebhookProjectsV2ItemRestoredTypeForResponse",
+    "WebhookProjectsV2ProjectReopenedType",
+    "WebhookProjectsV2ProjectReopenedTypeForResponse",
 )

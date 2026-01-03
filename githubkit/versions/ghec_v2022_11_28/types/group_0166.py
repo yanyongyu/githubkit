@@ -11,39 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0115 import (
+from .group_0114 import (
     RepositoryRulesetConditionsPropRefNameType,
     RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
-from .group_0164 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof1Type(TypedDict):
-    """repository_id_and_ref_name
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
 
-    Conditions to target repositories by id and refs by name
+    Conditions to target repositories by property and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
-
-
-class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
 
 
+class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+
+
 __all__ = (
-    "OrgRulesetConditionsOneof1Type",
-    "OrgRulesetConditionsOneof1TypeForResponse",
+    "OrgRulesetConditionsOneof2Type",
+    "OrgRulesetConditionsOneof2TypeForResponse",
 )

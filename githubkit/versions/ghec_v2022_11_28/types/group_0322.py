@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ActionsSecretType(TypedDict):
+    """Actions Secret
 
-    Actions OIDC subject customization for a repository
+    Set secrets for GitHub Actions.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OidcCustomSubRepoTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret
 
-    Actions OIDC subject customization for a repository
+    Set secrets for GitHub Actions.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "OidcCustomSubRepoType",
-    "OidcCustomSubRepoTypeForResponse",
+    "ActionsSecretType",
+    "ActionsSecretTypeForResponse",
 )

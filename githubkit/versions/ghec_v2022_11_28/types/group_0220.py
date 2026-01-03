@@ -9,80 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0198 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0204 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-class ReleaseEventPropReleaseType(TypedDict):
-    """ReleaseEventPropRelease"""
-
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
     is_short_description_html_truncated: NotRequired[bool]
     short_description_html: NotRequired[str]
 
 
-class ReleaseEventPropReleaseTypeForResponse(TypedDict):
-    """ReleaseEventPropRelease"""
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
     is_short_description_html_truncated: NotRequired[bool]
     short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "ReleaseEventPropReleaseType",
-    "ReleaseEventPropReleaseTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

@@ -16,10 +16,10 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class UnassignedIssueEventType(TypedDict):
+    """Unassigned Issue Event
 
-    Assigned Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -30,15 +30,15 @@ class AssignedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
+    performed_via_github_app: Union[None, IntegrationType, None]
     assignee: SimpleUserType
     assigner: SimpleUserType
 
 
-class AssignedIssueEventTypeForResponse(TypedDict):
-    """Assigned Issue Event
+class UnassignedIssueEventTypeForResponse(TypedDict):
+    """Unassigned Issue Event
 
-    Assigned Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -49,12 +49,12 @@ class AssignedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
     assignee: SimpleUserTypeForResponse
     assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "AssignedIssueEventType",
-    "AssignedIssueEventTypeForResponse",
+    "UnassignedIssueEventType",
+    "UnassignedIssueEventTypeForResponse",
 )

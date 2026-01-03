@@ -10,28 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0132 import (
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Prevent merge commits from being pushed to matching refs.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
-    """required_linear_history
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Prevent merge commits from being pushed to matching refs.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

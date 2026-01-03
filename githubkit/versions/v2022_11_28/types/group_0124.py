@@ -9,27 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-class CodeScanningAnalysisToolTypeForResponse(TypedDict):
-    """CodeScanningAnalysisTool"""
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAnalysisToolTypeForResponse",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

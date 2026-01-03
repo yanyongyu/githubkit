@@ -10,38 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0635 import WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator
+from .group_0636 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+)
 
 
-class WebhookIssueCommentEditedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
+    )
+    external_url: Union[str, None] = Field()
     html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueMergedMilestone)
+model_rebuild(WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",)

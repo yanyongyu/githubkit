@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +18,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    name: str = Field(description="Name of the runner group.")
+    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
     visibility: Missing[Literal["selected", "all"]] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organization.",
-    )
-    selected_organization_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="List of organization IDs that can access the runner group.",
-    )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
+        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
     )
     allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
@@ -45,12 +38,12 @@ class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
         default=UNSET,
         description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
-    network_configuration_id: Missing[str] = Field(
+    network_configuration_id: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)

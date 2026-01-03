@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
-    """branch protection configuration disabled event"""
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["disabled"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,10 +33,10 @@ class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
-    """branch protection configuration disabled event"""
+class WebhookBranchProtectionConfigurationEnabledTypeForResponse(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["disabled"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookBranchProtectionConfigurationDisabledType",
-    "WebhookBranchProtectionConfigurationDisabledTypeForResponse",
+    "WebhookBranchProtectionConfigurationEnabledType",
+    "WebhookBranchProtectionConfigurationEnabledTypeForResponse",
 )

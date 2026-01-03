@@ -9,28 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0234 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Permission check result for a given devcontainer config.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    accepted: bool
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
-    """Codespaces Permissions Check
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Permission check result for a given devcontainer config.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    accepted: bool
+    id: int
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[None, SimpleUserTypeForResponse]
+    inviter: Union[None, SimpleUserTypeForResponse]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: str
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "CodespacesPermissionsCheckForDevcontainerType",
-    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

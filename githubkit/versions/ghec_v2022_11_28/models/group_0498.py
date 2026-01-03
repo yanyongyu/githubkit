@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,21 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningPushProtectionBypass(GitHubModel):
-    """SecretScanningPushProtectionBypass"""
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
 
-    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
-        Field(default=UNSET, description="The reason for bypassing push protection.")
-    )
-    expire_at: Missing[Union[_dt.datetime, None]] = Field(
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
+
+
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
         default=UNSET,
-        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description='The state of the scan. Either "completed", "running", or "pending"',
     )
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The token type this bypass is for."
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
     )
 
 
-model_rebuild(SecretScanningPushProtectionBypass)
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
 
-__all__ = ("SecretScanningPushProtectionBypass",)
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", or "pending"',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
+
+
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
+
+__all__ = (
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
+)

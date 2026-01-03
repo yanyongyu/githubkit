@@ -15,27 +15,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import RunnerLabel
 
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
+    Runner Application
     """
 
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
+        default=UNSET,
+        description="A short lived bearer token used to download the runner, if needed.",
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Runner)
+model_rebuild(RunnerApplication)
 
-__all__ = ("Runner",)
+__all__ = ("RunnerApplication",)

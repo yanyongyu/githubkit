@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0128 import CodespaceMachine
-
-
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
-
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
+    )
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
+    )
+
+
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

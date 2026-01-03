@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,75 +19,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportUser(GitHubModel):
-    """BillingUsageSummaryReportUser"""
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriod = Field(alias="timePeriod")
-    user: str = Field(description="The unique identifier of the user.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
 
-
-class BillingUsageSummaryReportUserPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
     )
+    id: int = Field(description="Unique identifier of the enterprise")
+    node_id: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    avatar_url: str = Field()
 
 
-class BillingUsageSummaryReportUserPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
+model_rebuild(EnterpriseWebhooks)
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingUsageSummaryReportUser)
-model_rebuild(BillingUsageSummaryReportUserPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportUserPropUsageItemsItems)
-
-__all__ = (
-    "BillingUsageSummaryReportUser",
-    "BillingUsageSummaryReportUserPropTimePeriod",
-    "BillingUsageSummaryReportUserPropUsageItemsItems",
-)
+__all__ = ("EnterpriseWebhooks",)

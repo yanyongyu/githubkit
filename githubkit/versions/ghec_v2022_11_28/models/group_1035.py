@@ -11,23 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
+    )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)

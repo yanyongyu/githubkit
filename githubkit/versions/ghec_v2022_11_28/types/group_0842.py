@@ -9,77 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0589 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0588 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedType(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ItemCreatedType(TypedDict):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesType
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemConvertedTypeForResponse(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ItemCreatedTypeForResponse(TypedDict):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesTypeForResponse
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
-
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
-    ]
-
-
-class WebhookProjectsV2ItemConvertedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
-
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse
-    ]
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
-
-
 __all__ = (
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse",
-    "WebhookProjectsV2ItemConvertedPropChangesType",
-    "WebhookProjectsV2ItemConvertedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemConvertedType",
-    "WebhookProjectsV2ItemConvertedTypeForResponse",
+    "WebhookProjectsV2ItemCreatedType",
+    "WebhookProjectsV2ItemCreatedTypeForResponse",
 )

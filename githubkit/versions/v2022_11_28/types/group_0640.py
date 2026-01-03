@@ -10,63 +10,64 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0635 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+from .group_0636 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
+    created_at: Union[_dt.datetime, None]
     description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
-
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
         None,
     ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
+
+
+class WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[str, None]
     description: Union[str, None]
-    due_on: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueMergedMilestoneType",
-    "WebhookIssueCommentEditedPropIssueMergedMilestoneTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

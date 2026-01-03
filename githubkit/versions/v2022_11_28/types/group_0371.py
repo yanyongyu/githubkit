@@ -16,44 +16,46 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class MovedColumnInProjectIssueEventType(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Added to Project Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
 
 
-class AddedToProjectIssueEventTypeForResponse(TypedDict):
-    """Added to Project Issue Event
+class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Added to Project Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["added_to_project"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardTypeForResponse]
+    project_card: NotRequired[
+        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
+    ]
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -63,8 +65,8 @@ class AddedToProjectIssueEventPropProjectCardType(TypedDict):
     previous_column_name: NotRequired[str]
 
 
-class AddedToProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -75,8 +77,8 @@ class AddedToProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "AddedToProjectIssueEventPropProjectCardType",
-    "AddedToProjectIssueEventPropProjectCardTypeForResponse",
-    "AddedToProjectIssueEventType",
-    "AddedToProjectIssueEventTypeForResponse",
+    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
+    "MovedColumnInProjectIssueEventType",
+    "MovedColumnInProjectIssueEventTypeForResponse",
 )

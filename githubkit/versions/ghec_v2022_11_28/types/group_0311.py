@@ -9,65 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0198 import ReactionRollupType, ReactionRollupTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamDiscussionType(TypedDict):
-    """Team Discussion
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Team Membership
     """
 
-    author: Union[None, SimpleUserType]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: _dt.datetime
-    last_edited_at: Union[_dt.datetime, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: _dt.datetime
     url: str
-    reactions: NotRequired[ReactionRollupType]
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class TeamDiscussionTypeForResponse(TypedDict):
-    """Team Discussion
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    A team discussion is a persistent record of a free-form conversation within a
-    team.
+    Team Membership
     """
 
-    author: Union[None, SimpleUserTypeForResponse]
-    body: str
-    body_html: str
-    body_version: str
-    created_at: str
-    last_edited_at: Union[str, None]
-    html_url: str
-    node_id: str
-    number: int
-    pinned: bool
-    private: bool
-    team_url: str
-    title: str
-    updated_at: str
     url: str
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "TeamDiscussionType",
-    "TeamDiscussionTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

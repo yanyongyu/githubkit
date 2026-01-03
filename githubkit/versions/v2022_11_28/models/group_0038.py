@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,114 +18,50 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
-from .group_0002 import SecurityAdvisoryEpss
-from .group_0037 import DependabotAlertSecurityVulnerability
 
+class DependabotAlertDismissalRequestSimple(GitHubModel):
+    """Dependabot alert dismissal request
 
-class DependabotAlertSecurityAdvisory(GitHubModel):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    ghsa_id: str = Field(
-        description="The unique GitHub Security Advisory ID assigned to the advisory."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    cve_id: Union[str, None] = Field(
-        description="The unique CVE ID assigned to the advisory."
+    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
+        default=UNSET, description="The current status of the dismissal request."
     )
-    summary: str = Field(
-        max_length=1024, description="A short, plain text summary of the advisory."
+    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal."
     )
-    description: str = Field(
-        description="A long-form Markdown-supported description of the advisory."
-    )
-    vulnerabilities: list[DependabotAlertSecurityVulnerability] = Field(
-        description="Vulnerable version range information for the advisory."
-    )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the advisory."
-    )
-    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
-        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
-    )
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    epss: Missing[Union[SecurityAdvisoryEpss, None]] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss).",
+        description="The date and time when the dismissal request was created.",
     )
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
-        description="Details for the advisory pertaining to Common Weakness Enumeration."
-    )
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
-        description="Values that identify this advisory among security information sources."
-    )
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
-        description="Links to additional advisory information."
-    )
-    published_at: _dt.datetime = Field(
-        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    withdrawn_at: Union[_dt.datetime, None] = Field(
-        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to get more information about this dismissal request.",
     )
 
 
-class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestSimplePropRequester
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    The user who requested the dismissal.
     """
 
-    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
-    vector_string: Union[str, None] = Field(
-        description="The full CVSS vector string for the advisory."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the user."
     )
 
 
-class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str = Field(description="The unique CWE ID.")
-    name: str = Field(description="The short, plain text name of the CWE.")
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
-    value: str = Field(description="The value of the advisory identifer.")
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str = Field(description="The URL of the reference.")
-
-
-model_rebuild(DependabotAlertSecurityAdvisory)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+model_rebuild(DependabotAlertDismissalRequestSimple)
+model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
 
 __all__ = (
-    "DependabotAlertSecurityAdvisory",
-    "DependabotAlertSecurityAdvisoryPropCvss",
-    "DependabotAlertSecurityAdvisoryPropCwesItems",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
-    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "DependabotAlertDismissalRequestSimple",
+    "DependabotAlertDismissalRequestSimplePropRequester",
 )

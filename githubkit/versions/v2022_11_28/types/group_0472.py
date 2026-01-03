@@ -9,82 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportUserType(TypedDict):
-    """BillingUsageSummaryReportUser"""
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriodType
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsType]
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
 
-
-class BillingUsageSummaryReportUserTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUser"""
-
-    time_period: BillingUsageSummaryReportUserPropTimePeriodTypeForResponse
-    user: str
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse]
-
-
-class BillingUsageSummaryReportUserPropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    avatar_url: str
 
 
-class BillingUsageSummaryReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
+class EnterpriseWebhooksTypeForResponse(TypedDict):
+    """Enterprise
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
+    """
 
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    avatar_url: str
 
 
 __all__ = (
-    "BillingUsageSummaryReportUserPropTimePeriodType",
-    "BillingUsageSummaryReportUserPropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsType",
-    "BillingUsageSummaryReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportUserType",
-    "BillingUsageSummaryReportUserTypeForResponse",
+    "EnterpriseWebhooksType",
+    "EnterpriseWebhooksTypeForResponse",
 )

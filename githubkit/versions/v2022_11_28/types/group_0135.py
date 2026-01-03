@@ -9,53 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class PackageType(TypedDict):
-    """Package
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
 
-    A software package
+    Organization Invitation
     """
 
     id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class PackageTypeForResponse(TypedDict):
-    """Package
-
-    A software package
-    """
-
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
     created_at: str
-    updated_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
+
+
+class OrganizationInvitationTypeForResponse(TypedDict):
+    """Organization Invitation
+
+    Organization Invitation
+    """
+
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserTypeForResponse
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "OrganizationInvitationType",
+    "OrganizationInvitationTypeForResponse",
 )

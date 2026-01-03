@@ -12,23 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0116 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
+    Parameters for a repository property condition
+    """
+
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

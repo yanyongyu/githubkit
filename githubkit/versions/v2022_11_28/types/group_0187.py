@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0188 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class RepositoryRuleUpdatePropParametersType(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    update_allows_fetch_and_merge: bool
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    update_allows_fetch_and_merge: bool
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "RepositoryRuleUpdatePropParametersType",
+    "RepositoryRuleUpdatePropParametersTypeForResponse",
 )

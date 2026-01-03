@@ -18,23 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    name: str = Field(
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
     )
     compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
         description="The hosted compute service to use for the network configuration.",
     )
-    network_settings_ids: list[str] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
         max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
         description="The identifier of the network settings to use for the network configuration. Exactly one network settings must be specified.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsPostBody)
+model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBody",)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)

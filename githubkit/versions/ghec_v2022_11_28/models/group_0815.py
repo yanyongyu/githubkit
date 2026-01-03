@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0584 import PersonalAccessTokenRequest
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0583 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestCreated(GitHubModel):
+    """personal_access_token_request created event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["created"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
@@ -42,12 +42,13 @@ class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    installation: SimpleInstallation = Field(
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+model_rebuild(WebhookPersonalAccessTokenRequestCreated)
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreated",)

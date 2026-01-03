@@ -13,34 +13,28 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0157 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0156 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookProjectsV2ProjectDeletedType(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2: ProjectsV2Type
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookProjectsV2ProjectDeletedTypeForResponse(TypedDict):
+    """Projects v2 Project Deleted Event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2: ProjectsV2TypeForResponse
@@ -48,6 +42,6 @@ class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectCreatedType",
-    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+    "WebhookProjectsV2ProjectDeletedType",
+    "WebhookProjectsV2ProjectDeletedTypeForResponse",
 )

@@ -13,21 +13,20 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0484 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0483 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
@@ -36,11 +35,10 @@ class WebhookMemberEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMemberEditedTypeForResponse(TypedDict):
-    """member edited event"""
+class WebhookMemberRemovedTypeForResponse(TypedDict):
+    """member removed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesTypeForResponse
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     member: Union[WebhooksUserTypeForResponse, None]
@@ -49,61 +47,7 @@ class WebhookMemberEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
-
-
-class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[
-        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
-    ]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
 __all__ = (
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedPropChangesTypeForResponse",
-    "WebhookMemberEditedType",
-    "WebhookMemberEditedTypeForResponse",
+    "WebhookMemberRemovedType",
+    "WebhookMemberRemovedTypeForResponse",
 )

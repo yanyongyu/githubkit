@@ -9,62 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0042 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class MigrationType(TypedDict):
+    """Migration
 
-    Org Membership
+    A migration.
     """
 
+    id: int
+    owner: Union[None, SimpleUserType]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryType]
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class MigrationTypeForResponse(TypedDict):
+    """Migration
 
-    Org Membership
+    A migration.
     """
 
+    id: int
+    owner: Union[None, SimpleUserTypeForResponse]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryTypeForResponse]
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[None, SimpleUserTypeForResponse]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
-
-
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
-
-
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
+    created_at: str
+    updated_at: str
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "MigrationType",
+    "MigrationTypeForResponse",
 )

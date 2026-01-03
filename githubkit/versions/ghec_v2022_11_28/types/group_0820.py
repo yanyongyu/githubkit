@@ -9,28 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0584 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
-    payload: str
+
+class WebhookProjectCardConvertedTypeForResponse(TypedDict):
+    """project_card converted event"""
+
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookPingFormEncodedTypeForResponse(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
 
-    payload: str
+
+class WebhookProjectCardConvertedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookPingFormEncodedType",
-    "WebhookPingFormEncodedTypeForResponse",
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+    "WebhookProjectCardConvertedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedPropChangesTypeForResponse",
+    "WebhookProjectCardConvertedType",
+    "WebhookProjectCardConvertedTypeForResponse",
 )

@@ -13,13 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    budget_amount: NotRequired[int]
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
+    ]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+
+    message: NotRequired[str]
+    budget: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
+    ]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: NotRequired[str]
+    budget_amount: NotRequired[float]
     prevent_further_usage: NotRequired[bool]
     budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
     ]
     budget_scope: NotRequired[
         Literal["enterprise", "organization", "repository", "cost_center"]
@@ -29,13 +52,16 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
     budget_product_sku: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
 
-    budget_amount: NotRequired[int]
+    id: NotRequired[str]
+    budget_amount: NotRequired[float]
     prevent_further_usage: NotRequired[bool]
     budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
     ]
     budget_scope: NotRequired[
         Literal["enterprise", "organization", "repository", "cost_center"]
@@ -45,27 +71,33 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(Typ
     budget_product_sku: NotRequired[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
     TypedDict
 ):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
 )

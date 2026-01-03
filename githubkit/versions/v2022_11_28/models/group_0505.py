@@ -19,20 +19,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: _dt.datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProjectColumn)
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-__all__ = ("WebhooksProjectColumn",)
+    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
+
+__all__ = (
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
+)

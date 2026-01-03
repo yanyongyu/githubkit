@@ -9,27 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0075 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    Code security configuration associated with a repository and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
+
+
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

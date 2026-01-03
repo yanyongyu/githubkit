@@ -9,50 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
+from .group_0138 import (
+    RepositoryRuleCommitMessagePatternPropParametersType,
+    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: list[
-        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+
+
+class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
+    """commit_message_pattern
+
+    Parameters to be used for the commit_message_pattern rule
+    """
+
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
     ]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str
-    integration_id: NotRequired[int]
-
-
-class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str
-    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
+    "RepositoryRuleCommitMessagePatternType",
+    "RepositoryRuleCommitMessagePatternTypeForResponse",
 )

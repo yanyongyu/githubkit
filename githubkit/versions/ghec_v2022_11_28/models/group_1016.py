@@ -18,20 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
+    repository_selection: Literal["all", "selected"] = Field(
+        description="One of either 'all' or 'selected'"
     )
     repositories: Missing[list[str]] = Field(
         max_length=50 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
     )
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
+)
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
+)

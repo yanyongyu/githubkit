@@ -15,40 +15,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0110 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
+from .group_0112 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0114 import RepositoryRulesetConditionsPropRefName
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class EnterpriseRulesetConditionsOneof0(GitHubModel):
+    """organization_name_and_repository_name
 
-    Parameters for a targeting a organization property
+    Conditions to target organizations by name and all repositories
     """
 
-    name: str = Field(description="The name of the organization property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the organization property"
-    )
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
-)
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
+model_rebuild(EnterpriseRulesetConditionsOneof0)
 
-__all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpec",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
-)
+__all__ = ("EnterpriseRulesetConditionsOneof0",)

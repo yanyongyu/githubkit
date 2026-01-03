@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0342 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0120 import TeamType, TeamTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
 )

@@ -9,38 +9,238 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0194 import LabelType, LabelTypeForResponse
-from .group_0203 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0202 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class PullRequestEventType(TypedDict):
-    """PullRequestEvent"""
+class PullRequestReviewCommentEventType(TypedDict):
+    """PullRequestReviewCommentEvent"""
 
     action: str
-    number: int
     pull_request: PullRequestMinimalType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+    comment: PullRequestReviewCommentEventPropCommentType
 
 
-class PullRequestEventTypeForResponse(TypedDict):
-    """PullRequestEvent"""
+class PullRequestReviewCommentEventTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEvent"""
 
     action: str
-    number: int
     pull_request: PullRequestMinimalTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    comment: PullRequestReviewCommentEventPropCommentTypeForResponse
+
+
+class PullRequestReviewCommentEventPropCommentType(TypedDict):
+    """PullRequestReviewCommentEventPropComment"""
+
+    id: int
+    node_id: str
+    url: str
+    pull_request_review_id: Union[int, None]
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    subject_type: NotRequired[Union[str, None]]
+    commit_id: str
+    user: Union[PullRequestReviewCommentEventPropCommentPropUserType, None]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewCommentEventPropCommentPropLinksType
+    original_commit_id: str
+    reactions: PullRequestReviewCommentEventPropCommentPropReactionsType
+    in_reply_to_id: NotRequired[int]
+
+
+class PullRequestReviewCommentEventPropCommentTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEventPropComment"""
+
+    id: int
+    node_id: str
+    url: str
+    pull_request_review_id: Union[int, None]
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    subject_type: NotRequired[Union[str, None]]
+    commit_id: str
+    user: Union[PullRequestReviewCommentEventPropCommentPropUserTypeForResponse, None]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    links: PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse
+    original_commit_id: str
+    reactions: PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse
+    in_reply_to_id: NotRequired[int]
+
+
+class PullRequestReviewCommentEventPropCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class PullRequestReviewCommentEventPropCommentPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class PullRequestReviewCommentEventPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfType
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse
+    pull_request: (
+        PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse
+    )
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelfType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "PullRequestEventType",
-    "PullRequestEventTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropLinksType",
+    "PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropReactionsType",
+    "PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentPropUserType",
+    "PullRequestReviewCommentEventPropCommentPropUserTypeForResponse",
+    "PullRequestReviewCommentEventPropCommentType",
+    "PullRequestReviewCommentEventPropCommentTypeForResponse",
+    "PullRequestReviewCommentEventType",
+    "PullRequestReviewCommentEventTypeForResponse",
 )

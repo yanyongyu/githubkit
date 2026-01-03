@@ -11,78 +11,56 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0277 import VerificationType, VerificationTypeForResponse
 
+class GitTreeType(TypedDict):
+    """Git Tree
 
-class GitTagType(TypedDict):
-    """Git Tag
-
-    Metadata for a Git tag
+    The hierarchy between files in a Git repository.
     """
 
-    node_id: str
-    tag: str
     sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Metadata for a Git tag
+    The hierarchy between files in a Git repository.
     """
 
-    node_id: str
-    tag: str
     sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
 
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
-
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
+    path: str
+    mode: str
     type: str
-    url: str
-
-
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
-
     sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
     type: str
-    url: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

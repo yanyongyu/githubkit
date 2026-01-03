@@ -19,18 +19,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    Key Simple
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest//admin/overview/about-enterprise-accounts)."
     """
 
-    id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
+    )
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
+    )
+    id: int = Field(description="Unique identifier of the enterprise")
+    node_id: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    avatar_url: str = Field()
 
 
-model_rebuild(KeySimple)
+model_rebuild(EnterpriseWebhooks)
 
-__all__ = ("KeySimple",)
+__all__ = ("EnterpriseWebhooks",)

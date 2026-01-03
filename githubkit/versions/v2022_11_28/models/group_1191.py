@@ -19,10 +19,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoMilestonesPostBody(GitHubModel):
-    """ReposOwnerRepoMilestonesPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    title: str = Field(description="The title of the milestone.")
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
+    )
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
         description="The state of the milestone. Either `open` or `closed`.",
@@ -36,6 +38,6 @@ class ReposOwnerRepoMilestonesPostBody(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoMilestonesPostBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoMilestonesPostBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

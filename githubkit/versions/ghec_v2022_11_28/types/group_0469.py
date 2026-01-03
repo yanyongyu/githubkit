@@ -14,26 +14,36 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0197 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0470 import (
+    ReviewCommentPropLinksType,
+    ReviewCommentPropLinksTypeForResponse,
+)
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class ReviewCommentType(TypedDict):
+    """Legacy Review Comment
 
-    Pull Request Reviews are reviews on pull requests.
+    Legacy Review Comment
     """
 
+    url: str
+    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
     user: Union[None, SimpleUserType]
     body: str
-    state: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     html_url: str
     pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -44,26 +54,42 @@ class PullRequestReviewType(TypedDict):
         "NONE",
         "OWNER",
     ]
+    links: ReviewCommentPropLinksType
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class ReviewCommentTypeForResponse(TypedDict):
+    """Legacy Review Comment
 
-    Pull Request Reviews are reviews on pull requests.
+    Legacy Review Comment
     """
 
+    url: str
+    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
     user: Union[None, SimpleUserTypeForResponse]
     body: str
-    state: str
+    created_at: str
+    updated_at: str
     html_url: str
     pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -74,53 +100,20 @@ class PullRequestReviewTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-
-
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    links: ReviewCommentPropLinksTypeForResponse
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "ReviewCommentType",
+    "ReviewCommentTypeForResponse",
 )

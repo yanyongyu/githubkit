@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0121 import Team
 
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-class CampaignSummary(GitHubModel):
-    """Campaign summary
-
-    The campaign metadata and alert stats.
-    """
-
-    number: int = Field(description="The number of the newly created campaign")
-    created_at: _dt.datetime = Field(
-        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    name: Missing[str] = Field(default=UNSET, description="The campaign name")
-    description: str = Field(description="The campaign description")
-    managers: list[SimpleUser] = Field(description="The campaign managers")
-    team_managers: Missing[list[Team]] = Field(
-        default=UNSET, description="The campaign team managers"
-    )
-    published_at: Missing[_dt.datetime] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    ends_at: _dt.datetime = Field(
-        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
     )
-    closed_at: Missing[Union[_dt.datetime, None]] = Field(
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+        description="A short description of the rule used to detect the alert.",
     )
-    state: Literal["open", "closed"] = Field(
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
     )
-    contact_link: Union[str, None] = Field(
-        description="The contact link of the campaign."
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
     )
-    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
 
 
-class CampaignSummaryPropAlertStats(GitHubModel):
-    """CampaignSummaryPropAlertStats"""
+model_rebuild(CodeScanningAlertRuleSummary)
 
-    open_count: int = Field(description="The number of open alerts")
-    closed_count: int = Field(description="The number of closed alerts")
-    in_progress_count: int = Field(description="The number of in-progress alerts")
-
-
-model_rebuild(CampaignSummary)
-model_rebuild(CampaignSummaryPropAlertStats)
-
-__all__ = (
-    "CampaignSummary",
-    "CampaignSummaryPropAlertStats",
-)
+__all__ = ("CodeScanningAlertRuleSummary",)

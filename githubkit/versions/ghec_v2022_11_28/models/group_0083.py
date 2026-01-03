@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,56 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0082 import TeamSimple
 
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-class Team(GitHubModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    Group of enterprise owners and/or members
     """
 
     id: int = Field()
-    node_id: str = Field()
     name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
     slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
     url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
     html_url: str = Field()
     members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-    parent: Union[None, TeamSimple] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+model_rebuild(EnterpriseTeam)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
-
-__all__ = (
-    "Team",
-    "TeamPropPermissions",
-)
+__all__ = ("EnterpriseTeam",)

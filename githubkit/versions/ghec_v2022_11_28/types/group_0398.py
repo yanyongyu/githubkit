@@ -9,71 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0089 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0090 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0091 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0399 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
-class ContributorType(TypedDict):
-    """Contributor
 
-    Contributor
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
+
+    A Dependabot alert.
     """
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
-    user_view_type: NotRequired[str]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
 
 
-class ContributorTypeForResponse(TypedDict):
-    """Contributor
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
 
-    Contributor
+    A Dependabot alert.
     """
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
-    user_view_type: NotRequired[str]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
 
 
 __all__ = (
-    "ContributorType",
-    "ContributorTypeForResponse",
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
 )

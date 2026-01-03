@@ -9,54 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0274 import BranchProtectionType, BranchProtectionTypeForResponse
 
+class GitUserType(TypedDict):
+    """Git User
 
-class ShortBranchType(TypedDict):
-    """Short Branch
-
-    Short Branch
+    Metaproperties for Git author/committer information.
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class ShortBranchTypeForResponse(TypedDict):
-    """Short Branch
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    Short Branch
+    Metaproperties for Git author/committer information.
     """
 
-    name: str
-    commit: ShortBranchPropCommitTypeForResponse
-    protected: bool
-    protection: NotRequired[BranchProtectionTypeForResponse]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-class ShortBranchPropCommitTypeForResponse(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchPropCommitTypeForResponse",
-    "ShortBranchType",
-    "ShortBranchTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

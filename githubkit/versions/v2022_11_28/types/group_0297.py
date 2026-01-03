@@ -9,31 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Successful deletion of a code scanning analysis
+    A CodeQL database.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
-    """Analysis deletion
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Successful deletion of a code scanning analysis
+    A CodeQL database.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAnalysisDeletionType",
-    "CodeScanningAnalysisDeletionTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

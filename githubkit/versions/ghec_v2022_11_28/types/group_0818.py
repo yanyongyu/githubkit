@@ -9,40 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0819 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
+from .group_0421 import HookResponseType, HookResponseTypeForResponse
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-    zen: NotRequired[str]
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
+    created_at: _dt.datetime
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: _dt.datetime
+    url: NotRequired[str]
 
 
-class WebhookPingTypeForResponse(TypedDict):
-    """WebhookPing"""
+class WebhookPingPropHookTypeForResponse(TypedDict):
+    """Webhook
 
-    hook: NotRequired[WebhookPingPropHookTypeForResponse]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-    zen: NotRequired[str]
+    The webhook that is being pinged
+    """
+
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigTypeForResponse
+    created_at: str
+    deliveries_url: NotRequired[str]
+    events: list[str]
+    id: int
+    last_response: NotRequired[HookResponseTypeForResponse]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: str
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPingType",
-    "WebhookPingTypeForResponse",
+    "WebhookPingPropHookPropConfigType",
+    "WebhookPingPropHookPropConfigTypeForResponse",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookTypeForResponse",
 )

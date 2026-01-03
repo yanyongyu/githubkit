@@ -9,97 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportGhe(GitHubModel):
-    """BillingUsageSummaryReportGhe"""
+class Label(GitHubModel):
+    """Label
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(description="The unique identifier of the enterprise.")
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
     )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
     )
 
 
-class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+model_rebuild(Label)
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
-
-
-class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-
-
-model_rebuild(BillingUsageSummaryReportGhe)
-model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
-model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
-model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
-
-__all__ = (
-    "BillingUsageSummaryReportGhe",
-    "BillingUsageSummaryReportGhePropCostCenter",
-    "BillingUsageSummaryReportGhePropTimePeriod",
-    "BillingUsageSummaryReportGhePropUsageItemsItems",
-)
+__all__ = ("Label",)

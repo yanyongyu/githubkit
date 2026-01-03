@@ -9,51 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
-
-
-class CommitCommentEventPropCommentType(TypedDict):
-    """CommitCommentEventPropComment"""
-
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserType]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    reactions: NotRequired[ReactionRollupType]
+from .group_0068 import (
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
+)
 
 
-class CommitCommentEventPropCommentTypeForResponse(TypedDict):
-    """CommitCommentEventPropComment"""
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    action: str
+    release: ReleaseEventPropReleaseType
+
+
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
+
+    action: str
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "CommitCommentEventPropCommentType",
-    "CommitCommentEventPropCommentTypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

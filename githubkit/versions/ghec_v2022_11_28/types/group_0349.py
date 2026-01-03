@@ -9,54 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0345 import GitUserType, GitUserTypeForResponse
-from .group_0346 import VerificationType, VerificationTypeForResponse
+from .group_0342 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0347 import CommitType, CommitTypeForResponse
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    Branch With Protection
+    """
 
-
-class CommitPropCommitTypeForResponse(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[None, GitUserTypeForResponse]
-    committer: Union[None, GitUserTypeForResponse]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
 
-    sha: str
-    url: str
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class CommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitPropCommitPropTree"""
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
 
-    sha: str
-    url: str
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitPropTreeTypeForResponse",
-    "CommitPropCommitType",
-    "CommitPropCommitTypeForResponse",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

@@ -14,125 +14,227 @@ from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0223 import (
+    GistHistoryType,
+    GistHistoryTypeForResponse,
+    GistSimplePropForkOfType,
+    GistSimplePropForkOfTypeForResponse,
+)
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class GistSimpleType(TypedDict):
+    """Gist Simple
 
-    Gist History
+    Gist Simple
     """
 
-    user: NotRequired[Union[None, SimpleUserType]]
-    version: NotRequired[str]
-    committed_at: NotRequired[_dt.datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
+    history: NotRequired[Union[list[GistHistoryType], None]]
+    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
     url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesType]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class GistHistoryTypeForResponse(TypedDict):
-    """Gist History
+class GistSimpleTypeForResponse(TypedDict):
+    """Gist Simple
 
-    Gist History
+    Gist Simple
     """
 
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    version: NotRequired[str]
-    committed_at: NotRequired[str]
-    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    forks: NotRequired[Union[list[GistSimplePropForksItemsTypeForResponse], None]]
+    history: NotRequired[Union[list[GistHistoryTypeForResponse], None]]
+    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
     url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesTypeForResponse]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
 
 
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+GistSimplePropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
 
 
-class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
 
 
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
+class GistSimplePropForksItemsType(TypedDict):
+    """GistSimplePropForksItems"""
 
-    Gist
+    id: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[PublicUserType]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class GistSimplePropForksItemsTypeForResponse(TypedDict):
+    """GistSimplePropForksItems"""
+
+    id: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[PublicUserTypeForResponse]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class PublicUserType(TypedDict):
+    """Public User
+
+    Public User
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
     html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    plan: NotRequired[PublicUserPropPlanType]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class PublicUserTypeForResponse(TypedDict):
+    """Public User
 
-    Gist
+    Public User
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
     html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
     created_at: str
     updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    plan: NotRequired[PublicUserPropPlanTypeForResponse]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class PublicUserPropPlanType(TypedDict):
+    """PublicUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class PublicUserPropPlanTypeForResponse(TypedDict):
+    """PublicUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "GistHistoryPropChangeStatusType",
-    "GistHistoryPropChangeStatusTypeForResponse",
-    "GistHistoryType",
-    "GistHistoryTypeForResponse",
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "GistSimplePropFilesType",
+    "GistSimplePropFilesTypeForResponse",
+    "GistSimplePropForksItemsType",
+    "GistSimplePropForksItemsTypeForResponse",
+    "GistSimpleType",
+    "GistSimpleTypeForResponse",
+    "PublicUserPropPlanType",
+    "PublicUserPropPlanTypeForResponse",
+    "PublicUserType",
+    "PublicUserTypeForResponse",
 )

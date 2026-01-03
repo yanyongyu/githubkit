@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
-from .group_0574 import WebhooksIssue
-from .group_0577 import WebhooksUserMannequin
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
+from .group_0568 import WebhooksLabel
+from .group_0573 import WebhooksIssue
 
 
-class WebhookIssuesUnassigned(GitHubModel):
-    """issues unassigned event"""
+class WebhookIssuesUnlabeled(GitHubModel):
+    """issues unlabeled event"""
 
-    action: Literal["unassigned"] = Field(description="The action that was performed.")
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
-    )
+    action: Literal["unlabeled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,6 +44,7 @@ class WebhookIssuesUnassigned(GitHubModel):
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
     )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +57,6 @@ class WebhookIssuesUnassigned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnassigned)
+model_rebuild(WebhookIssuesUnlabeled)
 
-__all__ = ("WebhookIssuesUnassigned",)
+__all__ = ("WebhookIssuesUnlabeled",)

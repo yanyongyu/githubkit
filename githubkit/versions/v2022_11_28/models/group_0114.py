@@ -9,31 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0113 import RunnerLabel
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
 
-    A label for a self hosted runner
+class Runner(GitHubModel):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
+    id: int = Field(description="The ID of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the runner group."
     )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
-        default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
-    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(Runner)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("Runner",)

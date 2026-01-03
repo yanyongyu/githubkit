@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,34 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
     Configuration for code scanning default setup.
     """
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[None, Literal["standard", "labeled"]]] = Field(
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
         default=UNSET, description="Runner type to be used."
     )
     runner_label: Missing[Union[str, None]] = Field(
@@ -60,14 +41,23 @@ class CodeScanningDefaultSetup(GitHubModel):
         default=UNSET,
         description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
     )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

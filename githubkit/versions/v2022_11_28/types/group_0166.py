@@ -9,31 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    The configuration for iteration fields.
+    """
+
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
     ]
-    description: NotRequired[str]
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    The configuration for iteration fields.
+    """
+
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
     ]
-    description: NotRequired[str]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[_dt.date]
+    duration: NotRequired[int]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: NotRequired[str]
+    start_date: NotRequired[str]
+    duration: NotRequired[int]
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

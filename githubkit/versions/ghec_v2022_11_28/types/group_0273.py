@@ -9,35 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class OrganizationCreateIssueTypeType(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
 
 
-class InteractionLimitTypeForResponse(TypedDict):
-    """Interaction Restrictions
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
     ]
 
 
 __all__ = (
-    "InteractionLimitType",
-    "InteractionLimitTypeForResponse",
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
 )

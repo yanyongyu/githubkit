@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,19 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0195 import Discussion
-from .group_0553 import EnterpriseWebhooks
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
-from .group_0567 import WebhooksAnswer
+from .group_0194 import Discussion
+from .group_0552 import EnterpriseWebhooks
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
 
 
-class WebhookDiscussionAnswered(GitHubModel):
-    """discussion answered event"""
+class WebhookDiscussionCategoryChanged(GitHubModel):
+    """discussion category changed event"""
 
-    action: Literal["answered"] = Field()
-    answer: WebhooksAnswer = Field()
+    action: Literal["category_changed"] = Field()
+    changes: WebhookDiscussionCategoryChangedPropChanges = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +56,43 @@ class WebhookDiscussionAnswered(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionAnswered)
+class WebhookDiscussionCategoryChangedPropChanges(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-__all__ = ("WebhookDiscussionAnswered",)
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategory = Field()
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
+        alias="from"
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: _dt.datetime = Field()
+    description: str = Field()
+    emoji: str = Field()
+    id: int = Field()
+    is_answerable: bool = Field()
+    name: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    repository_id: int = Field()
+    slug: str = Field()
+    updated_at: str = Field()
+
+
+model_rebuild(WebhookDiscussionCategoryChanged)
+model_rebuild(WebhookDiscussionCategoryChangedPropChanges)
+model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategory)
+model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom)
+
+__all__ = (
+    "WebhookDiscussionCategoryChanged",
+    "WebhookDiscussionCategoryChangedPropChanges",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategory",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
+)

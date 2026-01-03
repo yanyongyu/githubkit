@@ -9,38 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0258 import SimpleCommitType, SimpleCommitTypeForResponse
 
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-class MergeGroupType(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    A collection of related issues and pull requests.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class MergeGroupTypeForResponse(TypedDict):
-    """Merge Group
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    A group of pull requests that the merge queue has grouped together to be merged.
+    A collection of related issues and pull requests.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitTypeForResponse
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
+
+
+class WebhooksMilestone3PropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "MergeGroupType",
-    "MergeGroupTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

@@ -10,24 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
-
-    type: Literal["Issue", "PullRequest"]
-    id: int
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
     type: Literal["Issue", "PullRequest"]
-    id: int
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

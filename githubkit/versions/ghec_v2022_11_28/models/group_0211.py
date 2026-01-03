@@ -9,108 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
 
 
-class ForkEventPropForkee(GitHubModel):
-    """ForkEventPropForkee"""
+class MemberEvent(GitHubModel):
+    """MemberEvent"""
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    full_name: Missing[str] = Field(default=UNSET)
-    private: Missing[bool] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    fork: Missing[bool] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    keys_url: Missing[str] = Field(default=UNSET)
-    collaborators_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-    hooks_url: Missing[str] = Field(default=UNSET)
-    issue_events_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    assignees_url: Missing[str] = Field(default=UNSET)
-    branches_url: Missing[str] = Field(default=UNSET)
-    tags_url: Missing[str] = Field(default=UNSET)
-    blobs_url: Missing[str] = Field(default=UNSET)
-    git_tags_url: Missing[str] = Field(default=UNSET)
-    git_refs_url: Missing[str] = Field(default=UNSET)
-    trees_url: Missing[str] = Field(default=UNSET)
-    statuses_url: Missing[str] = Field(default=UNSET)
-    languages_url: Missing[str] = Field(default=UNSET)
-    stargazers_url: Missing[str] = Field(default=UNSET)
-    contributors_url: Missing[str] = Field(default=UNSET)
-    subscribers_url: Missing[str] = Field(default=UNSET)
-    subscription_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    git_commits_url: Missing[str] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    issue_comment_url: Missing[str] = Field(default=UNSET)
-    contents_url: Missing[str] = Field(default=UNSET)
-    compare_url: Missing[str] = Field(default=UNSET)
-    merges_url: Missing[str] = Field(default=UNSET)
-    archive_url: Missing[str] = Field(default=UNSET)
-    downloads_url: Missing[str] = Field(default=UNSET)
-    issues_url: Missing[str] = Field(default=UNSET)
-    pulls_url: Missing[str] = Field(default=UNSET)
-    milestones_url: Missing[str] = Field(default=UNSET)
-    notifications_url: Missing[str] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    releases_url: Missing[str] = Field(default=UNSET)
-    deployments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    ssh_url: Missing[str] = Field(default=UNSET)
-    clone_url: Missing[str] = Field(default=UNSET)
-    svn_url: Missing[str] = Field(default=UNSET)
-    homepage: Missing[Union[str, None]] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    stargazers_count: Missing[int] = Field(default=UNSET)
-    watchers_count: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    has_issues: Missing[bool] = Field(default=UNSET)
-    has_projects: Missing[bool] = Field(default=UNSET)
-    has_downloads: Missing[bool] = Field(default=UNSET)
-    has_wiki: Missing[bool] = Field(default=UNSET)
-    has_pages: Missing[bool] = Field(default=UNSET)
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    forks_count: Missing[int] = Field(default=UNSET)
-    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
-    archived: Missing[bool] = Field(default=UNSET)
-    disabled: Missing[bool] = Field(default=UNSET)
-    open_issues_count: Missing[int] = Field(default=UNSET)
-    license_: Missing[Union[None, LicenseSimple]] = Field(
-        default=UNSET, alias="license"
-    )
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    topics: Missing[list[str]] = Field(default=UNSET)
-    visibility: Missing[str] = Field(default=UNSET)
-    forks: Missing[int] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    watchers: Missing[int] = Field(default=UNSET)
-    default_branch: Missing[str] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
+    action: str = Field()
+    member: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(ForkEventPropForkee)
+model_rebuild(MemberEvent)
 
-__all__ = ("ForkEventPropForkee",)
+__all__ = ("MemberEvent",)

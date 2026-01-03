@@ -18,24 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    budget_amount: Missing[int] = Field(
+        default=UNSET,
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
-        Field(description="The scope of the budget")
-    )
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
     budget_entity_name: Missing[str] = Field(
         default=UNSET, description="The name of the entity to apply the budget to"
     )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing for the budget"
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
     )
     budget_product_sku: Missing[str] = Field(
         default=UNSET,
@@ -43,21 +47,25 @@ class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

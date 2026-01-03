@@ -18,11 +18,11 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0980 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
+from .group_0979 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
 
-class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
     name: str = Field(
         min_length=1, max_length=50, description="The name of the campaign"
@@ -46,19 +46,24 @@ class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
     contact_link: Missing[Union[str, None]] = Field(
         default=UNSET, description="The contact link of the campaign. Must be a URI."
     )
-    code_scanning_alerts: Union[
-        Annotated[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
-            Field(min_length=1 if PYDANTIC_V2 else None),
-        ],
-        None,
-    ] = Field(description="The code scanning alerts to include in this campaign")
+    code_scanning_alerts: Missing[
+        Union[
+            Annotated[
+                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+                Field(min_length=1 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The code scanning alerts to include in this campaign",
+    )
     generate_issues: Missing[bool] = Field(
         default=UNSET,
         description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)

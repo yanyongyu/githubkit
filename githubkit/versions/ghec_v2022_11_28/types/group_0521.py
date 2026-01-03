@@ -13,41 +13,39 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GroupType(TypedDict):
-    """Group"""
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class GroupTypeForResponse(TypedDict):
-    """Group"""
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    value: str
-    display_name: str
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    value: str
-    display_name: str
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

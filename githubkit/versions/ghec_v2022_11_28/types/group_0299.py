@@ -10,56 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ProjectsV2FieldIterationConfigurationType(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
 
-    The configuration for iteration fields.
+    An item belonging to a project
     """
 
-    start_date: NotRequired[_dt.date]
-    duration: NotRequired[int]
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
-    ]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    The configuration for iteration fields.
+    An item belonging to a project
     """
 
-    start_date: NotRequired[str]
-    duration: NotRequired[int]
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[
+        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
     ]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    title: NotRequired[str]
-    start_date: NotRequired[_dt.date]
-    duration: NotRequired[int]
+The content of the item, which varies by content type.
+"""
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    title: NotRequired[str]
-    start_date: NotRequired[str]
-    duration: NotRequired[int]
+The content of the item, which varies by content type.
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
-    "ProjectsV2FieldIterationConfigurationType",
-    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropContentTypeForResponse",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
+    "ProjectsV2ItemWithContentType",
+    "ProjectsV2ItemWithContentTypeForResponse",
 )

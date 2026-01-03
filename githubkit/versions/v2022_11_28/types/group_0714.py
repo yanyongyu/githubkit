@@ -9,75 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0501 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class WebhookOrganizationRenamedType(TypedDict):
-    """organization renamed event"""
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
 
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-
-
-class WebhookOrganizationRenamedTypeForResponse(TypedDict):
-    """organization renamed event"""
-
-    action: Literal["renamed"]
-    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: NotRequired[WebhooksMembershipTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-class WebhookOrganizationRenamedPropChangesType(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
+class WebhookRubygemsMetadataTypeForResponse(TypedDict):
+    """Ruby Gems metadata"""
 
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
+    repo: NotRequired[str]
+    dependencies: NotRequired[
+        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
+    ]
+    commit_oid: NotRequired[str]
 
 
-class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChanges"""
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
-
-
-class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: NotRequired[str]
+    version: NotRequired[str]
 
 
-class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
+class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    from_: NotRequired[str]
+    version: NotRequired[str]
+
+
+WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropMetadata
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
+
+
+WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookRubygemsMetadataPropDependenciesItems
+"""
 
 
 __all__ = (
-    "WebhookOrganizationRenamedPropChangesPropLoginType",
-    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
-    "WebhookOrganizationRenamedPropChangesType",
-    "WebhookOrganizationRenamedPropChangesTypeForResponse",
-    "WebhookOrganizationRenamedType",
-    "WebhookOrganizationRenamedTypeForResponse",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataTypeForResponse",
 )

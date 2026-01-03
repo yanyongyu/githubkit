@@ -18,10 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    budget_amount: Missing[int] = Field(
+    message: Missing[str] = Field(default=UNSET)
+    budget: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
+    ] = Field(default=UNSET)
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_amount: Missing[float] = Field(
         default=UNSET,
         description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
@@ -30,7 +42,7 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
         description="Whether to prevent additional spending once the budget is exceeded",
     )
     budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
     ] = Field(default=UNSET)
     budget_scope: Missing[
         Literal["enterprise", "organization", "repository", "cost_center"]
@@ -47,23 +59,27 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
     GitHubModel
 ):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
     )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
-    )
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
+model_rebuild(
+    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
 )

@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
     Configuration for code scanning default setup.
     """
 
     state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
     languages: NotRequired[
         list[
             Literal[
@@ -30,29 +33,25 @@ class CodeScanningDefaultSetupType(TypedDict):
                 "go",
                 "java-kotlin",
                 "javascript-typescript",
-                "javascript",
                 "python",
                 "ruby",
-                "typescript",
                 "swift",
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class CodeScanningDefaultSetupTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
     Configuration for code scanning default setup.
     """
 
     state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
     languages: NotRequired[
         list[
             Literal[
@@ -62,23 +61,15 @@ class CodeScanningDefaultSetupTypeForResponse(TypedDict):
                 "go",
                 "java-kotlin",
                 "javascript-typescript",
-                "javascript",
                 "python",
                 "ruby",
-                "typescript",
                 "swift",
             ]
         ]
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupType",
-    "CodeScanningDefaultSetupTypeForResponse",
+    "CodeScanningDefaultSetupUpdateType",
+    "CodeScanningDefaultSetupUpdateTypeForResponse",
 )

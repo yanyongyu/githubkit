@@ -9,51 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0428 import (
-    SecretScanningLocationType,
-    SecretScanningLocationTypeForResponse,
-)
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0516 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
     """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
-    installation: NotRequired[SimpleInstallationType]
-    location: SecretScanningLocationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    payload: str
 
 
-class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+class WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse(TypedDict):
     """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    location: SecretScanningLocationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    payload: str
 
 
 __all__ = (
-    "WebhookSecretScanningAlertLocationCreatedType",
-    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
+    "WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse",
 )

@@ -9,54 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
-
-
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
-
-
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

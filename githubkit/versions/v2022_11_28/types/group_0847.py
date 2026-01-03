@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0848 import (
-    WebhookSecurityAndAnalysisPropChangesPropFromType,
-    WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse,
-)
+from .group_0082 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
-class WebhookSecurityAndAnalysisPropChangesTypeForResponse(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
 
 
 __all__ = (
-    "WebhookSecurityAndAnalysisPropChangesType",
-    "WebhookSecurityAndAnalysisPropChangesTypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesPropFromType",
+    "WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse",
 )

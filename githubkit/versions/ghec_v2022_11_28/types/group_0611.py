@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0558 import ExemptionResponseType, ExemptionResponseTypeForResponse
-from .group_0559 import ExemptionRequestType, ExemptionRequestTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0557 import ExemptionResponseType, ExemptionResponseTypeForResponse
+from .group_0558 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestResponseSubmittedType(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -37,10 +37,10 @@ class WebhookExemptionRequestResponseDismissedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestResponseSubmittedTypeForResponse(TypedDict):
+    """Exemption response submitted event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["response_submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookExemptionRequestResponseDismissedType",
-    "WebhookExemptionRequestResponseDismissedTypeForResponse",
+    "WebhookExemptionRequestResponseSubmittedType",
+    "WebhookExemptionRequestResponseSubmittedTypeForResponse",
 )

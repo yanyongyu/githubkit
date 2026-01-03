@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,30 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+    enabled_organizations: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    sha_pinning_required: Missing[bool] = Field(
         default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    image_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)

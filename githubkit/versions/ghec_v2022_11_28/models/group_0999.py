@@ -14,14 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    selected_organization_ids: list[int] = Field(
-        description="List of organization IDs to enable for GitHub Actions."
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200",)

@@ -9,43 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0089 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Custom property set payload
+    List of custom property values for a repository
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-class CustomPropertySetPayloadTypeForResponse(TypedDict):
-    """Custom Property Set Payload
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Custom property set payload
+    List of custom property values for a repository
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "CustomPropertySetPayloadType",
-    "CustomPropertySetPayloadTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

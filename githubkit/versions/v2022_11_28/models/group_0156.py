@@ -19,43 +19,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0155 import ProjectsV2StatusUpdate
 
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
 
-    An status update belonging to a project
+    A projects v2 project
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
-        default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
+    )
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was closed."
     )
     created_at: _dt.datetime = Field(
-        description="The time when the status update was created."
+        description="The time when the project was created."
     )
     updated_at: _dt.datetime = Field(
-        description="The time when the status update was last updated."
+        description="The time when the project was last updated."
     )
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
     )
-    target_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The target date associated with the update."
+    deleted_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was deleted."
     )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+model_rebuild(ProjectsV2)
 
-__all__ = ("ProjectsV2StatusUpdate",)
+__all__ = ("ProjectsV2",)

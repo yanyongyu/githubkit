@@ -9,26 +9,155 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryAdvisoryCreateType(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
+class RepositoryAdvisoryCreateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreate"""
+
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[
+        RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
+
+
+class RepositoryAdvisoryCreatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
     TypedDict
 ):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "RepositoryAdvisoryCreatePropCreditsItemsType",
+    "RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryCreateType",
+    "RepositoryAdvisoryCreateTypeForResponse",
 )

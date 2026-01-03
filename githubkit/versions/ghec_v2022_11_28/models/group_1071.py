@@ -9,13 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0020 import Repository
 
 
-class GistsGistIdStarGetResponse404(GitHubModel):
-    """GistsGistIdStarGetResponse404"""
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
+
+    total_count: int = Field()
+    repositories: list[Repository] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GistsGistIdStarGetResponse404)
+model_rebuild(InstallationRepositoriesGetResponse200)
 
-__all__ = ("GistsGistIdStarGetResponse404",)
+__all__ = ("InstallationRepositoriesGetResponse200",)

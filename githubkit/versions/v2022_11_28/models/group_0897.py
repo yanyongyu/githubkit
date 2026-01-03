@@ -17,18 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0031 import CodeScanningOptions
-from .group_0032 import CodeScanningDefaultSetupOptions
+from .group_0031 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    name: str = Field(
-        description="The name of the code security configuration. Must be unique within the enterprise."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique across the enterprise.",
     )
-    description: str = Field(
-        max_length=255, description="A description of the code security configuration"
+    description: Missing[str] = Field(
+        max_length=255,
+        default=UNSET,
+        description="A description of the code security configuration",
     )
     advanced_security: Missing[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
@@ -50,7 +54,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
         description="The enablement status of Automatic dependency submission",
     )
     dependency_graph_autosubmit_action_options: Missing[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
     ] = Field(
         default=UNSET, description="Feature options for Automatic dependency submission"
     )
@@ -63,10 +67,6 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
             description="The enablement status of Dependabot security updates",
         )
     )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
-    )
     code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
             default=UNSET,
@@ -77,6 +77,10 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
         Union[CodeScanningDefaultSetupOptions, None]
     ] = Field(
         default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
     )
     code_scanning_delegated_alert_dismissal: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -107,7 +111,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non provider patterns",
+        description="The enablement status of secret scanning non-provider patterns",
     )
     secret_scanning_generic_secrets: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -131,11 +135,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
     )
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -146,12 +150,12 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraph
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
 )

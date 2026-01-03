@@ -16,59 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
+class UnlabeledIssueEventType(TypedDict):
+    """Unlabeled Issue Event
 
-    Labeled Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["labeled"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
+    label: UnlabeledIssueEventPropLabelType
 
 
-class LabeledIssueEventTypeForResponse(TypedDict):
-    """Labeled Issue Event
+class UnlabeledIssueEventTypeForResponse(TypedDict):
+    """Unlabeled Issue Event
 
-    Labeled Issue Event
+    Unlabeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["labeled"]
+    event: Literal["unlabeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: LabeledIssueEventPropLabelTypeForResponse
+    label: UnlabeledIssueEventPropLabelTypeForResponse
 
 
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class UnlabeledIssueEventPropLabelType(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
     name: str
     color: str
 
 
-class LabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """LabeledIssueEventPropLabel"""
+class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
+    """UnlabeledIssueEventPropLabel"""
 
     name: str
     color: str
 
 
 __all__ = (
-    "LabeledIssueEventPropLabelType",
-    "LabeledIssueEventPropLabelTypeForResponse",
-    "LabeledIssueEventType",
-    "LabeledIssueEventTypeForResponse",
+    "UnlabeledIssueEventPropLabelType",
+    "UnlabeledIssueEventPropLabelTypeForResponse",
+    "UnlabeledIssueEventType",
+    "UnlabeledIssueEventTypeForResponse",
 )

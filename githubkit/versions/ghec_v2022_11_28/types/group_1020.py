@@ -33,8 +33,8 @@ from .group_0063 import (
 from .group_0064 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
     enabled: bool
     stream_type: Literal[
@@ -58,8 +58,8 @@ class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
     ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
     enabled: bool
     stream_type: Literal[
@@ -84,6 +84,6 @@ class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
 )

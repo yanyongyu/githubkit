@@ -12,102 +12,51 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0278 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0280 import CommitPropCommitType, CommitPropCommitTypeForResponse
+from .group_0275 import GitUserType, GitUserTypeForResponse
+from .group_0276 import VerificationType, VerificationTypeForResponse
 
 
-class CommitType(TypedDict):
-    """Commit
-
-    Commit
-    """
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class CommitTypeForResponse(TypedDict):
-    """Commit
-
-    Commit
-    """
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    parents: list[CommitPropParentsItemsTypeForResponse]
-    stats: NotRequired[CommitPropStatsTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class EmptyObjectTypeForResponse(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
 
     sha: str
     url: str
-    html_url: NotRequired[str]
 
 
-class CommitPropParentsItemsTypeForResponse(TypedDict):
-    """CommitPropParentsItems"""
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
 
     sha: str
     url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
-
-
-class CommitPropStatsTypeForResponse(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropParentsItemsTypeForResponse",
-    "CommitPropStatsType",
-    "CommitPropStatsTypeForResponse",
-    "CommitType",
-    "CommitTypeForResponse",
-    "EmptyObjectType",
-    "EmptyObjectTypeForResponse",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

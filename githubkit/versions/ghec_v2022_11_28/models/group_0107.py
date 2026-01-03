@@ -18,20 +18,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class CustomPropertySetPayload(GitHubModel):
+    """Custom Property Set Payload
 
-    Custom property defined on an organization
+    Custom property set payload
     """
 
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
-    )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
     value_type: Literal[
         "string", "single_select", "multi_select", "true_false", "url"
     ] = Field(description="The type of the value for the property")
@@ -53,6 +45,6 @@ class CustomProperty(GitHubModel):
     ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomProperty)
+model_rebuild(CustomPropertySetPayload)
 
-__all__ = ("CustomProperty",)
+__all__ = ("CustomPropertySetPayload",)

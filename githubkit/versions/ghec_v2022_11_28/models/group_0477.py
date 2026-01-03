@@ -17,11 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0168 import RepositoryRuleMergeQueuePropParameters
 
-class RepositoryRuleDetailedOneof3(GitHubModel):
-    """RepositoryRuleDetailedOneof3"""
 
-    type: Literal["required_linear_history"] = Field()
+class RepositoryRuleDetailedOneof4(GitHubModel):
+    """RepositoryRuleDetailedOneof4"""
+
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +38,6 @@ class RepositoryRuleDetailedOneof3(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof3)
+model_rebuild(RepositoryRuleDetailedOneof4)
 
-__all__ = ("RepositoryRuleDetailedOneof3",)
+__all__ = ("RepositoryRuleDetailedOneof4",)

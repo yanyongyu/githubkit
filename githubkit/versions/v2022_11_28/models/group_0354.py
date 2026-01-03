@@ -9,47 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0011 import WebhookConfig
-from .group_0353 import HookResponse
 
 
-class Hook(GitHubModel):
-    """Webhook
+class CheckImmutableReleases(GitHubModel):
+    """Check immutable releases
 
-    Webhooks for repositories.
+    Check immutable releases
     """
 
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
+    enabled: bool = Field(
+        description="Whether immutable releases are enabled for the repository."
     )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
+    enforced_by_owner: bool = Field(
+        description="Whether immutable releases are enforced by the repository owner."
     )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
 
 
-model_rebuild(Hook)
+model_rebuild(CheckImmutableReleases)
 
-__all__ = ("Hook",)
+__all__ = ("CheckImmutableReleases",)

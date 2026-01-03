@@ -17,60 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0082 import TeamSimple
+from .group_0081 import TeamSimple
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
 
-    The Relationship a Team has with a role.
+    The Relationship a User has with a role.
     """
 
     assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
+    inherited_from: Missing[list[TeamSimple]] = Field(
+        default=UNSET, description="Team the user has gotten the role through"
+    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
     html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+model_rebuild(UserRoleAssignment)
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
-
-__all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
-)
+__all__ = ("UserRoleAssignment",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0484 import WebhooksUser
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0500 import WebhooksMembership
 
 
-class WebhookOrgBlockUnblocked(GitHubModel):
-    """org_block unblocked event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["unblocked"] = Field()
-    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,6 +38,11 @@ class WebhookOrgBlockUnblocked(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -52,6 +56,6 @@ class WebhookOrgBlockUnblocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrgBlockUnblocked)
+model_rebuild(WebhookOrganizationDeleted)
 
-__all__ = ("WebhookOrgBlockUnblocked",)
+__all__ = ("WebhookOrganizationDeleted",)

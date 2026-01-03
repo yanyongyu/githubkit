@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0199 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
-)
+
+class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleCommitMessagePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
-    Parameters to be used for the commit_message_pattern rule
-    """
-
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
-
-
-class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
-    """commit_message_pattern
-
-    Parameters to be used for the commit_message_pattern rule
-    """
-
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
-    ]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternType",
-    "RepositoryRuleCommitMessagePatternTypeForResponse",
+    "RepositoryRuleCommitMessagePatternPropParametersType",
+    "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
 )

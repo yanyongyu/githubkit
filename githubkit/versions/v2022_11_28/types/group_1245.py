@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "TeamsTeamIdReposOwnerRepoPutBodyType",
+    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
 )

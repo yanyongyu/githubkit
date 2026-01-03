@@ -15,47 +15,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0346 import Verification
 
+class GitTree(GitHubModel):
+    """Git Tree
 
-class GitTag(GitHubModel):
-    """Git Tag
-
-    Metadata for a Git tag
+    The hierarchy between files in a Git repository.
     """
 
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
     sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
+    path: str = Field()
+    mode: str = Field()
     type: str = Field()
-    url: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
 __all__ = (
-    "GitTag",
-    "GitTagPropObject",
-    "GitTagPropTagger",
+    "GitTree",
+    "GitTreePropTreeItems",
 )

@@ -12,39 +12,43 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1360 import (
+from .group_1359 import (
     ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
     ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
 )
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    cname: NotRequired[Union[str, None]]
+    cname: Union[str, None]
     https_enforced: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
     ]
     public: NotRequired[bool]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    cname: NotRequired[Union[str, None]]
+    cname: Union[str, None]
     https_enforced: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
     ]
     public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

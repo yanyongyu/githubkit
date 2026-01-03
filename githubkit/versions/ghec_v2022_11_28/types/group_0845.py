@@ -13,207 +13,75 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0589 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0588 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemEditedType(TypedDict):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectsV2ItemReorderedType(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
-            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
-        ]
-    ]
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemEditedTypeForResponse(TypedDict):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse,
-            WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse,
-        ]
-    ]
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
-
-    field_value: (
-        WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse
-    )
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: NotRequired[str]
-    field_type: NotRequired[str]
-    field_name: NotRequired[str]
-    project_number: NotRequired[int]
-    from_: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionType,
-            ProjectsV2IterationSettingType,
-            None,
-        ]
-    ]
-    to: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionType,
-            ProjectsV2IterationSettingType,
-            None,
-        ]
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
     ]
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse(
+class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
+
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
+    ]
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
     TypedDict
 ):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: NotRequired[str]
-    field_type: NotRequired[str]
-    field_name: NotRequired[str]
-    project_number: NotRequired[int]
-    from_: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionTypeForResponse,
-            ProjectsV2IterationSettingTypeForResponse,
-            None,
-        ]
-    ]
-    to: NotRequired[
-        Union[
-            str,
-            int,
-            ProjectsV2SingleSelectOptionTypeForResponse,
-            ProjectsV2IterationSettingTypeForResponse,
-            None,
-        ]
-    ]
-
-
-class ProjectsV2SingleSelectOptionType(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: str
-    color: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-
-
-class ProjectsV2SingleSelectOptionTypeForResponse(TypedDict):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str
-    name: str
-    color: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-
-
-class ProjectsV2IterationSettingType(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    title: str
-    title_html: NotRequired[str]
-    duration: NotRequired[Union[float, None]]
-    start_date: NotRequired[Union[str, None]]
-    completed: NotRequired[bool]
-
-
-class ProjectsV2IterationSettingTypeForResponse(TypedDict):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str
-    title: str
-    title_html: NotRequired[str]
-    duration: NotRequired[Union[float, None]]
-    start_date: NotRequired[Union[str, None]]
-    completed: NotRequired[bool]
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProjectsV2IterationSettingType",
-    "ProjectsV2IterationSettingTypeForResponse",
-    "ProjectsV2SingleSelectOptionType",
-    "ProjectsV2SingleSelectOptionTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0TypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyTypeForResponse",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1TypeForResponse",
-    "WebhookProjectsV2ItemEditedType",
-    "WebhookProjectsV2ItemEditedTypeForResponse",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
+    "WebhookProjectsV2ItemReorderedPropChangesType",
+    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
+    "WebhookProjectsV2ItemReorderedType",
+    "WebhookProjectsV2ItemReorderedTypeForResponse",
 )

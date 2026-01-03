@@ -9,58 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0082 import Team
 
-class ArtifactDeploymentRecord(GitHubModel):
-    """Artifact Deployment Record
 
-    Artifact Metadata Deployment Record
+class CampaignSummary(GitHubModel):
+    """Campaign summary
+
+    The campaign metadata and alert stats.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    logical_environment: Missing[str] = Field(default=UNSET)
-    physical_environment: Missing[str] = Field(default=UNSET)
-    cluster: Missing[str] = Field(default=UNSET)
-    deployment_name: Missing[str] = Field(default=UNSET)
-    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+    number: int = Field(description="The number of the newly created campaign")
+    created_at: _dt.datetime = Field(
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    attestation_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the provenance attestation associated with the deployment record.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
+    )
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
+    )
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
+    )
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
-    """ArtifactDeploymentRecordPropTags"""
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
 
 
-model_rebuild(ArtifactDeploymentRecord)
-model_rebuild(ArtifactDeploymentRecordPropTags)
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
 
 __all__ = (
-    "ArtifactDeploymentRecord",
-    "ArtifactDeploymentRecordPropTags",
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
 )

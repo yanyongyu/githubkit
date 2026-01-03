@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0201 import IssueType, IssueTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0200 import IssueType, IssueTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockingAddedType(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["blocking_added"]
+    action: Literal["blocking_removed"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueType]
     blocked_issue_repo: NotRequired[RepositoryType]
@@ -38,10 +38,10 @@ class WebhookIssueDependenciesBlockingAddedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueDependenciesBlockingRemovedTypeForResponse(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["blocking_added"]
+    action: Literal["blocking_removed"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueTypeForResponse]
     blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
@@ -54,6 +54,6 @@ class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockingAddedType",
-    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
+    "WebhookIssueDependenciesBlockingRemovedType",
+    "WebhookIssueDependenciesBlockingRemovedTypeForResponse",
 )

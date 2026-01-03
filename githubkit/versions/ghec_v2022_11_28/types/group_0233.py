@@ -9,144 +9,191 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiOverviewType(TypedDict):
-    """Api Overview
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
 
-    Api Overview
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksType
+    ]
+
+
+class SecurityAndAnalysisTypeForResponse(TypedDict):
+    """SecurityAndAnalysis"""
+
+    advanced_security: NotRequired[
+        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
+    ]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse
+    ]
+
+
+class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewTypeForResponse(TypedDict):
-    """Api Overview
+class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
 
-    Api Overview
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsTypeForResponse]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsTypeForResponse]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
+class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropSshKeyFingerprintsTypeForResponse(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
+class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
+class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsType
-    ]
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropDomainsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomains"""
+class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[
-        ApiOverviewPropDomainsPropActionsInboundTypeForResponse
-    ]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse
-    ]
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
+class SecurityAndAnalysisPropSecretScanningType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropActionsInboundTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
-
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "ApiOverviewPropDomainsPropActionsInboundType",
-    "ApiOverviewPropDomainsPropActionsInboundTypeForResponse",
-    "ApiOverviewPropDomainsPropArtifactAttestationsType",
-    "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
-    "ApiOverviewPropDomainsType",
-    "ApiOverviewPropDomainsTypeForResponse",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewPropSshKeyFingerprintsTypeForResponse",
-    "ApiOverviewType",
-    "ApiOverviewTypeForResponse",
+    "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
+    "SecurityAndAnalysisPropCodeSecurityType",
+    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse",
+    "SecurityAndAnalysisType",
+    "SecurityAndAnalysisTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,50 +18,73 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0033 import SimpleRepository
+from .group_0036 import DependabotAlertSecurityVulnerability
+from .group_0037 import DependabotAlertSecurityAdvisory
+from .group_0038 import DependabotAlertDismissalRequestSimple
+from .group_0040 import DependabotAlertWithRepositoryPropDependency
 
-class DependabotAlertDismissalRequestSimple(GitHubModel):
-    """Dependabot alert dismissal request
 
-    Information about an active dismissal request for this Dependabot alert.
+class DependabotAlertWithRepository(GitHubModel):
+    """DependabotAlertWithRepository
+
+    A Dependabot alert.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
     )
-    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
-        default=UNSET, description="The current status of the dismissal request."
+    dependency: DependabotAlertWithRepositoryPropDependency = Field(
+        description="Details for the vulnerable dependency."
     )
-    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
     )
-    created_at: Missing[_dt.datetime] = Field(
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The date and time when the dismissal request was created.",
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to get more information about this dismissal request.",
+    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
+        Field(
+            default=UNSET,
+            title="Dependabot alert dismissal request",
+            description="Information about an active dismissal request for this Dependabot alert.",
+        )
     )
-
-
-class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestSimplePropRequester
-
-    The user who requested the dismissal.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the user."
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
 
 
-model_rebuild(DependabotAlertDismissalRequestSimple)
-model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
+model_rebuild(DependabotAlertWithRepository)
 
-__all__ = (
-    "DependabotAlertDismissalRequestSimple",
-    "DependabotAlertDismissalRequestSimplePropRequester",
-)
+__all__ = ("DependabotAlertWithRepository",)

@@ -14,36 +14,38 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0036 import DependabotAlertPackage
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
 
-    Details for the vulnerable dependency.
-    """
-
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[Union[None, Literal["unknown", "direct", "transitive"]]] = (
-        Field(
-            default=UNSET,
-            description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-        )
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
     )
 
 
-model_rebuild(DependabotAlertPropDependency)
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-__all__ = ("DependabotAlertPropDependency",)
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
+
+
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+
+__all__ = (
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+)

@@ -18,42 +18,93 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserMigrationsPostBody(GitHubModel):
-    """UserMigrationsPostBody"""
+class UserReposPostBody(GitHubModel):
+    """UserReposPostBody"""
 
-    lock_repositories: Missing[bool] = Field(
+    name: str = Field(description="The name of the repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the repository."
+    )
+    homepage: Missing[str] = Field(
+        default=UNSET, description="A URL with more information about the repository."
+    )
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the repository is private."
+    )
+    has_issues: Missing[bool] = Field(
+        default=UNSET, description="Whether issues are enabled."
+    )
+    has_projects: Missing[bool] = Field(
+        default=UNSET, description="Whether projects are enabled."
+    )
+    has_wiki: Missing[bool] = Field(
+        default=UNSET, description="Whether the wiki is enabled."
+    )
+    has_discussions: Missing[bool] = Field(
+        default=UNSET, description="Whether discussions are enabled."
+    )
+    team_id: Missing[int] = Field(
         default=UNSET,
-        description="Lock the repositories being migrated at the start of the migration",
+        description="The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    auto_init: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+        description="Whether the repository is initialized with a minimal README.",
     )
-    exclude_git_data: Missing[bool] = Field(
+    gitignore_template: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
+        description="The desired language or platform to apply to the .gitignore.",
     )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET, description="Do not include attachments in the migration"
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET, description="Do not include releases in the migration"
-    )
-    exclude_owner_projects: Missing[bool] = Field(
+    license_template: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded.",
+        description="The license keyword of the open source license for this repository.",
     )
-    org_metadata_only: Missing[bool] = Field(
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+        description="Whether to allow Auto-merge to be used on pull requests.",
     )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
+    delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,
-        description="Exclude attributes from the API response to improve performance",
+        description="Whether to delete head branches when pull requests are merged",
     )
-    repositories: list[str] = Field()
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="Required when using `squash_merge_commit_message`.\n\nThe default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="Required when using `merge_commit_message`.\n\nThe default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    has_downloads: Missing[bool] = Field(
+        default=UNSET, description="Whether downloads are enabled."
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
+    )
 
 
-model_rebuild(UserMigrationsPostBody)
+model_rebuild(UserReposPostBody)
 
-__all__ = ("UserMigrationsPostBody",)
+__all__ = ("UserReposPostBody",)

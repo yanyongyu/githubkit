@@ -12,21 +12,43 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0121 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-)
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTarget(GitHubModel):
-    """Repository ruleset conditions for organization properties
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    Parameters for a organization property condition
+    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    name: str = Field(description="The name of the organization property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the organization property"
+    )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertyTarget)
+model_rebuild(
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
+)
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationPropertyTarget",)
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationPropertySpec",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
+)

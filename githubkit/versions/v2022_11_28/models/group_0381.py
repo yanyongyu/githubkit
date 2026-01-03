@@ -19,17 +19,17 @@ from .group_0003 import SimpleUser
 from .group_0010 import Integration
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
 
-    Timeline Assigned Issue Event
+    Timeline Unassigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
+    event: Literal["unassigned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
@@ -37,6 +37,6 @@ class TimelineAssignedIssueEvent(GitHubModel):
     assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+model_rebuild(TimelineUnassignedIssueEvent)
 
-__all__ = ("TimelineAssignedIssueEvent",)
+__all__ = ("TimelineUnassignedIssueEvent",)

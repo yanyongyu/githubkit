@@ -10,273 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0109 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0114 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
-)
-from .group_0128 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0129 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0131 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0132 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0134 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0136 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0138 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0140 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0142 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0144 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0146 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0148 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0150 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0152 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0154 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0161 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
-from .group_0165 import (
-    OrgRulesetConditionsOneof0Type,
-    OrgRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0166 import (
-    OrgRulesetConditionsOneof1Type,
-    OrgRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0167 import (
-    OrgRulesetConditionsOneof2Type,
-    OrgRulesetConditionsOneof2TypeForResponse,
-)
-from .group_0168 import (
-    RepositoryRuleMergeQueueType,
-    RepositoryRuleMergeQueueTypeForResponse,
+from .group_0172 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
 )
 
 
-class RepositoryRulesetType(TypedDict):
-    """Repository ruleset
+class RulesetVersionType(TypedDict):
+    """Ruleset version
 
-    A set of rules to apply when specified conditions are met.
+    The historical version of a ruleset
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksType]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsType,
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: _dt.datetime
 
 
-class RepositoryRulesetTypeForResponse(TypedDict):
-    """Repository ruleset
+class RulesetVersionTypeForResponse(TypedDict):
+    """Ruleset version
 
-    A set of rules to apply when specified conditions are met.
+    The historical version of a ruleset
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksTypeForResponse]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsTypeForResponse,
-            OrgRulesetConditionsOneof0TypeForResponse,
-            OrgRulesetConditionsOneof1TypeForResponse,
-            OrgRulesetConditionsOneof2TypeForResponse,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksType(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
-
-
-class RepositoryRulesetPropLinksTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfTypeForResponse]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlTypeForResponse, None]]
-
-
-class RepositoryRulesetPropLinksPropSelfType(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropSelfTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryRulesetPropLinksPropHtmlType",
-    "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
-    "RepositoryRulesetPropLinksPropSelfType",
-    "RepositoryRulesetPropLinksPropSelfTypeForResponse",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetPropLinksTypeForResponse",
-    "RepositoryRulesetType",
-    "RepositoryRulesetTypeForResponse",
+    "RulesetVersionType",
+    "RulesetVersionTypeForResponse",
 )

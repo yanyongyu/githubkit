@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,43 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
-    )
     name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
         default=UNSET,
-        description="A short description of the rule used to detect the alert.",
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
-    )
-    tags: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    help_: Missing[Union[str, None]] = Field(
+    version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+        description="The version of the tool used to generate the code scanning analysis.",
     )
-    help_uri: Missing[Union[str, None]] = Field(
+    guid: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
     )
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+__all__ = ("CodeScanningAnalysisTool",)

@@ -9,27 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReviewCustomGatesStateRequiredType(TypedDict):
-    """ReviewCustomGatesStateRequired"""
-
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0120 import TeamType, TeamTypeForResponse
 
 
-class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesStateRequired"""
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    environment_name: str
-    state: Literal["approved", "rejected"]
-    comment: NotRequired[str]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
+    """
+
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
+
+
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
+    """
+
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+
+
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ReviewCustomGatesStateRequiredType",
-    "ReviewCustomGatesStateRequiredTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

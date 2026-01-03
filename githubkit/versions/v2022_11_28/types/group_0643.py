@@ -14,39 +14,39 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0050 import IssueType, IssueTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0049 import IssueType, IssueTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockingAddedType(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocking_added"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueType]
+    blocked_issue_repo: NotRequired[RepositoryType]
     blocking_issue_id: NotRequired[float]
     blocking_issue: NotRequired[IssueType]
-    blocking_issue_repo: NotRequired[RepositoryType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocking_added"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueTypeForResponse]
+    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
     blocking_issue_id: NotRequired[float]
     blocking_issue: NotRequired[IssueTypeForResponse]
-    blocking_issue_repo: NotRequired[RepositoryTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +54,6 @@ class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByRemovedType",
-    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+    "WebhookIssueDependenciesBlockingAddedType",
+    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
 )

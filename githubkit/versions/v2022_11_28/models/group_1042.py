@@ -17,90 +17,70 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0174 import RepositoryRulesetBypassActor
-from .group_0183 import OrgRulesetConditionsOneof0
-from .group_0184 import OrgRulesetConditionsOneof1
-from .group_0185 import OrgRulesetConditionsOneof2
-from .group_0186 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0187 import RepositoryRuleUpdate
-from .group_0189 import RepositoryRuleRequiredLinearHistory
-from .group_0192 import RepositoryRuleRequiredDeployments
-from .group_0194 import RepositoryRulePullRequest
-from .group_0196 import RepositoryRuleRequiredStatusChecks
-from .group_0198 import RepositoryRuleCommitMessagePattern
-from .group_0200 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0202 import RepositoryRuleCommitterEmailPattern
-from .group_0204 import RepositoryRuleBranchNamePattern
-from .group_0206 import RepositoryRuleTagNamePattern
-from .group_0208 import RepositoryRuleFilePathRestriction
-from .group_0210 import RepositoryRuleMaxFilePathLength
-from .group_0212 import RepositoryRuleFileExtensionRestriction
-from .group_0214 import RepositoryRuleMaxFileSize
-from .group_0217 import RepositoryRuleWorkflows
-from .group_0219 import RepositoryRuleCodeScanning
-from .group_0221 import RepositoryRuleCopilotCodeReview
 
+class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
-    )
-    rules: Missing[
+    provider_pattern_settings: Missing[
         list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
         ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
+
+__all__ = (
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+)

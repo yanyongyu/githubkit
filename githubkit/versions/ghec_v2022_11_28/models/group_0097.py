@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0084 import EnterpriseTeam
 
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
-    """EnterpriseUserRoleAssignmentAllof1"""
+    Information about the status of a license sync job for an enterprise.
+    """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
-        default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
-    )
-    inherited_from: Missing[list[EnterpriseTeam]] = Field(
-        default=UNSET,
-        description="Enterprise Team the user has gotten the role through",
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(EnterpriseUserRoleAssignmentAllof1)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("EnterpriseUserRoleAssignmentAllof1",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)

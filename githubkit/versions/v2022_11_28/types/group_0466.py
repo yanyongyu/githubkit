@@ -12,32 +12,30 @@ from __future__ import annotations
 import datetime as _dt
 from typing_extensions import TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class SshSigningKeyType(TypedDict):
-    """SSH Signing Key
 
-    A public SSH key used to sign Git commits
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
+
+    Starred Repository
     """
 
-    key: str
-    id: int
-    title: str
-    created_at: _dt.datetime
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class SshSigningKeyTypeForResponse(TypedDict):
-    """SSH Signing Key
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    A public SSH key used to sign Git commits
+    Starred Repository
     """
 
-    key: str
-    id: int
-    title: str
-    created_at: str
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "SshSigningKeyType",
-    "SshSigningKeyTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

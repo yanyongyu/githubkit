@@ -9,74 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+from .group_0104 import CustomPropertyValue
 
 
-class ProjectsV2ItemWithContent(GitHubModel):
-    """Projects v2 Item
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    An item belonging to a project
+    List of custom property values for a repository
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
-    )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
-        default=UNSET,
-        description="The content of the item, which varies by content type.",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
-    )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+model_rebuild(OrgRepoCustomPropertyValues)
 
-    The content of the item, which varies by content type.
-    """
-
-
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
-
-__all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
-)
+__all__ = ("OrgRepoCustomPropertyValues",)

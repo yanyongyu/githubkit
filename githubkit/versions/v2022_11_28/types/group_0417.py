@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0203 import (
-    RepositoryRuleCommitterEmailPatternPropParametersType,
-    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
+from .group_0204 import (
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof12Type(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
+class RepositoryRuleDetailedOneof13Type(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof12TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
+class RepositoryRuleDetailedOneof13TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["committer_email_pattern"]
+    type: Literal["branch_name_pattern"]
     parameters: NotRequired[
-        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof12TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof12Type",
-    "RepositoryRuleDetailedOneof12TypeForResponse",
+    "RepositoryRuleDetailedOneof13Type",
+    "RepositoryRuleDetailedOneof13TypeForResponse",
 )

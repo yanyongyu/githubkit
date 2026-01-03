@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0493 import WebhooksMilestone
+from .group_0472 import EnterpriseWebhooks
+from .group_0473 import SimpleInstallation
+from .group_0474 import OrganizationSimpleWebhooks
+from .group_0475 import RepositoryWebhooks
+from .group_0499 import WebhooksMilestone3
 
 
-class WebhookMilestoneClosed(GitHubModel):
-    """milestone closed event"""
+class WebhookMilestoneCreated(GitHubModel):
+    """milestone created event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookMilestoneClosed(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone = Field(
+    milestone: WebhooksMilestone3 = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
@@ -55,6 +55,6 @@ class WebhookMilestoneClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneClosed)
+model_rebuild(WebhookMilestoneCreated)
 
-__all__ = ("WebhookMilestoneClosed",)
+__all__ = ("WebhookMilestoneCreated",)

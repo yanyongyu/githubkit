@@ -9,46 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class BranchShortType(TypedDict):
+    """Branch Short
 
-class ReactionType(TypedDict):
-    """Reaction
-
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Branch Short
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: _dt.datetime
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Branch Short
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: str
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SocialAccount(GitHubModel):
-    """Social account
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    Social media account
+    A public SSH key used to sign Git commits
     """
 
-    provider: str = Field()
-    url: str = Field()
+    key: str = Field()
+    id: int = Field()
+    title: str = Field()
+    created_at: _dt.datetime = Field()
 
 
-model_rebuild(SocialAccount)
+model_rebuild(SshSigningKey)
 
-__all__ = ("SocialAccount",)
+__all__ = ("SshSigningKey",)

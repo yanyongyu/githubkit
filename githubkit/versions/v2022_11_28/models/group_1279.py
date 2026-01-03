@@ -15,19 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0166 import ProjectsV2FieldSingleSelectOption
+from .group_0166 import ProjectsV2FieldIterationConfiguration
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
     name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)

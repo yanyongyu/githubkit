@@ -9,66 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class AssignedIssueEventType(TypedDict):
+    """Assigned Issue Event
 
-    Unlabeled Issue Event
+    Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unlabeled"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
+    performed_via_github_app: Union[IntegrationType, None]
+    assignee: SimpleUserType
+    assigner: SimpleUserType
 
 
-class UnlabeledIssueEventTypeForResponse(TypedDict):
-    """Unlabeled Issue Event
+class AssignedIssueEventTypeForResponse(TypedDict):
+    """Assigned Issue Event
 
-    Unlabeled Issue Event
+    Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["unlabeled"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: UnlabeledIssueEventPropLabelTypeForResponse
-
-
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
-
-
-class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventPropLabelTypeForResponse",
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventTypeForResponse",
+    "AssignedIssueEventType",
+    "AssignedIssueEventTypeForResponse",
 )

@@ -9,30 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0088 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
 
-    Details for the vulnerable package.
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
+
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ecosystem: str
-    name: str
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
 
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Details for the vulnerable package.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ecosystem: str
-    name: str
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

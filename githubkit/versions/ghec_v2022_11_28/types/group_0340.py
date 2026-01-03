@@ -9,55 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0341 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0082 import TeamType, TeamTypeForResponse
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Protected Branch Pull Request Review
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
-    """Protected Branch Pull Request Review
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
-    Protected Branch Pull Request Review
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewType",
-    "ProtectedBranchPullRequestReviewTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

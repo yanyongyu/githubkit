@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningSarifsReceiptType(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningSarifsStatusType(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
-class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningSarifsStatusTypeForResponse(TypedDict):
+    """CodeScanningSarifsStatus"""
 
-    id: NotRequired[str]
-    url: NotRequired[str]
+    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
+    analyses_url: NotRequired[Union[str, None]]
+    errors: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "CodeScanningSarifsReceiptType",
-    "CodeScanningSarifsReceiptTypeForResponse",
+    "CodeScanningSarifsStatusType",
+    "CodeScanningSarifsStatusTypeForResponse",
 )

@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-    Generated name and body describing a release
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    name: str
-    body: str
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
+    """repository ruleset data for rule
 
-    Generated name and body describing a release
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    name: str
-    body: str
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "RepositoryRuleRulesetInfoType",
+    "RepositoryRuleRulesetInfoTypeForResponse",
 )

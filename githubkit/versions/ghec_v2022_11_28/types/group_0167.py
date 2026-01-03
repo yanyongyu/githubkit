@@ -9,41 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0115 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0117 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0168 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Conditions to target repositories by property and refs by name
+    Merges must be performed via a merge queue.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    Conditions to target repositories by property and refs by name
+    Merges must be performed via a merge queue.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

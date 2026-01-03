@@ -10,117 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PageType(TypedDict):
-    """GitHub Pages
+class PageBuildType(TypedDict):
+    """Page Build
 
-    The configuration for GitHub Pages for a repository.
+    Page Build
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[None, SimpleUserType]
+    commit: str
+    duration: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PageTypeForResponse(TypedDict):
-    """GitHub Pages
+class PageBuildTypeForResponse(TypedDict):
+    """Page Build
 
-    The configuration for GitHub Pages for a repository.
+    Page Build
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[str, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashTypeForResponse]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
-    https_enforced: NotRequired[bool]
+    status: str
+    error: PageBuildPropErrorTypeForResponse
+    pusher: Union[None, SimpleUserTypeForResponse]
+    commit: str
+    duration: int
+    created_at: str
+    updated_at: str
 
 
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
 
-    branch: str
-    path: str
-
-
-class PagesSourceHashTypeForResponse(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
+    message: Union[str, None]
 
 
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
+class PageBuildPropErrorTypeForResponse(TypedDict):
+    """PageBuildPropError"""
 
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[_dt.date]
-
-
-class PagesHttpsCertificateTypeForResponse(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[str]
+    message: Union[str, None]
 
 
 __all__ = (
-    "PageType",
-    "PageTypeForResponse",
-    "PagesHttpsCertificateType",
-    "PagesHttpsCertificateTypeForResponse",
-    "PagesSourceHashType",
-    "PagesSourceHashTypeForResponse",
+    "PageBuildPropErrorType",
+    "PageBuildPropErrorTypeForResponse",
+    "PageBuildType",
+    "PageBuildTypeForResponse",
 )

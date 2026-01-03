@@ -9,81 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from githubkit.typing import UniqueList
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0082 import TeamType, TeamTypeForResponse
 
 
-class ArtifactDeploymentRecordType(TypedDict):
-    """Artifact Deployment Record
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    Artifact Metadata Deployment Record
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    number: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class ArtifactDeploymentRecordTypeForResponse(TypedDict):
-    """Artifact Deployment Record
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    Artifact Metadata Deployment Record
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    number: int
+    created_at: str
+    updated_at: str
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
 
 
-ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
-ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "ArtifactDeploymentRecordPropTagsType",
-    "ArtifactDeploymentRecordPropTagsTypeForResponse",
-    "ArtifactDeploymentRecordType",
-    "ArtifactDeploymentRecordTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

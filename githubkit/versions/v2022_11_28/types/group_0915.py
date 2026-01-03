@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
+
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
 
-    total_count: int
-    repositories: list[RepositoryType]
-    repository_selection: NotRequired[str]
-
-
-class InstallationRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[RepositoryTypeForResponse]
-    repository_selection: NotRequired[str]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200Type",
-    "InstallationRepositoriesGetResponse200TypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

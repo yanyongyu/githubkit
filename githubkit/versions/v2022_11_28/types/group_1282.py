@@ -9,29 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    owner: str
-    repo: str
-    number: int
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    owner: str
-    repo: str
-    number: int
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

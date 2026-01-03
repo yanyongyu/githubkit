@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,15 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0288 import ProjectsV2StatusUpdate
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
+from .group_0287 import ProjectsV2StatusUpdate
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
-    """Projects v2 Status Update Deleted Event"""
+class WebhookProjectsV2StatusUpdateEdited(GitHubModel):
+    """Projects v2 Status Update Edited Event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookProjectsV2StatusUpdateEditedPropChanges] = Field(
+        default=UNSET
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,6 +47,67 @@ class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2StatusUpdateDeleted)
+class WebhookProjectsV2StatusUpdateEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
 
-__all__ = ("WebhookProjectsV2StatusUpdateDeleted",)
+    body: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropBody] = Field(
+        default=UNSET
+    )
+    status: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus] = Field(
+        default=UNSET
+    )
+    start_date: Missing[WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate] = (
+        Field(default=UNSET)
+    )
+    target_date: Missing[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropBody(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
+
+    from_: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET, alias="from")
+    to: Missing[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
+
+    from_: Missing[Union[_dt.date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.date, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate(GitHubModel):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+
+    from_: Missing[Union[_dt.date, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.date, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2StatusUpdateEdited)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChanges)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropBody)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate)
+model_rebuild(WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate)
+
+__all__ = (
+    "WebhookProjectsV2StatusUpdateEdited",
+    "WebhookProjectsV2StatusUpdateEditedPropChanges",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
+)

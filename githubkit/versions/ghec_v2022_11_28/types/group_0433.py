@@ -16,57 +16,57 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Milestoned Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["milestoned"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
+class DemilestonedIssueEventTypeForResponse(TypedDict):
+    """Demilestoned Issue Event
 
-    Milestoned Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
     title: str
 
 
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
     title: str
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "DemilestonedIssueEventPropMilestoneType",
+    "DemilestonedIssueEventPropMilestoneTypeForResponse",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventTypeForResponse",
 )

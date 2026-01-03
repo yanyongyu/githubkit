@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0018 import Installation
+from .group_0020 import Repository
 
 
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
     total_count: int = Field()
-    installations: list[Installation] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: list[Repository] = Field()
 
 
-model_rebuild(UserInstallationsGetResponse200)
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
 
-__all__ = ("UserInstallationsGetResponse200",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

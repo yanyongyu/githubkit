@@ -12,31 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    Content Traffic
+    Referrer Traffic
     """
 
-    path: str
-    title: str
+    referrer: str
     count: int
     uniques: int
 
 
-class ContentTrafficTypeForResponse(TypedDict):
-    """Content Traffic
+class ReferrerTrafficTypeForResponse(TypedDict):
+    """Referrer Traffic
 
-    Content Traffic
+    Referrer Traffic
     """
 
-    path: str
-    title: str
+    referrer: str
     count: int
     uniques: int
 
 
 __all__ = (
-    "ContentTrafficType",
-    "ContentTrafficTypeForResponse",
+    "ReferrerTrafficType",
+    "ReferrerTrafficTypeForResponse",
 )

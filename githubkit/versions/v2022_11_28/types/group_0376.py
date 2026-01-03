@@ -9,44 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0377 import (
-    TimelineCrossReferencedEventPropSourceType,
-    TimelineCrossReferencedEventPropSourceTypeForResponse,
-)
+from .group_0049 import IssueType, IssueTypeForResponse
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    Timeline Cross Referenced Event
-    """
-
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
 
 
-class TimelineCrossReferencedEventTypeForResponse(TypedDict):
-    """Timeline Cross Referenced Event
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    Timeline Cross Referenced Event
-    """
-
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventType",
-    "TimelineCrossReferencedEventTypeForResponse",
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
 )

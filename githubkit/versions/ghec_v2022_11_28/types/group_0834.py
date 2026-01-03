@@ -9,45 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0553 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0554 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0555 import (
+from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0554 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0556 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0586 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0585 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectDeletedType(TypedDict):
-    """project deleted event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project: WebhooksProjectType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectDeletedTypeForResponse(TypedDict):
-    """project deleted event"""
+class WebhookProjectEditedTypeForResponse(TypedDict):
+    """project edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     project: WebhooksProjectTypeForResponse
-    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+
+
+class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookProjectDeletedType",
-    "WebhookProjectDeletedTypeForResponse",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedTypeForResponse",
 )

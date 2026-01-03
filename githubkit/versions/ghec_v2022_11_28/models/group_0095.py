@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,54 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0008 import Enterprise
+from .group_0083 import EnterpriseTeam
 
 
-class EnterpriseRole(GitHubModel):
-    """Enterprise Role
+class EnterpriseUserRoleAssignment(GitHubModel):
+    """An Enterprise Role Assignment for a User
 
-    Enterprise custom roles
+    The Relationship a User has with a role in an enterprise context.
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
     )
-    source: Missing[Union[None, Literal["Enterprise", "Predefined"]]] = Field(
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
         default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    enterprise: Union[None, Enterprise] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
+        description="Enterprise Team the user has gotten the role through",
     )
 
 
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+model_rebuild(EnterpriseUserRoleAssignment)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of enterprise roles available to the enterprise.",
-    )
-    roles: Missing[list[EnterpriseRole]] = Field(
-        default=UNSET,
-        description="The list of enterprise roles available to the enterprise.",
-    )
-
-
-model_rebuild(EnterpriseRole)
-model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
-
-__all__ = (
-    "EnterpriseRole",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
-)
+__all__ = ("EnterpriseUserRoleAssignment",)

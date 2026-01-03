@@ -14,43 +14,43 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectCardType(TypedDict):
-    """Project Card"""
+class WebhooksProjectType(TypedDict):
+    """Project"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    body: Union[str, None]
+    columns_url: str
     created_at: _dt.datetime
-    creator: Union[WebhooksProjectCardPropCreatorType, None]
+    creator: Union[WebhooksProjectPropCreatorType, None]
+    html_url: str
     id: int
+    name: str
     node_id: str
-    note: Union[str, None]
-    project_url: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
     updated_at: _dt.datetime
     url: str
 
 
-class WebhooksProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class WebhooksProjectTypeForResponse(TypedDict):
+    """Project"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    body: Union[str, None]
+    columns_url: str
     created_at: str
-    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
+    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
+    html_url: str
     id: int
+    name: str
     node_id: str
-    note: Union[str, None]
-    project_url: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
     updated_at: str
     url: str
 
 
-class WebhooksProjectCardPropCreatorType(TypedDict):
+class WebhooksProjectPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +77,7 @@ class WebhooksProjectCardPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
+class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +105,8 @@ class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectCardPropCreatorType",
-    "WebhooksProjectCardPropCreatorTypeForResponse",
-    "WebhooksProjectCardType",
-    "WebhooksProjectCardTypeForResponse",
+    "WebhooksProjectPropCreatorType",
+    "WebhooksProjectPropCreatorTypeForResponse",
+    "WebhooksProjectType",
+    "WebhooksProjectTypeForResponse",
 )

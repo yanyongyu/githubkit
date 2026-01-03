@@ -14,16 +14,16 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
 
-    subject_digests: list[str] = Field(
+    attestation_ids: list[int] = Field(
         max_length=1024 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+        description="List of unique IDs associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)

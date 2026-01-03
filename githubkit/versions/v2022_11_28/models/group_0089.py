@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0034 import SimpleRepository
 
 
-class DependabotRepositoryAccessDetails(GitHubModel):
-    """Dependabot Repository Access Details
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom property name and associated value
     """
 
-    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
-        default=UNSET,
-        description="The default repository access level for Dependabot updates.",
-    )
-    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
-        default=UNSET
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(DependabotRepositoryAccessDetails)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("DependabotRepositoryAccessDetails",)
+__all__ = ("CustomPropertyValue",)

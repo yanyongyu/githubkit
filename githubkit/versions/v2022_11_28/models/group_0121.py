@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,56 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0120 import TeamSimple
+from .group_0003 import SimpleUser
+from .group_0120 import Team
 
 
-class Team(GitHubModel):
-    """Team
+class CampaignSummary(GitHubModel):
+    """Campaign summary
 
-    Groups of organization members that gives permissions on specified repositories.
+    The campaign metadata and alert stats.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    number: int = Field(description="The number of the newly created campaign")
+    created_at: _dt.datetime = Field(
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    organization_id: Missing[int] = Field(
+    updated_at: _dt.datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    enterprise_id: Missing[int] = Field(
+    ends_at: _dt.datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
     )
-    parent: Union[None, TeamSimple] = Field()
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
+    )
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
+    )
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
 
 
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
 
 __all__ = (
-    "Team",
-    "TeamPropPermissions",
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
 )

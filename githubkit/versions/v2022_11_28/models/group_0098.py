@@ -14,17 +14,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsHostedRunnerMachineSpec(GitHubModel):
+    """Github-owned VM details.
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
+    Provides details of a particular machine spec.
+    """
+
+    id: str = Field(
+        description="The ID used for the `size` parameter when creating a new runner."
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
+    cpu_cores: int = Field(description="The number of cores.")
+    memory_gb: int = Field(description="The available RAM for the machine spec.")
+    storage_gb: int = Field(
+        description="The available SSD storage for the machine spec."
     )
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(ActionsHostedRunnerMachineSpec)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("ActionsHostedRunnerMachineSpec",)

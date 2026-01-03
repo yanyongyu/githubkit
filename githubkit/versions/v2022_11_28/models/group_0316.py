@@ -9,32 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class BranchShort(GitHubModel):
+    """Branch Short
 
-class Reaction(GitHubModel):
-    """Reaction
-
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Branch Short
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: _dt.datetime = Field()
+    name: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
 
 
-model_rebuild(Reaction)
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
 
-__all__ = ("Reaction",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
+
+__all__ = (
+    "BranchShort",
+    "BranchShortPropCommit",
+)

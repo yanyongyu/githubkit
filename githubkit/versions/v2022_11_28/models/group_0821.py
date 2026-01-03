@@ -15,45 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0822 import WebhookRepositoryRulesetEditedPropChangesPropConditions
-from .group_0824 import WebhookRepositoryRulesetEditedPropChangesPropRules
-
-
-class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChanges"""
-
-    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
-        default=UNSET
-    )
-    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
-        Field(default=UNSET)
-    )
-    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
-        Field(default=UNSET)
-    )
-    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
-        default=UNSET
-    )
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
+from .group_0174 import RepositoryRulesetConditions
+from .group_0822 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
 )
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditions(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+
+    added: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
+    deleted: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
+    updated: Missing[
+        list[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
+    ] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditions)
+
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditions",)

@@ -13,16 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RateLimit(GitHubModel):
-    """Rate Limit"""
-
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+from .group_0244 import RateLimit
+from .group_0246 import RateLimitOverviewPropResources
 
 
-model_rebuild(RateLimit)
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-__all__ = ("RateLimit",)
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
+
+
+model_rebuild(RateLimitOverview)
+
+__all__ = ("RateLimitOverview",)

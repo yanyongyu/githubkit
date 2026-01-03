@@ -9,64 +9,144 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0079 import (
-    MarketplaceListingPlanType,
-    MarketplaceListingPlanTypeForResponse,
-)
+
+class ApiOverviewType(TypedDict):
+    """Api Overview
+
+    Api Overview
+    """
+
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
-class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
+class ApiOverviewTypeForResponse(TypedDict):
+    """Api Overview
 
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanType]
+    Api Overview
+    """
 
-
-class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePendingChange"""
-
-    is_installed: NotRequired[bool]
-    effective_date: NotRequired[str]
-    unit_count: NotRequired[Union[int, None]]
-    id: NotRequired[int]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
-
-
-class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
-
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanType]
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsTypeForResponse]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    domains: NotRequired[ApiOverviewPropDomainsTypeForResponse]
 
 
-class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
-    """MarketplacePurchasePropMarketplacePurchase"""
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-    billing_cycle: NotRequired[str]
-    next_billing_date: NotRequired[Union[str, None]]
-    is_installed: NotRequired[bool]
-    unit_count: NotRequired[Union[int, None]]
-    on_free_trial: NotRequired[bool]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropSshKeyFingerprintsTypeForResponse(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
+    ]
+
+
+class ApiOverviewPropDomainsTypeForResponse(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_inbound: NotRequired[
+        ApiOverviewPropDomainsPropActionsInboundTypeForResponse
+    ]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse
+    ]
+
+
+class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
+
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropActionsInboundTypeForResponse(TypedDict):
+    """ApiOverviewPropDomainsPropActionsInbound"""
+
+    full_domains: NotRequired[list[str]]
+    wildcard_domains: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[list[str]]
 
 
 __all__ = (
-    "MarketplacePurchasePropMarketplacePendingChangeType",
-    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
-    "MarketplacePurchasePropMarketplacePurchaseType",
-    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
+    "ApiOverviewPropDomainsPropActionsInboundType",
+    "ApiOverviewPropDomainsPropActionsInboundTypeForResponse",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropDomainsTypeForResponse",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewPropSshKeyFingerprintsTypeForResponse",
+    "ApiOverviewType",
+    "ApiOverviewTypeForResponse",
 )

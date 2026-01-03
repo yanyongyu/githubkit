@@ -9,32 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationType]
-
-
-class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
-
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
-
-
-class OrgPrivateRegistryConfigurationType(TypedDict):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str
     registry_type: Literal[
         "maven_repository",
         "nuget_feed",
@@ -52,21 +33,18 @@ class OrgPrivateRegistryConfigurationType(TypedDict):
         "python_index",
         "terraform_registry",
     ]
-    url: NotRequired[str]
+    url: str
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
-    """Organization private registry
+class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str
     registry_type: Literal[
         "maven_repository",
         "nuget_feed",
@@ -84,17 +62,16 @@ class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
         "python_index",
         "terraform_registry",
     ]
-    url: NotRequired[str]
+    url: str
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    created_at: str
-    updated_at: str
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationType",
-    "OrgPrivateRegistryConfigurationTypeForResponse",
-    "OrgsOrgPrivateRegistriesGetResponse200Type",
-    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
+    "OrgsOrgPrivateRegistriesPostBodyType",
+    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
 )

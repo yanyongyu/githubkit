@@ -11,60 +11,56 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class IssueTypeType(TypedDict):
+    """Issue Type
 
-    A collection of related issues and pull requests.
+    The type of issue.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    name: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    is_enabled: NotRequired[bool]
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class IssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    A collection of related issues and pull requests.
+    The type of issue.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    name: str
     description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+    color: NotRequired[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    is_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "IssueTypeType",
+    "IssueTypeTypeForResponse",
 )

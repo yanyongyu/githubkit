@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0134 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    required_deployment_environments: list[str]
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    required_deployment_environments: list[str]
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsPropParametersType",
-    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

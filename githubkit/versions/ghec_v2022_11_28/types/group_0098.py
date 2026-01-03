@@ -9,72 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetLicenseSyncStatusType(TypedDict):
-    """License Sync Status
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
 
-    Information about the status of a license sync job for an enterprise.
+    A hosted compute network configuration.
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsType]
-    ]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[_dt.datetime, None]
 
 
-class GetLicenseSyncStatusTypeForResponse(TypedDict):
-    """License Sync Status
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
 
-    Information about the status of a license sync job for an enterprise.
+    A hosted compute network configuration.
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
-    ]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
-
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
-
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[
-        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
-    ]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
-    TypedDict
-):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
-    "GetLicenseSyncStatusPropServerInstancesItemsType",
-    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
-    "GetLicenseSyncStatusType",
-    "GetLicenseSyncStatusTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
 )

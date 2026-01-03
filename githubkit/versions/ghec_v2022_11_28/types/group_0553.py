@@ -9,58 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
     node_id: str
-    name: str
-    slug: str
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    avatar_url: str
 
 
-class EnterpriseWebhooksTypeForResponse(TypedDict):
-    """Enterprise
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
     node_id: str
-    name: str
-    slug: str
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    avatar_url: str
 
 
 __all__ = (
-    "EnterpriseWebhooksType",
-    "EnterpriseWebhooksTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

@@ -12,27 +12,52 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0075 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+from .group_0073 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    repository: NotRequired[SimpleRepositoryTypeForResponse]
 
 
 __all__ = (
-    "CodeSecurityDefaultConfigurationsItemsType",
-    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+    "CodeSecurityConfigurationRepositoriesType",
+    "CodeSecurityConfigurationRepositoriesTypeForResponse",
 )

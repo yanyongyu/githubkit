@@ -9,44 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0089 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class EnterpriseRoleType(TypedDict):
+    """Enterprise Role
 
-    Details for the vulnerable dependency.
+    Enterprise custom roles
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class EnterpriseRoleTypeForResponse(TypedDict):
+    """Enterprise Role
 
-    Details for the vulnerable dependency.
+    Enterprise custom roles
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[
-        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
-    ]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
+    permissions: list[str]
+    enterprise: Union[None, EnterpriseTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleType]]
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryPropDependencyType",
-    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
+    "EnterpriseRoleType",
+    "EnterpriseRoleTypeForResponse",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
 )

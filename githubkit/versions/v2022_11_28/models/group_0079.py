@@ -9,34 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0080 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    Marketplace Listing Plan
+    Marketplace Purchase
     """
 
     url: str = Field()
-    accounts_url: str = Field()
+    type: str = Field()
     id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-model_rebuild(MarketplaceListingPlan)
+model_rebuild(MarketplacePurchase)
 
-__all__ = ("MarketplaceListingPlan",)
+__all__ = ("MarketplacePurchase",)

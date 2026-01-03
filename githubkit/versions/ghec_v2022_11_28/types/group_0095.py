@@ -9,62 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
+from .group_0083 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class EnterpriseRoleType(TypedDict):
-    """Enterprise Role
+class EnterpriseUserRoleAssignmentType(TypedDict):
+    """An Enterprise Role Assignment for a User
 
-    Enterprise custom roles
+    The Relationship a User has with a role in an enterprise context.
     """
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
-    permissions: list[str]
-    enterprise: Union[None, EnterpriseType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamType]]
 
 
-class EnterpriseRoleTypeForResponse(TypedDict):
-    """Enterprise Role
+class EnterpriseUserRoleAssignmentTypeForResponse(TypedDict):
+    """An Enterprise Role Assignment for a User
 
-    Enterprise custom roles
+    The Relationship a User has with a role in an enterprise context.
     """
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[None, Literal["Enterprise", "Predefined"]]]
-    permissions: list[str]
-    enterprise: Union[None, EnterpriseTypeForResponse]
-    created_at: str
-    updated_at: str
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleType]]
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
 
 
 __all__ = (
-    "EnterpriseRoleType",
-    "EnterpriseRoleTypeForResponse",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
+    "EnterpriseUserRoleAssignmentType",
+    "EnterpriseUserRoleAssignmentTypeForResponse",
 )

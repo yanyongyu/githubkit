@@ -16,57 +16,59 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Demilestoned Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["demilestoned"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    rename: RenamedIssueEventPropRenameType
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Demilestoned Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+    rename: RenamedIssueEventPropRenameTypeForResponse
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    title: str
+    from_: str
+    to: str
 
 
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    title: str
+    from_: str
+    to: str
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

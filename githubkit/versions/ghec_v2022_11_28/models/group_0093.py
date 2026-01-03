@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,73 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0073 import SimpleRepository
-from .group_0090 import DependabotAlertSecurityVulnerability
-from .group_0091 import DependabotAlertSecurityAdvisory
-from .group_0092 import DependabotAlertDismissalRequestSimple
-from .group_0094 import DependabotAlertWithRepositoryPropDependency
+from .group_0088 import DependabotAlertPackage
 
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A Dependabot alert.
+    Details for the vulnerable dependency.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
-    )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
-    )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("DependabotAlertWithRepository",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

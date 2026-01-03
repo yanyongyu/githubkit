@@ -11,26 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0158 import LinkType, LinkTypeForResponse
+
+class ReleaseNotesContentType(TypedDict):
+    """Generated Release Notes Content
+
+    Generated name and body describing a release
+    """
+
+    name: str
+    body: str
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class ReleaseNotesContentTypeForResponse(TypedDict):
+    """Generated Release Notes Content
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    Generated name and body describing a release
+    """
 
-
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
-
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    name: str
+    body: str
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "ReleaseNotesContentType",
+    "ReleaseNotesContentTypeForResponse",
 )

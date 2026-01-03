@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksAnswer(GitHubModel):
-    """WebhooksAnswer"""
+class WebhooksComment(GitHubModel):
+    """WebhooksComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -37,21 +36,19 @@ class WebhooksAnswer(GitHubModel):
     )
     body: str = Field()
     child_comment_count: int = Field()
-    created_at: _dt.datetime = Field()
+    created_at: str = Field()
     discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
     parent_id: Union[int, None] = Field()
-    reactions: Missing[WebhooksAnswerPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
+    reactions: WebhooksCommentPropReactions = Field(title="Reactions")
     repository_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
+    updated_at: str = Field()
+    user: Union[WebhooksCommentPropUser, None] = Field(title="User")
 
 
-class WebhooksAnswerPropReactions(GitHubModel):
+class WebhooksCommentPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -66,7 +63,7 @@ class WebhooksAnswerPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhooksAnswerPropUser(GitHubModel):
+class WebhooksCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -93,12 +90,12 @@ class WebhooksAnswerPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksAnswer)
-model_rebuild(WebhooksAnswerPropReactions)
-model_rebuild(WebhooksAnswerPropUser)
+model_rebuild(WebhooksComment)
+model_rebuild(WebhooksCommentPropReactions)
+model_rebuild(WebhooksCommentPropUser)
 
 __all__ = (
-    "WebhooksAnswer",
-    "WebhooksAnswerPropReactions",
-    "WebhooksAnswerPropUser",
+    "WebhooksComment",
+    "WebhooksCommentPropReactions",
+    "WebhooksCommentPropUser",
 )

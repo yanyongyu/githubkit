@@ -9,53 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class OrgHookType(TypedDict):
+    """Org Hook
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
-
-    Organization Invitation
+    Org Hook
     """
 
     id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    type: str
 
 
-class OrganizationInvitationTypeForResponse(TypedDict):
-    """Organization Invitation
+class OrgHookTypeForResponse(TypedDict):
+    """Org Hook
 
-    Organization Invitation
+    Org Hook
     """
 
     id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigTypeForResponse
+    updated_at: str
     created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserTypeForResponse
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    type: str
+
+
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+class OrgHookPropConfigTypeForResponse(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationInvitationType",
-    "OrganizationInvitationTypeForResponse",
+    "OrgHookPropConfigType",
+    "OrgHookPropConfigTypeForResponse",
+    "OrgHookType",
+    "OrgHookTypeForResponse",
 )

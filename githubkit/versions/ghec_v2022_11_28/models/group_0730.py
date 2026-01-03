@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0020 import Repository
-from .group_0201 import Issue
-from .group_0554 import SimpleInstallation
-from .group_0555 import OrganizationSimpleWebhooks
-from .group_0556 import RepositoryWebhooks
+from .group_0200 import Issue
+from .group_0553 import SimpleInstallation
+from .group_0554 import OrganizationSimpleWebhooks
+from .group_0555 import RepositoryWebhooks
 
 
-class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockingAdded(GitHubModel):
+    """blocking issue added event"""
 
-    action: Literal["blocked_by_removed"] = Field()
+    action: Literal["blocking_added"] = Field()
     blocked_issue_id: Missing[float] = Field(
         default=UNSET, description="The ID of the blocked issue."
     )
@@ -37,6 +37,9 @@ class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
+    blocked_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
     blocking_issue_id: Missing[float] = Field(
         default=UNSET, description="The ID of the blocking issue."
     )
@@ -44,9 +47,6 @@ class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
         default=UNSET,
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    blocking_issue_repo: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -64,6 +64,6 @@ class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockedByRemoved)
+model_rebuild(WebhookIssueDependenciesBlockingAdded)
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemoved",)
+__all__ = ("WebhookIssueDependenciesBlockingAdded",)

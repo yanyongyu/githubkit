@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0330 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0329 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0474 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertDismissedType(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertFixedType(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["dismissed"]
+    action: Literal["fixed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertDismissedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["dismissed"]
+    action: Literal["fixed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertDismissedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertDismissedType",
-    "WebhookDependabotAlertDismissedTypeForResponse",
+    "WebhookDependabotAlertFixedType",
+    "WebhookDependabotAlertFixedTypeForResponse",
 )

@@ -13,29 +13,31 @@ import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class CopilotUsageMetrics1DayReportType(TypedDict):
-    """Copilot Metrics 1 Day Report
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
     download_links: list[str]
-    report_day: _dt.date
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 1 Day Report
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
     download_links: list[str]
-    report_day: str
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "CopilotUsageMetrics1DayReportType",
-    "CopilotUsageMetrics1DayReportTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

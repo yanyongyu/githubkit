@@ -10,60 +10,221 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0201 import IssueType, IssueTypeForResponse
-from .group_0292 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0295 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
+class ProjectsV2FieldType(TypedDict):
+    """Projects v2 Field
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
+    A field inside a projects v2 project
     """
 
-    id: float
+    id: int
     node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    project_url: str
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class ProjectsV2FieldTypeForResponse(TypedDict):
+    """Projects v2 Field
 
-    An item belonging to a project
+    A field inside a projects v2 project
     """
 
-    id: float
+    id: int
     node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
+    project_url: str
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsTypeForResponse]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationTypeForResponse]
     created_at: str
     updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+
+
+class ProjectsV2SingleSelectOptionsType(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameType
+    description: ProjectsV2SingleSelectOptionsPropDescriptionType
+    color: str
+
+
+class ProjectsV2SingleSelectOptionsTypeForResponse(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameTypeForResponse
+    description: ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse
+    color: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2FieldPropConfigurationType(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
+
+
+class ProjectsV2FieldPropConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsTypeForResponse]]
+
+
+class ProjectsV2IterationSettingsType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: _dt.date
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleType
+    completed: bool
+
+
+class ProjectsV2IterationSettingsTypeForResponse(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: str
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleTypeForResponse
+    completed: bool
+
+
+class ProjectsV2IterationSettingsPropTitleType(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2IterationSettingsPropTitleTypeForResponse(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "ProjectsV2FieldPropConfigurationType",
+    "ProjectsV2FieldPropConfigurationTypeForResponse",
+    "ProjectsV2FieldType",
+    "ProjectsV2FieldTypeForResponse",
+    "ProjectsV2IterationSettingsPropTitleType",
+    "ProjectsV2IterationSettingsPropTitleTypeForResponse",
+    "ProjectsV2IterationSettingsType",
+    "ProjectsV2IterationSettingsTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropDescriptionType",
+    "ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropNameType",
+    "ProjectsV2SingleSelectOptionsPropNameTypeForResponse",
+    "ProjectsV2SingleSelectOptionsType",
+    "ProjectsV2SingleSelectOptionsTypeForResponse",
 )

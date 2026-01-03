@@ -17,22 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0148 import RepositoryRuleFilePathRestrictionPropParameters
 
-class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
-    """RepositoryRuleTagNamePatternPropParameters"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+class RepositoryRuleFilePathRestriction(GitHubModel):
+    """file_path_restriction
+
+    Prevent commits that include changes in specified file and folder paths from
+    being pushed to the commit graph. This includes absolute paths that contain file
+    names.
+    """
+
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFilePathRestrictionPropParameters] = Field(
+        default=UNSET
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleTagNamePatternPropParameters)
+model_rebuild(RepositoryRuleFilePathRestriction)
 
-__all__ = ("RepositoryRuleTagNamePatternPropParameters",)
+__all__ = ("RepositoryRuleFilePathRestriction",)

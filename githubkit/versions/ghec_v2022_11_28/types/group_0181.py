@@ -9,79 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningPatternConfigurationType(TypedDict):
-    """Secret scanning pattern configuration
+class AdvancedSecurityActiveCommittersType(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
-    """
-
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
-    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
 
-class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
-    """Secret scanning pattern configuration
+class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
-    """
+    total_advanced_security_committers: NotRequired[int]
+    total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
+
+class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
+
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserType
     ]
-    custom_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
+
+
+class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
+
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserTypeForResponse
     ]
 
 
-class SecretScanningPatternOverrideType(TypedDict):
-    """SecretScanningPatternOverride"""
+class AdvancedSecurityActiveCommittersUserType(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
-class SecretScanningPatternOverrideTypeForResponse(TypedDict):
-    """SecretScanningPatternOverride"""
+class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
 __all__ = (
-    "SecretScanningPatternConfigurationType",
-    "SecretScanningPatternConfigurationTypeForResponse",
-    "SecretScanningPatternOverrideType",
-    "SecretScanningPatternOverrideTypeForResponse",
+    "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
+    "AdvancedSecurityActiveCommittersType",
+    "AdvancedSecurityActiveCommittersTypeForResponse",
+    "AdvancedSecurityActiveCommittersUserType",
+    "AdvancedSecurityActiveCommittersUserTypeForResponse",
 )

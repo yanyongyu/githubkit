@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0199 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
+from .group_0200 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof10Type(TypedDict):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof11Type(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof10TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    type: Literal["commit_message_pattern"]
+    type: Literal["commit_author_email_pattern"]
     parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof10TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof10Type",
-    "RepositoryRuleDetailedOneof10TypeForResponse",
+    "RepositoryRuleDetailedOneof11Type",
+    "RepositoryRuleDetailedOneof11TypeForResponse",
 )
