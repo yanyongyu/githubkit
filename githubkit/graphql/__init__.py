@@ -60,7 +60,10 @@ class GraphQLNamespace:
             # error.type may be RATE_LIMIT or RATE_LIMITED
             # https://github.com/yanyongyu/githubkit/issues/271
             # https://github.com/octokit/plugin-throttling.js/issues/824
-            if any(error.type in ("RATE_LIMIT", "RATE_LIMITED") for error in response_data.errors):
+            if any(
+                error.type in ("RATE_LIMIT", "RATE_LIMITED")
+                for error in response_data.errors
+            ):
                 raise PrimaryRateLimitExceeded(
                     response, self._github._extract_retry_after(response)
                 )
