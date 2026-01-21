@@ -1,6 +1,6 @@
 [project]
 name = "GitHubKit"
-version = "0.14.2"
+version = "0.14.3"
 description = "GitHub SDK for Python"
 authors = [{ name = "yanyongyu", email = "yyy@yyydl.top" }]
 license = "MIT"
