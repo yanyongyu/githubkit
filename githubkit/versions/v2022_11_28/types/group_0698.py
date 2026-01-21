@@ -12,46 +12,46 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0474 import (
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0483 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0497 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0484 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0498 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
     team: WebhooksTeamType
 
 
-class WebhookMembershipRemovedTypeForResponse(TypedDict):
-    """membership removed event"""
+class WebhookMembershipAddedTypeForResponse(TypedDict):
+    """membership added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     member: Union[WebhooksUserTypeForResponse, None]
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
     team: WebhooksTeamTypeForResponse
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
+class WebhookMembershipAddedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -78,7 +78,7 @@ class WebhookMembershipRemovedPropSenderType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
+class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -106,8 +106,8 @@ class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropSenderTypeForResponse",
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedTypeForResponse",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropSenderTypeForResponse",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedTypeForResponse",
 )

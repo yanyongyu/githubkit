@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0554 import (
+from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0556 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0595 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0597 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    action: Literal["unpublished"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookReleaseUnpublishedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
-    """release unpublished event"""
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
 
-    action: Literal["unpublished"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookReleaseUnpublishedType",
-    "WebhookReleaseUnpublishedTypeForResponse",
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
 )

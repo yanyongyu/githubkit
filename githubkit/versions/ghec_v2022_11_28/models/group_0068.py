@@ -18,14 +18,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0066 import BypassResponse
+from .group_0067 import BypassResponse
 
 
-class SecretScanningBypassRequest(GitHubModel):
-    """Secret scanning bypass request
+class PushRuleBypassRequest(GitHubModel):
+    """Push rule bypass request
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
     """
 
     id: Missing[int] = Field(
@@ -35,20 +35,20 @@ class SecretScanningBypassRequest(GitHubModel):
         default=UNSET,
         description="The number uniquely identifying the bypass request within its repository.",
     )
-    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
+    repository: Missing[PushRuleBypassRequestPropRepository] = Field(
         default=UNSET, description="The repository the bypass request is for."
     )
-    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
+    organization: Missing[PushRuleBypassRequestPropOrganization] = Field(
         default=UNSET,
         description="The organization associated with the repository the bypass request is for.",
     )
-    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
+    requester: Missing[PushRuleBypassRequestPropRequester] = Field(
         default=UNSET, description="The user who requested the bypass."
     )
     request_type: Missing[str] = Field(
         default=UNSET, description="The type of request."
     )
-    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
+    data: Missing[Union[list[PushRuleBypassRequestPropDataItems], None]] = Field(
         default=UNSET,
         description="Data describing the push rules that are being requested to be bypassed.",
     )
@@ -58,7 +58,14 @@ class SecretScanningBypassRequest(GitHubModel):
     )
     status: Missing[
         Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
         ]
     ] = Field(default=UNSET, description="The status of the bypass request.")
     requester_comment: Missing[Union[str, None]] = Field(
@@ -80,39 +87,41 @@ class SecretScanningBypassRequest(GitHubModel):
     )
 
 
-class SecretScanningBypassRequestPropRepository(GitHubModel):
-    """SecretScanningBypassRequestPropRepository
+class PushRuleBypassRequestPropRepository(GitHubModel):
+    """PushRuleBypassRequestPropRepository
 
     The repository the bypass request is for.
     """
 
-    id: Missing[int] = Field(
+    id: Missing[Union[int, None]] = Field(
         default=UNSET, description="The ID of the repository the bypass request is for."
     )
-    name: Missing[str] = Field(
+    name: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The name of the repository the bypass request is for.",
     )
-    full_name: Missing[str] = Field(
+    full_name: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The full name of the repository the bypass request is for.",
     )
 
 
-class SecretScanningBypassRequestPropOrganization(GitHubModel):
-    """SecretScanningBypassRequestPropOrganization
+class PushRuleBypassRequestPropOrganization(GitHubModel):
+    """PushRuleBypassRequestPropOrganization
 
     The organization associated with the repository the bypass request is for.
     """
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the organization."
+    )
+    name: Missing[Union[str, None]] = Field(
         default=UNSET, description="The name of the organization."
     )
 
 
-class SecretScanningBypassRequestPropRequester(GitHubModel):
-    """SecretScanningBypassRequestPropRequester
+class PushRuleBypassRequestPropRequester(GitHubModel):
+    """PushRuleBypassRequestPropRequester
 
     The user who requested the bypass.
     """
@@ -126,35 +135,36 @@ class SecretScanningBypassRequestPropRequester(GitHubModel):
     )
 
 
-class SecretScanningBypassRequestPropDataItems(GitHubModel):
-    """SecretScanningBypassRequestPropDataItems"""
+class PushRuleBypassRequestPropDataItems(GitHubModel):
+    """PushRuleBypassRequestPropDataItems"""
 
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
-        Field(default=UNSET, description="The reason the bypass was requested.")
-    )
-    path: Missing[str] = Field(
+    ruleset_id: Missing[int] = Field(
         default=UNSET,
-        description="The path in the repo where the secret was located during the request.",
+        description="The ID of the ruleset for the rules that were violated.",
     )
-    branch: Missing[str] = Field(
+    ruleset_name: Missing[str] = Field(
         default=UNSET,
-        description="The branch in the repo where the secret was located during the request.",
+        description="The name of the ruleset for the rules that were violated.",
+    )
+    total_violations: Missing[int] = Field(
+        default=UNSET,
+        description="The number of rule violations generated from the push associated with this request.",
+    )
+    rule_type: Missing[str] = Field(
+        default=UNSET, description="The type of rule that was violated."
     )
 
 
-model_rebuild(SecretScanningBypassRequest)
-model_rebuild(SecretScanningBypassRequestPropRepository)
-model_rebuild(SecretScanningBypassRequestPropOrganization)
-model_rebuild(SecretScanningBypassRequestPropRequester)
-model_rebuild(SecretScanningBypassRequestPropDataItems)
+model_rebuild(PushRuleBypassRequest)
+model_rebuild(PushRuleBypassRequestPropRepository)
+model_rebuild(PushRuleBypassRequestPropOrganization)
+model_rebuild(PushRuleBypassRequestPropRequester)
+model_rebuild(PushRuleBypassRequestPropDataItems)
 
 __all__ = (
-    "SecretScanningBypassRequest",
-    "SecretScanningBypassRequestPropDataItems",
-    "SecretScanningBypassRequestPropOrganization",
-    "SecretScanningBypassRequestPropRepository",
-    "SecretScanningBypassRequestPropRequester",
+    "PushRuleBypassRequest",
+    "PushRuleBypassRequestPropDataItems",
+    "PushRuleBypassRequestPropOrganization",
+    "PushRuleBypassRequestPropRepository",
+    "PushRuleBypassRequestPropRequester",
 )

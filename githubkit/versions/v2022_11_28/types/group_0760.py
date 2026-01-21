@@ -9,39 +9,155 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0472 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0473 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0474 import (
+from .group_0155 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0475 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPublicType(TypedDict):
-    """public event"""
+class WebhookProjectsV2StatusUpdateEditedType(TypedDict):
+    """Projects v2 Status Update Edited Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-class WebhookPublicTypeForResponse(TypedDict):
-    """public event"""
+class WebhookProjectsV2StatusUpdateEditedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Edited Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookProjectsV2StatusUpdateEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
+
+    body: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType]
+    status: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType]
+    start_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType
+    ]
+    target_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType
+    ]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
+
+    body: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyTypeForResponse
+    ]
+    status: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusTypeForResponse
+    ]
+    start_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateTypeForResponse
+    ]
+    target_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateTypeForResponse
+    ]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
+
+    from_: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    to: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
+
+    from_: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    to: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
+
+    from_: NotRequired[Union[_dt.date, None]]
+    to: NotRequired[Union[_dt.date, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+
+    from_: NotRequired[Union[_dt.date, None]]
+    to: NotRequired[Union[_dt.date, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateTypeForResponse(
+    TypedDict
+):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
 __all__ = (
-    "WebhookPublicType",
-    "WebhookPublicTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesTypeForResponse",
+    "WebhookProjectsV2StatusUpdateEditedType",
+    "WebhookProjectsV2StatusUpdateEditedTypeForResponse",
 )

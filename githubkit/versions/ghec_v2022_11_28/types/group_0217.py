@@ -9,51 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0197 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class CommitCommentEventPropCommentType(TypedDict):
-    """CommitCommentEventPropComment"""
+class PullRequestReviewEventPropReviewType(TypedDict):
+    """PullRequestReviewEventPropReview"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
     id: NotRequired[int]
     node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
     user: NotRequired[Union[None, SimpleUserType]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    reactions: NotRequired[ReactionRollupType]
-
-
-class CommitCommentEventPropCommentTypeForResponse(TypedDict):
-    """CommitCommentEventPropComment"""
-
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
     html_url: NotRequired[str]
-    url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
+    updated_at: NotRequired[str]
+
+
+class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReview"""
+
     id: NotRequired[int]
     node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
     user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    created_at: NotRequired[str]
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    html_url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
     updated_at: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
+
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
+
+
+class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
+
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
+    pull_request: (
+        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
+    )
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "CommitCommentEventPropCommentType",
-    "CommitCommentEventPropCommentTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksType",
+    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
+    "PullRequestReviewEventPropReviewType",
+    "PullRequestReviewEventPropReviewTypeForResponse",
 )

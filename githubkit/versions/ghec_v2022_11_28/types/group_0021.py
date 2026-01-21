@@ -9,46 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class RepositoryPropPermissionsType(TypedDict):
+    """RepositoryPropPermissions"""
+
+    admin: bool
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
 
 
-class InstallationTokenType(TypedDict):
-    """Installation Token
+class RepositoryPropPermissionsTypeForResponse(TypedDict):
+    """RepositoryPropPermissions"""
 
-    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    admin: bool
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+
+
+class RepositoryPropCodeSearchIndexStatusType(TypedDict):
+    """RepositoryPropCodeSearchIndexStatus
+
+    The status of the code search index for this repository
     """
 
-    token: str
-    expires_at: str
-    permissions: NotRequired[AppPermissionsType]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[str]
-    has_multiple_single_files: NotRequired[bool]
-    single_file_paths: NotRequired[list[str]]
+    lexical_search_ok: NotRequired[bool]
+    lexical_commit_sha: NotRequired[str]
 
 
-class InstallationTokenTypeForResponse(TypedDict):
-    """Installation Token
+class RepositoryPropCodeSearchIndexStatusTypeForResponse(TypedDict):
+    """RepositoryPropCodeSearchIndexStatus
 
-    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    The status of the code search index for this repository
     """
 
-    token: str
-    expires_at: str
-    permissions: NotRequired[AppPermissionsTypeForResponse]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
-    single_file: NotRequired[str]
-    has_multiple_single_files: NotRequired[bool]
-    single_file_paths: NotRequired[list[str]]
+    lexical_search_ok: NotRequired[bool]
+    lexical_commit_sha: NotRequired[str]
 
 
 __all__ = (
-    "InstallationTokenType",
-    "InstallationTokenTypeForResponse",
+    "RepositoryPropCodeSearchIndexStatusType",
+    "RepositoryPropCodeSearchIndexStatusTypeForResponse",
+    "RepositoryPropPermissionsType",
+    "RepositoryPropPermissionsTypeForResponse",
 )

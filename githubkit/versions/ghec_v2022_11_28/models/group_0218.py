@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0219 import ReleaseEventPropRelease
+from .group_0219 import CommitCommentEventPropComment
 
 
-class ReleaseEvent(GitHubModel):
-    """ReleaseEvent"""
+class CommitCommentEvent(GitHubModel):
+    """CommitCommentEvent"""
 
     action: str = Field()
-    release: ReleaseEventPropRelease = Field()
+    comment: CommitCommentEventPropComment = Field()
 
 
-model_rebuild(ReleaseEvent)
+model_rebuild(CommitCommentEvent)
 
-__all__ = ("ReleaseEvent",)
+__all__ = ("CommitCommentEvent",)

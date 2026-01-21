@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0031 import (
+from .group_0032 import (
     CodeScanningDefaultSetupOptionsType,
     CodeScanningDefaultSetupOptionsTypeForResponse,
     CodeScanningOptionsType,

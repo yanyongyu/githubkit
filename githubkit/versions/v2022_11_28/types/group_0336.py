@@ -9,106 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Any
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0333 import MetadataType, MetadataTypeForResponse
+from .group_0334 import MetadataType, MetadataTypeForResponse
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
+    name: str
+    file: NotRequired[ManifestPropFileType]
     metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
     metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
 
 
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
 
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
+    source_location: NotRequired[str]
 
 
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
 
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
+    source_location: NotRequired[str]
 
 
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
+A collection of resolved package dependencies.
 """
 
 
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
 
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
+A collection of resolved package dependencies.
 """
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

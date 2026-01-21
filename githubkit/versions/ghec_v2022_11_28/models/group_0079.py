@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,44 +17,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0074 import SimpleRepository
 
-class EnterpriseSecurityAnalysisSettings(GitHubModel):
-    """Enterprise Security Analysis Settings"""
 
-    advanced_security_enabled_for_new_repositories: bool = Field(
-        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
-    )
-    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
-        Field(
-            default=UNSET,
-            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
-        )
-    )
-    dependabot_alerts_enabled_for_new_repositories: bool = Field(
-        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
-        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
-    )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        bool
+class CodeSecurityConfigurationRepositories(GitHubModel):
+    """CodeSecurityConfigurationRepositories
+
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ] = Field(
         default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
+        description="The attachment status of the code security configuration on the repository.",
     )
-    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
     )
 
 
-model_rebuild(EnterpriseSecurityAnalysisSettings)
+model_rebuild(CodeSecurityConfigurationRepositories)
 
-__all__ = ("EnterpriseSecurityAnalysisSettings",)
+__all__ = ("CodeSecurityConfigurationRepositories",)

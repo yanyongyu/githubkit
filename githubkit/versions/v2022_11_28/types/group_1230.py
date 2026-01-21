@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0173 import (
+from .group_0175 import (
     RepositoryRulesetBypassActorType,
     RepositoryRulesetBypassActorTypeForResponse,
 )
-from .group_0174 import (
+from .group_0176 import (
     RepositoryRulesetConditionsType,
     RepositoryRulesetConditionsTypeForResponse,
 )
-from .group_0185 import (
+from .group_0187 import (
     RepositoryRuleCreationType,
     RepositoryRuleCreationTypeForResponse,
     RepositoryRuleDeletionType,
@@ -30,83 +30,83 @@ from .group_0185 import (
     RepositoryRuleRequiredSignaturesType,
     RepositoryRuleRequiredSignaturesTypeForResponse,
 )
-from .group_0186 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0188 import (
+from .group_0188 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0190 import (
     RepositoryRuleRequiredLinearHistoryType,
     RepositoryRuleRequiredLinearHistoryTypeForResponse,
 )
-from .group_0189 import (
+from .group_0191 import (
     RepositoryRuleMergeQueueType,
     RepositoryRuleMergeQueueTypeForResponse,
 )
-from .group_0191 import (
+from .group_0193 import (
     RepositoryRuleRequiredDeploymentsType,
     RepositoryRuleRequiredDeploymentsTypeForResponse,
 )
-from .group_0193 import (
+from .group_0195 import (
     RepositoryRulePullRequestType,
     RepositoryRulePullRequestTypeForResponse,
 )
-from .group_0195 import (
+from .group_0197 import (
     RepositoryRuleRequiredStatusChecksType,
     RepositoryRuleRequiredStatusChecksTypeForResponse,
 )
-from .group_0197 import (
+from .group_0199 import (
     RepositoryRuleCommitMessagePatternType,
     RepositoryRuleCommitMessagePatternTypeForResponse,
 )
-from .group_0199 import (
+from .group_0201 import (
     RepositoryRuleCommitAuthorEmailPatternType,
     RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
 )
-from .group_0201 import (
+from .group_0203 import (
     RepositoryRuleCommitterEmailPatternType,
     RepositoryRuleCommitterEmailPatternTypeForResponse,
 )
-from .group_0203 import (
+from .group_0205 import (
     RepositoryRuleBranchNamePatternType,
     RepositoryRuleBranchNamePatternTypeForResponse,
 )
-from .group_0205 import (
+from .group_0207 import (
     RepositoryRuleTagNamePatternType,
     RepositoryRuleTagNamePatternTypeForResponse,
 )
-from .group_0207 import (
+from .group_0209 import (
     RepositoryRuleFilePathRestrictionType,
     RepositoryRuleFilePathRestrictionTypeForResponse,
 )
-from .group_0209 import (
+from .group_0211 import (
     RepositoryRuleMaxFilePathLengthType,
     RepositoryRuleMaxFilePathLengthTypeForResponse,
 )
-from .group_0211 import (
+from .group_0213 import (
     RepositoryRuleFileExtensionRestrictionType,
     RepositoryRuleFileExtensionRestrictionTypeForResponse,
 )
-from .group_0213 import (
+from .group_0215 import (
     RepositoryRuleMaxFileSizeType,
     RepositoryRuleMaxFileSizeTypeForResponse,
 )
-from .group_0216 import (
+from .group_0218 import (
     RepositoryRuleWorkflowsType,
     RepositoryRuleWorkflowsTypeForResponse,
 )
-from .group_0218 import (
+from .group_0220 import (
     RepositoryRuleCodeScanningType,
     RepositoryRuleCodeScanningTypeForResponse,
 )
-from .group_0220 import (
+from .group_0222 import (
     RepositoryRuleCopilotCodeReviewType,
     RepositoryRuleCopilotCodeReviewTypeForResponse,
 )
 
 
-class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    name: str
+    name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -139,12 +139,12 @@ class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
     ]
 
 
-class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    name: str
+    name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
     conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
     rules: NotRequired[
@@ -178,6 +178,6 @@ class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoRulesetsPostBodyType",
-    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
+    "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
+    "ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse",
 )

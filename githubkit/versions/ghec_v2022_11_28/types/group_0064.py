@@ -9,32 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class GoogleCloudConfigType(TypedDict):
-    """GoogleCloudConfig
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Google Cloud Config for audit log streaming configuration.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
     bucket: str
+    region: str
     key_id: str
-    encrypted_json_credentials: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class GoogleCloudConfigTypeForResponse(TypedDict):
-    """GoogleCloudConfig
+class AmazonS3OidcConfigTypeForResponse(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Google Cloud Config for audit log streaming configuration.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
     bucket: str
+    region: str
     key_id: str
-    encrypted_json_credentials: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
+
+
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
+
+
+class SplunkConfigTypeForResponse(TypedDict):
+    """SplunkConfig
+
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
 __all__ = (
-    "GoogleCloudConfigType",
-    "GoogleCloudConfigTypeForResponse",
+    "AmazonS3OidcConfigType",
+    "AmazonS3OidcConfigTypeForResponse",
+    "SplunkConfigType",
+    "SplunkConfigTypeForResponse",
 )

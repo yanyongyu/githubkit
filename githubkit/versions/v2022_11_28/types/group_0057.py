@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0049 import IssueType, IssueTypeForResponse
-from .group_0050 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0043 import LabelType, LabelTypeForResponse
+from .group_0050 import IssueType, IssueTypeForResponse
 
 
-class IssueCommentEventType(TypedDict):
-    """IssueCommentEvent"""
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
     action: str
     issue: IssueType
-    comment: IssueCommentType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class IssueCommentEventTypeForResponse(TypedDict):
-    """IssueCommentEvent"""
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
     action: str
     issue: IssueTypeForResponse
-    comment: IssueCommentTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "IssueCommentEventType",
-    "IssueCommentEventTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

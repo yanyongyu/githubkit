@@ -9,22 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    include_enterprise_slug: NotRequired[bool]
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
 
 
-class ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse(TypedDict):
-    """ActionsOidcCustomIssuerPolicyForEnterprise"""
+class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    include_enterprise_slug: NotRequired[bool]
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    """
+
+    maximum: int
+    current_usage: int
 
 
 __all__ = (
-    "ActionsOidcCustomIssuerPolicyForEnterpriseType",
-    "ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse",
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
+    "ActionsHostedRunnerLimitsType",
+    "ActionsHostedRunnerLimitsTypeForResponse",
 )

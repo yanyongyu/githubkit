@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,52 +19,178 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0552 import EnterpriseWebhooks
-from .group_0553 import SimpleInstallation
-from .group_0554 import OrganizationSimpleWebhooks
-from .group_0555 import RepositoryWebhooks
 
 
-class WebhookCreate(GitHubModel):
-    """create event"""
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
-    description: Union[str, None] = Field(
-        description="The repository's current description."
+    The code scanning alert involved in the event.
+    """
+
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy, None
+    ] = Field(title="User")
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(description="The reason for dismissing or closing the alert.")
+    fixed_at: Missing[None] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    most_recent_instance: Missing[
+        Union[
+            WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance,
+            None,
+        ]
+    ] = Field(default=UNSET, title="Alert Instance")
+    number: int = Field(description="The code scanning alert number.")
+    rule: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule = Field()
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
+    )
+    tool: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool = Field()
+    url: str = Field()
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance(
+    GitHubModel
+):
+    """Alert Instance"""
+
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    category: Missing[str] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="Identifies the configuration under which the analysis was executed.",
     )
-    master_branch: str = Field(
-        description="The name of the repository's default branch (usually `main`)."
+    classifications: Missing[list[str]] = Field(default=UNSET)
+    commit_sha: Missing[str] = Field(default=UNSET)
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    pusher_type: str = Field(
-        description="The pusher type for the event. Can be either `user` or a deploy key."
-    )
+    location: Missing[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
+    ] = Field(default=UNSET)
+    message: Missing[
+        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
+    ] = Field(default=UNSET)
     ref: str = Field(
-        description="The [`git ref`](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference) resource."
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
-    ref_type: Literal["tag", "branch"] = Field(
-        description="The type of Git ref object created in the repository."
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCreate)
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLoca
+    tion
+    """
 
-__all__ = ("WebhookCreate",)
+    end_column: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMess
+    age
+    """
+
+    text: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule"""
+
+    description: str = Field(
+        description="A short description of the rule used to detect the alert."
+    )
+    id: str = Field(
+        description="A unique identifier for the rule used to detect the alert."
+    )
+    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+        description="The severity of the alert."
+    )
+
+
+class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool"""
+
+    name: str = Field(
+        description="The name of the tool used to generate the code scanning analysis alert."
+    )
+    version: Union[str, None] = Field(
+        description="The version of the tool used to detect the alert."
+    )
+
+
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlert)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance)
+model_rebuild(
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
+)
+model_rebuild(
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
+)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool)
+
+__all__ = (
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlert",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule",
+    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool",
+)

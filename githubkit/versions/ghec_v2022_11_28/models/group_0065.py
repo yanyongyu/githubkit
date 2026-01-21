@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetAuditLogStreamConfig(GitHubModel):
-    """Get an audit log streaming configuration
+class GoogleCloudConfig(GitHubModel):
+    """GoogleCloudConfig
 
-    Get an audit log streaming configuration for an enterprise.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: int = Field()
-    stream_type: str = Field()
-    stream_details: str = Field()
-    enabled: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    bucket: str = Field(description="Google Cloud Bucket Name")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+    encrypted_json_credentials: str = Field()
 
 
-model_rebuild(GetAuditLogStreamConfig)
+model_rebuild(GoogleCloudConfig)
 
-__all__ = ("GetAuditLogStreamConfig",)
+__all__ = ("GoogleCloudConfig",)

@@ -12,19 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0202 import PullRequestMinimal
-from .group_0215 import PullRequestReviewEventPropReview
+from .group_0003 import SimpleUser
+from .group_0195 import Label
+from .group_0204 import PullRequestMinimal
 
 
-class PullRequestReviewEvent(GitHubModel):
-    """PullRequestReviewEvent"""
+class PullRequestEvent(GitHubModel):
+    """PullRequestEvent"""
 
     action: str = Field()
-    review: PullRequestReviewEventPropReview = Field()
+    number: int = Field()
     pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestReviewEvent)
+model_rebuild(PullRequestEvent)
 
-__all__ = ("PullRequestReviewEvent",)
+__all__ = ("PullRequestEvent",)

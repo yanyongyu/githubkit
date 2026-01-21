@@ -1124,6 +1124,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import ImportType as ImportType
     from githubkit.versions.v2022_11_28.types import (
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsType as InstallationRepositoriesGetResponse200PropRepositoriesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         InstallationRepositoriesGetResponse200Type as InstallationRepositoriesGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1374,9 +1377,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationsOrgDependabotRepositoryAccessPatchBodyType as OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrganizationsOrgOrgPropertiesValuesPatchBodyType as OrganizationsOrgOrgPropertiesValuesPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
@@ -1833,6 +1833,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgProjectsV2ProjectNumberViewsPostBodyType as OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1885,12 +1888,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsPostBodyType as OrgsOrgTeamsPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgTeamsTeamSlugDiscussionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
@@ -2074,6 +2071,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         ProjectsV2StatusUpdateType as ProjectsV2StatusUpdateType,
     )
     from githubkit.versions.v2022_11_28.types import ProjectsV2Type as ProjectsV2Type
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ViewPropCreatorType as ProjectsV2ViewPropCreatorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2ViewType as ProjectsV2ViewType,
+    )
     from githubkit.versions.v2022_11_28.types import (
         ProtectedBranchAdminEnforcedType as ProtectedBranchAdminEnforcedType,
     )
@@ -3646,9 +3649,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         TagProtectionType as TagProtectionType,
     )
     from githubkit.versions.v2022_11_28.types import TagType as TagType
-    from githubkit.versions.v2022_11_28.types import (
-        TeamDiscussionType as TeamDiscussionType,
-    )
     from githubkit.versions.v2022_11_28.types import TeamFullType as TeamFullType
     from githubkit.versions.v2022_11_28.types import (
         TeamMembershipType as TeamMembershipType,
@@ -3675,12 +3675,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         TeamRoleAssignmentType as TeamRoleAssignmentType,
     )
     from githubkit.versions.v2022_11_28.types import TeamSimpleType as TeamSimpleType
-    from githubkit.versions.v2022_11_28.types import (
-        TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType as TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        TeamsTeamIdDiscussionsPostBodyType as TeamsTeamIdDiscussionsPostBodyType,
-    )
     from githubkit.versions.v2022_11_28.types import (
         TeamsTeamIdMembershipsUsernamePutBodyType as TeamsTeamIdMembershipsUsernamePutBodyType,
     )
@@ -3824,6 +3818,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         UserInstallationsGetResponse200Type as UserInstallationsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         UserInstallationsInstallationIdRepositoriesGetResponse200Type as UserInstallationsInstallationIdRepositoriesGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3861,6 +3858,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         UserSshSigningKeysPostBodyType as UserSshSigningKeysPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UsersUserIdProjectsV2ProjectNumberViewsPostBodyType as UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         UsersUsernameAttestationsBulkListPostBodyType as UsersUsernameAttestationsBulkListPostBodyType,
@@ -10449,7 +10449,6 @@ else:
             "ActionsCacheRetentionLimitForOrganizationType",
             "ActionsCacheStorageLimitForOrganizationType",
             "DependabotRepositoryAccessDetailsType",
-            "CustomPropertyValueType",
             "GetAllBudgetsType",
             "BudgetType",
             "BudgetPropBudgetAlertingType",
@@ -10589,8 +10588,11 @@ else:
             "ProjectsV2ItemWithContentType",
             "ProjectsV2ItemWithContentPropContentType",
             "ProjectsV2ItemWithContentPropFieldsItemsType",
+            "ProjectsV2ViewType",
+            "ProjectsV2ViewPropCreatorType",
             "CustomPropertyType",
             "CustomPropertySetPayloadType",
+            "CustomPropertyValueType",
             "OrgRepoCustomPropertyValuesType",
             "CodeOfConductSimpleType",
             "FullRepositoryType",
@@ -10698,7 +10700,6 @@ else:
             "TeamFullType",
             "TeamOrganizationType",
             "TeamOrganizationPropPlanType",
-            "TeamDiscussionType",
             "TeamMembershipType",
             "TeamRepositoryType",
             "TeamRepositoryPropPermissionsType",
@@ -13288,6 +13289,7 @@ else:
             "GistsGistIdCommentsPostBodyType",
             "GistsGistIdCommentsCommentIdPatchBodyType",
             "GistsGistIdStarGetResponse404Type",
+            "InstallationRepositoriesGetResponse200PropRepositoriesItemsType",
             "InstallationRepositoriesGetResponse200Type",
             "MarkdownPostBodyType",
             "NotificationsPutBodyType",
@@ -13295,7 +13297,6 @@ else:
             "NotificationsThreadsThreadIdSubscriptionPutBodyType",
             "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
             "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-            "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
@@ -13444,6 +13445,7 @@ else:
             "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+            "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
             "OrgsOrgPropertiesValuesPatchBodyType",
             "OrgsOrgReposPostBodyType",
@@ -13463,8 +13465,6 @@ else:
             "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
             "OrgsOrgTeamsPostBodyType",
             "OrgsOrgTeamsTeamSlugPatchBodyType",
-            "OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",
-            "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
             "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
             "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
             "OrgsOrgSecurityProductEnablementPostBodyType",
@@ -13707,8 +13707,6 @@ else:
             "ReposOwnerRepoTransferPostBodyType",
             "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
             "TeamsTeamIdPatchBodyType",
-            "TeamsTeamIdDiscussionsPostBodyType",
-            "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",
             "TeamsTeamIdMembershipsUsernamePutBodyType",
             "TeamsTeamIdReposOwnerRepoPutBodyType",
             "UserPatchBodyType",
@@ -13729,6 +13727,7 @@ else:
             "UserEmailsDeleteBodyOneof0Type",
             "UserGpgKeysPostBodyType",
             "UserInstallationsGetResponse200Type",
+            "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType",
             "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
             "UserInteractionLimitsGetResponse200Anyof1Type",
             "UserKeysPostBodyType",
@@ -13739,6 +13738,7 @@ else:
             "UserSocialAccountsDeleteBodyType",
             "UserSshSigningKeysPostBodyType",
             "UserUserIdProjectsV2ProjectNumberDraftsPostBodyType",
+            "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
             "UsersUsernameAttestationsBulkListPostBodyType",
             "UsersUsernameAttestationsBulkListPostResponse200Type",
             "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",

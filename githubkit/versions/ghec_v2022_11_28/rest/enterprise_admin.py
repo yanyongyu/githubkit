@@ -5887,6 +5887,9 @@ class EnterpriseAdminClient:
 
         Removes all assigned enterprise roles from a team in an enterprise.
 
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
         To use this endpoint, the authenticated user must be one of:
 
           - An administrator for the enterprise.
@@ -5927,6 +5930,9 @@ class EnterpriseAdminClient:
         DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}
 
         Removes all assigned enterprise roles from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
 
         To use this endpoint, the authenticated user must be one of:
 
@@ -5970,6 +5976,9 @@ class EnterpriseAdminClient:
 
         Assigns an enterprise role to a team in an enterprise.
 
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
         To use this endpoint, the authenticated user must be one of:
 
           - An administrator for the enterprise.
@@ -6011,6 +6020,9 @@ class EnterpriseAdminClient:
         PUT /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
 
         Assigns an enterprise role to a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
 
         To use this endpoint, the authenticated user must be one of:
 
@@ -6054,6 +6066,9 @@ class EnterpriseAdminClient:
 
         Removes an enterprise role from a team in an enterprise.
 
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
         To use this endpoint, the authenticated user must be one of:
 
           - An administrator for the enterprise.
@@ -6095,6 +6110,9 @@ class EnterpriseAdminClient:
         DELETE /enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}
 
         Removes an enterprise role from a team in an enterprise.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
 
         To use this endpoint, the authenticated user must be one of:
 
@@ -6473,6 +6491,9 @@ class EnterpriseAdminClient:
 
         Lists the teams that are assigned to an enterprise role.
 
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
+
         To use this endpoint, the authenticated user must be one of:
 
           - An administrator for the enterprise.
@@ -6522,6 +6543,9 @@ class EnterpriseAdminClient:
         GET /enterprises/{enterprise}/enterprise-roles/{role_id}/teams
 
         Lists the teams that are assigned to an enterprise role.
+
+        > [!WARNING]
+        > This API is not available for Copilot Business for non-GHE.
 
         To use this endpoint, the authenticated user must be one of:
 

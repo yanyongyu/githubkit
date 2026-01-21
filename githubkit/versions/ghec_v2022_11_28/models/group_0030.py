@@ -12,22 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheRetentionLimitForEnterprise(GitHubModel):
-    """Actions cache retention limit for an enterprise
+class EnterpriseAccessRestrictions(GitHubModel):
+    """Enterprise Access Restrictions
 
-    GitHub Actions cache retention policy for an enterprise.
+    Information about the enterprise access restrictions proxy header.
     """
 
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained.",
-    )
+    message: str = Field(description="The message returned for the request.")
+    header_name: str = Field(description="The name of the proxy header.")
+    header_value: str = Field(description="The value of the proxy header.")
 
 
-model_rebuild(ActionsCacheRetentionLimitForEnterprise)
+model_rebuild(EnterpriseAccessRestrictions)
 
-__all__ = ("ActionsCacheRetentionLimitForEnterprise",)
+__all__ = ("EnterpriseAccessRestrictions",)

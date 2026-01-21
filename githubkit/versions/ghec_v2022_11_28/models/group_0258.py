@@ -18,138 +18,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0256 import DismissalRequestResponse
 
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
 
-class DependabotAlertDismissalRequest(GitHubModel):
-    """Dependabot alert dismissal request
-
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    A response made by a requester to dismiss the request.
     """
 
     id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+        default=UNSET, description="The ID of the response to the dismissal request."
     )
-    number: Missing[int] = Field(
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
-    )
-    repository: Missing[DependabotAlertDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
-    )
-    organization: Missing[DependabotAlertDismissalRequestPropOrganization] = Field(
-        default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
-    )
-    requester: Missing[DependabotAlertDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal request."
-    )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
-    )
-    data: Missing[Union[list[DependabotAlertDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET, description="Data describing the dismissal request metadata."
-        )
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the dismissal request.",
-    )
-    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
-        default=UNSET, description="The status of the dismissal request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
+        description="The response status to the dismissal request until dismissed.",
     )
     created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
+        description="The date and time the response to the dismissal request was created.",
     )
 
 
-class DependabotAlertDismissalRequestPropRepository(GitHubModel):
-    """DependabotAlertDismissalRequestPropRepository
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
 
-    The repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the dismissal request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
-    )
-
-
-class DependabotAlertDismissalRequestPropOrganization(GitHubModel):
-    """DependabotAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class DependabotAlertDismissalRequestPropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
+    The user who reviewed the dismissal request.
     """
 
     actor_id: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal request.",
+        description="The ID of the GitHub user who reviewed the dismissal request.",
     )
     actor_name: Missing[str] = Field(
         default=UNSET,
-        description="The name of the GitHub user who requested the dismissal request.",
+        description="The name of the GitHub user who reviewed the dismissal request.",
     )
 
 
-class DependabotAlertDismissalRequestPropDataItems(GitHubModel):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: Missing[str] = Field(
-        default=UNSET, description="The reason for the dismissal request."
-    )
-    alert_number: Missing[str] = Field(default=UNSET, description="The alert number.")
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the alert."
-    )
-
-
-model_rebuild(DependabotAlertDismissalRequest)
-model_rebuild(DependabotAlertDismissalRequestPropRepository)
-model_rebuild(DependabotAlertDismissalRequestPropOrganization)
-model_rebuild(DependabotAlertDismissalRequestPropRequester)
-model_rebuild(DependabotAlertDismissalRequestPropDataItems)
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
 
 __all__ = (
-    "DependabotAlertDismissalRequest",
-    "DependabotAlertDismissalRequestPropDataItems",
-    "DependabotAlertDismissalRequestPropOrganization",
-    "DependabotAlertDismissalRequestPropRepository",
-    "DependabotAlertDismissalRequestPropRequester",
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
 )

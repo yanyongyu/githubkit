@@ -13,32 +13,54 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
+from githubkit.utils import UNSET
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class ArtifactDeploymentRecord(GitHubModel):
+    """Artifact Deployment Record
 
-    A description of the machine powering a codespace.
+    Artifact Metadata Deployment Record
     """
 
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
+    id: Missing[int] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    logical_environment: Missing[str] = Field(default=UNSET)
+    physical_environment: Missing[str] = Field(default=UNSET)
+    cluster: Missing[str] = Field(default=UNSET)
+    deployment_name: Missing[str] = Field(default=UNSET)
+    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
     )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
-    )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    attestation_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The ID of the provenance attestation associated with the deployment record.",
     )
 
 
-model_rebuild(CodespaceMachine)
+class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
+    """ArtifactDeploymentRecordPropTags"""
 
-__all__ = ("CodespaceMachine",)
+
+model_rebuild(ArtifactDeploymentRecord)
+model_rebuild(ArtifactDeploymentRecordPropTags)
+
+__all__ = (
+    "ArtifactDeploymentRecord",
+    "ArtifactDeploymentRecordPropTags",
+)

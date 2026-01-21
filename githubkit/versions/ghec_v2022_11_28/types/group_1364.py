@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1359 import (
+from .group_1360 import (
     ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
     ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
 )
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
 
     cname: NotRequired[Union[str, None]]
-    https_enforced: bool
+    https_enforced: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
         Union[
@@ -30,14 +30,14 @@ class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ]
     ]
-    public: NotRequired[bool]
+    public: bool
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
 
     cname: NotRequired[Union[str, None]]
-    https_enforced: bool
+    https_enforced: NotRequired[bool]
     build_type: NotRequired[Literal["legacy", "workflow"]]
     source: NotRequired[
         Union[
@@ -45,10 +45,10 @@ class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
         ]
     ]
-    public: NotRequired[bool]
+    public: bool
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof4Type",
-    "ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof3Type",
+    "ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse",
 )

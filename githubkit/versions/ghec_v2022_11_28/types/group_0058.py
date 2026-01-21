@@ -9,48 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnterpriseOrganizationInstallationType(TypedDict):
-    """Enterprise Organization Installation
+class AccessibleRepositoryType(TypedDict):
+    """Accessible Repository
 
-    A GitHub App Installation on an enterprise-owned organization
+    A repository that may be made accessible to a GitHub App.
     """
 
     id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsType
-    events: NotRequired[list[str]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    name: str
+    full_name: str
 
 
-class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
-    """Enterprise Organization Installation
+class AccessibleRepositoryTypeForResponse(TypedDict):
+    """Accessible Repository
 
-    A GitHub App Installation on an enterprise-owned organization
+    A repository that may be made accessible to a GitHub App.
     """
 
     id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsTypeForResponse
-    events: NotRequired[list[str]]
-    created_at: str
-    updated_at: str
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterpriseOrganizationInstallationType",
-    "EnterpriseOrganizationInstallationTypeForResponse",
+    "AccessibleRepositoryType",
+    "AccessibleRepositoryTypeForResponse",
 )

@@ -17,45 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0173 import RepositoryRulesetBypassActor
-from .group_0182 import OrgRulesetConditionsOneof0
-from .group_0183 import OrgRulesetConditionsOneof1
-from .group_0184 import OrgRulesetConditionsOneof2
-from .group_0185 import (
+from .group_0175 import RepositoryRulesetBypassActor
+from .group_0184 import OrgRulesetConditionsOneof0
+from .group_0185 import OrgRulesetConditionsOneof1
+from .group_0186 import OrgRulesetConditionsOneof2
+from .group_0187 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0186 import RepositoryRuleUpdate
-from .group_0188 import RepositoryRuleRequiredLinearHistory
-from .group_0191 import RepositoryRuleRequiredDeployments
-from .group_0193 import RepositoryRulePullRequest
-from .group_0195 import RepositoryRuleRequiredStatusChecks
-from .group_0197 import RepositoryRuleCommitMessagePattern
-from .group_0199 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0201 import RepositoryRuleCommitterEmailPattern
-from .group_0203 import RepositoryRuleBranchNamePattern
-from .group_0205 import RepositoryRuleTagNamePattern
-from .group_0207 import RepositoryRuleFilePathRestriction
-from .group_0209 import RepositoryRuleMaxFilePathLength
-from .group_0211 import RepositoryRuleFileExtensionRestriction
-from .group_0213 import RepositoryRuleMaxFileSize
-from .group_0216 import RepositoryRuleWorkflows
-from .group_0218 import RepositoryRuleCodeScanning
-from .group_0220 import RepositoryRuleCopilotCodeReview
+from .group_0188 import RepositoryRuleUpdate
+from .group_0190 import RepositoryRuleRequiredLinearHistory
+from .group_0193 import RepositoryRuleRequiredDeployments
+from .group_0195 import RepositoryRulePullRequest
+from .group_0197 import RepositoryRuleRequiredStatusChecks
+from .group_0199 import RepositoryRuleCommitMessagePattern
+from .group_0201 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0203 import RepositoryRuleCommitterEmailPattern
+from .group_0205 import RepositoryRuleBranchNamePattern
+from .group_0207 import RepositoryRuleTagNamePattern
+from .group_0209 import RepositoryRuleFilePathRestriction
+from .group_0211 import RepositoryRuleMaxFilePathLength
+from .group_0213 import RepositoryRuleFileExtensionRestriction
+from .group_0215 import RepositoryRuleMaxFileSize
+from .group_0218 import RepositoryRuleWorkflows
+from .group_0220 import RepositoryRuleCodeScanning
+from .group_0222 import RepositoryRuleCopilotCodeReview
 
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -101,6 +100,6 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

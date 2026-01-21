@@ -13,189 +13,150 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0197 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-class PullRequestReviewCommentType(TypedDict):
-    """Pull Request Review Comment
-
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
+    Timeline Committed Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
-    id: int
+    event: NotRequired[Literal["committed"]]
+    sha: str
     node_id: str
-    diff_hunk: str
-    path: str
-    position: NotRequired[int]
-    original_position: NotRequired[int]
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserType]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: PullRequestReviewCommentPropLinksType
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    reactions: NotRequired[ReactionRollupType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-
-
-class PullRequestReviewCommentTypeForResponse(TypedDict):
-    """Pull Request Review Comment
-
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
-    """
-
     url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: NotRequired[int]
-    original_position: NotRequired[int]
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    created_at: str
-    updated_at: str
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: list[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
     html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: PullRequestReviewCommentPropLinksTypeForResponse
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
 
 
-class PullRequestReviewCommentPropLinksType(TypedDict):
-    """PullRequestReviewCommentPropLinks"""
+class TimelineCommittedEventTypeForResponse(TypedDict):
+    """Timeline Committed Event
 
-    self_: PullRequestReviewCommentPropLinksPropSelfType
-    html: PullRequestReviewCommentPropLinksPropHtmlType
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
-
-
-class PullRequestReviewCommentPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewCommentPropLinks"""
-
-    self_: PullRequestReviewCommentPropLinksPropSelfTypeForResponse
-    html: PullRequestReviewCommentPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropSelf"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
-    """PullRequestReviewCommentPropLinksPropSelf"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewCommentPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineLineCommentedEventType(TypedDict):
-    """Timeline Line Commented Event
-
-    Timeline Line Commented Event
+    Timeline Committed Event
     """
 
-    event: NotRequired[Literal["line_commented"]]
-    node_id: NotRequired[str]
-    comments: NotRequired[list[PullRequestReviewCommentType]]
+    event: NotRequired[Literal["committed"]]
+    sha: str
+    node_id: str
+    url: str
+    author: TimelineCommittedEventPropAuthorTypeForResponse
+    committer: TimelineCommittedEventPropCommitterTypeForResponse
+    message: str
+    tree: TimelineCommittedEventPropTreeTypeForResponse
+    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
+    verification: TimelineCommittedEventPropVerificationTypeForResponse
+    html_url: str
 
 
-class TimelineLineCommentedEventTypeForResponse(TypedDict):
-    """Timeline Line Commented Event
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
 
-    Timeline Line Commented Event
+    Identifying information for the git-user
     """
 
-    event: NotRequired[Literal["line_commented"]]
-    node_id: NotRequired[str]
-    comments: NotRequired[list[PullRequestReviewCommentTypeForResponse]]
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "PullRequestReviewCommentPropLinksPropHtmlType",
-    "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewCommentPropLinksPropPullRequestType",
-    "PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewCommentPropLinksPropSelfType",
-    "PullRequestReviewCommentPropLinksPropSelfTypeForResponse",
-    "PullRequestReviewCommentPropLinksType",
-    "PullRequestReviewCommentPropLinksTypeForResponse",
-    "PullRequestReviewCommentType",
-    "PullRequestReviewCommentTypeForResponse",
-    "TimelineLineCommentedEventType",
-    "TimelineLineCommentedEventTypeForResponse",
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropAuthorTypeForResponse",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropCommitterTypeForResponse",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropParentsItemsTypeForResponse",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropTreeTypeForResponse",
+    "TimelineCommittedEventPropVerificationType",
+    "TimelineCommittedEventPropVerificationTypeForResponse",
+    "TimelineCommittedEventType",
+    "TimelineCommittedEventTypeForResponse",
 )

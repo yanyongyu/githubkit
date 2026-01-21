@@ -12,17 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0221 import ReleaseEventPropRelease
 
 
-class ReleaseEventPropReleaseAllof1(GitHubModel):
-    """ReleaseEventPropReleaseAllof1"""
+class ReleaseEvent(GitHubModel):
+    """ReleaseEvent"""
 
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
+    action: str = Field()
+    release: ReleaseEventPropRelease = Field()
 
 
-model_rebuild(ReleaseEventPropReleaseAllof1)
+model_rebuild(ReleaseEvent)
 
-__all__ = ("ReleaseEventPropReleaseAllof1",)
+__all__ = ("ReleaseEvent",)

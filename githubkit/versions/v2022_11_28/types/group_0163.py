@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import IssueType, IssueTypeForResponse
+from .group_0050 import IssueType, IssueTypeForResponse
 from .group_0159 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
 from .group_0162 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 

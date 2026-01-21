@@ -13,19 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0106 import CustomProperty
+from .group_0102 import OrganizationCustomProperty
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    properties: list[CustomProperty] = Field(
+    properties: list[OrganizationCustomProperty] = Field(
         max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+        description="The array of organization custom properties to create or update.",
     )
 
 
-model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)

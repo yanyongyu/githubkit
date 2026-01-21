@@ -18,15 +18,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0101 import OrganizationCustomProperty
-from .group_0552 import EnterpriseWebhooks
-from .group_0553 import SimpleInstallation
+from .group_0102 import OrganizationCustomProperty
+from .group_0554 import EnterpriseWebhooks
 
 
-class WebhookOrganizationCustomPropertyUpdated(GitHubModel):
-    """organization custom property updated event"""
+class WebhookOrganizationCustomPropertyCreated(GitHubModel):
+    """organization custom property created event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["created"] = Field()
     definition: OrganizationCustomProperty = Field(
         title="Custom Property for Organization",
         description="Custom property defined for an organization",
@@ -35,16 +34,11 @@ class WebhookOrganizationCustomPropertyUpdated(GitHubModel):
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookOrganizationCustomPropertyUpdated)
+model_rebuild(WebhookOrganizationCustomPropertyCreated)
 
-__all__ = ("WebhookOrganizationCustomPropertyUpdated",)
+__all__ = ("WebhookOrganizationCustomPropertyCreated",)

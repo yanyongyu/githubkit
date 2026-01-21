@@ -12,25 +12,45 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheRetentionLimitForEnterpriseType(TypedDict):
-    """Actions cache retention limit for an enterprise
+class ClassroomAssignmentGradeType(TypedDict):
+    """Classroom Assignment Grade
 
-    GitHub Actions cache retention policy for an enterprise.
+    Grade for a student or groups GitHub Classroom assignment
     """
 
-    max_cache_retention_days: NotRequired[int]
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
 
 
-class ActionsCacheRetentionLimitForEnterpriseTypeForResponse(TypedDict):
-    """Actions cache retention limit for an enterprise
+class ClassroomAssignmentGradeTypeForResponse(TypedDict):
+    """Classroom Assignment Grade
 
-    GitHub Actions cache retention policy for an enterprise.
+    Grade for a student or groups GitHub Classroom assignment
     """
 
-    max_cache_retention_days: NotRequired[int]
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForEnterpriseType",
-    "ActionsCacheRetentionLimitForEnterpriseTypeForResponse",
+    "ClassroomAssignmentGradeType",
+    "ClassroomAssignmentGradeTypeForResponse",
 )

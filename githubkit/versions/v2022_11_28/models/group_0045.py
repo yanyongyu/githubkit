@@ -15,41 +15,36 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class IssueType(GitHubModel):
-    """Issue Type
+class Milestone(GitHubModel):
+    """Milestone
 
-    The type of issue.
+    A collection of related issues and pull requests.
     """
 
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    description: Union[str, None] = Field(
-        description="The description of the issue type."
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type created."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue type last updated."
-    )
-    is_enabled: Missing[bool] = Field(
-        default=UNSET, description="The enabled state of the issue type."
-    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(IssueType)
+model_rebuild(Milestone)
 
-__all__ = ("IssueType",)
+__all__ = ("Milestone",)

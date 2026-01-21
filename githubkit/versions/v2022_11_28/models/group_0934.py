@@ -36,6 +36,14 @@ class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
         default=UNSET,
         description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
+    size: Missing[str] = Field(
+        default=UNSET,
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+    )
+    image_id: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier of the runner image. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.",
+    )
     image_version: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The version of the runner image to deploy. This is relevant only for runners using custom images.",

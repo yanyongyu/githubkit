@@ -15,16 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0166 import ProjectsV2FieldIterationConfiguration
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
     name: str = Field(description="The name of the field.")
-    data_type: Literal["text", "number", "date"] = Field(
-        description="The field's data type."
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)

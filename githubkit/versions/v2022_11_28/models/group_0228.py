@@ -15,23 +15,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0227 import RulesetVersionPropActor
-from .group_0230 import RulesetVersionWithStateAllof1PropState
+from .group_0229 import RulesetVersionPropActor
 
 
-class RulesetVersionWithState(GitHubModel):
-    """RulesetVersionWithState"""
+class RulesetVersion(GitHubModel):
+    """Ruleset version
+
+    The historical version of a ruleset
+    """
 
     version_id: int = Field(description="The ID of the previous version of the ruleset")
     actor: RulesetVersionPropActor = Field(
         description="The actor who updated the ruleset"
     )
     updated_at: _dt.datetime = Field()
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
-    )
 
 
-model_rebuild(RulesetVersionWithState)
+model_rebuild(RulesetVersion)
 
-__all__ = ("RulesetVersionWithState",)
+__all__ = ("RulesetVersion",)

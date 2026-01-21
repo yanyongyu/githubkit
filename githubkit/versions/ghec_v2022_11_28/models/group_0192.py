@@ -16,33 +16,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportGhe(GitHubModel):
-    """BillingUsageSummaryReportGhe"""
+class BillingPremiumRequestUsageReportGhe(GitHubModel):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(description="The unique identifier of the enterprise.")
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriod = Field(
+        alias="timePeriod"
+    )
+    enterprise: str = Field(
+        description="The name of the enterprise for the usage report."
+    )
+    user: Missing[str] = Field(
+        default=UNSET, description="The name of the user for the usage report."
+    )
     organization: Missing[str] = Field(
         default=UNSET, description="The name of the organization for the usage report."
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
     )
     product: Missing[str] = Field(
         default=UNSET, description="The product for the usage report."
     )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
     )
-    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
+    cost_center: Missing[BillingPremiumRequestUsageReportGhePropCostCenter] = Field(
         default=UNSET, alias="costCenter"
     )
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItems] = Field(
         alias="usageItems"
     )
 
 
-class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class BillingPremiumRequestUsageReportGhePropTimePeriod(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
     year: int = Field(description="The year for the usage report.")
     month: Missing[int] = Field(
@@ -53,18 +57,19 @@ class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
     )
 
 
-class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class BillingPremiumRequestUsageReportGhePropCostCenter(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
 
     id: str = Field(description="The unique identifier of the cost center.")
     name: str = Field(description="The name of the cost center.")
 
 
-class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+class BillingPremiumRequestUsageReportGhePropUsageItemsItems(GitHubModel):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
 
     product: str = Field(description="Product name.")
     sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
     unit_type: str = Field(
         alias="unitType", description="Unit type of the usage line item."
     )
@@ -92,14 +97,14 @@ class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
     )
 
 
-model_rebuild(BillingUsageSummaryReportGhe)
-model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
-model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
-model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
+model_rebuild(BillingPremiumRequestUsageReportGhe)
+model_rebuild(BillingPremiumRequestUsageReportGhePropTimePeriod)
+model_rebuild(BillingPremiumRequestUsageReportGhePropCostCenter)
+model_rebuild(BillingPremiumRequestUsageReportGhePropUsageItemsItems)
 
 __all__ = (
-    "BillingUsageSummaryReportGhe",
-    "BillingUsageSummaryReportGhePropCostCenter",
-    "BillingUsageSummaryReportGhePropTimePeriod",
-    "BillingUsageSummaryReportGhePropUsageItemsItems",
+    "BillingPremiumRequestUsageReportGhe",
+    "BillingPremiumRequestUsageReportGhePropCostCenter",
+    "BillingPremiumRequestUsageReportGhePropTimePeriod",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItems",
 )

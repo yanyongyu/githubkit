@@ -13,27 +13,34 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0066 import BypassResponseType, BypassResponseTypeForResponse
+from .group_0067 import BypassResponseType, BypassResponseTypeForResponse
 
 
-class SecretScanningBypassRequestType(TypedDict):
-    """Secret scanning bypass request
+class PushRuleBypassRequestType(TypedDict):
+    """Push rule bypass request
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
+    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
+    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
+    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
     request_type: NotRequired[str]
-    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
+    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
     resource_identifier: NotRequired[str]
     status: NotRequired[
         Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
         ]
     ]
     requester_comment: NotRequired[Union[str, None]]
@@ -44,28 +51,33 @@ class SecretScanningBypassRequestType(TypedDict):
     html_url: NotRequired[str]
 
 
-class SecretScanningBypassRequestTypeForResponse(TypedDict):
-    """Secret scanning bypass request
+class PushRuleBypassRequestTypeForResponse(TypedDict):
+    """Push rule bypass request
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
+    A bypass request made by a user asking to be exempted from a push rule in this
+    repository.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryTypeForResponse]
-    organization: NotRequired[
-        SecretScanningBypassRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterTypeForResponse]
+    repository: NotRequired[PushRuleBypassRequestPropRepositoryTypeForResponse]
+    organization: NotRequired[PushRuleBypassRequestPropOrganizationTypeForResponse]
+    requester: NotRequired[PushRuleBypassRequestPropRequesterTypeForResponse]
     request_type: NotRequired[str]
     data: NotRequired[
-        Union[list[SecretScanningBypassRequestPropDataItemsTypeForResponse], None]
+        Union[list[PushRuleBypassRequestPropDataItemsTypeForResponse], None]
     ]
     resource_identifier: NotRequired[str]
     status: NotRequired[
         Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+            "pending",
+            "denied",
+            "approved",
+            "cancelled",
+            "completed",
+            "expired",
+            "deleted",
+            "open",
         ]
     ]
     requester_comment: NotRequired[Union[str, None]]
@@ -76,50 +88,50 @@ class SecretScanningBypassRequestTypeForResponse(TypedDict):
     html_url: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropRepositoryType(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class PushRuleBypassRequestPropRepositoryType(TypedDict):
+    """PushRuleBypassRequestPropRepository
 
     The repository the bypass request is for.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
 
 
-class SecretScanningBypassRequestPropRepositoryTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class PushRuleBypassRequestPropRepositoryTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropRepository
 
     The repository the bypass request is for.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+    full_name: NotRequired[Union[str, None]]
 
 
-class SecretScanningBypassRequestPropOrganizationType(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropOrganizationTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
+class PushRuleBypassRequestPropOrganizationType(TypedDict):
+    """PushRuleBypassRequestPropOrganization
 
     The organization associated with the repository the bypass request is for.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
-class SecretScanningBypassRequestPropRequesterType(TypedDict):
-    """SecretScanningBypassRequestPropRequester
+class PushRuleBypassRequestPropOrganizationTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropOrganization
+
+    The organization associated with the repository the bypass request is for.
+    """
+
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class PushRuleBypassRequestPropRequesterType(TypedDict):
+    """PushRuleBypassRequestPropRequester
 
     The user who requested the bypass.
     """
@@ -128,8 +140,8 @@ class SecretScanningBypassRequestPropRequesterType(TypedDict):
     actor_name: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRequester
+class PushRuleBypassRequestPropRequesterTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropRequester
 
     The user who requested the bypass.
     """
@@ -138,33 +150,33 @@ class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
     actor_name: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropDataItemsType(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
+class PushRuleBypassRequestPropDataItemsType(TypedDict):
+    """PushRuleBypassRequestPropDataItems"""
 
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropDataItemsTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
+class PushRuleBypassRequestPropDataItemsTypeForResponse(TypedDict):
+    """PushRuleBypassRequestPropDataItems"""
 
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningBypassRequestPropDataItemsType",
-    "SecretScanningBypassRequestPropDataItemsTypeForResponse",
-    "SecretScanningBypassRequestPropOrganizationType",
-    "SecretScanningBypassRequestPropOrganizationTypeForResponse",
-    "SecretScanningBypassRequestPropRepositoryType",
-    "SecretScanningBypassRequestPropRepositoryTypeForResponse",
-    "SecretScanningBypassRequestPropRequesterType",
-    "SecretScanningBypassRequestPropRequesterTypeForResponse",
-    "SecretScanningBypassRequestType",
-    "SecretScanningBypassRequestTypeForResponse",
+    "PushRuleBypassRequestPropDataItemsType",
+    "PushRuleBypassRequestPropDataItemsTypeForResponse",
+    "PushRuleBypassRequestPropOrganizationType",
+    "PushRuleBypassRequestPropOrganizationTypeForResponse",
+    "PushRuleBypassRequestPropRepositoryType",
+    "PushRuleBypassRequestPropRepositoryTypeForResponse",
+    "PushRuleBypassRequestPropRequesterType",
+    "PushRuleBypassRequestPropRequesterTypeForResponse",
+    "PushRuleBypassRequestType",
+    "PushRuleBypassRequestTypeForResponse",
 )

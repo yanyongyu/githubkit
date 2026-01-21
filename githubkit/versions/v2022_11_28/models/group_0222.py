@@ -14,19 +14,26 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0223 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
 
-    A tool that must provide code review results for this rule to pass.
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
     """
 
-    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
-        description="The name of a code review analysis tool"
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

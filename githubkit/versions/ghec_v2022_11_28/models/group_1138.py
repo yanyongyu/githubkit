@@ -17,20 +17,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0076 import CodeScanningDefaultSetupOptions, CodeScanningOptions
+from .group_0077 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+    name: str = Field(
+        description="The name of the code security configuration. Must be unique within the organization."
     )
-    description: Missing[str] = Field(
-        max_length=255,
-        default=UNSET,
-        description="A description of the code security configuration",
+    description: str = Field(
+        max_length=255, description="A description of the code security configuration"
     )
     advanced_security: Missing[
         Literal["enabled", "disabled", "code_security", "secret_protection"]
@@ -52,7 +49,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         description="The enablement status of Automatic dependency submission",
     )
     dependency_graph_autosubmit_action_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
     ] = Field(
         default=UNSET, description="Feature options for Automatic dependency submission"
     )
@@ -65,6 +62,10 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
             description="The enablement status of Dependabot security updates",
         )
     )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
+    )
     code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
             default=UNSET,
@@ -75,10 +76,6 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         Union[CodeScanningDefaultSetupOptions, None]
     ] = Field(
         default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
     )
     code_scanning_delegated_alert_dismissal: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -106,7 +103,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         description="The enablement status of secret scanning delegated bypass",
     )
     secret_scanning_delegated_bypass_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
     ] = Field(
         default=UNSET,
         description="Feature options for secret scanning delegated bypass",
@@ -121,7 +118,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+        description="The enablement status of secret scanning non provider patterns",
     )
     secret_scanning_generic_secrets: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -145,11 +142,11 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
     )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
     GitHubModel
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
-    submitActionOptions
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOpti
+    ons
 
     Feature options for Automatic dependency submission
     """
@@ -160,18 +157,18 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGra
     )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions(
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions(
     GitHubModel
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptions
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
+    s
 
     Feature options for secret scanning delegated bypass
     """
 
     reviewers: Missing[
         list[
-            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
         ]
     ] = Field(
         default=UNSET,
@@ -179,11 +176,11 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
     )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
     GitHubModel
 ):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptionsPropReviewersItems
+    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
+    sPropReviewersItems
     """
 
     reviewer_id: int = Field(
@@ -194,20 +191,20 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
 )
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
 )
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
 )
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "OrgsOrgCodeSecurityConfigurationsPostBody",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
+    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
 )

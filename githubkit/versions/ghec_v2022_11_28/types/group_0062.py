@@ -9,141 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class AzureBlobConfigType(TypedDict):
-    """AzureBlobConfig
+class GetAuditLogStreamConfigsItemsType(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-    Azure Blob Config for audit log streaming configuration.
-    """
-
-    key_id: str
-    encrypted_sas_url: str
-    container: str
-
-
-class AzureBlobConfigTypeForResponse(TypedDict):
-    """AzureBlobConfig
-
-    Azure Blob Config for audit log streaming configuration.
-    """
-
-    key_id: str
-    encrypted_sas_url: str
-    container: str
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    paused_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class AzureHubConfigType(TypedDict):
-    """AzureHubConfig
+class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-    Azure Event Hubs Config for audit log streaming configuration.
-    """
-
-    name: str
-    encrypted_connstring: str
-    key_id: str
-
-
-class AzureHubConfigTypeForResponse(TypedDict):
-    """AzureHubConfig
-
-    Azure Event Hubs Config for audit log streaming configuration.
-    """
-
-    name: str
-    encrypted_connstring: str
-    key_id: str
-
-
-class AmazonS3AccessKeysConfigType(TypedDict):
-    """AmazonS3AccessKeysConfig
-
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    region: str
-    key_id: str
-    authentication_type: Literal["access_keys"]
-    encrypted_secret_key: str
-    encrypted_access_key_id: str
-
-
-class AmazonS3AccessKeysConfigTypeForResponse(TypedDict):
-    """AmazonS3AccessKeysConfig
-
-    Amazon S3 Access Keys Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    region: str
-    key_id: str
-    authentication_type: Literal["access_keys"]
-    encrypted_secret_key: str
-    encrypted_access_key_id: str
-
-
-class HecConfigType(TypedDict):
-    """HecConfig
-
-    Hec Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    path: str
-    ssl_verify: bool
-
-
-class HecConfigTypeForResponse(TypedDict):
-    """HecConfig
-
-    Hec Config for Audit Log Stream Configuration
-    """
-
-    domain: str
-    port: int
-    key_id: str
-    encrypted_token: str
-    path: str
-    ssl_verify: bool
-
-
-class DatadogConfigType(TypedDict):
-    """DatadogConfig
-
-    Datadog Config for audit log streaming configuration.
-    """
-
-    encrypted_token: str
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
-    key_id: str
-
-
-class DatadogConfigTypeForResponse(TypedDict):
-    """DatadogConfig
-
-    Datadog Config for audit log streaming configuration.
-    """
-
-    encrypted_token: str
-    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
-    key_id: str
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    paused_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "AmazonS3AccessKeysConfigType",
-    "AmazonS3AccessKeysConfigTypeForResponse",
-    "AzureBlobConfigType",
-    "AzureBlobConfigTypeForResponse",
-    "AzureHubConfigType",
-    "AzureHubConfigTypeForResponse",
-    "DatadogConfigType",
-    "DatadogConfigTypeForResponse",
-    "HecConfigType",
-    "HecConfigTypeForResponse",
+    "GetAuditLogStreamConfigsItemsType",
+    "GetAuditLogStreamConfigsItemsTypeForResponse",
 )

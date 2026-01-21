@@ -9,38 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ScopedInstallationType(TypedDict):
-    """Scoped Installation"""
+class InstallationTokenType(TypedDict):
+    """Installation Token
 
-    permissions: AppPermissionsType
-    repository_selection: Literal["all", "selected"]
-    single_file_name: Union[str, None]
+    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AppPermissionsType]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[str]
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
-    repositories_url: str
-    account: SimpleUserType
 
 
-class ScopedInstallationTypeForResponse(TypedDict):
-    """Scoped Installation"""
+class InstallationTokenTypeForResponse(TypedDict):
+    """Installation Token
 
-    permissions: AppPermissionsTypeForResponse
-    repository_selection: Literal["all", "selected"]
-    single_file_name: Union[str, None]
+    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    """
+
+    token: str
+    expires_at: str
+    permissions: NotRequired[AppPermissionsTypeForResponse]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[str]
     has_multiple_single_files: NotRequired[bool]
     single_file_paths: NotRequired[list[str]]
-    repositories_url: str
-    account: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ScopedInstallationType",
-    "ScopedInstallationTypeForResponse",
+    "InstallationTokenType",
+    "InstallationTokenTypeForResponse",
 )

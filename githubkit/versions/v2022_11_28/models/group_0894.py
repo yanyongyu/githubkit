@@ -11,19 +11,42 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0017 import AppPermissions
 
 
-class CredentialsRevokePostBody(GitHubModel):
-    """CredentialsRevokePostBody"""
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    credentials: list[str] = Field(
-        max_length=1000 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="A list of credentials to be revoked, up to 1000 per request.",
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
+    )
+    target: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+    )
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(CredentialsRevokePostBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("CredentialsRevokePostBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

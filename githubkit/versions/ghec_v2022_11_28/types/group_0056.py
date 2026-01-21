@@ -9,32 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class InstallableOrganizationType(TypedDict):
-    """Installable Organization
+class AnnouncementType(TypedDict):
+    """Enterprise Announcement
 
-    A GitHub organization on which a GitHub App can be installed.
+    Enterprise global announcement
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[_dt.datetime, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
-class InstallableOrganizationTypeForResponse(TypedDict):
-    """Installable Organization
+class AnnouncementTypeForResponse(TypedDict):
+    """Enterprise Announcement
 
-    A GitHub organization on which a GitHub App can be installed.
+    Enterprise global announcement
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    announcement: Union[str, None]
+    expires_at: NotRequired[Union[str, None]]
+    user_dismissible: NotRequired[Union[bool, None]]
 
 
 __all__ = (
-    "InstallableOrganizationType",
-    "InstallableOrganizationTypeForResponse",
+    "AnnouncementType",
+    "AnnouncementTypeForResponse",
 )

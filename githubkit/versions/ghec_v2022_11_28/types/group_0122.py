@@ -11,47 +11,49 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0110 import (
+from .group_0111 import (
     EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
     EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
 )
-from .group_0114 import (
+from .group_0113 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0115 import (
     RepositoryRulesetConditionsPropRefNameType,
     RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
 
 
-class EnterpriseRulesetConditionsOneof1Type(TypedDict):
-    """organization_name_and_repository_property
+class EnterpriseRulesetConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
 
-    Conditions to target organizations by name and repositories by property
+    Conditions to target organizations by name and all repositories
     """
 
     organization_name: (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
     )
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class EnterpriseRulesetConditionsOneof1TypeForResponse(TypedDict):
-    """organization_name_and_repository_property
+class EnterpriseRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """organization_name_and_repository_name
 
-    Conditions to target organizations by name and repositories by property
+    Conditions to target organizations by name and all repositories
     """
 
     organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof1Type",
-    "EnterpriseRulesetConditionsOneof1TypeForResponse",
+    "EnterpriseRulesetConditionsOneof0Type",
+    "EnterpriseRulesetConditionsOneof0TypeForResponse",
 )

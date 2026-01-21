@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0221 import (
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
+)
 
 
-class ReleaseEventPropReleaseAllof1Type(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    action: str
+    release: ReleaseEventPropReleaseType
 
 
-class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    action: str
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "ReleaseEventPropReleaseAllof1Type",
-    "ReleaseEventPropReleaseAllof1TypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

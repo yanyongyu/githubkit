@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         ProjectsV2Field,
         ProjectsV2ItemSimple,
         ProjectsV2ItemWithContent,
+        ProjectsV2View,
     )
     from ..types import (
         OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType,
@@ -43,12 +44,15 @@ if TYPE_CHECKING:
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType,
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type,
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+        OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
         ProjectsV2FieldIterationConfigurationType,
         ProjectsV2FieldSingleSelectOptionType,
         ProjectsV2FieldTypeForResponse,
         ProjectsV2ItemSimpleTypeForResponse,
         ProjectsV2ItemWithContentTypeForResponse,
         ProjectsV2TypeForResponse,
+        ProjectsV2ViewTypeForResponse,
+        UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type,
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type,
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type,
@@ -1491,6 +1495,172 @@ class ProjectsClient:
             },
         )
 
+    @overload
+    def create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    @overload
+    def create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        layout: Literal["table", "board", "roadmap"],
+        filter_: Missing[str] = UNSET,
+        visible_fields: Missing[list[int]] = UNSET,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    def create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]:
+        """projects/create-view-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/views
+
+        Create a new view in an organization-owned project. Views allow you to customize how items in a project are displayed and filtered.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-an-organization-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberViewsPostBody,
+            ProjectsV2View,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/views"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgProjectsV2ProjectNumberViewsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2View,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    @overload
+    async def async_create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        layout: Literal["table", "board", "roadmap"],
+        filter_: Missing[str] = UNSET,
+        visible_fields: Missing[list[int]] = UNSET,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    async def async_create_view_for_org(
+        self,
+        org: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]:
+        """projects/create-view-for-org
+
+        POST /orgs/{org}/projectsV2/{project_number}/views
+
+        Create a new view in an organization-owned project. Views allow you to customize how items in a project are displayed and filtered.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-an-organization-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgProjectsV2ProjectNumberViewsPostBody,
+            ProjectsV2View,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/projectsV2/{project_number}/views"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgProjectsV2ProjectNumberViewsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2View,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": BasicError,
+            },
+        )
+
     def list_view_items_for_org(
         self,
         project_number: int,
@@ -1744,6 +1914,172 @@ class ProjectsClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+            },
+        )
+
+    @overload
+    def create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    @overload
+    def create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        layout: Literal["table", "board", "roadmap"],
+        filter_: Missing[str] = UNSET,
+        visible_fields: Missing[list[int]] = UNSET,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    def create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UsersUserIdProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]:
+        """projects/create-view-for-user
+
+        POST /users/{user_id}/projectsV2/{project_number}/views
+
+        Create a new view in a user-owned project. Views allow you to customize how items in a project are displayed and filtered.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-a-user-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            ProjectsV2View,
+            UsersUserIdProjectsV2ProjectNumberViewsPostBody,
+            ValidationError,
+        )
+
+        url = f"/users/{user_id}/projectsV2/{project_number}/views"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                UsersUserIdProjectsV2ProjectNumberViewsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2View,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UsersUserIdProjectsV2ProjectNumberViewsPostBodyType,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    @overload
+    async def async_create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        layout: Literal["table", "board", "roadmap"],
+        filter_: Missing[str] = UNSET,
+        visible_fields: Missing[list[int]] = UNSET,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]: ...
+
+    async def async_create_view_for_user(
+        self,
+        user_id: str,
+        project_number: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UsersUserIdProjectsV2ProjectNumberViewsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ProjectsV2View, ProjectsV2ViewTypeForResponse]:
+        """projects/create-view-for-user
+
+        POST /users/{user_id}/projectsV2/{project_number}/views
+
+        Create a new view in a user-owned project. Views allow you to customize how items in a project are displayed and filtered.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/views#create-a-view-for-a-user-owned-project
+        """
+
+        from ..models import (
+            BasicError,
+            ProjectsV2View,
+            UsersUserIdProjectsV2ProjectNumberViewsPostBody,
+            ValidationError,
+        )
+
+        url = f"/users/{user_id}/projectsV2/{project_number}/views"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                UsersUserIdProjectsV2ProjectNumberViewsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ProjectsV2View,
+            error_models={
+                "403": BasicError,
+                "401": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": BasicError,
             },
         )
 

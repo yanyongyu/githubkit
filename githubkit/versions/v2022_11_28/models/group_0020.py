@@ -20,6 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0019 import LicenseSimple
+from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
 
 
 class Repository(GitHubModel):
@@ -191,32 +192,6 @@ class Repository(GitHubModel):
     )
 
 
-class RepositoryPropPermissions(GitHubModel):
-    """RepositoryPropPermissions"""
-
-    admin: bool = Field()
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-
-
-class RepositoryPropCodeSearchIndexStatus(GitHubModel):
-    """RepositoryPropCodeSearchIndexStatus
-
-    The status of the code search index for this repository
-    """
-
-    lexical_search_ok: Missing[bool] = Field(default=UNSET)
-    lexical_commit_sha: Missing[str] = Field(default=UNSET)
-
-
 model_rebuild(Repository)
-model_rebuild(RepositoryPropPermissions)
-model_rebuild(RepositoryPropCodeSearchIndexStatus)
 
-__all__ = (
-    "Repository",
-    "RepositoryPropCodeSearchIndexStatus",
-    "RepositoryPropPermissions",
-)
+__all__ = ("Repository",)

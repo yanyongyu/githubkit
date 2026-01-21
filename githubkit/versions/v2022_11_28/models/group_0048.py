@@ -9,52 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class SubIssuesSummary(GitHubModel):
+    """Sub-issues Summary"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
-    )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
-    )
+    total: int = Field()
+    completed: int = Field()
+    percent_completed: int = Field()
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+class IssueDependenciesSummary(GitHubModel):
+    """Issue Dependencies Summary"""
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
+    blocked_by: int = Field()
+    blocking: int = Field()
+    total_blocked_by: int = Field()
+    total_blocking: int = Field()
 
 
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
+model_rebuild(SubIssuesSummary)
+model_rebuild(IssueDependenciesSummary)
 
 __all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
+    "IssueDependenciesSummary",
+    "SubIssuesSummary",
 )

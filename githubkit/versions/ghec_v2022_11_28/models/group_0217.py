@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,27 +18,53 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0197 import ReactionRollup
 
 
-class CommitCommentEventPropComment(GitHubModel):
-    """CommitCommentEventPropComment"""
+class PullRequestReviewEventPropReview(GitHubModel):
+    """PullRequestReviewEventPropReview"""
 
-    html_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
     id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    path: Missing[Union[str, None]] = Field(default=UNSET)
-    position: Missing[Union[int, None]] = Field(default=UNSET)
-    line: Missing[Union[int, None]] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
     user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    body: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
+    state: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    pull_request_url: Missing[str] = Field(default=UNSET)
+    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
+        default=UNSET, alias="_links"
+    )
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CommitCommentEventPropComment)
+class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinks"""
 
-__all__ = ("CommitCommentEventPropComment",)
+    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewEventPropReview)
+model_rebuild(PullRequestReviewEventPropReviewPropLinks)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReviewEventPropReview",
+    "PullRequestReviewEventPropReviewPropLinks",
+    "PullRequestReviewEventPropReviewPropLinksPropHtml",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
+)

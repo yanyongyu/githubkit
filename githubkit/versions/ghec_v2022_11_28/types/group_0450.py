@@ -9,50 +9,193 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0199 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class PullRequestReviewCommentType(TypedDict):
+    """Pull Request Review Comment
 
-    Timeline Unassigned Issue Event
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
+    url: str
+    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserType]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: PullRequestReviewCommentPropLinksType
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class PullRequestReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
 
-    Timeline Unassigned Issue Event
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
+    url: str
+    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[None, SimpleUserTypeForResponse]
+    body: str
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: PullRequestReviewCommentPropLinksTypeForResponse
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+
+
+class PullRequestReviewCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelfType
+    html: PullRequestReviewCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
+
+
+class PullRequestReviewCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelfTypeForResponse
+    html: PullRequestReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineLineCommentedEventType(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentType]]
+
+
+class TimelineLineCommentedEventTypeForResponse(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentTypeForResponse]]
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentPropLinksPropSelfTypeForResponse",
+    "PullRequestReviewCommentPropLinksType",
+    "PullRequestReviewCommentPropLinksTypeForResponse",
+    "PullRequestReviewCommentType",
+    "PullRequestReviewCommentTypeForResponse",
+    "TimelineLineCommentedEventType",
+    "TimelineLineCommentedEventTypeForResponse",
 )

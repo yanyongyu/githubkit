@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0033 import SimpleRepository
+from .group_0034 import SimpleRepository
 from .group_0122 import CodeScanningAlertRuleSummary
 from .group_0123 import CodeScanningAnalysisTool
 from .group_0125 import CodeScanningAlertInstance

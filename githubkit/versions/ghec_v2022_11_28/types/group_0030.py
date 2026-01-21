@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsCacheRetentionLimitForEnterpriseType(TypedDict):
-    """Actions cache retention limit for an enterprise
+class EnterpriseAccessRestrictionsType(TypedDict):
+    """Enterprise Access Restrictions
 
-    GitHub Actions cache retention policy for an enterprise.
+    Information about the enterprise access restrictions proxy header.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    message: str
+    header_name: str
+    header_value: str
 
 
-class ActionsCacheRetentionLimitForEnterpriseTypeForResponse(TypedDict):
-    """Actions cache retention limit for an enterprise
+class EnterpriseAccessRestrictionsTypeForResponse(TypedDict):
+    """Enterprise Access Restrictions
 
-    GitHub Actions cache retention policy for an enterprise.
+    Information about the enterprise access restrictions proxy header.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    message: str
+    header_name: str
+    header_value: str
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForEnterpriseType",
-    "ActionsCacheRetentionLimitForEnterpriseTypeForResponse",
+    "EnterpriseAccessRestrictionsType",
+    "EnterpriseAccessRestrictionsTypeForResponse",
 )

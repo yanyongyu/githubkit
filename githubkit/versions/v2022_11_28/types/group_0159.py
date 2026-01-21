@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import MilestoneType, MilestoneTypeForResponse
+from .group_0045 import MilestoneType, MilestoneTypeForResponse
 from .group_0120 import TeamType, TeamTypeForResponse
 from .group_0158 import AutoMergeType, AutoMergeTypeForResponse
 from .group_0160 import (

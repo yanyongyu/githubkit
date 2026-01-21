@@ -12,31 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerMachineSpecType(TypedDict):
-    """Github-owned VM details.
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    Provides details of a particular machine spec.
-    """
-
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
-class ActionsHostedRunnerMachineSpecTypeForResponse(TypedDict):
-    """Github-owned VM details.
+class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    Provides details of a particular machine spec.
-    """
-
-    id: str
-    cpu_cores: int
-    memory_gb: int
-    storage_gb: int
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
 __all__ = (
-    "ActionsHostedRunnerMachineSpecType",
-    "ActionsHostedRunnerMachineSpecTypeForResponse",
+    "ActionsCacheUsageOrgEnterpriseType",
+    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
 )

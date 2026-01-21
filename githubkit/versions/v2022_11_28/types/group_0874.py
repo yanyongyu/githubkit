@@ -10,29 +10,58 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0264 import DeploymentType, DeploymentTypeForResponse
+from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0475 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
-    """Workflow Job
+class WebhookWorkflowJobCompletedType(TypedDict):
+    """workflow_job completed event"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
+    action: Literal["completed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
+
+
+class WebhookWorkflowJobCompletedTypeForResponse(TypedDict):
+    """workflow_job completed event"""
+
+    action: Literal["completed"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
+
+
+class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
     check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "skipped",
-            "cancelled",
-            "action_required",
-            "neutral",
-            "timed_out",
-        ],
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
     ]
     created_at: str
     head_sha: str
@@ -44,38 +73,31 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
     run_attempt: int
     run_id: int
     run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
     started_at: str
     status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
     url: str
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse(TypedDict):
-    """Workflow Job
-
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
+class WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
     check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "skipped",
-            "cancelled",
-            "action_required",
-            "neutral",
-            "timed_out",
-        ],
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
     ]
     created_at: str
     head_sha: str
@@ -87,22 +109,20 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse(TypedDict)
     run_attempt: int
     run_id: int
     run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
     started_at: str
     status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[
-        WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse
-    ]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse]
     url: str
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
     completed_at: Union[str, None]
     conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
@@ -112,10 +132,8 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDi
     status: Literal["in_progress", "completed", "queued"]
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
-    TypedDict
-):
-    """Workflow Step"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
     completed_at: Union[str, None]
     conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
@@ -126,8 +144,10 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForRespo
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobCompletedType",
+    "WebhookWorkflowJobCompletedTypeForResponse",
 )

@@ -17,35 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0073 import SimpleRepository
+from .group_0076 import CodeSecurityConfiguration
 
 
-class CodeSecurityConfigurationRepositories(GitHubModel):
-    """CodeSecurityConfigurationRepositories
+class CodeSecurityDefaultConfigurationsItems(GitHubModel):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    Repositories associated with a code security configuration and attachment status
-    """
-
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
+    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
+        Field(
+            default=UNSET,
+            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
+        )
     )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
 
 
-model_rebuild(CodeSecurityConfigurationRepositories)
+model_rebuild(CodeSecurityDefaultConfigurationsItems)
 
-__all__ = ("CodeSecurityConfigurationRepositories",)
+__all__ = ("CodeSecurityDefaultConfigurationsItems",)

@@ -2406,6 +2406,8 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        size: Missing[str] = UNSET,
+        image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 
@@ -2482,6 +2484,8 @@ class ActionsClient:
         runner_group_id: Missing[int] = UNSET,
         maximum_runners: Missing[int] = UNSET,
         enable_static_ip: Missing[bool] = UNSET,
+        size: Missing[str] = UNSET,
+        image_id: Missing[str] = UNSET,
         image_version: Missing[Union[str, None]] = UNSET,
     ) -> Response[ActionsHostedRunner, ActionsHostedRunnerTypeForResponse]: ...
 

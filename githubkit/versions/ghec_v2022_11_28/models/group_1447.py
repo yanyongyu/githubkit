@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0297 import ProjectsV2FieldSingleSelectOption
+from .group_0299 import ProjectsV2FieldSingleSelectOption
 
 
 class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):

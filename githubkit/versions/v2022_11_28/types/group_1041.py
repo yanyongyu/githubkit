@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0173 import (
+from .group_0175 import (
     RepositoryRulesetBypassActorType,
     RepositoryRulesetBypassActorTypeForResponse,
 )
-from .group_0182 import (
+from .group_0184 import (
     OrgRulesetConditionsOneof0Type,
     OrgRulesetConditionsOneof0TypeForResponse,
 )
-from .group_0183 import (
+from .group_0185 import (
     OrgRulesetConditionsOneof1Type,
     OrgRulesetConditionsOneof1TypeForResponse,
 )
-from .group_0184 import (
+from .group_0186 import (
     OrgRulesetConditionsOneof2Type,
     OrgRulesetConditionsOneof2TypeForResponse,
 )
-from .group_0185 import (
+from .group_0187 import (
     RepositoryRuleCreationType,
     RepositoryRuleCreationTypeForResponse,
     RepositoryRuleDeletionType,
@@ -38,79 +38,79 @@ from .group_0185 import (
     RepositoryRuleRequiredSignaturesType,
     RepositoryRuleRequiredSignaturesTypeForResponse,
 )
-from .group_0186 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0188 import (
+from .group_0188 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0190 import (
     RepositoryRuleRequiredLinearHistoryType,
     RepositoryRuleRequiredLinearHistoryTypeForResponse,
 )
-from .group_0191 import (
+from .group_0193 import (
     RepositoryRuleRequiredDeploymentsType,
     RepositoryRuleRequiredDeploymentsTypeForResponse,
 )
-from .group_0193 import (
+from .group_0195 import (
     RepositoryRulePullRequestType,
     RepositoryRulePullRequestTypeForResponse,
 )
-from .group_0195 import (
+from .group_0197 import (
     RepositoryRuleRequiredStatusChecksType,
     RepositoryRuleRequiredStatusChecksTypeForResponse,
 )
-from .group_0197 import (
+from .group_0199 import (
     RepositoryRuleCommitMessagePatternType,
     RepositoryRuleCommitMessagePatternTypeForResponse,
 )
-from .group_0199 import (
+from .group_0201 import (
     RepositoryRuleCommitAuthorEmailPatternType,
     RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
 )
-from .group_0201 import (
+from .group_0203 import (
     RepositoryRuleCommitterEmailPatternType,
     RepositoryRuleCommitterEmailPatternTypeForResponse,
 )
-from .group_0203 import (
+from .group_0205 import (
     RepositoryRuleBranchNamePatternType,
     RepositoryRuleBranchNamePatternTypeForResponse,
 )
-from .group_0205 import (
+from .group_0207 import (
     RepositoryRuleTagNamePatternType,
     RepositoryRuleTagNamePatternTypeForResponse,
 )
-from .group_0207 import (
+from .group_0209 import (
     RepositoryRuleFilePathRestrictionType,
     RepositoryRuleFilePathRestrictionTypeForResponse,
 )
-from .group_0209 import (
+from .group_0211 import (
     RepositoryRuleMaxFilePathLengthType,
     RepositoryRuleMaxFilePathLengthTypeForResponse,
 )
-from .group_0211 import (
+from .group_0213 import (
     RepositoryRuleFileExtensionRestrictionType,
     RepositoryRuleFileExtensionRestrictionTypeForResponse,
 )
-from .group_0213 import (
+from .group_0215 import (
     RepositoryRuleMaxFileSizeType,
     RepositoryRuleMaxFileSizeTypeForResponse,
 )
-from .group_0216 import (
+from .group_0218 import (
     RepositoryRuleWorkflowsType,
     RepositoryRuleWorkflowsTypeForResponse,
 )
-from .group_0218 import (
+from .group_0220 import (
     RepositoryRuleCodeScanningType,
     RepositoryRuleCodeScanningTypeForResponse,
 )
-from .group_0220 import (
+from .group_0222 import (
     RepositoryRuleCopilotCodeReviewType,
     RepositoryRuleCopilotCodeReviewTypeForResponse,
 )
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -148,12 +148,12 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
     conditions: NotRequired[
         Union[
@@ -192,6 +192,6 @@ class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgRulesetsRulesetIdPutBodyType",
-    "OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse",
+    "OrgsOrgRulesetsPostBodyType",
+    "OrgsOrgRulesetsPostBodyTypeForResponse",
 )

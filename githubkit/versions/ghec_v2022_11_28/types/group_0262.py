@@ -9,46 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0236 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
 
-    A list of external groups available to be connected to a team
+class PackageType(TypedDict):
+    """Package
+
+    A software package
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    A list of external groups available to be connected to a team
+    A software package
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    created_at: str
     updated_at: str
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

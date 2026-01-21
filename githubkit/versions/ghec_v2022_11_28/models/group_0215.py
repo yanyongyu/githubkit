@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,54 +18,136 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0204 import PullRequestMinimal
 
 
-class PullRequestReviewEventPropReview(GitHubModel):
-    """PullRequestReviewEventPropReview"""
+class PullRequestReviewCommentEvent(GitHubModel):
+    """PullRequestReviewCommentEvent"""
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    pull_request_url: Missing[str] = Field(default=UNSET)
-    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
-        default=UNSET, alias="_links"
+    action: str = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    comment: PullRequestReviewCommentEventPropComment = Field()
+
+
+class PullRequestReviewCommentEventPropComment(GitHubModel):
+    """PullRequestReviewCommentEventPropComment"""
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    pull_request_review_id: Union[int, None] = Field()
+    diff_hunk: str = Field()
+    path: str = Field()
+    position: Union[int, None] = Field()
+    original_position: int = Field()
+    subject_type: Missing[Union[str, None]] = Field(default=UNSET)
+    commit_id: str = Field()
+    user: Union[PullRequestReviewCommentEventPropCommentPropUser, None] = Field(
+        title="User"
     )
-    updated_at: Missing[str] = Field(default=UNSET)
+    body: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: PullRequestReviewCommentEventPropCommentPropLinks = Field(alias="_links")
+    original_commit_id: str = Field()
+    reactions: PullRequestReviewCommentEventPropCommentPropReactions = Field(
+        title="Reactions"
+    )
+    in_reply_to_id: Missing[int] = Field(default=UNSET)
 
 
-class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinks"""
+class PullRequestReviewCommentEventPropCommentPropUser(GitHubModel):
+    """User"""
 
-    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+class PullRequestReviewCommentEventPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
+    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
+    confused: Missing[int] = Field(default=UNSET)
+    eyes: Missing[int] = Field(default=UNSET)
+    heart: Missing[int] = Field(default=UNSET)
+    hooray: Missing[int] = Field(default=UNSET)
+    laugh: Missing[int] = Field(default=UNSET)
+    rocket: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class PullRequestReviewCommentEventPropCommentPropLinks(GitHubModel):
+    """PullRequestReviewCommentEventPropCommentPropLinks"""
+
+    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtml = Field(
+        title="Link"
+    )
+    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest = (
+        Field(title="Link")
+    )
+    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelf = Field(
+        alias="self", title="Link"
+    )
+
+
+class PullRequestReviewCommentEventPropCommentPropLinksPropHtml(GitHubModel):
+    """Link"""
 
     href: str = Field()
 
 
-class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest(GitHubModel):
+    """Link"""
 
     href: str = Field()
 
 
-model_rebuild(PullRequestReviewEventPropReview)
-model_rebuild(PullRequestReviewEventPropReviewPropLinks)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
+class PullRequestReviewCommentEventPropCommentPropLinksPropSelf(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewCommentEvent)
+model_rebuild(PullRequestReviewCommentEventPropComment)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropUser)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropReactions)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinks)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropHtml)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest)
+model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropSelf)
 
 __all__ = (
-    "PullRequestReviewEventPropReview",
-    "PullRequestReviewEventPropReviewPropLinks",
-    "PullRequestReviewEventPropReviewPropLinksPropHtml",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
+    "PullRequestReviewCommentEvent",
+    "PullRequestReviewCommentEventPropComment",
+    "PullRequestReviewCommentEventPropCommentPropLinks",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropHtml",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest",
+    "PullRequestReviewCommentEventPropCommentPropLinksPropSelf",
+    "PullRequestReviewCommentEventPropCommentPropReactions",
+    "PullRequestReviewCommentEventPropCommentPropUser",
 )

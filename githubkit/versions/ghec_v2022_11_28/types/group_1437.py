@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
 
     Examples:
         {'account_urls': ['https://www.linkedin.com/company/github/',
@@ -23,8 +23,8 @@ class UserSocialAccountsPostBodyType(TypedDict):
     account_urls: list[str]
 
 
-class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
-    """UserSocialAccountsPostBody
+class UserSocialAccountsDeleteBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsDeleteBody
 
     Examples:
         {'account_urls': ['https://www.linkedin.com/company/github/',
@@ -35,6 +35,6 @@ class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "UserSocialAccountsPostBodyType",
-    "UserSocialAccountsPostBodyTypeForResponse",
+    "UserSocialAccountsDeleteBodyType",
+    "UserSocialAccountsDeleteBodyTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,35 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0552 import EnterpriseWebhooks
-from .group_0553 import SimpleInstallation
-from .group_0554 import OrganizationSimpleWebhooks
-from .group_0555 import RepositoryWebhooks
-from .group_0565 import WebhooksUser
-from .group_0573 import WebhooksIssue
+from .group_0020 import Repository
+from .group_0202 import Issue
+from .group_0555 import SimpleInstallation
+from .group_0556 import OrganizationSimpleWebhooks
+from .group_0557 import RepositoryWebhooks
 
 
-class WebhookIssuesAssigned(GitHubModel):
-    """issues assigned event"""
+class WebhookIssueDependenciesBlockingAdded(GitHubModel):
+    """blocking issue added event"""
 
-    action: Literal["assigned"] = Field(description="The action that was performed.")
-    assignee: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["blocking_added"] = Field()
+    blocked_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocked issue."
+    )
+    blocked_issue: Missing[Issue] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocked_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    blocking_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocking issue."
+    )
+    blocking_issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/issues#get-an-issue) itself.",
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -57,6 +64,6 @@ class WebhookIssuesAssigned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesAssigned)
+model_rebuild(WebhookIssueDependenciesBlockingAdded)
 
-__all__ = ("WebhookIssuesAssigned",)
+__all__ = ("WebhookIssueDependenciesBlockingAdded",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,46 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0022 import ScopedInstallation
+from .group_0017 import AppPermissions
 
 
-class Authorization(GitHubModel):
-    """Authorization
+class ScopedInstallation(GitHubModel):
+    """Scoped Installation"""
 
-    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
-    """
-
-    id: int = Field()
-    url: str = Field()
-    scopes: Union[list[str], None] = Field(
-        description="A list of scopes that this authorization is in."
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
-    token: str = Field()
-    token_last_eight: Union[str, None] = Field()
-    hashed_token: Union[str, None] = Field()
-    app: AuthorizationPropApp = Field()
-    note: Union[str, None] = Field()
-    note_url: Union[str, None] = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    fingerprint: Union[str, None] = Field()
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    installation: Missing[Union[None, ScopedInstallation]] = Field(default=UNSET)
-    expires_at: Union[_dt.datetime, None] = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    single_file_name: Union[str, None] = Field()
+    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
+    single_file_paths: Missing[list[str]] = Field(default=UNSET)
+    repositories_url: str = Field()
+    account: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class AuthorizationPropApp(GitHubModel):
-    """AuthorizationPropApp"""
+model_rebuild(ScopedInstallation)
 
-    client_id: str = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Authorization)
-model_rebuild(AuthorizationPropApp)
-
-__all__ = (
-    "Authorization",
-    "AuthorizationPropApp",
-)
+__all__ = ("ScopedInstallation",)

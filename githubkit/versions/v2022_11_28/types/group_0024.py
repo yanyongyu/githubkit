@@ -9,38 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0023 import ScopedInstallationType, ScopedInstallationTypeForResponse
 
 
-class SimpleClassroomRepositoryType(TypedDict):
-    """Simple Classroom Repository
+class AuthorizationType(TypedDict):
+    """Authorization
 
-    A GitHub repository view for Classroom
+    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
     """
 
     id: int
-    full_name: str
-    html_url: str
-    node_id: str
-    private: bool
-    default_branch: str
+    url: str
+    scopes: Union[list[str], None]
+    token: str
+    token_last_eight: Union[str, None]
+    hashed_token: Union[str, None]
+    app: AuthorizationPropAppType
+    note: Union[str, None]
+    note_url: Union[str, None]
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    fingerprint: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserType]]
+    installation: NotRequired[Union[None, ScopedInstallationType]]
+    expires_at: Union[_dt.datetime, None]
 
 
-class SimpleClassroomRepositoryTypeForResponse(TypedDict):
-    """Simple Classroom Repository
+class AuthorizationTypeForResponse(TypedDict):
+    """Authorization
 
-    A GitHub repository view for Classroom
+    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
     """
 
     id: int
-    full_name: str
-    html_url: str
-    node_id: str
-    private: bool
-    default_branch: str
+    url: str
+    scopes: Union[list[str], None]
+    token: str
+    token_last_eight: Union[str, None]
+    hashed_token: Union[str, None]
+    app: AuthorizationPropAppTypeForResponse
+    note: Union[str, None]
+    note_url: Union[str, None]
+    updated_at: str
+    created_at: str
+    fingerprint: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    installation: NotRequired[Union[None, ScopedInstallationTypeForResponse]]
+    expires_at: Union[str, None]
+
+
+class AuthorizationPropAppType(TypedDict):
+    """AuthorizationPropApp"""
+
+    client_id: str
+    name: str
+    url: str
+
+
+class AuthorizationPropAppTypeForResponse(TypedDict):
+    """AuthorizationPropApp"""
+
+    client_id: str
+    name: str
+    url: str
 
 
 __all__ = (
-    "SimpleClassroomRepositoryType",
-    "SimpleClassroomRepositoryTypeForResponse",
+    "AuthorizationPropAppType",
+    "AuthorizationPropAppTypeForResponse",
+    "AuthorizationType",
+    "AuthorizationTypeForResponse",
 )

@@ -12,87 +12,53 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0552 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0553 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0554 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0813 import (
+    WebhookPackageUpdatedPropPackagePropPackageVersionType,
+    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
 )
-from .group_0555 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookPackageUpdatedPropPackageType(TypedDict):
+    """WebhookPackageUpdatedPropPackage
 
-    build: WebhookPageBuildPropBuildType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookPageBuildTypeForResponse(TypedDict):
-    """page_build event"""
-
-    build: WebhookPageBuildPropBuildTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    id: int
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/enterprise-
-    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    Information about the package.
     """
 
-    commit: Union[str, None]
     created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
     updated_at: str
-    url: str
 
 
-class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuild
+class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackage
 
-    The [List GitHub Pages builds](https://docs.github.com/enterprise-
-    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    Information about the package.
     """
 
-    commit: Union[str, None]
     created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
-    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
-    status: str
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
     updated_at: str
-    url: str
 
 
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -119,7 +85,7 @@ class WebhookPageBuildPropBuildPropPusherType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
+class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -144,15 +110,33 @@ class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
+
+
+class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
+
+
+class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
-    "WebhookPageBuildPropBuildPropPusherType",
-    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildPropBuildTypeForResponse",
-    "WebhookPageBuildType",
-    "WebhookPageBuildTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropOwnerType",
+    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropRegistryType",
+    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackageUpdatedPropPackageType",
+    "WebhookPackageUpdatedPropPackageTypeForResponse",
 )

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,7 +18,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0231 import (
+from .group_0003 import SimpleUser
+from .group_0233 import (
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -26,43 +28,107 @@ from .group_0231 import (
     SecretScanningLocationPullRequestReview,
     SecretScanningLocationWikiCommit,
 )
-from .group_0232 import (
+from .group_0234 import (
     SecretScanningLocationIssueComment,
     SecretScanningLocationIssueTitle,
     SecretScanningLocationPullRequestReviewComment,
     SecretScanningLocationPullRequestTitle,
 )
-from .group_0233 import (
+from .group_0235 import (
     SecretScanningLocationDiscussionBody,
     SecretScanningLocationPullRequestComment,
 )
 
 
-class SecretScanningLocation(GitHubModel):
-    """SecretScanningLocation"""
+class SecretScanningAlert(GitHubModel):
+    """SecretScanningAlert"""
 
-    type: Missing[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL of the code locations for this alert.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ] = Field(
         default=UNSET,
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    details: Missing[
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET, description="An optional comment to resolve an alert."
+    )
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the detected secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories under the same organization or enterprise.",
+    )
+    is_base64_encoded: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not alert is base64 encoded",
+    )
+    first_location_detected: Missing[
         Union[
+            None,
             SecretScanningLocationCommit,
             SecretScanningLocationWikiCommit,
             SecretScanningLocationIssueTitle,
@@ -78,8 +144,13 @@ class SecretScanningLocation(GitHubModel):
             SecretScanningLocationPullRequestReviewComment,
         ]
     ] = Field(default=UNSET)
+    has_more_locations: Missing[bool] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
+    )
+    assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(SecretScanningLocation)
+model_rebuild(SecretScanningAlert)
 
-__all__ = ("SecretScanningLocation",)
+__all__ = ("SecretScanningAlert",)

@@ -20,6 +20,8 @@ class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
     runner_group_id: NotRequired[int]
     maximum_runners: NotRequired[int]
     enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
     image_version: NotRequired[Union[str, None]]
 
 
@@ -30,6 +32,8 @@ class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDic
     runner_group_id: NotRequired[int]
     maximum_runners: NotRequired[int]
     enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
     image_version: NotRequired[Union[str, None]]
 
 

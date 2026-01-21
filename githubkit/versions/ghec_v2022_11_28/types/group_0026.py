@@ -11,72 +11,16 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0024 import (
+from .group_0025 import (
     SimpleClassroomRepositoryType,
     SimpleClassroomRepositoryTypeForResponse,
 )
 
 
-class ClassroomAcceptedAssignmentType(TypedDict):
-    """Classroom Accepted Assignment
-
-    A GitHub Classroom accepted assignment
-    """
-
-    id: int
-    submitted: bool
-    passing: bool
-    commit_count: int
-    grade: str
-    students: list[SimpleClassroomUserType]
-    repository: SimpleClassroomRepositoryType
-    assignment: SimpleClassroomAssignmentType
-
-
-class ClassroomAcceptedAssignmentTypeForResponse(TypedDict):
-    """Classroom Accepted Assignment
-
-    A GitHub Classroom accepted assignment
-    """
-
-    id: int
-    submitted: bool
-    passing: bool
-    commit_count: int
-    grade: str
-    students: list[SimpleClassroomUserTypeForResponse]
-    repository: SimpleClassroomRepositoryTypeForResponse
-    assignment: SimpleClassroomAssignmentTypeForResponse
-
-
-class SimpleClassroomUserType(TypedDict):
-    """Simple Classroom User
-
-    A GitHub user simplified for Classroom.
-    """
-
-    id: int
-    login: str
-    avatar_url: str
-    html_url: str
-
-
-class SimpleClassroomUserTypeForResponse(TypedDict):
-    """Simple Classroom User
-
-    A GitHub user simplified for Classroom.
-    """
-
-    id: int
-    login: str
-    avatar_url: str
-    html_url: str
-
-
-class SimpleClassroomAssignmentType(TypedDict):
-    """Simple Classroom Assignment
+class ClassroomAssignmentType(TypedDict):
+    """Classroom Assignment
 
     A GitHub Classroom assignment
     """
@@ -90,19 +34,20 @@ class SimpleClassroomAssignmentType(TypedDict):
     slug: str
     students_are_repo_admins: bool
     feedback_pull_requests_enabled: bool
-    max_teams: NotRequired[Union[int, None]]
-    max_members: NotRequired[Union[int, None]]
-    editor: Union[str, None]
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
     accepted: int
-    submitted: NotRequired[int]
+    submitted: int
     passing: int
-    language: Union[str, None]
+    language: str
     deadline: Union[_dt.datetime, None]
-    classroom: SimpleClassroomType
+    starter_code_repository: SimpleClassroomRepositoryType
+    classroom: ClassroomType
 
 
-class SimpleClassroomAssignmentTypeForResponse(TypedDict):
-    """Simple Classroom Assignment
+class ClassroomAssignmentTypeForResponse(TypedDict):
+    """Classroom Assignment
 
     A GitHub Classroom assignment
     """
@@ -116,31 +61,20 @@ class SimpleClassroomAssignmentTypeForResponse(TypedDict):
     slug: str
     students_are_repo_admins: bool
     feedback_pull_requests_enabled: bool
-    max_teams: NotRequired[Union[int, None]]
-    max_members: NotRequired[Union[int, None]]
-    editor: Union[str, None]
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
     accepted: int
-    submitted: NotRequired[int]
+    submitted: int
     passing: int
-    language: Union[str, None]
+    language: str
     deadline: Union[str, None]
-    classroom: SimpleClassroomTypeForResponse
+    starter_code_repository: SimpleClassroomRepositoryTypeForResponse
+    classroom: ClassroomTypeForResponse
 
 
-class SimpleClassroomType(TypedDict):
-    """Simple Classroom
-
-    A GitHub Classroom classroom
-    """
-
-    id: int
-    name: str
-    archived: bool
-    url: str
-
-
-class SimpleClassroomTypeForResponse(TypedDict):
-    """Simple Classroom
+class ClassroomType(TypedDict):
+    """Classroom
 
     A GitHub Classroom classroom
     """
@@ -148,16 +82,56 @@ class SimpleClassroomTypeForResponse(TypedDict):
     id: int
     name: str
     archived: bool
+    organization: SimpleClassroomOrganizationType
     url: str
+
+
+class ClassroomTypeForResponse(TypedDict):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    organization: SimpleClassroomOrganizationTypeForResponse
+    url: str
+
+
+class SimpleClassroomOrganizationType(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
+class SimpleClassroomOrganizationTypeForResponse(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
 
 
 __all__ = (
-    "ClassroomAcceptedAssignmentType",
-    "ClassroomAcceptedAssignmentTypeForResponse",
-    "SimpleClassroomAssignmentType",
-    "SimpleClassroomAssignmentTypeForResponse",
-    "SimpleClassroomType",
-    "SimpleClassroomTypeForResponse",
-    "SimpleClassroomUserType",
-    "SimpleClassroomUserTypeForResponse",
+    "ClassroomAssignmentType",
+    "ClassroomAssignmentTypeForResponse",
+    "ClassroomType",
+    "ClassroomTypeForResponse",
+    "SimpleClassroomOrganizationType",
+    "SimpleClassroomOrganizationTypeForResponse",
 )

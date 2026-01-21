@@ -9,30 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryFineGrainedPermissionType(TypedDict):
-    """Repository Fine-Grained Permission
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    A fine-grained permission that protects repository resources.
+    A list of external groups available to be connected to a team
     """
 
-    name: str
-    description: str
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
-    """Repository Fine-Grained Permission
+class ExternalGroupsTypeForResponse(TypedDict):
+    """ExternalGroups
 
-    A fine-grained permission that protects repository resources.
+    A list of external groups available to be connected to a team
     """
 
-    name: str
-    description: str
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+
+
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryFineGrainedPermissionType",
-    "RepositoryFineGrainedPermissionTypeForResponse",
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsPropGroupsItemsTypeForResponse",
+    "ExternalGroupsType",
+    "ExternalGroupsTypeForResponse",
 )

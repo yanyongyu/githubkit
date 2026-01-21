@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsCacheStorageLimitForEnterpriseType(TypedDict):
+    """Actions cache storage limit for an enterprise
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    GitHub Actions cache storage policy for an enterprise.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsCacheUsageOrgEnterpriseTypeForResponse(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ActionsCacheStorageLimitForEnterpriseTypeForResponse(TypedDict):
+    """Actions cache storage limit for an enterprise
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    GitHub Actions cache storage policy for an enterprise.
+    """
+
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsCacheUsageOrgEnterpriseType",
-    "ActionsCacheUsageOrgEnterpriseTypeForResponse",
+    "ActionsCacheStorageLimitForEnterpriseType",
+    "ActionsCacheStorageLimitForEnterpriseTypeForResponse",
 )

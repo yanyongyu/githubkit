@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0367 import CodeScanningVariantAnalysisRepository
+from .group_0003 import SimpleUser
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningCodeqlDatabase(GitHubModel):
+    """CodeQL Database
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    A CodeQL database.
+    """
+
+    id: int = Field(description="The ID of the CodeQL database.")
+    name: str = Field(description="The name of the CodeQL database.")
+    language: str = Field(description="The language of the CodeQL database.")
+    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    content_type: str = Field(description="The MIME type of the CodeQL database file.")
+    size: int = Field(description="The size of the CodeQL database file in bytes.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
+    )
+    commit_oid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+model_rebuild(CodeScanningCodeqlDatabase)
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = ("CodeScanningCodeqlDatabase",)

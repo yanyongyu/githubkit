@@ -9,38 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
-from .group_0020 import Repository
+
+class RepositoryPropPermissions(GitHubModel):
+    """RepositoryPropPermissions"""
+
+    admin: bool = Field()
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
 
 
-class InstallationToken(GitHubModel):
-    """Installation Token
+class RepositoryPropCodeSearchIndexStatus(GitHubModel):
+    """RepositoryPropCodeSearchIndexStatus
 
-    Authentication token for a GitHub App installed on a user, org, or enterprise.
+    The status of the code search index for this repository
     """
 
-    token: str = Field()
-    expires_at: str = Field()
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
-    repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
-    single_file: Missing[str] = Field(default=UNSET)
-    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[list[str]] = Field(default=UNSET)
+    lexical_search_ok: Missing[bool] = Field(default=UNSET)
+    lexical_commit_sha: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(InstallationToken)
+model_rebuild(RepositoryPropPermissions)
+model_rebuild(RepositoryPropCodeSearchIndexStatus)
 
-__all__ = ("InstallationToken",)
+__all__ = (
+    "RepositoryPropCodeSearchIndexStatus",
+    "RepositoryPropPermissions",
+)

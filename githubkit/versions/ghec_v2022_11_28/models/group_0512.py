@@ -13,20 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0511 import Traffic
 
+class Topic(GitHubModel):
+    """Topic
 
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
-
-    Clone Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
+    names: list[str] = Field()
 
 
-model_rebuild(CloneTraffic)
+model_rebuild(Topic)
 
-__all__ = ("CloneTraffic",)
+__all__ = ("Topic",)

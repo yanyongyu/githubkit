@@ -9,66 +9,213 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0202 import IssueType, IssueTypeForResponse
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class IssueEventType(TypedDict):
+    """Issue Event
 
-    Unlabeled Issue Event
+    Issue Event
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
+    actor: Union[None, SimpleUserType]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
+    created_at: _dt.datetime
+    issue: NotRequired[Union[None, IssueType]]
+    label: NotRequired[IssueEventLabelType]
+    assignee: NotRequired[Union[None, SimpleUserType]]
+    assigner: NotRequired[Union[None, SimpleUserType]]
+    review_requester: NotRequired[Union[None, SimpleUserType]]
+    requested_reviewer: NotRequired[Union[None, SimpleUserType]]
+    requested_team: NotRequired[TeamType]
+    dismissed_review: NotRequired[IssueEventDismissedReviewType]
+    milestone: NotRequired[IssueEventMilestoneType]
+    project_card: NotRequired[IssueEventProjectCardType]
+    rename: NotRequired[IssueEventRenameType]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class UnlabeledIssueEventTypeForResponse(TypedDict):
-    """Unlabeled Issue Event
+class IssueEventTypeForResponse(TypedDict):
+    """Issue Event
 
-    Unlabeled Issue Event
+    Issue Event
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unlabeled"]
+    actor: Union[None, SimpleUserTypeForResponse]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: UnlabeledIssueEventPropLabelTypeForResponse
+    issue: NotRequired[Union[None, IssueTypeForResponse]]
+    label: NotRequired[IssueEventLabelTypeForResponse]
+    assignee: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    assigner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    review_requester: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    requested_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    requested_team: NotRequired[TeamTypeForResponse]
+    dismissed_review: NotRequired[IssueEventDismissedReviewTypeForResponse]
+    milestone: NotRequired[IssueEventMilestoneTypeForResponse]
+    project_card: NotRequired[IssueEventProjectCardTypeForResponse]
+    rename: NotRequired[IssueEventRenameTypeForResponse]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class IssueEventLabelType(TypedDict):
+    """Issue Event Label
 
-    name: str
-    color: str
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
 
 
-class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class IssueEventLabelTypeForResponse(TypedDict):
+    """Issue Event Label
 
-    name: str
-    color: str
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
+
+
+class IssueEventDismissedReviewType(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
+class IssueEventDismissedReviewTypeForResponse(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
+class IssueEventMilestoneType(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
+class IssueEventMilestoneTypeForResponse(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
+class IssueEventProjectCardType(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventProjectCardTypeForResponse(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventRenameType(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
+
+
+class IssueEventRenameTypeForResponse(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventPropLabelTypeForResponse",
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventTypeForResponse",
+    "IssueEventDismissedReviewType",
+    "IssueEventDismissedReviewTypeForResponse",
+    "IssueEventLabelType",
+    "IssueEventLabelTypeForResponse",
+    "IssueEventMilestoneType",
+    "IssueEventMilestoneTypeForResponse",
+    "IssueEventProjectCardType",
+    "IssueEventProjectCardTypeForResponse",
+    "IssueEventRenameType",
+    "IssueEventRenameTypeForResponse",
+    "IssueEventType",
+    "IssueEventTypeForResponse",
 )

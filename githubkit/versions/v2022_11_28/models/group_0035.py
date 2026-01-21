@@ -9,23 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0034 import SimpleRepository
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class CodeSecurityConfigurationRepositories(GitHubModel):
+    """CodeSecurityConfigurationRepositories
 
-    Details for the vulnerable package.
+    Repositories associated with a code security configuration and attachment status
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
 
 
-model_rebuild(DependabotAlertPackage)
+model_rebuild(CodeSecurityConfigurationRepositories)
 
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("CodeSecurityConfigurationRepositories",)

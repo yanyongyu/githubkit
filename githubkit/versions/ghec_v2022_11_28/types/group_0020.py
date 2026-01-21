@@ -15,6 +15,12 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0021 import (
+    RepositoryPropCodeSearchIndexStatusType,
+    RepositoryPropCodeSearchIndexStatusTypeForResponse,
+    RepositoryPropPermissionsType,
+    RepositoryPropPermissionsTypeForResponse,
+)
 
 
 class RepositoryType(TypedDict):
@@ -231,51 +237,7 @@ class RepositoryTypeForResponse(TypedDict):
     ]
 
 
-class RepositoryPropPermissionsType(TypedDict):
-    """RepositoryPropPermissions"""
-
-    admin: bool
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-
-
-class RepositoryPropPermissionsTypeForResponse(TypedDict):
-    """RepositoryPropPermissions"""
-
-    admin: bool
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-
-
-class RepositoryPropCodeSearchIndexStatusType(TypedDict):
-    """RepositoryPropCodeSearchIndexStatus
-
-    The status of the code search index for this repository
-    """
-
-    lexical_search_ok: NotRequired[bool]
-    lexical_commit_sha: NotRequired[str]
-
-
-class RepositoryPropCodeSearchIndexStatusTypeForResponse(TypedDict):
-    """RepositoryPropCodeSearchIndexStatus
-
-    The status of the code search index for this repository
-    """
-
-    lexical_search_ok: NotRequired[bool]
-    lexical_commit_sha: NotRequired[str]
-
-
 __all__ = (
-    "RepositoryPropCodeSearchIndexStatusType",
-    "RepositoryPropCodeSearchIndexStatusTypeForResponse",
-    "RepositoryPropPermissionsType",
-    "RepositoryPropPermissionsTypeForResponse",
     "RepositoryType",
     "RepositoryTypeForResponse",
 )

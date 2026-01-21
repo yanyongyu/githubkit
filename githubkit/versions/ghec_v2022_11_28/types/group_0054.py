@@ -10,33 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class AnnouncementBannerType(TypedDict):
-    """Announcement Banner
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
 
-    Announcement at either the repository, organization, or enterprise level
+    Authentication Token
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[_dt.datetime, None]
-    user_dismissible: Union[bool, None]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-class AnnouncementBannerTypeForResponse(TypedDict):
-    """Announcement Banner
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
 
-    Announcement at either the repository, organization, or enterprise level
+    Authentication Token
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[str, None]
-    user_dismissible: Union[bool, None]
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 __all__ = (
-    "AnnouncementBannerType",
-    "AnnouncementBannerTypeForResponse",
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

@@ -9,22 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0353 import HookResponse
 
 
-class WebhookPingFormEncoded(GitHubModel):
-    """WebhookPingFormEncoded
+class WebhookPingPropHook(GitHubModel):
+    """Webhook
 
-    The webhooks ping payload encoded with URL encoding.
+    The webhook that is being pinged
     """
 
-    payload: str = Field(
-        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered for the events it subscribes to."
+    )
+    app_id: Missing[int] = Field(
+        default=UNSET,
+        description="Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
+    )
+    config: WebhookPingPropHookPropConfig = Field()
+    created_at: _dt.datetime = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    events: list[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    id: int = Field(description="Unique identifier of the webhook.")
+    last_response: Missing[HookResponse] = Field(default=UNSET, title="Hook Response")
+    name: Literal["web"] = Field(
+        description="The type of webhook. The only valid value is 'web'."
+    )
+    ping_url: Missing[str] = Field(default=UNSET)
+    test_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPingPropHookPropConfig(GitHubModel):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
 
 
-model_rebuild(WebhookPingFormEncoded)
+model_rebuild(WebhookPingPropHook)
+model_rebuild(WebhookPingPropHookPropConfig)
 
-__all__ = ("WebhookPingFormEncoded",)
+__all__ = (
+    "WebhookPingPropHook",
+    "WebhookPingPropHookPropConfig",
+)

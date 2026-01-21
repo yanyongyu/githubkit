@@ -14,75 +14,46 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0197 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0203 import ReleaseAssetType, ReleaseAssetTypeForResponse
+from .group_0199 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ReleaseEventPropReleaseType(TypedDict):
-    """ReleaseEventPropRelease"""
+class CommitCommentEventPropCommentType(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserType]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
     reactions: NotRequired[ReactionRollupType]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
 
 
-class ReleaseEventPropReleaseTypeForResponse(TypedDict):
-    """ReleaseEventPropRelease"""
+class CommitCommentEventPropCommentTypeForResponse(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
-    id: int
-    node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
-    created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
     reactions: NotRequired[ReactionRollupTypeForResponse]
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "ReleaseEventPropReleaseType",
-    "ReleaseEventPropReleaseTypeForResponse",
+    "CommitCommentEventPropCommentType",
+    "CommitCommentEventPropCommentTypeForResponse",
 )

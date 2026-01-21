@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsEnterprisePermissionsType(TypedDict):
-    """ActionsEnterprisePermissions"""
+class ActionsOidcCustomIssuerPolicyForEnterpriseType(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    selected_organizations_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    include_enterprise_slug: NotRequired[bool]
 
 
-class ActionsEnterprisePermissionsTypeForResponse(TypedDict):
-    """ActionsEnterprisePermissions"""
+class ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse(TypedDict):
+    """ActionsOidcCustomIssuerPolicyForEnterprise"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    selected_organizations_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    include_enterprise_slug: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsEnterprisePermissionsType",
-    "ActionsEnterprisePermissionsTypeForResponse",
+    "ActionsOidcCustomIssuerPolicyForEnterpriseType",
+    "ActionsOidcCustomIssuerPolicyForEnterpriseTypeForResponse",
 )

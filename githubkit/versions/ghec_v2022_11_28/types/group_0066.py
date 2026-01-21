@@ -10,57 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
+class GetAuditLogStreamConfigType(TypedDict):
+    """Get an audit log streaming configuration
 
-    A response made by a delegated bypasser to a bypass request.
+    Get an audit log streaming configuration for an enterprise.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    paused_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class BypassResponseTypeForResponse(TypedDict):
-    """Bypass response
+class GetAuditLogStreamConfigTypeForResponse(TypedDict):
+    """Get an audit log streaming configuration
 
-    A response made by a delegated bypasser to a bypass request.
+    Get an audit log streaming configuration for an enterprise.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class BypassResponsePropReviewerTypeForResponse(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    id: int
+    stream_type: str
+    stream_details: str
+    enabled: bool
+    created_at: str
+    updated_at: str
+    paused_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponsePropReviewerTypeForResponse",
-    "BypassResponseType",
-    "BypassResponseTypeForResponse",
+    "GetAuditLogStreamConfigType",
+    "GetAuditLogStreamConfigTypeForResponse",
 )

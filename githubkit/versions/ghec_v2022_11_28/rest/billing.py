@@ -43,6 +43,7 @@ if TYPE_CHECKING:
         GetBudget,
         GetCostCenter,
         UpdateBudget,
+        UpdateCostCenter,
     )
     from ..types import (
         AdvancedSecurityActiveCommittersTypeForResponse,
@@ -68,6 +69,7 @@ if TYPE_CHECKING:
         GetBudgetTypeForResponse,
         GetCostCenterTypeForResponse,
         UpdateBudgetTypeForResponse,
+        UpdateCostCenterTypeForResponse,
     )
 
 
@@ -1067,6 +1069,8 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
@@ -1089,11 +1093,17 @@ class BillingClient:
             f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
         )
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetCostCenter,
@@ -1110,6 +1120,8 @@ class BillingClient:
         enterprise: str,
         cost_center_id: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
@@ -1132,11 +1144,17 @@ class BillingClient:
             f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}"
         )
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetCostCenter,
@@ -1245,7 +1263,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     @overload
     def update_cost_center(
@@ -1257,7 +1275,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     def update_cost_center(
         self,
@@ -1270,7 +1288,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]:
         """billing/update-cost-center
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1284,7 +1302,7 @@ class BillingClient:
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
-            GetCostCenter,
+            UpdateCostCenter,
         )
 
         url = (
@@ -1311,7 +1329,7 @@ class BillingClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=GetCostCenter,
+            response_model=UpdateCostCenter,
             error_models={
                 "400": BasicError,
                 "403": BasicError,
@@ -1331,7 +1349,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     @overload
     async def async_update_cost_center(
@@ -1343,7 +1361,7 @@ class BillingClient:
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
         name: str,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]: ...
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]: ...
 
     async def async_update_cost_center(
         self,
@@ -1356,7 +1374,7 @@ class BillingClient:
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[GetCostCenter, GetCostCenterTypeForResponse]:
+    ) -> Response[UpdateCostCenter, UpdateCostCenterTypeForResponse]:
         """billing/update-cost-center
 
         PATCH /enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}
@@ -1370,7 +1388,7 @@ class BillingClient:
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody,
-            GetCostCenter,
+            UpdateCostCenter,
         )
 
         url = (
@@ -1397,7 +1415,7 @@ class BillingClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=GetCostCenter,
+            response_model=UpdateCostCenter,
             error_models={
                 "400": BasicError,
                 "403": BasicError,

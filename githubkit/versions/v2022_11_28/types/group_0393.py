@@ -9,164 +9,167 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0044 import MilestoneType, MilestoneTypeForResponse
-from .group_0119 import TeamSimpleType, TeamSimpleTypeForResponse
-from .group_0158 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0394 import (
-    PullRequestPropLabelsItemsType,
-    PullRequestPropLabelsItemsTypeForResponse,
-)
-from .group_0395 import (
-    PullRequestPropBaseType,
-    PullRequestPropBaseTypeForResponse,
-    PullRequestPropHeadType,
-    PullRequestPropHeadTypeForResponse,
-)
-from .group_0396 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
+class PagesHealthCheckType(TypedDict):
+    """Pages Health Check Status
 
-class PullRequestType(TypedDict):
-    """Pull Request
-
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    Pages Health Check Status
     """
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleType], None]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    domain: NotRequired[PagesHealthCheckPropDomainType]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
 
 
-class PullRequestTypeForResponse(TypedDict):
-    """Pull Request
+class PagesHealthCheckTypeForResponse(TypedDict):
+    """Pages Health Check Status
 
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    Pages Health Check Status
     """
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleTypeForResponse], None]]
-    head: PullRequestPropHeadTypeForResponse
-    base: PullRequestPropBaseTypeForResponse
-    links: PullRequestPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserTypeForResponse]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    domain: NotRequired[PagesHealthCheckPropDomainTypeForResponse]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainTypeForResponse, None]]
+
+
+class PagesHealthCheckPropDomainType(TypedDict):
+    """PagesHealthCheckPropDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropAltDomainType(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
+
+
+class PagesHealthCheckPropAltDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestType",
-    "PullRequestTypeForResponse",
+    "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropAltDomainTypeForResponse",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckPropDomainTypeForResponse",
+    "PagesHealthCheckType",
+    "PagesHealthCheckTypeForResponse",
 )

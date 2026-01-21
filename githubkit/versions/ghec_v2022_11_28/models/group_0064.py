@@ -9,24 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GoogleCloudConfig(GitHubModel):
-    """GoogleCloudConfig
+class AmazonS3OidcConfig(GitHubModel):
+    """AmazonS3OIDCConfig
 
-    Google Cloud Config for audit log streaming configuration.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    bucket: str = Field(description="Google Cloud Bucket Name")
+    bucket: str = Field(description="Amazon S3 Bucket Name.")
+    region: str = Field(description="AWS S3 Bucket Region.")
     key_id: str = Field(
         description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    encrypted_json_credentials: str = Field()
+    authentication_type: Literal["oidc"] = Field(
+        description="Authentication Type for Amazon S3."
+    )
+    arn_role: str = Field()
 
 
-model_rebuild(GoogleCloudConfig)
+class SplunkConfig(GitHubModel):
+    """SplunkConfig
 
-__all__ = ("GoogleCloudConfig",)
+    Splunk Config for Audit Log Stream Configuration
+    """
+
+    domain: str = Field(description="Domain of Splunk instance.")
+    port: int = Field(description="The port number for connecting to Splunk.")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    )
+    encrypted_token: str = Field(description="Encrypted Token.")
+    ssl_verify: bool = Field(
+        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
+    )
+
+
+model_rebuild(AmazonS3OidcConfig)
+model_rebuild(SplunkConfig)
+
+__all__ = (
+    "AmazonS3OidcConfig",
+    "SplunkConfig",
+)

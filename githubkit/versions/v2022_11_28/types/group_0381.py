@@ -16,17 +16,17 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class TimelineUnassignedIssueEventType(TypedDict):
-    """Timeline Unassigned Issue Event
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Timeline Unassigned Issue Event
+    Timeline Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unassigned"]
+    event: Literal["assigned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -34,17 +34,17 @@ class TimelineUnassignedIssueEventType(TypedDict):
     assignee: SimpleUserType
 
 
-class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Unassigned Issue Event
+class TimelineAssignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Timeline Unassigned Issue Event
+    Timeline Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["unassigned"]
+    event: Literal["assigned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -53,6 +53,6 @@ class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "TimelineUnassignedIssueEventType",
-    "TimelineUnassignedIssueEventTypeForResponse",
+    "TimelineAssignedIssueEventType",
+    "TimelineAssignedIssueEventTypeForResponse",
 )

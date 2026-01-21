@@ -13,153 +13,56 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0256 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
 
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-class DependabotAlertDismissalRequestType(TypedDict):
-    """Dependabot alert dismissal request
-
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    A response made by a requester to dismiss the request.
     """
 
     id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
     created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
 
 
-class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    A response made by a requester to dismiss the request.
     """
 
     id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
     created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
 
 
-class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
+    The user who reviewed the dismissal request.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
 
 
-class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
 
-    The user who requested the dismissal request.
+    The user who reviewed the dismissal request.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestPropDataItemsType",
-    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
-    "DependabotAlertDismissalRequestPropOrganizationType",
-    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
-    "DependabotAlertDismissalRequestPropRepositoryType",
-    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
-    "DependabotAlertDismissalRequestPropRequesterType",
-    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestType",
-    "DependabotAlertDismissalRequestTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

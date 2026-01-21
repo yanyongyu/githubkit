@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0031 import CodeScanningDefaultSetupOptions, CodeScanningOptions
+from .group_0032 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
 
 class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):

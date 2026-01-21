@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0044 import Milestone
+from .group_0045 import Milestone
 from .group_0120 import Team
 from .group_0158 import AutoMerge
 from .group_0160 import PullRequestSimplePropBase, PullRequestSimplePropHead

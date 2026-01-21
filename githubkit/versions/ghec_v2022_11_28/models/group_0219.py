@@ -19,52 +19,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0197 import ReactionRollup
-from .group_0203 import ReleaseAsset
+from .group_0199 import ReactionRollup
 
 
-class ReleaseEventPropRelease(GitHubModel):
-    """ReleaseEventPropRelease"""
+class CommitCommentEventPropComment(GitHubModel):
+    """CommitCommentEventPropComment"""
 
-    url: str = Field()
-    html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
-    )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
-    )
-    immutable: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the release is immutable."
-    )
-    created_at: _dt.datetime = Field()
-    published_at: Union[_dt.datetime, None] = Field()
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: list[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
-    )
+    html_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    path: Missing[Union[str, None]] = Field(default=UNSET)
+    position: Missing[Union[int, None]] = Field(default=UNSET)
+    line: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReleaseEventPropRelease)
+model_rebuild(CommitCommentEventPropComment)
 
-__all__ = ("ReleaseEventPropRelease",)
+__all__ = ("CommitCommentEventPropComment",)

@@ -14,57 +14,199 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksReleaseType(TypedDict):
+    """Release
 
-    The security alert of the vulnerable dependency.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+    assets: list[WebhooksReleasePropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
     id: int
+    immutable: bool
+    name: Union[str, None]
     node_id: str
-    number: int
-    severity: str
-    state: Literal["open"]
+    prerelease: bool
+    published_at: Union[_dt.datetime, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhooksAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksReleaseTypeForResponse(TypedDict):
+    """Release
 
-    The security alert of the vulnerable dependency.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
+    assets: list[WebhooksReleasePropAssetsItemsTypeForResponse]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorTypeForResponse, None]
+    body: Union[str, None]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
     id: int
+    immutable: bool
+    name: Union[str, None]
     node_id: str
-    number: int
-    severity: str
-    state: Literal["open"]
+    prerelease: bool
+    published_at: Union[str, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsTypeForResponse]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhooksAlertPropDismisserType(TypedDict):
+class WebhooksReleasePropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReleasePropAuthorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReleasePropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: _dt.datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: _dt.datetime
+    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsTypeForResponse(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: str
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    digest: Union[str, None]
+    state: Literal["uploaded"]
+    updated_at: str
+    uploader: NotRequired[
+        Union[WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse, None]
+    ]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -90,7 +232,7 @@ class WebhooksAlertPropDismisserType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+class WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -117,8 +259,14 @@ class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksAlertPropDismisserType",
-    "WebhooksAlertPropDismisserTypeForResponse",
-    "WebhooksAlertType",
-    "WebhooksAlertTypeForResponse",
+    "WebhooksReleasePropAssetsItemsPropUploaderType",
+    "WebhooksReleasePropAssetsItemsPropUploaderTypeForResponse",
+    "WebhooksReleasePropAssetsItemsType",
+    "WebhooksReleasePropAssetsItemsTypeForResponse",
+    "WebhooksReleasePropAuthorType",
+    "WebhooksReleasePropAuthorTypeForResponse",
+    "WebhooksReleasePropReactionsType",
+    "WebhooksReleasePropReactionsTypeForResponse",
+    "WebhooksReleaseType",
+    "WebhooksReleaseTypeForResponse",
 )

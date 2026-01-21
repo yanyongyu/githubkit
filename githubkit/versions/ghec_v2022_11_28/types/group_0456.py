@@ -9,118 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
 
-class PageType(TypedDict):
-    """GitHub Pages
+class LicenseContentType(TypedDict):
+    """License Content
 
-    The configuration for GitHub Pages for a repository.
+    License Content
     """
 
+    name: str
+    path: str
+    sha: str
+    size: int
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class PageTypeForResponse(TypedDict):
-    """GitHub Pages
+class LicenseContentTypeForResponse(TypedDict):
+    """License Content
 
-    The configuration for GitHub Pages for a repository.
+    License Content
     """
 
+    name: str
+    path: str
+    sha: str
+    size: int
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[str, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashTypeForResponse]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
-    https_enforced: NotRequired[bool]
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksTypeForResponse
+    license_: Union[None, LicenseSimpleTypeForResponse]
 
 
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
 
-    branch: str
-    path: str
-
-
-class PagesSourceHashTypeForResponse(TypedDict):
-    """Pages Source Hash"""
-
-    branch: str
-    path: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
+class LicenseContentPropLinksTypeForResponse(TypedDict):
+    """LicenseContentPropLinks"""
 
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[_dt.date]
-
-
-class PagesHttpsCertificateTypeForResponse(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: list[str]
-    expires_at: NotRequired[str]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PageType",
-    "PageTypeForResponse",
-    "PagesHttpsCertificateType",
-    "PagesHttpsCertificateTypeForResponse",
-    "PagesSourceHashType",
-    "PagesSourceHashTypeForResponse",
+    "LicenseContentPropLinksType",
+    "LicenseContentPropLinksTypeForResponse",
+    "LicenseContentType",
+    "LicenseContentTypeForResponse",
 )

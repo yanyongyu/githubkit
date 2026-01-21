@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    A GitHub organization.
-    """
-
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
-class OrganizationSimpleTypeForResponse(TypedDict):
-    """Organization Simple
+class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    A GitHub organization.
-    """
-
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: NotRequired[bool]
+    send_secrets_and_variables: NotRequired[bool]
+    require_approval_for_fork_pr_workflows: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationSimpleType",
-    "OrganizationSimpleTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposRequestType",
+    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
 )

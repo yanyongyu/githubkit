@@ -9,36 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GetAuditLogStreamConfigsItemsType(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class AuditLogStreamKeyType(TypedDict):
+    """stream-key
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    paused_at: NotRequired[Union[_dt.datetime, None]]
+    Audit Log Streaming Public Key
+    """
+
+    key_id: str
+    key: str
 
 
-class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class AuditLogStreamKeyTypeForResponse(TypedDict):
+    """stream-key
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    paused_at: NotRequired[Union[str, None]]
+    Audit Log Streaming Public Key
+    """
+
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "GetAuditLogStreamConfigsItemsType",
-    "GetAuditLogStreamConfigsItemsTypeForResponse",
+    "AuditLogStreamKeyType",
+    "AuditLogStreamKeyTypeForResponse",
 )

@@ -16,18 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheRetentionLimitForEnterprise(GitHubModel):
-    """Actions cache retention limit for an enterprise
+class ClassroomAssignmentGrade(GitHubModel):
+    """Classroom Assignment Grade
 
-    GitHub Actions cache retention policy for an enterprise.
+    Grade for a student or groups GitHub Classroom assignment
     """
 
-    max_cache_retention_days: Missing[int] = Field(
+    assignment_name: str = Field(description="Name of the assignment")
+    assignment_url: str = Field(description="URL of the assignment")
+    starter_code_url: str = Field(
+        description="URL of the starter code for the assignment"
+    )
+    github_username: str = Field(description="GitHub username of the student")
+    roster_identifier: str = Field(description="Roster identifier of the student")
+    student_repository_name: str = Field(
+        description="Name of the student's assignment repository"
+    )
+    student_repository_url: str = Field(
+        description="URL of the student's assignment repository"
+    )
+    submission_timestamp: str = Field(
+        description="Timestamp of the student's assignment submission"
+    )
+    points_awarded: int = Field(description="Number of points awarded to the student")
+    points_available: int = Field(
+        description="Number of points available for the assignment"
+    )
+    group_name: Missing[str] = Field(
         default=UNSET,
-        description="For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained.",
+        description="If a group assignment, name of the group the student is in",
     )
 
 
-model_rebuild(ActionsCacheRetentionLimitForEnterprise)
+model_rebuild(ClassroomAssignmentGrade)
 
-__all__ = ("ActionsCacheRetentionLimitForEnterprise",)
+__all__ = ("ClassroomAssignmentGrade",)

@@ -15,34 +15,55 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0199 import ReactionRollup
 
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    Data related to a release.
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
     )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    issue_url: str = Field()
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(IssueComment)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("IssueComment",)

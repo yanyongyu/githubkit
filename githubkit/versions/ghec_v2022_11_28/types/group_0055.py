@@ -11,32 +11,32 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
+class AnnouncementBannerType(TypedDict):
+    """Announcement Banner
 
-    Enterprise global announcement
+    Announcement at either the repository, organization, or enterprise level
     """
 
     announcement: Union[str, None]
-    expires_at: NotRequired[Union[_dt.datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    expires_at: Union[_dt.datetime, None]
+    user_dismissible: Union[bool, None]
 
 
-class AnnouncementTypeForResponse(TypedDict):
-    """Enterprise Announcement
+class AnnouncementBannerTypeForResponse(TypedDict):
+    """Announcement Banner
 
-    Enterprise global announcement
+    Announcement at either the repository, organization, or enterprise level
     """
 
     announcement: Union[str, None]
-    expires_at: NotRequired[Union[str, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    expires_at: Union[str, None]
+    user_dismissible: Union[bool, None]
 
 
 __all__ = (
-    "AnnouncementType",
-    "AnnouncementTypeForResponse",
+    "AnnouncementBannerType",
+    "AnnouncementBannerTypeForResponse",
 )

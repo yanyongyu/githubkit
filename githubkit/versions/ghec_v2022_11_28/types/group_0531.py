@@ -10,77 +10,213 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0234 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0530 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
 
+class ScimUserListType(TypedDict):
+    """SCIM User List
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
-
-    Code Search Result Item
+    SCIM User List
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserType]
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class ScimUserListTypeForResponse(TypedDict):
+    """SCIM User List
 
-    Code Search Result Item
+    SCIM User List
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserTypeForResponse]
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
+class ScimUserType(TypedDict):
+    """SCIM /Users
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: list[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[list[ScimUserPropRolesItemsType]]
 
 
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
+class ScimUserTypeForResponse(TypedDict):
+    """SCIM /Users
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameTypeForResponse]
+    emails: list[ScimUserPropEmailsItemsTypeForResponse]
+    active: bool
+    meta: ScimUserPropMetaTypeForResponse
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsTypeForResponse]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsTypeForResponse]]
+    roles: NotRequired[list[ScimUserPropRolesItemsTypeForResponse]]
+
+
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropNameTypeForResponse(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[_dt.datetime]
+    last_modified: NotRequired[_dt.datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropMetaTypeForResponse(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsTypeForResponse(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsTypeForResponse(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsTypeForResponse(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1TypeForResponse, list[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
+
+
+class ScimUserPropOperationsItemsPropValueOneof1TypeForResponse(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "ScimUserListType",
+    "ScimUserListTypeForResponse",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropEmailsItemsTypeForResponse",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropGroupsItemsTypeForResponse",
+    "ScimUserPropMetaType",
+    "ScimUserPropMetaTypeForResponse",
+    "ScimUserPropNameType",
+    "ScimUserPropNameTypeForResponse",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimUserPropOperationsItemsPropValueOneof1TypeForResponse",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropOperationsItemsTypeForResponse",
+    "ScimUserPropRolesItemsType",
+    "ScimUserPropRolesItemsTypeForResponse",
+    "ScimUserType",
+    "ScimUserTypeForResponse",
 )
