@@ -41,7 +41,7 @@ dev = [
 ]
 codegen = [
   "Jinja2 >=3.1.2, <4.0.0",
-  "tomlkit >=0.13.3, <0.14.0",
+  "tomlkit >=0.13.3, <0.15.0",
   "jsonpointer >=3.0.0, <4.0.0",
   "openapi-pydantic >=0.5.0, <0.6.0",
 ]
