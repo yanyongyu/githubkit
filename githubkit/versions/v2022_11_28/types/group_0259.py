@@ -11,129 +11,82 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0052 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0084 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0258 import SimpleCommitType, SimpleCommitTypeForResponse
+from typing_extensions import TypedDict
 
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    An invocation of a workflow
+    A commit.
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[_dt.datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class WorkflowRunTypeForResponse(TypedDict):
-    """Workflow Run
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
 
-    An invocation of a workflow
+    A commit.
     """
 
-    id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[
-        Union[list[ReferencedWorkflowTypeForResponse], None]
-    ]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
-    url: str
-    html_url: str
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    created_at: str
-    updated_at: str
-    actor: NotRequired[SimpleUserTypeForResponse]
-    triggering_actor: NotRequired[SimpleUserTypeForResponse]
-    run_started_at: NotRequired[str]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    head_repository: MinimalRepositoryTypeForResponse
-    head_repository_id: NotRequired[int]
-    display_title: str
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
 
-    A workflow referenced/reused by the initial caller workflow
+    Information about the Git author
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    name: str
+    email: str
 
 
-class ReferencedWorkflowTypeForResponse(TypedDict):
-    """Referenced workflow
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
 
-    A workflow referenced/reused by the initial caller workflow
+    Information about the Git author
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "ReferencedWorkflowTypeForResponse",
-    "WorkflowRunType",
-    "WorkflowRunTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0556 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0568 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["unanswered"]
-    discussion: DiscussionType
-    old_answer: WebhooksAnswerType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["unanswered"]
-    discussion: DiscussionTypeForResponse
-    old_answer: WebhooksAnswerTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    new_discussion: DiscussionTypeForResponse
+    new_repository: RepositoryWebhooksTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredTypeForResponse",
+    "WebhookDiscussionTransferredPropChangesType",
+    "WebhookDiscussionTransferredPropChangesTypeForResponse",
 )

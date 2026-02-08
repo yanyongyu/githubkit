@@ -9,24 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    title: NotRequired[str]
-    key: str
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
+    ]
 
 
-class UserKeysPostBodyTypeForResponse(TypedDict):
-    """UserKeysPostBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    title: NotRequired[str]
-    key: str
+    schemas: NotRequired[list[str]]
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse
+            ],
+            str,
+        ]
+    ]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: NotRequired[Union[bool, None]]
+    user_name: NotRequired[Union[str, None]]
+    external_id: NotRequired[Union[str, None]]
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
+    """
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse(
+    TypedDict
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
+    """
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "UserKeysPostBodyType",
-    "UserKeysPostBodyTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0TypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyTypeForResponse",
 )

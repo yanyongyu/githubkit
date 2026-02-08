@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0202 import IssueType, IssueTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0732 import (
+    WebhookIssueCommentPinnedPropIssueType,
+    WebhookIssueCommentPinnedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueCommentPinnedType(TypedDict):
+    """issue_comment pinned event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueType]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueType]
-    blocking_issue_repo: NotRequired[RepositoryType]
+    action: Literal["pinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    issue: WebhookIssueCommentPinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueCommentPinnedTypeForResponse(TypedDict):
+    """issue_comment pinned event"""
 
-    action: Literal["blocked_by_removed"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueTypeForResponse]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueTypeForResponse]
-    blocking_issue_repo: NotRequired[RepositoryTypeForResponse]
+    action: Literal["pinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    issue: WebhookIssueCommentPinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByRemovedType",
-    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+    "WebhookIssueCommentPinnedType",
+    "WebhookIssueCommentPinnedTypeForResponse",
 )

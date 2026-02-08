@@ -9,53 +9,608 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0225 import RepositoryRuleset
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
+from .group_0738 import WebhookRubygemsMetadata
 
 
-class WebhookRepositoryRulesetDeleted(GitHubModel):
-    """repository ruleset deleted event"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion"""
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    author: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor
+    ] = Field(default=UNSET)
+    body: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1,
+        ]
+    ] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    container_metadata: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata
+    ] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    description: str = Field()
+    docker_metadata: Missing[
+        list[
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems
+        ]
+    ] = Field(default=UNSET)
+    draft: Missing[bool] = Field(default=UNSET)
+    html_url: str = Field()
+    id: int = Field()
+    installation_command: str = Field()
+    manifest: Missing[str] = Field(default=UNSET)
+    metadata: list[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems
+    ] = Field()
+    name: str = Field()
+    npm_metadata: Missing[
+        Union[
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    nuget_metadata: Missing[
+        Union[
+            list[
+                WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
+    package_files: list[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems
+    ] = Field()
+    package_url: str = Field()
+    prerelease: Missing[bool] = Field(default=UNSET)
+    release: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease
+    ] = Field(default=UNSET)
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    summary: str = Field()
+    tag_name: Missing[str] = Field(default=UNSET)
+    target_commitish: Missing[str] = Field(default=UNSET)
+    target_oid: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    version: str = Field()
 
 
-model_rebuild(WebhookRepositoryRulesetDeleted)
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor"""
 
-__all__ = ("WebhookRepositoryRulesetDeleted",)
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneo
+    f1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMe
+    tadataItems
+    """
+
+    tags: Missing[list[str]] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems(
+    ExtraGitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadata
+    Items
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ata
+    """
+
+    name: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    npm_user: Missing[str] = Field(default=UNSET)
+    author: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    bugs: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    dependencies: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies
+    ] = Field(default=UNSET)
+    dev_dependencies: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies
+    ] = Field(default=UNSET)
+    peer_dependencies: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies
+    ] = Field(default=UNSET)
+    optional_dependencies: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies
+    ] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    dist: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    git_head: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    main: Missing[str] = Field(default=UNSET)
+    repository: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    scripts: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts
+    ] = Field(default=UNSET)
+    id: Missing[str] = Field(default=UNSET)
+    node_version: Missing[str] = Field(default=UNSET)
+    npm_version: Missing[str] = Field(default=UNSET)
+    has_shrinkwrap: Missing[bool] = Field(default=UNSET)
+    maintainers: Missing[list[str]] = Field(default=UNSET)
+    contributors: Missing[list[str]] = Field(default=UNSET)
+    engines: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines
+    ] = Field(default=UNSET)
+    keywords: Missing[list[str]] = Field(default=UNSET)
+    files: Missing[list[str]] = Field(default=UNSET)
+    bin_: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin
+    ] = Field(default=UNSET, alias="bin")
+    man: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan
+    ] = Field(default=UNSET)
+    directories: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    os: Missing[list[str]] = Field(default=UNSET)
+    cpu: Missing[list[str]] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    installation_command: Missing[str] = Field(default=UNSET)
+    release_id: Missing[int] = Field(default=UNSET)
+    commit_oid: Missing[str] = Field(default=UNSET)
+    published_via_actions: Missing[bool] = Field(default=UNSET)
+    deleted_by_id: Missing[int] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropAuthorOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropBugsOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropDependencies
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropDevDependencies
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropPeerDependencies
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropOptionalDependencies
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropDistOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropRepositoryOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropScripts
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropEngines
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropBin
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropMan
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetad
+    ataPropDirectoriesOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageF
+    ilesItems
+    """
+
+    content_type: str = Field()
+    created_at: str = Field()
+    download_url: str = Field()
+    id: int = Field()
+    md5: Union[str, None] = Field()
+    name: str = Field()
+    sha1: Union[str, None] = Field()
+    sha256: Union[str, None] = Field()
+    size: int = Field()
+    state: Union[str, None] = Field()
+    updated_at: str = Field()
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContaine
+    rMetadata
+    """
+
+    labels: Missing[
+        Union[
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    manifest: Missing[
+        Union[
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    tag: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag
+    ] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContaine
+    rMetadataPropLabels
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContaine
+    rMetadataPropManifest
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContaine
+    rMetadataPropTag
+    """
+
+    digest: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMet
+    adataItems
+    """
+
+    id: Missing[
+        Union[
+            str,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1,
+            int,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    value: Missing[
+        Union[
+            bool,
+            str,
+            int,
+            WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
+        ]
+    ] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMet
+    adataItemsPropIdOneof1
+    """
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMet
+    adataItemsPropValueOneof3
+    """
+
+    url: Missing[str] = Field(default=UNSET)
+    branch: Missing[str] = Field(default=UNSET)
+    commit: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease"""
+
+    author: Missing[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor
+    ] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    draft: Missing[bool] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    prerelease: Missing[bool] = Field(default=UNSET)
+    published_at: Missing[str] = Field(default=UNSET)
+    tag_name: Missing[str] = Field(default=UNSET)
+    target_commitish: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor(
+    GitHubModel
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleaseP
+    ropAuthor
+    """
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease
+)
+model_rebuild(
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor
+)
+
+__all__ = (
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor",
+)

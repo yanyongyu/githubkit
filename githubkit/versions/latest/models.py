@@ -1906,6 +1906,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropRepositoriesItems as PersonalAccessTokenRequestPropRepositoriesItems,
     )
+    from githubkit.versions.v2022_11_28.models import (
+        PinnedIssueComment as PinnedIssueComment,
+    )
     from githubkit.versions.v2022_11_28.models import PorterAuthor as PorterAuthor
     from githubkit.versions.v2022_11_28.models import PorterLargeFile as PorterLargeFile
     from githubkit.versions.v2022_11_28.models import PrivateUser as PrivateUser
@@ -3440,6 +3443,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         SecurityAndAnalysisPropSecretScanningAiDetection as SecurityAndAnalysisPropSecretScanningAiDetection,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatterns as SecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4918,6 +4924,168 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropIssueMergedUser as WebhookIssueCommentEditedPropIssueMergedUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinned as WebhookIssueCommentPinned,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssue as WebhookIssueCommentPinnedPropIssue,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0 as WebhookIssueCommentPinnedPropIssueAllof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropAssignee as WebhookIssueCommentPinnedPropIssueAllof0PropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems as WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestone as WebhookIssueCommentPinnedPropIssueAllof0PropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest as WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropReactions as WebhookIssueCommentPinnedPropIssueAllof0PropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropUser as WebhookIssueCommentPinnedPropIssueAllof0PropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1 as WebhookIssueCommentPinnedPropIssueAllof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropAssignee as WebhookIssueCommentPinnedPropIssueAllof1PropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems as WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropMilestone as WebhookIssueCommentPinnedPropIssueAllof1PropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropReactions as WebhookIssueCommentPinnedPropIssueAllof1PropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropUser as WebhookIssueCommentPinnedPropIssueAllof1PropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueMergedAssignees as WebhookIssueCommentPinnedPropIssueMergedAssignees,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueMergedMilestone as WebhookIssueCommentPinnedPropIssueMergedMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueMergedReactions as WebhookIssueCommentPinnedPropIssueMergedReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentPinnedPropIssueMergedUser as WebhookIssueCommentPinnedPropIssueMergedUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinned as WebhookIssueCommentUnpinned,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssue as WebhookIssueCommentUnpinnedPropIssue,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0 as WebhookIssueCommentUnpinnedPropIssueAllof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems as WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestone as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest as WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropReactions as WebhookIssueCommentUnpinnedPropIssueAllof0PropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropUser as WebhookIssueCommentUnpinnedPropIssueAllof0PropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1 as WebhookIssueCommentUnpinnedPropIssueAllof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems as WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone as WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions as WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropUser as WebhookIssueCommentUnpinnedPropIssueAllof1PropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueMergedAssignees as WebhookIssueCommentUnpinnedPropIssueMergedAssignees,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueMergedMilestone as WebhookIssueCommentUnpinnedPropIssueMergedMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueMergedReactions as WebhookIssueCommentUnpinnedPropIssueMergedReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssueCommentUnpinnedPropIssueMergedUser as WebhookIssueCommentUnpinnedPropIssueMergedUser,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueDependenciesBlockedByAdded as WebhookIssueDependenciesBlockedByAdded,
@@ -10171,6 +10339,7 @@ else:
             "Issue",
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
+            "PinnedIssueComment",
             "IssueComment",
             "PullRequestMinimal",
             "PullRequestMinimalPropHead",
@@ -10250,6 +10419,7 @@ else:
             "SecurityAndAnalysisPropSecretScanningPushProtection",
             "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
             "SecurityAndAnalysisPropSecretScanningAiDetection",
+            "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
             "MinimalRepository",
             "CodeOfConduct",
             "MinimalRepositoryPropPermissions",
@@ -11492,6 +11662,60 @@ else:
             "WebhookIssueCommentEditedPropIssueAllof1PropUser",
             "WebhookIssueCommentEditedPropIssueMergedMilestone",
             "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp",
+            "WebhookIssueCommentPinned",
+            "WebhookIssueCommentPinnedPropIssue",
+            "WebhookIssueCommentPinnedPropIssueMergedAssignees",
+            "WebhookIssueCommentPinnedPropIssueMergedReactions",
+            "WebhookIssueCommentPinnedPropIssueMergedUser",
+            "WebhookIssueCommentPinnedPropIssueAllof0",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItems",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropReactions",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropUser",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropAssignee",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropMilestone",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp",
+            "WebhookIssueCommentPinnedPropIssueAllof1",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropAssignee",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropMilestone",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropReactions",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropUser",
+            "WebhookIssueCommentPinnedPropIssueMergedMilestone",
+            "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp",
+            "WebhookIssueCommentUnpinned",
+            "WebhookIssueCommentUnpinnedPropIssue",
+            "WebhookIssueCommentUnpinnedPropIssueMergedAssignees",
+            "WebhookIssueCommentUnpinnedPropIssueMergedReactions",
+            "WebhookIssueCommentUnpinnedPropIssueMergedUser",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItems",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropReactions",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropUser",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestone",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropUser",
+            "WebhookIssueCommentUnpinnedPropIssueMergedMilestone",
+            "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp",
             "WebhookIssueDependenciesBlockedByAdded",
             "WebhookIssueDependenciesBlockedByRemoved",
             "WebhookIssueDependenciesBlockingAdded",

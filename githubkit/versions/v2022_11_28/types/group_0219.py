@@ -9,50 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+from .group_0220 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
-    """WorkflowFileReference
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    A workflow that must run for this rule to pass
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
-    "RepositoryRuleWorkflowsPropParametersType",
-    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

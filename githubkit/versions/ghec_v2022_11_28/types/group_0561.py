@@ -13,90 +13,420 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0204 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0236 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0560 import ExemptionResponseType, ExemptionResponseTypeForResponse
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class ExemptionRequestType(TypedDict):
+    """Exemption Request
 
-    A suite of checks performed on the code of a given code change
+    A request from a user to be exempted from a set of rules.
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
+    id: NotRequired[int]
+    number: NotRequired[Union[int, None]]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+            "dependabot_alert_dismissal",
         ]
     ]
+    exemption_request_data: NotRequired[
+        Union[
+            ExemptionRequestPushRulesetBypassType,
+            ExemptionRequestSecretScanningType,
+            DismissalRequestSecretScanningType,
+            DismissalRequestCodeScanningType,
+            DismissalRequestDependabotType,
+        ]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[
+        Union[
+            ExemptionRequestSecretScanningMetadataType,
+            DismissalRequestSecretScanningMetadataType,
+            DismissalRequestCodeScanningMetadataType,
+            DismissalRequestDependabotMetadataType,
+            None,
+        ]
+    ]
+    expires_at: NotRequired[_dt.datetime]
     created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    responses: NotRequired[Union[list[ExemptionResponseType], None]]
+    html_url: NotRequired[str]
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class ExemptionRequestTypeForResponse(TypedDict):
+    """Exemption Request
 
-    A suite of checks performed on the code of a given code change
+    A request from a user to be exempted from a set of rules.
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
+    id: NotRequired[int]
+    number: NotRequired[Union[int, None]]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+            "dependabot_alert_dismissal",
         ]
     ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    exemption_request_data: NotRequired[
+        Union[
+            ExemptionRequestPushRulesetBypassTypeForResponse,
+            ExemptionRequestSecretScanningTypeForResponse,
+            DismissalRequestSecretScanningTypeForResponse,
+            DismissalRequestCodeScanningTypeForResponse,
+            DismissalRequestDependabotTypeForResponse,
+        ]
     ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[
+        Union[
+            ExemptionRequestSecretScanningMetadataTypeForResponse,
+            DismissalRequestSecretScanningMetadataTypeForResponse,
+            DismissalRequestCodeScanningMetadataTypeForResponse,
+            DismissalRequestDependabotMetadataTypeForResponse,
+            None,
+        ]
+    ]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[ExemptionResponseTypeForResponse], None]]
+    html_url: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningMetadataType(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
+
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
+
+
+class ExemptionRequestSecretScanningMetadataTypeForResponse(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
+
+    Metadata for a secret scanning push protection exemption request.
+    """
+
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
+
+
+class DismissalRequestSecretScanningMetadataType(TypedDict):
+    """Secret scanning alert dismissal request metadata
+
+    Metadata for a secret scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+class DismissalRequestSecretScanningMetadataTypeForResponse(TypedDict):
+    """Secret scanning alert dismissal request metadata
+
+    Metadata for a secret scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+class DismissalRequestCodeScanningMetadataType(TypedDict):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
+
+
+class DismissalRequestCodeScanningMetadataTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
+
+
+class DismissalRequestDependabotMetadataType(TypedDict):
+    """Dependabot alert dismissal request metadata
+
+    Metadata for a Dependabot alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+
+
+class DismissalRequestDependabotMetadataTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request metadata
+
+    Metadata for a Dependabot alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+
+
+class ExemptionRequestPushRulesetBypassType(TypedDict):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
+
+
+class ExemptionRequestPushRulesetBypassTypeForResponse(TypedDict):
+    """Push ruleset bypass exemption request data
+
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[
+        list[ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse]
+    ]
+
+
+class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+class ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
+
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+class DismissalRequestSecretScanningType(TypedDict):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["secret_scanning_closure"]]
+    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsType]]
+
+
+class DismissalRequestSecretScanningTypeForResponse(TypedDict):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["secret_scanning_closure"]]
+    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestSecretScanningPropDataItemsType(TypedDict):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestCodeScanningType(TypedDict):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsType]]
+
+
+class DismissalRequestCodeScanningTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestCodeScanningPropDataItemsType(TypedDict):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestCodeScanningPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestDependabotType(TypedDict):
+    """Dependabot alert dismissal request data
+
+    Dependabot alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["dependabot_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestDependabotPropDataItemsType]]
+
+
+class DismissalRequestDependabotTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request data
+
+    Dependabot alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["dependabot_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestDependabotPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestDependabotPropDataItemsType(TypedDict):
+    """DismissalRequestDependabotPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestDependabotPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestDependabotPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningType(TypedDict):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
+
+
+class ExemptionRequestSecretScanningTypeForResponse(TypedDict):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsTypeForResponse]]
+
+
+class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[
+            ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse(
+    TypedDict
+):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "DismissalRequestCodeScanningMetadataType",
+    "DismissalRequestCodeScanningMetadataTypeForResponse",
+    "DismissalRequestCodeScanningPropDataItemsType",
+    "DismissalRequestCodeScanningPropDataItemsTypeForResponse",
+    "DismissalRequestCodeScanningType",
+    "DismissalRequestCodeScanningTypeForResponse",
+    "DismissalRequestDependabotMetadataType",
+    "DismissalRequestDependabotMetadataTypeForResponse",
+    "DismissalRequestDependabotPropDataItemsType",
+    "DismissalRequestDependabotPropDataItemsTypeForResponse",
+    "DismissalRequestDependabotType",
+    "DismissalRequestDependabotTypeForResponse",
+    "DismissalRequestSecretScanningMetadataType",
+    "DismissalRequestSecretScanningMetadataTypeForResponse",
+    "DismissalRequestSecretScanningPropDataItemsType",
+    "DismissalRequestSecretScanningPropDataItemsTypeForResponse",
+    "DismissalRequestSecretScanningType",
+    "DismissalRequestSecretScanningTypeForResponse",
+    "ExemptionRequestPushRulesetBypassPropDataItemsType",
+    "ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse",
+    "ExemptionRequestPushRulesetBypassType",
+    "ExemptionRequestPushRulesetBypassTypeForResponse",
+    "ExemptionRequestSecretScanningMetadataType",
+    "ExemptionRequestSecretScanningMetadataTypeForResponse",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse",
+    "ExemptionRequestSecretScanningPropDataItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsTypeForResponse",
+    "ExemptionRequestSecretScanningType",
+    "ExemptionRequestSecretScanningTypeForResponse",
+    "ExemptionRequestType",
+    "ExemptionRequestTypeForResponse",
 )

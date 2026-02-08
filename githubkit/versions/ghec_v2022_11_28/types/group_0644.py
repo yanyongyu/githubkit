@@ -14,18 +14,18 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0107 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["updated"]
+    action: Literal["promote_to_enterprise"]
     definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,10 +33,10 @@ class WebhookCustomPropertyUpdatedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """custom property updated event"""
+class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
+    """custom property promoted to business event"""
 
-    action: Literal["updated"]
+    action: Literal["promote_to_enterprise"]
     definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCustomPropertyUpdatedType",
-    "WebhookCustomPropertyUpdatedTypeForResponse",
+    "WebhookCustomPropertyPromotedToEnterpriseType",
+    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
 )

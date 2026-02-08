@@ -22,7 +22,7 @@ class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
     """RepositoryRuleBranchNamePatternPropParameters"""
 
     name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+        default=UNSET, description="How this rule appears when configuring it."
     )
     negate: Missing[bool] = Field(
         default=UNSET, description="If true, the rule will fail if the pattern matches."

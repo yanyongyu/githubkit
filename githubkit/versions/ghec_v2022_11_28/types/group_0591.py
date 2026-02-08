@@ -14,167 +14,43 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0082 import TeamSimpleType, TeamSimpleTypeForResponse
-from .group_0197 import MilestoneType, MilestoneTypeForResponse
-from .group_0292 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0465 import (
-    PullRequestPropLabelsItemsType,
-    PullRequestPropLabelsItemsTypeForResponse,
-)
-from .group_0466 import (
-    PullRequestPropBaseType,
-    PullRequestPropBaseTypeForResponse,
-    PullRequestPropHeadType,
-    PullRequestPropHeadTypeForResponse,
-)
-from .group_0467 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
-class PullRequestWebhookType(TypedDict):
-    """PullRequestWebhook"""
+class ProjectsV2ItemType(TypedDict):
+    """Projects v2 Item
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleType], None]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    archived_at: Union[_dt.datetime, None]
 
 
-class PullRequestWebhookTypeForResponse(TypedDict):
-    """PullRequestWebhook"""
+class ProjectsV2ItemTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleTypeForResponse], None]]
-    head: PullRequestPropHeadTypeForResponse
-    base: PullRequestPropBaseTypeForResponse
-    links: PullRequestPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserTypeForResponse]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    archived_at: Union[str, None]
 
 
 __all__ = (
-    "PullRequestWebhookType",
-    "PullRequestWebhookTypeForResponse",
+    "ProjectsV2ItemType",
+    "ProjectsV2ItemTypeForResponse",
 )

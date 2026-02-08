@@ -9,61 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0334 import MetadataType, MetadataTypeForResponse
+from .group_0335 import MetadataType, MetadataTypeForResponse
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
+    package_url: NotRequired[str]
     metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
 
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
+    package_url: NotRequired[str]
     metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
-
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "DependencyType",
+    "DependencyTypeForResponse",
 )

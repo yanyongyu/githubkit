@@ -18,38 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0473 import EnterpriseWebhooks
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
-from .group_0493 import WebhooksMilestone
-from .group_0669 import WebhookIssuesMilestonedPropIssue
+from .group_0020 import Repository
+from .group_0050 import Issue
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
 
 
-class WebhookIssuesMilestoned(GitHubModel):
-    """issues milestoned event"""
+class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
+    """blocking issue removed event"""
 
-    action: Literal["milestoned"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["blocking_removed"] = Field()
+    blocked_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocked issue."
+    )
+    blocked_issue: Missing[Issue] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    blocked_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    blocking_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocking issue."
+    )
+    blocking_issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesMilestonedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
-    )
-    milestone: WebhooksMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -60,6 +64,6 @@ class WebhookIssuesMilestoned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesMilestoned)
+model_rebuild(WebhookIssueDependenciesBlockingRemoved)
 
-__all__ = ("WebhookIssuesMilestoned",)
+__all__ = ("WebhookIssueDependenciesBlockingRemoved",)

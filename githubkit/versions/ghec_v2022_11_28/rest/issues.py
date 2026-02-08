@@ -1348,6 +1348,180 @@ class IssuesClient:
             },
         )
 
+    def pin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
+        """issues/pin-comment
+
+        PUT /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to pin comments on issues.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        """
+
+        from ..models import BasicError, IssueComment, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueComment,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_pin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[IssueComment, IssueCommentTypeForResponse]:
+        """issues/pin-comment
+
+        PUT /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to pin comments on issues.
+
+        This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/enterprise-cloud@latest//rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+
+        - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#pin-an-issue-comment
+        """
+
+        from ..models import BasicError, IssueComment, ValidationError
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueComment,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def unpin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/unpin-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to unpin comments on issues.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_unpin_comment(
+        self,
+        owner: str,
+        repo: str,
+        comment_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/unpin-comment
+
+        DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/pin
+
+        You can use the REST API to unpin comments on issues.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/issues/comments#unpin-an-issue-comment
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def list_events_for_repo(
         self,
         owner: str,

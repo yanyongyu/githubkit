@@ -11,34 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0315 import RateLimitType, RateLimitTypeForResponse
-from .group_0317 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
+
+class RateLimitType(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
-
-
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

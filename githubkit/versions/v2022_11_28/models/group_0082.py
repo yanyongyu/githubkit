@@ -9,89 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ApiOverview(GitHubModel):
-    """Api Overview
-
-    Api Overview
-    """
-
-    verifiable_password_authentication: bool = Field()
-    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
-        default=UNSET
-    )
-    ssh_keys: Missing[list[str]] = Field(default=UNSET)
-    hooks: Missing[list[str]] = Field(default=UNSET)
-    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
-    web: Missing[list[str]] = Field(default=UNSET)
-    api: Missing[list[str]] = Field(default=UNSET)
-    git: Missing[list[str]] = Field(default=UNSET)
-    packages: Missing[list[str]] = Field(default=UNSET)
-    pages: Missing[list[str]] = Field(default=UNSET)
-    importer: Missing[list[str]] = Field(default=UNSET)
-    actions: Missing[list[str]] = Field(default=UNSET)
-    actions_macos: Missing[list[str]] = Field(default=UNSET)
-    codespaces: Missing[list[str]] = Field(default=UNSET)
-    dependabot: Missing[list[str]] = Field(default=UNSET)
-    copilot: Missing[list[str]] = Field(default=UNSET)
-    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+from .group_0080 import MarketplaceListingPlan
 
 
-class ApiOverviewPropSshKeyFingerprints(GitHubModel):
-    """ApiOverviewPropSshKeyFingerprints"""
+class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
-    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
-    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
-    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
-
-
-class ApiOverviewPropDomains(GitHubModel):
-    """ApiOverviewPropDomains"""
-
-    website: Missing[list[str]] = Field(default=UNSET)
-    codespaces: Missing[list[str]] = Field(default=UNSET)
-    copilot: Missing[list[str]] = Field(default=UNSET)
-    packages: Missing[list[str]] = Field(default=UNSET)
-    actions: Missing[list[str]] = Field(default=UNSET)
-    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
-        default=UNSET
-    )
-    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
-        Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    effective_date: Missing[str] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
 
 
-class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
-    """ApiOverviewPropDomainsPropActionsInbound"""
+class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    full_domains: Missing[list[str]] = Field(default=UNSET)
-    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
+    )
 
 
-class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
-
-    trust_domain: Missing[str] = Field(default=UNSET)
-    services: Missing[list[str]] = Field(default=UNSET)
-
-
-model_rebuild(ApiOverview)
-model_rebuild(ApiOverviewPropSshKeyFingerprints)
-model_rebuild(ApiOverviewPropDomains)
-model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
-model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
+model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
+model_rebuild(MarketplacePurchasePropMarketplacePurchase)
 
 __all__ = (
-    "ApiOverview",
-    "ApiOverviewPropDomains",
-    "ApiOverviewPropDomainsPropActionsInbound",
-    "ApiOverviewPropDomainsPropArtifactAttestations",
-    "ApiOverviewPropSshKeyFingerprints",
+    "MarketplacePurchasePropMarketplacePendingChange",
+    "MarketplacePurchasePropMarketplacePurchase",
 )

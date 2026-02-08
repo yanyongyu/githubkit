@@ -13,40 +13,54 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0105 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0580 import (
+    WebhooksMarketplacePurchaseType,
+    WebhooksMarketplacePurchaseTypeForResponse,
+)
+from .group_0581 import (
+    WebhooksPreviousMarketplacePurchaseType,
+    WebhooksPreviousMarketplacePurchaseTypeForResponse,
+)
 
 
-class WebhookOrganizationCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookMarketplacePurchaseCancelledType(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["updated"]
-    enterprise: EnterpriseWebhooksType
+    action: Literal["cancelled"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserType]
-    new_property_values: list[CustomPropertyValueType]
-    old_property_values: list[CustomPropertyValueType]
+    marketplace_purchase: WebhooksMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
-    """Custom property values updated event"""
+class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
+    """marketplace_purchase cancelled event"""
 
-    action: Literal["updated"]
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["cancelled"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
-    new_property_values: list[CustomPropertyValueTypeForResponse]
-    old_property_values: list[CustomPropertyValueTypeForResponse]
+    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    previous_marketplace_purchase: NotRequired[
+        WebhooksPreviousMarketplacePurchaseTypeForResponse
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyValuesUpdatedType",
-    "WebhookOrganizationCustomPropertyValuesUpdatedTypeForResponse",
+    "WebhookMarketplacePurchaseCancelledType",
+    "WebhookMarketplacePurchaseCancelledTypeForResponse",
 )

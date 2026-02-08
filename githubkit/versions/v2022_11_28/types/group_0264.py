@@ -10,78 +10,78 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
 
 
-class DeploymentType(TypedDict):
-    """Deployment
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
 
 
-class DeploymentTypeForResponse(TypedDict):
-    """Deployment
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
 
 
-DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "DeploymentPropPayloadOneof0Type",
-    "DeploymentPropPayloadOneof0TypeForResponse",
-    "DeploymentType",
-    "DeploymentTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

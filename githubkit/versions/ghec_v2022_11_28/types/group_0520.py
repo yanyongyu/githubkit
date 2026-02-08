@@ -9,85 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0519 import MetaType, MetaTypeForResponse
+
+class MetaType(TypedDict):
+    """Meta
+
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class MetaTypeForResponse(TypedDict):
+    """Meta
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponse"""
-
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaTypeForResponse]
-
-
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
-
-
-class ScimEnterpriseGroupListTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
 __all__ = (
-    "ScimEnterpriseGroupListType",
-    "ScimEnterpriseGroupListTypeForResponse",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseTypeForResponse",
+    "MetaType",
+    "MetaTypeForResponse",
 )

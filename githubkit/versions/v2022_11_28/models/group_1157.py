@@ -15,35 +15,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
 
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: Missing[WebhookConfig] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
-    )
-    add_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
-    )
-    remove_events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)

@@ -9,103 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
 
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
-
-    Commit Comment
+    Repository Collaborator Permission
     """
 
-    html_url: str
-    url: str
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorType]
+
+
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
+
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[None, CollaboratorTypeForResponse]
+
+
+class CollaboratorType(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
     id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
     node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupType]
-
-
-class CommitCommentTypeForResponse(TypedDict):
-    """Commit Comment
-
-    Commit Comment
-    """
-
-    html_url: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
     id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
     node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
 
 
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
 
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
-class TimelineCommitCommentedEventTypeForResponse(TypedDict):
-    """Timeline Commit Commented Event
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
+    """CollaboratorPropPermissions"""
 
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentTypeForResponse]]
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "CommitCommentType",
-    "CommitCommentTypeForResponse",
-    "TimelineCommitCommentedEventType",
-    "TimelineCommitCommentedEventTypeForResponse",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
+    "CollaboratorType",
+    "CollaboratorTypeForResponse",
+    "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

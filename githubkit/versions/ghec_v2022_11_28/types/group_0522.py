@@ -9,45 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class GroupType(TypedDict):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
+from .group_0520 import MetaType, MetaTypeForResponse
 
 
-class GroupTypeForResponse(TypedDict):
-    """Group"""
+class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
-
-
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    id: NotRequired[str]
+    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
+    meta: NotRequired[MetaType]
 
 
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
+class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    value: str
-    display_name: str
+    id: NotRequired[str]
+    members: NotRequired[
+        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    ]
+    meta: NotRequired[MetaTypeForResponse]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1Type",
+    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
 )

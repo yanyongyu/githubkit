@@ -18,13 +18,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0258 import DismissalRequestResponse
+from .group_0259 import DismissalRequestResponse
 
 
-class DependabotAlertDismissalRequest(GitHubModel):
-    """Dependabot alert dismissal request
+class CodeScanningAlertDismissalRequest(GitHubModel):
+    """Code scanning alert dismissal request
 
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
     id: Missing[int] = Field(
@@ -34,20 +34,20 @@ class DependabotAlertDismissalRequest(GitHubModel):
         default=UNSET,
         description="The number uniquely identifying the dismissal request within its repository.",
     )
-    repository: Missing[DependabotAlertDismissalRequestPropRepository] = Field(
+    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
         default=UNSET, description="The repository the dismissal request is for."
     )
-    organization: Missing[DependabotAlertDismissalRequestPropOrganization] = Field(
+    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
         default=UNSET,
         description="The organization associated with the repository the dismissal request is for.",
     )
-    requester: Missing[DependabotAlertDismissalRequestPropRequester] = Field(
+    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
         default=UNSET, description="The user who requested the dismissal request."
     )
     request_type: Missing[str] = Field(
         default=UNSET, description="The type of request."
     )
-    data: Missing[Union[list[DependabotAlertDismissalRequestPropDataItems], None]] = (
+    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
         Field(
             default=UNSET, description="Data describing the dismissal request metadata."
         )
@@ -80,8 +80,8 @@ class DependabotAlertDismissalRequest(GitHubModel):
     )
 
 
-class DependabotAlertDismissalRequestPropRepository(GitHubModel):
-    """DependabotAlertDismissalRequestPropRepository
+class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRepository
 
     The repository the dismissal request is for.
     """
@@ -100,8 +100,8 @@ class DependabotAlertDismissalRequestPropRepository(GitHubModel):
     )
 
 
-class DependabotAlertDismissalRequestPropOrganization(GitHubModel):
-    """DependabotAlertDismissalRequestPropOrganization
+class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropOrganization
 
     The organization associated with the repository the dismissal request is for.
     """
@@ -112,8 +112,8 @@ class DependabotAlertDismissalRequestPropOrganization(GitHubModel):
     )
 
 
-class DependabotAlertDismissalRequestPropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestPropRequester
+class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropRequester
 
     The user who requested the dismissal request.
     """
@@ -128,28 +128,28 @@ class DependabotAlertDismissalRequestPropRequester(GitHubModel):
     )
 
 
-class DependabotAlertDismissalRequestPropDataItems(GitHubModel):
-    """DependabotAlertDismissalRequestPropDataItems"""
+class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
 
     reason: Missing[str] = Field(
         default=UNSET, description="The reason for the dismissal request."
     )
-    alert_number: Missing[str] = Field(default=UNSET, description="The alert number.")
-    alert_title: Missing[str] = Field(
-        default=UNSET, description="The title of the alert."
+    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
+    pr_review_thread_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the pull request review thread."
     )
 
 
-model_rebuild(DependabotAlertDismissalRequest)
-model_rebuild(DependabotAlertDismissalRequestPropRepository)
-model_rebuild(DependabotAlertDismissalRequestPropOrganization)
-model_rebuild(DependabotAlertDismissalRequestPropRequester)
-model_rebuild(DependabotAlertDismissalRequestPropDataItems)
+model_rebuild(CodeScanningAlertDismissalRequest)
+model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
+model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
+model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
+model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
 
 __all__ = (
-    "DependabotAlertDismissalRequest",
-    "DependabotAlertDismissalRequestPropDataItems",
-    "DependabotAlertDismissalRequestPropOrganization",
-    "DependabotAlertDismissalRequestPropRepository",
-    "DependabotAlertDismissalRequestPropRequester",
+    "CodeScanningAlertDismissalRequest",
+    "CodeScanningAlertDismissalRequestPropDataItems",
+    "CodeScanningAlertDismissalRequestPropOrganization",
+    "CodeScanningAlertDismissalRequestPropRepository",
+    "CodeScanningAlertDismissalRequestPropRequester",
 )

@@ -1995,6 +1995,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         PersonalAccessTokenRequestType as PersonalAccessTokenRequestType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        PinnedIssueCommentType as PinnedIssueCommentType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         PorterAuthorType as PorterAuthorType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3550,6 +3553,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         SecurityAndAnalysisPropSecretScanningAiDetectionType as SecurityAndAnalysisPropSecretScanningAiDetectionType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5070,6 +5076,168 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssueCommentEditedType as WebhookIssueCommentEditedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType as WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType as WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType as WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType as WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType as WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType as WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType as WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0PropUserType as WebhookIssueCommentPinnedPropIssueAllof0PropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof0Type as WebhookIssueCommentPinnedPropIssueAllof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItemsType as WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropAssigneeType as WebhookIssueCommentPinnedPropIssueAllof1PropAssigneeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItemsType as WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropMilestoneType as WebhookIssueCommentPinnedPropIssueAllof1PropMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubAppType as WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropReactionsType as WebhookIssueCommentPinnedPropIssueAllof1PropReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1PropUserType as WebhookIssueCommentPinnedPropIssueAllof1PropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueAllof1Type as WebhookIssueCommentPinnedPropIssueAllof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueMergedAssigneesType as WebhookIssueCommentPinnedPropIssueMergedAssigneesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueMergedMilestoneType as WebhookIssueCommentPinnedPropIssueMergedMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType as WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueMergedReactionsType as WebhookIssueCommentPinnedPropIssueMergedReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueMergedUserType as WebhookIssueCommentPinnedPropIssueMergedUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedPropIssueType as WebhookIssueCommentPinnedPropIssueType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentPinnedType as WebhookIssueCommentPinnedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType as WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType as WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType as WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType as WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof0Type as WebhookIssueCommentUnpinnedPropIssueAllof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType as WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType as WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType as WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType as WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType as WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueAllof1Type as WebhookIssueCommentUnpinnedPropIssueAllof1Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueMergedAssigneesType as WebhookIssueCommentUnpinnedPropIssueMergedAssigneesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType as WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType as WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueMergedReactionsType as WebhookIssueCommentUnpinnedPropIssueMergedReactionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueMergedUserType as WebhookIssueCommentUnpinnedPropIssueMergedUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedPropIssueType as WebhookIssueCommentUnpinnedPropIssueType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookIssueCommentUnpinnedType as WebhookIssueCommentUnpinnedType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssueDependenciesBlockedByAddedType as WebhookIssueDependenciesBlockedByAddedType,
@@ -10359,6 +10527,7 @@ else:
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
+            "PinnedIssueCommentType",
             "IssueCommentType",
             "PullRequestMinimalType",
             "PullRequestMinimalPropHeadType",
@@ -10438,6 +10607,7 @@ else:
             "SecurityAndAnalysisPropSecretScanningPushProtectionType",
             "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
             "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+            "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
             "MinimalRepositoryType",
             "CodeOfConductType",
             "MinimalRepositoryPropPermissionsType",
@@ -11680,6 +11850,60 @@ else:
             "WebhookIssueCommentEditedPropIssueAllof1PropUserType",
             "WebhookIssueCommentEditedPropIssueMergedMilestoneType",
             "WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubAppType",
+            "WebhookIssueCommentPinnedType",
+            "WebhookIssueCommentPinnedPropIssueType",
+            "WebhookIssueCommentPinnedPropIssueMergedAssigneesType",
+            "WebhookIssueCommentPinnedPropIssueMergedReactionsType",
+            "WebhookIssueCommentPinnedPropIssueMergedUserType",
+            "WebhookIssueCommentPinnedPropIssueAllof0Type",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropUserType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+            "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType",
+            "WebhookIssueCommentPinnedPropIssueAllof1Type",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropAssigneeType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItemsType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItemsType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropMilestoneType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubAppType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropReactionsType",
+            "WebhookIssueCommentPinnedPropIssueAllof1PropUserType",
+            "WebhookIssueCommentPinnedPropIssueMergedMilestoneType",
+            "WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubAppType",
+            "WebhookIssueCommentUnpinnedType",
+            "WebhookIssueCommentUnpinnedPropIssueType",
+            "WebhookIssueCommentUnpinnedPropIssueMergedAssigneesType",
+            "WebhookIssueCommentUnpinnedPropIssueMergedReactionsType",
+            "WebhookIssueCommentUnpinnedPropIssueMergedUserType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0Type",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1Type",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType",
+            "WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType",
+            "WebhookIssueCommentUnpinnedPropIssueMergedMilestoneType",
+            "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType",
             "WebhookIssueDependenciesBlockedByAddedType",
             "WebhookIssueDependenciesBlockedByRemovedType",
             "WebhookIssueDependenciesBlockingAddedType",

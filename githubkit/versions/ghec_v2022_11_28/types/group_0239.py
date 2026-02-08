@@ -10,45 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
+    Thread Subscription
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
-    """Organization Custom Repository Role
+class ThreadSubscriptionTypeForResponse(TypedDict):
+    """Thread Subscription
 
-    Custom repository roles created by organization owners
+    Thread Subscription
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[str, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleType",
-    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "ThreadSubscriptionType",
+    "ThreadSubscriptionTypeForResponse",
 )

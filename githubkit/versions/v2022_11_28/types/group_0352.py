@@ -11,56 +11,78 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0278 import VerificationType, VerificationTypeForResponse
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class GitTagType(TypedDict):
+    """Git Tag
+
+    Metadata for a Git tag
     """
 
+    node_id: str
+    tag: str
     sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    The hierarchy between files in a Git repository.
+    Metadata for a Git tag
     """
 
+    node_id: str
+    tag: str
     sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
+    url: str
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    path: str
-    mode: str
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
     type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
     sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
     type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

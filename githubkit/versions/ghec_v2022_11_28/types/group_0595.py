@@ -14,13 +14,15 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
+class WebhooksReviewCommentType(TypedDict):
+    """Pull Request Review Comment
 
-    The review that was affected.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
     """
 
-    links: WebhooksReviewPropLinksType
+    links: WebhooksReviewCommentPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -31,25 +33,42 @@ class WebhooksReviewType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
+    body: str
     commit_id: str
+    created_at: _dt.datetime
+    diff_hunk: str
     html_url: str
     id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
     node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
     pull_request_url: str
-    state: str
-    submitted_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    user: Union[WebhooksReviewPropUserType, None]
+    reactions: WebhooksReviewCommentPropReactionsType
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhooksReviewCommentPropUserType, None]
 
 
-class WebhooksReviewTypeForResponse(TypedDict):
-    """WebhooksReview
+class WebhooksReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
 
-    The review that was affected.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
     """
 
-    links: WebhooksReviewPropLinksTypeForResponse
+    links: WebhooksReviewCommentPropLinksTypeForResponse
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -60,19 +79,64 @@ class WebhooksReviewTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
+    body: str
     commit_id: str
+    created_at: str
+    diff_hunk: str
     html_url: str
     id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
     node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
     pull_request_url: str
-    state: str
-    submitted_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    user: Union[WebhooksReviewPropUserTypeForResponse, None]
+    reactions: WebhooksReviewCommentPropReactionsTypeForResponse
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: str
+    url: str
+    user: Union[WebhooksReviewCommentPropUserTypeForResponse, None]
 
 
-class WebhooksReviewPropUserType(TypedDict):
+class WebhooksReviewCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksReviewCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,7 +163,7 @@ class WebhooksReviewPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropUserTypeForResponse(TypedDict):
+class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -126,53 +190,71 @@ class WebhooksReviewPropUserTypeForResponse(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
+class WebhooksReviewCommentPropLinksType(TypedDict):
+    """WebhooksReviewCommentPropLinks"""
 
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksTypeForResponse(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlTypeForResponse
-    pull_request: WebhooksReviewPropLinksPropPullRequestTypeForResponse
+    html: WebhooksReviewCommentPropLinksPropHtmlType
+    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
+    self_: WebhooksReviewCommentPropLinksPropSelfType
 
 
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
+class WebhooksReviewCommentPropLinksTypeForResponse(TypedDict):
+    """WebhooksReviewCommentPropLinks"""
+
+    html: WebhooksReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse
+    self_: WebhooksReviewCommentPropLinksPropSelfTypeForResponse
+
+
+class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
     """Link"""
 
     href: str
 
 
-class WebhooksReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+class WebhooksReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
     """Link"""
 
     href: str
 
 
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
+class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
     """Link"""
 
     href: str
 
 
-class WebhooksReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
+class WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
     """Link"""
 
     href: str
 
 
 __all__ = (
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropHtmlTypeForResponse",
-    "WebhooksReviewPropLinksPropPullRequestType",
-    "WebhooksReviewPropLinksPropPullRequestTypeForResponse",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropLinksTypeForResponse",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewPropUserTypeForResponse",
-    "WebhooksReviewType",
-    "WebhooksReviewTypeForResponse",
+    "WebhooksReviewCommentPropLinksPropHtmlType",
+    "WebhooksReviewCommentPropLinksPropHtmlTypeForResponse",
+    "WebhooksReviewCommentPropLinksPropPullRequestType",
+    "WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse",
+    "WebhooksReviewCommentPropLinksPropSelfType",
+    "WebhooksReviewCommentPropLinksPropSelfTypeForResponse",
+    "WebhooksReviewCommentPropLinksType",
+    "WebhooksReviewCommentPropLinksTypeForResponse",
+    "WebhooksReviewCommentPropReactionsType",
+    "WebhooksReviewCommentPropReactionsTypeForResponse",
+    "WebhooksReviewCommentPropUserType",
+    "WebhooksReviewCommentPropUserTypeForResponse",
+    "WebhooksReviewCommentType",
+    "WebhooksReviewCommentTypeForResponse",
 )

@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsForkPrContributorApprovalType(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class ActionsArtifactAndLogRetentionType(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    days: int
 
 
-class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetention"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    days: int
 
 
 __all__ = (
-    "ActionsForkPrContributorApprovalType",
-    "ActionsForkPrContributorApprovalTypeForResponse",
+    "ActionsArtifactAndLogRetentionType",
+    "ActionsArtifactAndLogRetentionTypeForResponse",
 )

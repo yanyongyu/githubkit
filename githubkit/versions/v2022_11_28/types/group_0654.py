@@ -9,32 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0476 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0491 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0655 import (
+    WebhookIssueCommentUnpinnedPropIssueType,
+    WebhookIssueCommentUnpinnedPropIssueTypeForResponse,
+)
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+class WebhookIssueCommentUnpinnedType(TypedDict):
+    """issue_comment unpinned event"""
+
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentUnpinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentUnpinnedTypeForResponse(TypedDict):
+    """issue_comment unpinned event"""
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentUnpinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentUnpinnedType",
+    "WebhookIssueCommentUnpinnedTypeForResponse",
 )

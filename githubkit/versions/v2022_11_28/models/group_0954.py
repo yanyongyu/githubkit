@@ -11,19 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0101 import ActionsHostedRunnerCuratedImage
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
-    )
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCuratedImage] = Field()
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",)

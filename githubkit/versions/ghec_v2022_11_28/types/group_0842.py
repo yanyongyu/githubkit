@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0589 import (
-    WebhooksProjectChangesType,
-    WebhooksProjectChangesTypeForResponse,
-)
-from .group_0590 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0843 import WebhookPingPropHookType, WebhookPingPropHookTypeForResponse
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserType
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    zen: NotRequired[str]
 
 
-class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookPingTypeForResponse(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
-    sender: SimpleUserTypeForResponse
+    hook: NotRequired[WebhookPingPropHookTypeForResponse]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    zen: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedTypeForResponse",
+    "WebhookPingType",
+    "WebhookPingTypeForResponse",
 )

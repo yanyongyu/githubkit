@@ -19,13 +19,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
+class WebhooksReviewComment(GitHubModel):
+    """Pull Request Review Comment
 
-    The review that was affected.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
     """
 
-    links: WebhooksReviewPropLinks = Field(alias="_links")
+    links: WebhooksReviewCommentPropLinks = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -39,19 +41,83 @@ class WebhooksReview(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[_dt.datetime, None] = Field()
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
+    body: str = Field(description="The text of the comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
+    )
+    created_at: _dt.datetime = Field()
+    diff_hunk: str = Field(
+        description="The diff of the line that the comment refers to."
+    )
+    html_url: str = Field(description="HTML URL for the pull request review comment.")
+    id: int = Field(description="The ID of the pull request review comment.")
+    in_reply_to_id: Missing[int] = Field(
+        default=UNSET, description="The comment ID to reply to."
+    )
+    line: Union[int, None] = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    node_id: str = Field(description="The node ID of the pull request review comment.")
+    original_commit_id: str = Field(
+        description="The SHA of the original commit to which the comment applies."
+    )
+    original_line: int = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    original_position: int = Field(
+        description="The index of the original line in the diff to which the comment applies."
+    )
+    original_start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    path: str = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Union[int, None] = Field(
+        description="The line index in the diff to which the comment applies."
+    )
+    pull_request_review_id: Union[int, None] = Field(
+        description="The ID of the pull request review to which the comment belongs."
+    )
+    pull_request_url: str = Field(
+        description="URL for the pull request that the review comment belongs to."
+    )
+    reactions: WebhooksReviewCommentPropReactions = Field(title="Reactions")
+    side: Literal["LEFT", "RIGHT"] = Field(
+        description="The side of the first line of the range for a multi-line comment."
+    )
+    start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    start_side: Union[None, Literal["LEFT", "RIGHT"]] = Field(
+        default="RIGHT",
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
+    updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the pull request review comment")
+    user: Union[WebhooksReviewCommentPropUser, None] = Field(title="User")
 
 
-class WebhooksReviewPropUser(GitHubModel):
+class WebhooksReviewCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhooksReviewCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -78,35 +144,46 @@ class WebhooksReviewPropUser(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
+class WebhooksReviewCommentPropLinks(GitHubModel):
+    """WebhooksReviewCommentPropLinks"""
 
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+    html: WebhooksReviewCommentPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewCommentPropLinksPropPullRequest = Field(title="Link")
+    self_: WebhooksReviewCommentPropLinksPropSelf = Field(alias="self", title="Link")
 
 
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
+class WebhooksReviewCommentPropLinksPropHtml(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+class WebhooksReviewCommentPropLinksPropPullRequest(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+class WebhooksReviewCommentPropLinksPropSelf(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReviewComment)
+model_rebuild(WebhooksReviewCommentPropReactions)
+model_rebuild(WebhooksReviewCommentPropUser)
+model_rebuild(WebhooksReviewCommentPropLinks)
+model_rebuild(WebhooksReviewCommentPropLinksPropHtml)
+model_rebuild(WebhooksReviewCommentPropLinksPropPullRequest)
+model_rebuild(WebhooksReviewCommentPropLinksPropSelf)
 
 __all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
+    "WebhooksReviewComment",
+    "WebhooksReviewCommentPropLinks",
+    "WebhooksReviewCommentPropLinksPropHtml",
+    "WebhooksReviewCommentPropLinksPropPullRequest",
+    "WebhooksReviewCommentPropLinksPropSelf",
+    "WebhooksReviewCommentPropReactions",
+    "WebhooksReviewCommentPropUser",
 )

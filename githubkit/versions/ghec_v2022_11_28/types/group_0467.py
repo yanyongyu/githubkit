@@ -9,38 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0291 import LinkType, LinkTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class PullRequestPropLinksTypeForResponse(TypedDict):
-    """PullRequestPropLinks"""
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PullRequestPropLinksType",
-    "PullRequestPropLinksTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

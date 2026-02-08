@@ -9,48 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0519 import MetaType, MetaTypeForResponse
+from .group_0520 import MetaType, MetaTypeForResponse
 
 
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class ScimEnterpriseGroupResponseType(TypedDict):
+    """ScimEnterpriseGroupResponse"""
 
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
     id: NotRequired[str]
-    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
     meta: NotRequired[MetaType]
 
 
-class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponse"""
 
-    id: NotRequired[str]
-    members: NotRequired[
-        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
     ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
+    id: NotRequired[str]
     meta: NotRequired[MetaTypeForResponse]
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
+    value: str
+    ref: str
     display: NotRequired[str]
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
+    value: str
+    ref: str
     display: NotRequired[str]
+
+
+class ScimEnterpriseGroupListType(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseType]
+    start_index: int
+    items_per_page: int
+
+
+class ScimEnterpriseGroupListTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
+    "ScimEnterpriseGroupListType",
+    "ScimEnterpriseGroupListTypeForResponse",
+    "ScimEnterpriseGroupResponseMergedMembersType",
+    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
+    "ScimEnterpriseGroupResponseType",
+    "ScimEnterpriseGroupResponseTypeForResponse",
 )

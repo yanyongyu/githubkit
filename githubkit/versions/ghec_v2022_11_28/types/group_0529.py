@@ -11,24 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+from .group_0520 import MetaType, MetaTypeForResponse
+from .group_0530 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
+
+
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
+
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
-    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

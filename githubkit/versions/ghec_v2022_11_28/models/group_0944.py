@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +19,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0554 import EnterpriseWebhooks
-from .group_0555 import SimpleInstallation
-from .group_0556 import OrganizationSimpleWebhooks
-from .group_0557 import RepositoryWebhooks
-from .group_0601 import WebhooksSponsorship
+from .group_0555 import EnterpriseWebhooks
+from .group_0556 import SimpleInstallation
+from .group_0557 import OrganizationSimpleWebhooks
+from .group_0558 import RepositoryWebhooks
 
 
-class WebhookSponsorshipPendingCancellation(GitHubModel):
-    """sponsorship pending_cancellation event"""
+class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["pending_cancellation"] = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    action: Literal["dismiss"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -48,15 +48,74 @@ class WebhookSponsorshipPendingCancellation(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipPendingCancellation)
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-__all__ = ("WebhookSponsorshipPendingCancellation",)
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
+    ] = Field(title="User")
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["dismissed"] = Field()
+
+
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
+
+__all__ = (
+    "WebhookRepositoryVulnerabilityAlertDismiss",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
+)

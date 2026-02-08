@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,15 +19,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    role: Missing[Literal["admin", "member"]] = Field(
+    total_count: int = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
+
+
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
     )
 
 
-model_rebuild(OrgsOrgMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
-__all__ = ("OrgsOrgMembershipsUsernamePutBody",)
+__all__ = (
+    "CodespacesOrgSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
+)

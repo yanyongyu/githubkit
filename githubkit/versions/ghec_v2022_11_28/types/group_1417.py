@@ -13,53 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-
-
-class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
-
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
-
-
-class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
-    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
-    "UserCodespacesPostBodyOneof1Type",
-    "UserCodespacesPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
+    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
 )

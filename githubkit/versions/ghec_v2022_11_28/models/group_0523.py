@@ -18,30 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class Group(GitHubModel):
+    """Group"""
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
-        default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
+    )
+    members: Missing[list[GroupPropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
+
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
+    )
+
+
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
+    "Group",
+    "GroupPropMembersItems",
 )

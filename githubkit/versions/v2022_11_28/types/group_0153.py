@@ -15,19 +15,20 @@ from typing_extensions import NotRequired, TypeAlias, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
 
-    Minimal representation of an organization programmatic access grant for
+    Minimal representation of an organization programmatic access grant request for
     enumerations
     """
 
     id: int
+    reason: Union[str, None]
     owner: SimpleUserType
     repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
     token_id: int
     token_name: str
     token_expired: bool
@@ -35,19 +36,22 @@ class OrganizationProgrammaticAccessGrantType(TypedDict):
     token_last_used_at: Union[str, None]
 
 
-class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
-    """Organization Programmatic Access Grant
+class OrganizationProgrammaticAccessGrantRequestTypeForResponse(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
 
-    Minimal representation of an organization programmatic access grant for
+    Minimal representation of an organization programmatic access grant request for
     enumerations
     """
 
     id: int
+    reason: Union[str, None]
     owner: SimpleUserTypeForResponse
     repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
-    access_granted_at: str
+    permissions: (
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse
+    )
+    created_at: str
     token_id: int
     token_name: str
     token_expired: bool
@@ -55,89 +59,93 @@ class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
     token_last_used_at: Union[str, None]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
 
     Permissions requested, categorized by type of permission.
     """
 
     organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
     ]
     repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
     ]
     other: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
     ]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse
+    ]
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+"""
+
+
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
     dict[str, Any]
 )
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
 """
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
+OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
 """
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantTypeForResponse",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse",
+    "OrganizationProgrammaticAccessGrantRequestType",
+    "OrganizationProgrammaticAccessGrantRequestTypeForResponse",
 )

@@ -13,17 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0105 import CustomPropertyValue
+
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+
+    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
 
 
-class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
 
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the repositories."
-    )
-
-
-model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
-
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)

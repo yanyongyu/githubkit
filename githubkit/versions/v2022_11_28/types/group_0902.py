@@ -13,27 +13,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
+    url: NotRequired[str]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: list[
+        WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse
+    ]
+    url: NotRequired[str]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
     name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
-class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
+    TypedDict
+):
+    """Workflow Step"""
 
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
     name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse",
 )

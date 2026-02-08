@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,44 +18,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
+    Private registry configuration for an organization
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
+    )
+    username: Missing[str] = Field(
         default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
+        description="The username to use when authenticating with the private registry.",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
-    created_at: _dt.datetime = Field(
-        description="The time when the status update was created."
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
     )
-    updated_at: _dt.datetime = Field(
-        description="The time when the status update was last updated."
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
     )
-    status: Missing[
-        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
-    )
-    target_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The target date associated with the update."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
-    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("ProjectsV2StatusUpdate",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

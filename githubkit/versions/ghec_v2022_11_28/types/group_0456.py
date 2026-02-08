@@ -9,73 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
 
-
-class LicenseContentType(TypedDict):
-    """License Content
-
-    License Content
-    """
-
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+Language
+"""
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    License Content
-    """
-
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
-
-
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+Language
+"""
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

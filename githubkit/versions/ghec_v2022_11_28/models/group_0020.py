@@ -112,6 +112,9 @@ class Repository(GitHubModel):
     has_discussions: Missing[bool] = Field(
         default=UNSET, description="Whether discussions are enabled."
     )
+    has_pull_requests: Missing[bool] = Field(
+        default=UNSET, description="Whether pull requests are enabled."
+    )
     archived: bool = Field(
         default=False, description="Whether the repository is archived."
     )

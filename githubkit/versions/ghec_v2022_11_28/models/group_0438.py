@@ -22,17 +22,17 @@ from .group_0010 import Integration
 from .group_0083 import Team
 
 
-class ReviewRequestRemovedIssueEvent(GitHubModel):
-    """Review Request Removed Issue Event
+class ReviewRequestedIssueEvent(GitHubModel):
+    """Review Requested Issue Event
 
-    Review Request Removed Issue Event
+    Review Requested Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_request_removed"] = Field()
+    event: Literal["review_requested"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
@@ -50,6 +50,6 @@ class ReviewRequestRemovedIssueEvent(GitHubModel):
     )
 
 
-model_rebuild(ReviewRequestRemovedIssueEvent)
+model_rebuild(ReviewRequestedIssueEvent)
 
-__all__ = ("ReviewRequestRemovedIssueEvent",)
+__all__ = ("ReviewRequestedIssueEvent",)

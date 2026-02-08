@@ -99,6 +99,7 @@ class RepositoryType(TypedDict):
     has_pages: bool
     has_downloads: bool
     has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -205,6 +206,7 @@ class RepositoryTypeForResponse(TypedDict):
     has_pages: bool
     has_downloads: bool
     has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]

@@ -10,64 +10,105 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0405 import MetadataType, MetadataTypeForResponse
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class SnapshotType(TypedDict):
+    """snapshot
 
-    The status of a deployment.
+    Create a new snapshot of a repository's dependencies.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: _dt.datetime
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class SnapshotTypeForResponse(TypedDict):
+    """snapshot
 
-    The status of a deployment.
+    Create a new snapshot of a repository's dependencies.
     """
 
+    version: int
+    job: SnapshotPropJobTypeForResponse
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorTypeForResponse
+    metadata: NotRequired[MetadataTypeForResponse]
+    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
+    scanned: str
+
+
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropJobTypeForResponse(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
     url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserTypeForResponse]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+
+class SnapshotPropDetectorTypeForResponse(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
+    url: str
+
+
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "SnapshotPropDetectorType",
+    "SnapshotPropDetectorTypeForResponse",
+    "SnapshotPropJobType",
+    "SnapshotPropJobTypeForResponse",
+    "SnapshotPropManifestsType",
+    "SnapshotPropManifestsTypeForResponse",
+    "SnapshotType",
+    "SnapshotTypeForResponse",
 )

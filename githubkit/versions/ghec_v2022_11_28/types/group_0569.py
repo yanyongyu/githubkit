@@ -9,12 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksCommentType(TypedDict):
-    """WebhooksComment"""
+class WebhooksAnswerType(TypedDict):
+    """WebhooksAnswer"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: _dt.datetime
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: NotRequired[WebhooksAnswerPropReactionsType]
+    repository_url: str
+    updated_at: _dt.datetime
+    user: Union[WebhooksAnswerPropUserType, None]
+
+
+class WebhooksAnswerTypeForResponse(TypedDict):
+    """WebhooksAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -34,40 +62,13 @@ class WebhooksCommentType(TypedDict):
     id: int
     node_id: str
     parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsType
+    reactions: NotRequired[WebhooksAnswerPropReactionsTypeForResponse]
     repository_url: str
     updated_at: str
-    user: Union[WebhooksCommentPropUserType, None]
+    user: Union[WebhooksAnswerPropUserTypeForResponse, None]
 
 
-class WebhooksCommentTypeForResponse(TypedDict):
-    """WebhooksComment"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsTypeForResponse
-    repository_url: str
-    updated_at: str
-    user: Union[WebhooksCommentPropUserTypeForResponse, None]
-
-
-class WebhooksCommentPropReactionsType(TypedDict):
+class WebhooksAnswerPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -82,7 +83,7 @@ class WebhooksCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
+class WebhooksAnswerPropReactionsTypeForResponse(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -97,7 +98,7 @@ class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
     url: str
 
 
-class WebhooksCommentPropUserType(TypedDict):
+class WebhooksAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -124,7 +125,7 @@ class WebhooksCommentPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksCommentPropUserTypeForResponse(TypedDict):
+class WebhooksAnswerPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -152,10 +153,10 @@ class WebhooksCommentPropUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksCommentPropReactionsType",
-    "WebhooksCommentPropReactionsTypeForResponse",
-    "WebhooksCommentPropUserType",
-    "WebhooksCommentPropUserTypeForResponse",
-    "WebhooksCommentType",
-    "WebhooksCommentTypeForResponse",
+    "WebhooksAnswerPropReactionsType",
+    "WebhooksAnswerPropReactionsTypeForResponse",
+    "WebhooksAnswerPropUserType",
+    "WebhooksAnswerPropUserTypeForResponse",
+    "WebhooksAnswerType",
+    "WebhooksAnswerTypeForResponse",
 )

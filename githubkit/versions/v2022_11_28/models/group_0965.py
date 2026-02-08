@@ -13,77 +13,44 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
-    )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The hex encoded digest of the artifact.",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    status: Literal["deployed", "decommissioned"] = Field(
-        description="The status of the artifact. Can be either deployed or decommissioned."
-    )
-    logical_environment: str = Field(
-        min_length=1, max_length=64, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        min_length=1,
-        max_length=64,
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="The physical region of the deployment.",
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
     )
-    cluster: Missing[str] = Field(default=UNSET, description="The deployment cluster.")
-    deployment_name: str = Field(description="The name of the deployment.")
-    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
-        default=UNSET, description="The tags associated with the deployment."
-    )
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+        description="List of repository IDs that can access the runner group.",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
 
-    The tags associated with the deployment.
-    """
-
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
-)
+__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)

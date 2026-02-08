@@ -18,42 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
-from .group_0050 import Issue
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0476 import RepositoryWebhooks
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
+from .group_0491 import WebhooksIssueComment
+from .group_0644 import WebhookIssueCommentPinnedPropIssue
 
 
-class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
-    """blocked by issue removed event"""
+class WebhookIssueCommentPinned(GitHubModel):
+    """issue_comment pinned event"""
 
-    action: Literal["blocked_by_removed"] = Field()
-    blocked_issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the blocked issue."
+    action: Literal["pinned"] = Field()
+    comment: WebhooksIssueComment = Field(
+        title="issue comment",
+        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
     )
-    blocked_issue: Missing[Issue] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    blocking_issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the blocking issue."
-    )
-    blocking_issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    blocking_issue_repo: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    issue: WebhookIssueCommentPinnedPropIssue = Field(
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -64,6 +59,6 @@ class WebhookIssueDependenciesBlockedByRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueDependenciesBlockedByRemoved)
+model_rebuild(WebhookIssueCommentPinned)
 
-__all__ = ("WebhookIssueDependenciesBlockedByRemoved",)
+__all__ = ("WebhookIssueCommentPinned",)

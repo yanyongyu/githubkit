@@ -9,44 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0158 import LinkType, LinkTypeForResponse
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
+class PullRequestSimplePropLinksTypeForResponse(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    A draft issue in a project
-    """
-
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "PullRequestSimplePropLinksType",
+    "PullRequestSimplePropLinksTypeForResponse",
 )

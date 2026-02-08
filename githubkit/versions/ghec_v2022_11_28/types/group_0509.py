@@ -9,40 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    all_: list[int]
+    owner: list[int]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

@@ -12,87 +12,46 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0473 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0474 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0475 import (
+from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0476 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0476 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0499 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookMembershipRemovedType(TypedDict):
+    """membership removed event"""
 
-    build: WebhookPageBuildPropBuildType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookPageBuildTypeForResponse(TypedDict):
-    """page_build event"""
+class WebhookMembershipRemovedTypeForResponse(TypedDict):
+    """membership removed event"""
 
-    build: WebhookPageBuildPropBuildTypeForResponse
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    member: Union[WebhooksUserTypeForResponse, None]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
-    github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
-    updated_at: str
-    url: str
-
-
-class WebhookPageBuildPropBuildTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
-    github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorTypeForResponse
-    pusher: Union[WebhookPageBuildPropBuildPropPusherTypeForResponse, None]
-    status: str
-    updated_at: str
-    url: str
-
-
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropErrorTypeForResponse(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
+class WebhookMembershipRemovedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -119,7 +78,7 @@ class WebhookPageBuildPropBuildPropPusherType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
+class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -147,12 +106,8 @@ class WebhookPageBuildPropBuildPropPusherTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropErrorTypeForResponse",
-    "WebhookPageBuildPropBuildPropPusherType",
-    "WebhookPageBuildPropBuildPropPusherTypeForResponse",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildPropBuildTypeForResponse",
-    "WebhookPageBuildType",
-    "WebhookPageBuildTypeForResponse",
+    "WebhookMembershipRemovedPropSenderType",
+    "WebhookMembershipRemovedPropSenderTypeForResponse",
+    "WebhookMembershipRemovedType",
+    "WebhookMembershipRemovedTypeForResponse",
 )

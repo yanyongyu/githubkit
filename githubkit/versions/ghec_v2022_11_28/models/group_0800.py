@@ -18,20 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0102 import OrganizationCustomProperty
-from .group_0554 import EnterpriseWebhooks
-from .group_0555 import SimpleInstallation
+from .group_0555 import EnterpriseWebhooks
+from .group_0556 import SimpleInstallation
+from .group_0557 import OrganizationSimpleWebhooks
+from .group_0558 import RepositoryWebhooks
+from .group_0571 import WebhooksLabel
 
 
-class WebhookOrganizationCustomPropertyUpdated(GitHubModel):
-    """organization custom property updated event"""
+class WebhookLabelEdited(GitHubModel):
+    """label edited event"""
 
-    action: Literal["updated"] = Field()
-    definition: OrganizationCustomProperty = Field(
-        title="Custom Property for Organization",
-        description="Custom property defined for an organization",
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookLabelEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the label if the action was `edited`.",
     )
-    enterprise: EnterpriseWebhooks = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
@@ -40,11 +43,69 @@ class WebhookOrganizationCustomPropertyUpdated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    label: WebhooksLabel = Field(title="Label")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+
+
+class WebhookLabelEditedPropChanges(GitHubModel):
+    """WebhookLabelEditedPropChanges
+
+    The changes to the label if the action was `edited`.
+    """
+
+    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
+    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookLabelEditedPropChangesPropColor(GitHubModel):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the color if the action was `edited`.",
     )
 
 
-model_rebuild(WebhookOrganizationCustomPropertyUpdated)
+class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
+    """WebhookLabelEditedPropChangesPropDescription"""
 
-__all__ = ("WebhookOrganizationCustomPropertyUpdated",)
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the description if the action was `edited`.",
+    )
+
+
+class WebhookLabelEditedPropChangesPropName(GitHubModel):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookLabelEdited)
+model_rebuild(WebhookLabelEditedPropChanges)
+model_rebuild(WebhookLabelEditedPropChangesPropColor)
+model_rebuild(WebhookLabelEditedPropChangesPropDescription)
+model_rebuild(WebhookLabelEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookLabelEdited",
+    "WebhookLabelEditedPropChanges",
+    "WebhookLabelEditedPropChangesPropColor",
+    "WebhookLabelEditedPropChangesPropDescription",
+    "WebhookLabelEditedPropChangesPropName",
+)

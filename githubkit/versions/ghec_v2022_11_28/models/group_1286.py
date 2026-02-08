@@ -16,15 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    bypass_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the bypass review."
     )
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+model_rebuild(
+    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
+)
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+__all__ = (
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
+)

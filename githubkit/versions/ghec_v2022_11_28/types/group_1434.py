@@ -13,35 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserMigrationsPostBodyType(TypedDict):
-    """UserMigrationsPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-class UserMigrationsPostBodyTypeForResponse(TypedDict):
-    """UserMigrationsPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[list[Literal["repositories"]]]
-    repositories: list[str]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "UserMigrationsPostBodyType",
-    "UserMigrationsPostBodyTypeForResponse",
+    "TeamsTeamIdMembershipsUsernamePutBodyType",
+    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
 )

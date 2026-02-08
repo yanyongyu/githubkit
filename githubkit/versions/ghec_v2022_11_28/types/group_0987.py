@@ -9,22 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class CredentialsRevokePostBodyType(TypedDict):
-    """CredentialsRevokePostBody"""
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
 
-    credentials: list[str]
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class CredentialsRevokePostBodyTypeForResponse(TypedDict):
-    """CredentialsRevokePostBody"""
+class WebhookWatchStartedTypeForResponse(TypedDict):
+    """watch started event"""
 
-    credentials: list[str]
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "CredentialsRevokePostBodyType",
-    "CredentialsRevokePostBodyTypeForResponse",
+    "WebhookWatchStartedType",
+    "WebhookWatchStartedTypeForResponse",
 )

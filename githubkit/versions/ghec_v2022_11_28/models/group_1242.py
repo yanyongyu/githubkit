@@ -11,55 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostBody(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
-        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    )
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
-    verification_material: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-    ] = Field(default=UNSET, alias="verificationMaterial")
-    dsse_envelope: Missing[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-    ] = Field(default=UNSET, alias="dsseEnvelope")
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
-    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
-
-
-model_rebuild(ReposOwnerRepoAttestationsPostBody)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
-model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
-
-__all__ = (
-    "ReposOwnerRepoAttestationsPostBody",
-    "ReposOwnerRepoAttestationsPostBodyPropBundle",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
-)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

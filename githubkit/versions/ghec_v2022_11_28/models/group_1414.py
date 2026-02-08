@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,33 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoReleasesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    tag_name: str = Field(description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="`true` to create a draft (unpublished) release, `false` to create a published one.",
     )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
+    prerelease: Missing[bool] = Field(
+        default=UNSET,
+        description="`true` to identify the release as a prerelease. `false` to identify the release as a full release.",
     )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
+    discussion_category_name: Missing[str] = Field(
+        default=UNSET,
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest//discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
+    generate_release_notes: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to automatically generate the name and body for this release. If `name` is specified, the specified name will be used; otherwise, a name will be automatically generated. If `body` is specified, the body will be pre-pended to the automatically generated notes.",
     )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+        default=UNSET,
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(ReposOwnerRepoReleasesPostBody)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("ReposOwnerRepoReleasesPostBody",)

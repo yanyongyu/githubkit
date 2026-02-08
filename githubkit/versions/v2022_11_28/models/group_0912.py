@@ -12,14 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0017 import AppPermissions
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    repositories: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

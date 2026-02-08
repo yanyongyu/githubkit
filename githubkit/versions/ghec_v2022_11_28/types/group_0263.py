@@ -9,72 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0237 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
 
-    Information about an external group's usage and its members
+class PackageType(TypedDict):
+    """Package
+
+    A software package
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    Information about an external group's usage and its members
+    A software package
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
-
-
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

@@ -9,67 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0072 import CodeScanningAlertLocation
 
+class CodeScanningAutofixCommitsResponse(GitHubModel):
+    """CodeScanningAutofixCommitsResponse"""
 
-class CodeScanningAlertInstanceList(GitHubModel):
-    """CodeScanningAlertInstanceList"""
-
-    ref: Missing[str] = Field(
+    target_ref: Missing[str] = Field(
         default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    analysis_key: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
-    )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert instance."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstanceListPropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
-    )
+    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-class CodeScanningAlertInstanceListPropMessage(GitHubModel):
-    """CodeScanningAlertInstanceListPropMessage"""
+model_rebuild(CodeScanningAutofixCommitsResponse)
 
-    text: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(CodeScanningAlertInstanceList)
-model_rebuild(CodeScanningAlertInstanceListPropMessage)
-
-__all__ = (
-    "CodeScanningAlertInstanceList",
-    "CodeScanningAlertInstanceListPropMessage",
-)
+__all__ = ("CodeScanningAutofixCommitsResponse",)

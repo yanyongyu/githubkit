@@ -14,24 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0676 import (
-    WebhookDiscussionTransferredPropChangesType,
-    WebhookDiscussionTransferredPropChangesTypeForResponse,
-)
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionTransferredType(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionReopenedType(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesType
+    action: Literal["reopened"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +35,10 @@ class WebhookDiscussionTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionTransferredTypeForResponse(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionReopenedTypeForResponse(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
+    action: Literal["reopened"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -54,6 +48,6 @@ class WebhookDiscussionTransferredTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionTransferredType",
-    "WebhookDiscussionTransferredTypeForResponse",
+    "WebhookDiscussionReopenedType",
+    "WebhookDiscussionReopenedTypeForResponse",
 )

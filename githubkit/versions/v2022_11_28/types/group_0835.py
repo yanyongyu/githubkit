@@ -9,22 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0476 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    payload: str
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryDispatchSampleTypeForResponse(TypedDict):
+    """repository_dispatch event"""
 
-    payload: str
+    action: str
+    branch: str
+    client_payload: Union[
+        WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse, None
+    ]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+WebhookRepositoryDispatchSamplePropClientPayloadType: TypeAlias = dict[str, Any]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
+
+
+WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRepositoryDispatchSamplePropClientPayload
+
+The `client_payload` that was specified in the `POST
+/repos/{owner}/{repo}/dispatches` request body.
+"""
 
 
 __all__ = (
-    "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
-    "WebhookSecretScanningAlertLocationCreatedFormEncodedTypeForResponse",
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookRepositoryDispatchSamplePropClientPayloadTypeForResponse",
+    "WebhookRepositoryDispatchSampleType",
+    "WebhookRepositoryDispatchSampleTypeForResponse",
 )

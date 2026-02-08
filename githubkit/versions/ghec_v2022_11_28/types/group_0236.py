@@ -9,299 +9,213 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0235 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class MinimalRepositoryType(TypedDict):
-    """Minimal Repository
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
 
-    Minimal Repository
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksType
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType
+    ]
+
+
+class SecurityAndAnalysisTypeForResponse(TypedDict):
+    """SecurityAndAnalysis"""
+
+    advanced_security: NotRequired[
+        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
+    ]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse
+    ]
+
+
+class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: NotRequired[str]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: NotRequired[str]
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: NotRequired[str]
-    mirror_url: NotRequired[Union[str, None]]
-    hooks_url: str
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    language: NotRequired[Union[str, None]]
-    forks_count: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    size: NotRequired[int]
-    default_branch: NotRequired[str]
-    open_issues_count: NotRequired[int]
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    visibility: NotRequired[str]
-    pushed_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    permissions: NotRequired[MinimalRepositoryPropPermissionsType]
-    role_name: NotRequired[str]
-    temp_clone_token: NotRequired[Union[str, None]]
-    delete_branch_on_merge: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    code_of_conduct: NotRequired[CodeOfConductType]
-    license_: NotRequired[Union[MinimalRepositoryPropLicenseType, None]]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
-    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesType]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class MinimalRepositoryTypeForResponse(TypedDict):
-    """Minimal Repository
+class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
 
-    Minimal Repository
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserTypeForResponse
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: NotRequired[str]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: NotRequired[str]
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: NotRequired[str]
-    mirror_url: NotRequired[Union[str, None]]
-    hooks_url: str
-    svn_url: NotRequired[str]
-    homepage: NotRequired[Union[str, None]]
-    language: NotRequired[Union[str, None]]
-    forks_count: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    size: NotRequired[int]
-    default_branch: NotRequired[str]
-    open_issues_count: NotRequired[int]
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    has_discussions: NotRequired[bool]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    visibility: NotRequired[str]
-    pushed_at: NotRequired[Union[str, None]]
-    created_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    permissions: NotRequired[MinimalRepositoryPropPermissionsTypeForResponse]
-    role_name: NotRequired[str]
-    temp_clone_token: NotRequired[Union[str, None]]
-    delete_branch_on_merge: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    code_of_conduct: NotRequired[CodeOfConductTypeForResponse]
-    license_: NotRequired[Union[MinimalRepositoryPropLicenseTypeForResponse, None]]
-    forks: NotRequired[int]
-    open_issues: NotRequired[int]
-    watchers: NotRequired[int]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
-    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesTypeForResponse]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeOfConductType(TypedDict):
-    """Code Of Conduct
+class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    Code Of Conduct
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
     """
 
-    key: str
-    name: str
-    url: str
-    body: NotRequired[str]
-    html_url: Union[str, None]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeOfConductTypeForResponse(TypedDict):
-    """Code Of Conduct
+class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
 
-    Code Of Conduct
+    Enable or disable Dependabot security updates for the repository.
     """
 
-    key: str
-    name: str
-    url: str
-    body: NotRequired[str]
-    html_url: Union[str, None]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class MinimalRepositoryPropPermissionsType(TypedDict):
-    """MinimalRepositoryPropPermissions"""
+class SecurityAndAnalysisPropSecretScanningType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class MinimalRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """MinimalRepositoryPropPermissions"""
+class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class MinimalRepositoryPropLicenseType(TypedDict):
-    """MinimalRepositoryPropLicense"""
+class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
-    key: NotRequired[str]
-    name: NotRequired[str]
-    spdx_id: NotRequired[str]
-    url: NotRequired[Union[str, None]]
-    node_id: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class MinimalRepositoryPropLicenseTypeForResponse(TypedDict):
-    """MinimalRepositoryPropLicense"""
+class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
 
-    key: NotRequired[str]
-    name: NotRequired[str]
-    spdx_id: NotRequired[str]
-    url: NotRequired[Union[str, None]]
-    node_id: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-MinimalRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""MinimalRepositoryPropCustomProperties
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-MinimalRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""MinimalRepositoryPropCustomProperties
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeOfConductType",
-    "CodeOfConductTypeForResponse",
-    "MinimalRepositoryPropCustomPropertiesType",
-    "MinimalRepositoryPropCustomPropertiesTypeForResponse",
-    "MinimalRepositoryPropLicenseType",
-    "MinimalRepositoryPropLicenseTypeForResponse",
-    "MinimalRepositoryPropPermissionsType",
-    "MinimalRepositoryPropPermissionsTypeForResponse",
-    "MinimalRepositoryType",
-    "MinimalRepositoryTypeForResponse",
+    "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
+    "SecurityAndAnalysisPropCodeSecurityType",
+    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse",
+    "SecurityAndAnalysisType",
+    "SecurityAndAnalysisTypeForResponse",
 )

@@ -13,21 +13,28 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+    name: str = Field(
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    compute_service: Missing[Literal["none", "actions"]] = Field(
+        default=UNSET,
+        description="The hosted compute service to use for the network configuration.",
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
+    network_settings_ids: list[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)

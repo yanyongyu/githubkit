@@ -9,43 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-
-
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
-
-    repository: SimpleRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+from .group_0301 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    repository: SimpleRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    artifact_size_in_bytes: NotRequired[int]
-    result_count: NotRequired[int]
-    failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
+
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int
+    repository_full_names: list[str]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepoTaskType",
-    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
 )

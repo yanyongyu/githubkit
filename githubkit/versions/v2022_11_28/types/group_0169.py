@@ -9,49 +9,114 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class ProjectsV2ViewType(TypedDict):
+    """Projects v2 View
 
-    Custom property defined on an organization
+    A view inside a projects v2 project
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    id: int
+    number: int
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    node_id: str
+    project_url: str
+    html_url: str
+    creator: ProjectsV2ViewPropCreatorType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    filter_: NotRequired[Union[str, None]]
+    visible_fields: list[int]
+    sort_by: list[list[Union[int, str]]]
+    group_by: list[int]
+    vertical_group_by: list[int]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class ProjectsV2ViewTypeForResponse(TypedDict):
+    """Projects v2 View
 
-    Custom property defined on an organization
+    A view inside a projects v2 project
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    id: int
+    number: int
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    node_id: str
+    project_url: str
+    html_url: str
+    creator: ProjectsV2ViewPropCreatorTypeForResponse
+    created_at: str
+    updated_at: str
+    filter_: NotRequired[Union[str, None]]
+    visible_fields: list[int]
+    sort_by: list[list[Union[int, str]]]
+    group_by: list[int]
+    vertical_group_by: list[int]
+
+
+class ProjectsV2ViewPropCreatorType(TypedDict):
+    """ProjectsV2ViewPropCreator"""
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
+    """ProjectsV2ViewPropCreator"""
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "ProjectsV2ViewPropCreatorType",
+    "ProjectsV2ViewPropCreatorTypeForResponse",
+    "ProjectsV2ViewType",
+    "ProjectsV2ViewTypeForResponse",
 )

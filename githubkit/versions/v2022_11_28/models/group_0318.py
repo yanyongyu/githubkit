@@ -9,55 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0084 import MinimalRepository
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class BranchShort(GitHubModel):
+    """Branch Short
 
-    Combined Commit Status
+    Branch Short
     """
 
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
+    name: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
+
+
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
+
     sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    commit_url: str = Field()
     url: str = Field()
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
-
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
 
 __all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
+    "BranchShort",
+    "BranchShortPropCommit",
 )

@@ -12,18 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+    name: str = Field(
+        description="The name of the cost center (max length 255 characters)"
     )
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)

@@ -9,29 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0219 import (
-    CommitCommentEventPropCommentType,
-    CommitCommentEventPropCommentTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommitCommentEventType(TypedDict):
-    """CommitCommentEvent"""
+class PullRequestReviewEventPropReviewType(TypedDict):
+    """PullRequestReviewEventPropReview"""
 
-    action: str
-    comment: CommitCommentEventPropCommentType
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserType]]
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    html_url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
+    updated_at: NotRequired[str]
 
 
-class CommitCommentEventTypeForResponse(TypedDict):
-    """CommitCommentEvent"""
+class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReview"""
 
-    action: str
-    comment: CommitCommentEventPropCommentTypeForResponse
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    body: NotRequired[str]
+    commit_id: NotRequired[str]
+    submitted_at: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    html_url: NotRequired[str]
+    pull_request_url: NotRequired[str]
+    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
+    updated_at: NotRequired[str]
+
+
+class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
+
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
+
+
+class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinks"""
+
+    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
+    pull_request: (
+        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
+    )
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "CommitCommentEventType",
-    "CommitCommentEventTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
+    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewEventPropReviewPropLinksType",
+    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
+    "PullRequestReviewEventPropReviewType",
+    "PullRequestReviewEventPropReviewTypeForResponse",
 )

@@ -9,75 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
+from githubkit.typing import UniqueList
 
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
 
-    The campaign metadata and alert stats.
+    Artifact Metadata Deployment Record
     """
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[_dt.datetime]
-    ends_at: _dt.datetime
-    closed_at: NotRequired[Union[_dt.datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class CampaignSummaryTypeForResponse(TypedDict):
-    """Campaign summary
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    The campaign metadata and alert stats.
+    Artifact Metadata Deployment Record
     """
 
-    number: int
-    created_at: str
-    updated_at: str
-    name: NotRequired[str]
-    description: str
-    managers: list[SimpleUserTypeForResponse]
-    team_managers: NotRequired[list[TeamTypeForResponse]]
-    published_at: NotRequired[str]
-    ends_at: str
-    closed_at: NotRequired[Union[str, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
-class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryPropAlertStatsTypeForResponse",
-    "CampaignSummaryType",
-    "CampaignSummaryTypeForResponse",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

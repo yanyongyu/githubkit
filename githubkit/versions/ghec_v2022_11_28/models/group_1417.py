@@ -18,50 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
-        description="Pull request number for this codespace"
-    )
-    location: Missing[str] = Field(
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    prerelease: Missing[bool] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
         default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
+    )
+    discussion_category_name: Missing[str] = Field(
+        default=UNSET,
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest//discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int = Field(description="Pull request number")
-    repository_id: int = Field(description="Repository id for this codespace")
-
-
-model_rebuild(UserCodespacesPostBodyOneof1)
-model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
-
-__all__ = (
-    "UserCodespacesPostBodyOneof1",
-    "UserCodespacesPostBodyOneof1PropPullRequest",
-)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    body: str
+    access_token: str
 
 
-class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    body: str
+    access_token: str
 
 
 __all__ = (
-    "GistsGistIdCommentsCommentIdPatchBodyType",
-    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+    "ApplicationsClientIdGrantDeleteBodyType",
+    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
 )

@@ -18,29 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the team."
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
-        default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Literal["in_progress", "completed", "queued"] = Field()
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
+        Field()
     )
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseTeamsPostBody)
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBody",)
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
+)

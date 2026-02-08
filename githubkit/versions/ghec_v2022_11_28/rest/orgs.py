@@ -1324,8 +1324,19 @@ class OrgsClient:
 
         POST /orgs/{org}/artifacts/metadata/deployment-record
 
-        Create or update deployment records for an artifact associated with an organization.
-        This endpoint allows you to record information about a specific artifact, such as its name, digest, environments, cluster, and deployment.
+        Create or update deployment records for an artifact associated
+        with an organization.
+        This endpoint allows you to record information about a specific
+        artifact, such as its name, digest, environments, cluster, and
+        deployment.
+        The deployment name has to be uniqe within a cluster (i.e a
+        combination of logical, physical environment and cluster) as it
+        identifies unique deployment.
+        Multiple requests for the same combination of logical, physical
+        environment, cluster and deployment name will only create one
+        record, successive request will update the existing record.
+        This allows for a stable tracking of a deployment where the actual
+        deployed artifact can change over time.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
         """
@@ -1423,8 +1434,19 @@ class OrgsClient:
 
         POST /orgs/{org}/artifacts/metadata/deployment-record
 
-        Create or update deployment records for an artifact associated with an organization.
-        This endpoint allows you to record information about a specific artifact, such as its name, digest, environments, cluster, and deployment.
+        Create or update deployment records for an artifact associated
+        with an organization.
+        This endpoint allows you to record information about a specific
+        artifact, such as its name, digest, environments, cluster, and
+        deployment.
+        The deployment name has to be uniqe within a cluster (i.e a
+        combination of logical, physical environment and cluster) as it
+        identifies unique deployment.
+        Multiple requests for the same combination of logical, physical
+        environment, cluster and deployment name will only create one
+        record, successive request will update the existing record.
+        This allows for a stable tracking of a deployment where the actual
+        deployed artifact can change over time.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/artifact-metadata#create-an-artifact-deployment-record
         """

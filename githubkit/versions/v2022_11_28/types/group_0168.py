@@ -10,113 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ProjectsV2ViewType(TypedDict):
-    """Projects v2 View
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
 
-    A view inside a projects v2 project
+    An item belonging to a project
     """
 
-    id: int
-    number: int
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorType
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    archived_at: Union[_dt.datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class ProjectsV2ViewTypeForResponse(TypedDict):
-    """Projects v2 View
+class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    A view inside a projects v2 project
+    An item belonging to a project
     """
 
-    id: int
-    number: int
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorTypeForResponse
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[
+        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
+    ]
+    creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    archived_at: Union[str, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
 
 
-class ProjectsV2ViewPropCreatorType(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+The content of the item, which varies by content type.
+"""
 
 
-class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+The content of the item, which varies by content type.
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "ProjectsV2ViewPropCreatorType",
-    "ProjectsV2ViewPropCreatorTypeForResponse",
-    "ProjectsV2ViewType",
-    "ProjectsV2ViewTypeForResponse",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropContentTypeForResponse",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
+    "ProjectsV2ItemWithContentType",
+    "ProjectsV2ItemWithContentTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,40 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    registry_type: Missing[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
+    ] = Field(default=UNSET, description="The registry type.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
     )
-    maintainers: Missing[list[str]] = Field(
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="List GitHub usernames for organization members who will become team maintainers.",
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
     )
-    repo_names: Missing[list[str]] = Field(
+    replaces_base: Missing[bool] = Field(
         default=UNSET,
-        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
+        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
     )
-    permission: Missing[Literal["pull", "push"]] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[int] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
     )
 
 
-model_rebuild(OrgsOrgTeamsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
 
-__all__ = ("OrgsOrgTeamsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)

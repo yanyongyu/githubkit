@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0334 import Deployment
-from .group_0554 import EnterpriseWebhooks
-from .group_0555 import SimpleInstallation
-from .group_0556 import OrganizationSimpleWebhooks
-from .group_0557 import RepositoryWebhooks
+from .group_0555 import EnterpriseWebhooks
+from .group_0556 import SimpleInstallation
+from .group_0557 import OrganizationSimpleWebhooks
+from .group_0558 import RepositoryWebhooks
+from .group_0602 import WebhooksSponsorship
+from .group_0603 import WebhooksChanges8
 
 
-class WebhookWorkflowJobInProgress(GitHubModel):
-    """workflow_job in_progress event"""
+class WebhookSponsorshipTierChanged(GitHubModel):
+    """sponsorship tier_changed event"""
 
-    action: Literal["in_progress"] = Field()
+    action: Literal["tier_changed"] = Field()
+    changes: WebhooksChanges8 = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,84 +46,15 @@ class WebhookWorkflowJobInProgress(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
+    sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+model_rebuild(WebhookSponsorshipTierChanged)
 
-    check_run_url: str = Field()
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
-        Field()
-    )
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: list[str] = Field(
-        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
-    )
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_group_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
-    )
-    head_branch: Union[Union[str, None], None] = Field(
-        description="The name of the current branch."
-    )
-    workflow_name: Union[Union[str, None], None] = Field(
-        description="The name of the workflow."
-    )
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
-
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[Union[str, None], None] = Field()
-    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
-
-
-model_rebuild(WebhookWorkflowJobInProgress)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps)
-
-__all__ = (
-    "WebhookWorkflowJobInProgress",
-    "WebhookWorkflowJobInProgressPropWorkflowJob",
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
-)
+__all__ = ("WebhookSponsorshipTierChanged",)

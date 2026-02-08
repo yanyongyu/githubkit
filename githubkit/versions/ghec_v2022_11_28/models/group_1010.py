@@ -11,20 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0052 import Runner
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class CredentialsRevokePostBody(GitHubModel):
+    """CredentialsRevokePostBody"""
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[list[Runner]] = Field(default=UNSET)
+    credentials: list[str] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of credentials to be revoked, up to 1000 per request.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+model_rebuild(CredentialsRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+__all__ = ("CredentialsRevokePostBody",)

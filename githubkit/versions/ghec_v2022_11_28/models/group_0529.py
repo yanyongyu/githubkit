@@ -15,15 +15,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+from .group_0520 import Meta
+from .group_0530 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
+
+
+model_rebuild(ScimEnterpriseUserResponseAllof1)
+
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,32 +16,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import SimpleInstallation
-from .group_0475 import OrganizationSimpleWebhooks
-from .group_0506 import WebhooksProjectChanges
-from .group_0507 import ProjectsV2Item
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
+from .group_0751 import WebhookPingPropHook
 
 
-class WebhookProjectsV2ItemArchived(GitHubModel):
-    """Projects v2 Item Archived Event"""
+class WebhookPing(GitHubModel):
+    """WebhookPing"""
 
-    action: Literal["archived"] = Field()
-    changes: WebhooksProjectChanges = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    hook: Missing[WebhookPingPropHook] = Field(
+        default=UNSET, title="Webhook", description="The webhook that is being pinged"
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    hook_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the webhook that triggered the ping."
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    zen: Missing[str] = Field(default=UNSET, description="Random string of GitHub zen.")
 
 
-model_rebuild(WebhookProjectsV2ItemArchived)
+model_rebuild(WebhookPing)
 
-__all__ = ("WebhookProjectsV2ItemArchived",)
+__all__ = ("WebhookPing",)

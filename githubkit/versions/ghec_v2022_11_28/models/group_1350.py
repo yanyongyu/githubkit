@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
-    after_id: Missing[int] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
+        description="The username to provide to the originating repository.",
     )
-    before_id: Missing[int] = Field(
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
+        description="The password to provide to the originating repository.",
+    )
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+        default=UNSET,
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

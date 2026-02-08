@@ -18,6 +18,7 @@ class GetAllBudgetsType(TypedDict):
 
     budgets: list[BudgetType]
     has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
 class GetAllBudgetsTypeForResponse(TypedDict):
@@ -25,6 +26,7 @@ class GetAllBudgetsTypeForResponse(TypedDict):
 
     budgets: list[BudgetTypeForResponse]
     has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
 class BudgetType(TypedDict):

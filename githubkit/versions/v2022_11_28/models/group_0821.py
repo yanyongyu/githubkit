@@ -9,51 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0822 import WebhookRepositoryRulesetEditedPropChangesPropConditions
-from .group_0824 import WebhookRepositoryRulesetEditedPropChangesPropRules
+from .group_0822 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
+)
 
 
-class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class WebhookRegistryPackageUpdatedPropRegistryPackage(GitHubModel):
+    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
 
-    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
-        default=UNSET
-    )
-    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
-        Field(default=UNSET)
-    )
-    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
-        Field(default=UNSET)
-    )
-    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
-        default=UNSET
-    )
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
+    created_at: str = Field()
+    description: None = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner = Field()
+    package_type: str = Field()
+    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion = Field()
+    registry: Union[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry, None
+    ] = Field()
+    updated_at: str = Field()
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner(GitHubModel):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry(GitHubModel):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+
+
+model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackage)
+model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner)
+model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry)
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
+    "WebhookRegistryPackageUpdatedPropRegistryPackage",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry",
 )

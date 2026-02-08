@@ -9,272 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0120 import TeamType, TeamTypeForResponse
-from .group_0238 import (
-    RepositoryAdvisoryCreditType,
-    RepositoryAdvisoryCreditTypeForResponse,
-)
 
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    A repository security advisory.
+    A credit given to a user for a repository security advisory.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    published_at: Union[_dt.datetime, None]
-    closed_at: Union[_dt.datetime, None]
-    withdrawn_at: Union[_dt.datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[list[SimpleUserType], None]
-    collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryTypeForResponse(TypedDict):
-    """RepositoryAdvisory
-
-    A repository security advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    published_at: Union[str, None]
-    closed_at: Union[str, None]
-    withdrawn_at: Union[str, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
-    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
-    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
-    collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
         "other",
-        "swift",
     ]
-    name: Union[str, None]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    The name of the package affected by the vulnerability.
+    A credit given to a user for a repository security advisory.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
         "other",
-        "swift",
     ]
-    name: Union[str, None]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCvssTypeForResponse",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropSubmissionTypeForResponse",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityTypeForResponse",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

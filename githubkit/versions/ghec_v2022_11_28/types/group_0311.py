@@ -9,51 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    External Groups to be mapped to a team for membership
+    Check immutable releases settings for an organization.
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class GroupMappingTypeForResponse(TypedDict):
-    """GroupMapping
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    External Groups to be mapped to a team for membership
+    Check immutable releases settings for an organization.
     """
 
-    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
-
-
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
-
-
-class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingPropGroupsItemsTypeForResponse",
-    "GroupMappingType",
-    "GroupMappingTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

@@ -13,46 +13,86 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0476 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksUserType, WebhooksUserTypeForResponse
 
-class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
-    """Project Card"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
+
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
+
+
+class WebhookOrganizationMemberInvitedTypeForResponse(TypedDict):
+    """organization member_invited event"""
+
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    user: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+
+
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
     created_at: _dt.datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
-    id: int
+    email: Union[str, None]
+    failed_at: Union[_dt.datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
     node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse(TypedDict):
-    """Project Card"""
+class WebhookOrganizationMemberInvitedPropInvitationTypeForResponse(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
     created_at: str
-    creator: Union[
-        WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse, None
+    email: Union[str, None]
+    failed_at: Union[str, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[
+        WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse, None
     ]
-    id: int
+    login: Union[str, None]
     node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -74,12 +114,14 @@ class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse(TypedDict):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -101,14 +143,16 @@ class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse(Typ
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse",
-    "WebhookProjectCardMovedPropProjectCardAllof0Type",
-    "WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedPropInvitationTypeForResponse",
+    "WebhookOrganizationMemberInvitedType",
+    "WebhookOrganizationMemberInvitedTypeForResponse",
 )

@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0100 import ActionsHostedRunnerCuratedImage
-
-
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCuratedImage] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200)
+class EventsGetResponse503(GitHubModel):
+    """EventsGetResponse503"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(EventsGetResponse503)
+
+__all__ = ("EventsGetResponse503",)

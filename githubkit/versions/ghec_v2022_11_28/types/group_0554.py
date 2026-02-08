@@ -14,53 +14,31 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    Key Simple
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    avatar_url: str
+    key: str
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class EnterpriseWebhooksTypeForResponse(TypedDict):
-    """Enterprise
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    Key Simple
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    avatar_url: str
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterpriseWebhooksType",
-    "EnterpriseWebhooksTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

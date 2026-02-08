@@ -9,75 +9,138 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0833 import (
+    WebhookPackagePublishedPropPackagePropPackageVersionType,
+    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
 )
-from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0588 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookPackagePublishedPropPackageType(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    Information about the package.
+    """
 
-
-class WebhookProjectColumnEditedTypeForResponse(TypedDict):
-    """project_column edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionType, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    updated_at: Union[str, None]
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+    Information about the package.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: Union[str, None]
 
 
-class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
+class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
+    """User"""
 
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
+class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
+    """User"""
 
-    from_: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
+class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
-    from_: str
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
+
+
+class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesTypeForResponse",
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropOwnerType",
+    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackagePublishedPropPackageType",
+    "WebhookPackagePublishedPropPackageTypeForResponse",
 )

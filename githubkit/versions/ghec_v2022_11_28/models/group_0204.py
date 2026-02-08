@@ -9,63 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0199 import ReactionRollup
+from .group_0203 import PinnedIssueComment
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    issue_url: str = Field()
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
 
 
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
+model_rebuild(IssueComment)
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
-
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-)
+__all__ = ("IssueComment",)

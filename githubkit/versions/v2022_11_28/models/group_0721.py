@@ -13,54 +13,53 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0715 import WebhookRubygemsMetadata
+from .group_0474 import EnterpriseWebhooks
+from .group_0475 import SimpleInstallation
+from .group_0476 import OrganizationSimpleWebhooks
+from .group_0477 import RepositoryWebhooks
+from .group_0485 import WebhooksUser
+from .group_0499 import WebhooksTeam
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookMembershipAdded(GitHubModel):
+    """membership added event"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor, None
-    ] = Field(title="User")
-    body: str = Field()
-    body_html: str = Field()
-    created_at: str = Field()
-    description: str = Field()
-    docker_metadata: Missing[
-        list[WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems]
-    ] = Field(default=UNSET)
-    draft: Missing[bool] = Field(default=UNSET)
-    html_url: str = Field()
-    id: int = Field()
-    installation_command: str = Field()
-    manifest: Missing[str] = Field(default=UNSET)
-    metadata: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
-    ] = Field()
-    name: str = Field()
-    package_files: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems
-    ] = Field()
-    package_url: Missing[str] = Field(default=UNSET)
-    prerelease: Missing[bool] = Field(default=UNSET)
-    release: Missing[WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease] = (
-        Field(default=UNSET)
+    action: Literal["added"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
-    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
-    source_url: Missing[str] = Field(default=UNSET)
-    summary: str = Field()
-    tag_name: Missing[str] = Field(default=UNSET)
-    target_commitish: str = Field()
-    target_oid: str = Field()
-    updated_at: str = Field()
-    version: str = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    member: Union[WebhooksUser, None] = Field(title="User")
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    scope: Literal["team"] = Field(
+        description="The scope of the membership. Currently, can only be `team`."
+    )
+    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
+    team: WebhooksTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor(GitHubModel):
+class WebhookMembershipAddedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -87,99 +86,10 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems(
-    GitHubModel
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
-
-    tags: Missing[list[str]] = Field(default=UNSET)
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems(
-    ExtraGitHubModel
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
-    GitHubModel
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str = Field()
-    created_at: str = Field()
-    download_url: str = Field()
-    id: int = Field()
-    md5: Union[str, None] = Field()
-    name: str = Field()
-    sha1: Union[str, None] = Field()
-    sha256: str = Field()
-    size: int = Field()
-    state: str = Field()
-    updated_at: str = Field()
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor, None
-    ] = Field(title="User")
-    created_at: str = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    prerelease: bool = Field()
-    published_at: str = Field()
-    tag_name: str = Field()
-    target_commitish: str = Field()
-    url: str = Field()
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor(
-    GitHubModel
-):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersion)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor)
+model_rebuild(WebhookMembershipAdded)
+model_rebuild(WebhookMembershipAddedPropSender)
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersion",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor",
+    "WebhookMembershipAdded",
+    "WebhookMembershipAddedPropSender",
 )

@@ -12,18 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    Examples:
-        {'teams': ['justice-league']}
-    """
-
-    teams: list[str] = Field(description="The slug values for teams")
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)

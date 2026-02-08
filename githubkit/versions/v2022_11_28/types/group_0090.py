@@ -9,69 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
-
-    budgets: list[BudgetType]
-    has_next_page: NotRequired[bool]
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    budgets: list[BudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
 
-
-class BudgetType(TypedDict):
-    """Budget"""
-
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
 
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
+    ]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

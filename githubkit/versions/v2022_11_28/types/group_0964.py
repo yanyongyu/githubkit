@@ -9,22 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    selected_repository_ids: list[int]
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgType]
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    selected_repository_ids: list[int]
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgTypeForResponse]
+
+
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+
+
+class RunnerGroupsOrgTypeForResponse(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
-    "OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsOrgType",
+    "RunnerGroupsOrgTypeForResponse",
 )

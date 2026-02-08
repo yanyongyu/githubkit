@@ -3175,6 +3175,70 @@ class AppsClient:
             },
         )
 
+    def get_enterprise_installation(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Installation, InstallationTypeForResponse]:
+        """apps/get-enterprise-installation
+
+        GET /enterprises/{enterprise}/installation
+
+        Enables an authenticated GitHub App to find its installation on a particular enterprise.
+
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
+        """
+
+        from ..models import Installation
+
+        url = f"/enterprises/{enterprise}/installation"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
+    async def async_get_enterprise_installation(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[Installation, InstallationTypeForResponse]:
+        """apps/get-enterprise-installation
+
+        GET /enterprises/{enterprise}/installation
+
+        Enables an authenticated GitHub App to find its installation on a particular enterprise.
+
+        You must use a [JWT](https://docs.github.com/enterprise-cloud@latest//apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-enterprise-installation-for-the-authenticated-app
+        """
+
+        from ..models import Installation
+
+        url = f"/enterprises/{enterprise}/installation"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Installation,
+        )
+
     def list_repos_accessible_to_installation(
         self,
         *,

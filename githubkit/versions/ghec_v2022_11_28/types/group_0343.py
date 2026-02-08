@@ -9,212 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class BranchRestrictionPolicyType(TypedDict):
-    """Branch Restriction Policy
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Branch Restriction Policy
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: str
-    users_url: str
-    teams_url: str
-    apps_url: str
-    users: list[BranchRestrictionPolicyPropUsersItemsType]
-    teams: list[TeamType]
-    apps: list[BranchRestrictionPolicyPropAppsItemsType]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class BranchRestrictionPolicyTypeForResponse(TypedDict):
-    """Branch Restriction Policy
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
-    Branch Restriction Policy
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: str
-    users_url: str
-    teams_url: str
-    apps_url: str
-    users: list[BranchRestrictionPolicyPropUsersItemsTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: list[BranchRestrictionPolicyPropAppsItemsTypeForResponse]
-
-
-class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
-    """BranchRestrictionPolicyPropUsersItems"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
-
-
-class BranchRestrictionPolicyPropUsersItemsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropUsersItems"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
-
-
-class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItems"""
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    node_id: NotRequired[str]
-    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
-    name: NotRequired[str]
-    client_id: NotRequired[str]
-    description: NotRequired[str]
-    external_url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
-    events: NotRequired[list[str]]
-
-
-class BranchRestrictionPolicyPropAppsItemsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItems"""
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    node_id: NotRequired[str]
-    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse]
-    name: NotRequired[str]
-    client_id: NotRequired[str]
-    description: NotRequired[str]
-    external_url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[
-        BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse
-    ]
-    events: NotRequired[list[str]]
-
-
-class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    members_url: NotRequired[str]
-    public_members_url: NotRequired[str]
-    avatar_url: NotRequired[str]
-    description: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
-
-
-class BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    members_url: NotRequired[str]
-    public_members_url: NotRequired[str]
-    avatar_url: NotRequired[str]
-    description: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-    user_view_type: NotRequired[str]
-
-
-class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
-
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    issues: NotRequired[str]
-    single_file: NotRequired[str]
-
-
-class BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse(TypedDict):
-    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
-
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    issues: NotRequired[str]
-    single_file: NotRequired[str]
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
-    "BranchRestrictionPolicyPropAppsItemsPropOwnerTypeForResponse",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
-    "BranchRestrictionPolicyPropAppsItemsPropPermissionsTypeForResponse",
-    "BranchRestrictionPolicyPropAppsItemsType",
-    "BranchRestrictionPolicyPropAppsItemsTypeForResponse",
-    "BranchRestrictionPolicyPropUsersItemsType",
-    "BranchRestrictionPolicyPropUsersItemsTypeForResponse",
-    "BranchRestrictionPolicyType",
-    "BranchRestrictionPolicyTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

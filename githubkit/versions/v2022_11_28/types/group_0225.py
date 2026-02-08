@@ -9,274 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0175 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0176 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
-)
-from .group_0184 import (
-    OrgRulesetConditionsOneof0Type,
-    OrgRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0185 import (
-    OrgRulesetConditionsOneof1Type,
-    OrgRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0186 import (
-    OrgRulesetConditionsOneof2Type,
-    OrgRulesetConditionsOneof2TypeForResponse,
-)
-from .group_0187 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0188 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0190 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0191 import (
-    RepositoryRuleMergeQueueType,
-    RepositoryRuleMergeQueueTypeForResponse,
-)
-from .group_0193 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0195 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0197 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0199 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0201 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0203 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0205 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0207 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0209 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0211 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0213 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0215 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0218 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0220 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0222 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetType(TypedDict):
-    """Repository ruleset
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    A set of rules to apply when specified conditions are met.
+    A tool that must provide code review results for this rule to pass.
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksType]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsType,
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
-class RepositoryRulesetTypeForResponse(TypedDict):
-    """Repository ruleset
+class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
+    """CopilotCodeReviewAnalysisTool
 
-    A set of rules to apply when specified conditions are met.
+    A tool that must provide code review results for this rule to pass.
     """
 
-    id: int
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    source_type: NotRequired[Literal["Repository", "Organization", "Enterprise"]]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    current_user_can_bypass: NotRequired[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[RepositoryRulesetPropLinksTypeForResponse]
-    conditions: NotRequired[
-        Union[
-            RepositoryRulesetConditionsTypeForResponse,
-            OrgRulesetConditionsOneof0TypeForResponse,
-            OrgRulesetConditionsOneof1TypeForResponse,
-            OrgRulesetConditionsOneof2TypeForResponse,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksType(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
-
-
-class RepositoryRulesetPropLinksTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinks"""
-
-    self_: NotRequired[RepositoryRulesetPropLinksPropSelfTypeForResponse]
-    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlTypeForResponse, None]]
-
-
-class RepositoryRulesetPropLinksPropSelfType(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropSelfTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
-
-
-class RepositoryRulesetPropLinksPropHtmlTypeForResponse(TypedDict):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: NotRequired[str]
+    name: Literal["CodeQL", "ESLint", "PMD"]
 
 
 __all__ = (
-    "RepositoryRulesetPropLinksPropHtmlType",
-    "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
-    "RepositoryRulesetPropLinksPropSelfType",
-    "RepositoryRulesetPropLinksPropSelfTypeForResponse",
-    "RepositoryRulesetPropLinksType",
-    "RepositoryRulesetPropLinksTypeForResponse",
-    "RepositoryRulesetType",
-    "RepositoryRulesetTypeForResponse",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
+    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
 )

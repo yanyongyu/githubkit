@@ -9,31 +9,222 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldType(TypedDict):
+    """Projects v2 Field
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    A field inside a projects v2 project
+    """
+
+    id: int
+    node_id: NotRequired[str]
+    project_url: str
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
     ]
-    description: NotRequired[str]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class ProjectsV2FieldTypeForResponse(TypedDict):
+    """Projects v2 Field
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    A field inside a projects v2 project
+    """
+
+    id: int
+    node_id: NotRequired[str]
+    project_url: str
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
     ]
-    description: NotRequired[str]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsTypeForResponse]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationTypeForResponse]
+    created_at: str
+    updated_at: str
+
+
+class ProjectsV2SingleSelectOptionsType(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameType
+    description: ProjectsV2SingleSelectOptionsPropDescriptionType
+    color: str
+
+
+class ProjectsV2SingleSelectOptionsTypeForResponse(TypedDict):
+    """Projects v2 Single Select Option
+
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameTypeForResponse
+    description: ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse
+    color: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2FieldPropConfigurationType(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
+
+
+class ProjectsV2FieldPropConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsTypeForResponse]]
+
+
+class ProjectsV2IterationSettingsType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: _dt.date
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleType
+    completed: bool
+
+
+class ProjectsV2IterationSettingsTypeForResponse(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: str
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleTypeForResponse
+    completed: bool
+
+
+class ProjectsV2IterationSettingsPropTitleType(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2IterationSettingsPropTitleTypeForResponse(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "ProjectsV2FieldPropConfigurationType",
+    "ProjectsV2FieldPropConfigurationTypeForResponse",
+    "ProjectsV2FieldType",
+    "ProjectsV2FieldTypeForResponse",
+    "ProjectsV2IterationSettingsPropTitleType",
+    "ProjectsV2IterationSettingsPropTitleTypeForResponse",
+    "ProjectsV2IterationSettingsType",
+    "ProjectsV2IterationSettingsTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropDescriptionType",
+    "ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropNameType",
+    "ProjectsV2SingleSelectOptionsPropNameTypeForResponse",
+    "ProjectsV2SingleSelectOptionsType",
+    "ProjectsV2SingleSelectOptionsTypeForResponse",
 )

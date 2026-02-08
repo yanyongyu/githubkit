@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,24 +19,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class ReposOwnerRepoMilestonesPostBody(GitHubModel):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
+    title: str = Field(description="The title of the milestone.")
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge.",
+        description="The state of the milestone. Either `open` or `closed`.",
     )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
+model_rebuild(ReposOwnerRepoMilestonesPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)
+__all__ = ("ReposOwnerRepoMilestonesPostBody",)

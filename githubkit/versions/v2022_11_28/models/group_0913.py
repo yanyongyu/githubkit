@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class ApplicationsClientIdGrantDeleteBody(GitHubModel):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    access_token: str = Field(
+        description="The OAuth access token used to authenticate to the GitHub API."
+    )
 
 
-model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
+model_rebuild(ApplicationsClientIdGrantDeleteBody)
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)
+__all__ = ("ApplicationsClientIdGrantDeleteBody",)

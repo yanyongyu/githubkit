@@ -9,62 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-
-
-class PullRequestReviewEventPropReview(GitHubModel):
-    """PullRequestReviewEventPropReview"""
-
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    pull_request_url: Missing[str] = Field(default=UNSET)
-    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
-        default=UNSET, alias="_links"
-    )
-    updated_at: Missing[str] = Field(default=UNSET)
+from .group_0205 import PullRequestMinimal
+from .group_0218 import PullRequestReviewEventPropReview
 
 
-class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinks"""
+class PullRequestReviewEvent(GitHubModel):
+    """PullRequestReviewEvent"""
 
-    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str = Field()
+    action: str = Field()
+    review: PullRequestReviewEventPropReview = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
 
 
-class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+model_rebuild(PullRequestReviewEvent)
 
-    href: str = Field()
-
-
-model_rebuild(PullRequestReviewEventPropReview)
-model_rebuild(PullRequestReviewEventPropReviewPropLinks)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "PullRequestReviewEventPropReview",
-    "PullRequestReviewEventPropReviewPropLinks",
-    "PullRequestReviewEventPropReviewPropLinksPropHtml",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
-)
+__all__ = ("PullRequestReviewEvent",)

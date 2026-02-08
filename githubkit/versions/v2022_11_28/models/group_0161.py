@@ -9,26 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0157 import Link
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class PullRequestSimplePropLinks(GitHubModel):
-    """PullRequestSimplePropLinks"""
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    comments: Link = Field(title="Link", description="Hypermedia Link")
-    commits: Link = Field(title="Link", description="Hypermedia Link")
-    statuses: Link = Field(title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    issue: Link = Field(title="Link", description="Hypermedia Link")
-    review_comments: Link = Field(title="Link", description="Hypermedia Link")
-    review_comment: Link = Field(title="Link", description="Hypermedia Link")
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[None, Repository] = Field()
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(PullRequestSimplePropLinks)
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-__all__ = ("PullRequestSimplePropLinks",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[None, SimpleUser] = Field()
+
+
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
+
+__all__ = (
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
+)

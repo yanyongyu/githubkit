@@ -9,26 +9,156 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from typing_extensions import NotRequired, TypedDict
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class DependencyGraphSpdxSbomType(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    A schema for the SPDX JSON format returned by the Dependency Graph.
+    """
+
+    sbom: DependencyGraphSpdxSbomPropSbomType
+
+
+class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
+    """Dependency Graph SPDX SBOM
+
+    A schema for the SPDX JSON format returned by the Dependency Graph.
+    """
+
+    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
+
+
+class DependencyGraphSpdxSbomPropSbomType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
+
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
+    name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
+
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
+    name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[
+            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
+        ]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
+    "DependencyGraphSpdxSbomType",
+    "DependencyGraphSpdxSbomTypeForResponse",
 )

@@ -11,59 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be removed."
     )
-    display_name: Missing[str] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
     )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
-    )
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

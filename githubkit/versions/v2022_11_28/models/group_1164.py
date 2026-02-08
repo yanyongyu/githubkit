@@ -18,17 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    total_count: int = Field(
+        description="The number of deployment branch policies for the environment."
+    )
+    branch_policies: list[DeploymentBranchPolicy] = Field()
+
+
+class DeploymentBranchPolicy(GitHubModel):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the branch or tag policy."
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag."
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+)
+model_rebuild(DeploymentBranchPolicy)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = (
+    "DeploymentBranchPolicy",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+)

@@ -17,14 +17,12 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0519 import Meta
-from .group_0524 import UserEmailsResponseItems, UserNameResponse
-from .group_0525 import UserRoleItems
-from .group_0529 import ScimEnterpriseUserResponseAllof1PropGroupsItems
+from .group_0525 import UserEmailsResponseItems, UserNameResponse
+from .group_0526 import UserRoleItems
 
 
-class ScimEnterpriseUserResponse(GitHubModel):
-    """ScimEnterpriseUserResponse"""
+class UserResponse(GitHubModel):
+    """UserResponse"""
 
     schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
@@ -50,42 +48,8 @@ class ScimEnterpriseUserResponse(GitHubModel):
     roles: Missing[list[UserRoleItems]] = Field(
         default=UNSET, description="The roles assigned to the user."
     )
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
-        default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
-    )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
-    )
 
 
-class ScimEnterpriseUserList(GitHubModel):
-    """ScimEnterpriseUserList"""
+model_rebuild(UserResponse)
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
-        Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
-        )
-    )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
-    )
-    resources: list[ScimEnterpriseUserResponse] = Field(
-        alias="Resources", description="Information about each provisioned account."
-    )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
-    )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
-    )
-
-
-model_rebuild(ScimEnterpriseUserResponse)
-model_rebuild(ScimEnterpriseUserList)
-
-__all__ = (
-    "ScimEnterpriseUserList",
-    "ScimEnterpriseUserResponse",
-)
+__all__ = ("UserResponse",)

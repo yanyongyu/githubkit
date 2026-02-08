@@ -18,6 +18,8 @@ from ..models import (
     WebhookIssueCommentCreated,
     WebhookIssueCommentDeleted,
     WebhookIssueCommentEdited,
+    WebhookIssueCommentPinned,
+    WebhookIssueCommentUnpinned,
 )
 
 Event: TypeAlias = Annotated[
@@ -25,6 +27,8 @@ Event: TypeAlias = Annotated[
         WebhookIssueCommentCreated,
         WebhookIssueCommentDeleted,
         WebhookIssueCommentEdited,
+        WebhookIssueCommentPinned,
+        WebhookIssueCommentUnpinned,
     ],
     Field(discriminator="action"),
 ]
@@ -35,6 +39,8 @@ action_types: dict[str, type[GitHubModel]] = {
     "created": WebhookIssueCommentCreated,
     "deleted": WebhookIssueCommentDeleted,
     "edited": WebhookIssueCommentEdited,
+    "pinned": WebhookIssueCommentPinned,
+    "unpinned": WebhookIssueCommentUnpinned,
 }  # pyright: ignore[reportAssignmentType]
 
 issue_comment_action_types = action_types

@@ -13,41 +13,25 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class GistsGistIdGetResponse403TypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403"""
-
-    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
-
-
-class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403PropBlockTypeForResponse",
-    "GistsGistIdGetResponse403Type",
-    "GistsGistIdGetResponse403TypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

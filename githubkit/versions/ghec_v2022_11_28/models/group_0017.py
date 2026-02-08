@@ -210,10 +210,6 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token to view and manage users blocked by the organization.",
     )
-    team_discussions: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The level of permission to grant the access token to manage team discussions and related comments.",
-    )
     email_addresses: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token to manage the email addresses belonging to a user.",

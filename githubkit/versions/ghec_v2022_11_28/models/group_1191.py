@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,24 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
-    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)

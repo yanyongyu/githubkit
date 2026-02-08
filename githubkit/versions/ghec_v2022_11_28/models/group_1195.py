@@ -11,21 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0107 import CustomProperty
-
-
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
-    )
+from .group_0252 import Codespace
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)

@@ -9,78 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0423 import HookResponseType, HookResponseTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0568 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookPingPropHookType(TypedDict):
-    """Webhook
+class WebhookOrgBlockUnblockedType(TypedDict):
+    """org_block unblocked event"""
 
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigType
-    created_at: _dt.datetime
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseType]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: _dt.datetime
-    url: NotRequired[str]
+    action: Literal["unblocked"]
+    blocked_user: Union[WebhooksUserType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookPingPropHookTypeForResponse(TypedDict):
-    """Webhook
+class WebhookOrgBlockUnblockedTypeForResponse(TypedDict):
+    """org_block unblocked event"""
 
-    The webhook that is being pinged
-    """
-
-    active: bool
-    app_id: NotRequired[int]
-    config: WebhookPingPropHookPropConfigTypeForResponse
-    created_at: str
-    deliveries_url: NotRequired[str]
-    events: list[str]
-    id: int
-    last_response: NotRequired[HookResponseTypeForResponse]
-    name: Literal["web"]
-    ping_url: NotRequired[str]
-    test_url: NotRequired[str]
-    type: str
-    updated_at: str
-    url: NotRequired[str]
-
-
-class WebhookPingPropHookPropConfigType(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookPingPropHookPropConfigTypeForResponse(TypedDict):
-    """WebhookPingPropHookPropConfig"""
-
-    content_type: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    secret: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["unblocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPingPropHookPropConfigType",
-    "WebhookPingPropHookPropConfigTypeForResponse",
-    "WebhookPingPropHookType",
-    "WebhookPingPropHookTypeForResponse",
+    "WebhookOrgBlockUnblockedType",
+    "WebhookOrgBlockUnblockedTypeForResponse",
 )

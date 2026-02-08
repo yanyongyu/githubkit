@@ -9,307 +9,192 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0679 import (
-    WebhookIssuesTransferredPropChangesPropNewIssueType,
-    WebhookIssuesTransferredPropChangesPropNewIssueTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssuesTransferredPropChangesType(TypedDict):
-    """WebhookIssuesTransferredPropChanges"""
+class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
 
-    new_issue: WebhookIssuesTransferredPropChangesPropNewIssueType
-    new_repository: WebhookIssuesTransferredPropChangesPropNewRepositoryType
-
-
-class WebhookIssuesTransferredPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesTransferredPropChanges"""
-
-    new_issue: WebhookIssuesTransferredPropChangesPropNewIssueTypeForResponse
-    new_repository: WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse
-
-
-class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    custom_properties: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeType, None]
     ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType, None
+    assignees: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
     ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType, None
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
     ]
-    permissions: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneType, None]
     ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
-
-
-class WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    custom_properties: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType, None]
     ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse,
-        None,
+    reactions: NotRequired[WebhookIssuesClosedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserType]
+
+
+class WebhookIssuesClosedPropIssueAllof1TypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse, None]
     ]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse,
-        None,
+    assignees: NotRequired[
+        list[
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse,
+                None,
+            ]
+        ]
     ]
-    permissions: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[
+        list[
+            Union[
+                WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse, None
+            ]
+        ]
     ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    labels_url: NotRequired[str]
+    locked: NotRequired[bool]
+    milestone: NotRequired[
+        Union[WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    reactions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse
+    ]
+    repository_url: NotRequired[str]
+    state: Literal["closed", "open"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse]
 
 
-WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType: TypeAlias = dict[
-    str, Any
-]
-"""WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
 
 
-WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
+class WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssignee"""
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse(
+class WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropLabelsItems"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
+    """WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp"""
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType(TypedDict):
-    """User"""
+class WebhookIssuesClosedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -317,28 +202,23 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType(TypedDic
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[str]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof1PropUser"""
 
     avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -346,46 +226,26 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForRespon
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[str]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseTypeForResponse",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerTypeForResponse",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsTypeForResponse",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryTypeForResponse",
-    "WebhookIssuesTransferredPropChangesType",
-    "WebhookIssuesTransferredPropChangesTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneeTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof1PropMilestoneTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
+    "WebhookIssuesClosedPropIssueAllof1PropReactionsTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1PropUserType",
+    "WebhookIssuesClosedPropIssueAllof1PropUserTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof1Type",
+    "WebhookIssuesClosedPropIssueAllof1TypeForResponse",
 )

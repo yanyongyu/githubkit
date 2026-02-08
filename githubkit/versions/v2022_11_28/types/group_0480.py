@@ -9,49 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0053 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0286 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0479 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
+    app: Union[IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[_dt.datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
-    verified: bool
-    enabled: NotRequired[bool]
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    A check performed on the code of a given code change
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
-    verified: bool
-    enabled: NotRequired[bool]
+
+
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

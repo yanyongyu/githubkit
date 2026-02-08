@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0554 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0555 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0556 import (
+from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0557 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0557 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0577 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 from .group_0772 import (
-    WebhookIssuesUnlockedPropIssueType,
-    WebhookIssuesUnlockedPropIssueTypeForResponse,
+    WebhookIssuesDemilestonedPropIssueType,
+    WebhookIssuesDemilestonedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesUnlockedType(TypedDict):
-    """issues unlocked event"""
+class WebhookIssuesDemilestonedType(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["unlocked"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesUnlockedPropIssueType
+    issue: WebhookIssuesDemilestonedPropIssueType
+    milestone: NotRequired[WebhooksMilestoneType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnlockedTypeForResponse(TypedDict):
-    """issues unlocked event"""
+class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
+    """issues demilestoned event"""
 
-    action: Literal["unlocked"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
+    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
+    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnlockedType",
-    "WebhookIssuesUnlockedTypeForResponse",
+    "WebhookIssuesDemilestonedType",
+    "WebhookIssuesDemilestonedTypeForResponse",
 )

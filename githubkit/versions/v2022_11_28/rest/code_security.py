@@ -1590,6 +1590,9 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        dependabot_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1715,6 +1718,9 @@ class CodeSecurityClient:
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependabot_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         code_scanning_options: Missing[Union[CodeScanningOptionsType, None]] = UNSET,
@@ -2246,6 +2252,9 @@ class CodeSecurityClient:
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        dependabot_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         code_scanning_default_setup: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2378,6 +2387,9 @@ class CodeSecurityClient:
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependabot_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         code_scanning_default_setup: Missing[

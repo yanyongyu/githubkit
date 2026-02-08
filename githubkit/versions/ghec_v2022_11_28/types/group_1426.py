@@ -12,27 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoTagsProtectionPostBodyType(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    pattern: str
 
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoTagsProtectionPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    pattern: str
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoTagsProtectionPostBodyType",
+    "ReposOwnerRepoTagsProtectionPostBodyTypeForResponse",
 )

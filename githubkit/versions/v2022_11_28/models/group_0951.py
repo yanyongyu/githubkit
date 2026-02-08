@@ -13,20 +13,44 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0114 import Runner
+
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class ActionsHostedRunnerCustomImage(GitHubModel):
+    """GitHub-hosted runner custom image details
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
+    Provides details of a custom runner image
+    """
+
+    id: int = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
     )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+    platform: str = Field(description="The operating system of the image.")
+    total_versions_size: int = Field(
+        description="Total size of all the image versions in GB."
+    )
+    name: str = Field(description="Display name for this image.")
+    source: str = Field(description="The image provider.")
+    versions_count: int = Field(
+        description="The number of image versions associated with the image."
+    )
+    latest_version: str = Field(
+        description="The latest image version associated with the image."
+    )
+    state: str = Field(
+        description="The number of image versions associated with the image."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(ActionsHostedRunnerCustomImage)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = (
+    "ActionsHostedRunnerCustomImage",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+)

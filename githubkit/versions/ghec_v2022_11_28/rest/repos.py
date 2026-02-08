@@ -15897,7 +15897,7 @@ class ReposClient:
 
         Enables Git LFS for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository
         """
@@ -15934,7 +15934,7 @@ class ReposClient:
 
         Enables Git LFS for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository
         """
@@ -15968,7 +15968,7 @@ class ReposClient:
 
         Disables Git LFS for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository
         """
@@ -15998,7 +15998,7 @@ class ReposClient:
 
         Disables Git LFS for a repository.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository
         """

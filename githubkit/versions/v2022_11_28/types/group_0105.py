@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsArtifactAndLogRetentionType(TypedDict):
-    """ActionsArtifactAndLogRetention"""
+class ActionsArtifactAndLogRetentionResponseType(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
 
     days: int
+    maximum_allowed_days: int
 
 
-class ActionsArtifactAndLogRetentionTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetention"""
+class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
+    """ActionsArtifactAndLogRetentionResponse"""
 
     days: int
+    maximum_allowed_days: int
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionType",
-    "ActionsArtifactAndLogRetentionTypeForResponse",
+    "ActionsArtifactAndLogRetentionResponseType",
+    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
 )

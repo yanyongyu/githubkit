@@ -10,54 +10,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Review Requested Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_requested"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    rename: RenamedIssueEventPropRenameType
 
 
-class ReviewRequestedIssueEventTypeForResponse(TypedDict):
-    """Review Requested Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Review Requested Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_requested"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    rename: RenamedIssueEventPropRenameTypeForResponse
+
+
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "ReviewRequestedIssueEventType",
-    "ReviewRequestedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

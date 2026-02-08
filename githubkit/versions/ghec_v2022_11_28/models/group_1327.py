@@ -14,31 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
 
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to provide to the originating repository.",
+    status: Literal["approve", "deny"] = Field(
+        description="The review action to perform on the dismissal request."
     )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="The password to provide to the originating repository.",
-    )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
-        default=UNSET,
-        description="The type of version control system you are migrating from.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",)

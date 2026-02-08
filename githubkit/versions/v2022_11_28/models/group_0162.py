@@ -9,37 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0158 import Link
 
 
-class ProjectsV2DraftIssue(GitHubModel):
-    """Draft Issue
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-    A draft issue in a project
-    """
-
-    id: float = Field(description="The ID of the draft issue")
-    node_id: str = Field(description="The node ID of the draft issue")
-    title: str = Field(description="The title of the draft issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The body content of the draft issue"
-    )
-    user: Union[None, SimpleUser] = Field()
-    created_at: _dt.datetime = Field(description="The time the draft issue was created")
-    updated_at: _dt.datetime = Field(
-        description="The time the draft issue was last updated"
-    )
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
 
-model_rebuild(ProjectsV2DraftIssue)
+model_rebuild(PullRequestSimplePropLinks)
 
-__all__ = ("ProjectsV2DraftIssue",)
+__all__ = ("PullRequestSimplePropLinks",)

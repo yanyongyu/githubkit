@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -17,39 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class OrgHook(GitHubModel):
-    """Org Hook
 
-    Org Hook
+class OrganizationInvitation(GitHubModel):
+    """Organization Invitation
+
+    Organization Invitation
     """
 
     id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
+    login: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    role: str = Field()
+    created_at: str = Field()
+    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team_count: int = Field()
+    node_id: str = Field()
+    invitation_teams_url: str = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+model_rebuild(OrganizationInvitation)
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
-
-__all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
-)
+__all__ = ("OrganizationInvitation",)

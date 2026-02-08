@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,42 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserMigrationsPostBody(GitHubModel):
-    """UserMigrationsPostBody"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    lock_repositories: Missing[bool] = Field(
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        description="Lock the repositories being migrated at the start of the migration",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    exclude_git_data: Missing[bool] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
     )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET, description="Do not include attachments in the migration"
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET, description="Do not include releases in the migration"
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[list[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude attributes from the API response to improve performance",
-    )
-    repositories: list[str] = Field()
 
 
-model_rebuild(UserMigrationsPostBody)
+model_rebuild(TeamsTeamIdPatchBody)
 
-__all__ = ("UserMigrationsPostBody",)
+__all__ = ("TeamsTeamIdPatchBody",)

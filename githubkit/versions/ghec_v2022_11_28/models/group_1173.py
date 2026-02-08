@@ -9,24 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0237 import MinimalRepository
 
 
-class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    role: Missing[Literal["admin", "member"]] = Field(
-        default=UNSET,
-        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",)
