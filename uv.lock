@@ -730,7 +730,7 @@ wheels = [
 
 [[package]]
 name = "githubkit"
-version = "0.14.3"
+version = "0.14.4"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },
