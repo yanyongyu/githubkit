@@ -42,7 +42,7 @@ jobs:
         shell: bash
 
       - name: Run Pyright
-        uses: jakebailey/pyright-action@v2
+        uses: jakebailey/pyright-action@v3
         with:
           pylance-version: latest-release
           extra-args: githubkit
@@ -62,7 +62,7 @@ jobs:
         shell: bash
 
       - name: Run Pyright
-        uses: jakebailey/pyright-action@v2
+        uses: jakebailey/pyright-action@v3
         with:
           working-directory: ./codegen
           pylance-version: latest-release
