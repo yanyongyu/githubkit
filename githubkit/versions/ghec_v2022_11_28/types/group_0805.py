@@ -13,54 +13,111 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0580 import (
-    WebhooksMarketplacePurchaseType,
-    WebhooksMarketplacePurchaseTypeForResponse,
-)
-from .group_0581 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0575 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMarketplacePurchasePurchasedTypeForResponse(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookLabelEditedTypeForResponse(TypedDict):
+    """label edited event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
+
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
+
+
+class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChanges
+
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
+    description: NotRequired[
+        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
+    ]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedType",
-    "WebhookMarketplacePurchasePurchasedTypeForResponse",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesTypeForResponse",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedTypeForResponse",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,59 +18,57 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0072 import CodeScanningAlertLocation
+from .group_0003 import SimpleUser
+from .group_0070 import CodeScanningAlertRuleSummary
+from .group_0071 import CodeScanningAnalysisTool
+from .group_0073 import CodeScanningAlertInstance
 
 
-class CodeScanningAlertInstanceList(GitHubModel):
-    """CodeScanningAlertInstanceList"""
+class CodeScanningAlertItems(GitHubModel):
+    """CodeScanningAlertItems"""
 
-    ref: Missing[str] = Field(
+    number: int = Field(description="The security alert number.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    analysis_key: Missing[str] = Field(
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    category: Missing[str] = Field(
-        default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
-    )
-    state: Missing[Union[None, Literal["open", "fixed"]]] = Field(
-        default=UNSET, description="State of a code scanning alert instance."
-    )
-    commit_sha: Missing[str] = Field(default=UNSET)
-    message: Missing[CodeScanningAlertInstanceListPropMessage] = Field(default=UNSET)
-    location: Missing[CodeScanningAlertLocation] = Field(
-        default=UNSET, description="Describe a region within a file for the alert."
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    classifications: Missing[
-        list[
-            Union[
-                None, Literal["source", "generated", "test", "library", "documentation"]
-            ]
-        ]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(
-        default=UNSET,
-        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    dismissal_approved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-class CodeScanningAlertInstanceListPropMessage(GitHubModel):
-    """CodeScanningAlertInstanceListPropMessage"""
+model_rebuild(CodeScanningAlertItems)
 
-    text: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(CodeScanningAlertInstanceList)
-model_rebuild(CodeScanningAlertInstanceListPropMessage)
-
-__all__ = (
-    "CodeScanningAlertInstanceList",
-    "CodeScanningAlertInstanceListPropMessage",
-)
+__all__ = ("CodeScanningAlertItems",)

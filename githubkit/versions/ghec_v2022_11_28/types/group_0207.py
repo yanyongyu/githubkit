@@ -10,81 +10,198 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0199 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0206 import ReleaseAssetType, ReleaseAssetTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0200 import MilestoneType, MilestoneTypeForResponse
+from .group_0201 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0202 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0203 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0205 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0206 import IssueFieldValueType, IssueFieldValueTypeForResponse
 
 
-class ReleaseType(TypedDict):
-    """Release
+class IssueType(TypedDict):
+    """Issue
 
-    A release.
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
     id: int
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
     body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[_dt.datetime, None]
     created_at: _dt.datetime
-    published_at: Union[_dt.datetime, None]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    author: SimpleUserType
-    assets: list[ReleaseAssetType]
+    updated_at: _dt.datetime
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
     body_html: NotRequired[Union[str, None]]
     body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
     reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    parent_issue_url: NotRequired[Union[str, None]]
+    pinned_comment: NotRequired[Union[None, IssueCommentType]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
 
 
-class ReleaseTypeForResponse(TypedDict):
-    """Release
+class IssueTypeForResponse(TypedDict):
+    """Issue
 
-    A release.
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    url: str
-    html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
     id: int
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
+    ]
+    title: str
     body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    immutable: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    milestone: Union[None, MilestoneTypeForResponse]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
+    closed_at: Union[str, None]
     created_at: str
-    published_at: Union[str, None]
-    updated_at: NotRequired[Union[str, None]]
-    author: SimpleUserTypeForResponse
-    assets: list[ReleaseAssetTypeForResponse]
+    updated_at: str
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
     body_html: NotRequired[Union[str, None]]
     body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    repository: NotRequired[RepositoryTypeForResponse]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
     reactions: NotRequired[ReactionRollupTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    parent_issue_url: NotRequired[Union[str, None]]
+    pinned_comment: NotRequired[Union[None, IssueCommentTypeForResponse]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+
+
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "ReleaseType",
-    "ReleaseTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
+    "IssueType",
+    "IssueTypeForResponse",
 )

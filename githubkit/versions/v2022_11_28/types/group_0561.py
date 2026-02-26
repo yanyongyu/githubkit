@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0331 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0333 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_reopened"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertAutoReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_reopened"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoReopenedType",
-    "WebhookDependabotAlertAutoReopenedTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0085 import CopilotSeatDetails
 
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: Missing[int] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
+        max_length=250 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
+        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

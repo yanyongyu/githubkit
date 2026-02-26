@@ -9,51 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0237 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class CodeScanningSarifsReceiptType(TypedDict):
+    """CodeScanningSarifsReceipt"""
+
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
-
-
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeScanningSarifsReceiptType",
+    "CodeScanningSarifsReceiptTypeForResponse",
 )

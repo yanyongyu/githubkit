@@ -14,21 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0487 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionClosedType(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentType
+    action: Literal["closed"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,11 +35,10 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionClosedTypeForResponse(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["closed"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +48,6 @@ class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedTypeForResponse",
+    "WebhookDiscussionClosedType",
+    "WebhookDiscussionClosedTypeForResponse",
 )

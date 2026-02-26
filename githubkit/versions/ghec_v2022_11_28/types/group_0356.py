@@ -9,60 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0352 import GitUserType, GitUserTypeForResponse
+from .group_0353 import VerificationType, VerificationTypeForResponse
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
-    """
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class DeploymentSimpleTypeForResponse(TypedDict):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
-    """
+class CommitPropCommitTypeForResponse(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    author: Union[None, GitUserTypeForResponse]
+    committer: Union[None, GitUserTypeForResponse]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "DeploymentSimpleType",
-    "DeploymentSimpleTypeForResponse",
+    "CommitPropCommitPropTreeType",
+    "CommitPropCommitPropTreeTypeForResponse",
+    "CommitPropCommitType",
+    "CommitPropCommitTypeForResponse",
 )

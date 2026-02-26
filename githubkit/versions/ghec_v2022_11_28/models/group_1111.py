@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0038 import ActionsHostedRunnerCuratedImage
-
-
-class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCuratedImage] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200)
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200",)
+    last_read_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+    )
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
+    )
+
+
+model_rebuild(NotificationsPutBody)
+
+__all__ = ("NotificationsPutBody",)

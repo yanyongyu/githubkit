@@ -9,320 +9,182 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0198 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0200 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0701 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeTypeForResponse,
-    WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsTypeForResponse,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestTypeForResponse,
-)
-from .group_0703 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneTypeForResponse,
-)
-from .group_0705 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
-)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0Type(TypedDict):
-    """Issue
+class WebhookInstallationTargetRenamedType(TypedDict):
+    """WebhookInstallationTargetRenamed"""
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) itself.
-    """
+    account: WebhookInstallationTargetRenamedPropAccountType
+    action: Literal["renamed"]
+    changes: WebhookInstallationTargetRenamedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
+    target_type: str
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[
-        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeType, None]
-    ]
-    assignees: list[
-        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
-    created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
+
+class WebhookInstallationTargetRenamedTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamed"""
+
+    account: WebhookInstallationTargetRenamedPropAccountTypeForResponse
+    action: Literal["renamed"]
+    changes: WebhookInstallationTargetRenamedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+    target_type: str
+
+
+class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
+    """WebhookInstallationTargetRenamedPropAccount"""
+
+    archived_at: NotRequired[Union[str, None]]
+    avatar_url: str
+    created_at: NotRequired[str]
+    description: NotRequired[None]
+    events_url: NotRequired[str]
+    followers: NotRequired[int]
+    followers_url: NotRequired[str]
+    following: NotRequired[int]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    hooks_url: NotRequired[str]
     html_url: str
     id: int
-    labels: NotRequired[
-        list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsType]
-    ]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneType, None]
+    is_verified: NotRequired[bool]
+    issues_url: NotRequired[str]
+    login: NotRequired[str]
+    members_url: NotRequired[str]
+    name: NotRequired[str]
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType, None
-        ]
-    ]
-    pull_request: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestType
-    ]
-    reactions: WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhookIssueCommentCreatedPropIssueAllof0PropUserType, None]
+    organizations_url: NotRequired[str]
+    public_gists: NotRequired[int]
+    public_members_url: NotRequired[str]
+    public_repos: NotRequired[int]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    slug: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    website_url: NotRequired[None]
+    user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0TypeForResponse(TypedDict):
-    """Issue
+class WebhookInstallationTargetRenamedPropAccountTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropAccount"""
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) itself.
-    """
-
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof0PropAssigneeTypeForResponse, None
-        ]
-    ]
-    assignees: list[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsTypeForResponse,
-            None,
-        ]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
-    created_at: str
-    draft: NotRequired[bool]
-    events_url: str
+    archived_at: NotRequired[Union[str, None]]
+    avatar_url: str
+    created_at: NotRequired[str]
+    description: NotRequired[None]
+    events_url: NotRequired[str]
+    followers: NotRequired[int]
+    followers_url: NotRequired[str]
+    following: NotRequired[int]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    hooks_url: NotRequired[str]
     html_url: str
     id: int
-    labels: NotRequired[
-        list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItemsTypeForResponse]
-    ]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestoneTypeForResponse, None
-    ]
+    is_verified: NotRequired[bool]
+    issues_url: NotRequired[str]
+    login: NotRequired[str]
+    members_url: NotRequired[str]
+    name: NotRequired[str]
     node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
+    organizations_url: NotRequired[str]
+    public_gists: NotRequired[int]
+    public_members_url: NotRequired[str]
+    public_repos: NotRequired[int]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    slug: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    website_url: NotRequired[None]
+    user_view_type: NotRequired[str]
+
+
+class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChanges"""
+
+    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
+    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
+
+
+class WebhookInstallationTargetRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChanges"""
+
+    login: NotRequired[
+        WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse
     ]
-    pull_request: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPullRequestTypeForResponse
+    slug: NotRequired[
+        WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse
     ]
-    reactions: WebhookIssueCommentCreatedPropIssueAllof0PropReactionsTypeForResponse
-    repository_url: str
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    updated_at: str
-    url: str
-    user: Union[WebhookIssueCommentCreatedPropIssueAllof0PropUserTypeForResponse, None]
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType(TypedDict):
-    """User"""
+class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    from_: str
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse(TypedDict):
+    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItemsTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropReactionsType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropReactionsTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropUserType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropUserTypeForResponse",
-    "WebhookIssueCommentCreatedPropIssueAllof0Type",
-    "WebhookIssueCommentCreatedPropIssueAllof0TypeForResponse",
+    "WebhookInstallationTargetRenamedPropAccountType",
+    "WebhookInstallationTargetRenamedPropAccountTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
+    "WebhookInstallationTargetRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
+    "WebhookInstallationTargetRenamedPropChangesPropSlugTypeForResponse",
+    "WebhookInstallationTargetRenamedPropChangesType",
+    "WebhookInstallationTargetRenamedPropChangesTypeForResponse",
+    "WebhookInstallationTargetRenamedType",
+    "WebhookInstallationTargetRenamedTypeForResponse",
 )

@@ -13,173 +13,314 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0737 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+from .group_0201 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0203 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0739 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsTypeForResponse,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestTypeForResponse,
+)
+from .group_0741 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse,
+)
+from .group_0743 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
-    """App
+class WebhookIssueCommentPinnedPropIssueAllof0Type(TypedDict):
+    """Issue
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
     """
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[
+        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType, None]
+    ]
+    assignees: list[
+        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType, None]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[_dt.datetime, None]
+    comments: int
+    comments_url: str
+    created_at: _dt.datetime
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[
+        list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsType]
+    ]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType, None
         ]
     ]
-    external_url: Union[str, None]
+    pull_request: NotRequired[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestType
+    ]
+    reactions: WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeType, None]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhookIssueCommentPinnedPropIssueAllof0PropUserType, None]
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0TypeForResponse(TypedDict):
+    """Issue
+
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[
+        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse, None]
+    ]
+    assignees: list[
+        Union[
+            WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsTypeForResponse,
+            None,
+        ]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[str, None]
+    comments: int
+    comments_url: str
+    created_at: str
+    draft: NotRequired[bool]
+    events_url: str
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels: NotRequired[
+        list[WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItemsTypeForResponse]
+    ]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse, None
+    ]
     node_id: str
-    owner: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
     ]
-    permissions: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    pull_request: NotRequired[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPullRequestTypeForResponse
     ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    reactions: WebhookIssueCommentPinnedPropIssueAllof0PropReactionsTypeForResponse
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    updated_at: str
+    url: str
+    user: Union[WebhookIssueCommentPinnedPropIssueAllof0PropUserTypeForResponse, None]
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsTypeForResponse(
     TypedDict
 ):
-    """App
+    """User"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppType",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsType",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItemsTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropReactionsType",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropReactionsTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropUserType",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropUserTypeForResponse",
+    "WebhookIssueCommentPinnedPropIssueAllof0Type",
+    "WebhookIssueCommentPinnedPropIssueAllof0TypeForResponse",
 )

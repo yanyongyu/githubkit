@@ -12,33 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0220 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+from .group_0216 import (
+    RepositoryRuleFileExtensionRestrictionPropParametersType,
+    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof19Type(TypedDict):
-    """RepositoryRuleDetailedOneof19"""
+class RepositoryRuleDetailedOneof17Type(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof19TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof19"""
+class RepositoryRuleDetailedOneof17TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    type: Literal["file_extension_restriction"]
+    parameters: NotRequired[
+        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+    ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof19Type",
-    "RepositoryRuleDetailedOneof19TypeForResponse",
+    "RepositoryRuleDetailedOneof17Type",
+    "RepositoryRuleDetailedOneof17TypeForResponse",
 )

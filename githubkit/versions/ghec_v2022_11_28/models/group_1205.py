@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,59 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgHooksHookIdPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
+        default=UNSET,
+        description="Key/value pairs to provide settings for this webhook.",
+    )
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
+    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
+class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    Private registry configuration for an organization
+    Key/value pairs to provide settings for this webhook.
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
-    )
-    username: Missing[Union[str, None]] = Field(
+    url: str = Field(description="The URL to which the payloads will be delivered.")
+    content_type: Missing[str] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    replaces_base: Missing[bool] = Field(
+    secret: Missing[str] = Field(
         default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgHooksHookIdPatchBody)
+model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
 
 __all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
+    "OrgsOrgHooksHookIdPatchBody",
+    "OrgsOrgHooksHookIdPatchBodyPropConfig",
 )

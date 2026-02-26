@@ -9,56 +9,114 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
-from .group_1157 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
 
 
-class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
 
     name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
+        min_length=1,
+        max_length=256,
+        description="The name of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name parameter must also be identical across all entries.\n",
     )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name and version parameters must also be identical across all entries.\n",
     )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    version: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
         default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+        description="The artifact version. Note that if multiple deployments have identical 'digest' parameter values,\nthe version parameter must also be identical across all entries.\n",
     )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
         default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
-    ends_at: _dt.datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
     )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: Union[
-        Annotated[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
-            Field(min_length=1 if PYDANTIC_V2 else None),
-        ],
-        None,
-    ] = Field(description="The code scanning alerts to include in this campaign")
-    generate_issues: Missing[bool] = Field(
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
+        description="A list of runtime risks associated with the deployment.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
+    ExtraGitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)
+    Key-value pairs to tag the deployment record.
+    """
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+)
+
+__all__ = (
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
+)

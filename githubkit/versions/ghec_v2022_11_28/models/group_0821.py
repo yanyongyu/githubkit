@@ -18,27 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0102 import OrganizationCustomProperty
-from .group_0555 import EnterpriseWebhooks
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
+from .group_0581 import WebhooksMilestone
 
 
-class WebhookOrganizationCustomPropertyCreated(GitHubModel):
-    """organization custom property created event"""
+class WebhookMilestoneDeleted(GitHubModel):
+    """milestone deleted event"""
 
-    action: Literal["created"] = Field()
-    definition: OrganizationCustomProperty = Field(
-        title="Custom Property for Organization",
-        description="Custom property defined for an organization",
-    )
-    enterprise: EnterpriseWebhooks = Field(
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationCustomPropertyCreated)
+model_rebuild(WebhookMilestoneDeleted)
 
-__all__ = ("WebhookOrganizationCustomPropertyCreated",)
+__all__ = ("WebhookMilestoneDeleted",)

@@ -9,58 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class LabelType(TypedDict):
+    """Label
 
-    The type of issue.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
     id: int
     node_id: str
+    url: str
     name: str
     description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
+    color: str
+    default: bool
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    The type of issue.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
     id: int
     node_id: str
+    url: str
     name: str
     description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

@@ -15,36 +15,28 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-class PageBuild(GitHubModel):
-    """Page Build
-
-    Page Build
+    An SSH key granting access to a single repository.
     """
 
+    id: int = Field()
+    key: str = Field()
     url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+model_rebuild(DeployKey)
 
-    message: Union[str, None] = Field()
-
-
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
-
-__all__ = (
-    "PageBuild",
-    "PageBuildPropError",
-)
+__all__ = ("DeployKey",)

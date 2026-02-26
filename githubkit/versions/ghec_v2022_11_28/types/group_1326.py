@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

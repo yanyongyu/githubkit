@@ -9,51 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0202 import IssueType, IssueTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookSubIssuesSubIssueAddedType(TypedDict):
-    """sub-issue added event"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: float
-    sub_issue: IssueType
-    sub_issue_repo: RepositoryType
-    parent_issue_id: float
-    parent_issue: IssueType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-
-
-class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
-    """sub-issue added event"""
-
-    action: Literal["sub_issue_added"]
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
-    sub_issue_repo: RepositoryTypeForResponse
-    parent_issue_id: float
-    parent_issue: IssueTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSubIssuesSubIssueAddedType",
-    "WebhookSubIssuesSubIssueAddedTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
 )

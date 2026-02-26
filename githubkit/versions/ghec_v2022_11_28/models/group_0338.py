@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,57 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WorkflowUsage(GitHubModel):
-    """Workflow Usage
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-    Workflow Usage
-    """
-
-    billable: WorkflowUsagePropBillable = Field()
-
-
-class WorkflowUsagePropBillable(GitHubModel):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
     )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
     )
 
 
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
+model_rebuild(ReviewCustomGatesStateRequired)
 
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WorkflowUsage)
-model_rebuild(WorkflowUsagePropBillable)
-model_rebuild(WorkflowUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowUsagePropBillablePropMacos)
-model_rebuild(WorkflowUsagePropBillablePropWindows)
-
-__all__ = (
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropWindows",
-)
+__all__ = ("ReviewCustomGatesStateRequired",)

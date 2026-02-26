@@ -9,36 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0105 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
-    """
-
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    List of custom property values for a repository
-    """
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
+
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

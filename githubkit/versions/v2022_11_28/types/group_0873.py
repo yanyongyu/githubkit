@@ -9,45 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0519 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0084 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
-class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
-    """sponsorship created event"""
+class WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
 
 
 __all__ = (
-    "WebhookSponsorshipCreatedType",
-    "WebhookSponsorshipCreatedTypeForResponse",
+    "WebhookSecurityAndAnalysisPropChangesPropFromType",
+    "WebhookSecurityAndAnalysisPropChangesPropFromTypeForResponse",
 )

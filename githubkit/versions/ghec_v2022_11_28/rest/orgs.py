@@ -11330,6 +11330,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     def custom_properties_for_repos_create_or_update_organization_definition(
@@ -11413,6 +11414,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     async def async_custom_properties_for_repos_create_or_update_organization_definition(

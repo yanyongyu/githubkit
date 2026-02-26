@@ -18,19 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0196 import Discussion
-from .group_0555 import EnterpriseWebhooks
-from .group_0556 import SimpleInstallation
-from .group_0557 import OrganizationSimpleWebhooks
-from .group_0558 import RepositoryWebhooks
-from .group_0677 import WebhookDiscussionTransferredPropChanges
+from .group_0199 import Discussion
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
 
 
-class WebhookDiscussionTransferred(GitHubModel):
-    """discussion transferred event"""
+class WebhookDiscussionEdited(GitHubModel):
+    """discussion edited event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookDiscussionTransferredPropChanges = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +55,33 @@ class WebhookDiscussionTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionTransferred)
+class WebhookDiscussionEditedPropChanges(GitHubModel):
+    """WebhookDiscussionEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionTransferred",)
+    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionEdited)
+model_rebuild(WebhookDiscussionEditedPropChanges)
+model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
+model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookDiscussionEdited",
+    "WebhookDiscussionEditedPropChanges",
+    "WebhookDiscussionEditedPropChangesPropBody",
+    "WebhookDiscussionEditedPropChangesPropTitle",
+)

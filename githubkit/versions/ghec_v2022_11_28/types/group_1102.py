@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
 
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

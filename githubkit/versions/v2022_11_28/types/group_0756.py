@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0504 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0505 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectCardEditedType(TypedDict):
-    """project_card edited event"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -36,11 +35,10 @@ class WebhookProjectCardEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectCardEditedTypeForResponse(TypedDict):
-    """project_card edited event"""
+class WebhookProjectCardCreatedTypeForResponse(TypedDict):
+    """project_card created event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -49,35 +47,7 @@ class WebhookProjectCardEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardEditedPropChangesType(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteType
-
-
-class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChanges"""
-
-    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
-
-
-class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
-
-
-class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None]
-
-
 __all__ = (
-    "WebhookProjectCardEditedPropChangesPropNoteType",
-    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
-    "WebhookProjectCardEditedPropChangesType",
-    "WebhookProjectCardEditedPropChangesTypeForResponse",
-    "WebhookProjectCardEditedType",
-    "WebhookProjectCardEditedTypeForResponse",
+    "WebhookProjectCardCreatedType",
+    "WebhookProjectCardCreatedTypeForResponse",
 )

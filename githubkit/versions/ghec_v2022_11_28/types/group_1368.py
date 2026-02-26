@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    name: str
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    name: str
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsTypeForResponse",
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
 )

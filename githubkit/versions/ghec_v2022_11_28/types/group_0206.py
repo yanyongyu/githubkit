@@ -9,58 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    Data related to a release.
+    A value assigned to an issue field
     """
 
-    url: str
-    browser_download_url: str
-    id: int
+    issue_field_id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    uploader: Union[None, SimpleUserType]
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    Data related to a release.
+    A value assigned to an issue field
     """
 
-    url: str
-    browser_download_url: str
-    id: int
+    issue_field_id: int
     node_id: str
+    data_type: Literal["text", "single_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+
+
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
     name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
-    created_at: str
-    updated_at: str
-    uploader: Union[None, SimpleUserTypeForResponse]
+    color: str
+
+
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

@@ -9,34 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
+    ]
 
-    seats_cancelled: int
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the members of the
-    specified enterprise team(s).
-    """
-
-    seats_cancelled: int
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse",
 )

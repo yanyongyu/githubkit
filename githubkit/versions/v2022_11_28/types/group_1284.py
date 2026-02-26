@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
 
-    title: NotRequired[str]
-    key: str
+    total_count: int
+    installations: list[InstallationType]
 
 
-class UserKeysPostBodyTypeForResponse(TypedDict):
-    """UserKeysPostBody"""
+class UserInstallationsGetResponse200TypeForResponse(TypedDict):
+    """UserInstallationsGetResponse200"""
 
-    title: NotRequired[str]
-    key: str
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "UserKeysPostBodyType",
-    "UserKeysPostBodyTypeForResponse",
+    "UserInstallationsGetResponse200Type",
+    "UserInstallationsGetResponse200TypeForResponse",
 )

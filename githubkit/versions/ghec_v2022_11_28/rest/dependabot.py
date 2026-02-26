@@ -56,7 +56,8 @@ if TYPE_CHECKING:
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
         ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
         ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType,
@@ -90,6 +91,7 @@ class DependabotClient:
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -132,6 +134,7 @@ class DependabotClient:
             "package": package,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -166,6 +169,7 @@ class DependabotClient:
         package: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -208,6 +212,7 @@ class DependabotClient:
             "package": package,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
@@ -666,6 +671,7 @@ class DependabotClient:
         artifact_registry_url: Missing[str] = UNSET,
         artifact_registry: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
@@ -709,6 +715,7 @@ class DependabotClient:
             "artifact_registry_url": artifact_registry_url,
             "artifact_registry": artifact_registry,
             "has": has,
+            "assignee": assignee,
             "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
@@ -747,6 +754,7 @@ class DependabotClient:
         artifact_registry_url: Missing[str] = UNSET,
         artifact_registry: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch", "deployment"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         runtime_risk: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
@@ -790,6 +798,7 @@ class DependabotClient:
             "artifact_registry_url": artifact_registry_url,
             "artifact_registry": artifact_registry,
             "has": has,
+            "assignee": assignee,
             "runtime_risk": runtime_risk,
             "scope": scope,
             "sort": sort,
@@ -1768,12 +1777,13 @@ class DependabotClient:
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
@@ -1798,12 +1808,13 @@ class DependabotClient:
             "manifest": manifest,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "per_page": per_page,
             "before": before,
             "after": after,
+            "per_page": per_page,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1835,12 +1846,13 @@ class DependabotClient:
         manifest: Missing[str] = UNSET,
         epss_percentage: Missing[str] = UNSET,
         has: Missing[Union[str, list[Literal["patch"]]]] = UNSET,
+        assignee: Missing[str] = UNSET,
         scope: Missing[Literal["development", "runtime"]] = UNSET,
         sort: Missing[Literal["created", "updated", "epss_percentage"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        per_page: Missing[int] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
+        per_page: Missing[int] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[DependabotAlert], list[DependabotAlertTypeForResponse]]:
@@ -1865,12 +1877,13 @@ class DependabotClient:
             "manifest": manifest,
             "epss_percentage": epss_percentage,
             "has": has,
+            "assignee": assignee,
             "scope": scope,
             "sort": sort,
             "direction": direction,
-            "per_page": per_page,
             "before": before,
             "after": after,
+            "per_page": per_page,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -1971,7 +1984,10 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+        data: Union[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
@@ -1995,6 +2011,31 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
+
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["dismissed", "open"]] = UNSET,
+        dismissed_reason: Missing[
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ]
+        ] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
+        assignees: list[str],
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     def update_alert(
@@ -2005,7 +2046,12 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            Union[
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
@@ -2019,10 +2065,13 @@ class DependabotClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             DependabotAlert,
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
             ValidationErrorSimple,
         )
 
@@ -2037,7 +2086,11 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2066,7 +2119,10 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+        data: Union[
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+        ],
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     @overload
@@ -2090,6 +2146,31 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
+    ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["dismissed", "open"]] = UNSET,
+        dismissed_reason: Missing[
+            Literal[
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk",
+            ]
+        ] = UNSET,
+        dismissed_comment: Missing[str] = UNSET,
+        assignees: list[str],
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]: ...
 
     async def async_update_alert(
@@ -2100,7 +2181,12 @@ class DependabotClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType] = UNSET,
+        data: Missing[
+            Union[
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
         **kwargs,
     ) -> Response[DependabotAlert, DependabotAlertTypeForResponse]:
         """dependabot/update-alert
@@ -2114,10 +2200,13 @@ class DependabotClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/dependabot/alerts#update-a-dependabot-alert
         """
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             DependabotAlert,
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+            ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
             ValidationErrorSimple,
         )
 
@@ -2132,7 +2221,11 @@ class DependabotClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+                Union[
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+                    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
+                ],
+                json,
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

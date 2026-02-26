@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    visible_fields: Missing[list[int]] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
-    )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

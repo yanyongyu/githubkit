@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0106 import CustomPropertyValue
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

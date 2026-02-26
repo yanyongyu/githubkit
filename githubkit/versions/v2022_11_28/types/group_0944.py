@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    default_level: Literal["public", "internal"]
+    ignored: NotRequired[bool]
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    default_level: Literal["public", "internal"]
+    ignored: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
 )

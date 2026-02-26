@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
-from .group_0488 import WebhooksLabel
-from .group_0493 import WebhooksIssue
+from .group_0046 import IssueType
+from .group_0475 import EnterpriseWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
+from .group_0494 import WebhooksIssue
 
 
-class WebhookIssuesUnlabeled(GitHubModel):
-    """issues unlabeled event"""
+class WebhookIssuesTyped(GitHubModel):
+    """issues typed event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["typed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,9 @@ class WebhookIssuesUnlabeled(GitHubModel):
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
+    type: Union[IssueType, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -57,6 +59,6 @@ class WebhookIssuesUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnlabeled)
+model_rebuild(WebhookIssuesTyped)
 
-__all__ = ("WebhookIssuesUnlabeled",)
+__all__ = ("WebhookIssuesTyped",)

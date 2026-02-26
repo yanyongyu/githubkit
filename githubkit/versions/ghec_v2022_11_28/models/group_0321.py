@@ -12,22 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-    GitHub Actions cache storage policy for a repository.
-    """
-
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
-    )
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+model_rebuild(RateLimit)
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+__all__ = ("RateLimit",)

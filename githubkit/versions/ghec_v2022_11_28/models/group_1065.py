@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0099 import NetworkConfiguration
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)

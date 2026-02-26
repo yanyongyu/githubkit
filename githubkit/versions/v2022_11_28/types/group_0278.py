@@ -9,31 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class VerificationType(TypedDict):
-    """Verification"""
-
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+from .group_0277 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class VerificationTypeForResponse(TypedDict):
-    """Verification"""
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "VerificationType",
-    "VerificationTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

@@ -18,150 +18,89 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0047 import ReactionRollup
 
+class TimelineCommittedEvent(GitHubModel):
+    """Timeline Committed Event
 
-class PullRequestReviewComment(GitHubModel):
-    """Pull Request Review Comment
-
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
+    Timeline Committed Event
     """
 
-    url: str = Field(description="URL for the pull request review comment")
-    pull_request_review_id: Union[int, None] = Field(
-        description="The ID of the pull request review to which the comment belongs."
+    event: Missing[Literal["committed"]] = Field(default=UNSET)
+    sha: str = Field(description="SHA for the commit")
+    node_id: str = Field()
+    url: str = Field()
+    author: TimelineCommittedEventPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
-    id: int = Field(description="The ID of the pull request review comment.")
-    node_id: str = Field(description="The node ID of the pull request review comment.")
-    diff_hunk: str = Field(
-        description="The diff of the line that the comment refers to."
+    committer: TimelineCommittedEventPropCommitter = Field(
+        description="Identifying information for the git-user"
     )
-    path: str = Field(
-        description="The relative path of the file to which the comment applies."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description="The line index in the diff to which the comment applies. This field is closing down; use `line` instead.",
-    )
-    original_position: Missing[int] = Field(
-        default=UNSET,
-        description="The index of the original line in the diff to which the comment applies. This field is closing down; use `original_line` instead.",
-    )
-    commit_id: str = Field(
-        description="The SHA of the commit to which the comment applies."
-    )
-    original_commit_id: str = Field(
-        description="The SHA of the original commit to which the comment applies."
-    )
-    in_reply_to_id: Missing[int] = Field(
-        default=UNSET, description="The comment ID to reply to."
-    )
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field(description="The text of the comment.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    html_url: str = Field(description="HTML URL for the pull request review comment.")
-    pull_request_url: str = Field(
-        description="URL for the pull request that the review comment belongs to."
-    )
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: PullRequestReviewCommentPropLinks = Field(alias="_links")
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: TimelineCommittedEventPropTree = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
+    verification: TimelineCommittedEventPropVerification = Field()
+    html_url: str = Field()
 
 
-class PullRequestReviewCommentPropLinks(GitHubModel):
-    """PullRequestReviewCommentPropLinks"""
+class TimelineCommittedEventPropAuthor(GitHubModel):
+    """TimelineCommittedEventPropAuthor
 
-    self_: PullRequestReviewCommentPropLinksPropSelf = Field(alias="self")
-    html: PullRequestReviewCommentPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropSelf"""
-
-    href: str = Field()
-
-
-class PullRequestReviewCommentPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class PullRequestReviewCommentPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-class TimelineLineCommentedEvent(GitHubModel):
-    """Timeline Line Commented Event
-
-    Timeline Line Commented Event
+    Identifying information for the git-user
     """
 
-    event: Missing[Literal["line_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[list[PullRequestReviewComment]] = Field(default=UNSET)
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
 
 
-model_rebuild(PullRequestReviewComment)
-model_rebuild(PullRequestReviewCommentPropLinks)
-model_rebuild(PullRequestReviewCommentPropLinksPropSelf)
-model_rebuild(PullRequestReviewCommentPropLinksPropHtml)
-model_rebuild(PullRequestReviewCommentPropLinksPropPullRequest)
-model_rebuild(TimelineLineCommentedEvent)
+class TimelineCommittedEventPropCommitter(GitHubModel):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class TimelineCommittedEventPropTree(GitHubModel):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class TimelineCommittedEventPropParentsItems(GitHubModel):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class TimelineCommittedEventPropVerification(GitHubModel):
+    """TimelineCommittedEventPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(TimelineCommittedEvent)
+model_rebuild(TimelineCommittedEventPropAuthor)
+model_rebuild(TimelineCommittedEventPropCommitter)
+model_rebuild(TimelineCommittedEventPropTree)
+model_rebuild(TimelineCommittedEventPropParentsItems)
+model_rebuild(TimelineCommittedEventPropVerification)
 
 __all__ = (
-    "PullRequestReviewComment",
-    "PullRequestReviewCommentPropLinks",
-    "PullRequestReviewCommentPropLinksPropHtml",
-    "PullRequestReviewCommentPropLinksPropPullRequest",
-    "PullRequestReviewCommentPropLinksPropSelf",
-    "TimelineLineCommentedEvent",
+    "TimelineCommittedEvent",
+    "TimelineCommittedEventPropAuthor",
+    "TimelineCommittedEventPropCommitter",
+    "TimelineCommittedEventPropParentsItems",
+    "TimelineCommittedEventPropTree",
+    "TimelineCommittedEventPropVerification",
 )

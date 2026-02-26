@@ -12,20 +12,38 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0376 import CodeScanningVariantAnalysisSkippedRepoGroup
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
+    """
+
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
     )
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+)

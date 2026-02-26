@@ -15,6 +15,7 @@ from pydantic import Field
 from githubkit.compat import GitHubModel
 
 from ..models import (
+    WebhookDependabotAlertAssigneesChanged,
     WebhookDependabotAlertAutoDismissed,
     WebhookDependabotAlertAutoReopened,
     WebhookDependabotAlertCreated,
@@ -26,6 +27,7 @@ from ..models import (
 
 Event: TypeAlias = Annotated[
     Union[
+        WebhookDependabotAlertAssigneesChanged,
         WebhookDependabotAlertAutoDismissed,
         WebhookDependabotAlertAutoReopened,
         WebhookDependabotAlertCreated,
@@ -40,6 +42,7 @@ Event: TypeAlias = Annotated[
 DependabotAlertEvent: TypeAlias = Event
 
 action_types: dict[str, type[GitHubModel]] = {
+    "assignees_changed": WebhookDependabotAlertAssigneesChanged,
     "auto_dismissed": WebhookDependabotAlertAutoDismissed,
     "auto_reopened": WebhookDependabotAlertAutoReopened,
     "created": WebhookDependabotAlertCreated,

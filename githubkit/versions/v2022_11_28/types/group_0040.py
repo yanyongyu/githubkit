@@ -62,6 +62,7 @@ class DependabotAlertWithRepositoryType(TypedDict):
     dismissal_request: NotRequired[
         Union[DependabotAlertDismissalRequestSimpleType, None]
     ]
+    assignees: NotRequired[list[SimpleUserType]]
     repository: SimpleRepositoryType
 
 
@@ -94,6 +95,7 @@ class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
     dismissal_request: NotRequired[
         Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
     ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
     repository: SimpleRepositoryTypeForResponse
 
 

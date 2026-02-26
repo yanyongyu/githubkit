@@ -9,57 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0118 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-
-
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
+    Parameters for a repository property condition
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for a targeting a repository property
+    Parameters for a repository property condition
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

@@ -14,134 +14,152 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPullRequestReviewThreadUnresolvedType(TypedDict):
-    """pull_request_review_thread unresolved event"""
+class WebhookPullRequestReviewRequestRemovedOneof1Type(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["unresolved"]
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestType
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
-    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadType
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType
+    sender: SimpleUserType
 
 
-class WebhookPullRequestReviewThreadUnresolvedTypeForResponse(TypedDict):
-    """pull_request_review_thread unresolved event"""
+class WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["unresolved"]
+    action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
-    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse
-    updated_at: NotRequired[Union[str, None]]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestType(TypedDict):
-    """Simple Pull Request"""
-
-    links: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksType
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeType, None
-    ]
-    assignees: list[
-        Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsType,
-            None,
-        ]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeType, None
-    ]
-    base: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseType
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments_url: str
-    commits_url: str
-    created_at: str
-    diff_url: str
-    draft: bool
-    head: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadType
-    html_url: str
-    id: int
-    issue_url: str
-    labels: list[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType
-    ]
-    locked: bool
-    merge_commit_sha: Union[str, None]
-    merged_at: Union[str, None]
-    milestone: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneType, None
-    ]
-    node_id: str
-    number: int
-    patch_url: str
-    requested_reviewers: list[
-        Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0Type,
-            None,
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1Type,
-        ]
-    ]
-    requested_teams: list[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsType
-    ]
-    review_comment_url: str
-    review_comments_url: str
-    state: Literal["open", "closed"]
-    statuses_url: str
-    title: str
-    updated_at: str
-    url: str
-    user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserType, None
-    ]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse(TypedDict):
-    """Simple Pull Request"""
-
-    links: (
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksTypeForResponse
+    pull_request: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse
     )
+    repository: RepositoryWebhooksTypeForResponse
+    requested_team: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse
+    )
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType,
+            None,
+        ]
+    ]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse(
+    TypedDict
+):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse,
+            None,
+        ]
+    ]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType(TypedDict):
+    """Pull Request"""
+
+    links: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksType
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
+    additions: NotRequired[int]
     assignee: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeType,
         None,
     ]
     assignees: list[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsTypeForResponse,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsType,
             None,
         ]
     ]
@@ -156,45 +174,158 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse(Typ
         "OWNER",
     ]
     auto_merge: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeType,
         None,
     ]
-    base: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseTypeForResponse
+    base: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseType
     body: Union[str, None]
-    closed_at: Union[str, None]
+    changed_files: NotRequired[int]
+    closed_at: Union[_dt.datetime, None]
+    comments: NotRequired[int]
     comments_url: str
+    commits: NotRequired[int]
     commits_url: str
-    created_at: str
+    created_at: _dt.datetime
+    deletions: NotRequired[int]
     diff_url: str
     draft: bool
-    head: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadTypeForResponse
+    head: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadType
     html_url: str
     id: int
     issue_url: str
     labels: list[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsTypeForResponse
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsType
     ]
     locked: bool
+    maintainer_can_modify: NotRequired[bool]
     merge_commit_sha: Union[str, None]
-    merged_at: Union[str, None]
+    mergeable: NotRequired[Union[bool, None]]
+    mergeable_state: NotRequired[str]
+    merged: NotRequired[Union[bool, None]]
+    merged_at: Union[_dt.datetime, None]
+    merged_by: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByType,
+            None,
+        ]
+    ]
     milestone: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneType,
         None,
     ]
     node_id: str
     number: int
     patch_url: str
+    rebaseable: NotRequired[Union[bool, None]]
     requested_reviewers: list[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
     requested_teams: list[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsTypeForResponse
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
+    review_comments: NotRequired[int]
+    review_comments_url: str
+    state: Literal["open", "closed"]
+    statuses_url: str
+    title: str
+    updated_at: _dt.datetime
+    url: str
+    user: Union[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserType, None
+    ]
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse(
+    TypedDict
+):
+    """Pull Request"""
+
+    links: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksTypeForResponse
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    additions: NotRequired[int]
+    assignee: Union[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeTypeForResponse,
+        None,
+    ]
+    assignees: list[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsTypeForResponse,
+            None,
+        ]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeTypeForResponse,
+        None,
+    ]
+    base: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseTypeForResponse
+    body: Union[str, None]
+    changed_files: NotRequired[int]
+    closed_at: Union[str, None]
+    comments: NotRequired[int]
+    comments_url: str
+    commits: NotRequired[int]
+    commits_url: str
+    created_at: str
+    deletions: NotRequired[int]
+    diff_url: str
+    draft: bool
+    head: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadTypeForResponse
+    html_url: str
+    id: int
+    issue_url: str
+    labels: list[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsTypeForResponse
+    ]
+    locked: bool
+    maintainer_can_modify: NotRequired[bool]
+    merge_commit_sha: Union[str, None]
+    mergeable: NotRequired[Union[bool, None]]
+    mergeable_state: NotRequired[str]
+    merged: NotRequired[Union[bool, None]]
+    merged_at: Union[str, None]
+    merged_by: NotRequired[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByTypeForResponse,
+            None,
+        ]
+    ]
+    milestone: Union[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneTypeForResponse,
+        None,
+    ]
+    node_id: str
+    number: int
+    patch_url: str
+    rebaseable: NotRequired[Union[bool, None]]
+    requested_reviewers: list[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse,
+            None,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse,
+        ]
+    ]
+    requested_teams: list[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsTypeForResponse
+    ]
+    review_comment_url: str
+    review_comments: NotRequired[int]
     review_comments_url: str
     state: Literal["open", "closed"]
     statuses_url: str
@@ -202,12 +333,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse(Typ
     updated_at: str
     url: str
     user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserTypeForResponse,
         None,
     ]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeType(
     TypedDict
 ):
     """User"""
@@ -236,7 +367,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeType(
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -265,7 +396,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeTypeFor
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsType(
     TypedDict
 ):
     """User"""
@@ -291,9 +422,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsT
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -319,9 +451,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsT
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeType(
     TypedDict
 ):
     """PullRequestAutoMerge
@@ -330,15 +463,15 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeType(
     """
 
     commit_message: Union[str, None]
-    commit_title: str
+    commit_title: Union[str, None]
     enabled_by: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByType,
         None,
     ]
     merge_method: Literal["merge", "squash", "rebase"]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeTypeForResponse(
     TypedDict
 ):
     """PullRequestAutoMerge
@@ -347,15 +480,15 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeTypeFo
     """
 
     commit_message: Union[str, None]
-    commit_title: str
+    commit_title: Union[str, None]
     enabled_by: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByTypeForResponse,
         None,
     ]
     merge_method: Literal["merge", "squash", "rebase"]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByType(
     TypedDict
 ):
     """User"""
@@ -384,7 +517,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEn
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -413,7 +546,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEn
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsType(
     TypedDict
 ):
     """Label"""
@@ -427,7 +560,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsTypeForResponse(
     TypedDict
 ):
     """Label"""
@@ -441,7 +574,65 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneType(
     TypedDict
 ):
     """Milestone
@@ -453,7 +644,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneType(
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorType,
         None,
     ]
     description: Union[str, None]
@@ -470,7 +661,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneType(
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneTypeForResponse(
     TypedDict
 ):
     """Milestone
@@ -482,7 +673,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneTypeFo
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -499,7 +690,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneTypeFo
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorType(
     TypedDict
 ):
     """User"""
@@ -528,7 +719,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCr
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -557,7 +748,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCr
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0Type(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0Type(
     TypedDict
 ):
     """User"""
@@ -586,7 +777,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse(
     TypedDict
 ):
     """User"""
@@ -615,34 +806,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserType(
     TypedDict
 ):
     """User"""
@@ -671,41 +835,70 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserTypeForResp
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksType(TypedDict):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserTypeForResponse(
+    TypedDict
+):
+    """User"""
 
-    comments: (
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksType(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks"""
+
+    comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsType
+    commits: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsType
+    html: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlType
     )
-    commits: (
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsType
+    issue: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueType
+    review_comment: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentType
+    review_comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsType
+    self_: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfType
     )
-    html: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlType
-    issue: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentType
-    review_comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsType
-    self_: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfType
-    statuses: (
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesType
-    )
+    statuses: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesType
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks"""
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsTypeForResponse
-    commits: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsTypeForResponse
-    html: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlTypeForResponse
-    issue: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueTypeForResponse
-    review_comment: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentTypeForResponse
-    review_comments: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsTypeForResponse
-    self_: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfTypeForResponse
-    statuses: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesTypeForResponse
+    comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsTypeForResponse
+    commits: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsTypeForResponse
+    html: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlTypeForResponse
+    issue: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueTypeForResponse
+    review_comment: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentTypeForResponse
+    review_comments: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsTypeForResponse
+    self_: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfTypeForResponse
+    statuses: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesTypeForResponse
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsType(
     TypedDict
 ):
     """Link"""
@@ -713,7 +906,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommen
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -721,7 +914,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommen
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsType(
     TypedDict
 ):
     """Link"""
@@ -729,7 +922,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommit
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -737,7 +930,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommit
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlType(
     TypedDict
 ):
     """Link"""
@@ -745,7 +938,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlTy
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -753,7 +946,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlTy
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueType(
     TypedDict
 ):
     """Link"""
@@ -761,7 +954,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueT
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -769,7 +962,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueT
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentType(
     TypedDict
 ):
     """Link"""
@@ -777,7 +970,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReview
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -785,7 +978,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReview
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsType(
     TypedDict
 ):
     """Link"""
@@ -793,7 +986,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReview
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -801,7 +994,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReview
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfType(
     TypedDict
 ):
     """Link"""
@@ -809,7 +1002,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfTy
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -817,7 +1010,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfTy
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesType(
     TypedDict
 ):
     """Link"""
@@ -825,7 +1018,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatus
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -833,35 +1026,39 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatus
     href: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseType(TypedDict):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseType(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase"""
 
     label: str
     ref: str
-    repo: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoType
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoType
+    )
     sha: str
     user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserType,
         None,
     ]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase"""
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase"""
 
     label: str
     ref: str
-    repo: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTypeForResponse
+    repo: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoTypeForResponse
     sha: str
     user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserTypeForResponse,
         None,
     ]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserType(
     TypedDict
 ):
     """User"""
@@ -890,7 +1087,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserTyp
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -919,7 +1116,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserTyp
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoType(
     TypedDict
 ):
     """Repository
@@ -969,6 +1166,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -982,10 +1180,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseType,
         None,
     ]
     master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merges_url: str
     milestones_url: str
     mirror_url: Union[str, None]
@@ -996,11 +1196,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerType,
         None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsType
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsType
     ]
     private: bool
     public: NotRequired[bool]
@@ -1009,6 +1209,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
     ssh_url: str
     stargazers: NotRequired[int]
     stargazers_count: int
@@ -1023,13 +1227,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     trees_url: str
     updated_at: _dt.datetime
     url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]
     watchers: int
     watchers_count: int
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoTypeForResponse(
     TypedDict
 ):
     """Repository
@@ -1079,6 +1284,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1092,10 +1298,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseTypeForResponse,
         None,
     ]
     master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merges_url: str
     milestones_url: str
     mirror_url: Union[str, None]
@@ -1106,11 +1314,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerTypeForResponse,
         None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsTypeForResponse
     ]
     private: bool
     public: NotRequired[bool]
@@ -1119,6 +1327,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
     ssh_url: str
     stargazers: NotRequired[int]
     stargazers_count: int
@@ -1133,13 +1345,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     trees_url: str
     updated_at: str
     url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]
     watchers: int
     watchers_count: int
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseType(
     TypedDict
 ):
     """License"""
@@ -1151,7 +1364,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     url: Union[str, None]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseTypeForResponse(
     TypedDict
 ):
     """License"""
@@ -1163,7 +1376,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     url: Union[str, None]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -1192,7 +1405,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -1221,11 +1434,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsType(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermi
-    ssions
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropP
+    ermissions
     """
 
     admin: bool
@@ -1235,11 +1448,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     triage: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermi
-    ssions
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropP
+    ermissions
     """
 
     admin: bool
@@ -1249,35 +1462,39 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPro
     triage: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadType(TypedDict):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead"""
-
-    label: str
-    ref: str
-    repo: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoType
-    sha: str
-    user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserType,
-        None,
-    ]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadType(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead"""
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead"""
 
     label: str
     ref: str
-    repo: WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTypeForResponse
+    repo: (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoType
+    )
     sha: str
     user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserType,
         None,
     ]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead"""
+
+    label: str
+    ref: str
+    repo: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoTypeForResponse
+    sha: str
+    user: Union[
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserTypeForResponse,
+        None,
+    ]
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserType(
     TypedDict
 ):
     """User"""
@@ -1306,7 +1523,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserTyp
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -1335,7 +1552,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserTyp
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoType(
     TypedDict
 ):
     """Repository
@@ -1385,6 +1602,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1398,10 +1616,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseType,
         None,
     ]
     master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merges_url: str
     milestones_url: str
     mirror_url: Union[str, None]
@@ -1412,11 +1632,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerType,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerType,
         None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsType
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsType
     ]
     private: bool
     public: NotRequired[bool]
@@ -1425,6 +1645,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
     ssh_url: str
     stargazers: NotRequired[int]
     stargazers_count: int
@@ -1439,13 +1663,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     trees_url: str
     updated_at: _dt.datetime
     url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]
     watchers: int
     watchers_count: int
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoTypeForResponse(
     TypedDict
 ):
     """Repository
@@ -1495,6 +1720,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1508,10 +1734,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseTypeForResponse,
         None,
     ]
     master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
     merges_url: str
     milestones_url: str
     mirror_url: Union[str, None]
@@ -1522,11 +1750,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse,
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerTypeForResponse,
         None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse
     ]
     private: bool
     public: NotRequired[bool]
@@ -1535,6 +1763,10 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
     ssh_url: str
     stargazers: NotRequired[int]
     stargazers_count: int
@@ -1549,13 +1781,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     trees_url: str
     updated_at: str
     url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
     visibility: Literal["public", "private", "internal"]
     watchers: int
     watchers_count: int
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseType(
     TypedDict
 ):
     """License"""
@@ -1567,7 +1800,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     url: Union[str, None]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseTypeForResponse(
     TypedDict
 ):
     """License"""
@@ -1579,7 +1812,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     url: Union[str, None]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -1608,7 +1841,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -1637,11 +1870,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsType(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermi
-    ssions
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropP
+    ermissions
     """
 
     admin: bool
@@ -1651,11 +1884,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     triage: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermi
-    ssions
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropP
+    ermissions
     """
 
     admin: bool
@@ -1665,7 +1898,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPro
     triage: NotRequired[bool]
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1Type(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1Type(
     TypedDict
 ):
     """Team
@@ -1674,26 +1907,26 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse(
     TypedDict
 ):
     """Team
@@ -1702,30 +1935,30 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentType(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersIte
-    msOneof1PropParent
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewer
+    sItemsOneof1PropParent
     """
 
     description: Union[str, None]
@@ -1741,11 +1974,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersIte
-    msOneof1PropParent
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewer
+    sItemsOneof1PropParent
     """
 
     description: Union[str, None]
@@ -1761,7 +1994,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReview
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsType(
     TypedDict
 ):
     """Team
@@ -1770,26 +2003,26 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentType,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentType,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsTypeForResponse(
     TypedDict
 ):
     """Team
@@ -1798,30 +2031,30 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse,
+            WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentType(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentType(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPr
-    opParent
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsIte
+    msPropParent
     """
 
     description: Union[str, None]
@@ -1837,11 +2070,11 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
     url: str
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPr
-    opParent
+    """WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsIte
+    msPropParent
     """
 
     description: Union[str, None]
@@ -1855,377 +2088,85 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
     repositories_url: str
     slug: str
     url: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadType(TypedDict):
-    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
-
-    comments: list[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType
-    ]
-    node_id: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse(TypedDict):
-    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
-
-    comments: list[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse
-    ]
-    node_id: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType(
-    TypedDict
-):
-    """Pull Request Review Comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
-    """
-
-    links: (
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType
-    )
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: _dt.datetime
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType,
-        None,
-    ]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """Pull Request Review Comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
-    """
-
-    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: str
-    url: str
-    user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse,
-        None,
-    ]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType(
-    TypedDict
-):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse(
-    TypedDict
-):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType(
-    TypedDict
-):
-    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
-
-    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType
-    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
-
-    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse
-    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
 
 
 __all__ = (
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledByTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergeTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUserTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBaseTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUserTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommentsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommitsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtmlTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssueTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewCommentsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelfTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatusesTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreatorTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestoneTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1Type",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUserTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestType",
-    "WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadType",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse",
-    "WebhookPullRequestReviewThreadUnresolvedType",
-    "WebhookPullRequestReviewThreadUnresolvedTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneeTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItemsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledByTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergeTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicenseTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwnerTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissionsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUserTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBaseTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicenseTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwnerTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUserTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItemsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommentsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommitsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtmlTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssueTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewCommentsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelfTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatusesTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedByTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreatorTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestoneTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0Type",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUserTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof1Type",
+    "WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse",
 )

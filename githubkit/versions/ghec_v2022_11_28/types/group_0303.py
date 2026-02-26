@@ -10,113 +10,221 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2ViewType(TypedDict):
-    """Projects v2 View
+class ProjectsV2FieldType(TypedDict):
+    """Projects v2 Field
 
-    A view inside a projects v2 project
+    A field inside a projects v2 project
     """
 
     id: int
-    number: int
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
+    node_id: NotRequired[str]
     project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorType
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsType]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
 
 
-class ProjectsV2ViewTypeForResponse(TypedDict):
-    """Projects v2 View
+class ProjectsV2FieldTypeForResponse(TypedDict):
+    """Projects v2 Field
 
-    A view inside a projects v2 project
+    A field inside a projects v2 project
     """
 
     id: int
-    number: int
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
+    node_id: NotRequired[str]
     project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorTypeForResponse
+    name: str
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ]
+    options: NotRequired[list[ProjectsV2SingleSelectOptionsTypeForResponse]]
+    configuration: NotRequired[ProjectsV2FieldPropConfigurationTypeForResponse]
     created_at: str
     updated_at: str
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
 
 
-class ProjectsV2ViewPropCreatorType(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class ProjectsV2SingleSelectOptionsType(TypedDict):
+    """Projects v2 Single Select Option
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameType
+    description: ProjectsV2SingleSelectOptionsPropDescriptionType
+    color: str
 
 
-class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class ProjectsV2SingleSelectOptionsTypeForResponse(TypedDict):
+    """Projects v2 Single Select Option
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    An option for a single select field
+    """
+
+    id: str
+    name: ProjectsV2SingleSelectOptionsPropNameTypeForResponse
+    description: ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse
+    color: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropNameTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionType(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse(TypedDict):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2FieldPropConfigurationType(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsType]]
+
+
+class ProjectsV2FieldPropConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: NotRequired[int]
+    duration: NotRequired[int]
+    iterations: NotRequired[list[ProjectsV2IterationSettingsTypeForResponse]]
+
+
+class ProjectsV2IterationSettingsType(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: _dt.date
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleType
+    completed: bool
+
+
+class ProjectsV2IterationSettingsTypeForResponse(TypedDict):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str
+    start_date: str
+    duration: int
+    title: ProjectsV2IterationSettingsPropTitleTypeForResponse
+    completed: bool
+
+
+class ProjectsV2IterationSettingsPropTitleType(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
+
+
+class ProjectsV2IterationSettingsPropTitleTypeForResponse(TypedDict):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str
+    html: str
 
 
 __all__ = (
-    "ProjectsV2ViewPropCreatorType",
-    "ProjectsV2ViewPropCreatorTypeForResponse",
-    "ProjectsV2ViewType",
-    "ProjectsV2ViewTypeForResponse",
+    "ProjectsV2FieldPropConfigurationType",
+    "ProjectsV2FieldPropConfigurationTypeForResponse",
+    "ProjectsV2FieldType",
+    "ProjectsV2FieldTypeForResponse",
+    "ProjectsV2IterationSettingsPropTitleType",
+    "ProjectsV2IterationSettingsPropTitleTypeForResponse",
+    "ProjectsV2IterationSettingsType",
+    "ProjectsV2IterationSettingsTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropDescriptionType",
+    "ProjectsV2SingleSelectOptionsPropDescriptionTypeForResponse",
+    "ProjectsV2SingleSelectOptionsPropNameType",
+    "ProjectsV2SingleSelectOptionsPropNameTypeForResponse",
+    "ProjectsV2SingleSelectOptionsType",
+    "ProjectsV2SingleSelectOptionsTypeForResponse",
 )

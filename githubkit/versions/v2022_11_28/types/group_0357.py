@@ -9,125 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0356 import HookResponseType, HookResponseTypeForResponse
 
-class ImportType(TypedDict):
-    """Import
 
-    A repository import from an external source.
+class HookType(TypedDict):
+    """Webhook
+
+    Webhooks for repositories.
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     url: str
-    html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class ImportTypeForResponse(TypedDict):
-    """Import
+class HookTypeForResponse(TypedDict):
+    """Webhook
 
-    A repository import from an external source.
+    Webhooks for repositories.
     """
 
-    vcs: Union[str, None]
-    use_lfs: NotRequired[bool]
-    vcs_url: str
-    svc_root: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    status: Literal[
-        "auth",
-        "error",
-        "none",
-        "detecting",
-        "choose",
-        "auth_failed",
-        "importing",
-        "mapping",
-        "waiting_to_push",
-        "pushing",
-        "complete",
-        "setup",
-        "unknown",
-        "detection_found_multiple",
-        "detection_found_nothing",
-        "detection_needs_auth",
-    ]
-    status_text: NotRequired[Union[str, None]]
-    failed_step: NotRequired[Union[str, None]]
-    error_message: NotRequired[Union[str, None]]
-    import_percent: NotRequired[Union[int, None]]
-    commit_count: NotRequired[Union[int, None]]
-    push_percent: NotRequired[Union[int, None]]
-    has_large_files: NotRequired[bool]
-    large_files_size: NotRequired[int]
-    large_files_count: NotRequired[int]
-    project_choices: NotRequired[list[ImportPropProjectChoicesItemsTypeForResponse]]
-    message: NotRequired[str]
-    authors_count: NotRequired[Union[int, None]]
+    type: str
+    id: int
+    name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
     url: str
-    html_url: str
-    authors_url: str
-    repository_url: str
-    svn_root: NotRequired[str]
-
-
-class ImportPropProjectChoicesItemsType(TypedDict):
-    """ImportPropProjectChoicesItems"""
-
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
-
-
-class ImportPropProjectChoicesItemsTypeForResponse(TypedDict):
-    """ImportPropProjectChoicesItems"""
-
-    vcs: NotRequired[str]
-    tfvc_project: NotRequired[str]
-    human_name: NotRequired[str]
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
 
 
 __all__ = (
-    "ImportPropProjectChoicesItemsType",
-    "ImportPropProjectChoicesItemsTypeForResponse",
-    "ImportType",
-    "ImportTypeForResponse",
+    "HookType",
+    "HookTypeForResponse",
 )

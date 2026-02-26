@@ -10,39 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0089 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Details for the vulnerable dependency.
+    An object describing a submodule
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
 
-    Details for the vulnerable dependency.
+    An object describing a submodule
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
+
+
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

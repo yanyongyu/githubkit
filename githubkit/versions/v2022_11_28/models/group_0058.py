@@ -17,7 +17,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0043 import Label
-from .group_0050 import Issue
+from .group_0052 import Issue
 
 
 class IssuesEvent(GitHubModel):

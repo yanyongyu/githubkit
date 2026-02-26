@@ -9,67 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-class MigrationType(TypedDict):
-    """Migration
-
-    A migration.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    A migration.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: int
-    owner: Union[None, SimpleUserTypeForResponse]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

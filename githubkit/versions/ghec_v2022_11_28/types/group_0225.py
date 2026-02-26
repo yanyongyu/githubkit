@@ -10,83 +10,79 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0202 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0209 import ReleaseAssetType, ReleaseAssetTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
-
-    Base Gist
-    """
+class ReleaseEventPropReleaseType(TypedDict):
+    """ReleaseEventPropRelease"""
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
     created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    published_at: Union[_dt.datetime, None]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    author: SimpleUserType
+    assets: list[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
-
-    Base Gist
-    """
+class ReleaseEventPropReleaseTypeForResponse(TypedDict):
+    """ReleaseEventPropRelease"""
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
     html_url: str
-    files: BaseGistPropFilesTypeForResponse
-    public: bool
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
+    id: int
+    node_id: str
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
+    immutable: NotRequired[bool]
     created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[None, SimpleUserTypeForResponse]
-    comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
-
-
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
-"""
+    published_at: Union[str, None]
+    updated_at: NotRequired[Union[str, None]]
+    author: SimpleUserTypeForResponse
+    assets: list[ReleaseAssetTypeForResponse]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "ReleaseEventPropReleaseType",
+    "ReleaseEventPropReleaseTypeForResponse",
 )

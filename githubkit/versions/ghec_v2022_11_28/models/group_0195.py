@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class UsageReportExportRequest(GitHubModel):
+    """UsageReportExportRequest"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+    report_type: Literal["detailed", "summarized", "premium_request"] = Field(
+        description="The type of usage report to generate"
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    start_date: _dt.date = Field(
+        description="The start date for the report in YYYY-MM-DD format"
     )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    end_date: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+    )
+    send_email: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
     )
 
 
-model_rebuild(Label)
+model_rebuild(UsageReportExportRequest)
 
-__all__ = ("Label",)
+__all__ = ("UsageReportExportRequest",)

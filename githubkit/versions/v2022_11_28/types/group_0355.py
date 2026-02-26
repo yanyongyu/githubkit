@@ -9,56 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0354 import HookResponseType, HookResponseTypeForResponse
 
+class GitTreeType(TypedDict):
+    """Git Tree
 
-class HookType(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
+    The hierarchy between files in a Git repository.
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Webhooks for repositories.
+    The hierarchy between files in a Git repository.
     """
 
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
+
+
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
     type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

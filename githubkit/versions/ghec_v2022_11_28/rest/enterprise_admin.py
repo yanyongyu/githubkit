@@ -8607,6 +8607,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     def custom_properties_for_repos_create_or_update_enterprise_definition(
@@ -8688,6 +8689,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[None, Literal["org_actors", "org_and_repo_actors"]]
         ] = UNSET,
+        require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
     async def async_custom_properties_for_repos_create_or_update_enterprise_definition(
@@ -10202,7 +10204,36 @@ class EnterpriseAdminClient:
         You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
+        > ```
+        >{
+        >  "schemas": [
+        >    "urn:ietf:params:scim:schemas:core:2.0:User"
+        >  ],
+        >  "externalId": "E012345",
+        >  "active": false,
+        >  "userName": "E012345",
+        >  "name": {
+        >    "familyName": "Octocat",
+        >    "givenName": "Mona",
+        >    "middleName": "Lisa"
+        >  },
+        >  "displayName": "Mona Lisa",
+        >  "emails": [
+        >    {
+        >      "value": "mlisa@example.com",
+        >      "type": "work",
+        >      "primary": true
+        >    }
+        >  ],
+        >  "roles": [
+        >    {
+        >      "value": "User"
+        >    }
+        >  ]
+        >}
+        > ```
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
@@ -10292,7 +10323,36 @@ class EnterpriseAdminClient:
         You must supply complete user information, just as you would when provisioning them initially. Any previously existing data not provided will be deleted. To update only a specific attribute, refer to the [Update an attribute for a SCIM user](#update-an-attribute-for-a-scim-enterprise-user) endpoint.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
+        > ```
+        >{
+        >  "schemas": [
+        >    "urn:ietf:params:scim:schemas:core:2.0:User"
+        >  ],
+        >  "externalId": "E012345",
+        >  "active": false,
+        >  "userName": "E012345",
+        >  "name": {
+        >    "familyName": "Octocat",
+        >    "givenName": "Mona",
+        >    "middleName": "Lisa"
+        >  },
+        >  "displayName": "Mona Lisa",
+        >  "emails": [
+        >    {
+        >      "value": "mlisa@example.com",
+        >      "type": "work",
+        >      "primary": true
+        >    }
+        >  ],
+        >  "roles": [
+        >    {
+        >      "value": "User"
+        >    }
+        >  ]
+        >}
+        > ```
 
         See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/scim#set-scim-information-for-a-provisioned-enterprise-user
         """
@@ -10451,15 +10511,21 @@ class EnterpriseAdminClient:
         > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
         > ```
         > {
-        >   "Operations":[{
-        >     "op":"replace",
-        >     "value":{
-        >       "active":false
+        >   "schemas": [
+        >     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+        >   ],
+        >   "Operations": [
+        >     {
+        >       "op": "replace",
+        >       "value": {
+        >         "active": false
+        >       }
         >     }
-        >   }]
+        >   ]
         > }
         > ```
 
@@ -10553,15 +10619,21 @@ class EnterpriseAdminClient:
         > Complex SCIM `path` selectors that include filters are not supported. For example, a `path` selector defined as `"path": "emails[type eq \"work\"]"` will be ineffective.
 
         > [!WARNING]
-        > Setting `active: false` will suspend a user, and their handle and email will be obfuscated.
+        > Setting `active: false` will suspend a user. As a result, their handle and primary email address will be obfuscated.
+        >
         > ```
         > {
-        >   "Operations":[{
-        >     "op":"replace",
-        >     "value":{
-        >       "active":false
+        >   "schemas": [
+        >     "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+        >   ],
+        >   "Operations": [
+        >     {
+        >       "op": "replace",
+        >       "value": {
+        >         "active": false
+        >       }
         >     }
-        >   }]
+        >   ]
         > }
         > ```
 

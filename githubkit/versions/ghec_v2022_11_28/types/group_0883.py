@@ -14,159 +14,57 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookPullRequestDequeuedType(TypedDict):
-    """pull_request dequeued event"""
+class WebhookPullRequestAutoMergeDisabledType(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["dequeued"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestType
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestType
+    reason: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestDequeuedTypeForResponse(TypedDict):
-    """pull_request dequeued event"""
+class WebhookPullRequestAutoMergeDisabledTypeForResponse(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["dequeued"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestTypeForResponse
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse
+    reason: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookPullRequestDequeuedPropPullRequestType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestType(TypedDict):
     """Pull Request"""
 
-    links: WebhookPullRequestDequeuedPropPullRequestPropLinksType
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    additions: NotRequired[int]
-    assignee: Union[WebhookPullRequestDequeuedPropPullRequestPropAssigneeType, None]
-    assignees: list[
-        Union[WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsType, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType, None]
-    base: WebhookPullRequestDequeuedPropPullRequestPropBaseType
-    body: Union[str, None]
-    changed_files: NotRequired[int]
-    closed_at: Union[_dt.datetime, None]
-    comments: NotRequired[int]
-    comments_url: str
-    commits: NotRequired[int]
-    commits_url: str
-    created_at: _dt.datetime
-    deletions: NotRequired[int]
-    diff_url: str
-    draft: bool
-    head: WebhookPullRequestDequeuedPropPullRequestPropHeadType
-    html_url: str
-    id: int
-    issue_url: str
-    labels: list[WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsType]
-    locked: bool
-    maintainer_can_modify: NotRequired[bool]
-    merge_commit_sha: Union[str, None]
-    mergeable: NotRequired[Union[bool, None]]
-    mergeable_state: NotRequired[str]
-    merged: NotRequired[Union[bool, None]]
-    merged_at: Union[_dt.datetime, None]
-    merged_by: NotRequired[
-        Union[WebhookPullRequestDequeuedPropPullRequestPropMergedByType, None]
-    ]
-    milestone: Union[WebhookPullRequestDequeuedPropPullRequestPropMilestoneType, None]
-    node_id: str
-    number: int
-    patch_url: str
-    rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: list[
-        Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0Type,
-            None,
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1Type,
-        ]
-    ]
-    requested_teams: list[
-        WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsType
-    ]
-    review_comment_url: str
-    review_comments: NotRequired[int]
-    review_comments_url: str
-    state: Literal["open", "closed"]
-    statuses_url: str
-    title: str
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhookPullRequestDequeuedPropPullRequestPropUserType, None]
-
-
-class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
-    """Pull Request"""
-
-    links: WebhookPullRequestDequeuedPropPullRequestPropLinksTypeForResponse
+    links: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksType
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     additions: NotRequired[int]
     assignee: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropAssigneeTypeForResponse, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeType, None
     ]
     assignees: list[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsTypeForResponse,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsType,
             None,
         ]
     ]
@@ -181,9 +79,96 @@ class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
         "OWNER",
     ]
     auto_merge: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropAutoMergeTypeForResponse, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeType, None
     ]
-    base: WebhookPullRequestDequeuedPropPullRequestPropBaseTypeForResponse
+    base: WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseType
+    body: Union[str, None]
+    changed_files: NotRequired[int]
+    closed_at: Union[_dt.datetime, None]
+    comments: NotRequired[int]
+    comments_url: str
+    commits: NotRequired[int]
+    commits_url: str
+    created_at: _dt.datetime
+    deletions: NotRequired[int]
+    diff_url: str
+    draft: bool
+    head: WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadType
+    html_url: str
+    id: int
+    issue_url: str
+    labels: list[WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsType]
+    locked: bool
+    maintainer_can_modify: NotRequired[bool]
+    merge_commit_sha: Union[str, None]
+    mergeable: NotRequired[Union[bool, None]]
+    mergeable_state: NotRequired[str]
+    merged: NotRequired[Union[bool, None]]
+    merged_at: Union[_dt.datetime, None]
+    merged_by: NotRequired[
+        Union[WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByType, None]
+    ]
+    milestone: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneType, None
+    ]
+    node_id: str
+    number: int
+    patch_url: str
+    rebaseable: NotRequired[Union[bool, None]]
+    requested_reviewers: list[
+        Union[
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0Type,
+            None,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1Type,
+        ]
+    ]
+    requested_teams: list[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsType
+    ]
+    review_comment_url: str
+    review_comments: NotRequired[int]
+    review_comments_url: str
+    state: Literal["open", "closed"]
+    statuses_url: str
+    title: str
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserType, None]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse(TypedDict):
+    """Pull Request"""
+
+    links: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksTypeForResponse
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    additions: NotRequired[int]
+    assignee: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeTypeForResponse,
+        None,
+    ]
+    assignees: list[
+        Union[
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsTypeForResponse,
+            None,
+        ]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeTypeForResponse,
+        None,
+    ]
+    base: WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseTypeForResponse
     body: Union[str, None]
     changed_files: NotRequired[int]
     closed_at: Union[str, None]
@@ -195,12 +180,12 @@ class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
     deletions: NotRequired[int]
     diff_url: str
     draft: bool
-    head: WebhookPullRequestDequeuedPropPullRequestPropHeadTypeForResponse
+    head: WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadTypeForResponse
     html_url: str
     id: int
     issue_url: str
     labels: list[
-        WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsTypeForResponse
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsTypeForResponse
     ]
     locked: bool
     maintainer_can_modify: NotRequired[bool]
@@ -211,11 +196,13 @@ class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
     merged_at: Union[str, None]
     merged_by: NotRequired[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropMergedByTypeForResponse, None
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByTypeForResponse,
+            None,
         ]
     ]
     milestone: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropMilestoneTypeForResponse, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneTypeForResponse,
+        None,
     ]
     node_id: str
     number: int
@@ -223,13 +210,13 @@ class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
     rebaseable: NotRequired[Union[bool, None]]
     requested_reviewers: list[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse,
             None,
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse,
         ]
     ]
     requested_teams: list[
-        WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsTypeForResponse
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsTypeForResponse
     ]
     review_comment_url: str
     review_comments: NotRequired[int]
@@ -239,10 +226,12 @@ class WebhookPullRequestDequeuedPropPullRequestTypeForResponse(TypedDict):
     title: str
     updated_at: str
     url: str
-    user: Union[WebhookPullRequestDequeuedPropPullRequestPropUserTypeForResponse, None]
+    user: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserTypeForResponse, None
+    ]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAssigneeType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -269,7 +258,9 @@ class WebhookPullRequestDequeuedPropPullRequestPropAssigneeType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAssigneeTypeForResponse(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -296,33 +287,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropAssigneeTypeForResponse(Typed
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsType(
     TypedDict
 ):
     """User"""
@@ -350,7 +315,35 @@ class WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsTypeForResponse
     url: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeType(TypedDict):
     """PullRequestAutoMerge
 
     The status of auto merging a pull request.
@@ -359,27 +352,30 @@ class WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType(TypedDict):
     commit_message: Union[str, None]
     commit_title: Union[str, None]
     enabled_by: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByType, None
-    ]
-    merge_method: Literal["merge", "squash", "rebase"]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropAutoMergeTypeForResponse(TypedDict):
-    """PullRequestAutoMerge
-
-    The status of auto merging a pull request.
-    """
-
-    commit_message: Union[str, None]
-    commit_title: Union[str, None]
-    enabled_by: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByTypeForResponse,
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByType,
         None,
     ]
     merge_method: Literal["merge", "squash", "rebase"]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeTypeForResponse(
+    TypedDict
+):
+    """PullRequestAutoMerge
+
+    The status of auto merging a pull request.
+    """
+
+    commit_message: Union[str, None]
+    commit_title: Union[str, None]
+    enabled_by: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByTypeForResponse,
+        None,
+    ]
+    merge_method: Literal["merge", "squash", "rebase"]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByType(
     TypedDict
 ):
     """User"""
@@ -408,7 +404,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByType(
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -437,7 +433,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByTypeFor
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsType(TypedDict):
     """Label"""
 
     color: str
@@ -449,7 +445,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsType(TypedDict):
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsTypeForResponse(
     TypedDict
 ):
     """Label"""
@@ -463,7 +459,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsTypeForResponse(
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropMergedByType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -490,7 +486,9 @@ class WebhookPullRequestDequeuedPropPullRequestPropMergedByType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropMergedByTypeForResponse(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -517,7 +515,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropMergedByTypeForResponse(Typed
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropMilestoneType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -527,7 +525,8 @@ class WebhookPullRequestDequeuedPropPullRequestPropMilestoneType(TypedDict):
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorType, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorType,
+        None,
     ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
@@ -543,7 +542,9 @@ class WebhookPullRequestDequeuedPropPullRequestPropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropMilestoneTypeForResponse(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneTypeForResponse(
+    TypedDict
+):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -553,7 +554,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropMilestoneTypeForResponse(Type
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorTypeForResponse,
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -570,63 +571,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropMilestoneTypeForResponse(Type
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0Type(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorType(
     TypedDict
 ):
     """User"""
@@ -655,7 +600,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -684,7 +629,9 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropUserType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0Type(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -711,7 +658,9 @@ class WebhookPullRequestDequeuedPropPullRequestPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropUserTypeForResponse(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -738,49 +687,97 @@ class WebhookPullRequestDequeuedPropPullRequestPropUserTypeForResponse(TypedDict
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksType(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropLinks"""
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserType(TypedDict):
+    """User"""
 
-    comments: WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsType
-    html: WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlType
-    issue: WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueType
-    review_comment: (
-        WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType
-    )
-    review_comments: (
-        WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType
-    )
-    self_: WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesType
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksTypeForResponse(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropLinks"""
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksType(TypedDict):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks"""
 
     comments: (
-        WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsTypeForResponse
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType
     )
-    commits: (
-        WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsTypeForResponse
+    commits: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsType
+    html: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlType
+    issue: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueType
+    review_comment: (
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentType
     )
-    html: WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlTypeForResponse
-    issue: WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueTypeForResponse
-    review_comment: WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentTypeForResponse
-    review_comments: WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsTypeForResponse
-    self_: WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfTypeForResponse
+    review_comments: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsType
+    self_: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfType
     statuses: (
-        WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesTypeForResponse
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesType
     )
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsType(TypedDict):
-    """Link"""
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks"""
 
-    href: str
+    comments: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsTypeForResponse
+    commits: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsTypeForResponse
+    html: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlTypeForResponse
+    issue: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueTypeForResponse
+    review_comment: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentTypeForResponse
+    review_comments: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsTypeForResponse
+    self_: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfTypeForResponse
+    statuses: WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesTypeForResponse
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType(
     TypedDict
 ):
     """Link"""
@@ -788,13 +785,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsTypeForRespo
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -802,13 +793,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsTypeForRespon
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsType(
     TypedDict
 ):
     """Link"""
@@ -816,13 +801,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlTypeForResponse(
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -830,7 +809,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueTypeForResponse
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlType(
     TypedDict
 ):
     """Link"""
@@ -838,7 +817,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType(
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -846,7 +825,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentTypeFor
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueType(
     TypedDict
 ):
     """Link"""
@@ -854,7 +833,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType(
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -862,13 +841,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsTypeFo
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentType(
     TypedDict
 ):
     """Link"""
@@ -876,13 +849,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfTypeForResponse(
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentTypeForResponse(
     TypedDict
 ):
     """Link"""
@@ -890,29 +857,82 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesTypeForRespo
     href: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBaseType(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropBase"""
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseType(TypedDict):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase"""
 
     label: str
     ref: str
-    repo: WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType
-    sha: str
-    user: Union[WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType, None]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropBaseTypeForResponse(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse
+    repo: WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoType
     sha: str
     user: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropUserTypeForResponse, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserType, None
     ]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoTypeForResponse
+    sha: str
+    user: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserTypeForResponse,
+        None,
+    ]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -939,7 +959,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropUserTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -968,7 +988,434 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropUserTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType(TypedDict):
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoType(TypedDict):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, _dt.datetime]
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_discussions: bool
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
+    html_url: str
+    id: int
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseType,
+        None,
+    ]
+    master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsType
+    ]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, _dt.datetime, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
+    updated_at: _dt.datetime
+    url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+    web_commit_signoff_required: NotRequired[bool]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoTypeForResponse(
+    TypedDict
+):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, str]
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_discussions: bool
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
+    html_url: str
+    id: int
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseTypeForResponse,
+        None,
+    ]
+    master_branch: NotRequired[str]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse
+    ]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, str, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: list[str]
+    trees_url: str
+    updated_at: str
+    url: str
+    use_squash_pr_title_as_default: NotRequired[bool]
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+    web_commit_signoff_required: NotRequired[bool]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseType(
+    TypedDict
+):
+    """License"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseTypeForResponse(
+    TypedDict
+):
+    """License"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsType(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermission
+    s
+    """
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermission
+    s
+    """
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadType(TypedDict):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead"""
+
+    label: str
+    ref: str
+    repo: WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoType
+    sha: str
+    user: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserType, None
+    ]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead"""
+
+    label: str
+    ref: str
+    repo: WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoTypeForResponse
+    sha: str
+    user: Union[
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserTypeForResponse,
+        None,
+    ]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoType(TypedDict):
     """Repository
 
     A git repository
@@ -1016,6 +1463,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType(TypedDict):
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1029,7 +1477,8 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType(TypedDict):
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseType,
+        None,
     ]
     master_branch: NotRequired[str]
     merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
@@ -1044,10 +1493,11 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType(TypedDict):
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerType, None
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerType,
+        None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsType
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsType
     ]
     private: bool
     public: NotRequired[bool]
@@ -1081,7 +1531,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoTypeForResponse(
     TypedDict
 ):
     """Repository
@@ -1131,6 +1581,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse(
     has_wiki: bool
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1144,7 +1595,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse(
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse,
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse,
         None,
     ]
     master_branch: NotRequired[str]
@@ -1160,11 +1611,11 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse(
     open_issues_count: int
     organization: NotRequired[str]
     owner: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse,
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse,
         None,
     ]
     permissions: NotRequired[
-        WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse
+        WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse
     ]
     private: bool
     public: NotRequired[bool]
@@ -1198,7 +1649,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse(
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseType(
     TypedDict
 ):
     """License"""
@@ -1210,7 +1661,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType(
     url: Union[str, None]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse(
     TypedDict
 ):
     """License"""
@@ -1222,34 +1673,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseTypeFo
     url: Union[str, None]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -1278,80 +1702,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerTypeForR
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsType(
-    TypedDict
-):
-    """WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadType(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropHead"""
-
-    label: str
-    ref: str
-    repo: WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoType
-    sha: str
-    user: Union[WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserType, None]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadTypeForResponse(TypedDict):
-    """WebhookPullRequestDequeuedPropPullRequestPropHead"""
-
-    label: str
-    ref: str
-    repo: WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoTypeForResponse
-    sha: str
-    user: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserTypeForResponse, None
-    ]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -1380,321 +1731,27 @@ class WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoType(TypedDict):
-    """Repository
-
-    A git repository
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsType(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermission
+    s
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, _dt.datetime]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseType, None
-    ]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsType
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, _dt.datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: _dt.datetime
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """Repository
-
-    A git repository
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermission
+    s
     """
 
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, str]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
-    description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    has_discussions: bool
-    has_pull_requests: NotRequired[bool]
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
-    id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse,
-        None,
-    ]
-    master_branch: NotRequired[str]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
-    name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse
-    ]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, str, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: list[str]
-    trees_url: str
-    updated_at: str
-    url: str
-    use_squash_pr_title_as_default: NotRequired[bool]
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
-    web_commit_signoff_required: NotRequired[bool]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseType(
-    TypedDict
-):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse(
-    TypedDict
-):
-    """License"""
-
-    key: str
-    name: str
-    node_id: str
-    spdx_id: str
-    url: Union[str, None]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsType(
-    TypedDict
-):
-    """WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions"""
-
     admin: bool
     maintain: NotRequired[bool]
     pull: bool
@@ -1702,19 +1759,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsTy
     triage: NotRequired[bool]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1Type(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1Type(
     TypedDict
 ):
     """Team
@@ -1723,26 +1768,26 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse(
     TypedDict
 ):
     """Team
@@ -1751,30 +1796,30 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1
     """
 
     deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+    description: Union[str, None]
+    html_url: str
     id: int
-    members_url: NotRequired[str]
+    members_url: str
     name: str
-    node_id: NotRequired[str]
+    node_id: str
     parent: NotRequired[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse,
             None,
         ]
     ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType(
     TypedDict
 ):
-    """WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropPa
-    rent
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOne
+    of1PropParent
     """
 
     description: Union[str, None]
@@ -1790,11 +1835,11 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropPa
-    rent
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOne
+    of1PropParent
     """
 
     description: Union[str, None]
@@ -1810,33 +1855,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[
-        Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentType,
-            None,
-        ]
-    ]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsType(
     TypedDict
 ):
     """Team
@@ -1853,7 +1872,7 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsTypeForRes
     node_id: NotRequired[str]
     parent: NotRequired[
         Union[
-            WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse,
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentType,
             None,
         ]
     ]
@@ -1864,10 +1883,40 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsTypeForRes
     url: NotRequired[str]
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentType(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent"""
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[
+        Union[
+            WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse,
+            None,
+        ]
+    ]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentType(
+    TypedDict
+):
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropPar
+    ent
+    """
 
     description: Union[str, None]
     html_url: str
@@ -1882,10 +1931,12 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent
     url: str
 
 
-class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse(
+class WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse(
     TypedDict
 ):
-    """WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent"""
+    """WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropPar
+    ent
+    """
 
     description: Union[str, None]
     html_url: str
@@ -1901,78 +1952,78 @@ class WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent
 
 
 __all__ = (
-    "WebhookPullRequestDequeuedPropPullRequestPropAssigneeType",
-    "WebhookPullRequestDequeuedPropPullRequestPropAssigneeTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropAssigneesItemsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByType",
-    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledByTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergeType",
-    "WebhookPullRequestDequeuedPropPullRequestPropAutoMergeTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicenseTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwnerTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBasePropUserTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropBaseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropBaseTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadPropUserTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadType",
-    "WebhookPullRequestDequeuedPropPullRequestPropHeadTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLabelsItemsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommentsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksType",
-    "WebhookPullRequestDequeuedPropPullRequestPropLinksTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropMergedByType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMergedByTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreatorTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestoneType",
-    "WebhookPullRequestDequeuedPropPullRequestPropMilestoneTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0Type",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1Type",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsType",
-    "WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestPropUserType",
-    "WebhookPullRequestDequeuedPropPullRequestPropUserTypeForResponse",
-    "WebhookPullRequestDequeuedPropPullRequestType",
-    "WebhookPullRequestDequeuedPropPullRequestTypeForResponse",
-    "WebhookPullRequestDequeuedType",
-    "WebhookPullRequestDequeuedTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneeTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItemsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledByTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergeTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicenseTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwnerTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissionsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUserTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropBaseTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicenseTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwnerTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissionsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUserTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItemsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommentsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommitsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtmlTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssueTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewCommentsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelfTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatusesTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedByTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreatorTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestoneTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0Type",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0TypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1Type",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1TypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParentTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestPropUserTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestType",
+    "WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledType",
+    "WebhookPullRequestAutoMergeDisabledTypeForResponse",
 )

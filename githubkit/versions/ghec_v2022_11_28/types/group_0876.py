@@ -9,39 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0594 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0595 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPublicType(TypedDict):
-    """public event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookPublicTypeForResponse(TypedDict):
-    """public event"""
+class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPublicType",
-    "WebhookPublicTypeForResponse",
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredTypeForResponse",
 )

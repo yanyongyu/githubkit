@@ -12,25 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)

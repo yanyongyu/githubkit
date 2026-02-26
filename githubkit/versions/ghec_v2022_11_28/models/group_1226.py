@@ -9,20 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0237 import MinimalRepository
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["text", "number", "date"] = Field(
+        description="The field's data type."
+    )
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)

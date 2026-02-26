@@ -9,36 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0316 import RateLimitType, RateLimitTypeForResponse
-from .group_0318 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    Rate Limit Overview
+    External Groups to be mapped to a team for membership
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    Rate Limit Overview
+    External Groups to be mapped to a team for membership
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
+
+
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

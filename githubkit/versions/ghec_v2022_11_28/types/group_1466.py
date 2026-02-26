@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
-
-    subject_digests: list[str]
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
 
-    subject_digests: list[str]
+    total_count: int
+    installations: list[InstallationType]
+
+
+class UserInstallationsGetResponse200TypeForResponse(TypedDict):
+    """UserInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "UserInstallationsGetResponse200Type",
+    "UserInstallationsGetResponse200TypeForResponse",
 )

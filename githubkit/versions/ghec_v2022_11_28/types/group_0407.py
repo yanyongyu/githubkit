@@ -9,61 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0405 import MetadataType, MetadataTypeForResponse
-
-
-class ManifestType(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+from .group_0090 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+    Details for the vulnerable dependency.
+    """
 
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    source_location: NotRequired[str]
+    Details for the vulnerable dependency.
+    """
 
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
-
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

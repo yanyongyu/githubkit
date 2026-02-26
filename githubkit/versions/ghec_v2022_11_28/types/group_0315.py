@@ -10,230 +10,271 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0314 import (
+    RepositoryAdvisoryCreditType,
+    RepositoryAdvisoryCreditTypeForResponse,
+)
 
 
-class TeamRepositoryType(TypedDict):
-    """Team Repository
+class RepositoryAdvisoryType(TypedDict):
+    """RepositoryAdvisory
 
-    A team's access to a repository.
+    A repository security advisory.
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    license_: Union[None, LicenseSimpleType]
-    forks: int
-    permissions: NotRequired[TeamRepositoryPropPermissionsType]
-    role_name: NotRequired[str]
-    owner: Union[None, SimpleUserType]
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
-    hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: Union[_dt.datetime, None]
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
     created_at: Union[_dt.datetime, None]
     updated_at: Union[_dt.datetime, None]
-    allow_rebase_merge: NotRequired[bool]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    open_issues: int
-    watchers: int
-    master_branch: NotRequired[str]
+    published_at: Union[_dt.datetime, None]
+    closed_at: Union[_dt.datetime, None]
+    withdrawn_at: Union[_dt.datetime, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
+    cvss: Union[RepositoryAdvisoryPropCvssType, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[list[SimpleUserType], None]
+    collaborating_teams: Union[list[TeamType], None]
+    private_fork: None
 
 
-class TeamRepositoryTypeForResponse(TypedDict):
-    """Team Repository
+class RepositoryAdvisoryTypeForResponse(TypedDict):
+    """RepositoryAdvisory
 
-    A team's access to a repository.
+    A repository security advisory.
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    license_: Union[None, LicenseSimpleTypeForResponse]
-    forks: int
-    permissions: NotRequired[TeamRepositoryPropPermissionsTypeForResponse]
-    role_name: NotRequired[str]
-    owner: Union[None, SimpleUserTypeForResponse]
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
+    ghsa_id: str
+    cve_id: Union[str, None]
     url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    ssh_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    clone_url: str
-    mirror_url: Union[str, None]
-    hooks_url: str
-    svn_url: str
-    homepage: Union[str, None]
-    language: Union[str, None]
-    forks_count: int
-    stargazers_count: int
-    watchers_count: int
-    size: int
-    default_branch: str
-    open_issues_count: int
-    is_template: NotRequired[bool]
-    topics: NotRequired[list[str]]
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_downloads: bool
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    pushed_at: Union[str, None]
+    html_url: str
+    summary: str
+    description: Union[str, None]
+    severity: Union[None, Literal["critical", "high", "medium", "low"]]
+    author: None
+    publisher: None
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
     created_at: Union[str, None]
     updated_at: Union[str, None]
-    allow_rebase_merge: NotRequired[bool]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-    open_issues: int
-    watchers: int
-    master_branch: NotRequired[str]
+    published_at: Union[str, None]
+    closed_at: Union[str, None]
+    withdrawn_at: Union[str, None]
+    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
+    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
+    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
+    collaborating_teams: Union[list[TeamTypeForResponse], None]
+    private_fork: None
 
 
-class TeamRepositoryPropPermissionsType(TypedDict):
-    """TeamRepositoryPropPermissions"""
+class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    admin: bool
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
+    type: Literal["CVE", "GHSA"]
+    value: str
 
 
-class TeamRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """TeamRepositoryPropPermissions"""
+class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    admin: bool
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class RepositoryAdvisoryPropSubmissionType(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool
+
+
+class RepositoryAdvisoryPropCvssType(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class RepositoryAdvisoryPropCwesItemsType(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
+
+
+class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ]
+
+
+class RepositoryAdvisoryVulnerabilityType(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
+    vulnerable_version_range: Union[str, None]
+    patched_versions: Union[str, None]
+    vulnerable_functions: Union[list[str], None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
+
+
+class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: Union[str, None]
 
 
 __all__ = (
-    "TeamRepositoryPropPermissionsType",
-    "TeamRepositoryPropPermissionsTypeForResponse",
-    "TeamRepositoryType",
-    "TeamRepositoryTypeForResponse",
+    "RepositoryAdvisoryPropCreditsItemsType",
+    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryPropCvssType",
+    "RepositoryAdvisoryPropCvssTypeForResponse",
+    "RepositoryAdvisoryPropCwesItemsType",
+    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
+    "RepositoryAdvisoryPropIdentifiersItemsType",
+    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
+    "RepositoryAdvisoryPropSubmissionType",
+    "RepositoryAdvisoryPropSubmissionTypeForResponse",
+    "RepositoryAdvisoryType",
+    "RepositoryAdvisoryTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
+    "RepositoryAdvisoryVulnerabilityType",
+    "RepositoryAdvisoryVulnerabilityTypeForResponse",
 )

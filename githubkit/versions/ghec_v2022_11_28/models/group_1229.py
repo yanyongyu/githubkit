@@ -13,28 +13,29 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    name: str = Field(
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
-        default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    network_settings_ids: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

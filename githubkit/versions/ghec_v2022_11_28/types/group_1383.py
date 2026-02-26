@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str
-    path: Literal["/", "/docs"]
+    name: str
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str
-    path: Literal["/", "/docs"]
+    name: str
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
 )

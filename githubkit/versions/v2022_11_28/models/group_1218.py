@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -17,30 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1216 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
-
-    cname: Missing[Union[str, None]] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
-    )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
-    )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+model_rebuild(ReposOwnerRepoNotificationsPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+__all__ = ("ReposOwnerRepoNotificationsPutBody",)

@@ -12,117 +12,119 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0178 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0179 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0180 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
 
-class PrivateVulnerabilityReportCreateType(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
 
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
 
-
-class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
-
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[
-            list[
-                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
-            ],
-            None,
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
         ]
     ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
     ]
-    name: NotRequired[Union[str, None]]
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
 
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
     ]
-    name: NotRequired[Union[str, None]]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreateTypeForResponse",
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
 )

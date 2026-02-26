@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0255 import CodespaceType, CodespaceTypeForResponse
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
-
-
-class UserInstallationsGetResponse200TypeForResponse(TypedDict):
-    """UserInstallationsGetResponse200"""
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
     total_count: int
-    installations: list[InstallationTypeForResponse]
+    codespaces: list[CodespaceType]
+
+
+class UserCodespacesGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesGetResponse200"""
+
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "UserInstallationsGetResponse200Type",
-    "UserInstallationsGetResponse200TypeForResponse",
+    "UserCodespacesGetResponse200Type",
+    "UserCodespacesGetResponse200TypeForResponse",
 )

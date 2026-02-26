@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Literal, Optional, overload
-from typing_extensions import deprecated
 from weakref import ref
 
 from pydantic import BaseModel
@@ -129,7 +128,6 @@ if TYPE_CHECKING:
         Status,
         StatusCheckPolicy,
         Tag,
-        TagProtection,
         Team,
         Topic,
         ViewTraffic,
@@ -340,7 +338,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoRulesetsPostBodyType,
         ReposOwnerRepoRulesetsRulesetIdPutBodyType,
         ReposOwnerRepoStatusesShaPostBodyType,
-        ReposOwnerRepoTagsProtectionPostBodyType,
         ReposOwnerRepoTopicsPutBodyType,
         ReposOwnerRepoTransferPostBodyType,
         ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
@@ -352,7 +349,6 @@ if TYPE_CHECKING:
         SimpleUserTypeForResponse,
         StatusCheckPolicyTypeForResponse,
         StatusTypeForResponse,
-        TagProtectionTypeForResponse,
         TagTypeForResponse,
         TeamTypeForResponse,
         TopicTypeForResponse,
@@ -1446,7 +1442,12 @@ class ReposClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#create-an-organization-repository-ruleset
         """
 
-        from ..models import BasicError, OrgsOrgRulesetsPostBody, RepositoryRuleset
+        from ..models import (
+            BasicError,
+            OrgsOrgRulesetsPostBody,
+            RepositoryRuleset,
+            ValidationError,
+        )
 
         url = f"/orgs/{org}/rulesets"
 
@@ -1470,6 +1471,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -1550,7 +1552,12 @@ class ReposClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#create-an-organization-repository-ruleset
         """
 
-        from ..models import BasicError, OrgsOrgRulesetsPostBody, RepositoryRuleset
+        from ..models import (
+            BasicError,
+            OrgsOrgRulesetsPostBody,
+            RepositoryRuleset,
+            ValidationError,
+        )
 
         url = f"/orgs/{org}/rulesets"
 
@@ -1574,6 +1581,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -1915,6 +1923,7 @@ class ReposClient:
             BasicError,
             OrgsOrgRulesetsRulesetIdPutBody,
             RepositoryRuleset,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/rulesets/{ruleset_id}"
@@ -1939,6 +1948,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -2026,6 +2036,7 @@ class ReposClient:
             BasicError,
             OrgsOrgRulesetsRulesetIdPutBody,
             RepositoryRuleset,
+            ValidationError,
         )
 
         url = f"/orgs/{org}/rulesets/{ruleset_id}"
@@ -2050,6 +2061,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -20174,6 +20186,7 @@ class ReposClient:
             BasicError,
             RepositoryRuleset,
             ReposOwnerRepoRulesetsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/rulesets"
@@ -20198,6 +20211,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -20280,6 +20294,7 @@ class ReposClient:
             BasicError,
             RepositoryRuleset,
             ReposOwnerRepoRulesetsPostBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/rulesets"
@@ -20304,6 +20319,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -20657,6 +20673,7 @@ class ReposClient:
             BasicError,
             RepositoryRuleset,
             ReposOwnerRepoRulesetsRulesetIdPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
@@ -20681,6 +20698,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -20766,6 +20784,7 @@ class ReposClient:
             BasicError,
             RepositoryRuleset,
             ReposOwnerRepoRulesetsRulesetIdPutBody,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/rulesets/{ruleset_id}"
@@ -20790,6 +20809,7 @@ class ReposClient:
             response_model=RepositoryRuleset,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
             },
         )
@@ -21600,330 +21620,6 @@ class ReposClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Tag],
-        )
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    def list_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TagProtection], list[TagProtectionTypeForResponse]]:
-        """DEPRECATED repos/list-tag-protection
-
-        GET /repos/{owner}/{repo}/tags/protection
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets)" endpoint instead.
-
-        This returns the tag protection states of a repository.
-
-        This information is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository
-        """
-
-        from ..models import BasicError, TagProtection
-
-        url = f"/repos/{owner}/{repo}/tags/protection"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TagProtection],
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    async def async_list_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[list[TagProtection], list[TagProtectionTypeForResponse]]:
-        """DEPRECATED repos/list-tag-protection
-
-        GET /repos/{owner}/{repo}/tags/protection
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets)" endpoint instead.
-
-        This returns the tag protection states of a repository.
-
-        This information is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository
-        """
-
-        from ..models import BasicError, TagProtection
-
-        url = f"/repos/{owner}/{repo}/tags/protection"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[TagProtection],
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    def create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
-
-    @overload
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    def create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        pattern: str,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    def create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]:
-        """DEPRECATED repos/create-tag-protection
-
-        POST /repos/{owner}/{repo}/tags/protection
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#create-a-repository-ruleset)" endpoint instead.
-
-        This creates a tag protection state for a repository.
-        This endpoint is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository
-        """
-
-        from ..models import (
-            BasicError,
-            ReposOwnerRepoTagsProtectionPostBody,
-            TagProtection,
-        )
-
-        url = f"/repos/{owner}/{repo}/tags/protection"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TagProtection,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    async def async_create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
-
-    @overload
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    async def async_create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        pattern: str,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]: ...
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    async def async_create_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[TagProtection, TagProtectionTypeForResponse]:
-        """DEPRECATED repos/create-tag-protection
-
-        POST /repos/{owner}/{repo}/tags/protection
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#create-a-repository-ruleset)" endpoint instead.
-
-        This creates a tag protection state for a repository.
-        This endpoint is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository
-        """
-
-        from ..models import (
-            BasicError,
-            ReposOwnerRepoTagsProtectionPostBody,
-            TagProtection,
-        )
-
-        url = f"/repos/{owner}/{repo}/tags/protection"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=TagProtection,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    def delete_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        tag_protection_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED repos/delete-tag-protection
-
-        DELETE /repos/{owner}/{repo}/tags/protection/{tag_protection_id}
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset)" endpoint instead.
-
-        This deletes a tag protection state for a repository.
-        This endpoint is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository
-        """
-
-        from ..models import BasicError
-
-        url = f"/repos/{owner}/{repo}/tags/protection/{tag_protection_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @deprecated("Deprecated API endpoint. See the docstring for more details.")
-    async def async_delete_tag_protection(
-        self,
-        owner: str,
-        repo: str,
-        tag_protection_id: int,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response:
-        """DEPRECATED repos/delete-tag-protection
-
-        DELETE /repos/{owner}/{repo}/tags/protection/{tag_protection_id}
-
-        > [!WARNING]
-        > **Closing down notice:** This operation is closing down and will be removed after August 30, 2024. Use the "[Repository Rulesets](https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset)" endpoint instead.
-
-        This deletes a tag protection state for a repository.
-        This endpoint is only available to repository administrators.
-
-        See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository
-        """
-
-        from ..models import BasicError
-
-        url = f"/repos/{owner}/{repo}/tags/protection/{tag_protection_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
         )
 
     def download_tarball_archive(

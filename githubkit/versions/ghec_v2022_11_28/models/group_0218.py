@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,53 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0198 import Label
+from .group_0208 import PullRequestMinimal
 
 
-class PullRequestReviewEventPropReview(GitHubModel):
-    """PullRequestReviewEventPropReview"""
+class PullRequestEvent(GitHubModel):
+    """PullRequestEvent"""
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    pull_request_url: Missing[str] = Field(default=UNSET)
-    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
-        default=UNSET, alias="_links"
+    action: str = Field()
+    number: int = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    updated_at: Missing[str] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinks"""
+model_rebuild(PullRequestEvent)
 
-    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(PullRequestReviewEventPropReview)
-model_rebuild(PullRequestReviewEventPropReviewPropLinks)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "PullRequestReviewEventPropReview",
-    "PullRequestReviewEventPropReviewPropLinks",
-    "PullRequestReviewEventPropReviewPropLinksPropHtml",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
-)
+__all__ = ("PullRequestEvent",)

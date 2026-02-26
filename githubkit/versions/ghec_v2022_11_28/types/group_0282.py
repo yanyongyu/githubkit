@@ -9,29 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrganizationCustomOrganizationRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
-
-    name: str
-    description: NotRequired[str]
-    permissions: list[str]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    name: str
-    description: NotRequired[str]
-    permissions: list[str]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain", "admin"]]
+    Org Membership
+    """
+
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
+
+
+class OrgMembershipTypeForResponse(TypedDict):
+    """Org Membership
+
+    Org Membership
+    """
+
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleTypeForResponse
+    user: Union[None, SimpleUserTypeForResponse]
+    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+
+
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
 
 
 __all__ = (
-    "OrganizationCustomOrganizationRoleCreateSchemaType",
-    "OrganizationCustomOrganizationRoleCreateSchemaTypeForResponse",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipPropPermissionsTypeForResponse",
+    "OrgMembershipType",
+    "OrgMembershipTypeForResponse",
 )

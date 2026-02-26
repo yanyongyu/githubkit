@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,48 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
-    )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    artifact_url: Missing[str] = Field(
-        pattern="^https://",
-        default=UNSET,
-        description="The URL where the artifact is stored.",
-    )
-    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
-    registry_url: str = Field(
-        min_length=1,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The repository name within the registry."
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
-        default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
+
+__all__ = (
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
+)

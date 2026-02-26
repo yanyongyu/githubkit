@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CredentialsRevokePostBodyType(TypedDict):
-    """CredentialsRevokePostBody"""
+class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    credentials: list[str]
+    access_token: str
 
 
-class CredentialsRevokePostBodyTypeForResponse(TypedDict):
-    """CredentialsRevokePostBody"""
+class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    credentials: list[str]
+    access_token: str
 
 
 __all__ = (
-    "CredentialsRevokePostBodyType",
-    "CredentialsRevokePostBodyTypeForResponse",
+    "ApplicationsClientIdGrantDeleteBodyType",
+    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
 )

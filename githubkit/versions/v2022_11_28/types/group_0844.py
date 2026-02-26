@@ -9,75 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0845 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0227 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0847 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
-    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
-)
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
-
-
-class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
-
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
-    ]
-    conditions: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
-    ]
-    rules: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
-    ]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
+    """repository ruleset deleted event"""
 
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
+    "WebhookRepositoryRulesetDeletedType",
+    "WebhookRepositoryRulesetDeletedTypeForResponse",
 )

@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsCacheStorageLimitForRepositoryType(TypedDict):
-    """Actions cache storage limit for a repository
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    GitHub Actions cache storage policy for a repository.
-    """
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
-    max_cache_size_gb: NotRequired[int]
 
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache storage limit for a repository
-
-    GitHub Actions cache storage policy for a repository.
-    """
-
-    max_cache_size_gb: NotRequired[int]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForRepositoryType",
-    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

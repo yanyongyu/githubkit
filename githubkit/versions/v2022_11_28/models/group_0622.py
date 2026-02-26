@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,168 +18,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0046 import IssueType
-from .group_0048 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0624 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
-    WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
+from .group_0618 import (
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
-from .group_0630 import WebhookIssueCommentDeletedPropIssueMergedMilestone
-from .group_0631 import WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssueCommentDeletedPropIssue(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssue
+class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
 
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment
-    belongs to.
-    """
-
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ] = Field()
-    assignee: Union[
-        Union[WebhookIssueCommentDeletedPropIssueAllof0PropAssignee, None], None
-    ] = Field(title="User")
-    assignees: list[WebhookIssueCommentDeletedPropIssueMergedAssignees] = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
     )
-    body: Union[Union[str, None], None] = Field(description="Contents of the issue")
-    closed_at: Union[_dt.datetime, None] = Field()
-    comments: int = Field()
-    comments_url: str = Field()
-    created_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    events_url: str = Field()
+    external_url: Union[str, None] = Field()
     html_url: str = Field()
-    id: int = Field()
-    labels: list[WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems] = Field()
-    labels_url: str = Field()
-    locked: bool = Field()
-    milestone: Union[WebhookIssueCommentDeletedPropIssueMergedMilestone, None] = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    number: int = Field()
-    performed_via_github_app: Missing[
-        Union[WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
-        Field(default=UNSET)
+    owner: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        None,
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    reactions: WebhookIssueCommentDeletedPropIssueMergedReactions = Field()
-    repository_url: str = Field()
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    state: Literal["open", "closed"] = Field(
-        description="State of the issue; either 'open' or 'closed'"
-    )
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: str = Field(description="Title of the issue")
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
-    )
-    updated_at: _dt.datetime = Field()
-    url: str = Field(description="URL for the issue")
-    user: WebhookIssueCommentDeletedPropIssueMergedUser = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-class WebhookIssueCommentDeletedPropIssueMergedAssignees(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedAssignees"""
+model_rebuild(WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentDeletedPropIssueMergedReactions(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedReactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhookIssueCommentDeletedPropIssueMergedUser(GitHubModel):
-    """WebhookIssueCommentDeletedPropIssueMergedUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentDeletedPropIssue)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedAssignees)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedReactions)
-model_rebuild(WebhookIssueCommentDeletedPropIssueMergedUser)
-
-__all__ = (
-    "WebhookIssueCommentDeletedPropIssue",
-    "WebhookIssueCommentDeletedPropIssueMergedAssignees",
-    "WebhookIssueCommentDeletedPropIssueMergedReactions",
-    "WebhookIssueCommentDeletedPropIssueMergedUser",
-)
+__all__ = ("WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp",)

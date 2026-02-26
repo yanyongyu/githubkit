@@ -12,21 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0240 import OrganizationCustomRepositoryRole
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    organization_slugs: list[str] = Field(
+        description="Organization slug to unassign the team from."
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)

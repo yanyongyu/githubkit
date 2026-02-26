@@ -18,69 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    pattern_config_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    provider_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+    registry_type: Missing[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
         ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
+    ] = Field(default=UNSET, description="The registry type.")
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
     )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
     )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-)
+model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)
 
-__all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
-)
+__all__ = ("OrgsOrgPrivateRegistriesSecretNamePatchBody",)

@@ -9,78 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    pattern_config_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    provider_pattern_settings: Missing[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
+        None,
+    ] = Field()
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
+    ] = Field()
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
+    id: int = Field(description="Unique identifier of the organization")
+    login: str = Field(description="Login of the organization")
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="Name of the repository")
+    full_name: str = Field(description="Full name of the repository including owner")
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
 )
 model_rebuild(
-    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
 )

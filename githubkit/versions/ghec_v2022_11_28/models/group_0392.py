@@ -9,39 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0349 import DiffEntry
-from .group_0350 import Commit
+from .group_0003 import SimpleUser
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class Reaction(GitHubModel):
+    """Reaction
 
-    Commit Comparison
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    id: int = Field()
+    node_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: _dt.datetime = Field()
 
 
-model_rebuild(CommitComparison)
+model_rebuild(Reaction)
 
-__all__ = ("CommitComparison",)
+__all__ = ("Reaction",)

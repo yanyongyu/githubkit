@@ -13,234 +13,185 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0205 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
 
-class PullRequestReviewCommentEventType(TypedDict):
-    """PullRequestReviewCommentEvent"""
+class ForkEventPropForkeeType(TypedDict):
+    """ForkEventPropForkee"""
 
-    action: str
-    pull_request: PullRequestMinimalType
-    comment: PullRequestReviewCommentEventPropCommentType
-
-
-class PullRequestReviewCommentEventTypeForResponse(TypedDict):
-    """PullRequestReviewCommentEvent"""
-
-    action: str
-    pull_request: PullRequestMinimalTypeForResponse
-    comment: PullRequestReviewCommentEventPropCommentTypeForResponse
-
-
-class PullRequestReviewCommentEventPropCommentType(TypedDict):
-    """PullRequestReviewCommentEventPropComment"""
-
-    id: int
-    node_id: str
-    url: str
-    pull_request_review_id: Union[int, None]
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    subject_type: NotRequired[Union[str, None]]
-    commit_id: str
-    user: Union[PullRequestReviewCommentEventPropCommentPropUserType, None]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewCommentEventPropCommentPropLinksType
-    original_commit_id: str
-    reactions: PullRequestReviewCommentEventPropCommentPropReactionsType
-    in_reply_to_id: NotRequired[int]
-
-
-class PullRequestReviewCommentEventPropCommentTypeForResponse(TypedDict):
-    """PullRequestReviewCommentEventPropComment"""
-
-    id: int
-    node_id: str
-    url: str
-    pull_request_review_id: Union[int, None]
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    subject_type: NotRequired[Union[str, None]]
-    commit_id: str
-    user: Union[PullRequestReviewCommentEventPropCommentPropUserTypeForResponse, None]
-    body: str
-    created_at: str
-    updated_at: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse
-    original_commit_id: str
-    reactions: PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse
-    in_reply_to_id: NotRequired[int]
-
-
-class PullRequestReviewCommentEventPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: NotRequired[int]
-    login: NotRequired[str]
-    name: NotRequired[str]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class PullRequestReviewCommentEventPropCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+    private: NotRequired[bool]
+    owner: NotRequired[SimpleUserType]
     html_url: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    fork: NotRequired[bool]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    events_url: NotRequired[str]
+    assignees_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    trees_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    languages_url: NotRequired[str]
+    stargazers_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    issue_comment_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    merges_url: NotRequired[str]
+    archive_url: NotRequired[str]
+    downloads_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    pulls_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    notifications_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    releases_url: NotRequired[str]
+    deployments_url: NotRequired[str]
+    created_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    pushed_at: NotRequired[Union[_dt.datetime, None]]
+    git_url: NotRequired[str]
+    ssh_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    size: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    forks_count: NotRequired[int]
+    mirror_url: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    open_issues_count: NotRequired[int]
+    license_: NotRequired[Union[None, LicenseSimpleType]]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    visibility: NotRequired[str]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    default_branch: NotRequired[str]
+    public: NotRequired[bool]
+
+
+class ForkEventPropForkeeTypeForResponse(TypedDict):
+    """ForkEventPropForkee"""
+
     id: NotRequired[int]
-    login: NotRequired[str]
-    name: NotRequired[str]
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+    private: NotRequired[bool]
+    owner: NotRequired[SimpleUserTypeForResponse]
+    html_url: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    fork: NotRequired[bool]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class PullRequestReviewCommentEventPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksType(TypedDict):
-    """PullRequestReviewCommentEventPropCommentPropLinks"""
-
-    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType
-    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType
-    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfType
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewCommentEventPropCommentPropLinks"""
-
-    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse
-    pull_request: (
-        PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse
-    )
-    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
+    forks_url: NotRequired[str]
+    keys_url: NotRequired[str]
+    collaborators_url: NotRequired[str]
+    teams_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    issue_events_url: NotRequired[str]
+    events_url: NotRequired[str]
+    assignees_url: NotRequired[str]
+    branches_url: NotRequired[str]
+    tags_url: NotRequired[str]
+    blobs_url: NotRequired[str]
+    git_tags_url: NotRequired[str]
+    git_refs_url: NotRequired[str]
+    trees_url: NotRequired[str]
+    statuses_url: NotRequired[str]
+    languages_url: NotRequired[str]
+    stargazers_url: NotRequired[str]
+    contributors_url: NotRequired[str]
+    subscribers_url: NotRequired[str]
+    subscription_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    git_commits_url: NotRequired[str]
+    comments_url: NotRequired[str]
+    issue_comment_url: NotRequired[str]
+    contents_url: NotRequired[str]
+    compare_url: NotRequired[str]
+    merges_url: NotRequired[str]
+    archive_url: NotRequired[str]
+    downloads_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    pulls_url: NotRequired[str]
+    milestones_url: NotRequired[str]
+    notifications_url: NotRequired[str]
+    labels_url: NotRequired[str]
+    releases_url: NotRequired[str]
+    deployments_url: NotRequired[str]
+    created_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    pushed_at: NotRequired[Union[str, None]]
+    git_url: NotRequired[str]
+    ssh_url: NotRequired[str]
+    clone_url: NotRequired[str]
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    size: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    forks_count: NotRequired[int]
+    mirror_url: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    open_issues_count: NotRequired[int]
+    license_: NotRequired[Union[None, LicenseSimpleTypeForResponse]]
+    allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    visibility: NotRequired[str]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    default_branch: NotRequired[str]
+    public: NotRequired[bool]
 
 
 __all__ = (
-    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlType",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestType",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfType",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropSelfTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentPropLinksType",
-    "PullRequestReviewCommentEventPropCommentPropLinksTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentPropReactionsType",
-    "PullRequestReviewCommentEventPropCommentPropReactionsTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentPropUserType",
-    "PullRequestReviewCommentEventPropCommentPropUserTypeForResponse",
-    "PullRequestReviewCommentEventPropCommentType",
-    "PullRequestReviewCommentEventPropCommentTypeForResponse",
-    "PullRequestReviewCommentEventType",
-    "PullRequestReviewCommentEventTypeForResponse",
+    "ForkEventPropForkeeType",
+    "ForkEventPropForkeeTypeForResponse",
 )

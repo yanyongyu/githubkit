@@ -9,40 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    Repository invitations let you manage who you collaborate with.
+    Contributor Activity
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: _dt.datetime
-    url: str
-    repository_url: str
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class RepositorySubscriptionTypeForResponse(TypedDict):
-    """Repository Invitation
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    Repository invitations let you manage who you collaborate with.
+    Contributor Activity
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: str
-    url: str
-    repository_url: str
+    author: Union[None, SimpleUserTypeForResponse]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "RepositorySubscriptionType",
-    "RepositorySubscriptionTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

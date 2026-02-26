@@ -9,71 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1129 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
-)
 
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    status: NotRequired[Literal["completed"]]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
     ]
-    completed_at: NotRequired[_dt.datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
     ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[str]
-    status: NotRequired[Literal["completed"]]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse
+        ]
     ]
-    completed_at: NotRequired[str]
-    output: NotRequired[
-        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse]
     ]
-    actions: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
-    ]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse",
 )

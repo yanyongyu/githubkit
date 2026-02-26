@@ -9,54 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0345 import BranchProtectionType, BranchProtectionTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-    Short Branch
+    Check Dependabot security updates
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    enabled: bool
+    paused: bool
 
 
-class ShortBranchTypeForResponse(TypedDict):
-    """Short Branch
+class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
+    """Check Dependabot security updates
 
-    Short Branch
+    Check Dependabot security updates
     """
 
-    name: str
-    commit: ShortBranchPropCommitTypeForResponse
-    protected: bool
-    protection: NotRequired[BranchProtectionTypeForResponse]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-class ShortBranchPropCommitTypeForResponse(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    enabled: bool
+    paused: bool
 
 
 __all__ = (
-    "ShortBranchPropCommitType",
-    "ShortBranchPropCommitTypeForResponse",
-    "ShortBranchType",
-    "ShortBranchTypeForResponse",
+    "CheckAutomatedSecurityFixesType",
+    "CheckAutomatedSecurityFixesTypeForResponse",
 )

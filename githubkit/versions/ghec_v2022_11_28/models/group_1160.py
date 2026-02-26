@@ -9,55 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    name: Missing[str] = Field(
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
+    )
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    )
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    artifact_url: Missing[str] = Field(
+        pattern="^https://",
+        default=UNSET,
+        description="The URL where the artifact is stored.",
+    )
+    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
+    registry_url: str = Field(
         min_length=1,
-        max_length=50,
-        default=UNSET,
-        description="The name of the campaign",
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
     )
-    description: Missing[str] = Field(
+    repository: Missing[str] = Field(
+        default=UNSET, description="The repository name within the registry."
+    )
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+        default=UNSET,
+        description="The status of the artifact (e.g., active, inactive).",
+    )
+    github_repository: Missing[str] = Field(
         min_length=1,
-        max_length=255,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
         default=UNSET,
-        description="A description for the campaign",
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
-    )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        title="Campaign state",
-        description="Indicates whether a campaign is open or closed",
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
 
 
-model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

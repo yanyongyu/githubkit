@@ -28,6 +28,8 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetails,
         CopilotOrganizationDetails,
         CopilotSeatDetails,
         CopilotUsageMetrics1DayReport,
@@ -38,14 +40,21 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201,
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200,
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from ..types import (
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
         CopilotOrganizationDetailsTypeForResponse,
         CopilotSeatDetailsTypeForResponse,
         CopilotUsageMetrics1DayReportTypeForResponse,
@@ -60,6 +69,12 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType,
         EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
         EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
@@ -70,6 +85,8 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        OrgsOrgCopilotContentExclusionPutBodyType,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
     )
 
 
@@ -981,6 +998,802 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an enterprise's Copilot content exclusion path rules.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `read:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotEnterpriseContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotEnterpriseContentExclusionDetails,
+        CopilotEnterpriseContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an enterprise's Copilot content exclusion path rules.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can view details about Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `read:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import BasicError, CopilotEnterpriseContentExclusionDetails
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotEnterpriseContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an enterprise.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can set Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `admin:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotContentExclusionPutBody,
+            EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotContentExclusionPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_content_exclusion_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+        EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an enterprise.
+        To configure these settings, go to the enterprise's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-enterprise)."
+
+        Enterprise owners can set Copilot content exclusion rules for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `admin:enterprise` or `copilot` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotContentExclusionPutBody,
+            EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotContentExclusionPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_copilot_custom_agents_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents
+
+        Gets the list of all custom agents defined in the /agents/*.md files in the .github-private repository for the enterprise.
+
+        If no source repository has been configured, returns `null` for `custom_agents`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+            },
+        )
+
+    async def async_get_copilot_custom_agents_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents
+
+        Gets the list of all custom agents defined in the /agents/*.md files in the .github-private repository for the enterprise.
+
+        If no source repository has been configured, returns `null` for `custom_agents`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-custom-agents-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": EnterprisesEnterpriseCopilotCustomAgentsGetResponse404,
+            },
+        )
+
+    def get_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-source-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+
+        Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
+        An enterprise admin configures one organization as the "source" and that org must have a repo named
+        `.github-private` containing agent definitions in `/agents/*.md`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-custom-agents-source-for-enterprise
+
+        GET /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Gets the organization and repository configured as the source for custom agent definitions in an enterprise.
+
+        Custom agents are enterprise-defined AI agents stored as markdown files in a special repository.
+        An enterprise admin configures one organization as the "source" and that org must have a repo named
+        `.github-private` containing agent definitions in `/agents/*.md`.
+
+        Enterprise owners with read access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#get-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_id: int,
+        create_ruleset: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-custom-agents-source-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Sets an organization as the source for custom agent definitions in the enterprise.
+        The organization must have a `.github-private` repository containing agent definitions.
+
+        By default, this endpoint also creates an enterprise-level ruleset to protect
+        agent definition files (agents/*.md and .github/agents/*.md). You can opt out
+        of ruleset creation by setting `create_ruleset` to `false`.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organization_id: int,
+        create_ruleset: Missing[bool] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-custom-agents-source-for-enterprise
+
+        PUT /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Sets an organization as the source for custom agent definitions in the enterprise.
+        The organization must have a `.github-private` repository containing agent definitions.
+
+        By default, this endpoint also creates an enterprise-level ruleset to protect
+        agent definition files (agents/*.md and .github/agents/*.md). You can opt out
+        of ruleset creation by setting `create_ruleset` to `false`.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#set-the-source-organization-for-custom-agents-in-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422,
+            },
+        )
+
+    def delete_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/delete-copilot-custom-agents-source-for-enterprise
+
+        DELETE /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Removes the custom agents source configuration for the enterprise.
+        This effectively disables custom agents for the enterprise by removing
+        the reference to the source organization's `.github-private` repository.
+
+        Note: This does not delete the `.github-private` repository or any agent
+        definition files. It only removes the association between the enterprise
+        and the source repository.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_delete_copilot_custom_agents_source_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/delete-copilot-custom-agents-source-for-enterprise
+
+        DELETE /enterprises/{enterprise}/copilot/custom-agents/source
+
+        Removes the custom agents source configuration for the enterprise.
+        This effectively disables custom agents for the enterprise by removing
+        the reference to the source organization's `.github-private` repository.
+
+        Note: This does not delete the `.github-private` repository or any agent
+        definition files. It only removes the association between the enterprise
+        and the source repository.
+
+        Enterprise owners with write access to AI Controls can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-custom-agents#delete-the-custom-agents-source-for-an-enterprise
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/copilot/custom-agents/source"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
             },
         )
 
@@ -2673,6 +3486,304 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/enterprise-cloud@latest//copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

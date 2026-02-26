@@ -14,21 +14,21 @@ from typing_extensions import TypedDict
 from .group_0115 import RunnerType, RunnerTypeForResponse
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    runner: RunnerType
-    encoded_jit_config: str
+    total_count: int
+    runners: list[RunnerType]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    total_count: int
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "OrgsOrgActionsRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
 )

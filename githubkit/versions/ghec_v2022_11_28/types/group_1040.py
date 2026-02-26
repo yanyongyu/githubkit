@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0052 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
-
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
-    repositories: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    client_id: str
-    repository_selection: Literal["all", "selected", "none"]
-    repositories: NotRequired[list[str]]
+    runner: RunnerType
+    encoded_jit_config: str
+
+
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

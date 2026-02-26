@@ -12,17 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0325 import ActionsSecret
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
+    )
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
+
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)

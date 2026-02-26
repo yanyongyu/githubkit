@@ -12,27 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    owner: NotRequired[str]
-    name: str
-    description: NotRequired[str]
-    include_all_branches: NotRequired[bool]
-    private: NotRequired[bool]
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
 __all__ = (
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
-    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
+    "ReposOwnerRepoSubscriptionPutBodyType",
+    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
 )

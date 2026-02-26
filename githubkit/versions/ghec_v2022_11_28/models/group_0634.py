@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,21 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0555 import EnterpriseWebhooks
-from .group_0556 import SimpleInstallation
-from .group_0557 import OrganizationSimpleWebhooks
-from .group_0558 import RepositoryWebhooks
-from .group_0635 import WebhookCodeScanningAlertReopenedPropAlert
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
+from .group_0635 import WebhookCodeScanningAlertCreatedPropAlert
 
 
-class WebhookCodeScanningAlertReopened(GitHubModel):
-    """code_scanning_alert reopened event"""
+class WebhookCodeScanningAlertCreated(GitHubModel):
+    """code_scanning_alert created event"""
 
-    action: Literal["reopened"] = Field()
-    alert: WebhookCodeScanningAlertReopenedPropAlert = Field(
+    action: Literal["created"] = Field()
+    alert: WebhookCodeScanningAlertCreatedPropAlert = Field(
         description="The code scanning alert involved in the event."
     )
-    commit_oid: Union[str, None] = Field(
+    commit_oid: str = Field(
         description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -50,7 +50,7 @@ class WebhookCodeScanningAlertReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: Union[str, None] = Field(
+    ref: str = Field(
         description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     repository: RepositoryWebhooks = Field(
@@ -60,6 +60,6 @@ class WebhookCodeScanningAlertReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertReopened)
+model_rebuild(WebhookCodeScanningAlertCreated)
 
-__all__ = ("WebhookCodeScanningAlertReopened",)
+__all__ = ("WebhookCodeScanningAlertCreated",)

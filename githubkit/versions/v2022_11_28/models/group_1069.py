@@ -9,20 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0085 import MinimalRepository
+from .group_0177 import RepositoryRulesetBypassActor
+from .group_0186 import OrgRulesetConditionsOneof0
+from .group_0187 import OrgRulesetConditionsOneof1
+from .group_0188 import OrgRulesetConditionsOneof2
+from .group_0189 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0190 import RepositoryRuleUpdate
+from .group_0192 import RepositoryRuleRequiredLinearHistory
+from .group_0195 import RepositoryRuleRequiredDeployments
+from .group_0197 import RepositoryRulePullRequest
+from .group_0199 import RepositoryRuleRequiredStatusChecks
+from .group_0201 import RepositoryRuleCommitMessagePattern
+from .group_0203 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0205 import RepositoryRuleCommitterEmailPattern
+from .group_0207 import RepositoryRuleBranchNamePattern
+from .group_0209 import RepositoryRuleTagNamePattern
+from .group_0211 import RepositoryRuleFilePathRestriction
+from .group_0213 import RepositoryRuleMaxFilePathLength
+from .group_0215 import RepositoryRuleFileExtensionRestriction
+from .group_0217 import RepositoryRuleMaxFileSize
+from .group_0220 import RepositoryRuleWorkflows
+from .group_0222 import RepositoryRuleCodeScanning
+from .group_0224 import RepositoryRuleCopilotCodeReview
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200"""
+class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200)
+model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)

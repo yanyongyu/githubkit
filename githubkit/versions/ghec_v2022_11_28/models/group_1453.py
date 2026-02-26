@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,198 +17,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
-from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
 
+class UserCodespacesPostBodyOneof0(GitHubModel):
+    """UserCodespacesPostBodyOneof0"""
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems(
-    GitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    node_id: str = Field()
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    forks: int = Field()
-    permissions: Missing[RepositoryPropPermissions] = Field(default=UNSET)
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field(
-        default=False, description="Whether the repository is private or public."
-    )
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: str = Field()
-    mirror_url: Union[str, None] = Field()
-    hooks_url: str = Field()
-    svn_url: str = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    size: int = Field(
-        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
-    )
-    default_branch: str = Field(description="The default branch of the repository.")
-    open_issues_count: int = Field()
-    is_template: Missing[bool] = Field(
+    repository_id: int = Field(description="Repository id for this codespace")
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="Whether this repository acts as a template that can be used to generate new repositories.",
+        description="Git ref (typically a branch name) for this codespace",
     )
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
-    has_projects: bool = Field(
-        default=True, description="Whether projects are enabled."
-    )
-    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    has_pages: bool = Field()
-    has_downloads: bool = Field(
-        default=True, description="Whether downloads are enabled."
-    )
-    has_discussions: Missing[bool] = Field(
-        default=UNSET, description="Whether discussions are enabled."
-    )
-    has_pull_requests: Missing[bool] = Field(
-        default=UNSET, description="Whether pull requests are enabled."
-    )
-    archived: bool = Field(
-        default=False, description="Whether the repository is archived."
-    )
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
-    )
-    visibility: Missing[str] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    pushed_at: Union[_dt.datetime, None] = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
-    )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
-    )
-    allow_auto_merge: Missing[bool] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="Whether to allow Auto-merge to be used on pull requests.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    delete_branch_on_merge: Missing[bool] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
+        description="IP for location auto-detection when proxying a request",
     )
-    allow_update_branch: Missing[bool] = Field(
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
         default=UNSET,
-        description="Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
+        description="Path to devcontainer.json config to use for this codespace",
     )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
         default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.",
+        description="Whether to authorize requested permissions from devcontainer.json",
     )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
     )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
+    idle_timeout_minutes: Missing[int] = Field(
         default=UNSET,
-        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+        description="Time in minutes before codespace stops from inactivity",
     )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
         default=UNSET,
-        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
-    )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow forking this repo"
-    )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to require contributors to sign off on web-based commits",
-    )
-    open_issues: int = Field()
-    watchers: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    starred_at: Missing[str] = Field(default=UNSET)
-    anonymous_access_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether anonymous git access is enabled for this repository",
-    )
-    code_search_index_status: Missing[RepositoryPropCodeSearchIndexStatus] = Field(
-        default=UNSET,
-        description="The status of the code search index for this repository",
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+model_rebuild(UserCodespacesPostBodyOneof0)
 
-    total_count: int = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-    repositories: list[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems
-    ] = Field()
-
-
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems
-)
-model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
-
-__all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems",
-)
+__all__ = ("UserCodespacesPostBodyOneof0",)

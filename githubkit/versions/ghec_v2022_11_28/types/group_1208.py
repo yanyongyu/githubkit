@@ -9,73 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
-
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
-
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

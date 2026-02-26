@@ -14,43 +14,55 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    body: Union[str, None]
-    columns_url: str
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
     created_at: _dt.datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
-    name: str
+    labels_url: str
     node_id: str
     number: int
-    owner_url: str
+    open_issues: int
     state: Literal["open", "closed"]
+    title: str
     updated_at: _dt.datetime
     url: str
 
 
-class WebhooksProjectTypeForResponse(TypedDict):
-    """Project"""
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    body: Union[str, None]
-    columns_url: str
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
     created_at: str
-    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
     html_url: str
     id: int
-    name: str
+    labels_url: str
     node_id: str
     number: int
-    owner_url: str
+    open_issues: int
     state: Literal["open", "closed"]
+    title: str
     updated_at: str
     url: str
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +89,7 @@ class WebhooksProjectPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +117,8 @@ class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectPropCreatorTypeForResponse",
-    "WebhooksProjectType",
-    "WebhooksProjectTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

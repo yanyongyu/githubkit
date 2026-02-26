@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    The total number of seats created for members of the specified team(s).
-    """
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
-    seats_created: int
 
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
-
-    The total number of seats created for members of the specified team(s).
-    """
-
-    seats_created: int
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0162 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0152 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class RepositoryRuleDetailedOneof21(GitHubModel):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof16(GitHubModel):
+    """RepositoryRuleDetailedOneof16"""
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof21(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof21)
+model_rebuild(RepositoryRuleDetailedOneof16)
 
-__all__ = ("RepositoryRuleDetailedOneof21",)
+__all__ = ("RepositoryRuleDetailedOneof16",)

@@ -11,17 +11,59 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
     )
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+    )
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[list[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
+class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersPostBody",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersPostBodyPropName",
+)

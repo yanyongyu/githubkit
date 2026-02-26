@@ -9,43 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class UsageReportExportRequestType(TypedDict):
+    """UsageReportExportRequest"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: _dt.date
+    end_date: NotRequired[_dt.date]
+    send_email: NotRequired[bool]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class UsageReportExportRequestTypeForResponse(TypedDict):
+    """UsageReportExportRequest"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: str
+    end_date: NotRequired[str]
+    send_email: NotRequired[bool]
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "UsageReportExportRequestType",
+    "UsageReportExportRequestTypeForResponse",
 )

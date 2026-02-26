@@ -13,96 +13,64 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0082 import TeamSimple
 
 
-class OrganizationProgrammaticAccessGrant(GitHubModel):
-    """Organization Programmatic Access Grant
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    The Relationship a Team has with a role.
     """
 
-    id: int = Field(
-        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    repositories_url: str = Field(
-        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
     )
-    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    access_granted_at: str = Field(
-        description="Date and time when the fine-grained personal access token was approved to access the organization."
-    )
-    token_id: int = Field(
-        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
-    )
-    token_name: str = Field(
-        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
-        default=UNSET
-    )
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrant)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrant",
-    "OrganizationProgrammaticAccessGrantPropPermissions",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
 )

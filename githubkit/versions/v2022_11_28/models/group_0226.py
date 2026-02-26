@@ -9,148 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0176 import RepositoryRulesetBypassActor
-from .group_0177 import RepositoryRulesetConditions
-from .group_0185 import OrgRulesetConditionsOneof0
-from .group_0186 import OrgRulesetConditionsOneof1
-from .group_0187 import OrgRulesetConditionsOneof2
-from .group_0188 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0189 import RepositoryRuleUpdate
-from .group_0191 import RepositoryRuleRequiredLinearHistory
-from .group_0192 import RepositoryRuleMergeQueue
-from .group_0194 import RepositoryRuleRequiredDeployments
-from .group_0196 import RepositoryRulePullRequest
-from .group_0198 import RepositoryRuleRequiredStatusChecks
-from .group_0200 import RepositoryRuleCommitMessagePattern
-from .group_0202 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0204 import RepositoryRuleCommitterEmailPattern
-from .group_0206 import RepositoryRuleBranchNamePattern
-from .group_0208 import RepositoryRuleTagNamePattern
-from .group_0210 import RepositoryRuleFilePathRestriction
-from .group_0212 import RepositoryRuleMaxFilePathLength
-from .group_0214 import RepositoryRuleFileExtensionRestriction
-from .group_0216 import RepositoryRuleMaxFileSize
-from .group_0219 import RepositoryRuleWorkflows
-from .group_0221 import RepositoryRuleCodeScanning
-from .group_0223 import RepositoryRuleCopilotCodeReview
 
 
-class RepositoryRuleset(GitHubModel):
-    """Repository ruleset
+class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
+    """CopilotCodeReviewAnalysisTool
 
-    A set of rules to apply when specified conditions are met.
+    A tool that must provide code review results for this rule to pass.
     """
 
-    id: int = Field(description="The ID of the ruleset")
-    name: str = Field(description="The name of the ruleset")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
-        default=UNSET, description="The type of the source of the ruleset"
-    )
-    source: str = Field(description="The name of the source")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    current_user_can_bypass: Missing[
-        Literal["always", "pull_requests_only", "never", "exempt"]
-    ] = Field(
-        default=UNSET,
-        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
-    conditions: Missing[
-        Union[
-            RepositoryRulesetConditions,
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-            None,
-        ]
-    ] = Field(default=UNSET)
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-
-
-class RepositoryRulesetPropLinks(GitHubModel):
-    """RepositoryRulesetPropLinks"""
-
-    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
-        default=UNSET, alias="self"
-    )
-    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
-        default=UNSET
+    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
+        description="The name of a code review analysis tool"
     )
 
 
-class RepositoryRulesetPropLinksPropSelf(GitHubModel):
-    """RepositoryRulesetPropLinksPropSelf"""
+model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
 
-    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
-
-
-class RepositoryRulesetPropLinksPropHtml(GitHubModel):
-    """RepositoryRulesetPropLinksPropHtml"""
-
-    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
-
-
-model_rebuild(RepositoryRuleset)
-model_rebuild(RepositoryRulesetPropLinks)
-model_rebuild(RepositoryRulesetPropLinksPropSelf)
-model_rebuild(RepositoryRulesetPropLinksPropHtml)
-
-__all__ = (
-    "RepositoryRuleset",
-    "RepositoryRulesetPropLinks",
-    "RepositoryRulesetPropLinksPropHtml",
-    "RepositoryRulesetPropLinksPropSelf",
-)
+__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)

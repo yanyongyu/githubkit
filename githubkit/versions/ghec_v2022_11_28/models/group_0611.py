@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0555 import EnterpriseWebhooks
-from .group_0556 import SimpleInstallation
-from .group_0557 import OrganizationSimpleWebhooks
-from .group_0558 import RepositoryWebhooks
-from .group_0561 import ExemptionRequest
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
+from .group_0563 import WebhooksRule
 
 
-class WebhookExemptionRequestCompleted(GitHubModel):
-    """Exemption request completed event"""
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
-    action: Literal["completed"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,18 +44,17 @@ class WebhookExemptionRequestCompleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    exemption_request: ExemptionRequest = Field(
-        title="Exemption Request",
-        description="A request from a user to be exempted from a set of rules.",
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookExemptionRequestCompleted)
+model_rebuild(WebhookBranchProtectionRuleCreated)
 
-__all__ = ("WebhookExemptionRequestCompleted",)
+__all__ = ("WebhookBranchProtectionRuleCreated",)

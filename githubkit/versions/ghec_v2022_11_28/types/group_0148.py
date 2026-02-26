@@ -12,39 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0149 import (
-    RepositoryRuleFilePathRestrictionPropParametersType,
-    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
-)
+
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleFilePathRestrictionType(TypedDict):
-    """file_path_restriction
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
-
-
-class RepositoryRuleFilePathRestrictionTypeForResponse(TypedDict):
-    """file_path_restriction
-
-    Prevent commits that include changes in specified file and folder paths from
-    being pushed to the commit graph. This includes absolute paths that contain file
-    names.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
-    ]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionType",
-    "RepositoryRuleFilePathRestrictionTypeForResponse",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
 )

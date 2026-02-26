@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
@@ -85,6 +85,7 @@ class ForkEventPropForkeeType(TypedDict):
     has_pages: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     forks_count: NotRequired[int]
     mirror_url: NotRequired[Union[str, None]]
     archived: NotRequired[bool]
@@ -171,6 +172,7 @@ class ForkEventPropForkeeTypeForResponse(TypedDict):
     has_pages: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     forks_count: NotRequired[int]
     mirror_url: NotRequired[Union[str, None]]
     archived: NotRequired[bool]

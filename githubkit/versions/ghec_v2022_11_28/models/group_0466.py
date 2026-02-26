@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
 
-    id: int = Field()
-    node_id: str = Field()
+    Page Build Status
+    """
+
     url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+    status: str = Field()
 
 
-model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PageBuildStatus)
 
-__all__ = ("PullRequestPropLabelsItems",)
+__all__ = ("PageBuildStatus",)

@@ -20,6 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
+    import datetime as _dt
     from typing import Literal
 
     from githubkit import GitHubCore
@@ -44,6 +45,8 @@ if TYPE_CHECKING:
         GetCostCenter,
         UpdateBudget,
         UpdateCostCenter,
+        UsageReportExport,
+        UsageReportExportList,
     )
     from ..types import (
         AdvancedSecurityActiveCommittersTypeForResponse,
@@ -70,6 +73,9 @@ if TYPE_CHECKING:
         GetCostCenterTypeForResponse,
         UpdateBudgetTypeForResponse,
         UpdateCostCenterTypeForResponse,
+        UsageReportExportListTypeForResponse,
+        UsageReportExportRequestType,
+        UsageReportExportTypeForResponse,
     )
 
 
@@ -1933,6 +1939,350 @@ class BillingClient:
             response_model=BillingPremiumRequestUsageReportGhe,
             error_models={
                 "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def list_usage_report_exports(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[UsageReportExportList, UsageReportExportListTypeForResponse]:
+        """billing/list-usage-report-exports
+
+        GET /enterprises/{enterprise}/settings/billing/reports
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#list-usage-report-exports
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExportList,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExportList,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_list_usage_report_exports(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[UsageReportExportList, UsageReportExportListTypeForResponse]:
+        """billing/list-usage-report-exports
+
+        GET /enterprises/{enterprise}/settings/billing/reports
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#list-usage-report-exports
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExportList,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExportList,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UsageReportExportRequestType,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
+
+    @overload
+    def create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        report_type: Literal["detailed", "summarized", "premium_request"],
+        start_date: _dt.date,
+        end_date: Missing[_dt.date] = UNSET,
+        send_email: Missing[bool] = UNSET,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
+
+    def create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UsageReportExportRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
+        """billing/create-usage-report-export
+
+        POST /enterprises/{enterprise}/settings/billing/reports
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
+        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#create-a-usage-report-export
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExport,
+            UsageReportExportRequest,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UsageReportExportRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExport,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: UsageReportExportRequestType,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
+
+    @overload
+    async def async_create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        report_type: Literal["detailed", "summarized", "premium_request"],
+        start_date: _dt.date,
+        end_date: Missing[_dt.date] = UNSET,
+        send_email: Missing[bool] = UNSET,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]: ...
+
+    async def async_create_usage_report_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[UsageReportExportRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
+        """billing/create-usage-report-export
+
+        POST /enterprises/{enterprise}/settings/billing/reports
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
+        and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#create-a-usage-report-export
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExport,
+            UsageReportExportRequest,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UsageReportExportRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExport,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_usage_report_export(
+        self,
+        enterprise: str,
+        report_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
+        """billing/get-usage-report-export
+
+        GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#get-a-usage-report-export
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExport,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports/{report_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExport,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_usage_report_export(
+        self,
+        enterprise: str,
+        report_id: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[UsageReportExport, UsageReportExportTypeForResponse]:
+        """billing/get-usage-report-export
+
+        GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/usage-reports#get-a-usage-report-export
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            UsageReportExport,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/reports/{report_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=UsageReportExport,
+            error_models={
+                "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "500": BasicError,

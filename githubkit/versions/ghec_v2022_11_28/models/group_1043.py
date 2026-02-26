@@ -14,23 +14,16 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to remove from the installation.",
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody
-)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)

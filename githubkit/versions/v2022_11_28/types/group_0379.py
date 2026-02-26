@@ -10,153 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0380 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
+
+    Timeline Cross Referenced Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
-    node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
-    html_url: str
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class TimelineCommittedEventTypeForResponse(TypedDict):
-    """Timeline Committed Event
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
 
-    Timeline Committed Event
+    Timeline Cross Referenced Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
-    node_id: str
-    url: str
-    author: TimelineCommittedEventPropAuthorTypeForResponse
-    committer: TimelineCommittedEventPropCommitterTypeForResponse
-    message: str
-    tree: TimelineCommittedEventPropTreeTypeForResponse
-    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
-    verification: TimelineCommittedEventPropVerificationTypeForResponse
-    html_url: str
-
-
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropAuthorTypeForResponse",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropCommitterTypeForResponse",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropParentsItemsTypeForResponse",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropTreeTypeForResponse",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventPropVerificationTypeForResponse",
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

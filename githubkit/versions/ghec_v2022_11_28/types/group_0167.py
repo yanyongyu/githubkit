@@ -11,39 +11,39 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0115 import (
+from .group_0116 import (
     RepositoryRulesetConditionsPropRefNameType,
     RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
-from .group_0117 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0165 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
 
-    Conditions to target repositories by property and refs by name
+    Conditions to target repositories by id and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
 
-    Conditions to target repositories by property and refs by name
+    Conditions to target repositories by id and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
 )

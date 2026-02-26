@@ -9,28 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0255 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
+
+
+class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
+
+    event_type: str
+    client_payload: NotRequired[
+        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
+    ]
+
+
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
+
+
+ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+JSON payload with extra information about the webhook event that your action or
+workflow may use. The maximum number of top-level properties is 10. The total
+size of the JSON payload must be less than 64KB.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
 )

@@ -9,92 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationType]
-
-
-class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
-
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
 
 
-class OrgPrivateRegistryConfigurationType(TypedDict):
-    """Organization private registry
+class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-    Private registry configuration for an organization
+    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+    name: NotRequired[str]
+
+
+class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
-    """Organization private registry
+class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    Private registry configuration for an organization
+    Key/value pairs to provide settings for this webhook.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    created_at: str
-    updated_at: str
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationType",
-    "OrgPrivateRegistryConfigurationTypeForResponse",
-    "OrgsOrgPrivateRegistriesGetResponse200Type",
-    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksHookIdPatchBodyType",
+    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
 )

@@ -71,6 +71,9 @@ class CodeSecurityConfigurationType(TypedDict):
     secret_scanning_delegated_alert_dismissal: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
@@ -139,6 +142,9 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
     private_vulnerability_reporting: NotRequired[
@@ -250,6 +256,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    security_configuration_id: NotRequired[int]
 
 
 class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
@@ -261,6 +268,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    security_configuration_id: NotRequired[int]
 
 
 __all__ = (

@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Details for the vulnerable package.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    ecosystem: str
-    name: str
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Details for the vulnerable package.
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    ecosystem: str
-    name: str
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

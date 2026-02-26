@@ -13,65 +13,21 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPostBodyType",
-    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
+    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyTypeForResponse",
 )

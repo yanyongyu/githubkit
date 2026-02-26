@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,46 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0237 import MinimalRepository
+from .group_0003 import SimpleUser
+from .group_0240 import MinimalRepository
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    Combined Commit Status
+    Repository invitations let you manage who you collaborate with.
     """
 
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
+    id: int = Field(description="Unique identifier of the repository invitation.")
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )
-    commit_url: str = Field()
-    url: str = Field()
-
-
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
-
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
+    invitee: Union[None, SimpleUser] = Field()
+    inviter: Union[None, SimpleUser] = Field()
+    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
+        description="The permission associated with the invitation."
+    )
     created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
+    )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
+model_rebuild(RepositoryInvitation)
 
-__all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
-)
+__all__ = ("RepositoryInvitation",)

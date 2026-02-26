@@ -13,41 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0103 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0585 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
-class WebhookOrganizationMemberAddedType(TypedDict):
-    """organization member_added event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["member_added"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    membership: WebhooksMembershipType
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationMemberAddedTypeForResponse(TypedDict):
-    """organization member_added event"""
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["member_added"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    membership: WebhooksMembershipTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationMemberAddedType",
-    "WebhookOrganizationMemberAddedTypeForResponse",
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
 )

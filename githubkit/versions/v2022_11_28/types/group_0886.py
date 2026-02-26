@@ -9,51 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0050 import IssueType, IssueTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookSubIssuesParentIssueRemovedType(TypedDict):
-    """parent issue removed event"""
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: float
-    parent_issue: IssueType
-    parent_issue_repo: RepositoryType
-    sub_issue_id: float
-    sub_issue: IssueType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
-
-
-class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
-    """parent issue removed event"""
-
-    action: Literal["parent_issue_removed"]
-    parent_issue_id: float
-    parent_issue: IssueTypeForResponse
-    parent_issue_repo: RepositoryTypeForResponse
-    sub_issue_id: float
-    sub_issue: IssueTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSubIssuesParentIssueRemovedType",
-    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
 )

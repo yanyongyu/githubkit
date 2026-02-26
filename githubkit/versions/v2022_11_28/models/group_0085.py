@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -99,6 +99,10 @@ class MinimalRepository(GitHubModel):
     has_downloads: Missing[bool] = Field(default=UNSET)
     has_discussions: Missing[bool] = Field(default=UNSET)
     has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
     archived: Missing[bool] = Field(default=UNSET)
     disabled: Missing[bool] = Field(default=UNSET)
     visibility: Missing[str] = Field(default=UNSET)

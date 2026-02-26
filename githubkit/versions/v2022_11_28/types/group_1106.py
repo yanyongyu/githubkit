@@ -9,93 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
+class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
-
-
-class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
-
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
+class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
-    ]
-
-
-class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
-    ]
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyType",
-    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
+    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
 )

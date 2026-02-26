@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookStarDeletedType(TypedDict):
+    """star deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    starred_at: None
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookStarDeletedTypeForResponse(TypedDict):
+    """star deleted event"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    starred_at: None
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
+    "WebhookStarDeletedType",
+    "WebhookStarDeletedTypeForResponse",
 )

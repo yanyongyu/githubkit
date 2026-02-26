@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,26 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdGetResponse403(GitHubModel):
-    """GistsGistIdGetResponse403"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    id: Missing[str] = Field(
+        default=UNSET, description="Unique identifier for the cost center"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    )
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: Missing[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+        ]
+    ] = Field(
+        default=UNSET, description="List of resources assigned to this cost center"
+    )
 
 
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
-    """GistsGistIdGetResponse403PropBlock"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    reason: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    type: Missing[str] = Field(
+        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
 
 
-model_rebuild(GistsGistIdGetResponse403)
-model_rebuild(GistsGistIdGetResponse403PropBlock)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+)
 
 __all__ = (
-    "GistsGistIdGetResponse403",
-    "GistsGistIdGetResponse403PropBlock",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
 )

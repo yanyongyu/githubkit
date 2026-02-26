@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    dismissal_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the dismissal review."
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200",)

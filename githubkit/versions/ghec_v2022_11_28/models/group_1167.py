@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0252 import Codespace
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+    attestation_ids: list[int] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of unique IDs associated with the artifact attestations to delete.",
+    )
 
 
-model_rebuild(OrgsOrgCodespacesGetResponse200)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof1)
 
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",)

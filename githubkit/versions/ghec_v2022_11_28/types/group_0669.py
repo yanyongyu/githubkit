@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0199 import DiscussionType, DiscussionTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCreatedType(TypedDict):
-    """discussion created event"""
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["created"]
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +37,11 @@ class WebhookDiscussionCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCreatedTypeForResponse(TypedDict):
-    """discussion created event"""
+class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["created"]
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -47,7 +50,71 @@ class WebhookDiscussionCreatedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
+
+
+class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: (
+        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: _dt.datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
 __all__ = (
-    "WebhookDiscussionCreatedType",
-    "WebhookDiscussionCreatedTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
+    "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedTypeForResponse",
 )

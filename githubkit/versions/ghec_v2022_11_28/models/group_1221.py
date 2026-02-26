@@ -17,89 +17,50 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0109 import RepositoryRulesetBypassActor
-from .group_0128 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0129 import RepositoryRuleUpdate
-from .group_0131 import RepositoryRuleRequiredLinearHistory
-from .group_0132 import RepositoryRuleRequiredDeployments
-from .group_0134 import RepositoryRulePullRequest
-from .group_0136 import RepositoryRuleRequiredStatusChecks
-from .group_0138 import RepositoryRuleCommitMessagePattern
-from .group_0140 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0142 import RepositoryRuleCommitterEmailPattern
-from .group_0144 import RepositoryRuleBranchNamePattern
-from .group_0146 import RepositoryRuleTagNamePattern
-from .group_0148 import RepositoryRuleFilePathRestriction
-from .group_0150 import RepositoryRuleMaxFilePathLength
-from .group_0152 import RepositoryRuleFileExtensionRestriction
-from .group_0154 import RepositoryRuleMaxFileSize
-from .group_0157 import RepositoryRuleWorkflows
-from .group_0159 import RepositoryRuleCodeScanning
-from .group_0161 import RepositoryRuleCopilotCodeReview
-from .group_0165 import OrgRulesetConditionsOneof0
-from .group_0166 import OrgRulesetConditionsOneof1
-from .group_0167 import OrgRulesetConditionsOneof2
 
+class OrgsOrgPrivateRegistriesPostBody(GitHubModel):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    url: str = Field(description="The URL of the private registry.")
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
     )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
+    replaces_base: Missing[bool] = Field(
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
+    )
+    key_id: str = Field(description="The ID of the key you used to encrypt the secret.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. You can manage the list of selected repositories using the [Update a private registry for an organization](https://docs.github.com/enterprise-cloud@latest//rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization) endpoint. This field should be omitted if `visibility` is set to `all` or `private`.",
+    )
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesPostBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesPostBody",)

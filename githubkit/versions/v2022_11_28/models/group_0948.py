@@ -9,39 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
+    message: Missing[str] = Field(default=UNSET)
+    budget: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
+    ] = Field(default=UNSET)
 
 
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
 
-    GitHub Actions Cache Usage by repository.
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
     """
 
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
-    )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
+model_rebuild(
+    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+)
 
 __all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
 )

@@ -9,45 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdGetResponse403Type(TypedDict):
-    """GistsGistIdGetResponse403"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-
-
-class GistsGistIdGetResponse403TypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403"""
-
-    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
 
 
-class GistsGistIdGetResponse403PropBlockType(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+        ]
+    ]
 
 
-class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
-    """GistsGistIdGetResponse403PropBlock"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    reason: NotRequired[str]
-    created_at: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdGetResponse403PropBlockType",
-    "GistsGistIdGetResponse403PropBlockTypeForResponse",
-    "GistsGistIdGetResponse403Type",
-    "GistsGistIdGetResponse403TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

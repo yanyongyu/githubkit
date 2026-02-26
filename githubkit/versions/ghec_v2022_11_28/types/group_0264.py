@@ -9,72 +9,159 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0263 import (
+    DismissalRequestResponseType,
+    DismissalRequestResponseTypeForResponse,
+)
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
 
-    Information about an external group's usage and its members
+class CodeScanningAlertDismissalRequestType(TypedDict):
+    """Code scanning alert dismissal request
+
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
+class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request
 
-    Information about an external group's usage and its members
+    Alert dismisal request made by a user asking to dismiss a code scanning alert.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[
+        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
+    ]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
+class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
 
-    team_id: int
-    team_name: str
+    The repository the dismissal request is for.
+    """
 
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
+class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRepository
 
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
+class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
 
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
+
+
+class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """CodeScanningAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    pr_review_thread_id: NotRequired[str]
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropDataItemsType",
+    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropOrganizationType",
+    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRepositoryType",
+    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
+    "CodeScanningAlertDismissalRequestPropRequesterType",
+    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
+    "CodeScanningAlertDismissalRequestType",
+    "CodeScanningAlertDismissalRequestTypeForResponse",
 )

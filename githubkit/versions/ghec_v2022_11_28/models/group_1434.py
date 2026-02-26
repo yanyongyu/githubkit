@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,15 +17,83 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0110 import RepositoryRulesetBypassActor
+from .group_0115 import RepositoryRulesetConditions
+from .group_0129 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0130 import RepositoryRuleUpdate
+from .group_0132 import RepositoryRuleRequiredLinearHistory
+from .group_0133 import RepositoryRuleRequiredDeployments
+from .group_0135 import RepositoryRulePullRequest
+from .group_0137 import RepositoryRuleRequiredStatusChecks
+from .group_0139 import RepositoryRuleCommitMessagePattern
+from .group_0141 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0143 import RepositoryRuleCommitterEmailPattern
+from .group_0145 import RepositoryRuleBranchNamePattern
+from .group_0147 import RepositoryRuleTagNamePattern
+from .group_0149 import RepositoryRuleFilePathRestriction
+from .group_0151 import RepositoryRuleMaxFilePathLength
+from .group_0153 import RepositoryRuleFileExtensionRestriction
+from .group_0155 import RepositoryRuleMaxFileSize
+from .group_0158 import RepositoryRuleWorkflows
+from .group_0160 import RepositoryRuleCodeScanning
+from .group_0162 import RepositoryRuleCopilotCodeReview
+from .group_0169 import RepositoryRuleMergeQueue
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
-from .group_0595 import WebhookForkPropForkee
+from .group_0044 import Discussion
+from .group_0475 import EnterpriseWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookDiscussionUnlocked(GitHubModel):
+    """discussion unlocked event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unlocked"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookFork(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookDiscussionUnlocked)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookDiscussionUnlocked",)

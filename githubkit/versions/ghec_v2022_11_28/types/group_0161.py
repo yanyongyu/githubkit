@@ -10,41 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0162 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
-
-
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
-
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
-    """
-
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
     ]
+    tool: str
+
+
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

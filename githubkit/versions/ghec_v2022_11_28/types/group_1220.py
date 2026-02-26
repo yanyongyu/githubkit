@@ -9,95 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgReposPostBodyType(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationType]
 
 
-class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
+
+    total_count: int
+    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
+
+
+class OrgPrivateRegistryConfigurationType(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
 
     name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[
-        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
-
-
-OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
-
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
-"""
-
-
-OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
-
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
-"""
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    visibility: Literal["all", "private", "selected"]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "OrgsOrgReposPostBodyPropCustomPropertiesType",
-    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
-    "OrgsOrgReposPostBodyType",
-    "OrgsOrgReposPostBodyTypeForResponse",
+    "OrgPrivateRegistryConfigurationType",
+    "OrgPrivateRegistryConfigurationTypeForResponse",
+    "OrgsOrgPrivateRegistriesGetResponse200Type",
+    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
 )

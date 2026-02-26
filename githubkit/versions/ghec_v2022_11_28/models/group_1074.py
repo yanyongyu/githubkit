@@ -16,16 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
+    )
+    create_ruleset: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

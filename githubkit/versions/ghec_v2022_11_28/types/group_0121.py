@@ -9,54 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0122 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
-    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
-
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-
-
-class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a organization property
+    Parameters for a organization property condition
     """
 
-    name: str
-    property_values: list[str]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    Parameters for a targeting a organization property
+    Parameters for a organization property condition
     """
 
-    name: str
-    property_values: list[str]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
-    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
 )

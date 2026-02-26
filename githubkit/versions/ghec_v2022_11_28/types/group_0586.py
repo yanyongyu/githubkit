@@ -9,329 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PersonalAccessTokenRequestType(TypedDict):
-    """Personal Access Token Request
+class WebhooksTeamType(TypedDict):
+    """Team
 
-    Details of a Personal Access Token Request.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
     id: int
-    owner: SimpleUserType
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedType
-    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgradedType
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class PersonalAccessTokenRequestTypeForResponse(TypedDict):
-    """Personal Access Token Request
-
-    Details of a Personal Access Token Request.
-    """
-
-    id: int
-    owner: SimpleUserTypeForResponse
-    permissions_added: PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse
-    permissions_upgraded: (
-        PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse
-    )
-    permissions_result: PersonalAccessTokenRequestPropPermissionsResultTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repository_count: Union[int, None]
-    repositories: Union[
-        list[PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse], None
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class PersonalAccessTokenRequestPropRepositoriesItemsType(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
+class WebhooksTeamTypeForResponse(TypedDict):
+    """Team
 
-    full_name: str
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
     id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentType(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
     name: str
     node_id: str
-    private: bool
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropRepositoriesItems"""
+class WebhooksTeamPropParentTypeForResponse(TypedDict):
+    """WebhooksTeamPropParent"""
 
-    full_name: str
+    description: Union[str, None]
+    html_url: str
     id: int
+    members_url: str
     name: str
     node_id: str
-    private: bool
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
-
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsAddedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsAdded
-
-    New requested permissions, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse
-    ]
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsAddedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsUpgraded
-
-    Requested permissions that elevate access for a previously approved request for
-    access, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse
-    ]
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsUpgradedPropOther
-"""
-
-
-class PersonalAccessTokenRequestPropPermissionsResultType(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType
-    ]
-    other: NotRequired[PersonalAccessTokenRequestPropPermissionsResultPropOtherType]
-
-
-class PersonalAccessTokenRequestPropPermissionsResultTypeForResponse(TypedDict):
-    """PersonalAccessTokenRequestPropPermissionsResult
-
-    Permissions requested, categorized by type of permission. This field
-    incorporates `permissions_added` and `permissions_upgraded`.
-    """
-
-    organization: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse
-    ]
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOrganization
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""PersonalAccessTokenRequestPropPermissionsResultPropRepository
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOtherType: TypeAlias = dict[str, Any]
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
-
-
-PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""PersonalAccessTokenRequestPropPermissionsResultPropOther
-"""
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsAddedType",
-    "PersonalAccessTokenRequestPropPermissionsAddedTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsResultPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsResultType",
-    "PersonalAccessTokenRequestPropPermissionsResultTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOtherTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepositoryTypeForResponse",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedType",
-    "PersonalAccessTokenRequestPropPermissionsUpgradedTypeForResponse",
-    "PersonalAccessTokenRequestPropRepositoriesItemsType",
-    "PersonalAccessTokenRequestPropRepositoriesItemsTypeForResponse",
-    "PersonalAccessTokenRequestType",
-    "PersonalAccessTokenRequestTypeForResponse",
+    "WebhooksTeamPropParentType",
+    "WebhooksTeamPropParentTypeForResponse",
+    "WebhooksTeamType",
+    "WebhooksTeamTypeForResponse",
 )

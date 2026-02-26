@@ -9,72 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
     total_count: NotRequired[int]
     storage_records: NotRequired[
         list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
         ]
     ]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
     total_count: NotRequired[int]
     storage_records: NotRequired[
         list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
         ]
     ]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
     TypedDict
 ):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
     id: NotRequired[int]
     name: NotRequired[str]
     digest: NotRequired[str]
-    artifact_url: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
     registry_url: NotRequired[str]
-    repository: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
     status: NotRequired[str]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
     id: NotRequired[int]
     name: NotRequired[str]
     digest: NotRequired[str]
-    artifact_url: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
     registry_url: NotRequired[str]
-    repository: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
     status: NotRequired[str]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
 )

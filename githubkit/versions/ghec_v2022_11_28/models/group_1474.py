@@ -9,36 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class UserSocialAccountsDeleteBody(GitHubModel):
+    """UserSocialAccountsDeleteBody
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems
-    ] = Field(description="A list of field updates to apply.")
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
 
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(
-    GitHubModel
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int = Field(description="The ID of the project field to update.")
-    value: Union[str, float, None] = Field(
-        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to delete."
     )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody)
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
+model_rebuild(UserSocialAccountsDeleteBody)
 
-__all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
-)
+__all__ = ("UserSocialAccountsDeleteBody",)

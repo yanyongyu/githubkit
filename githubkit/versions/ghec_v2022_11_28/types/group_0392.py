@@ -9,56 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0349 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0350 import CommitType, CommitTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class ReactionType(TypedDict):
+    """Reaction
 
-    Commit Comparison
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
 
-    Commit Comparison
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserTypeForResponse]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

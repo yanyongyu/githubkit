@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0050 import IssueType, IssueTypeForResponse
-from .group_0052 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0050 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0052 import IssueType, IssueTypeForResponse
 
 
 class IssueCommentEventType(TypedDict):

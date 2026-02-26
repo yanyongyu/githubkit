@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0085 import CopilotSeatDetails
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    name: str = Field(
-        description="The name of the cost center (max length 255 characters)"
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
+model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)
+__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)

@@ -13,70 +13,119 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0123 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0124 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0126 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0053 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0261 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
-
-
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
-
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class CheckSuiteTypeForResponse(TypedDict):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    repository: MinimalRepositoryTypeForResponse
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    head_commit: SimpleCommitTypeForResponse
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteType]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "CheckSuiteType",
+    "CheckSuiteTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
 )

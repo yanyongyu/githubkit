@@ -9,63 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0371 import (
-    CodeScanningVariantAnalysisSkippedRepoGroupType,
-    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    A CodeQL database.
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    A CodeQL database.
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int
-    repository_full_names: list[str]
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int
-    repository_full_names: list[str]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
+    created_at: str
+    updated_at: str
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

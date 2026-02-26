@@ -9,23 +9,261 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0021 import (
+    RepositoryPropCodeSearchIndexStatusType,
+    RepositoryPropCodeSearchIndexStatusTypeForResponse,
+    RepositoryPropPermissionsType,
+    RepositoryPropPermissionsTypeForResponse,
+)
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems"""
 
-    state: Literal["active"]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    license_: Union[None, LicenseSimpleType]
+    forks: int
+    permissions: NotRequired[RepositoryPropPermissionsType]
+    owner: Union[None, SimpleUserType]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: Union[_dt.datetime, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    allow_rebase_merge: NotRequired[bool]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    open_issues: int
+    watchers: int
+    master_branch: NotRequired[str]
+    starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
+    code_search_index_status: NotRequired[RepositoryPropCodeSearchIndexStatusType]
 
 
-class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsTypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems"""
 
-    state: Literal["active"]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    license_: Union[None, LicenseSimpleTypeForResponse]
+    forks: int
+    permissions: NotRequired[RepositoryPropPermissionsTypeForResponse]
+    owner: Union[None, SimpleUserTypeForResponse]
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_downloads: bool
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: Union[str, None]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    allow_rebase_merge: NotRequired[bool]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_merge_commit: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    open_issues: int
+    watchers: int
+    master_branch: NotRequired[str]
+    starred_at: NotRequired[str]
+    anonymous_access_enabled: NotRequired[bool]
+    code_search_index_status: NotRequired[
+        RepositoryPropCodeSearchIndexStatusTypeForResponse
+    ]
+
+
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType
+    ]
+
+
+class UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: list[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsTypeForResponse
+    ]
 
 
 __all__ = (
-    "UserMembershipsOrgsOrgPatchBodyType",
-    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsType",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsTypeForResponse",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
+    "UserInstallationsInstallationIdRepositoriesGetResponse200TypeForResponse",
 )

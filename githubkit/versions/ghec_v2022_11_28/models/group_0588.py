@@ -19,27 +19,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
+class WebhooksMilestone3(GitHubModel):
+    """Milestone
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None] = Field()
+    closed_issues: int = Field()
     created_at: _dt.datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
+    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
     html_url: str = Field()
     id: int = Field()
-    name: str = Field(description="Name of the project")
+    labels_url: str = Field()
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
     updated_at: _dt.datetime = Field()
     url: str = Field()
 
 
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksMilestone3PropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -66,10 +70,10 @@ class WebhooksProjectPropCreator(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksMilestone3)
+model_rebuild(WebhooksMilestone3PropCreator)
 
 __all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
+    "WebhooksMilestone3",
+    "WebhooksMilestone3PropCreator",
 )

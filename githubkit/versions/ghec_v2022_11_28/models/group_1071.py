@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,95 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0109 import RepositoryRulesetBypassActor
-from .group_0122 import EnterpriseRulesetConditionsOneof0
-from .group_0123 import EnterpriseRulesetConditionsOneof1
-from .group_0124 import EnterpriseRulesetConditionsOneof2
-from .group_0125 import EnterpriseRulesetConditionsOneof3
-from .group_0126 import EnterpriseRulesetConditionsOneof4
-from .group_0127 import EnterpriseRulesetConditionsOneof5
-from .group_0128 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0129 import RepositoryRuleUpdate
-from .group_0131 import RepositoryRuleRequiredLinearHistory
-from .group_0132 import RepositoryRuleRequiredDeployments
-from .group_0134 import RepositoryRulePullRequest
-from .group_0136 import RepositoryRuleRequiredStatusChecks
-from .group_0138 import RepositoryRuleCommitMessagePattern
-from .group_0140 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0142 import RepositoryRuleCommitterEmailPattern
-from .group_0144 import RepositoryRuleBranchNamePattern
-from .group_0146 import RepositoryRuleTagNamePattern
-from .group_0148 import RepositoryRuleFilePathRestriction
-from .group_0150 import RepositoryRuleMaxFilePathLength
-from .group_0152 import RepositoryRuleFileExtensionRestriction
-from .group_0154 import RepositoryRuleMaxFileSize
-from .group_0157 import RepositoryRuleWorkflows
-from .group_0159 import RepositoryRuleCodeScanning
-from .group_0161 import RepositoryRuleCopilotCodeReview
 
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
+    custom_agents: Missing[
         Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-            EnterpriseRulesetConditionsOneof4,
-            EnterpriseRulesetConditionsOneof5,
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+            ],
+            None,
         ]
     ] = Field(
         default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
+        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The display name of the custom agent (derived from filename).",
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="The path to the agent definition file."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the agent definition file."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
+)

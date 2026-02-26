@@ -9,35 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0173 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
 
-    Code of Conduct Simple
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
+
+    List of custom property values for a repository
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
 
-    Code of Conduct Simple
+    List of custom property values for a repository
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

@@ -9,34 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    users: Missing[list[str]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The usernames of the users to add to the cost center.",
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
     )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to add to the cost center."
+    compute_service: Missing[Literal["none", "actions"]] = Field(
+        default=UNSET,
+        description="The hosted compute service to use for the network configuration.",
     )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to add to the cost center."
+    network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
-)
+model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
-)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)

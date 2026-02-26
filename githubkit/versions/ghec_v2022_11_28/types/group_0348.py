@@ -12,28 +12,62 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class VerificationType(TypedDict):
-    """Verification"""
-
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class VerificationTypeForResponse(TypedDict):
-    """Verification"""
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "VerificationType",
-    "VerificationTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

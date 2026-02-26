@@ -9,70 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0735 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0737 import (
+    WebhookIssueCommentPinnedPropIssueType,
+    WebhookIssueCommentPinnedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssueCommentPinnedType(TypedDict):
+    """issue_comment pinned event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
+    action: Literal["pinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentPinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class WebhookIssueCommentPinnedTypeForResponse(TypedDict):
+    """issue_comment pinned event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
-        None,
-    ]
-    description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
+    action: Literal["pinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentPinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentPinnedType",
+    "WebhookIssueCommentPinnedTypeForResponse",
 )

@@ -9,51 +9,312 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0202 import IssueType, IssueTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1Type(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType, None]
+    assignees: NotRequired[
+        list[
+            Union[
+                WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType, None
+            ]
+        ]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: list[WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType]
+    labels_url: NotRequired[str]
+    locked: bool
+    milestone: NotRequired[
+        Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType,
+            None,
+        ]
+    ]
+    reactions: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["open", "closed"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType]
 
 
-class WebhookIssueDependenciesBlockingAddedType(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueCommentUnpinnedPropIssueAllof1TypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1"""
 
-    action: Literal["blocking_added"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueType]
-    blocked_issue_repo: NotRequired[RepositoryType]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse, None
+    ]
+    assignees: NotRequired[
+        list[
+            Union[
+                WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse,
+                None,
+            ]
+        ]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: list[
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse
+    ]
+    labels_url: NotRequired[str]
+    locked: bool
+    milestone: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse, None
+        ]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    reactions: NotRequired[
+        WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse
+    ]
+    repository_url: NotRequired[str]
+    state: Literal["open", "closed"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse]
 
 
-class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType(TypedDict):
+    """User"""
 
-    action: Literal["blocking_added"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueTypeForResponse]
-    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse(
+    TypedDict
+):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType(
+    TypedDict
+):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse(TypedDict):
+    """WebhookIssueCommentUnpinnedPropIssueAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockingAddedType",
-    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1Type",
+    "WebhookIssueCommentUnpinnedPropIssueAllof1TypeForResponse",
 )

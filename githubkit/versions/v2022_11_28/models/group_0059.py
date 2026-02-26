@@ -13,8 +13,8 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import Issue
-from .group_0052 import IssueComment
+from .group_0050 import IssueComment
+from .group_0052 import Issue
 
 
 class IssueCommentEvent(GitHubModel):

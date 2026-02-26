@@ -10,93 +10,148 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2View(GitHubModel):
-    """Projects v2 View
+class ProjectsV2Field(GitHubModel):
+    """Projects v2 Field
 
-    A view inside a projects v2 project
+    A field inside a projects v2 project
     """
 
-    id: int = Field(description="The unique identifier of the view.")
-    number: int = Field(description="The number of the view within the project.")
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    id: int = Field(description="The unique identifier of the field.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the field."
     )
-    node_id: str = Field(description="The node ID of the view.")
     project_url: str = Field(
-        description="The API URL of the project that contains the view."
+        description="The API URL of the project that contains the field."
     )
-    html_url: str = Field(description="The web URL of the view.")
-    creator: ProjectsV2ViewPropCreator = Field()
-    created_at: _dt.datetime = Field(description="The time when the view was created.")
+    name: str = Field(description="The name of the field.")
+    data_type: Literal[
+        "assignees",
+        "linked_pull_requests",
+        "reviewers",
+        "labels",
+        "milestone",
+        "repository",
+        "title",
+        "text",
+        "single_select",
+        "number",
+        "date",
+        "iteration",
+        "issue_type",
+        "parent_issue",
+        "sub_issues_progress",
+    ] = Field(description="The field's data type.")
+    options: Missing[list[ProjectsV2SingleSelectOptions]] = Field(
+        default=UNSET, description="The options available for single select fields."
+    )
+    configuration: Missing[ProjectsV2FieldPropConfiguration] = Field(
+        default=UNSET, description="Configuration for iteration fields."
+    )
+    created_at: _dt.datetime = Field(description="The time when the field was created.")
     updated_at: _dt.datetime = Field(
-        description="The time when the view was last updated."
-    )
-    filter_: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="filter", description="The filter query for the view."
-    )
-    visible_fields: list[int] = Field(
-        description="The list of field IDs that are visible in the view."
-    )
-    sort_by: list[
-        Annotated[
-            list[Union[int, str]],
-            Field(
-                max_length=2 if PYDANTIC_V2 else None,
-                min_length=2 if PYDANTIC_V2 else None,
-            ),
-        ]
-    ] = Field(
-        description='The sorting configuration for the view. Each element is a tuple of [field_id, direction] where direction is "asc" or "desc".'
-    )
-    group_by: list[int] = Field(
-        description="The list of field IDs used for horizontal grouping."
-    )
-    vertical_group_by: list[int] = Field(
-        description="The list of field IDs used for vertical grouping (board layout)."
+        description="The time when the field was last updated."
     )
 
 
-class ProjectsV2ViewPropCreator(GitHubModel):
-    """ProjectsV2ViewPropCreator"""
+class ProjectsV2SingleSelectOptions(GitHubModel):
+    """Projects v2 Single Select Option
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    An option for a single select field
+    """
+
+    id: str = Field(description="The unique identifier of the option.")
+    name: ProjectsV2SingleSelectOptionsPropName = Field(
+        description="The display name of the option, in raw text and HTML formats."
+    )
+    description: ProjectsV2SingleSelectOptionsPropDescription = Field(
+        description="The description of the option, in raw text and HTML formats."
+    )
+    color: str = Field(description="The color associated with the option.")
 
 
-model_rebuild(ProjectsV2View)
-model_rebuild(ProjectsV2ViewPropCreator)
+class ProjectsV2SingleSelectOptionsPropName(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropName
+
+    The display name of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2SingleSelectOptionsPropDescription(GitHubModel):
+    """ProjectsV2SingleSelectOptionsPropDescription
+
+    The description of the option, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+class ProjectsV2FieldPropConfiguration(GitHubModel):
+    """ProjectsV2FieldPropConfiguration
+
+    Configuration for iteration fields.
+    """
+
+    start_day: Missing[int] = Field(
+        default=UNSET, description="The day of the week when the iteration starts."
+    )
+    duration: Missing[int] = Field(
+        default=UNSET, description="The duration of the iteration in days."
+    )
+    iterations: Missing[list[ProjectsV2IterationSettings]] = Field(default=UNSET)
+
+
+class ProjectsV2IterationSettings(GitHubModel):
+    """Projects v2 Iteration Setting
+
+    An iteration setting for an iteration field
+    """
+
+    id: str = Field(description="The unique identifier of the iteration setting.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+    title: ProjectsV2IterationSettingsPropTitle = Field(
+        description="The iteration title, in raw text and HTML formats."
+    )
+    completed: bool = Field(description="Whether the iteration has been completed.")
+
+
+class ProjectsV2IterationSettingsPropTitle(GitHubModel):
+    """ProjectsV2IterationSettingsPropTitle
+
+    The iteration title, in raw text and HTML formats.
+    """
+
+    raw: str = Field()
+    html: str = Field()
+
+
+model_rebuild(ProjectsV2Field)
+model_rebuild(ProjectsV2SingleSelectOptions)
+model_rebuild(ProjectsV2SingleSelectOptionsPropName)
+model_rebuild(ProjectsV2SingleSelectOptionsPropDescription)
+model_rebuild(ProjectsV2FieldPropConfiguration)
+model_rebuild(ProjectsV2IterationSettings)
+model_rebuild(ProjectsV2IterationSettingsPropTitle)
 
 __all__ = (
-    "ProjectsV2View",
-    "ProjectsV2ViewPropCreator",
+    "ProjectsV2Field",
+    "ProjectsV2FieldPropConfiguration",
+    "ProjectsV2IterationSettings",
+    "ProjectsV2IterationSettingsPropTitle",
+    "ProjectsV2SingleSelectOptions",
+    "ProjectsV2SingleSelectOptionsPropDescription",
+    "ProjectsV2SingleSelectOptionsPropName",
 )

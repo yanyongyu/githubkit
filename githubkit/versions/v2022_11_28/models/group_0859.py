@@ -18,28 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
-from .group_0517 import SecretScanningAlertWebhook
+from .group_0431 import SecretScanningLocation
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
+from .group_0518 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookSecretScanningAlertLocationCreated(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["publicly_leaked"] = Field()
+    action: Literal["created"] = Field()
     alert: SecretScanningAlertWebhook = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    location: SecretScanningLocation = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -49,11 +45,9 @@ class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertPubliclyLeaked)
+model_rebuild(WebhookSecretScanningAlertLocationCreated)
 
-__all__ = ("WebhookSecretScanningAlertPubliclyLeaked",)
+__all__ = ("WebhookSecretScanningAlertLocationCreated",)

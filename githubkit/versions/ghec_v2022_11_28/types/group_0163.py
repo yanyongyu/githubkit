@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0164 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Parameters for a repository ID condition
-    """
-
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Parameters for a repository ID condition
-    """
-
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
-    )
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetType",
-    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

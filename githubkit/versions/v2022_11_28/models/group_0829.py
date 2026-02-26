@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0474 import EnterpriseWebhooks
-from .group_0475 import SimpleInstallation
-from .group_0476 import OrganizationSimpleWebhooks
-from .group_0477 import RepositoryWebhooks
-from .group_0515 import WebhooksRelease1
+from .group_0475 import EnterpriseWebhooks
+from .group_0476 import SimpleInstallation
+from .group_0477 import OrganizationSimpleWebhooks
+from .group_0478 import RepositoryWebhooks
+from .group_0516 import WebhooksRelease1
 
 
-class WebhookReleaseUnpublished(GitHubModel):
-    """release unpublished event"""
+class WebhookReleasePublished(GitHubModel):
+    """release published event"""
 
-    action: Literal["unpublished"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +57,6 @@ class WebhookReleaseUnpublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookReleaseUnpublished)
+model_rebuild(WebhookReleasePublished)
 
-__all__ = ("WebhookReleaseUnpublished",)
+__all__ = ("WebhookReleasePublished",)

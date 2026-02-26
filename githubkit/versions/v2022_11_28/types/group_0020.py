@@ -100,6 +100,7 @@ class RepositoryType(TypedDict):
     has_downloads: bool
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -207,6 +208,7 @@ class RepositoryTypeForResponse(TypedDict):
     has_downloads: bool
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]

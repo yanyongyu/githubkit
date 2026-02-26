@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0237 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
 )

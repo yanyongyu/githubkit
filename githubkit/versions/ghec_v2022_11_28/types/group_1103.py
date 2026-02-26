@@ -9,25 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    default_level: Literal["public", "internal"]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    default_level: Literal["public", "internal"]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

@@ -11,116 +11,62 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0707 import (
+    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType(TypedDict):
-    """User"""
+class WebhookIssueCommentCreatedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
     id: int
-    name: str
+    labels_url: str
     node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
     url: str
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """Label"""
+class WebhookIssueCommentCreatedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentCreatedPropIssueMergedMilestone"""
 
-    color: str
-    default: bool
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
     description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
     id: int
-    name: str
+    labels_url: str
     node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
     url: str
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentCreatedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentCreatedPropIssueMergedMilestoneTypeForResponse",
 )

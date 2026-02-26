@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisTool(GitHubModel):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    A tool that must provide code review results for this rule to pass.
-    """
-
-    name: Literal["CodeQL", "ESLint", "PMD"] = Field(
-        description="The name of a code review analysis tool"
+    review_draft_pull_requests: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-model_rebuild(RepositoryRuleParamsCopilotCodeReviewAnalysisTool)
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-__all__ = ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

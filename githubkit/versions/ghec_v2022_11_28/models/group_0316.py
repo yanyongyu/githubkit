@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class ImmutableReleasesOrganizationSettings(GitHubModel):
+    """Check immutable releases organization settings
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+    )
 
 
-model_rebuild(RateLimit)
+model_rebuild(ImmutableReleasesOrganizationSettings)
 
-__all__ = ("RateLimit",)
+__all__ = ("ImmutableReleasesOrganizationSettings",)

@@ -9,26 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-class PinnedIssueComment(GitHubModel):
-    """Pinned Issue Comment
-
-    Context around who pinned an issue comment and when it was pinned.
+    A value assigned to an issue field
     """
 
-    pinned_at: _dt.datetime = Field()
-    pinned_by: Union[None, SimpleUser] = Field()
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    node_id: str = Field()
+    data_type: Literal["text", "single_select", "number", "date"] = Field(
+        description="The data type of the issue field"
+    )
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
+    )
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
+        default=UNSET,
+        description="Details about the selected option (only present for single_select fields)",
+    )
 
 
-model_rebuild(PinnedIssueComment)
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-__all__ = ("PinnedIssueComment",)
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
+
+__all__ = (
+    "IssueFieldValue",
+    "IssueFieldValuePropSingleSelectOption",
+)

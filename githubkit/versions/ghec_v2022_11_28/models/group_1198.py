@@ -16,16 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    async_: Missing[bool] = Field(
-        default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

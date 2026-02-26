@@ -9,24 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_1398 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
+    public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof4Type",
+    "ReposOwnerRepoPagesPutBodyAnyof4TypeForResponse",
 )

@@ -9,22 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    selected_repository_ids: list[int]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    selected_repository_ids: list[int]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
 )

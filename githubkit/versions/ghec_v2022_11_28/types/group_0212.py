@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0213 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
+from .group_0199 import DiscussionType, DiscussionTypeForResponse
 
 
-class ForkEventType(TypedDict):
-    """ForkEvent"""
-
-    action: str
-    forkee: ForkEventPropForkeeType
-
-
-class ForkEventTypeForResponse(TypedDict):
-    """ForkEvent"""
+class DiscussionEventType(TypedDict):
+    """DiscussionEvent"""
 
     action: str
-    forkee: ForkEventPropForkeeTypeForResponse
+    discussion: DiscussionType
+
+
+class DiscussionEventTypeForResponse(TypedDict):
+    """DiscussionEvent"""
+
+    action: str
+    discussion: DiscussionTypeForResponse
 
 
 __all__ = (
-    "ForkEventType",
-    "ForkEventTypeForResponse",
+    "DiscussionEventType",
+    "DiscussionEventTypeForResponse",
 )

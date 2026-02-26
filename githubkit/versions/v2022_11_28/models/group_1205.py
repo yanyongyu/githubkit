@@ -12,22 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    sub_issue_id: int = Field(
-        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
-    )
-    replace_parent: Missing[bool] = Field(
-        default=UNSET,
-        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
-    )
+    name: str = Field()
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)

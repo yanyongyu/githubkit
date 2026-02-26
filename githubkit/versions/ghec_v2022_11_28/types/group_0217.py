@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0205 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0218 import (
-    PullRequestReviewEventPropReviewType,
-    PullRequestReviewEventPropReviewTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestReviewEventType(TypedDict):
-    """PullRequestReviewEvent"""
+class MemberEventType(TypedDict):
+    """MemberEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewType
-    pull_request: PullRequestMinimalType
+    member: SimpleUserType
 
 
-class PullRequestReviewEventTypeForResponse(TypedDict):
-    """PullRequestReviewEvent"""
+class MemberEventTypeForResponse(TypedDict):
+    """MemberEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewTypeForResponse
-    pull_request: PullRequestMinimalTypeForResponse
+    member: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewEventType",
-    "PullRequestReviewEventTypeForResponse",
+    "MemberEventType",
+    "MemberEventTypeForResponse",
 )

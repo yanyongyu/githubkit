@@ -11,18 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoNotificationsPutResponse202(GitHubModel):
-    """ReposOwnerRepoNotificationsPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    message: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    labels: Missing[list[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description='The names of the labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue)."',
+    )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutResponse202)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoNotificationsPutResponse202",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)

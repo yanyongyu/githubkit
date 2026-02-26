@@ -12,37 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    Porter Author
+    Check immutable releases
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    Porter Author
+    Check immutable releases
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )

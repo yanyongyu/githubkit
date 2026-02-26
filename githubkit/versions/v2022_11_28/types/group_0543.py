@@ -9,201 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0544 import (
+    WebhookCodeScanningAlertCreatedPropAlertType,
+    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
+)
 
 
-class WebhookCodeScanningAlertCreatedPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlert
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    The code scanning alert involved in the event.
-    """
-
-    created_at: Union[_dt.datetime, None]
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: None
-    fixed_at: NotRequired[None]
-    html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType, None]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleType
-    state: Union[None, Literal["open", "dismissed"]]
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolType, None]
-    updated_at: NotRequired[Union[str, None]]
-    url: str
-    dismissal_approved_by: NotRequired[None]
-    assignees: NotRequired[list[SimpleUserType]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlert
-
-    The code scanning alert involved in the event.
-    """
-
-    created_at: Union[str, None]
-    dismissed_at: None
-    dismissed_by: None
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: None
-    fixed_at: NotRequired[None]
-    html_url: str
-    instances_url: NotRequired[str]
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["open", "dismissed"]]
-    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse, None]
-    updated_at: NotRequired[Union[str, None]]
-    url: str
-    dismissal_approved_by: NotRequired[None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType(TypedDict):
-    """Alert Instance"""
-
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType
-    ]
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse(
-    TypedDict
-):
-    """Alert Instance"""
+class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
+    """code_scanning_alert created event"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse
-    ]
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
+    commit_oid: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     ref: str
-    state: Literal["open", "dismissed", "fixed"]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
-
-    description: str
-    full_description: NotRequired[str]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-    id: str
-    name: NotRequired[str]
-    severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[list[str], None]]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
-
-    guid: NotRequired[Union[str, None]]
-    name: str
-    version: Union[str, None]
-
-
-class WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
-
-    guid: NotRequired[Union[str, None]]
-    name: str
-    version: Union[str, None]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRuleType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropRuleTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertPropToolType",
-    "WebhookCodeScanningAlertCreatedPropAlertPropToolTypeForResponse",
-    "WebhookCodeScanningAlertCreatedPropAlertType",
-    "WebhookCodeScanningAlertCreatedPropAlertTypeForResponse",
+    "WebhookCodeScanningAlertCreatedType",
+    "WebhookCodeScanningAlertCreatedTypeForResponse",
 )

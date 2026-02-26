@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0199 import DiscussionType, DiscussionTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionReopenedType(TypedDict):
-    """discussion reopened event"""
+class WebhookDiscussionDeletedType(TypedDict):
+    """discussion deleted event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookDiscussionReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionReopenedTypeForResponse(TypedDict):
-    """discussion reopened event"""
+class WebhookDiscussionDeletedTypeForResponse(TypedDict):
+    """discussion deleted event"""
 
-    action: Literal["reopened"]
+    action: Literal["deleted"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDiscussionReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionReopenedType",
-    "WebhookDiscussionReopenedTypeForResponse",
+    "WebhookDiscussionDeletedType",
+    "WebhookDiscussionDeletedTypeForResponse",
 )

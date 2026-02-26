@@ -9,29 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgType]
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgTypeForResponse]
+
+
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+
+
+class RunnerGroupsOrgTypeForResponse(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNamePutBodyType",
-    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsOrgType",
+    "RunnerGroupsOrgTypeForResponse",
 )

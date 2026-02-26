@@ -9,34 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    Porter Large File
-    """
-
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    Porter Large File
-    """
-
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

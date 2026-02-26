@@ -136,6 +136,12 @@ class CodeSecurityConfiguration(GitHubModel):
         default=UNSET,
         description="The enablement status of secret scanning delegated alert dismissal",
     )
+    secret_scanning_extended_metadata: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning extended metadata",
+    )
     private_vulnerability_reporting: Missing[
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
@@ -222,6 +228,10 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
     )
     reviewer_type: Literal["TEAM", "ROLE"] = Field(
         description="The type of the bypass reviewer"
+    )
+    security_configuration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the security configuration associated with this bypass reviewer",
     )
 
 

@@ -9,69 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
-
-
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
-    )
-    username: Missing[Union[str, None]] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )
-    replaces_base: Missing[bool] = Field(
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
         default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

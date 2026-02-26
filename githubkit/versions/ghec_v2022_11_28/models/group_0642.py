@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0107 import CustomProperty
-from .group_0555 import EnterpriseWebhooks
-from .group_0556 import SimpleInstallation
-from .group_0557 import OrganizationSimpleWebhooks
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
+from .group_0643 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
 
-class WebhookCustomPropertyCreated(GitHubModel):
-    """custom property created event"""
+class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["created"] = Field()
-    definition: CustomProperty = Field(
-        title="Organization Custom Property",
-        description="Custom property defined on an organization",
+    action: Literal["updated_assignment"] = Field()
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+        description="The code scanning alert involved in the event."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,11 +47,13 @@ class WebhookCustomPropertyCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCustomPropertyCreated)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
 
-__all__ = ("WebhookCustomPropertyCreated",)
+__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)

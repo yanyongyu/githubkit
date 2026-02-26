@@ -17098,6 +17098,7 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
+        return_run_details: Missing[bool] = UNSET,
     ) -> Response: ...
 
     def create_workflow_dispatch(
@@ -17177,6 +17178,7 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
+        return_run_details: Missing[bool] = UNSET,
     ) -> Response: ...
 
     async def async_create_workflow_dispatch(

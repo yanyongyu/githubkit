@@ -20,68 +20,29 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0045 import Milestone
-from .group_0046 import IssueType
 from .group_0047 import ReactionRollup
-from .group_0048 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0049 import IssueFieldValue
+from .group_0049 import PinnedIssueComment
 
 
-class Issue(GitHubModel):
-    """Issue
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    id: int = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    url: str = Field(description="URL for the issue")
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
     html_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the issue within its repository"
-    )
-    state: str = Field(description="State of the issue; either 'open' or 'closed'")
-    state_reason: Missing[
-        Union[None, Literal["completed", "reopened", "not_planned", "duplicate"]]
-    ] = Field(default=UNSET, description="The reason for the current state")
-    title: str = Field(description="Title of the issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Contents of the issue"
-    )
     user: Union[None, SimpleUser] = Field()
-    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
-        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
-    )
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    milestone: Union[None, Milestone] = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: int = Field()
-    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[_dt.datetime, None] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET, title="Issue Type", description="The type of issue."
-    )
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    issue_url: str = Field()
     author_association: Missing[
         Literal[
             "COLLABORATOR",
@@ -98,48 +59,13 @@ class Issue(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    parent_issue_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="URL to get the parent issue of this issue, if it is a sub-issue",
-    )
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
+    pin: Missing[Union[None, PinnedIssueComment]] = Field(default=UNSET)
 
 
-class IssuePropLabelsItemsOneof1(GitHubModel):
-    """IssuePropLabelsItemsOneof1"""
+model_rebuild(IssueComment)
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-
-
-class IssuePropPullRequest(GitHubModel):
-    """IssuePropPullRequest"""
-
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-model_rebuild(Issue)
-model_rebuild(IssuePropLabelsItemsOneof1)
-model_rebuild(IssuePropPullRequest)
-
-__all__ = (
-    "Issue",
-    "IssuePropLabelsItemsOneof1",
-    "IssuePropPullRequest",
-)
+__all__ = ("IssueComment",)

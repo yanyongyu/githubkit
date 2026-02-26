@@ -9,58 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0076 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
 
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
+    Configuration for code scanning default setup.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
         ]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningDefaultSetupTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetup
 
-    Code security configuration associated with a repository and attachment status
+    Configuration for code scanning default setup.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
         ]
     ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningDefaultSetupType",
+    "CodeScanningDefaultSetupTypeForResponse",
 )

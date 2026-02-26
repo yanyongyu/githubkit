@@ -16,17 +16,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0115 import Runner
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
-    )
+    total_count: int = Field()
+    runners: list[Runner] = Field()
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(OrgsOrgActionsRunnersGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("OrgsOrgActionsRunnersGetResponse200",)

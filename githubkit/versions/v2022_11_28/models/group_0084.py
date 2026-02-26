@@ -47,6 +47,12 @@ class SecurityAndAnalysis(GitHubModel):
     secret_scanning_delegated_alert_dismissal: Missing[
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
     ] = Field(default=UNSET)
+    secret_scanning_delegated_bypass: Missing[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypass
+    ] = Field(default=UNSET)
+    secret_scanning_delegated_bypass_options: Missing[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
+    ] = Field(default=UNSET)
 
 
 class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
@@ -109,6 +115,38 @@ class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal(GitHubModel):
     status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
+class SecurityAndAnalysisPropSecretScanningDelegatedBypass(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: Missing[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The bypass reviewers for secret scanning delegated bypass",
+    )
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+    GitHubModel
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int = Field(
+        description="The ID of the team or role selected as a bypass reviewer"
+    )
+    reviewer_type: Literal["TEAM", "ROLE"] = Field(
+        description="The type of the bypass reviewer"
+    )
+
+
 model_rebuild(SecurityAndAnalysis)
 model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
 model_rebuild(SecurityAndAnalysisPropCodeSecurity)
@@ -118,6 +156,11 @@ model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
 model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
 model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
 model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal)
+model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypass)
+model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions)
+model_rebuild(
+    SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+)
 
 __all__ = (
     "SecurityAndAnalysis",
@@ -127,6 +170,9 @@ __all__ = (
     "SecurityAndAnalysisPropSecretScanning",
     "SecurityAndAnalysisPropSecretScanningAiDetection",
     "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypass",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
     "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
     "SecurityAndAnalysisPropSecretScanningPushProtection",
 )

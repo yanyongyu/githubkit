@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0105 import CustomPropertyValue
 
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
-    """
-
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
+    )
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
     )
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

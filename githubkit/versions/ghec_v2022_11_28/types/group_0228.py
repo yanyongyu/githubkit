@@ -10,63 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    A comment made to a gist.
+    Base Gist
     """
 
-    id: int
-    node_id: str
     url: str
-    body: str
-    user: Union[None, SimpleUserType]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
-    A comment made to a gist.
+    Base Gist
     """
 
-    id: int
-    node_id: str
     url: str
-    body: str
-    user: Union[None, SimpleUserTypeForResponse]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
     created_at: str
     updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[None, SimpleUserTypeForResponse]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
+
+
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

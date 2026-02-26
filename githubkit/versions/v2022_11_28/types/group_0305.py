@@ -12,40 +12,37 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0302 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    repository: SimpleRepositoryType
+    repository: CodeScanningVariantAnalysisRepositoryType
     analysis_status: Literal[
         "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    artifact_size_in_bytes: NotRequired[int]
     result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
     failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
 
 
-class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    repository: SimpleRepositoryTypeForResponse
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
     analysis_status: Literal[
         "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    artifact_size_in_bytes: NotRequired[int]
     result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
     failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepoTaskType",
-    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

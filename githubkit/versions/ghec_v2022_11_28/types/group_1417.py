@@ -13,33 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
 )

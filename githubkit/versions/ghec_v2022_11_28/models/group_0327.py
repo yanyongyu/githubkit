@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,26 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    Repository actions caches
+    """
+
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
 
 
-model_rebuild(ActionsRepositoryPermissions)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-__all__ = ("ActionsRepositoryPermissions",)
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
+
+__all__ = (
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
+)

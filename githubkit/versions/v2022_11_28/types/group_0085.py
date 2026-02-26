@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
+from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
@@ -91,6 +91,7 @@ class MinimalRepositoryType(TypedDict):
     has_downloads: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     archived: NotRequired[bool]
     disabled: NotRequired[bool]
     visibility: NotRequired[str]
@@ -188,6 +189,7 @@ class MinimalRepositoryTypeForResponse(TypedDict):
     has_downloads: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
     archived: NotRequired[bool]
     disabled: NotRequired[bool]
     visibility: NotRequired[str]

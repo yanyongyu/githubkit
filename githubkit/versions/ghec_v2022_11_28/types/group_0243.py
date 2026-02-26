@@ -9,37 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom repository roles created by organization owners
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Custom repository roles created by organization owners
     """
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
-    ]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
 )

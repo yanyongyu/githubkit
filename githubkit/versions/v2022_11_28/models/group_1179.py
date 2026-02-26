@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,51 +18,74 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    name: Missing[str] = Field(
+    message: str = Field(description="The commit message")
+    tree: str = Field(description="The SHA of the tree object this commit points to")
+    parents: Missing[list[str]] = Field(
         default=UNSET,
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
+        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
     )
-    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
+    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
         default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
     )
-    events: Missing[list[str]] = Field(
+    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
+        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
     )
-    active: Missing[bool] = Field(
+    signature: Missing[str] = Field(
         default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
     )
 
 
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-    Key/value pairs to provide settings for this webhook.
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
     """
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    name: str = Field(description="The name of the author (or committer) of the commit")
+    email: str = Field(
+        description="The email of the author (or committer) of the commit"
     )
-    content_type: Missing[str] = Field(
+    date: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoHooksPostBody)
-model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
+class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitCommitsPostBody)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBody",
-    "ReposOwnerRepoHooksPostBodyPropConfig",
+    "ReposOwnerRepoGitCommitsPostBody",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
 )

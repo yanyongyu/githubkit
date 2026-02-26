@@ -9,40 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1216 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+
+class ReposOwnerRepoNotificationsPutBodyType(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoNotificationsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ]
-
-
-class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
-
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-    ]
+    last_read_at: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof1Type",
-    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoNotificationsPutBodyType",
+    "ReposOwnerRepoNotificationsPutBodyTypeForResponse",
 )

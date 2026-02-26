@@ -13,35 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0102 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0588 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
-    """organization custom property updated event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["updated"]
-    definition: OrganizationCustomPropertyType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """organization custom property updated event"""
+class WebhookMilestoneOpenedTypeForResponse(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["updated"]
-    definition: OrganizationCustomPropertyTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    milestone: WebhooksMilestone3TypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyUpdatedType",
-    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
+    "WebhookMilestoneOpenedType",
+    "WebhookMilestoneOpenedTypeForResponse",
 )

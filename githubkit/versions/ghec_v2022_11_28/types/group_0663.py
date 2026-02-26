@@ -9,48 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0340 import DeploymentType, DeploymentTypeForResponse
+from .group_0470 import PullRequestType, PullRequestTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0569 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionAnsweredType(TypedDict):
-    """discussion answered event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentType]]
+    pull_requests: NotRequired[list[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
-    """discussion answered event"""
+class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["answered"]
-    answer: WebhooksAnswerTypeForResponse
-    discussion: DiscussionTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    sha: NotRequired[str]
+    ref: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[Union[None, DeploymentTypeForResponse]]
+    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDiscussionAnsweredType",
-    "WebhookDiscussionAnsweredTypeForResponse",
+    "WebhookDeploymentProtectionRuleRequestedType",
+    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
 )

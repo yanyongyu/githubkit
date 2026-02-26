@@ -14,20 +14,50 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0300 import ProjectsV2FieldSingleSelectOption
 
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
-
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    repositories: list[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
+    )
+    lock_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+    )
+    exclude_metadata: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+    )
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
+    )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

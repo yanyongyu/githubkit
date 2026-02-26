@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0115 import RunnerType, RunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    total_count: int
-    runners: list[RunnerType]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

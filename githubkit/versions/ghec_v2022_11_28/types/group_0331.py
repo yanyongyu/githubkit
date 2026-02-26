@@ -10,63 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class EnvironmentApprovalsTypeForResponse(TypedDict):
-    """Environment Approval
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
-    An entry in the reviews log for environment deployments
-    """
-
-    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserTypeForResponse
-    comment: str
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
-    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
-    "EnvironmentApprovalsType",
-    "EnvironmentApprovalsTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

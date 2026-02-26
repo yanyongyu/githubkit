@@ -9,28 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCheckRunCompletedFormEncodedType(TypedDict):
-    """Check Run Completed Event
+class WebhookExemptionRequestCreatedType(TypedDict):
+    """Exemption request created event"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
+    sender: SimpleUserType
 
-    payload: str
 
+class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
+    """Exemption request created event"""
 
-class WebhookCheckRunCompletedFormEncodedTypeForResponse(TypedDict):
-    """Check Run Completed Event
-
-    The check_run.completed webhook encoded with URL encoding
-    """
-
-    payload: str
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunCompletedFormEncodedType",
-    "WebhookCheckRunCompletedFormEncodedTypeForResponse",
+    "WebhookExemptionRequestCreatedType",
+    "WebhookExemptionRequestCreatedTypeForResponse",
 )

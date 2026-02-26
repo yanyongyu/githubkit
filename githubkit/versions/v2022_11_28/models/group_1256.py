@@ -9,24 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0177 import RepositoryRulesetBypassActor
+from .group_0178 import RepositoryRulesetConditions
+from .group_0189 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0190 import RepositoryRuleUpdate
+from .group_0192 import RepositoryRuleRequiredLinearHistory
+from .group_0193 import RepositoryRuleMergeQueue
+from .group_0195 import RepositoryRuleRequiredDeployments
+from .group_0197 import RepositoryRulePullRequest
+from .group_0199 import RepositoryRuleRequiredStatusChecks
+from .group_0201 import RepositoryRuleCommitMessagePattern
+from .group_0203 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0205 import RepositoryRuleCommitterEmailPattern
+from .group_0207 import RepositoryRuleBranchNamePattern
+from .group_0209 import RepositoryRuleTagNamePattern
+from .group_0211 import RepositoryRuleFilePathRestriction
+from .group_0213 import RepositoryRuleMaxFilePathLength
+from .group_0215 import RepositoryRuleFileExtensionRestriction
+from .group_0217 import RepositoryRuleMaxFileSize
+from .group_0220 import RepositoryRuleWorkflows
+from .group_0222 import RepositoryRuleCodeScanning
+from .group_0224 import RepositoryRuleCopilotCodeReview
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    pattern_config_version: NotRequired[str]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    pattern_config_version: NotRequired[str]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
 )

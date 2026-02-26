@@ -17,14 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0220 import RepositoryRuleWorkflowsPropParameters
+from .group_0216 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-class RepositoryRuleDetailedOneof19(GitHubModel):
-    """RepositoryRuleDetailedOneof19"""
+class RepositoryRuleDetailedOneof17(GitHubModel):
+    """RepositoryRuleDetailedOneof17"""
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +40,6 @@ class RepositoryRuleDetailedOneof19(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof19)
+model_rebuild(RepositoryRuleDetailedOneof17)
 
-__all__ = ("RepositoryRuleDetailedOneof19",)
+__all__ = ("RepositoryRuleDetailedOneof17",)

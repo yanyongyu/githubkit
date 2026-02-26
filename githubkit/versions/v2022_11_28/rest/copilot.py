@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
+        CopilotOrganizationContentExclusionDetails,
         CopilotOrganizationDetails,
         CopilotSeatDetails,
         CopilotUsageMetricsDay,
@@ -34,8 +35,10 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from ..types import (
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
         CopilotOrganizationDetailsTypeForResponse,
         CopilotSeatDetailsTypeForResponse,
         CopilotUsageMetricsDayTypeForResponse,
@@ -48,6 +51,8 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        OrgsOrgCopilotContentExclusionPutBodyType,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
     )
 
 
@@ -1033,6 +1038,304 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        CopilotOrganizationContentExclusionDetails,
+        CopilotOrganizationContentExclusionDetailsTypeForResponse,
+    ]:
+        """copilot/copilot-content-exclusion-for-organization
+
+        GET /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about an organization's Copilot content exclusion path rules.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can view details about Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need either the `copilot` or `read:org` scopes to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. This endpoint will not return any comments in the existing rules.
+        > * At this time, the API does not support duplicate keys. If your content exclusion configuration contains duplicate keys, the API will return only the last occurrence of that key. For example, if duplicate entries are present, only the final value will be included in the response.
+
+        See also: https://docs.github.com/rest/copilot/copilot-content-exclusion-management#get-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import BasicError, CopilotOrganizationContentExclusionDetails
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotOrganizationContentExclusionDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    def set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotContentExclusionPutBodyType,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]: ...
+
+    async def async_set_copilot_content_exclusion_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotContentExclusionPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+    ]:
+        """copilot/set-copilot-content-exclusion-for-organization
+
+        PUT /orgs/{org}/copilot/content_exclusion
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets Copilot content exclusion path rules for an organization.
+        To configure these settings, go to the organization's settings on GitHub.
+        For more information, see "[Excluding content from GitHub Copilot](https://docs.github.com/copilot/managing-copilot/configuring-and-auditing-content-exclusion/excluding-content-from-github-copilot#configuring-content-exclusions-for-your-organization)."
+
+        Organization owners can set Copilot content exclusion rules for the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `copilot` scope to use this endpoint.
+
+        > [!CAUTION]
+        > * At this time, the API does not support comments. When using this endpoint, any existing comments in your rules will be deleted.
+        > * At this time, the API does not support duplicate keys. If you submit content exclusions through the API with duplicate keys, only the last occurrence will be saved. Earlier entries with the same key will be overwritten.
+
+        See also: https://docs.github.com/rest/copilot/copilot-content-exclusion-management#set-copilot-content-exclusion-rules-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotContentExclusionPutBody,
+            OrgsOrgCopilotContentExclusionPutResponse200,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/content_exclusion"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotContentExclusionPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotContentExclusionPutResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "413": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

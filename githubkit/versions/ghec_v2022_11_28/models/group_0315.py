@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,154 +18,191 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
-from .group_0019 import LicenseSimple
+from .group_0083 import Team
+from .group_0314 import RepositoryAdvisoryCredit
 
 
-class TeamRepository(GitHubModel):
-    """Team Repository
+class RepositoryAdvisory(GitHubModel):
+    """RepositoryAdvisory
 
-    A team's access to a repository.
+    A repository security advisory.
     """
 
-    id: int = Field(description="Unique identifier of the repository")
-    node_id: str = Field()
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    forks: int = Field()
-    permissions: Missing[TeamRepositoryPropPermissions] = Field(default=UNSET)
-    role_name: Missing[str] = Field(default=UNSET)
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field(
-        default=False, description="Whether the repository is private or public."
+    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
+    cve_id: Union[str, None] = Field(
+        description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    forks_url: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    ssh_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    clone_url: str = Field()
-    mirror_url: Union[str, None] = Field()
-    hooks_url: str = Field()
-    svn_url: str = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    size: int = Field()
-    default_branch: str = Field(description="The default branch of the repository.")
-    open_issues_count: int = Field()
-    is_template: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this repository acts as a template that can be used to generate new repositories.",
+    url: str = Field(description="The API URL for the advisory.")
+    html_url: str = Field(description="The URL for the advisory.")
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    topics: Missing[list[str]] = Field(default=UNSET)
-    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
-    has_projects: bool = Field(
-        default=True, description="Whether projects are enabled."
+    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
+        description="A detailed description of what the advisory entails."
     )
-    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    has_pages: bool = Field()
-    has_downloads: bool = Field(
-        default=True, description="Whether downloads are enabled."
+    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
+        description="The severity of the advisory."
     )
-    archived: bool = Field(
-        default=False, description="Whether the repository is archived."
+    author: None = Field(description="The author of the advisory.")
+    publisher: None = Field(description="The publisher of the advisory.")
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
+        description="The state of the advisory."
     )
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was created, in ISO 8601 format."
     )
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+    updated_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was last updated, in ISO 8601 format."
     )
-    pushed_at: Union[_dt.datetime, None] = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    published_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was published, in ISO 8601 format."
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was closed, in ISO 8601 format."
     )
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow Auto-merge to be used on pull requests.",
+    withdrawn_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
+    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
+    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
+    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
+        alias="credits"
     )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
+    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
+    collaborating_users: Union[list[SimpleUser], None] = Field(
+        description="A list of users that collaborate on the advisory."
     )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow forking this repo"
+    collaborating_teams: Union[list[Team], None] = Field(
+        description="A list of teams that collaborate on the advisory."
     )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to require contributors to sign off on web-based commits",
+    private_fork: None = Field(
+        description="A temporary private fork of the advisory's repository for collaborating on a fix."
     )
-    subscribers_count: Missing[int] = Field(default=UNSET)
-    network_count: Missing[int] = Field(default=UNSET)
-    open_issues: int = Field()
-    watchers: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
 
 
-class TeamRepositoryPropPermissions(GitHubModel):
-    """TeamRepositoryPropPermissions"""
+class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-    admin: bool = Field()
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
+    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
+    value: str = Field(description="The identifier value.")
 
 
-model_rebuild(TeamRepository)
-model_rebuild(TeamRepositoryPropPermissions)
+class RepositoryAdvisoryPropSubmission(GitHubModel):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool = Field(
+        description="Whether a private vulnerability report was accepted by the repository's administrators."
+    )
+
+
+class RepositoryAdvisoryPropCvss(GitHubModel):
+    """RepositoryAdvisoryPropCvss"""
+
+    vector_string: Union[str, None] = Field(description="The CVSS vector.")
+    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
+        description="The CVSS score."
+    )
+
+
+class RepositoryAdvisoryPropCwesItems(GitHubModel):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
+    name: str = Field(description="The name of the CWE.")
+
+
+class RepositoryAdvisoryPropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: Missing[str] = Field(
+        default=UNSET, description="The username of the user credited."
+    )
+    type: Missing[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryVulnerability(GitHubModel):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Union[str, None] = Field(
+        description="The range of the package versions affected by the vulnerability."
+    )
+    patched_versions: Union[str, None] = Field(
+        description="The package version(s) that resolve the vulnerability."
+    )
+    vulnerable_functions: Union[list[str], None] = Field(
+        description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Union[str, None] = Field(
+        description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisory)
+model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
+model_rebuild(RepositoryAdvisoryPropSubmission)
+model_rebuild(RepositoryAdvisoryPropCvss)
+model_rebuild(RepositoryAdvisoryPropCwesItems)
+model_rebuild(RepositoryAdvisoryPropCreditsItems)
+model_rebuild(RepositoryAdvisoryVulnerability)
+model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
 
 __all__ = (
-    "TeamRepository",
-    "TeamRepositoryPropPermissions",
+    "RepositoryAdvisory",
+    "RepositoryAdvisoryPropCreditsItems",
+    "RepositoryAdvisoryPropCvss",
+    "RepositoryAdvisoryPropCwesItems",
+    "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropSubmission",
+    "RepositoryAdvisoryVulnerability",
+    "RepositoryAdvisoryVulnerabilityPropPackage",
 )

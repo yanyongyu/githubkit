@@ -9,26 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
-
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+from .group_0163 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+)
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryRuleDetailedOneof21Type(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
+
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "RepositoryRuleDetailedOneof21Type",
+    "RepositoryRuleDetailedOneof21TypeForResponse",
 )

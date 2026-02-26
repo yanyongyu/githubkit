@@ -413,6 +413,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     async def async_delete_in_org(
@@ -446,6 +447,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     @overload
@@ -662,6 +664,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     async def async_list_pending_invitations_in_org(
@@ -706,6 +709,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     def list_members_in_org(

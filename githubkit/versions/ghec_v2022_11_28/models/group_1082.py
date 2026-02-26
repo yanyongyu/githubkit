@@ -11,32 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0106 import CustomPropertyValue
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to remove from the cost center.",
+    organization_logins: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of organizations that the custom property values will be applied to.",
     )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to remove from the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to remove from the cost center."
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the organizations."
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
-)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
-)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)

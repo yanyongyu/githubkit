@@ -12,53 +12,105 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class BillingPremiumRequestUsageReportGheType(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
 
 
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
+class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[
+        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
+    ]
+    usage_items: list[
+        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
+    ]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
 
-    date: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
     product: str
     sku: str
-    quantity: int
+    model: str
     unit_type: str
     price_per_unit: float
+    gross_quantity: float
     gross_amount: float
+    discount_quantity: float
     discount_amount: float
+    net_quantity: float
     net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
 
 
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
 
-    date: str
     product: str
     sku: str
-    quantity: int
+    model: str
     unit_type: str
     price_per_unit: float
+    gross_quantity: float
     gross_amount: float
+    discount_quantity: float
     discount_amount: float
+    net_quantity: float
     net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropCostCenterType",
+    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportGheType",
+    "BillingPremiumRequestUsageReportGheTypeForResponse",
 )

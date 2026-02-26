@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,92 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportGhe(GitHubModel):
-    """BillingUsageSummaryReportGhe"""
+class UsageReportExportList(GitHubModel):
+    """UsageReportExportList"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
+    usage_report_exports: list[UsageReportExport] = Field(
+        description="List of usage report exports"
     )
 
 
-class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class UsageReportExport(GitHubModel):
+    """UsageReportExport"""
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    id: str = Field(description="Unique identifier for the usage report export")
+    report_type: Literal["detailed", "summarized", "premium_request"] = Field(
+        description="The type of usage report"
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    start_date: _dt.date = Field(description="The start date for the report")
+    end_date: _dt.date = Field(description="The end date for the report")
+    status: Literal["processing", "completed", "failed"] = Field(
+        description="The current status of the report export"
     )
-
-
-class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    download_urls: Missing[list[str]] = Field(
+        default=UNSET,
+        description="URLs to download the completed report. Only present when the report status is `completed`.",
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the report export was created"
     )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    actor: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the export"
     )
 
 
-model_rebuild(BillingUsageSummaryReportGhe)
-model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
-model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
-model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
+model_rebuild(UsageReportExportList)
+model_rebuild(UsageReportExport)
 
 __all__ = (
-    "BillingUsageSummaryReportGhe",
-    "BillingUsageSummaryReportGhePropCostCenter",
-    "BillingUsageSummaryReportGhePropTimePeriod",
-    "BillingUsageSummaryReportGhePropUsageItemsItems",
+    "UsageReportExport",
+    "UsageReportExportList",
 )

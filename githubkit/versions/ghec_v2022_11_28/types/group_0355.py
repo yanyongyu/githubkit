@@ -13,59 +13,101 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0354 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0356 import CommitPropCommitType, CommitPropCommitTypeForResponse
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitType(TypedDict):
+    """Commit
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+    Commit
+    """
 
     url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitTypeForResponse(TypedDict):
+    """Commit
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Commit
+    """
+
+    url: str
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitTypeForResponse
+    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    parents: list[CommitPropParentsItemsTypeForResponse]
+    stats: NotRequired[CommitPropStatsTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class EmptyObjectType(TypedDict):
+    """Empty Object
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    An object without any properties.
+    """
+
+
+class EmptyObjectTypeForResponse(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropParentsItemsTypeForResponse(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+class CommitPropStatsTypeForResponse(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
+    "CommitPropParentsItemsType",
+    "CommitPropParentsItemsTypeForResponse",
+    "CommitPropStatsType",
+    "CommitPropStatsTypeForResponse",
+    "CommitType",
+    "CommitTypeForResponse",
+    "EmptyObjectType",
+    "EmptyObjectTypeForResponse",
 )

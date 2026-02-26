@@ -9,48 +9,162 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0600 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["publicly_leaked"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["resolve"]
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
+    """repository_vulnerability_alert resolve event"""
 
-    action: Literal["publicly_leaked"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["resolve"]
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[
+        Union[
+            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType, None
+        ]
+    ]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[_dt.datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["fixed", "open"]
+
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse(TypedDict):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[
+        Union[
+            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse,
+            None,
+        ]
+    ]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[str]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["fixed", "open"]
+
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSecretScanningAlertPubliclyLeakedType",
-    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
+    "WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertResolveType",
+    "WebhookRepositoryVulnerabilityAlertResolveTypeForResponse",
 )

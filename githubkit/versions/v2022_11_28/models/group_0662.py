@@ -18,53 +18,9 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1"""
-
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee, None] = (
-        Field(title="User")
-    )
-    assignees: Missing[
-        list[Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: list[WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems] = Field()
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: bool = Field()
-    milestone: Missing[
-        Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions] = Field(
-        default=UNSET
-    )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "closed"] = Field(
-        description="State of the issue; either 'open' or 'closed'"
-    )
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssueCommentUnpinnedPropIssueAllof1PropUser] = Field(
-        default=UNSET
-    )
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee(GitHubModel):
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+    GitHubModel
+):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -86,94 +42,69 @@ class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+    GitHubModel
+):
+    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
+    ns
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: Missing[Literal["read", "write"]] = Field(
         default=UNSET
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """Label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
     )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof1PropUser)
+model_rebuild(
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+)
+model_rebuild(
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+)
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof1",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropUser",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

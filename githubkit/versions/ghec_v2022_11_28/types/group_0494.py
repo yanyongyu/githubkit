@@ -12,33 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0155 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+from .group_0146 import (
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof18Type(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class RepositoryRuleDetailedOneof13Type(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class RepositoryRuleDetailedOneof13TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+    ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof18Type",
-    "RepositoryRuleDetailedOneof18TypeForResponse",
+    "RepositoryRuleDetailedOneof13Type",
+    "RepositoryRuleDetailedOneof13TypeForResponse",
 )

@@ -14,15 +14,15 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
 
-    selected_usernames: list[str] = Field(
+    selected_enterprise_teams: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
+        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody",)

@@ -10,78 +10,83 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    A commit.
     """
 
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[_dt.datetime, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsType]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class PendingDeploymentTypeForResponse(TypedDict):
-    """Pending Deployment
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
 
-    Details of a deployment that is waiting for protection rules to pass
+    A commit.
     """
 
-    environment: PendingDeploymentPropEnvironmentTypeForResponse
-    wait_timer: int
-    wait_timer_started_at: Union[str, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    Information about the Git author
+    """
+
+    name: str
+    email: str
 
 
-class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "PendingDeploymentPropEnvironmentType",
-    "PendingDeploymentPropEnvironmentTypeForResponse",
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentPropReviewersItemsTypeForResponse",
-    "PendingDeploymentType",
-    "PendingDeploymentTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )

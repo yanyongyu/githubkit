@@ -14,19 +14,20 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionLockedType(TypedDict):
-    """discussion locked event"""
+class WebhookDiscussionEditedType(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["locked"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +36,11 @@ class WebhookDiscussionLockedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionLockedTypeForResponse(TypedDict):
-    """discussion locked event"""
+class WebhookDiscussionEditedTypeForResponse(TypedDict):
+    """discussion edited event"""
 
-    action: Literal["locked"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookDiscussionEditedPropChangesTypeForResponse]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -47,7 +49,51 @@ class WebhookDiscussionLockedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionEditedPropChangesType(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
+
+
+class WebhookDiscussionEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChanges"""
+
+    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyTypeForResponse]
+    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleTypeForResponse]
+
+
+class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookDiscussionEditedPropChangesPropTitleTypeForResponse(TypedDict):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookDiscussionLockedType",
-    "WebhookDiscussionLockedTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropBodyType",
+    "WebhookDiscussionEditedPropChangesPropBodyTypeForResponse",
+    "WebhookDiscussionEditedPropChangesPropTitleType",
+    "WebhookDiscussionEditedPropChangesPropTitleTypeForResponse",
+    "WebhookDiscussionEditedPropChangesType",
+    "WebhookDiscussionEditedPropChangesTypeForResponse",
+    "WebhookDiscussionEditedType",
+    "WebhookDiscussionEditedTypeForResponse",
 )

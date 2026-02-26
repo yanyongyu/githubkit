@@ -13,40 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0520 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0521 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["deleted"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: None
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStarDeletedTypeForResponse(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["deleted"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8TypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    starred_at: None
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStarDeletedType",
-    "WebhookStarDeletedTypeForResponse",
+    "WebhookSponsorshipTierChangedType",
+    "WebhookSponsorshipTierChangedTypeForResponse",
 )

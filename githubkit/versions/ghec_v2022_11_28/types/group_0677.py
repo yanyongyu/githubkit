@@ -9,27 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0199 import DiscussionType, DiscussionTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0575 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionLabeledType(TypedDict):
+    """discussion labeled event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["labeled"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDiscussionTransferredPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionLabeledTypeForResponse(TypedDict):
+    """discussion labeled event"""
 
-    new_discussion: DiscussionTypeForResponse
-    new_repository: RepositoryWebhooksTypeForResponse
+    action: Literal["labeled"]
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionTransferredPropChangesType",
-    "WebhookDiscussionTransferredPropChangesTypeForResponse",
+    "WebhookDiscussionLabeledType",
+    "WebhookDiscussionLabeledTypeForResponse",
 )

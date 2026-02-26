@@ -14,65 +14,49 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0156 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
 
-    A projects v2 project
+    An status update belonging to a project
     """
 
     id: float
     node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[None, SimpleUserType]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
-    is_template: NotRequired[bool]
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[_dt.date]
+    target_date: NotRequired[_dt.date]
+    body: NotRequired[Union[str, None]]
 
 
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
+class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
+    """Projects v2 Status Update
 
-    A projects v2 project
+    An status update belonging to a project
     """
 
     id: float
     node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
+    project_node_id: NotRequired[str]
+    creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[None, SimpleUserTypeForResponse]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[None, ProjectsV2StatusUpdateTypeForResponse]
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
     ]
-    is_template: NotRequired[bool]
+    start_date: NotRequired[str]
+    target_date: NotRequired[str]
+    body: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "ProjectsV2StatusUpdateType",
+    "ProjectsV2StatusUpdateTypeForResponse",
 )

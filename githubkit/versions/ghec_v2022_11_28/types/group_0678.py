@@ -13,38 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0196 import DiscussionType, DiscussionTypeForResponse
-from .group_0557 import (
+from .group_0199 import DiscussionType, DiscussionTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0569 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionLockedType(TypedDict):
+    """discussion locked event"""
 
-    action: Literal["unanswered"]
+    action: Literal["locked"]
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionLockedTypeForResponse(TypedDict):
+    """discussion locked event"""
 
-    action: Literal["unanswered"]
+    action: Literal["locked"]
     discussion: DiscussionTypeForResponse
-    old_answer: WebhooksAnswerTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredTypeForResponse",
+    "WebhookDiscussionLockedType",
+    "WebhookDiscussionLockedTypeForResponse",
 )

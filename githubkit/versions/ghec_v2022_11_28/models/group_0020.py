@@ -115,6 +115,10 @@ class Repository(GitHubModel):
     has_pull_requests: Missing[bool] = Field(
         default=UNSET, description="Whether pull requests are enabled."
     )
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
     archived: bool = Field(
         default=False, description="Whether the repository is archived."
     )

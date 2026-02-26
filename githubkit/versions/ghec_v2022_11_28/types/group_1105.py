@@ -9,91 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgPatchBodyType(TypedDict):
-    """OrgsOrgPatchBody"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
     description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
-    ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class OrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPatchBody"""
+class GistsGistIdPatchBodyTypeForResponse(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    billing_email: NotRequired[str]
-    company: NotRequired[str]
-    email: NotRequired[str]
-    twitter_username: NotRequired[str]
-    location: NotRequired[str]
-    name: NotRequired[str]
     description: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    default_repository_permission: NotRequired[
-        Literal["read", "write", "admin", "none"]
-    ]
-    members_can_create_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_allowed_repository_creation_type: NotRequired[
-        Literal["all", "private", "none"]
-    ]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
-    blog: NotRequired[str]
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
-    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link_enabled: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[str]
-    secret_scanning_validity_checks_enabled: NotRequired[bool]
-    deploy_keys_enabled_for_repositories: NotRequired[bool]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesTypeForResponse]
+
+
+GistsGistIdPatchBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
+
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
+
+
+GistsGistIdPatchBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsGistIdPatchBodyPropFiles
+
+The gist files to be updated, renamed, or deleted. Each `key` must match the
+current filename
+(including extension) of the targeted gist file. For example: `hello.py`.
+
+To delete a file, set the whole file to null. For example: `hello.py : null`.
+The file will also be
+deleted if the specified object does not contain at least one of `content` or
+`filename`.
+
+Examples:
+    {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+"""
 
 
 __all__ = (
-    "OrgsOrgPatchBodyType",
-    "OrgsOrgPatchBodyTypeForResponse",
+    "GistsGistIdPatchBodyPropFilesType",
+    "GistsGistIdPatchBodyPropFilesTypeForResponse",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyTypeForResponse",
 )

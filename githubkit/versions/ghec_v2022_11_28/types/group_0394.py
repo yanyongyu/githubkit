@@ -9,61 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0240 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
+
+    Combined Commit Status
+    """
+
+    state: str
+    statuses: list[SimpleCommitStatusType]
     sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
 
 
-class ContentDirectoryItemsTypeForResponse(TypedDict):
-    """ContentDirectoryItems"""
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
+    Combined Commit Status
+    """
+
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
     sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
+    commit_url: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksTypeForResponse
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ContentDirectoryItemsPropLinksType",
-    "ContentDirectoryItemsPropLinksTypeForResponse",
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsTypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

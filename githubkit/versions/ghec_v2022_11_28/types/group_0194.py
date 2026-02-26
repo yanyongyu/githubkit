@@ -9,102 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportGheType(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class UsageReportExportListType(TypedDict):
+    """UsageReportExportList"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodType
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
+    usage_report_exports: list[UsageReportExportType]
 
 
-class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class UsageReportExportListTypeForResponse(TypedDict):
+    """UsageReportExportList"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+    usage_report_exports: list[UsageReportExportTypeForResponse]
 
 
-class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class UsageReportExportType(TypedDict):
+    """UsageReportExport"""
 
     id: str
-    name: str
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: _dt.date
+    end_date: _dt.date
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[_dt.datetime]
+    actor: NotRequired[str]
 
 
-class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class UsageReportExportTypeForResponse(TypedDict):
+    """UsageReportExport"""
 
     id: str
-    name: str
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: str
+    end_date: str
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[str]
+    actor: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageSummaryReportGhePropCostCenterType",
-    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
-    "BillingUsageSummaryReportGhePropTimePeriodType",
-    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportGheType",
-    "BillingUsageSummaryReportGheTypeForResponse",
+    "UsageReportExportListType",
+    "UsageReportExportListTypeForResponse",
+    "UsageReportExportType",
+    "UsageReportExportTypeForResponse",
 )

@@ -18,31 +18,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0237 import MinimalRepository
 
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
 
-class Package(GitHubModel):
-    """Package
-
-    A software package
+    A response made by a requester to dismiss the request.
     """
 
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
+    )
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
+    )
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+        default=UNSET,
+        description="The response status to the dismissal request until dismissed.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the response to the dismissal request was created.",
+    )
 
 
-model_rebuild(Package)
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
 
-__all__ = ("Package",)
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
+    )
+
+
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
+
+__all__ = (
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
+)

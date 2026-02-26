@@ -683,6 +683,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotIdeCodeCompletionsType as CopilotIdeCodeCompletionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CopilotOrganizationContentExclusionDetailsType as CopilotOrganizationContentExclusionDetailsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         CopilotOrganizationDetailsType as CopilotOrganizationDetailsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1720,6 +1723,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201Type as OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCopilotContentExclusionPutBodyType as OrgsOrgCopilotContentExclusionPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCopilotContentExclusionPutResponse200Type as OrgsOrgCopilotContentExclusionPutResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgDependabotSecretsGetResponse200Type as OrgsOrgDependabotSecretsGetResponse200Type,
@@ -2987,7 +2996,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoDeleteResponse403Type as ReposOwnerRepoDeleteResponse403Type,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoDependabotSecretsGetResponse200Type as ReposOwnerRepoDependabotSecretsGetResponse200Type,
@@ -3137,13 +3149,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
@@ -3249,6 +3255,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
@@ -3368,9 +3386,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoSubscriptionPutBodyType as ReposOwnerRepoSubscriptionPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoTagsProtectionPostBodyType as ReposOwnerRepoTagsProtectionPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoTopicsPutBodyType as ReposOwnerRepoTopicsPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3424,6 +3439,21 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         RuleSuitePropRuleEvaluationsItemsType as RuleSuitePropRuleEvaluationsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsType as RuleSuitePullRequestPropPullRequestPropReviewsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuitePullRequestPropPullRequestPropUserType as RuleSuitePullRequestPropPullRequestPropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuitePullRequestPropPullRequestType as RuleSuitePullRequestPropPullRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuitePullRequestType as RuleSuitePullRequestType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RuleSuitesItemsType as RuleSuitesItemsType,
@@ -3556,6 +3586,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassType as SecurityAndAnalysisPropSecretScanningDelegatedBypassType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3650,9 +3689,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         TagPropCommitType as TagPropCommitType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        TagProtectionType as TagProtectionType,
     )
     from githubkit.versions.v2022_11_28.types import TagType as TagType
     from githubkit.versions.v2022_11_28.types import TeamFullType as TeamFullType
@@ -4343,6 +4379,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookDeleteType as WebhookDeleteType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookDependabotAlertAssigneesChangedType as WebhookDependabotAlertAssigneesChangedType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookDependabotAlertAutoDismissedType as WebhookDependabotAlertAutoDismissedType,
@@ -10522,13 +10561,13 @@ else:
             "ReactionRollupType",
             "SubIssuesSummaryType",
             "IssueDependenciesSummaryType",
+            "PinnedIssueCommentType",
+            "IssueCommentType",
             "IssueFieldValueType",
             "IssueFieldValuePropSingleSelectOptionType",
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropPullRequestType",
-            "PinnedIssueCommentType",
-            "IssueCommentType",
             "PullRequestMinimalType",
             "PullRequestMinimalPropHeadType",
             "PullRequestMinimalPropHeadPropRepoType",
@@ -10608,6 +10647,9 @@ else:
             "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
             "SecurityAndAnalysisPropSecretScanningAiDetectionType",
             "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypassType",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
             "MinimalRepositoryType",
             "CodeOfConductType",
             "MinimalRepositoryPropPermissionsType",
@@ -10683,6 +10725,7 @@ else:
             "CopilotSeatDetailsType",
             "EnterpriseTeamType",
             "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+            "CopilotOrganizationContentExclusionDetailsType",
             "CopilotUsageMetricsDayType",
             "CopilotDotcomChatType",
             "CopilotDotcomChatPropModelsItemsType",
@@ -10832,6 +10875,11 @@ else:
             "RepositoryRulesetPropLinksPropSelfType",
             "RepositoryRulesetPropLinksPropHtmlType",
             "RuleSuitesItemsType",
+            "RuleSuitePullRequestType",
+            "RuleSuitePullRequestPropPullRequestType",
+            "RuleSuitePullRequestPropPullRequestPropUserType",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
             "RuleSuiteType",
             "RuleSuitePropRuleEvaluationsItemsType",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
@@ -11233,7 +11281,6 @@ else:
             "RepositorySubscriptionType",
             "TagType",
             "TagPropCommitType",
-            "TagProtectionType",
             "TopicType",
             "TrafficType",
             "CloneTrafficType",
@@ -11605,6 +11652,7 @@ else:
             "WebhookCustomPropertyUpdatedType",
             "WebhookCustomPropertyValuesUpdatedType",
             "WebhookDeleteType",
+            "WebhookDependabotAlertAssigneesChangedType",
             "WebhookDependabotAlertAutoDismissedType",
             "WebhookDependabotAlertAutoReopenedType",
             "WebhookDependabotAlertCreatedType",
@@ -13632,6 +13680,8 @@ else:
             "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
             "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
             "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+            "OrgsOrgCopilotContentExclusionPutBodyType",
+            "OrgsOrgCopilotContentExclusionPutResponse200Type",
             "OrgsOrgDependabotSecretsGetResponse200Type",
             "OrganizationDependabotSecretType",
             "OrgsOrgDependabotSecretsSecretNamePutBodyType",
@@ -13701,6 +13751,10 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetectionType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
             "ReposOwnerRepoActionsArtifactsGetResponse200Type",
             "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
             "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
@@ -13807,7 +13861,8 @@ else:
             "ReposOwnerRepoContentsPathDeleteBodyType",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",
+            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
+            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
             "ReposOwnerRepoDependabotSecretsGetResponse200Type",
             "DependabotSecretType",
             "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
@@ -13865,9 +13920,7 @@ else:
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",
+            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
             "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
             "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
@@ -13926,7 +13979,6 @@ else:
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
             "ReposOwnerRepoStatusesShaPostBodyType",
             "ReposOwnerRepoSubscriptionPutBodyType",
-            "ReposOwnerRepoTagsProtectionPostBodyType",
             "ReposOwnerRepoTopicsPutBodyType",
             "ReposOwnerRepoTransferPostBodyType",
             "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",

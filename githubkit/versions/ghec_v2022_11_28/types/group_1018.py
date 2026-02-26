@@ -9,33 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0034 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
 
-
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
-
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
 )

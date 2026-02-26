@@ -9,11 +9,173 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0046 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0048 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0659 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse,
+)
+from .group_0661 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneTypeForResponse,
+)
+from .group_0663 import (
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+)
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0Type(TypedDict):
+    """Issue
+
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[
+        Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType, None]
+    ]
+    assignees: list[
+        Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType, None]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[_dt.datetime, None]
+    comments: int
+    comments_url: str
+    created_at: _dt.datetime
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[
+        list[WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType]
+    ]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType,
+            None,
+        ]
+    ]
+    pull_request: NotRequired[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType
+    ]
+    reactions: WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeType, None]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType, None]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0TypeForResponse(TypedDict):
+    """Issue
+
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse, None
+        ]
+    ]
+    assignees: list[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsTypeForResponse,
+            None,
+        ]
+    ]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[str, None]
+    comments: int
+    comments_url: str
+    created_at: str
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[
+        list[WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse]
+    ]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneTypeForResponse, None
+    ]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    pull_request: NotRequired[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse
+    ]
+    reactions: WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsTypeForResponse
+    repository_url: str
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    updated_at: str
+    url: str
+    user: Union[WebhookIssueCommentUnpinnedPropIssueAllof0PropUserTypeForResponse, None]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -40,7 +202,7 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType(Typ
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -69,7 +231,97 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForR
     user_view_type: NotRequired[str]
 
 
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItemsTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropReactionsTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropUserType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropUserTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0Type",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0TypeForResponse",
 )

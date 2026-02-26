@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class UserEmailsPostBodyOneof0(GitHubModel):
+    """UserEmailsPostBodyOneof0
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
-    )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
-    )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
     )
 
 
-model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(UserEmailsPostBodyOneof0)
 
-__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("UserEmailsPostBodyOneof0",)

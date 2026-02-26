@@ -18,65 +18,41 @@ from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
-
-    logical_environment: str = Field(
-        min_length=1, max_length=64, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        max_length=64,
-        default=UNSET,
-        description="The physical region of the deployment.",
-    )
-    deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
-    ] = Field(description="The list of deployments to record.")
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
-    """
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
     name: str = Field(
-        min_length=1,
-        max_length=256,
-        description="The name of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name parameter must also be identical across all entries.\n",
+        min_length=1, max_length=256, description="The name of the artifact."
     )
     digest: str = Field(
         min_length=71,
         max_length=71,
         pattern="^sha256:[a-f0-9]{64}$",
-        description="The hex encoded digest of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name and version parameters must also be identical across all entries.\n",
+        description="The hex encoded digest of the artifact.",
     )
     version: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        default=UNSET,
-        description="The artifact version. Note that if multiple deployments have identical 'digest' parameter values,\nthe version parameter must also be identical across all entries.\n",
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
     )
-    status: Missing[Literal["deployed", "decommissioned"]] = Field(
-        default=UNSET, description="The deployment status of the artifact."
+    status: Literal["deployed", "decommissioned"] = Field(
+        description="The status of the artifact. Can be either deployed or decommissioned."
+    )
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    cluster: Missing[str] = Field(
+        max_length=128, default=UNSET, description="The deployment cluster."
     )
     deployment_name: str = Field(
-        min_length=1,
-        max_length=128,
-        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a cluster, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\n",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
-    tags: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
-    ] = Field(
-        default=UNSET, description="Key-value pairs to tag the deployment record."
+    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
+        default=UNSET, description="The tags associated with the deployment."
     )
     runtime_risks: Missing[
         UniqueList[
@@ -92,28 +68,26 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeployme
         default=UNSET,
         description="A list of runtime risks associated with the deployment.",
     )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
-    ExtraGitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    msPropTags
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    Key-value pairs to tag the deployment record.
+    The tags associated with the deployment.
     """
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
-)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
 )

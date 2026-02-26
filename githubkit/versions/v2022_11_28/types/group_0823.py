@@ -9,45 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0824 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
+    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0514 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookReleaseCreatedType(TypedDict):
-    """release created event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    created_at: str
+    description: None
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
+    )
+    registry: Union[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: str
 
 
-class WebhookReleaseCreatedTypeForResponse(TypedDict):
-    """release created event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    created_at: str
+    description: None
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse
+    package_type: str
+    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse
+    registry: Union[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse,
+        None,
+    ]
+    updated_at: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
 
 
 __all__ = (
-    "WebhookReleaseCreatedType",
-    "WebhookReleaseCreatedTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse",
 )

@@ -13,16 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0213 import ForkEventPropForkee
+from .group_0199 import Discussion
 
 
-class ForkEvent(GitHubModel):
-    """ForkEvent"""
+class DiscussionEvent(GitHubModel):
+    """DiscussionEvent"""
 
     action: str = Field()
-    forkee: ForkEventPropForkee = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
 
 
-model_rebuild(ForkEvent)
+model_rebuild(DiscussionEvent)
 
-__all__ = ("ForkEvent",)
+__all__ = ("DiscussionEvent",)

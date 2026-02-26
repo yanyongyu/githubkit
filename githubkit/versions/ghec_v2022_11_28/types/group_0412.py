@@ -9,39 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0413 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+from .group_0410 import MetadataType, MetadataTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

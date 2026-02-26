@@ -9,65 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0337 import MetadataType, MetadataTypeForResponse
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    The status of a deployment.
-    """
-
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class ManifestTypeForResponse(TypedDict):
+    """Manifest"""
 
-    The status of a deployment.
-    """
+    name: str
+    file: NotRequired[ManifestPropFileTypeForResponse]
+    metadata: NotRequired[MetadataTypeForResponse]
+    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserTypeForResponse]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropFileTypeForResponse(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+ManifestPropResolvedType: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
+
+
+ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
+"""ManifestPropResolved
+
+A collection of resolved package dependencies.
+"""
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "ManifestPropFileType",
+    "ManifestPropFileTypeForResponse",
+    "ManifestPropResolvedType",
+    "ManifestPropResolvedTypeForResponse",
+    "ManifestType",
+    "ManifestTypeForResponse",
 )

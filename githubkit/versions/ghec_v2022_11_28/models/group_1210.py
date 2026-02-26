@@ -13,15 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
-
-    issue_field_id: int = Field(
-        description="The ID of the IssueField to create the field for."
-    )
+from .group_0255 import Codespace
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
+class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)

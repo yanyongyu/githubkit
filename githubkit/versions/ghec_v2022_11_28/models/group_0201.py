@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,43 +19,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class IssueType(GitHubModel):
+    """Issue Type
 
-    A value assigned to an issue field
+    The type of issue.
     """
 
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "number", "date"] = Field(
-        description="The data type of the issue field"
+    id: int = Field(description="The unique identifier of the issue type.")
+    node_id: str = Field(description="The node identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    description: Union[str, None] = Field(
+        description="The description of the issue type."
     )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
+    color: Missing[
+        Union[
+            None,
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type created."
     )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
-        default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue type last updated."
+    )
+    is_enabled: Missing[bool] = Field(
+        default=UNSET, description="The enabled state of the issue type."
     )
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+model_rebuild(IssueType)
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-
-__all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropSingleSelectOption",
-)
+__all__ = ("IssueType",)

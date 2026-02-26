@@ -12,18 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0233 import RulesetVersionWithStateAllof1PropState
-
-
-class RulesetVersionWithStateAllof1(GitHubModel):
-    """RulesetVersionWithStateAllof1"""
-
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(RulesetVersionWithStateAllof1)
+class RulesetVersionPropActor(GitHubModel):
+    """RulesetVersionPropActor
 
-__all__ = ("RulesetVersionWithStateAllof1",)
+    The actor who updated the ruleset
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(RulesetVersionPropActor)
+
+__all__ = ("RulesetVersionPropActor",)

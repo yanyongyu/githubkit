@@ -9,49 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
-
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+from .group_0524 import MetaType, MetaTypeForResponse
+from .group_0534 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItems"""
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[
-        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
+
+
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
+
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
     ]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

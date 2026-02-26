@@ -14,56 +14,154 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0202 import IssueType, IssueTypeForResponse
-from .group_0294 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0297 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0200 import MilestoneType, MilestoneTypeForResponse
+from .group_0297 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0299 import (
+    PullRequestSimplePropBaseType,
+    PullRequestSimplePropBaseTypeForResponse,
+    PullRequestSimplePropHeadType,
+    PullRequestSimplePropHeadTypeForResponse,
+)
+from .group_0300 import (
+    PullRequestSimplePropLinksType,
+    PullRequestSimplePropLinksTypeForResponse,
+)
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    An item belonging to a project
+    Pull Request Simple
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserType]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[list[TeamType], None]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class PullRequestSimpleTypeForResponse(TypedDict):
+    """Pull Request Simple
 
-    An item belonging to a project
+    Pull Request Simple
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserTypeForResponse]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
+    milestone: Union[None, MilestoneTypeForResponse]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserTypeForResponse]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    requested_teams: NotRequired[Union[list[TeamTypeForResponse], None]]
+    head: PullRequestSimplePropHeadTypeForResponse
+    base: PullRequestSimplePropBaseTypeForResponse
+    links: PullRequestSimplePropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    draft: NotRequired[bool]
+
+
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+
+
+class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimplePropLabelsItemsTypeForResponse",
+    "PullRequestSimpleType",
+    "PullRequestSimpleTypeForResponse",
 )

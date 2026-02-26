@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0252 import Codespace
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

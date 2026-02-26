@@ -9,79 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0591 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0594 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0595 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedType(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesType
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemReorderedTypeForResponse(TypedDict):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["reordered"]
-    changes: WebhookProjectsV2ItemReorderedPropChangesTypeForResponse
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
-    ]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
-
-    previous_projects_v2_item_node_id: NotRequired[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse
-    ]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
 __all__ = (
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdTypeForResponse",
-    "WebhookProjectsV2ItemReorderedPropChangesType",
-    "WebhookProjectsV2ItemReorderedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemReorderedType",
-    "WebhookProjectsV2ItemReorderedTypeForResponse",
+    "WebhookProjectsV2ItemArchivedType",
+    "WebhookProjectsV2ItemArchivedTypeForResponse",
 )

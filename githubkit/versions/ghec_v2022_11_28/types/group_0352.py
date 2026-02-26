@@ -9,61 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0345 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0350 import CommitType, CommitTypeForResponse
 
+class GitUserType(TypedDict):
+    """Git User
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
-
-    Branch With Protection
+    Metaproperties for Git author/committer information.
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    Branch With Protection
+    Metaproperties for Git author/committer information.
     """
 
-    name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
-    protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
-
-
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
-
-    html: str
-    self_: str
-
-
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
-
-    html: str
-    self_: str
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

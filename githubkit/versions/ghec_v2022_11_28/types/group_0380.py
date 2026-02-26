@@ -9,27 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
-
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+from .group_0074 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
+
+
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
+
+    repository: SimpleRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

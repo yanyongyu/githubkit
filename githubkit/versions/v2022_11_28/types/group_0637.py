@@ -11,68 +11,112 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0636 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType(TypedDict):
+    """User"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    labels_url: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse(TypedDict):
+    """Label"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
-        None,
-    ]
+    color: str
+    default: bool
     description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
     id: int
-    labels_url: str
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
     url: str
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse",
 )

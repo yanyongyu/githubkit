@@ -34,6 +34,12 @@ class SecurityAndAnalysisType(TypedDict):
     secret_scanning_delegated_alert_dismissal: NotRequired[
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType
     ]
+    secret_scanning_delegated_bypass: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassType
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType
+    ]
 
 
 class SecurityAndAnalysisTypeForResponse(TypedDict):
@@ -58,6 +64,12 @@ class SecurityAndAnalysisTypeForResponse(TypedDict):
     ]
     secret_scanning_delegated_alert_dismissal: NotRequired[
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse
     ]
 
 
@@ -179,6 +191,58 @@ class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForRespons
     status: NotRequired[Literal["enabled", "disabled"]]
 
 
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: NotRequired[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+        ]
+    ]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: NotRequired[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
+        ]
+    ]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+
+
 __all__ = (
     "SecurityAndAnalysisPropAdvancedSecurityType",
     "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
@@ -190,6 +254,12 @@ __all__ = (
     "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
     "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
     "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse",
     "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
     "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
     "SecurityAndAnalysisPropSecretScanningPushProtectionType",

@@ -9,40 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
-
-    Data related to a release.
+    A value assigned to an issue field
     """
 
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
     node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
+    data_type: Literal["text", "single_select", "number", "date"] = Field(
+        description="The data type of the issue field"
     )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    uploader: Union[None, SimpleUser] = Field()
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
+    )
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
+        default=UNSET,
+        description="Details about the selected option (only present for single_select fields)",
+    )
 
 
-model_rebuild(ReleaseAsset)
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-__all__ = ("ReleaseAsset",)
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
+
+__all__ = (
+    "IssueFieldValue",
+    "IssueFieldValuePropSingleSelectOption",
+)

@@ -9,45 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0584 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookMilestoneOpenedType(TypedDict):
-    """milestone opened event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["opened"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMilestoneOpenedTypeForResponse(TypedDict):
-    """milestone opened event"""
+class WebhookMetaDeletedTypeForResponse(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["opened"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    hook: WebhookMetaDeletedPropHookTypeForResponse
+    hook_id: int
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestone3TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository: NotRequired[Union[None, RepositoryWebhooksTypeForResponse]]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigTypeForResponse
+    created_at: str
+    events: list[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
+
+
+class WebhookMetaDeletedPropHookPropConfigTypeForResponse(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
 
 
 __all__ = (
-    "WebhookMilestoneOpenedType",
-    "WebhookMilestoneOpenedTypeForResponse",
+    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMetaDeletedPropHookPropConfigTypeForResponse",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookTypeForResponse",
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedTypeForResponse",
 )

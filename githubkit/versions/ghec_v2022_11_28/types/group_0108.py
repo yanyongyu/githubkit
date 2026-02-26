@@ -13,12 +13,15 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-    Custom property set payload
+    Custom property defined on an organization
     """
 
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
@@ -27,14 +30,18 @@ class CustomPropertySetPayloadType(TypedDict):
     values_editable_by: NotRequired[
         Union[None, Literal["org_actors", "org_and_repo_actors"]]
     ]
+    require_explicit_values: NotRequired[bool]
 
 
-class CustomPropertySetPayloadTypeForResponse(TypedDict):
-    """Custom Property Set Payload
+class CustomPropertyTypeForResponse(TypedDict):
+    """Organization Custom Property
 
-    Custom property set payload
+    Custom property defined on an organization
     """
 
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
     value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, list[str], None]]
@@ -43,9 +50,10 @@ class CustomPropertySetPayloadTypeForResponse(TypedDict):
     values_editable_by: NotRequired[
         Union[None, Literal["org_actors", "org_and_repo_actors"]]
     ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "CustomPropertySetPayloadType",
-    "CustomPropertySetPayloadTypeForResponse",
+    "CustomPropertyType",
+    "CustomPropertyTypeForResponse",
 )

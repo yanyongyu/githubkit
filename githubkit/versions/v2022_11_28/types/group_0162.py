@@ -9,38 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0158 import LinkType, LinkTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class PullRequestSimplePropHeadTypeForResponse(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
+
+
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropBaseTypeForResponse(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropBaseTypeForResponse",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropHeadTypeForResponse",
 )

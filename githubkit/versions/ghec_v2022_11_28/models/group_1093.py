@@ -12,14 +12,31 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    users: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The usernames of the users to add to the cost center.",
+    )
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to add to the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to add to the cost center."
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
+)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
+)

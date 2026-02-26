@@ -11,27 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0249 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
-
-    total_count: NotRequired[int]
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

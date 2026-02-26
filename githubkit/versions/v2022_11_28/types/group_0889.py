@@ -9,42 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0052 import IssueType, IssueTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0521 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookTeamAddType(TypedDict):
-    """team_add event"""
+class WebhookSubIssuesSubIssueAddedType(TypedDict):
+    """sub-issue added event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-    team: WebhooksTeam1Type
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookTeamAddTypeForResponse(TypedDict):
-    """team_add event"""
+class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
+    """sub-issue added event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["sub_issue_added"]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
+    sub_issue_repo: RepositoryTypeForResponse
+    parent_issue_id: float
+    parent_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    team: WebhooksTeam1TypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookTeamAddType",
-    "WebhookTeamAddTypeForResponse",
+    "WebhookSubIssuesSubIssueAddedType",
+    "WebhookSubIssuesSubIssueAddedTypeForResponse",
 )

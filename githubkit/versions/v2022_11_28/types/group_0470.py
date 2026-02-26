@@ -9,36 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class HovercardType(TypedDict):
+    """Hovercard
 
-    Key Simple
+    Hovercard
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    Key Simple
+    Hovercard
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

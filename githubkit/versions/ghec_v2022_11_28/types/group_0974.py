@@ -9,26 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0606 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0607 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
+
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
+    """sponsorship tier_changed event"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8TypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
-    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
+    "WebhookSponsorshipTierChangedType",
+    "WebhookSponsorshipTierChangedTypeForResponse",
 )

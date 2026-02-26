@@ -9,95 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
     ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
     ]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
     ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
     ]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    id: int
+    login: str
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    id: int
+    login: str
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    id: int
+    name: str
+    full_name: str
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

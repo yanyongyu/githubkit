@@ -9,103 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
-    """Workflow Job
+class WebhookWorkflowDispatchType(TypedDict):
+    """workflow_dispatch event"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
-    url: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow: str
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse(TypedDict):
-    """Workflow Job
+class WebhookWorkflowDispatchTypeForResponse(TypedDict):
+    """workflow_dispatch event"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[
-        WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse
-    ]
-    url: str
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    ref: str
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow: str
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
-    TypedDict
-):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
+"""WebhookWorkflowDispatchPropInputs
+"""
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0TypeForResponse",
+    "WebhookWorkflowDispatchPropInputsType",
+    "WebhookWorkflowDispatchPropInputsTypeForResponse",
+    "WebhookWorkflowDispatchType",
+    "WebhookWorkflowDispatchTypeForResponse",
 )

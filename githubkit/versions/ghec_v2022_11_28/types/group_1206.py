@@ -9,69 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: str
-    key_id: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPostBodyType",
-    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
+    "OrgsOrgHooksHookIdConfigPatchBodyType",
+    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
 )

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    repository_id: int
-    alert_numbers: list[int]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    repository_id: int
-    alert_numbers: list[int]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
 )

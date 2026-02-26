@@ -9,93 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0198 import LabelType, LabelTypeForResponse
+from .group_0208 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class PullRequestReviewEventPropReviewType(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class PullRequestEventType(TypedDict):
+    """PullRequestEvent"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserType]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
-    updated_at: NotRequired[str]
+    action: str
+    number: int
+    pull_request: PullRequestMinimalType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class PullRequestEventTypeForResponse(TypedDict):
+    """PullRequestEvent"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
-    updated_at: NotRequired[str]
-
-
-class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
-    pull_request: (
-        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
-    )
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
+    action: str
+    number: int
+    pull_request: PullRequestMinimalTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksType",
-    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
-    "PullRequestReviewEventPropReviewType",
-    "PullRequestReviewEventPropReviewTypeForResponse",
+    "PullRequestEventType",
+    "PullRequestEventTypeForResponse",
 )

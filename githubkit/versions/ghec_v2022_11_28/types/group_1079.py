@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
-
-    name: str
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
     name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+
+
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
 )

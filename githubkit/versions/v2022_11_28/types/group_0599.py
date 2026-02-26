@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookGithubAppAuthorizationRevokedType(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    action: Literal["revoked"]
-    sender: SimpleUserType
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    action: Literal["revoked"]
-    sender: SimpleUserTypeForResponse
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookGithubAppAuthorizationRevokedType",
-    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
+    "WebhookForkPropForkeeAllof0PropPermissionsType",
+    "WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse",
 )

@@ -9,96 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0120 import TeamSimpleType, TeamSimpleTypeForResponse
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
+
+    The Relationship a User has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleType]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deleted_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class PackageVersionTypeForResponse(TypedDict):
-    """Package Version
+class UserRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a User
 
-    A version of a software package
+    The Relationship a User has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: str
-    updated_at: str
-    deleted_at: NotRequired[str]
-    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
-
-
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataTypeForResponse(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
-
-
-class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropContainerTypeForResponse",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataPropDockerTypeForResponse",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataTypeForResponse",
-    "PackageVersionType",
-    "PackageVersionTypeForResponse",
+    "UserRoleAssignmentType",
+    "UserRoleAssignmentTypeForResponse",
 )

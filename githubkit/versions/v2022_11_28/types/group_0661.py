@@ -11,177 +11,68 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0660 import (
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType(
-    TypedDict
-):
-    """App
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    A collection of related issues and pull requests.
     """
 
-    created_at: Union[_dt.datetime, None]
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ]
-    external_url: Union[str, None]
+    due_on: Union[_dt.datetime, None]
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels_url: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """App
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    A collection of related issues and pull requests.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[
-        list[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
-    permissions: NotRequired[
-        WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestoneTypeForResponse",
 )

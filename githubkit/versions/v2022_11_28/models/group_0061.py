@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -92,6 +92,10 @@ class ForkEventPropForkee(GitHubModel):
     has_pages: Missing[bool] = Field(default=UNSET)
     has_discussions: Missing[bool] = Field(default=UNSET)
     has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
     forks_count: Missing[int] = Field(default=UNSET)
     mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
     archived: Missing[bool] = Field(default=UNSET)

@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    The public key used for setting Dependabot Secrets.
-    """
-
-    key_id: str
-    key: str
-
-
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
-
-    The public key used for setting Dependabot Secrets.
-    """
-
-    key_id: str
-    key: str
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

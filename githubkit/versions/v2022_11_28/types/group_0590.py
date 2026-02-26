@@ -14,37 +14,46 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0486 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import (
+    WebhookDiscussionTransferredPropChangesType,
+    WebhookDiscussionTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unanswered"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookDiscussionUnansweredTypeForResponse(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredTypeForResponse(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unanswered"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
-    old_answer: WebhooksAnswerTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredTypeForResponse",
+    "WebhookDiscussionTransferredType",
+    "WebhookDiscussionTransferredTypeForResponse",
 )

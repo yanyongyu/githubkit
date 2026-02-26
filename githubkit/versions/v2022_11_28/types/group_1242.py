@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    body: str
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    body: str
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
 )

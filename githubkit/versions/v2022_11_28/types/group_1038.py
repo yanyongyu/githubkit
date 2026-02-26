@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0129 import CodespaceType, CodespaceTypeForResponse
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgHooksHookIdConfigPatchBodyType",
+    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
 )

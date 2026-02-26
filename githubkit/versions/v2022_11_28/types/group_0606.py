@@ -9,50 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0489 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
+from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0486 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0491 import (
+    WebhooksRepositoriesAddedItemsType,
+    WebhooksRepositoriesAddedItemsTypeForResponse,
 )
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["suspend"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repositories_added: list[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
+    ]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
     sender: SimpleUserType
 
 
-class WebhookInstallationSuspendTypeForResponse(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["suspend"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
+    repositories_removed: list[
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
+    ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserTypeForResponse, None]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
+
+
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
+
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
+
+
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendTypeForResponse",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesAddedType",
+    "WebhookInstallationRepositoriesAddedTypeForResponse",
 )

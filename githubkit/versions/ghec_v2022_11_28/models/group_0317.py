@@ -9,24 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0316 import RateLimit
-from .group_0318 import RateLimitOverviewPropResources
 
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
-
-    Rate Limit Overview
+    External Groups to be mapped to a team for membership
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
+    )
 
 
-model_rebuild(RateLimitOverview)
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
 
-__all__ = ("RateLimitOverview",)
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
+    )
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
+
+
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
+
+__all__ = (
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
+)

@@ -9,21 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class ParticipationStats(GitHubModel):
+    """Participation Stats"""
 
-    timestamp: _dt.datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
-model_rebuild(Traffic)
+model_rebuild(ParticipationStats)
 
-__all__ = ("Traffic",)
+__all__ = ("ParticipationStats",)

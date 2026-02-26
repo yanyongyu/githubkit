@@ -9,51 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0485 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0489 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
 
 
-class WebhookInstallationCreatedType(TypedDict):
-    """installation created event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[Union[WebhooksUserType, None]]
+    action: Literal["revoked"]
     sender: SimpleUserType
 
 
-class WebhookInstallationCreatedTypeForResponse(TypedDict):
-    """installation created event"""
+class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+    action: Literal["revoked"]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationCreatedType",
-    "WebhookInstallationCreatedTypeForResponse",
+    "WebhookGithubAppAuthorizationRevokedType",
+    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
 )

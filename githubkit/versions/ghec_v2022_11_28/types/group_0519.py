@@ -9,57 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0518 import TrafficType, TrafficTypeForResponse
 
 
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+    Clone Traffic
+    """
+
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-class GroupResponseTypeForResponse(TypedDict):
-    """GroupResponse"""
+class CloneTrafficTypeForResponse(TypedDict):
+    """Clone Traffic
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+    Clone Traffic
+    """
 
-
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    count: int
+    uniques: int
+    clones: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponsePropMembersItemsTypeForResponse",
-    "GroupResponseType",
-    "GroupResponseTypeForResponse",
+    "CloneTrafficType",
+    "CloneTrafficTypeForResponse",
 )

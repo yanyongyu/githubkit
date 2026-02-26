@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0163 import RepositoryRuleCopilotCodeReviewPropParameters
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    review_draft_pull_requests: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+class RepositoryRuleCopilotCodeReview(GitHubModel):
+    """copilot_code_review
+
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
+    """
+
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+        default=UNSET
     )
-    review_on_push: Missing[bool] = Field(
-        default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
-    )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RepositoryRuleCopilotCodeReview)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RepositoryRuleCopilotCodeReview",)

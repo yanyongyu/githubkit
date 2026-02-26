@@ -9,51 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Repository invitations let you manage who you collaborate with.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[None, SimpleUserTypeForResponse]
-    inviter: Union[None, SimpleUserTypeForResponse]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
+
+
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

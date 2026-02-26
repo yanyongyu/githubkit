@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
+
+    selected_usernames: list[str]
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

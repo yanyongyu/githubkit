@@ -14,15 +14,15 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
+    repository_id: int = Field(description="The repository id")
+    alert_numbers: list[int] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)

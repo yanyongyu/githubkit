@@ -9,81 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0063 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
-)
-from .group_0064 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
-)
-from .group_0065 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
-    ]
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
 )

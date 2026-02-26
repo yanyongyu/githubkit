@@ -10,84 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0199 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0203 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
 
-    Comments provide a way for people to collaborate on an issue.
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[None, SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[None, PinnedIssueCommentType]]
+    pinned_at: _dt.datetime
+    pinned_by: Union[None, SimpleUserType]
 
 
-class IssueCommentTypeForResponse(TypedDict):
-    """Issue Comment
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
 
-    Comments provide a way for people to collaborate on an issue.
+    Context around who pinned an issue comment and when it was pinned.
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[None, SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
+    pinned_at: str
+    pinned_by: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "IssueCommentType",
-    "IssueCommentTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

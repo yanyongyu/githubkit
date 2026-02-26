@@ -16,22 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+model_rebuild(ReposOwnerRepoCodespacesSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",)

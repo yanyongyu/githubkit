@@ -9,44 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
-class HovercardType(TypedDict):
-    """Hovercard
 
-    Hovercard
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
+
+    Starred Repository
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    Hovercard
+    Starred Repository
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
-
-
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

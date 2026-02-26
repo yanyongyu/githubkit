@@ -14,14 +14,17 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0207 import Issue
+from .group_0298 import PullRequestSimple
+from .group_0301 import ProjectsV2DraftIssue
 
 
-class ProjectsV2ItemWithContent(GitHubModel):
+class ProjectsV2ItemSimple(GitHubModel):
     """Projects v2 Item
 
     An item belonging to a project
@@ -31,16 +34,12 @@ class ProjectsV2ItemWithContent(GitHubModel):
     node_id: Missing[str] = Field(
         default=UNSET, description="The node ID of the project item."
     )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
+    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
+        default=UNSET, description="The content represented by the item."
     )
     content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
         title="Projects v2 Item Content Type",
         description="The type of content tracked in a project item",
-    )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
-        default=UNSET,
-        description="The content of the item, which varies by content type.",
     )
     creator: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
@@ -52,31 +51,14 @@ class ProjectsV2ItemWithContent(GitHubModel):
     archived_at: Union[_dt.datetime, None] = Field(
         description="The time when the item was archived."
     )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
+    project_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the project this item belongs to."
     )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    item_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the item in the project."
     )
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+model_rebuild(ProjectsV2ItemSimple)
 
-    The content of the item, which varies by content type.
-    """
-
-
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
-
-__all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
-)
+__all__ = ("ProjectsV2ItemSimple",)

@@ -653,6 +653,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotIdeCodeCompletionsPropLanguagesItems as CopilotIdeCodeCompletionsPropLanguagesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        CopilotOrganizationContentExclusionDetails as CopilotOrganizationContentExclusionDetails,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CopilotOrganizationDetails as CopilotOrganizationDetails,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1640,6 +1643,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCopilotContentExclusionPutBody as OrgsOrgCopilotContentExclusionPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCopilotContentExclusionPutResponse200 as OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgDependabotSecretsGetResponse200 as OrgsOrgDependabotSecretsGetResponse200,
@@ -2879,7 +2888,10 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBody as ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
@@ -3029,13 +3041,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
@@ -3152,6 +3158,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3260,9 +3278,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoTagsProtectionPostBody as ReposOwnerRepoTagsProtectionPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3313,6 +3328,21 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSource as RuleSuitePropRuleEvaluationsItemsPropRuleSource,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuitePullRequest as RuleSuitePullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuitePullRequestPropPullRequest as RuleSuitePullRequestPropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuitePullRequestPropPullRequestPropReviewsItems as RuleSuitePullRequestPropPullRequestPropReviewsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuitePullRequestPropPullRequestPropUser as RuleSuitePullRequestPropPullRequestPropUser,
     )
     from githubkit.versions.v2022_11_28.models import RuleSuitesItems as RuleSuitesItems
     from githubkit.versions.v2022_11_28.models import Runner as Runner
@@ -3446,6 +3476,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypass as SecurityAndAnalysisPropSecretScanningDelegatedBypass,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatterns as SecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3522,7 +3561,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import Tag as Tag
     from githubkit.versions.v2022_11_28.models import TagPropCommit as TagPropCommit
-    from githubkit.versions.v2022_11_28.models import TagProtection as TagProtection
     from githubkit.versions.v2022_11_28.models import Team as Team
     from githubkit.versions.v2022_11_28.models import TeamFull as TeamFull
     from githubkit.versions.v2022_11_28.models import TeamMembership as TeamMembership
@@ -4194,6 +4232,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookCustomPropertyValuesUpdated as WebhookCustomPropertyValuesUpdated,
     )
     from githubkit.versions.v2022_11_28.models import WebhookDelete as WebhookDelete
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookDependabotAlertAssigneesChanged as WebhookDependabotAlertAssigneesChanged,
+    )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDependabotAlertAutoDismissed as WebhookDependabotAlertAutoDismissed,
     )
@@ -10334,13 +10375,13 @@ else:
             "ReactionRollup",
             "SubIssuesSummary",
             "IssueDependenciesSummary",
+            "PinnedIssueComment",
+            "IssueComment",
             "IssueFieldValue",
             "IssueFieldValuePropSingleSelectOption",
             "Issue",
             "IssuePropLabelsItemsOneof1",
             "IssuePropPullRequest",
-            "PinnedIssueComment",
-            "IssueComment",
             "PullRequestMinimal",
             "PullRequestMinimalPropHead",
             "PullRequestMinimalPropHeadPropRepo",
@@ -10420,6 +10461,9 @@ else:
             "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
             "SecurityAndAnalysisPropSecretScanningAiDetection",
             "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypass",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
+            "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
             "MinimalRepository",
             "CodeOfConduct",
             "MinimalRepositoryPropPermissions",
@@ -10495,6 +10539,7 @@ else:
             "CopilotSeatDetails",
             "EnterpriseTeam",
             "OrgsOrgCopilotBillingSeatsGetResponse200",
+            "CopilotOrganizationContentExclusionDetails",
             "CopilotUsageMetricsDay",
             "CopilotDotcomChat",
             "CopilotDotcomChatPropModelsItems",
@@ -10644,6 +10689,11 @@ else:
             "RepositoryRulesetPropLinksPropSelf",
             "RepositoryRulesetPropLinksPropHtml",
             "RuleSuitesItems",
+            "RuleSuitePullRequest",
+            "RuleSuitePullRequestPropPullRequest",
+            "RuleSuitePullRequestPropPullRequestPropUser",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
             "RuleSuite",
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
@@ -11045,7 +11095,6 @@ else:
             "RepositorySubscription",
             "Tag",
             "TagPropCommit",
-            "TagProtection",
             "Topic",
             "Traffic",
             "CloneTraffic",
@@ -11417,6 +11466,7 @@ else:
             "WebhookCustomPropertyUpdated",
             "WebhookCustomPropertyValuesUpdated",
             "WebhookDelete",
+            "WebhookDependabotAlertAssigneesChanged",
             "WebhookDependabotAlertAutoDismissed",
             "WebhookDependabotAlertAutoReopened",
             "WebhookDependabotAlertCreated",
@@ -13444,6 +13494,8 @@ else:
             "OrgsOrgCopilotBillingSelectedUsersPostResponse201",
             "OrgsOrgCopilotBillingSelectedUsersDeleteBody",
             "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",
+            "OrgsOrgCopilotContentExclusionPutBody",
+            "OrgsOrgCopilotContentExclusionPutResponse200",
             "OrgsOrgDependabotSecretsGetResponse200",
             "OrganizationDependabotSecret",
             "OrgsOrgDependabotSecretsSecretNamePutBody",
@@ -13513,6 +13565,10 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
             "ReposOwnerRepoActionsArtifactsGetResponse200",
             "ReposOwnerRepoActionsJobsJobIdRerunPostBody",
             "ReposOwnerRepoActionsOidcCustomizationSubPutBody",
@@ -13619,7 +13675,8 @@ else:
             "ReposOwnerRepoContentsPathDeleteBody",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
-            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",
+            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",
+            "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",
             "ReposOwnerRepoDependabotSecretsGetResponse200",
             "DependabotSecret",
             "ReposOwnerRepoDependabotSecretsSecretNamePutBody",
@@ -13677,9 +13734,7 @@ else:
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
-            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",
+            "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",
             "ReposOwnerRepoIssuesIssueNumberLockPutBody",
             "ReposOwnerRepoIssuesIssueNumberReactionsPostBody",
             "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",
@@ -13738,7 +13793,6 @@ else:
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",
-            "ReposOwnerRepoTagsProtectionPostBody",
             "ReposOwnerRepoTopicsPutBody",
             "ReposOwnerRepoTransferPostBody",
             "ReposTemplateOwnerTemplateRepoGeneratePostBody",

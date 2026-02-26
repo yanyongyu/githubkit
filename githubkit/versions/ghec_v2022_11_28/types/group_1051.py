@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+
+    errors: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
-
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
+    errors: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
 )

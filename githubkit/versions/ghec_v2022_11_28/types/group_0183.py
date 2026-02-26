@@ -9,71 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class AdvancedSecurityActiveCommittersType(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    budgets: list[BudgetType]
-    has_next_page: NotRequired[bool]
+    total_advanced_security_committers: NotRequired[int]
     total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
 
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
+class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommitters"""
 
-    budgets: list[BudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
+    total_advanced_security_committers: NotRequired[int]
     total_count: NotRequired[int]
+    maximum_advanced_security_committers: NotRequired[int]
+    purchased_advanced_security_committers: NotRequired[int]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
 
 
-class BudgetType(TypedDict):
-    """Budget"""
+class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserType
+    ]
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: str
-    budget_entity_name: NotRequired[str]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    name: str
+    advanced_security_committers: int
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUserTypeForResponse
+    ]
 
 
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
+class AdvancedSecurityActiveCommittersUserType(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
+class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    will_alert: bool
-    alert_recipients: list[str]
+    user_login: str
+    last_pushed_date: str
+    last_pushed_email: str
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "AdvancedSecurityActiveCommittersRepositoryType",
+    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
+    "AdvancedSecurityActiveCommittersType",
+    "AdvancedSecurityActiveCommittersTypeForResponse",
+    "AdvancedSecurityActiveCommittersUserType",
+    "AdvancedSecurityActiveCommittersUserTypeForResponse",
 )

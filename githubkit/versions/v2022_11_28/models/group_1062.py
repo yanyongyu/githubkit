@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0172 import CustomPropertyValue
 
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the issue or pull request to add to the project.",
     )
+    owner: str = Field(description="The repository owner login.")
+    repo: str = Field(description="The repository name.")
+    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)

@@ -13,49 +13,56 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0237 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class DismissalRequestResponseType(TypedDict):
+    """Dismissal request response
 
-class PackageType(TypedDict):
-    """Package
-
-    A software package
+    A response made by a requester to dismiss the request.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserType]]
-    repository: NotRequired[Union[None, MinimalRepositoryType]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class DismissalRequestResponseTypeForResponse(TypedDict):
+    """Dismissal request response
 
-    A software package
+    A response made by a requester to dismiss the request.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
-    created_at: str
-    updated_at: str
+    id: NotRequired[int]
+    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
+    message: NotRequired[Union[str, None]]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerType(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
+    """DismissalRequestResponsePropReviewer
+
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "DismissalRequestResponsePropReviewerType",
+    "DismissalRequestResponsePropReviewerTypeForResponse",
+    "DismissalRequestResponseType",
+    "DismissalRequestResponseTypeForResponse",
 )

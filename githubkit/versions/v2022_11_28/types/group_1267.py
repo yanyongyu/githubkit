@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0129 import CodespaceType, CodespaceTypeForResponse
-
-
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesGetResponse200"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    role: NotRequired[Literal["member", "maintainer"]]
+
+
+class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
+
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "UserCodespacesGetResponse200Type",
-    "UserCodespacesGetResponse200TypeForResponse",
+    "TeamsTeamIdMembershipsUsernamePutBodyType",
+    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
 )

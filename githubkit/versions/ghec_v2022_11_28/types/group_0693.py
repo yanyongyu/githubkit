@@ -13,79 +13,62 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0557 import (
+from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0561 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0558 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0568 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0573 import (
-    WebhooksRepositoriesAddedItemsType,
-    WebhooksRepositoriesAddedItemsTypeForResponse,
-)
+from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    pages: list[WebhookGollumPropPagesItemsType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
-    """installation_repositories removed event"""
+class WebhookGollumTypeForResponse(TypedDict):
+    """gollum event"""
 
-    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserTypeForResponse, None]
+    pages: list[WebhookGollumPropPagesItemsTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookGollumPropPagesItemsTypeForResponse(TypedDict):
+    """WebhookGollumPropPagesItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse",
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedTypeForResponse",
+    "WebhookGollumPropPagesItemsType",
+    "WebhookGollumPropPagesItemsTypeForResponse",
+    "WebhookGollumType",
+    "WebhookGollumTypeForResponse",
 )

@@ -9,128 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0053 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0286 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0121 import TeamType, TeamTypeForResponse
 
 
-class CheckRunType(TypedDict):
-    """CheckRun
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    A check performed on the code of a given code change
-    """
-
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
     url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    started_at: Union[_dt.datetime, None]
-    completed_at: Union[_dt.datetime, None]
-    output: CheckRunPropOutputType
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteType, None]
-    app: Union[None, IntegrationType, None]
-    pull_requests: list[PullRequestMinimalType]
-    deployment: NotRequired[DeploymentSimpleType]
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CheckRunTypeForResponse(TypedDict):
-    """CheckRun
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    A check performed on the code of a given code change
-    """
-
-    id: int
-    head_sha: str
-    node_id: str
-    external_id: Union[str, None]
     url: str
-    html_url: Union[str, None]
-    details_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    started_at: Union[str, None]
-    completed_at: Union[str, None]
-    output: CheckRunPropOutputTypeForResponse
-    name: str
-    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
-    app: Union[None, IntegrationTypeForResponse, None]
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
-class CheckRunPropOutputType(TypedDict):
-    """CheckRunPropOutput"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
-
-
-class CheckRunPropOutputTypeForResponse(TypedDict):
-    """CheckRunPropOutput"""
-
-    title: Union[str, None]
-    summary: Union[str, None]
-    text: Union[str, None]
-    annotations_count: int
-    annotations_url: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CheckRunPropCheckSuiteType(TypedDict):
-    """CheckRunPropCheckSuite"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    id: int
-
-
-class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
-    """CheckRunPropCheckSuite"""
-
-    id: int
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CheckRunPropCheckSuiteType",
-    "CheckRunPropCheckSuiteTypeForResponse",
-    "CheckRunPropOutputType",
-    "CheckRunPropOutputTypeForResponse",
-    "CheckRunType",
-    "CheckRunTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
 )

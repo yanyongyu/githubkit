@@ -9,88 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0236 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0237 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0238 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
 
-class SecretScanningScanHistoryType(TypedDict):
-    """SecretScanningScanHistory"""
 
-    incremental_scans: NotRequired[list[SecretScanningScanType]]
-    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
-    backfill_scans: NotRequired[list[SecretScanningScanType]]
-    custom_pattern_backfill_scans: NotRequired[
-        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
+
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
     ]
-
-
-class SecretScanningScanHistoryTypeForResponse(TypedDict):
-    """SecretScanningScanHistory"""
-
-    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
-    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
-    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
-    custom_pattern_backfill_scans: NotRequired[
-        list[
-            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
         ]
     ]
 
 
-class SecretScanningScanType(TypedDict):
-    """SecretScanningScan
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
 
-    Information on a single scan performed by secret scanning on the repository
-    """
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    started_at: NotRequired[Union[_dt.datetime, None]]
-
-
-class SecretScanningScanTypeForResponse(TypedDict):
-    """SecretScanningScan
-
-    Information on a single scan performed by secret scanning on the repository
-    """
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    started_at: NotRequired[Union[str, None]]
-
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    started_at: NotRequired[Union[_dt.datetime, None]]
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
-
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
-
-    type: NotRequired[str]
-    status: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    started_at: NotRequired[Union[str, None]]
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
-    "SecretScanningScanHistoryType",
-    "SecretScanningScanHistoryTypeForResponse",
-    "SecretScanningScanType",
-    "SecretScanningScanTypeForResponse",
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
 )

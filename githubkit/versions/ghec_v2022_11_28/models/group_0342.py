@@ -12,40 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0343 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
+class WorkflowDispatchResponse(GitHubModel):
+    """Workflow Dispatch Response
 
-    Protected Branch Pull Request Review
+    Response containing the workflow run ID and URLs.
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    workflow_run_id: int = Field(
+        title="Workflow Run ID", description="The ID of the workflow run."
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
-    )
+    run_url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(WorkflowDispatchResponse)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = ("WorkflowDispatchResponse",)

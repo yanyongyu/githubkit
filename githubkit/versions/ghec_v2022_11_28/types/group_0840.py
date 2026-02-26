@@ -9,45 +9,134 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0555 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0556 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0557 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0586 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
+from .group_0841 import (
+    WebhookPackageUpdatedPropPackagePropPackageVersionType,
+    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
 )
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPackageUpdatedPropPackageType(TypedDict):
+    """WebhookPackageUpdatedPropPackage
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
-    installation: NotRequired[SimpleInstallationType]
+    Information about the package.
+    """
+
+    created_at: str
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
+    updated_at: str
 
 
-class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackage
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    Information about the package.
+    """
+
+    created_at: str
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: str
+
+
+class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
+
+
+class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCreatedType",
-    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropOwnerType",
+    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackageUpdatedPropPackagePropRegistryType",
+    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackageUpdatedPropPackageType",
+    "WebhookPackageUpdatedPropPackageTypeForResponse",
 )

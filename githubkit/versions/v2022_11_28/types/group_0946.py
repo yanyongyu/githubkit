@@ -10,94 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
-    ]
+    default_level: Literal["public", "internal"]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
     TypedDict
 ):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
-    ]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
-    """
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
-    """
-
-    will_alert: bool
-    alert_recipients: list[str]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

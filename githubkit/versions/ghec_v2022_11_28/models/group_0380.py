@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,24 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0074 import SimpleRepository
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
-        default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
+
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    analyses_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
     )
-    errors: Missing[Union[list[str], None]] = Field(
+    artifact_size_in_bytes: Missing[int] = Field(
         default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
     )
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

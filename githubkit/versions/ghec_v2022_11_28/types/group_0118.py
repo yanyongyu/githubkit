@@ -9,37 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0119 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Parameters for an organization ID condition
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
 
-    Parameters for an organization ID condition
+    Parameters for a targeting a repository property
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationIdTargetType",
-    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
 )

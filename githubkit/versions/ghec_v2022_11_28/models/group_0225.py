@@ -10,56 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0202 import ReactionRollup
+from .group_0209 import ReleaseAsset
 
 
-class BaseGist(GitHubModel):
-    """Base Gist
-
-    Base Gist
-    """
+class ReleaseEventPropRelease(GitHubModel):
+    """ReleaseEventPropRelease"""
 
     url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
     html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    assets_url: str = Field()
+    upload_url: str = Field()
+    tarball_url: Union[str, None] = Field()
+    zipball_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    tag_name: str = Field(description="The name of the tag.")
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
     )
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[list[Any]] = Field(default=UNSET)
-    history: Missing[list[Any]] = Field(default=UNSET)
+    name: Union[str, None] = Field()
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    draft: bool = Field(
+        description="true to create a draft (unpublished) release, false to create a published one."
+    )
+    prerelease: bool = Field(
+        description="Whether to identify the release as a prerelease or a full release."
+    )
+    immutable: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the release is immutable."
+    )
+    created_at: _dt.datetime = Field()
+    published_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assets: list[ReleaseAsset] = Field()
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    mentions_count: Missing[int] = Field(default=UNSET)
+    discussion_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the release discussion."
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+model_rebuild(ReleaseEventPropRelease)
 
-
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
-
-__all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
-)
+__all__ = ("ReleaseEventPropRelease",)

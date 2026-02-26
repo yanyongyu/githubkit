@@ -9,31 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0296 import LinkType, LinkTypeForResponse
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
-    description: NotRequired[str]
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class PullRequestSimplePropLinksTypeForResponse(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
-    description: NotRequired[str]
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "PullRequestSimplePropLinksType",
+    "PullRequestSimplePropLinksTypeForResponse",
 )

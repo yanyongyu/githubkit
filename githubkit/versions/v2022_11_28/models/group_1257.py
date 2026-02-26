@@ -17,26 +17,84 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0177 import RepositoryRulesetBypassActor
+from .group_0178 import RepositoryRulesetConditions
+from .group_0189 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0190 import RepositoryRuleUpdate
+from .group_0192 import RepositoryRuleRequiredLinearHistory
+from .group_0193 import RepositoryRuleMergeQueue
+from .group_0195 import RepositoryRuleRequiredDeployments
+from .group_0197 import RepositoryRulePullRequest
+from .group_0199 import RepositoryRuleRequiredStatusChecks
+from .group_0201 import RepositoryRuleCommitMessagePattern
+from .group_0203 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0205 import RepositoryRuleCommitterEmailPattern
+from .group_0207 import RepositoryRuleBranchNamePattern
+from .group_0209 import RepositoryRuleTagNamePattern
+from .group_0211 import RepositoryRuleFilePathRestriction
+from .group_0213 import RepositoryRuleMaxFilePathLength
+from .group_0215 import RepositoryRuleFileExtensionRestriction
+from .group_0217 import RepositoryRuleMaxFileSize
+from .group_0220 import RepositoryRuleWorkflows
+from .group_0222 import RepositoryRuleCodeScanning
+from .group_0224 import RepositoryRuleCopilotCodeReview
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
-    """ReposOwnerRepoStatusesShaPostBody"""
 
-    state: Literal["error", "failure", "pending", "success"] = Field(
-        description="The state of the status."
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    target_url: Missing[Union[str, None]] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the status."
-    )
-    context: Missing[str] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+        description="The actors that can bypass the rules in this ruleset",
     )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoStatusesShaPostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

@@ -10,53 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesOrgSecretType]
+from .group_1170 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
 
-class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesOrgSecretTypeForResponse]
-
-
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
+class OrgsOrgCampaignsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
-class CodespacesOrgSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
+class OrgsOrgCampaignsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: Union[
+        list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse], None
+    ]
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "CodespacesOrgSecretType",
-    "CodespacesOrgSecretTypeForResponse",
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
-    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof0Type",
+    "OrgsOrgCampaignsPostBodyOneof0TypeForResponse",
 )

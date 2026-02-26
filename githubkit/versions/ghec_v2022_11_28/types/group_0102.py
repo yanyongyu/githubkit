@@ -13,11 +13,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyType(TypedDict):
-    """Custom Property for Organization
-
-    Custom property defined for an organization
-    """
+class CustomPropertyBaseType(TypedDict):
+    """CustomPropertyBase"""
 
     property_name: NotRequired[str]
     url: NotRequired[str]
@@ -29,16 +26,10 @@ class OrganizationCustomPropertyType(TypedDict):
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
 
 
-class OrganizationCustomPropertyTypeForResponse(TypedDict):
-    """Custom Property for Organization
-
-    Custom property defined for an organization
-    """
+class CustomPropertyBaseTypeForResponse(TypedDict):
+    """CustomPropertyBase"""
 
     property_name: NotRequired[str]
     url: NotRequired[str]
@@ -50,12 +41,9 @@ class OrganizationCustomPropertyTypeForResponse(TypedDict):
     default_value: NotRequired[Union[str, list[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
-    ]
 
 
 __all__ = (
-    "OrganizationCustomPropertyType",
-    "OrganizationCustomPropertyTypeForResponse",
+    "CustomPropertyBaseType",
+    "CustomPropertyBaseTypeForResponse",
 )

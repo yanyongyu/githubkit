@@ -15,36 +15,69 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0647 import WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator
 
+class WebhookIssueCommentPinnedPropIssueAllof0PropAssignee(GitHubModel):
+    """User"""
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
-    html_url: str = Field()
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
-    labels_url: str = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems(GitHubModel):
+    """Label"""
+
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropMilestone)
+class WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest"""
 
-__all__ = ("WebhookIssueCommentPinnedPropIssueAllof0PropMilestone",)
+    diff_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    patch_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest)
+
+__all__ = (
+    "WebhookIssueCommentPinnedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest",
+)

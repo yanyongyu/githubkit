@@ -11,18 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0252 import ArtifactDeploymentRecord
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    repository_id: int = Field(description="The repository id")
-    alert_numbers: list[int] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of deployment records created"
     )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
 
-__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)

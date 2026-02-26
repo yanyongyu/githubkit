@@ -14,40 +14,40 @@ from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
+from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0477 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0521 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
+from .group_0522 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
 
 
-class WebhookTeamDeletedType(TypedDict):
-    """team deleted event"""
+class WebhookTeamAddedToRepositoryType(TypedDict):
+    """team added_to_repository event"""
 
-    action: Literal["deleted"]
+    action: Literal["added_to_repository"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamDeletedPropRepositoryType]
+    repository: NotRequired[WebhookTeamAddedToRepositoryPropRepositoryType]
     sender: NotRequired[SimpleUserType]
     team: WebhooksTeam1Type
 
 
-class WebhookTeamDeletedTypeForResponse(TypedDict):
-    """team deleted event"""
+class WebhookTeamAddedToRepositoryTypeForResponse(TypedDict):
+    """team added_to_repository event"""
 
-    action: Literal["deleted"]
+    action: Literal["added_to_repository"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[WebhookTeamDeletedPropRepositoryTypeForResponse]
+    repository: NotRequired[WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
     team: WebhooksTeam1TypeForResponse
 
 
-class WebhookTeamDeletedPropRepositoryType(TypedDict):
+class WebhookTeamAddedToRepositoryPropRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -73,7 +73,7 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, _dt.datetime]
     custom_properties: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropCustomPropertiesType
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -108,7 +108,7 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     labels_url: str
     language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseType, None]
+    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType, None]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
@@ -119,8 +119,10 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[WebhookTeamDeletedPropRepositoryPropPermissionsType]
+    owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[
+        WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType
+    ]
     private: bool
     public: NotRequired[bool]
     pulls_url: str
@@ -147,7 +149,7 @@ class WebhookTeamDeletedPropRepositoryType(TypedDict):
     watchers_count: int
 
 
-class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
+class WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse(TypedDict):
     """Repository
 
     A git repository
@@ -173,7 +175,7 @@ class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
     contributors_url: str
     created_at: Union[int, str]
     custom_properties: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -208,7 +210,9 @@ class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
     labels_url: str
     language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse, None]
+    license_: Union[
+        WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse, None
+    ]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
@@ -219,9 +223,11 @@ class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse, None]
+    owner: Union[
+        WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse, None
+    ]
     permissions: NotRequired[
-        WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse
+        WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse
     ]
     private: bool
     public: NotRequired[bool]
@@ -249,19 +255,10 @@ class WebhookTeamDeletedPropRepositoryTypeForResponse(TypedDict):
     watchers_count: int
 
 
-WebhookTeamDeletedPropRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""WebhookTeamDeletedPropRepositoryPropCustomProperties
-
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values.
-"""
-
-
-WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
+WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType: TypeAlias = dict[
     str, Any
 ]
-"""WebhookTeamDeletedPropRepositoryPropCustomProperties
+"""WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
 
 The custom properties that were defined for the repository. The keys are the
 custom property names, and the values are the corresponding custom property
@@ -269,7 +266,18 @@ values.
 """
 
 
-class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
+WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -279,7 +287,7 @@ class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse(TypedDict):
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse(TypedDict):
     """License"""
 
     key: str
@@ -289,7 +297,7 @@ class WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse(TypedDict):
     url: Union[str, None]
 
 
-class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -316,7 +324,7 @@ class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse(TypedDict):
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -343,8 +351,8 @@ class WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -353,8 +361,10 @@ class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
     triage: NotRequired[bool]
 
 
-class WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse(TypedDict):
-    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -364,16 +374,16 @@ class WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropLicenseType",
-    "WebhookTeamDeletedPropRepositoryPropLicenseTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropOwnerType",
-    "WebhookTeamDeletedPropRepositoryPropOwnerTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryPropPermissionsType",
-    "WebhookTeamDeletedPropRepositoryPropPermissionsTypeForResponse",
-    "WebhookTeamDeletedPropRepositoryType",
-    "WebhookTeamDeletedPropRepositoryTypeForResponse",
-    "WebhookTeamDeletedType",
-    "WebhookTeamDeletedTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomPropertiesTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicenseType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicenseTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwnerType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwnerTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsType",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissionsTypeForResponse",
+    "WebhookTeamAddedToRepositoryPropRepositoryType",
+    "WebhookTeamAddedToRepositoryPropRepositoryTypeForResponse",
+    "WebhookTeamAddedToRepositoryType",
+    "WebhookTeamAddedToRepositoryTypeForResponse",
 )

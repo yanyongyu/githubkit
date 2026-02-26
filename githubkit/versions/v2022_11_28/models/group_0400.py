@@ -13,20 +13,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0121 import Team
+from .group_0159 import Link
 
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
+class PullRequestPropLinks(GitHubModel):
+    """PullRequestPropLinks"""
 
-    Pull Request Review Request
-    """
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
 
+model_rebuild(PullRequestPropLinks)
 
-model_rebuild(PullRequestReviewRequest)
-
-__all__ = ("PullRequestReviewRequest",)
+__all__ = ("PullRequestPropLinks",)

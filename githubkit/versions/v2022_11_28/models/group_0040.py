@@ -80,6 +80,9 @@ class DependabotAlertWithRepository(GitHubModel):
             description="Information about an active dismissal request for this Dependabot alert.",
         )
     )
+    assignees: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The users assigned to this alert."
+    )
     repository: SimpleRepository = Field(
         title="Simple Repository", description="A GitHub repository."
     )

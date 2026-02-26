@@ -9,55 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class ReviewRequestRemovedIssueEventType(TypedDict):
-    """Review Request Removed Issue Event
+class UnassignedIssueEventType(TypedDict):
+    """Unassigned Issue Event
 
-    Review Request Removed Issue Event
+    Unassigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_request_removed"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    assignee: SimpleUserType
+    assigner: SimpleUserType
 
 
-class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
-    """Review Request Removed Issue Event
+class UnassignedIssueEventTypeForResponse(TypedDict):
+    """Unassigned Issue Event
 
-    Review Request Removed Issue Event
+    Unassigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_request_removed"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ReviewRequestRemovedIssueEventType",
-    "ReviewRequestRemovedIssueEventTypeForResponse",
+    "UnassignedIssueEventType",
+    "UnassignedIssueEventTypeForResponse",
 )

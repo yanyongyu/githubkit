@@ -9,40 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    A response to an exemption request by a delegated bypasser.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
+    id: int
+    node_id: str
 
 
-class ExemptionResponseTypeForResponse(TypedDict):
-    """Exemption response
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    A response to an exemption request by a delegated bypasser.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
+    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
+    with-github-apps)."
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
+    id: int
+    node_id: str
 
 
 __all__ = (
-    "ExemptionResponseType",
-    "ExemptionResponseTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

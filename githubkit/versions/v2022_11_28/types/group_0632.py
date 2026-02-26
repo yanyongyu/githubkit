@@ -9,54 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0474 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0475 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0476 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0477 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0491 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
-from .group_0492 import WebhooksChangesType, WebhooksChangesTypeForResponse
-from .group_0633 import (
-    WebhookIssueCommentEditedPropIssueType,
-    WebhookIssueCommentEditedPropIssueTypeForResponse,
+from .group_0627 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentEditedType(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
-    comment: WebhooksIssueCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentEditedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssueCommentEditedTypeForResponse(TypedDict):
-    """issue_comment edited event"""
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesTypeForResponse
-    comment: WebhooksIssueCommentTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        None,
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssueCommentEditedType",
-    "WebhookIssueCommentEditedTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse",
 )

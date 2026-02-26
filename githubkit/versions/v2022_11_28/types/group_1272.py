@@ -9,28 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+
+
+class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
+
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
+
+
+class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
+
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1TypeForResponse",
 )

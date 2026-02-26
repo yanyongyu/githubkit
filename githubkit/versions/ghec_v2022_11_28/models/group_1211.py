@@ -14,17 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["text", "number", "date"] = Field(
-        description="The field's data type."
+    role: Missing[Literal["admin", "member"]] = Field(
+        default=UNSET,
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
+model_rebuild(OrgsOrgMembershipsUsernamePutBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)
+__all__ = ("OrgsOrgMembershipsUsernamePutBody",)

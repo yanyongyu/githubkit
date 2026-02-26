@@ -9,26 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class OrgHookType(TypedDict):
+    """Org Hook
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    Org Hook
+    """
+
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
+    type: str
 
 
-class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class OrgHookTypeForResponse(TypedDict):
+    """Org Hook
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    Org Hook
+    """
+
+    id: int
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigTypeForResponse
+    updated_at: str
+    created_at: str
+    type: str
+
+
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+
+
+class OrgHookPropConfigTypeForResponse(TypedDict):
+    """OrgHookPropConfig"""
+
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsTimeStatsItemsType",
-    "ApiInsightsTimeStatsItemsTypeForResponse",
+    "OrgHookPropConfigType",
+    "OrgHookPropConfigTypeForResponse",
+    "OrgHookType",
+    "OrgHookTypeForResponse",
 )

@@ -18,136 +18,104 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0205 import PullRequestMinimal
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
 
 
-class PullRequestReviewCommentEvent(GitHubModel):
-    """PullRequestReviewCommentEvent"""
+class ForkEventPropForkee(GitHubModel):
+    """ForkEventPropForkee"""
 
-    action: str = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
-    comment: PullRequestReviewCommentEventPropComment = Field()
-
-
-class PullRequestReviewCommentEventPropComment(GitHubModel):
-    """PullRequestReviewCommentEventPropComment"""
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    subject_type: Missing[Union[str, None]] = Field(default=UNSET)
-    commit_id: str = Field()
-    user: Union[PullRequestReviewCommentEventPropCommentPropUser, None] = Field(
-        title="User"
-    )
-    body: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: PullRequestReviewCommentEventPropCommentPropLinks = Field(alias="_links")
-    original_commit_id: str = Field()
-    reactions: PullRequestReviewCommentEventPropCommentPropReactions = Field(
-        title="Reactions"
-    )
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-
-
-class PullRequestReviewCommentEventPropCommentPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
     id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    full_name: Missing[str] = Field(default=UNSET)
+    private: Missing[bool] = Field(default=UNSET)
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    fork: Missing[bool] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class PullRequestReviewCommentEventPropCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class PullRequestReviewCommentEventPropCommentPropLinks(GitHubModel):
-    """PullRequestReviewCommentEventPropCommentPropLinks"""
-
-    html: PullRequestReviewCommentEventPropCommentPropLinksPropHtml = Field(
-        title="Link"
+    forks_url: Missing[str] = Field(default=UNSET)
+    keys_url: Missing[str] = Field(default=UNSET)
+    collaborators_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+    hooks_url: Missing[str] = Field(default=UNSET)
+    issue_events_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    assignees_url: Missing[str] = Field(default=UNSET)
+    branches_url: Missing[str] = Field(default=UNSET)
+    tags_url: Missing[str] = Field(default=UNSET)
+    blobs_url: Missing[str] = Field(default=UNSET)
+    git_tags_url: Missing[str] = Field(default=UNSET)
+    git_refs_url: Missing[str] = Field(default=UNSET)
+    trees_url: Missing[str] = Field(default=UNSET)
+    statuses_url: Missing[str] = Field(default=UNSET)
+    languages_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: Missing[str] = Field(default=UNSET)
+    contributors_url: Missing[str] = Field(default=UNSET)
+    subscribers_url: Missing[str] = Field(default=UNSET)
+    subscription_url: Missing[str] = Field(default=UNSET)
+    commits_url: Missing[str] = Field(default=UNSET)
+    git_commits_url: Missing[str] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: Missing[str] = Field(default=UNSET)
+    contents_url: Missing[str] = Field(default=UNSET)
+    compare_url: Missing[str] = Field(default=UNSET)
+    merges_url: Missing[str] = Field(default=UNSET)
+    archive_url: Missing[str] = Field(default=UNSET)
+    downloads_url: Missing[str] = Field(default=UNSET)
+    issues_url: Missing[str] = Field(default=UNSET)
+    pulls_url: Missing[str] = Field(default=UNSET)
+    milestones_url: Missing[str] = Field(default=UNSET)
+    notifications_url: Missing[str] = Field(default=UNSET)
+    labels_url: Missing[str] = Field(default=UNSET)
+    releases_url: Missing[str] = Field(default=UNSET)
+    deployments_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    ssh_url: Missing[str] = Field(default=UNSET)
+    clone_url: Missing[str] = Field(default=UNSET)
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[Union[str, None]] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    pull_request: PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest = (
-        Field(title="Link")
+    forks_count: Missing[int] = Field(default=UNSET)
+    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    license_: Missing[Union[None, LicenseSimple]] = Field(
+        default=UNSET, alias="license"
     )
-    self_: PullRequestReviewCommentEventPropCommentPropLinksPropSelf = Field(
-        alias="self", title="Link"
-    )
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    forks: Missing[int] = Field(default=UNSET)
+    open_issues: Missing[int] = Field(default=UNSET)
+    watchers: Missing[int] = Field(default=UNSET)
+    default_branch: Missing[str] = Field(default=UNSET)
+    public: Missing[bool] = Field(default=UNSET)
 
 
-class PullRequestReviewCommentEventPropCommentPropLinksPropHtml(GitHubModel):
-    """Link"""
+model_rebuild(ForkEventPropForkee)
 
-    href: str = Field()
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class PullRequestReviewCommentEventPropCommentPropLinksPropSelf(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(PullRequestReviewCommentEvent)
-model_rebuild(PullRequestReviewCommentEventPropComment)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropUser)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropReactions)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropLinks)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropHtml)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest)
-model_rebuild(PullRequestReviewCommentEventPropCommentPropLinksPropSelf)
-
-__all__ = (
-    "PullRequestReviewCommentEvent",
-    "PullRequestReviewCommentEventPropComment",
-    "PullRequestReviewCommentEventPropCommentPropLinks",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropHtml",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest",
-    "PullRequestReviewCommentEventPropCommentPropLinksPropSelf",
-    "PullRequestReviewCommentEventPropCommentPropReactions",
-    "PullRequestReviewCommentEventPropCommentPropUser",
-)
+__all__ = ("ForkEventPropForkee",)

@@ -243,6 +243,9 @@ class CodeSecurityClient:
         secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -372,6 +375,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -751,6 +757,9 @@ class CodeSecurityClient:
         secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -886,6 +895,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -1626,6 +1638,9 @@ class CodeSecurityClient:
         secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -1754,6 +1769,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[
@@ -2288,6 +2306,9 @@ class CodeSecurityClient:
         secret_scanning_delegated_alert_dismissal: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2423,6 +2444,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_extended_metadata: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         private_vulnerability_reporting: Missing[

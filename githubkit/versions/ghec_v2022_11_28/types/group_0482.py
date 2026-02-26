@@ -12,26 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0131 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
+)
 
-class RepositoryRuleDetailedOneof6Type(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
 
-    type: Literal["required_signatures"]
+class RepositoryRuleDetailedOneof1Type(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
+class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
 
-    type: Literal["required_signatures"]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof6Type",
-    "RepositoryRuleDetailedOneof6TypeForResponse",
+    "RepositoryRuleDetailedOneof1Type",
+    "RepositoryRuleDetailedOneof1TypeForResponse",
 )

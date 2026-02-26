@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0260 import WorkflowRun
+from .group_0115 import Runner
 
 
-class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int = Field()
-    workflow_runs: list[WorkflowRun] = Field()
+    runners: list[Runner] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
+model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)

@@ -11,22 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0034 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
-    selected_organization_ids: list[int]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    selected_organization_ids: list[int]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

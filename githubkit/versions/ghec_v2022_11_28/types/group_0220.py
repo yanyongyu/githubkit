@@ -9,51 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0199 import ReactionRollupType, ReactionRollupTypeForResponse
-
-
-class CommitCommentEventPropCommentType(TypedDict):
-    """CommitCommentEventPropComment"""
-
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserType]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    reactions: NotRequired[ReactionRollupType]
+from .group_0208 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0221 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class CommitCommentEventPropCommentTypeForResponse(TypedDict):
-    """CommitCommentEventPropComment"""
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    action: str
+    review: PullRequestReviewEventPropReviewType
+    pull_request: PullRequestMinimalType
+
+
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
+
+    action: str
+    review: PullRequestReviewEventPropReviewTypeForResponse
+    pull_request: PullRequestMinimalTypeForResponse
 
 
 __all__ = (
-    "CommitCommentEventPropCommentType",
-    "CommitCommentEventPropCommentTypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

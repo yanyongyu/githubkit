@@ -9,46 +9,157 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0263 import (
+    DismissalRequestResponseType,
+    DismissalRequestResponseTypeForResponse,
+)
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
 
-    A list of external groups available to be connected to a team
+class DependabotAlertDismissalRequestType(TypedDict):
+    """Dependabot alert dismissal request
+
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
+    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
+class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    A list of external groups available to be connected to a team
+    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+    id: NotRequired[int]
+    number: NotRequired[int]
+    repository: NotRequired[
+        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
+    ]
+    organization: NotRequired[
+        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
+    ]
+    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
+    request_type: NotRequired[str]
+    data: NotRequired[
+        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
+    ]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
+    requester_comment: NotRequired[Union[str, None]]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
 
-    group_id: int
-    group_name: str
-    updated_at: str
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
+class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRepository
 
-    group_id: int
-    group_name: str
-    updated_at: str
+    The repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropOrganization
+
+    The organization associated with the repository the dismissal request is for.
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropRequester
+
+    The user who requested the dismissal request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    alert_title: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestPropDataItems"""
+
+    reason: NotRequired[str]
+    alert_number: NotRequired[str]
+    alert_title: NotRequired[str]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "DependabotAlertDismissalRequestPropDataItemsType",
+    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
+    "DependabotAlertDismissalRequestPropOrganizationType",
+    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
+    "DependabotAlertDismissalRequestPropRepositoryType",
+    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
+    "DependabotAlertDismissalRequestPropRequesterType",
+    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestType",
+    "DependabotAlertDismissalRequestTypeForResponse",
 )

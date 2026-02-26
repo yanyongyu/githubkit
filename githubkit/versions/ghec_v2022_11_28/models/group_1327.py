@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
     )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
     )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

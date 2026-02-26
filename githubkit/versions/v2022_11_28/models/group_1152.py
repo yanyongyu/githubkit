@@ -12,17 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0287 import CheckRun
-
-
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
-
-    total_count: int = Field()
-    check_runs: list[CheckRun] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

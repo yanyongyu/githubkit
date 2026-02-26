@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str
-    key: str
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    key_id: str
-    key: str
+    total_count: int
+    installations: list[InstallationType]
+
+
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
+
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
-    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
 )

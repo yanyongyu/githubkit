@@ -12,21 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0164 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
-    """Repository ruleset conditions for repository IDs
-
-    Parameters for a repository ID condition
-    """
-
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    review_draft_pull_requests: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

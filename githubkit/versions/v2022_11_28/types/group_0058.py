@@ -13,7 +13,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0043 import LabelType, LabelTypeForResponse
-from .group_0050 import IssueType, IssueTypeForResponse
+from .group_0052 import IssueType, IssueTypeForResponse
 
 
 class IssuesEventType(TypedDict):

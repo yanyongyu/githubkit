@@ -82,9 +82,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBodyType,
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
@@ -3737,9 +3735,7 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -3757,21 +3753,6 @@ class IssuesClient:
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
-    @overload
-    def add_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        labels: Missing[
-            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
-        ] = UNSET,
-    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
-
     def add_labels(
         self,
         owner: str,
@@ -3784,9 +3765,7 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
         **kwargs,
@@ -3795,21 +3774,18 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
 
-        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+        Adds labels to an issue.
 
         See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
 
-        from githubkit.compat import PYDANTIC_V2
-
         from ..models import (
             BasicError,
             Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
             ValidationError,
         )
 
@@ -3826,13 +3802,8 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
-                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                    Annotated[
-                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                        Field(min_length=1 if PYDANTIC_V2 else None),
-                    ],
-                    str,
+                    list[str],
+                    list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items],
                 ],
                 json,
             )
@@ -3865,9 +3836,7 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
@@ -3885,21 +3854,6 @@ class IssuesClient:
         labels: Missing[list[str]] = UNSET,
     ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
 
-    @overload
-    async def async_add_labels(
-        self,
-        owner: str,
-        repo: str,
-        issue_number: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        labels: Missing[
-            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
-        ] = UNSET,
-    ) -> Response[list[Label], list[LabelTypeForResponse]]: ...
-
     async def async_add_labels(
         self,
         owner: str,
@@ -3912,9 +3866,7 @@ class IssuesClient:
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
                 list[str],
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
-                str,
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType],
             ]
         ] = UNSET,
         **kwargs,
@@ -3923,21 +3875,18 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/labels
 
-        Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
+        Adds labels to an issue.
 
         See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue
         """
 
         from typing import Union
 
-        from githubkit.compat import PYDANTIC_V2
-
         from ..models import (
             BasicError,
             Label,
             ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
+            ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
             ValidationError,
         )
 
@@ -3954,13 +3903,8 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
-                    ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
-                    Annotated[
-                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                        Field(min_length=1 if PYDANTIC_V2 else None),
-                    ],
-                    str,
+                    list[str],
+                    list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items],
                 ],
                 json,
             )

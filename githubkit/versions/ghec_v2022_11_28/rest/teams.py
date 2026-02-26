@@ -670,6 +670,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     async def async_delete_in_org(
@@ -703,6 +704,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     @overload
@@ -908,6 +910,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
+            error_models={},
         )
 
     async def async_list_linked_external_idp_groups_to_team_for_org(
@@ -941,6 +944,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroups,
+            error_models={},
         )
 
     def unlink_external_idp_group_from_team_for_org(
@@ -971,6 +975,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     async def async_unlink_external_idp_group_from_team_for_org(
@@ -1001,6 +1006,7 @@ class TeamsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={},
         )
 
     @overload
@@ -1071,6 +1077,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
+            error_models={},
         )
 
     @overload
@@ -1141,6 +1148,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ExternalGroup,
+            error_models={},
         )
 
     def list_pending_invitations_in_org(
@@ -1185,6 +1193,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     async def async_list_pending_invitations_in_org(
@@ -1229,6 +1238,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[OrganizationInvitation],
+            error_models={},
         )
 
     def list_members_in_org(
@@ -2075,6 +2085,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     async def async_list_idp_groups_in_org(
@@ -2111,6 +2122,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     @overload
@@ -2189,6 +2201,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     @overload
@@ -2267,6 +2280,7 @@ class TeamsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GroupMapping,
+            error_models={},
         )
 
     def list_child_in_org(

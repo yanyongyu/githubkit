@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolType(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    A tool that must provide code review results for this rule to pass.
-    """
-
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse(TypedDict):
-    """CopilotCodeReviewAnalysisTool
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    A tool that must provide code review results for this rule to pass.
-    """
-
-    name: Literal["CodeQL", "ESLint", "PMD"]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
-    "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,46 +16,78 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
-        Field(description="The scope of the budget")
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
+    organization: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+    ] = Field(default=UNSET)
+    ruleset: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+    ] = Field(
         default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
+        description="The created or existing ruleset (if create_ruleset was true).",
     )
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the organization."
+    )
+    avatar_url: Missing[str] = Field(
+        default=UNSET, description="The avatar URL of the organization."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the .github-private repository."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    full_name: Missing[str] = Field(
+        default=UNSET, description="The full name of the repository (owner/name)."
+    )
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    enforcement: Missing[str] = Field(
+        default=UNSET, description="The enforcement level of the ruleset."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
 )

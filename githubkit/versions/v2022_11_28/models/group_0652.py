@@ -15,33 +15,94 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0647 import WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator
+from .group_0651 import (
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+)
 
 
-class WebhookIssueCommentPinnedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssueCommentPinnedPropIssueMergedMilestone"""
+class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+    """App
 
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[_dt.datetime, None] = Field()
     description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    events: Missing[
+        list[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ] = Field(default=UNSET, description="The list of events for the GitHub app")
+    external_url: Union[str, None] = Field()
     html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    owner: Union[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssueCommentPinnedPropIssueMergedMilestone)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = ("WebhookIssueCommentPinnedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp",)

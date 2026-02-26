@@ -10,13 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0207 import IssueType, IssueTypeForResponse
+from .group_0298 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0301 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class ProjectsV2ItemWithContentType(TypedDict):
+class ProjectsV2ItemSimpleType(TypedDict):
     """Projects v2 Item
 
     An item belonging to a project
@@ -24,18 +27,19 @@ class ProjectsV2ItemWithContentType(TypedDict):
 
     id: float
     node_id: NotRequired[str]
-    project_url: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
     content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
     creator: NotRequired[SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
     archived_at: Union[_dt.datetime, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
     """Projects v2 Item
 
     An item belonging to a project
@@ -43,48 +47,23 @@ class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
 
     id: float
     node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
     content: NotRequired[
-        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
     ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
     creator: NotRequired[SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
     archived_at: Union[str, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
-
-
-ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
-
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
-
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2ItemWithContentPropContentType",
-    "ProjectsV2ItemWithContentPropContentTypeForResponse",
-    "ProjectsV2ItemWithContentPropFieldsItemsType",
-    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
-    "ProjectsV2ItemWithContentType",
-    "ProjectsV2ItemWithContentTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

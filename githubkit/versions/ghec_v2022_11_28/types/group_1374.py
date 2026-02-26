@@ -9,26 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoKeysPostBodyType(TypedDict):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: NotRequired[str]
-    key: str
-    read_only: NotRequired[bool]
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
+            ]
+        ]
+    ]
+    assignees: NotRequired[list[str]]
+    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoKeysPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    title: NotRequired[str]
-    key: str
-    read_only: NotRequired[bool]
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
+            ]
+        ]
+    ]
+    assignees: NotRequired[list[str]]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoKeysPostBodyType",
-    "ReposOwnerRepoKeysPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
 )

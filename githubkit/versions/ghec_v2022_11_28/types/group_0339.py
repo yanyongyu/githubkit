@@ -11,58 +11,77 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class ActivityType(TypedDict):
-    """Activity
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    Activity
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
 
-    Activity
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+
+
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

@@ -9,32 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyType]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: int
+    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
 
-    config: NotRequired[WebhookConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+class DeploymentBranchPolicyTypeForResponse(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+    "DeploymentBranchPolicyType",
+    "DeploymentBranchPolicyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
 )

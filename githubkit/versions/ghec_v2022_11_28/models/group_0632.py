@@ -18,18 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0555 import EnterpriseWebhooks
-from .group_0556 import SimpleInstallation
-from .group_0557 import OrganizationSimpleWebhooks
-from .group_0558 import RepositoryWebhooks
-from .group_0633 import WebhookCodeScanningAlertFixedPropAlert
+from .group_0559 import EnterpriseWebhooks
+from .group_0560 import SimpleInstallation
+from .group_0561 import OrganizationSimpleWebhooks
+from .group_0562 import RepositoryWebhooks
+from .group_0633 import WebhookCodeScanningAlertClosedByUserPropAlert
 
 
-class WebhookCodeScanningAlertFixed(GitHubModel):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertClosedByUser(GitHubModel):
+    """code_scanning_alert closed_by_user event"""
 
-    action: Literal["fixed"] = Field()
-    alert: WebhookCodeScanningAlertFixedPropAlert = Field(
+    action: Literal["closed_by_user"] = Field()
+    alert: WebhookCodeScanningAlertClosedByUserPropAlert = Field(
         description="The code scanning alert involved in the event."
     )
     commit_oid: str = Field(
@@ -60,6 +60,6 @@ class WebhookCodeScanningAlertFixed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertFixed)
+model_rebuild(WebhookCodeScanningAlertClosedByUser)
 
-__all__ = ("WebhookCodeScanningAlertFixed",)
+__all__ = ("WebhookCodeScanningAlertClosedByUser",)

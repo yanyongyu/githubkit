@@ -13,89 +13,69 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
         ]
     ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
+
+
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
         ]
     ]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
-
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
 )
