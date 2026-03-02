@@ -46,7 +46,7 @@ class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(description="The reason for dismissing or closing the alert.")
-    fixed_at: Missing[None] = Field(
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
@@ -57,7 +57,7 @@ class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
     rule: WebhookCodeScanningAlertFixedPropAlertPropRule = Field()
-    state: Union[None, Literal["fixed"]] = Field(
+    state: Union[None, Literal["fixed", "dismissed"]] = Field(
         description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
     )
     tool: WebhookCodeScanningAlertFixedPropAlertPropTool = Field()

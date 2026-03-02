@@ -30,7 +30,7 @@ class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
     instances_url: NotRequired[str]
     most_recent_instance: NotRequired[
@@ -38,7 +38,7 @@ class WebhookCodeScanningAlertFixedPropAlertType(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertFixedPropAlertPropRuleType
-    state: Union[None, Literal["fixed"]]
+    state: Union[None, Literal["fixed", "dismissed"]]
     tool: WebhookCodeScanningAlertFixedPropAlertPropToolType
     url: str
 
@@ -59,7 +59,7 @@ class WebhookCodeScanningAlertFixedPropAlertTypeForResponse(TypedDict):
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[str, None]]
     html_url: str
     instances_url: NotRequired[str]
     most_recent_instance: NotRequired[
@@ -70,7 +70,7 @@ class WebhookCodeScanningAlertFixedPropAlertTypeForResponse(TypedDict):
     ]
     number: int
     rule: WebhookCodeScanningAlertFixedPropAlertPropRuleTypeForResponse
-    state: Union[None, Literal["fixed"]]
+    state: Union[None, Literal["fixed", "dismissed"]]
     tool: WebhookCodeScanningAlertFixedPropAlertPropToolTypeForResponse
     url: str
 
