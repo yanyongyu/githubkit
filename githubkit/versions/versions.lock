@@ -143,6 +143,11 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/ee16ba11
 "/components/schemas/webhook-workflow-run-requested/properties/workflow_run/properties/pull_requests/items/properties/number" = {type = "integer"}
 "/components/schemas/webhook-code-scanning-alert-fixed/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
 "/components/schemas/webhook-code-scanning-alert-fixed/properties/alert/properties/state/enum" = {"<add>" = ["dismissed"]}
+"/components/schemas/webhook-code-scanning-alert-closed-by-user/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened-by-user/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-updated-assignment/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
 "/webhooks/repository-dispatch-sample.collected/post" = {operationId = "repository-dispatch"}
 "/components/schemas/webhooks_answer/properties/parent_id" = {type = ["integer", "null"]}
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}

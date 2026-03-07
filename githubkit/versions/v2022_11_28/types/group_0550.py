@@ -28,7 +28,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
     dismissed_by: None
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: None
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
@@ -55,7 +55,7 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse(TypedDict):
     dismissed_by: None
     dismissed_comment: NotRequired[Union[str, None]]
     dismissed_reason: None
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[str, None]]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
