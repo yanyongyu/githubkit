@@ -9,108 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportGheType(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class UsageReportExportListType(TypedDict):
+    """UsageReportExportList"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
+    usage_report_exports: list[UsageReportExportType]
 
 
-class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class UsageReportExportListTypeForResponse(TypedDict):
+    """UsageReportExportList"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[
-        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
-    ]
-    usage_items: list[
-        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
-    ]
+    usage_report_exports: list[UsageReportExportTypeForResponse]
 
 
-class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class UsageReportExportType(TypedDict):
+    """UsageReportExport"""
 
     id: str
-    name: str
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: _dt.date
+    end_date: _dt.date
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[_dt.datetime]
+    actor: NotRequired[str]
 
 
-class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class UsageReportExportTypeForResponse(TypedDict):
+    """UsageReportExport"""
 
     id: str
-    name: str
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    report_type: Literal["detailed", "summarized", "premium_request"]
+    start_date: str
+    end_date: str
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[str]
+    actor: NotRequired[str]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhePropCostCenterType",
-    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportGheType",
-    "BillingPremiumRequestUsageReportGheTypeForResponse",
+    "UsageReportExportListType",
+    "UsageReportExportListTypeForResponse",
+    "UsageReportExportType",
+    "UsageReportExportTypeForResponse",
 )

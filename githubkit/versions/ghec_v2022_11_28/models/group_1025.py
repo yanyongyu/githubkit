@@ -42,7 +42,7 @@ class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubMod
     )
     image_id: Missing[str] = Field(
         default=UNSET,
-        description="The unique identifier of the runner image. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.",
+        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
     )
     image_version: Missing[Union[str, None]] = Field(
         default=UNSET,

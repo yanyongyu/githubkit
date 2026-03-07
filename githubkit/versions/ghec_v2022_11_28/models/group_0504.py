@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0178 import (
+from .group_0177 import (
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -26,13 +26,13 @@ from .group_0178 import (
     SecretScanningLocationPullRequestReview,
     SecretScanningLocationWikiCommit,
 )
-from .group_0179 import (
+from .group_0178 import (
     SecretScanningLocationIssueComment,
     SecretScanningLocationIssueTitle,
     SecretScanningLocationPullRequestReviewComment,
     SecretScanningLocationPullRequestTitle,
 )
-from .group_0180 import (
+from .group_0179 import (
     SecretScanningLocationDiscussionBody,
     SecretScanningLocationPullRequestComment,
 )

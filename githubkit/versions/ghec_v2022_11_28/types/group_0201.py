@@ -9,58 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
-    The type of issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
 
-    The type of issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
 )

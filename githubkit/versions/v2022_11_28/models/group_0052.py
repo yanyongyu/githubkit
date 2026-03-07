@@ -60,7 +60,7 @@ class Issue(GitHubModel):
         description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
     )
     assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
     milestone: Union[None, Milestone] = Field()
     locked: bool = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)

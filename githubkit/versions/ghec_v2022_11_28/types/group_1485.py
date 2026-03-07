@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0305 import (
+from .group_0304 import (
     ProjectsV2FieldIterationConfigurationType,
     ProjectsV2FieldIterationConfigurationTypeForResponse,
 )

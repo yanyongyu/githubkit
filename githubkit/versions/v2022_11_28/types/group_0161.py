@@ -62,9 +62,9 @@ class PullRequestSimpleType(TypedDict):
     merged_at: Union[_dt.datetime, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamType], None]]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamType]]
     head: PullRequestSimplePropHeadType
     base: PullRequestSimplePropBaseType
     links: PullRequestSimplePropLinksType
@@ -115,9 +115,9 @@ class PullRequestSimpleTypeForResponse(TypedDict):
     merged_at: Union[str, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_teams: NotRequired[Union[list[TeamTypeForResponse], None]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamTypeForResponse]]
     head: PullRequestSimplePropHeadTypeForResponse
     base: PullRequestSimplePropBaseTypeForResponse
     links: PullRequestSimplePropLinksTypeForResponse

@@ -18,33 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetBudget(GitHubModel):
-    """GetBudget"""
+class UpdateBudget(GitHubModel):
+    """UpdateBudget"""
 
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
-        Field(description="The type of scope for the budget")
+    message: str = Field(
+        description="A message indicating the result of the update operation"
     )
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
-    )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+    budget: UpdateBudgetPropBudget = Field()
 
 
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudget(GitHubModel):
+    """UpdateBudgetPropBudget"""
+
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The type of scope for the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_amount: Missing[float] = Field(
+        default=UNSET, description="The budget amount in dollars"
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET, description="A single product or sku to apply the budget to."
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
+        default=UNSET
+    )
+
+
+class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
         default=UNSET, description="Whether alerts are enabled for this budget"
@@ -54,10 +66,12 @@ class GetBudgetPropBudgetAlerting(GitHubModel):
     )
 
 
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
+model_rebuild(UpdateBudget)
+model_rebuild(UpdateBudgetPropBudget)
+model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
 
 __all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
+    "UpdateBudget",
+    "UpdateBudgetPropBudget",
+    "UpdateBudgetPropBudgetPropBudgetAlerting",
 )

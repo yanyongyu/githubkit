@@ -1911,64 +1911,76 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse as RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
     )
     from .group_0226 import (
-        RepositoryRuleParamsCopilotCodeReviewAnalysisToolType as RepositoryRuleParamsCopilotCodeReviewAnalysisToolType,
-    )
-    from .group_0226 import (
-        RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse as RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse,
-    )
-    from .group_0227 import (
         RepositoryRulesetPropLinksPropHtmlType as RepositoryRulesetPropLinksPropHtmlType,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksPropHtmlTypeForResponse as RepositoryRulesetPropLinksPropHtmlTypeForResponse,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksPropSelfType as RepositoryRulesetPropLinksPropSelfType,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksPropSelfTypeForResponse as RepositoryRulesetPropLinksPropSelfTypeForResponse,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksType as RepositoryRulesetPropLinksType,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksTypeForResponse as RepositoryRulesetPropLinksTypeForResponse,
     )
-    from .group_0227 import RepositoryRulesetType as RepositoryRulesetType
-    from .group_0227 import (
+    from .group_0226 import RepositoryRulesetType as RepositoryRulesetType
+    from .group_0226 import (
         RepositoryRulesetTypeForResponse as RepositoryRulesetTypeForResponse,
     )
-    from .group_0228 import RuleSuitesItemsType as RuleSuitesItemsType
-    from .group_0228 import (
+    from .group_0227 import RuleSuitesItemsType as RuleSuitesItemsType
+    from .group_0227 import (
         RuleSuitesItemsTypeForResponse as RuleSuitesItemsTypeForResponse,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsType as RuleSuitePullRequestPropPullRequestPropReviewsItemsType,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse as RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropUserType as RuleSuitePullRequestPropPullRequestPropUserType,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropUserTypeForResponse as RuleSuitePullRequestPropPullRequestPropUserTypeForResponse,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestType as RuleSuitePullRequestPropPullRequestType,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestTypeForResponse as RuleSuitePullRequestPropPullRequestTypeForResponse,
     )
-    from .group_0229 import RuleSuitePullRequestType as RuleSuitePullRequestType
-    from .group_0229 import (
+    from .group_0228 import RuleSuitePullRequestType as RuleSuitePullRequestType
+    from .group_0228 import (
         RuleSuitePullRequestTypeForResponse as RuleSuitePullRequestTypeForResponse,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType as RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse as RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsType as RuleSuiteRequiredStatusChecksPropChecksItemsType,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse as RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksType as RuleSuiteRequiredStatusChecksType,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksTypeForResponse as RuleSuiteRequiredStatusChecksTypeForResponse,
     )
     from .group_0230 import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSourceType as RuleSuitePropRuleEvaluationsItemsPropRuleSourceType,
@@ -21195,10 +21207,6 @@ else:
             "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
         ),
         ".group_0226": (
-            "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
-            "RepositoryRuleParamsCopilotCodeReviewAnalysisToolTypeForResponse",
-        ),
-        ".group_0227": (
             "RepositoryRulesetType",
             "RepositoryRulesetTypeForResponse",
             "RepositoryRulesetPropLinksType",
@@ -21208,11 +21216,11 @@ else:
             "RepositoryRulesetPropLinksPropHtmlType",
             "RepositoryRulesetPropLinksPropHtmlTypeForResponse",
         ),
-        ".group_0228": (
+        ".group_0227": (
             "RuleSuitesItemsType",
             "RuleSuitesItemsTypeForResponse",
         ),
-        ".group_0229": (
+        ".group_0228": (
             "RuleSuitePullRequestType",
             "RuleSuitePullRequestTypeForResponse",
             "RuleSuitePullRequestPropPullRequestType",
@@ -21223,6 +21231,14 @@ else:
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+        ),
+        ".group_0229": (
+            "RuleSuiteRequiredStatusChecksType",
+            "RuleSuiteRequiredStatusChecksTypeForResponse",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
         ),
         ".group_0230": (
             "RuleSuiteType",

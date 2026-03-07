@@ -13,8 +13,8 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0201 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0203 import (
+from .group_0200 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0202 import (
     IssueDependenciesSummaryType,
     IssueDependenciesSummaryTypeForResponse,
     SubIssuesSummaryType,

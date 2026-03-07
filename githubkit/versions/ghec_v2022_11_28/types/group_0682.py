@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0199 import DiscussionType, DiscussionTypeForResponse
+from .group_0198 import DiscussionType, DiscussionTypeForResponse
 from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 

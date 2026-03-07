@@ -16198,6 +16198,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -16225,6 +16226,7 @@ class ActionsClient:
             "per_page": per_page,
             "page": page,
             "name": name,
+            "direction": direction,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -16247,6 +16249,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -16274,6 +16277,7 @@ class ActionsClient:
             "per_page": per_page,
             "page": page,
             "name": name,
+            "direction": direction,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

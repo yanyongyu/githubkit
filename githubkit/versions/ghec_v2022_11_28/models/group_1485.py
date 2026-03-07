@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0305 import ProjectsV2FieldIterationConfiguration
+from .group_0304 import ProjectsV2FieldIterationConfiguration
 
 
 class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):

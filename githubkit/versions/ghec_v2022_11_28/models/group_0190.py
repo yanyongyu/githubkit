@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class UpdateCostCenter(GitHubModel):
+    """UpdateCostCenter"""
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
@@ -30,24 +30,20 @@ class GetCostCenter(GitHubModel):
     state: Missing[Literal["active", "deleted"]] = Field(
         default=UNSET, description="State of the cost center."
     )
-    resources: list[GetCostCenterPropResourcesItems] = Field()
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
-    )
+    resources: list[UpdateCostCenterPropResourcesItems] = Field()
 
 
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
+class UpdateCostCenterPropResourcesItems(GitHubModel):
+    """UpdateCostCenterPropResourcesItems"""
 
     type: str = Field(description="Type of the resource.")
     name: str = Field(description="Name of the resource.")
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(UpdateCostCenter)
+model_rebuild(UpdateCostCenterPropResourcesItems)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropResourcesItems",
+    "UpdateCostCenter",
+    "UpdateCostCenterPropResourcesItems",
 )

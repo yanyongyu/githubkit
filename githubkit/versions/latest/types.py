@@ -2539,9 +2539,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleParamsCodeScanningToolType as RepositoryRuleParamsCodeScanningToolType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleParamsCopilotCodeReviewAnalysisToolType as RepositoryRuleParamsCopilotCodeReviewAnalysisToolType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsRequiredReviewerConfigurationType as RepositoryRuleParamsRequiredReviewerConfigurationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3454,6 +3451,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         RuleSuitePullRequestType as RuleSuitePullRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType as RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsType as RuleSuiteRequiredStatusChecksPropChecksItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RuleSuiteRequiredStatusChecksType as RuleSuiteRequiredStatusChecksType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RuleSuitesItemsType as RuleSuitesItemsType,
@@ -10869,7 +10875,6 @@ else:
             "RepositoryRuleParamsCodeScanningToolType",
             "RepositoryRuleCopilotCodeReviewType",
             "RepositoryRuleCopilotCodeReviewPropParametersType",
-            "RepositoryRuleParamsCopilotCodeReviewAnalysisToolType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -10880,6 +10885,9 @@ else:
             "RuleSuitePullRequestPropPullRequestPropUserType",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+            "RuleSuiteRequiredStatusChecksType",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
             "RuleSuiteType",
             "RuleSuitePropRuleEvaluationsItemsType",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",

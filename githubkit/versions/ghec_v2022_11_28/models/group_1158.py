@@ -32,7 +32,7 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel
     deployments: list[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
     ] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+        max_length=1000 if PYDANTIC_V2 else None,
         description="The list of deployments to record.",
     )
 

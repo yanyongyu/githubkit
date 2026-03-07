@@ -2432,9 +2432,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsCopilotCodeReviewAnalysisTool as RepositoryRuleParamsCopilotCodeReviewAnalysisTool,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3343,6 +3340,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.models import (
         RuleSuitePullRequestPropPullRequestPropUser as RuleSuitePullRequestPropPullRequestPropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuiteRequiredStatusChecks as RuleSuiteRequiredStatusChecks,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuiteRequiredStatusChecksPropChecksItems as RuleSuiteRequiredStatusChecksPropChecksItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsPropApp as RuleSuiteRequiredStatusChecksPropChecksItemsPropApp,
     )
     from githubkit.versions.v2022_11_28.models import RuleSuitesItems as RuleSuitesItems
     from githubkit.versions.v2022_11_28.models import Runner as Runner
@@ -10683,7 +10689,6 @@ else:
             "RepositoryRuleParamsCodeScanningTool",
             "RepositoryRuleCopilotCodeReview",
             "RepositoryRuleCopilotCodeReviewPropParameters",
-            "RepositoryRuleParamsCopilotCodeReviewAnalysisTool",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -10694,6 +10699,9 @@ else:
             "RuleSuitePullRequestPropPullRequestPropUser",
             "RuleSuitePullRequestPropPullRequestPropReviewsItems",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+            "RuleSuiteRequiredStatusChecks",
+            "RuleSuiteRequiredStatusChecksPropChecksItems",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
             "RuleSuite",
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",

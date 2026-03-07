@@ -9,181 +9,184 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0238 import SecurityAndAnalysis
 
-class SecurityAndAnalysis(GitHubModel):
-    """SecurityAndAnalysis"""
 
-    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
+class MinimalRepository(GitHubModel):
+    """Minimal Repository
+
+    Minimal Repository
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
+    hooks_url: str = Field()
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[Union[str, None]] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(
         default=UNSET,
-        description="Enable or disable GitHub Advanced Security for the repository.\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.\n",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
     )
-    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
-    dependabot_security_updates: Missing[
-        SecurityAndAnalysisPropDependabotSecurityUpdates
-    ] = Field(
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
         default=UNSET,
-        description="Enable or disable Dependabot security updates for the repository.",
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
+    role_name: Missing[str] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    code_of_conduct: Missing[CodeOfConduct] = Field(
+        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
+    )
+    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
+        default=UNSET, alias="license"
+    )
+    forks: Missing[int] = Field(default=UNSET)
+    open_issues: Missing[int] = Field(default=UNSET)
+    watchers: Missing[int] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
         default=UNSET
     )
-    secret_scanning_push_protection: Missing[
-        SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-    secret_scanning_non_provider_patterns: Missing[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
-    ] = Field(default=UNSET)
-    secret_scanning_ai_detection: Missing[
-        SecurityAndAnalysisPropSecretScanningAiDetection
-    ] = Field(default=UNSET)
-    secret_scanning_validity_checks: Missing[
-        SecurityAndAnalysisPropSecretScanningValidityChecks
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_alert_dismissal: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_bypass: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypass
-    ] = Field(default=UNSET)
-    secret_scanning_delegated_bypass_options: Missing[
-        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
-    ] = Field(default=UNSET)
+    custom_properties: Missing[MinimalRepositoryPropCustomProperties] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    )
 
 
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """SecurityAndAnalysisPropAdvancedSecurity
+class CodeOfConduct(GitHubModel):
+    """Code Of Conduct
 
-    Enable or disable GitHub Advanced Security for the repository.
-
-    For standalone Code Scanning or Secret Protection products, this parameter
-    cannot be used.
+    Code Of Conduct
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    key: str = Field()
+    name: str = Field()
+    url: str = Field()
+    body: Missing[str] = Field(default=UNSET)
+    html_url: Union[str, None] = Field()
 
 
-class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
-    """SecurityAndAnalysisPropCodeSecurity"""
+class MinimalRepositoryPropPermissions(GitHubModel):
+    """MinimalRepositoryPropPermissions"""
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
 
 
-class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
+class MinimalRepositoryPropLicense(GitHubModel):
+    """MinimalRepositoryPropLicense"""
 
-    Enable or disable Dependabot security updates for the repository.
+    key: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    spdx_id: Missing[str] = Field(default=UNSET)
+    url: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+
+
+class MinimalRepositoryPropCustomProperties(ExtraGitHubModel):
+    """MinimalRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot security updates for the repository.",
-    )
 
-
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanning"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningAiDetection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypass(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
-
-    reviewers: Missing[
-        list[
-            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
-    )
-
-
-class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
-
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-
-
-model_rebuild(SecurityAndAnalysis)
-model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(SecurityAndAnalysisPropCodeSecurity)
-model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
-model_rebuild(SecurityAndAnalysisPropSecretScanning)
-model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
-model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypass)
-model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions)
-model_rebuild(
-    SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
+model_rebuild(MinimalRepository)
+model_rebuild(CodeOfConduct)
+model_rebuild(MinimalRepositoryPropPermissions)
+model_rebuild(MinimalRepositoryPropLicense)
+model_rebuild(MinimalRepositoryPropCustomProperties)
 
 __all__ = (
-    "SecurityAndAnalysis",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropCodeSecurity",
-    "SecurityAndAnalysisPropDependabotSecurityUpdates",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningAiDetection",
-    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypass",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
-    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysisPropSecretScanningValidityChecks",
+    "CodeOfConduct",
+    "MinimalRepository",
+    "MinimalRepositoryPropCustomProperties",
+    "MinimalRepositoryPropLicense",
+    "MinimalRepositoryPropPermissions",
 )

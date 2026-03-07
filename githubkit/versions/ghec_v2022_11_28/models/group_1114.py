@@ -15,7 +15,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0243 import OrganizationCustomRepositoryRole
+from .group_0242 import OrganizationCustomRepositoryRole
 
 
 class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):

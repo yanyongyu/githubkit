@@ -9,46 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
-
-    total: int
-    completed: int
-    percent_completed: int
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
 
-    total: int
-    completed: int
-    percent_completed: int
+    Context around who pinned an issue comment and when it was pinned.
+    """
 
-
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    pinned_at: _dt.datetime
+    pinned_by: Union[None, SimpleUserType]
 
 
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
 
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: str
+    pinned_by: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0208 import PullRequestMinimal
-from .group_0240 import MinimalRepository
+from .group_0207 import PullRequestMinimal
+from .group_0239 import MinimalRepository
 from .group_0334 import SimpleCommit
 
 

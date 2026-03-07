@@ -74,6 +74,11 @@ class BillingClient:
         self,
         org: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        scope: Missing[
+            Literal["enterprise", "organization", "repository", "cost_center"]
+        ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
@@ -85,6 +90,7 @@ class BillingClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
+        Each page returns up to 10 budgets.
 
         See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """
@@ -93,11 +99,18 @@ class BillingClient:
 
         url = f"/organizations/{org}/settings/billing/budgets"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "scope": scope,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllBudgets,
@@ -112,6 +125,11 @@ class BillingClient:
         self,
         org: str,
         *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        scope: Missing[
+            Literal["enterprise", "organization", "repository", "cost_center"]
+        ] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[GetAllBudgets, GetAllBudgetsTypeForResponse]:
@@ -123,6 +141,7 @@ class BillingClient:
         > This endpoint is in public preview and is subject to change.
 
         Gets all budgets for an organization. The authenticated user must be an organization admin or billing manager.
+        Each page returns up to 10 budgets.
 
         See also: https://docs.github.com/rest/billing/budgets#get-all-budgets-for-an-organization
         """
@@ -131,11 +150,18 @@ class BillingClient:
 
         url = f"/organizations/{org}/settings/billing/budgets"
 
+        params = {
+            "page": page,
+            "per_page": per_page,
+            "scope": scope,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=GetAllBudgets,

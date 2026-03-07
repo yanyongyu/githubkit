@@ -21,7 +21,7 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
 from .group_0083 import Team
-from .group_0207 import Issue
+from .group_0206 import Issue
 
 
 class IssueEvent(GitHubModel):

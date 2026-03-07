@@ -754,30 +754,36 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0225 import (
         RepositoryRuleCopilotCodeReviewPropParameters as RepositoryRuleCopilotCodeReviewPropParameters,
     )
+    from .group_0226 import RepositoryRuleset as RepositoryRuleset
+    from .group_0226 import RepositoryRulesetPropLinks as RepositoryRulesetPropLinks
     from .group_0226 import (
-        RepositoryRuleParamsCopilotCodeReviewAnalysisTool as RepositoryRuleParamsCopilotCodeReviewAnalysisTool,
-    )
-    from .group_0227 import RepositoryRuleset as RepositoryRuleset
-    from .group_0227 import RepositoryRulesetPropLinks as RepositoryRulesetPropLinks
-    from .group_0227 import (
         RepositoryRulesetPropLinksPropHtml as RepositoryRulesetPropLinksPropHtml,
     )
-    from .group_0227 import (
+    from .group_0226 import (
         RepositoryRulesetPropLinksPropSelf as RepositoryRulesetPropLinksPropSelf,
     )
-    from .group_0228 import RuleSuitesItems as RuleSuitesItems
-    from .group_0229 import RuleSuitePullRequest as RuleSuitePullRequest
-    from .group_0229 import (
+    from .group_0227 import RuleSuitesItems as RuleSuitesItems
+    from .group_0228 import RuleSuitePullRequest as RuleSuitePullRequest
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequest as RuleSuitePullRequestPropPullRequest,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItems as RuleSuitePullRequestPropPullRequestPropReviewsItems,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser,
     )
-    from .group_0229 import (
+    from .group_0228 import (
         RuleSuitePullRequestPropPullRequestPropUser as RuleSuitePullRequestPropPullRequestPropUser,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecks as RuleSuiteRequiredStatusChecks,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItems as RuleSuiteRequiredStatusChecksPropChecksItems,
+    )
+    from .group_0229 import (
+        RuleSuiteRequiredStatusChecksPropChecksItemsPropApp as RuleSuiteRequiredStatusChecksPropChecksItemsPropApp,
     )
     from .group_0230 import RuleSuite as RuleSuite
     from .group_0230 import (
@@ -9624,20 +9630,24 @@ else:
         ),
         ".group_0224": ("RepositoryRuleCopilotCodeReview",),
         ".group_0225": ("RepositoryRuleCopilotCodeReviewPropParameters",),
-        ".group_0226": ("RepositoryRuleParamsCopilotCodeReviewAnalysisTool",),
-        ".group_0227": (
+        ".group_0226": (
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
             "RepositoryRulesetPropLinksPropHtml",
         ),
-        ".group_0228": ("RuleSuitesItems",),
-        ".group_0229": (
+        ".group_0227": ("RuleSuitesItems",),
+        ".group_0228": (
             "RuleSuitePullRequest",
             "RuleSuitePullRequestPropPullRequest",
             "RuleSuitePullRequestPropPullRequestPropUser",
             "RuleSuitePullRequestPropPullRequestPropReviewsItems",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+        ),
+        ".group_0229": (
+            "RuleSuiteRequiredStatusChecks",
+            "RuleSuiteRequiredStatusChecksPropChecksItems",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
         ),
         ".group_0230": (
             "RuleSuite",

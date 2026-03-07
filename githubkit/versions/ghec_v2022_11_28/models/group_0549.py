@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0254 import CodespaceMachine
-from .group_0310 import FullRepository
+from .group_0253 import CodespaceMachine
+from .group_0309 import FullRepository
 
 
 class CodespaceWithFullRepository(GitHubModel):

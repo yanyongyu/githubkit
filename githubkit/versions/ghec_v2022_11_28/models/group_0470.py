@@ -20,8 +20,8 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0082 import TeamSimple
-from .group_0200 import Milestone
-from .group_0297 import AutoMerge
+from .group_0199 import Milestone
+from .group_0296 import AutoMerge
 from .group_0471 import PullRequestPropLabelsItems
 from .group_0472 import PullRequestPropBase, PullRequestPropHead
 from .group_0473 import PullRequestPropLinks
@@ -67,9 +67,9 @@ class PullRequest(GitHubModel):
     merged_at: Union[_dt.datetime, None] = Field()
     merge_commit_sha: Union[str, None] = Field()
     assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[TeamSimple]] = Field(default=UNSET)
     head: PullRequestPropHead = Field()
     base: PullRequestPropBase = Field()
     links: PullRequestPropLinks = Field(alias="_links")

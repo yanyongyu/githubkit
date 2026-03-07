@@ -54,7 +54,7 @@ class IssueType(TypedDict):
     user: Union[None, SimpleUserType]
     labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
     assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    assignees: NotRequired[list[SimpleUserType]]
     milestone: Union[None, MilestoneType]
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
@@ -116,7 +116,7 @@ class IssueTypeForResponse(TypedDict):
     user: Union[None, SimpleUserTypeForResponse]
     labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
     assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
     milestone: Union[None, MilestoneTypeForResponse]
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]

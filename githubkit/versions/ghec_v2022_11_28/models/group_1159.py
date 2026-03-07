@@ -15,7 +15,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0252 import ArtifactDeploymentRecord
+from .group_0251 import ArtifactDeploymentRecord
 
 
 class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(

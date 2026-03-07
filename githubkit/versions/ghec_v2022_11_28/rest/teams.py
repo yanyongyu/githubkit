@@ -333,6 +333,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
@@ -352,6 +353,7 @@ class TeamsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "team_type": team_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -374,6 +376,7 @@ class TeamsClient:
         *,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
+        team_type: Missing[Literal["all", "enterprise", "organization"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[Team], list[TeamTypeForResponse]]:
@@ -393,6 +396,7 @@ class TeamsClient:
         params = {
             "per_page": per_page,
             "page": page,
+            "team_type": team_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

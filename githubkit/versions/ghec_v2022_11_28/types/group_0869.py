@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0295 import ProjectsV2Type, ProjectsV2TypeForResponse
+from .group_0294 import ProjectsV2Type, ProjectsV2TypeForResponse
 from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0561 import (
     OrganizationSimpleWebhooksType,

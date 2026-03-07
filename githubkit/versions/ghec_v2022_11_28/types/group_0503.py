@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0178 import (
+from .group_0177 import (
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
@@ -30,7 +30,7 @@ from .group_0178 import (
     SecretScanningLocationWikiCommitType,
     SecretScanningLocationWikiCommitTypeForResponse,
 )
-from .group_0179 import (
+from .group_0178 import (
     SecretScanningLocationIssueCommentType,
     SecretScanningLocationIssueCommentTypeForResponse,
     SecretScanningLocationIssueTitleType,
@@ -40,7 +40,7 @@ from .group_0179 import (
     SecretScanningLocationPullRequestTitleType,
     SecretScanningLocationPullRequestTitleTypeForResponse,
 )
-from .group_0180 import (
+from .group_0179 import (
     SecretScanningLocationDiscussionBodyType,
     SecretScanningLocationDiscussionBodyTypeForResponse,
     SecretScanningLocationPullRequestCommentType,

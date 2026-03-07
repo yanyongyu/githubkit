@@ -6,14 +6,14 @@ version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
 is_latest = true
-source = "https://raw.githubusercontent.com/github/rest-api-description/513a9d0d01e0de994a24b44c78d056d83d36f643/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/ee16ba11e8b42e2c895b223c206eb1cebfb9cc62/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
 version = "2022-11-28"
 identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/513a9d0d01e0de994a24b44c78d056d83d36f643/descriptions-next/ghec/ghec.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/ee16ba11e8b42e2c895b223c206eb1cebfb9cc62/descriptions-next/ghec/ghec.2022-11-28.json"
 
 [[overrides]]
 [overrides.field_overrides]
@@ -89,7 +89,6 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/513a9d0d
 "/components/schemas/simple-classroom-assignment/required" = {"<remove>" = ["submitted"]}
 "/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema" = {discriminator = "<unset>"}
 "/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema/oneOf/1/properties/status/enum" = {"<add>" = ["waiting", "requested", "pending"]}
-"/paths/~1repos~1{owner}~1{repo}~1issues~1{issue_number}/get" = {requestBody = "<unset>"}
 "/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get" = {requestBody = "<unset>"}
 "/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get/responses/200/content/application~1json/schema" = {discriminator = "<unset>"}
 "/paths/~1user/get/responses/200/content/application~1json/schema" = {discriminator = "<unset>"}

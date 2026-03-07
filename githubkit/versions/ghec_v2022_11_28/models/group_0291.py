@@ -20,29 +20,28 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
+class OrganizationProgrammaticAccessGrant(GitHubModel):
+    """Organization Programmatic Access Grant
 
-    Minimal representation of an organization programmatic access grant request for
+    Minimal representation of an organization programmatic access grant for
     enumerations
     """
 
     id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
+        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
     )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
     owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     repository_selection: Literal["none", "all", "subset"] = Field(
         description="Type of repository selection requested."
     )
     repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
     )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
         description="Permissions requested, categorized by type of permission."
     )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization."
     )
     token_id: int = Field(
         description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
@@ -61,51 +60,49 @@ class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
     )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
     Permissions requested, categorized by type of permission.
     """
 
     organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
     ] = Field(default=UNSET)
     repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
     ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
+        default=UNSET
+    )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
     ExtraGitHubModel
 ):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
     ExtraGitHubModel
 ):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
 
 
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
+model_rebuild(OrganizationProgrammaticAccessGrant)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
 )

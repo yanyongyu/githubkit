@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0240 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 from .group_0537 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,

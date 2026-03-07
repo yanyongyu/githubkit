@@ -13,7 +13,7 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0240 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 from .group_0352 import GitUserType, GitUserTypeForResponse
 from .group_0537 import (
     SearchResultTextMatchesItemsType,

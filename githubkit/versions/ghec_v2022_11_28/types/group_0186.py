@@ -13,49 +13,71 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    message: str
+    budget: UpdateBudgetPropBudgetType
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
 
-    id: str
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: str
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
 
 
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
+
+
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[float]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+
+
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

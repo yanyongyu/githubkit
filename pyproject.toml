@@ -435,7 +435,7 @@ source = "descriptions-next/ghec/ghec.2022-11-28.json"
 ] }
 
 # get issue request body should be null
-"/paths/~1repos~1{owner}~1{repo}~1issues~1{issue_number}/get" = { requestBody = "<unset>" }
+# "/paths/~1repos~1{owner}~1{repo}~1issues~1{issue_number}/get" = { requestBody = "<unset>" }
 
 # get repo content request body should be null
 "/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get" = { requestBody = "<unset>" }

@@ -9,24 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DeleteBudgetType(TypedDict):
-    """DeleteBudget"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    message: str
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
+
+
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
     id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
 
 
-class DeleteBudgetTypeForResponse(TypedDict):
-    """DeleteBudget"""
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
-    message: str
     id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "DeleteBudgetType",
-    "DeleteBudgetTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

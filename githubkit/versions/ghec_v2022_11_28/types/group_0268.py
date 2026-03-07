@@ -12,69 +12,43 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    Information about an external group's usage and its members
+    A list of external groups available to be connected to a team
     """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+
+
+class ExternalGroupsTypeForResponse(TypedDict):
+    """ExternalGroups
+
+    A list of external groups available to be connected to a team
+    """
+
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+
+
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
 
     group_id: int
     group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    updated_at: str
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
-
-    Information about an external group's usage and its members
-    """
+class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
 
     group_id: int
     group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
-
-
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    updated_at: str
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsPropGroupsItemsTypeForResponse",
+    "ExternalGroupsType",
+    "ExternalGroupsTypeForResponse",
 )

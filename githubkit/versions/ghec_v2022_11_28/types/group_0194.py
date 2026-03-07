@@ -14,47 +14,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportListType(TypedDict):
-    """UsageReportExportList"""
+class UsageReportExportRequestType(TypedDict):
+    """UsageReportExportRequest"""
 
-    usage_report_exports: list[UsageReportExportType]
-
-
-class UsageReportExportListTypeForResponse(TypedDict):
-    """UsageReportExportList"""
-
-    usage_report_exports: list[UsageReportExportTypeForResponse]
-
-
-class UsageReportExportType(TypedDict):
-    """UsageReportExport"""
-
-    id: str
     report_type: Literal["detailed", "summarized", "premium_request"]
     start_date: _dt.date
-    end_date: _dt.date
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[_dt.datetime]
-    actor: NotRequired[str]
+    end_date: NotRequired[_dt.date]
+    send_email: NotRequired[bool]
 
 
-class UsageReportExportTypeForResponse(TypedDict):
-    """UsageReportExport"""
+class UsageReportExportRequestTypeForResponse(TypedDict):
+    """UsageReportExportRequest"""
 
-    id: str
     report_type: Literal["detailed", "summarized", "premium_request"]
     start_date: str
-    end_date: str
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[str]
-    actor: NotRequired[str]
+    end_date: NotRequired[str]
+    send_email: NotRequired[bool]
 
 
 __all__ = (
-    "UsageReportExportListType",
-    "UsageReportExportListTypeForResponse",
-    "UsageReportExportType",
-    "UsageReportExportTypeForResponse",
+    "UsageReportExportRequestType",
+    "UsageReportExportRequestTypeForResponse",
 )

@@ -14,8 +14,8 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0208 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0240 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0207 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 from .group_0334 import SimpleCommitType, SimpleCommitTypeForResponse
 
 

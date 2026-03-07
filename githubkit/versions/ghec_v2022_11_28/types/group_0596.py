@@ -15,8 +15,8 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0082 import TeamSimpleType, TeamSimpleTypeForResponse
-from .group_0200 import MilestoneType, MilestoneTypeForResponse
-from .group_0297 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0199 import MilestoneType, MilestoneTypeForResponse
+from .group_0296 import AutoMergeType, AutoMergeTypeForResponse
 from .group_0471 import (
     PullRequestPropLabelsItemsType,
     PullRequestPropLabelsItemsTypeForResponse,
@@ -60,9 +60,9 @@ class PullRequestWebhookType(TypedDict):
     merged_at: Union[_dt.datetime, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleType], None]]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamSimpleType]]
     head: PullRequestPropHeadType
     base: PullRequestPropBaseType
     links: PullRequestPropLinksType
@@ -132,9 +132,9 @@ class PullRequestWebhookTypeForResponse(TypedDict):
     merged_at: Union[str, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_reviewers: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    requested_teams: NotRequired[Union[list[TeamSimpleTypeForResponse], None]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
     head: PullRequestPropHeadTypeForResponse
     base: PullRequestPropBaseTypeForResponse
     links: PullRequestPropLinksTypeForResponse

@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0202 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0201 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
 class CommitCommentType(TypedDict):

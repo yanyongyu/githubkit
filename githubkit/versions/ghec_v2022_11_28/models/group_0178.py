@@ -14,136 +14,63 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SecretScanningLocationCommit(GitHubModel):
-    """SecretScanningLocationCommit
+class SecretScanningLocationIssueTitle(GitHubModel):
+    """SecretScanningLocationIssueTitle
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    path: str = Field(description="The file path in the repository")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    blob_url: str = Field(description="The API URL to get the associated blob resource")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The API URL to get the associated commit resource"
-    )
-
-
-class SecretScanningLocationWikiCommit(GitHubModel):
-    """SecretScanningLocationWikiCommit
-
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str = Field(description="The file path of the wiki page")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The GitHub URL to get the associated wiki commit"
-    )
-
-
-class SecretScanningLocationIssueBody(GitHubModel):
-    """SecretScanningLocationIssueBody
-
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str = Field(
+    issue_title_url: str = Field(
         description="The API URL to get the issue where the secret was detected."
     )
 
 
-class SecretScanningLocationDiscussionTitle(GitHubModel):
-    """SecretScanningLocationDiscussionTitle
+class SecretScanningLocationIssueComment(GitHubModel):
+    """SecretScanningLocationIssueComment
 
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
     """
 
-    discussion_title_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected."
     )
 
 
-class SecretScanningLocationDiscussionComment(GitHubModel):
-    """SecretScanningLocationDiscussionComment
+class SecretScanningLocationPullRequestTitle(GitHubModel):
+    """SecretScanningLocationPullRequestTitle
 
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
     """
 
-    discussion_comment_url: str = Field(
-        description="The API URL to get the discussion comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestBody(GitHubModel):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str = Field(
+    pull_request_title_url: str = Field(
         description="The API URL to get the pull request where the secret was detected."
     )
 
 
-class SecretScanningLocationPullRequestReview(GitHubModel):
-    """SecretScanningLocationPullRequestReview
+class SecretScanningLocationPullRequestReviewComment(GitHubModel):
+    """SecretScanningLocationPullRequestReviewComment
 
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
     """
 
-    pull_request_review_url: str = Field(
-        description="The API URL to get the pull request review where the secret was detected."
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected."
     )
 
 
-model_rebuild(SecretScanningLocationCommit)
-model_rebuild(SecretScanningLocationWikiCommit)
-model_rebuild(SecretScanningLocationIssueBody)
-model_rebuild(SecretScanningLocationDiscussionTitle)
-model_rebuild(SecretScanningLocationDiscussionComment)
-model_rebuild(SecretScanningLocationPullRequestBody)
-model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(SecretScanningLocationIssueTitle)
+model_rebuild(SecretScanningLocationIssueComment)
+model_rebuild(SecretScanningLocationPullRequestTitle)
+model_rebuild(SecretScanningLocationPullRequestReviewComment)
 
 __all__ = (
-    "SecretScanningLocationCommit",
-    "SecretScanningLocationDiscussionComment",
-    "SecretScanningLocationDiscussionTitle",
-    "SecretScanningLocationIssueBody",
-    "SecretScanningLocationPullRequestBody",
-    "SecretScanningLocationPullRequestReview",
-    "SecretScanningLocationWikiCommit",
+    "SecretScanningLocationIssueComment",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationPullRequestReviewComment",
+    "SecretScanningLocationPullRequestTitle",
 )

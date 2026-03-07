@@ -13,25 +13,25 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: str
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[list[str]]
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: str
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
+    permissions: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleCreateSchemaType",
-    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
+    "OrganizationCustomRepositoryRoleUpdateSchemaType",
+    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
 )
