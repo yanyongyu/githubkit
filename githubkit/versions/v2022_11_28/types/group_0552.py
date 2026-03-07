@@ -32,7 +32,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertType(TypedDict):
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
     most_recent_instance: NotRequired[
         Union[
@@ -64,7 +64,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse(TypedDic
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ]
-    fixed_at: NotRequired[None]
+    fixed_at: NotRequired[Union[str, None]]
     html_url: str
     most_recent_instance: NotRequired[
         Union[

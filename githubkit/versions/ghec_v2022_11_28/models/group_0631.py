@@ -46,7 +46,7 @@ class WebhookCodeScanningAlertAppearedInBranchPropAlert(GitHubModel):
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(description="The reason for dismissing or closing the alert.")
-    fixed_at: Missing[None] = Field(
+    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )

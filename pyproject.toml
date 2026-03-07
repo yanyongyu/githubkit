@@ -561,6 +561,29 @@ source = "descriptions-next/ghec/ghec.2022-11-28.json"
 "/components/schemas/webhook-code-scanning-alert-fixed/properties/alert/properties/state/enum" = { "<add>" = [
   "dismissed",
 ] }
+# https://github.com/yanyongyu/githubkit/issues/279
+# https://github.com/github/rest-api-description/issues/6081
+"/components/schemas/webhook-code-scanning-alert-closed-by-user/properties/alert/properties/fixed_at" = { type = [
+  "string",
+  "null",
+], format = "date-time" }
+# other same issues
+"/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/fixed_at" = { type = [
+  "string",
+  "null",
+], format = "date-time" }
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/fixed_at" = { type = [
+  "string",
+  "null",
+], format = "date-time" }
+"/components/schemas/webhook-code-scanning-alert-reopened-by-user/properties/alert/properties/fixed_at" = { type = [
+  "string",
+  "null",
+], format = "date-time" }
+"/components/schemas/webhook-code-scanning-alert-updated-assignment/properties/alert/properties/fixed_at" = { type = [
+  "string",
+  "null",
+], format = "date-time" }
 
 # webhook repository dispatch action can be any string
 "/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
