@@ -5,7 +5,7 @@
 version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
-is_latest = true
+is_latest = false
 source = "https://raw.githubusercontent.com/github/rest-api-description/4e819bd9aa9411232e1c34e7d1ffaaffc224e94b/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
@@ -14,6 +14,20 @@ identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
 source = "https://raw.githubusercontent.com/github/rest-api-description/4e819bd9aa9411232e1c34e7d1ffaaffc224e94b/descriptions-next/ghec/ghec.2022-11-28.json"
+
+[[descriptions]]
+version = "2026-03-10"
+identifier = "2026-03-10"
+module = "v2026_03_10"
+is_latest = true
+source = "https://raw.githubusercontent.com/github/rest-api-description/4e819bd9aa9411232e1c34e7d1ffaaffc224e94b/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
+
+[[descriptions]]
+version = "2026-03-10"
+identifier = "ghec-2026-03-10"
+module = "ghec_v2026_03_10"
+is_latest = false
+source = "https://raw.githubusercontent.com/github/rest-api-description/4e819bd9aa9411232e1c34e7d1ffaaffc224e94b/descriptions-next/ghec/ghec.2026-03-10.json"
 
 [[overrides]]
 [overrides.field_overrides]
@@ -154,7 +168,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/4e819bd9
 "/components/schemas/code-scanning-alert-classification/enum" = {"<add>" = ["documentation"]}
 
 [[overrides]]
-target_descriptions = ["ghec-2022-11-28"]
+target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 
 [overrides.schema_overrides]
 "/paths/~1enterprises~1{enterprise}~1apps~1organizations~1{org}~1installations~1{installation_id}/delete" = {operationId = "enterprise-apps/enterprise-delete-installation"}

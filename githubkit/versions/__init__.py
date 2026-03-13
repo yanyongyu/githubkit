@@ -12,9 +12,11 @@ from typing import Literal
 VERSIONS = {
     "2022-11-28": "v2022_11_28",
     "ghec-2022-11-28": "ghec_v2022_11_28",
+    "2026-03-10": "v2026_03_10",
+    "ghec-2026-03-10": "ghec_v2026_03_10",
 }
-LATEST_VERSION = "2022-11-28"
-VERSION_TYPE = Literal["2022-11-28", "ghec-2022-11-28"]
+LATEST_VERSION = "2026-03-10"
+VERSION_TYPE = Literal["2022-11-28", "ghec-2022-11-28", "2026-03-10", "ghec-2026-03-10"]
 
 from .rest import RestVersionSwitcher as RestVersionSwitcher
 from .webhooks import WebhooksVersionSwitcher as WebhooksVersionSwitcher
