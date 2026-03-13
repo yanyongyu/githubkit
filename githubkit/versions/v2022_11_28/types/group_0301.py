@@ -9,50 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0125 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeScanningAlertInstanceListType(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    A CodeQL database.
-    """
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
 
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+
+class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceList"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[None, Literal["open", "fixed"]]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                None, Literal["source", "generated", "test", "library", "documentation"]
+            ]
+        ]
+    ]
 
 
-class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
-    """CodeQL Database
+class CodeScanningAlertInstanceListPropMessageType(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
 
-    A CodeQL database.
-    """
+    text: NotRequired[str]
 
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserTypeForResponse
-    content_type: str
-    size: int
-    created_at: str
-    updated_at: str
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+
+class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningCodeqlDatabaseType",
-    "CodeScanningCodeqlDatabaseTypeForResponse",
+    "CodeScanningAlertInstanceListPropMessageType",
+    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
+    "CodeScanningAlertInstanceListType",
+    "CodeScanningAlertInstanceListTypeForResponse",
 )

@@ -9,56 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
-
-
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
-
-
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
-
-    Organization variable for GitHub Actions.
-    """
-
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    Organization variable for GitHub Actions.
-    """
-
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
+    encrypted_value: str
+    key_id: str
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgActionsSecretsSecretNamePutBodyType",
+    "OrgsOrgActionsSecretsSecretNamePutBodyTypeForResponse",
 )

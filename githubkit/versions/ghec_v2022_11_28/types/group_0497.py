@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0152 import (
-    RepositoryRuleMaxFilePathLengthPropParametersType,
-    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+from .group_0146 import (
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof16Type(TypedDict):
-    """RepositoryRuleDetailedOneof16"""
+class RepositoryRuleDetailedOneof13Type(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof16TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof16"""
+class RepositoryRuleDetailedOneof13TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof13"""
 
-    type: Literal["max_file_path_length"]
+    type: Literal["branch_name_pattern"]
     parameters: NotRequired[
-        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof16TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof16Type",
-    "RepositoryRuleDetailedOneof16TypeForResponse",
+    "RepositoryRuleDetailedOneof13Type",
+    "RepositoryRuleDetailedOneof13TypeForResponse",
 )

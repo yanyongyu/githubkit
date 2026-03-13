@@ -9,152 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0351 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Low-level Git commit operations within a repository
+    Deployment protection rule
     """
 
-    sha: str
+    id: int
     node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: list[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitCommitTypeForResponse(TypedDict):
-    """Git Commit
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
 
-    Low-level Git commit operations within a repository
+    Deployment protection rule
     """
 
-    sha: str
+    id: int
     node_id: str
-    url: str
-    author: GitCommitPropAuthorTypeForResponse
-    committer: GitCommitPropCommitterTypeForResponse
-    message: str
-    tree: GitCommitPropTreeTypeForResponse
-    parents: list[GitCommitPropParentsItemsTypeForResponse]
-    verification: GitCommitPropVerificationTypeForResponse
-    html_url: str
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    Identifying information for the git-user
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
     """
 
-    date: _dt.datetime
-    email: str
-    name: str
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
 
 
-class GitCommitPropAuthorTypeForResponse(TypedDict):
-    """GitCommitPropAuthor
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    Identifying information for the git-user
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
     """
 
-    date: str
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterTypeForResponse(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropTreeTypeForResponse(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropParentsItemsTypeForResponse(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class GitCommitPropVerificationTypeForResponse(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
 
 
 __all__ = (
-    "GitCommitPropAuthorType",
-    "GitCommitPropAuthorTypeForResponse",
-    "GitCommitPropCommitterType",
-    "GitCommitPropCommitterTypeForResponse",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropParentsItemsTypeForResponse",
-    "GitCommitPropTreeType",
-    "GitCommitPropTreeTypeForResponse",
-    "GitCommitPropVerificationType",
-    "GitCommitPropVerificationTypeForResponse",
-    "GitCommitType",
-    "GitCommitTypeForResponse",
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

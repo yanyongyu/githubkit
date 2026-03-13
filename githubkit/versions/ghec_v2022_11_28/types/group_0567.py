@@ -13,115 +13,36 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0207 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0361 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0566 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    A response to an exemption request by a delegated bypasser.
     """
 
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[_dt.datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
-    url: str
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    A check performed on the code of a given code change
+    A response to an exemption request by a delegated bypasser.
     """
 
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
-    url: str
-
-
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
-
-
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

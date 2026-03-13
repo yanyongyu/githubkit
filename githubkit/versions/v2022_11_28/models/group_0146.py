@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,15 +19,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class IssueField(GitHubModel):
+    """Issue Field
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
-    )
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+        default=UNSET, description="The description of the issue field."
+    )
+    data_type: Literal["text", "date", "single_select", "number"] = Field(
+        description="The data type of the issue field."
+    )
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
+    )
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET, description="Available options for single select fields."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
+    )
+
+
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
+
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
     )
     color: Missing[
         Union[
@@ -35,9 +65,22 @@ class OrganizationCreateIssueType(GitHubModel):
                 "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
             ],
         ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
 
 
-model_rebuild(OrganizationCreateIssueType)
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
 
-__all__ = ("OrganizationCreateIssueType",)
+__all__ = (
+    "IssueField",
+    "IssueFieldPropOptionsItems",
+)

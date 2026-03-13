@@ -9,74 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0123 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0124 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0126 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserType]]
-    assignees: NotRequired[list[SimpleUserType]]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckAnnotationTypeForResponse(TypedDict):
+    """Check Annotation
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[None, Literal["open", "dismissed", "fixed"]]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    Check Annotation
+    """
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "CheckAnnotationType",
+    "CheckAnnotationTypeForResponse",
 )

@@ -9,45 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0529 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0530 import UserRoleItemsType, UserRoleItemsTypeForResponse
+
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
+
+    operations: list[PatchSchemaPropOperationsItemsType]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class PatchSchemaTypeForResponse(TypedDict):
+    """PatchSchema"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    operations: list[PatchSchemaPropOperationsItemsTypeForResponse]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
+
+
+class PatchSchemaPropOperationsItemsTypeForResponse(TypedDict):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "PatchSchemaPropOperationsItemsType",
+    "PatchSchemaPropOperationsItemsTypeForResponse",
+    "PatchSchemaType",
+    "PatchSchemaTypeForResponse",
 )

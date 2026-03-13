@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0267 import DeploymentType, DeploymentTypeForResponse
-from .group_0397 import PullRequestType, PullRequestTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    sha: NotRequired[str]
-    ref: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[Union[None, DeploymentType]]
-    pull_requests: NotRequired[list[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    key: WebhooksDeployKeyType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    sha: NotRequired[str]
-    ref: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[Union[None, DeploymentTypeForResponse]]
-    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeploymentProtectionRuleRequestedType",
-    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedTypeForResponse",
 )

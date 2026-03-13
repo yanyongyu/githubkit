@@ -9,51 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0581 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
-from .group_0777 import (
-    WebhookIssuesDemilestonedPropIssueType,
-    WebhookIssuesDemilestonedPropIssueTypeForResponse,
+from .group_0771 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
 )
 
 
-class WebhookIssuesDemilestonedType(TypedDict):
-    """issues demilestoned event"""
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesDemilestonedPropIssueType
-    milestone: NotRequired[WebhooksMilestoneType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssuesDemilestonedTypeForResponse(TypedDict):
-    """issues demilestoned event"""
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
 
-    action: Literal["demilestoned"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesDemilestonedPropIssueTypeForResponse
-    milestone: NotRequired[WebhooksMilestoneTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookIssuesDemilestonedType",
-    "WebhookIssuesDemilestonedTypeForResponse",
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",
+    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse",
 )

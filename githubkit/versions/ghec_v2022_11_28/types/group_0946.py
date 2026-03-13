@@ -9,203 +9,169 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0115 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryTransferredType(TypedDict):
-    """repository transferred event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
 
-    action: Literal["transferred"]
-    changes: WebhookRepositoryTransferredPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookRepositoryTransferredTypeForResponse(TypedDict):
-    """repository transferred event"""
-
-    action: Literal["transferred"]
-    changes: WebhookRepositoryTransferredPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryTransferredPropChangesType(TypedDict):
-    """WebhookRepositoryTransferredPropChanges"""
-
-    owner: WebhookRepositoryTransferredPropChangesPropOwnerType
-
-
-class WebhookRepositoryTransferredPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryTransferredPropChanges"""
-
-    owner: WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerType(TypedDict):
-    """WebhookRepositoryTransferredPropChangesPropOwner"""
-
-    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromType
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse(TypedDict):
-    """WebhookRepositoryTransferredPropChangesPropOwner"""
-
-    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromType(TypedDict):
-    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
-
-    organization: NotRequired[
-        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType
-    ]
-    user: NotRequired[
-        Union[
-            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType, None
-        ]
+    condition: NotRequired[RepositoryRulesetConditionsType]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType
     ]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse(
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
 
-    organization: NotRequired[
-        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse
-    ]
-    user: NotRequired[
-        Union[
-            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse,
-            None,
-        ]
+    condition: NotRequired[RepositoryRulesetConditionsTypeForResponse]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse
     ]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType(
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType(
     TypedDict
 ):
-    """Organization"""
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    es
+    """
 
-    avatar_url: str
-    description: Union[str, None]
-    events_url: str
-    hooks_url: str
-    html_url: NotRequired[str]
-    id: int
-    issues_url: str
-    login: str
-    members_url: str
-    node_id: str
-    public_members_url: str
-    repos_url: str
-    url: str
+    condition_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType
+    ]
+    target: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType
+    ]
+    include: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType
+    ]
+    exclude: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType
+    ]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse(
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse(
     TypedDict
 ):
-    """Organization"""
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    es
+    """
 
-    avatar_url: str
-    description: Union[str, None]
-    events_url: str
-    hooks_url: str
-    html_url: NotRequired[str]
-    id: int
-    issues_url: str
-    login: str
-    members_url: str
-    node_id: str
-    public_members_url: str
-    repos_url: str
-    url: str
-
-
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    condition_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse
+    ]
+    target: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse
+    ]
+    include: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse
+    ]
+    exclude: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse
+    ]
 
 
-class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse(
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType(
     TypedDict
 ):
-    """User"""
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropConditionType
+    """
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropConditionType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropTarget
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropTarget
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropInclude
+    """
+
+    from_: NotRequired[list[str]]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropInclude
+    """
+
+    from_: NotRequired[list[str]]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropExclude
+    """
+
+    from_: NotRequired[list[str]]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropExclude
+    """
+
+    from_: NotRequired[list[str]]
 
 
 __all__ = (
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse",
-    "WebhookRepositoryTransferredPropChangesPropOwnerType",
-    "WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse",
-    "WebhookRepositoryTransferredPropChangesType",
-    "WebhookRepositoryTransferredPropChangesTypeForResponse",
-    "WebhookRepositoryTransferredType",
-    "WebhookRepositoryTransferredTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionTypeTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropIncludeTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse",
 )

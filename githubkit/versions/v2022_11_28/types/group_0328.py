@@ -9,58 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-    An object describing a symlink
+    Content Tree
     """
 
-    type: Literal["symlink"]
-    target: str
+    type: str
     size: int
     name: str
     path: str
     sha: str
+    content: NotRequired[str]
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
 
-    An object describing a symlink
+    Content Tree
     """
 
-    type: Literal["symlink"]
-    target: str
+    type: str
     size: int
     name: str
     path: str
     sha: str
+    content: NotRequired[str]
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
     self_: str
 
 
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
+class ContentTreePropLinksTypeForResponse(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksType
+
+
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
+
+    type: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
+
+
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -68,8 +118,12 @@ class ContentSymlinkPropLinksTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
+    "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
+    "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

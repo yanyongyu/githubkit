@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0315 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0605 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
     action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
     repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryAdvisoryPublishedTypeForResponse(TypedDict):
-    """Repository advisory published event"""
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
 
     action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    release: WebhooksRelease1TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    repository_advisory: RepositoryAdvisoryTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryAdvisoryPublishedType",
-    "WebhookRepositoryAdvisoryPublishedTypeForResponse",
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
 )

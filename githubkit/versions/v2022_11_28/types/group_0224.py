@@ -9,42 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0225 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
-)
+
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
+    """WorkflowFileReference
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    A workflow that must run for this rule to pass
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
 )

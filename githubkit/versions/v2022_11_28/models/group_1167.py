@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
@@ -16,33 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    event_type: str = Field(
-        min_length=1,
-        max_length=100,
-        description="A custom webhook event name. Must be 100 characters or fewer.",
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or SHA."
     )
-    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
+    task: Missing[str] = Field(
         default=UNSET,
-        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
+        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+    )
+    auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+    )
+    required_contexts: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
+    )
+    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
+        Field(default=UNSET)
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the deployment."
+    )
+    transient_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
     )
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
-
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10. The total
-    size of the JSON payload must be less than 64KB.
-    """
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
 
-model_rebuild(ReposOwnerRepoDispatchesPostBody)
-model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+model_rebuild(ReposOwnerRepoDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBody",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+    "ReposOwnerRepoDeploymentsPostBody",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
 )

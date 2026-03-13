@@ -9,55 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0275 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class ActivityType(TypedDict):
+    """Activity
 
-    Protected Branch Pull Request Review
+    Activity
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: _dt.datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
     ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    actor: Union[None, SimpleUserType]
 
 
-class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
-    """Protected Branch Pull Request Review
+class ActivityTypeForResponse(TypedDict):
+    """Activity
 
-    Protected Branch Pull Request Review
+    Activity
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: str
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
     ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    actor: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewType",
-    "ProtectedBranchPullRequestReviewTypeForResponse",
+    "ActivityType",
+    "ActivityTypeForResponse",
 )

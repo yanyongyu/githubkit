@@ -15,19 +15,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0251 import RateLimit
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
 
-    GitHub Actions cache storage policy for a repository.
-    """
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+model_rebuild(RateLimitOverviewPropResources)
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+__all__ = ("RateLimitOverviewPropResources",)

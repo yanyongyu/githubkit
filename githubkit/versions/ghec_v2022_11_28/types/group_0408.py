@@ -9,63 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphDiffItemsType(TypedDict):
-    """DependencyGraphDiffItems"""
+class ContributorType(TypedDict):
+    """Contributor
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
-    scope: Literal["unknown", "runtime", "development"]
+    Contributor
+    """
 
-
-class DependencyGraphDiffItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItems"""
-
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[
-        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
-    ]
-    scope: Literal["unknown", "runtime", "development"]
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    Contributor
+    """
 
-
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
-
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
-    "DependencyGraphDiffItemsType",
-    "DependencyGraphDiffItemsTypeForResponse",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

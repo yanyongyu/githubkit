@@ -18,37 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Group(GitHubModel):
-    """Group"""
+class Meta(GitHubModel):
+    """Meta
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: str = Field(
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    display_name: str = Field(
-        alias="displayName", description="A human-readable name for a security group."
-    )
-    members: Missing[list[GroupPropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class GroupPropMembersItems(GitHubModel):
-    """GroupPropMembersItems"""
-
-    value: str = Field(description="The local unique identifier for the member")
-    display_name: str = Field(
-        alias="displayName", description="The display name associated with the member"
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
+    )
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
+        default=UNSET,
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-model_rebuild(Group)
-model_rebuild(GroupPropMembersItems)
+model_rebuild(Meta)
 
-__all__ = (
-    "Group",
-    "GroupPropMembersItems",
-)
+__all__ = ("Meta",)

@@ -9,202 +9,192 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookCommitCommentCreatedType(TypedDict):
-    """commit_comment created event"""
+class WebhookCodeScanningAlertReopenedByUserPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlert
 
-    action: Literal["created"]
-    comment: WebhookCommitCommentCreatedPropCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookCommitCommentCreatedTypeForResponse(TypedDict):
-    """commit_comment created event"""
-
-    action: Literal["created"]
-    comment: WebhookCommitCommentCreatedPropCommentTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookCommitCommentCreatedPropCommentType(TypedDict):
-    """WebhookCommitCommentCreatedPropComment
-
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
+    The code scanning alert involved in the event.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
+    assignees: NotRequired[list[SimpleUserType]]
+    created_at: _dt.datetime
+    dismissed_at: None
+    dismissed_by: None
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: None
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
     html_url: str
-    id: int
-    line: Union[int, None]
-    node_id: str
-    path: Union[str, None]
-    position: Union[int, None]
-    reactions: NotRequired[WebhookCommitCommentCreatedPropCommentPropReactionsType]
-    updated_at: str
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType
+    state: Union[None, Literal["open", "fixed"]]
+    tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType
     url: str
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUserType, None]
 
 
-class WebhookCommitCommentCreatedPropCommentTypeForResponse(TypedDict):
-    """WebhookCommitCommentCreatedPropComment
+class WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlert
 
-    The [commit
-    comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-
-    comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
+    The code scanning alert involved in the event.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
     created_at: str
+    dismissed_at: None
+    dismissed_by: None
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: None
+    fixed_at: NotRequired[Union[str, None]]
     html_url: str
-    id: int
-    line: Union[int, None]
-    node_id: str
-    path: Union[str, None]
-    position: Union[int, None]
-    reactions: NotRequired[
-        WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceTypeForResponse,
+            None,
+        ]
     ]
-    updated_at: str
-    url: str
-    user: Union[WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse, None]
-
-
-class WebhookCommitCommentCreatedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
+    number: int
+    rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse
+    state: Union[None, Literal["open", "fixed"]]
+    tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropToolTypeForResponse
     url: str
 
 
-class WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType(
+    TypedDict
+):
+    """Alert Instance"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookCommitCommentCreatedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
 
 
-class WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceTypeForResponse(
+    TypedDict
+):
+    """Alert Instance"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocatio
+    n
+    """
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocatio
+    n
+    """
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropRule"""
+
+    description: str
+    id: str
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropRule"""
+
+    description: str
+    id: str
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropTool"""
+
+    name: str
+    version: Union[str, None]
+
+
+class WebhookCodeScanningAlertReopenedByUserPropAlertPropToolTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertReopenedByUserPropAlertPropTool"""
+
+    name: str
+    version: Union[str, None]
 
 
 __all__ = (
-    "WebhookCommitCommentCreatedPropCommentPropReactionsType",
-    "WebhookCommitCommentCreatedPropCommentPropReactionsTypeForResponse",
-    "WebhookCommitCommentCreatedPropCommentPropUserType",
-    "WebhookCommitCommentCreatedPropCommentPropUserTypeForResponse",
-    "WebhookCommitCommentCreatedPropCommentType",
-    "WebhookCommitCommentCreatedPropCommentTypeForResponse",
-    "WebhookCommitCommentCreatedType",
-    "WebhookCommitCommentCreatedTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocationTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessageTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstanceTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropRuleTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropToolType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertPropToolTypeForResponse",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertType",
+    "WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse",
 )

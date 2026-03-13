@@ -13,54 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0584 import (
-    WebhooksMarketplacePurchaseType,
-    WebhooksMarketplacePurchaseTypeForResponse,
-)
-from .group_0585 import (
-    WebhooksPreviousMarketplacePurchaseType,
-    WebhooksPreviousMarketplacePurchaseTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookMarketplacePurchaseCancelledType(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMarketplacePurchaseCancelledTypeForResponse(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookLabelCreatedTypeForResponse(TypedDict):
+    """label created event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    marketplace_purchase: WebhooksMarketplacePurchaseTypeForResponse
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    previous_marketplace_purchase: NotRequired[
-        WebhooksPreviousMarketplacePurchaseTypeForResponse
-    ]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledType",
-    "WebhookMarketplacePurchaseCancelledTypeForResponse",
+    "WebhookLabelCreatedType",
+    "WebhookLabelCreatedTypeForResponse",
 )

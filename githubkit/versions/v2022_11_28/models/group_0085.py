@@ -103,6 +103,7 @@ class MinimalRepository(GitHubModel):
         default=UNSET,
         description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
+    has_commit_comments: Missing[bool] = Field(default=UNSET)
     archived: Missing[bool] = Field(default=UNSET)
     disabled: Missing[bool] = Field(default=UNSET)
     visibility: Missing[str] = Field(default=UNSET)

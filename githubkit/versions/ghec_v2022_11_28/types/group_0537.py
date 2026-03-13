@@ -9,49 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
-class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItems"""
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[
-        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
-    ]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
-
-
-class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[list[int]]
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
 )

@@ -9,50 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0870 import (
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
-)
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningScanCompletedType(TypedDict):
+    """secret_scanning_scan completed event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: _dt.datetime
+    completed_at: _dt.datetime
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecretScanningScanCompletedTypeForResponse(TypedDict):
+    """secret_scanning_scan completed event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["completed"]
+    type: Literal["backfill", "custom-pattern-backfill", "pattern-version-backfill"]
+    source: Literal["git", "issues", "pull-requests", "discussions", "wiki"]
+    started_at: str
+    completed_at: str
+    secret_types: NotRequired[Union[list[str], None]]
+    custom_pattern_name: NotRequired[Union[str, None]]
+    custom_pattern_scope: NotRequired[
+        Union[None, Literal["repository", "organization", "enterprise"]]
+    ]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: (
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
-    )
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnType",
-    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
+    "WebhookSecretScanningScanCompletedType",
+    "WebhookSecretScanningScanCompletedTypeForResponse",
 )

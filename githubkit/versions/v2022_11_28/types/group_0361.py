@@ -12,31 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    Porter Large File
+    Check immutable releases
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    Porter Large File
+    Check immutable releases
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )

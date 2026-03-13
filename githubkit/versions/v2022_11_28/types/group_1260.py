@@ -9,27 +9,175 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0180 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0181 import (
+    RepositoryRulesetConditionsType,
+    RepositoryRulesetConditionsTypeForResponse,
+)
+from .group_0192 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0193 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0195 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0196 import (
+    RepositoryRuleMergeQueueType,
+    RepositoryRuleMergeQueueTypeForResponse,
+)
+from .group_0198 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0200 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0202 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0204 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0206 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0208 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0210 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0212 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0214 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0216 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0218 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0220 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0223 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0225 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0227 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
+    ]
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleMergeQueueTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
+    "ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse",
 )

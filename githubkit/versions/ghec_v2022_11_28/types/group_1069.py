@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
-"""EnterprisesEnterpriseCopilotContentExclusionPutBody
-"""
+from typing_extensions import TypedDict
 
 
-EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseCopilotContentExclusionPutBody
-"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
+
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
-    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

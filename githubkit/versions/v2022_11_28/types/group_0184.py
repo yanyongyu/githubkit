@@ -9,35 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0185 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for repository properties
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    Parameters for a repository property condition
-    """
-
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository properties
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    Parameters for a repository property condition
-    """
-
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
 )

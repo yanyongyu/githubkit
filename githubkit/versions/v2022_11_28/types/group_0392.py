@@ -9,60 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class LicenseContentType(TypedDict):
+    """License Content
 
-    Page Build
+    License Content
     """
 
+    name: str
+    path: str
+    sha: str
+    size: int
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksType
+    license_: Union[None, LicenseSimpleType]
 
 
-class PageBuildTypeForResponse(TypedDict):
-    """Page Build
+class LicenseContentTypeForResponse(TypedDict):
+    """License Content
 
-    Page Build
+    License Content
     """
 
+    name: str
+    path: str
+    sha: str
+    size: int
     url: str
-    status: str
-    error: PageBuildPropErrorTypeForResponse
-    pusher: Union[None, SimpleUserTypeForResponse]
-    commit: str
-    duration: int
-    created_at: str
-    updated_at: str
+    html_url: Union[str, None]
+    git_url: Union[str, None]
+    download_url: Union[str, None]
+    type: str
+    content: str
+    encoding: str
+    links: LicenseContentPropLinksTypeForResponse
+    license_: Union[None, LicenseSimpleTypeForResponse]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
+class LicenseContentPropLinksType(TypedDict):
+    """LicenseContentPropLinks"""
 
-    message: Union[str, None]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class PageBuildPropErrorTypeForResponse(TypedDict):
-    """PageBuildPropError"""
+class LicenseContentPropLinksTypeForResponse(TypedDict):
+    """LicenseContentPropLinks"""
 
-    message: Union[str, None]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "PageBuildPropErrorType",
-    "PageBuildPropErrorTypeForResponse",
-    "PageBuildType",
-    "PageBuildTypeForResponse",
+    "LicenseContentPropLinksType",
+    "LicenseContentPropLinksTypeForResponse",
+    "LicenseContentType",
+    "LicenseContentTypeForResponse",
 )

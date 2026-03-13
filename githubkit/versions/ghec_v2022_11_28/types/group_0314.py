@@ -9,57 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
 
-    A credit given to a user for a repository security advisory.
+    Metadata for a pull request rule evaluation result.
     """
 
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
 
 
-class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
-    """RepositoryAdvisoryCredit
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
 
-    A credit given to a user for a repository security advisory.
+    Metadata for a pull request rule evaluation result.
     """
 
-    user: SimpleUserTypeForResponse
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
+
+
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
     ]
-    state: Literal["accepted", "declined", "pending"]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    ]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryAdvisoryCreditType",
-    "RepositoryAdvisoryCreditTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0559 import EnterpriseWebhooks
-from .group_0560 import SimpleInstallation
-from .group_0561 import OrganizationSimpleWebhooks
-from .group_0562 import RepositoryWebhooks
-from .group_0840 import WebhookPackageUpdatedPropPackage
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0840 import WebhookPackagePublishedPropPackage
 
 
-class WebhookPackageUpdated(GitHubModel):
-    """package updated event"""
+class WebhookPackagePublished(GitHubModel):
+    """package published event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,16 +44,17 @@ class WebhookPackageUpdated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    package: WebhookPackageUpdatedPropPackage = Field(
+    package: WebhookPackagePublishedPropPackage = Field(
         description="Information about the package."
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPackageUpdated)
+model_rebuild(WebhookPackagePublished)
 
-__all__ = ("WebhookPackageUpdated",)
+__all__ = ("WebhookPackagePublished",)

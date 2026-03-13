@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0253 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    total_count: int
+    machines: list[CodespaceMachineType]
 
 
-class UserGpgKeysPostBodyTypeForResponse(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
 
 
 __all__ = (
-    "UserGpgKeysPostBodyType",
-    "UserGpgKeysPostBodyTypeForResponse",
+    "UserCodespacesCodespaceNameMachinesGetResponse200Type",
+    "UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse",
 )

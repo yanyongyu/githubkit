@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0242 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
-    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

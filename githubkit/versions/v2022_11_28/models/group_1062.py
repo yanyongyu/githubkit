@@ -14,25 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0170 import ProjectsV2FieldSingleSelectOption
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
-    )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,47 +17,96 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting = Field()
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
-        Field(description="The scope of the budget")
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBody)
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+from .group_0110 import RepositoryRulesetBypassActor
+from .group_0123 import EnterpriseRulesetConditionsOneof0
+from .group_0124 import EnterpriseRulesetConditionsOneof1
+from .group_0125 import EnterpriseRulesetConditionsOneof2
+from .group_0126 import EnterpriseRulesetConditionsOneof3
+from .group_0127 import EnterpriseRulesetConditionsOneof4
+from .group_0128 import EnterpriseRulesetConditionsOneof5
+from .group_0129 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
+from .group_0130 import RepositoryRuleUpdate
+from .group_0132 import RepositoryRuleRequiredLinearHistory
+from .group_0133 import RepositoryRuleRequiredDeployments
+from .group_0135 import RepositoryRulePullRequest
+from .group_0137 import RepositoryRuleRequiredStatusChecks
+from .group_0139 import RepositoryRuleCommitMessagePattern
+from .group_0141 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0143 import RepositoryRuleCommitterEmailPattern
+from .group_0145 import RepositoryRuleBranchNamePattern
+from .group_0147 import RepositoryRuleTagNamePattern
+from .group_0149 import RepositoryRuleFilePathRestriction
+from .group_0151 import RepositoryRuleMaxFilePathLength
+from .group_0153 import RepositoryRuleFileExtensionRestriction
+from .group_0155 import RepositoryRuleMaxFileSize
+from .group_0158 import RepositoryRuleWorkflows
+from .group_0160 import RepositoryRuleCodeScanning
+from .group_0162 import RepositoryRuleCopilotCodeReview
+
+
+class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(EnterprisesEnterpriseRulesetsRulesetIdPutBody)
+
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBody",)

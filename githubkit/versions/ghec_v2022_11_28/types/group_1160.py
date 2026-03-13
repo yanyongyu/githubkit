@@ -9,39 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
-
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
+from .group_0251 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: NotRequired[int]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

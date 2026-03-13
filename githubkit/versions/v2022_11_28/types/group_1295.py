@@ -13,25 +13,67 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class UserReposPostBodyType(TypedDict):
+    """UserReposPostBody"""
 
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class UserReposPostBodyTypeForResponse(TypedDict):
+    """UserReposPostBody"""
 
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "UserReposPostBodyType",
+    "UserReposPostBodyTypeForResponse",
 )

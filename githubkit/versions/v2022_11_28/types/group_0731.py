@@ -13,21 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0495 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0498 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookMilestoneEditedType(TypedDict):
-    """milestone edited event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesType
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     milestone: WebhooksMilestoneType
@@ -36,11 +35,10 @@ class WebhookMilestoneEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMilestoneEditedTypeForResponse(TypedDict):
-    """milestone edited event"""
+class WebhookMilestoneClosedTypeForResponse(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesTypeForResponse
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     milestone: WebhooksMilestoneTypeForResponse
@@ -49,75 +47,7 @@ class WebhookMilestoneEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMilestoneEditedPropChangesType(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
-
-
-class WebhookMilestoneEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[
-        WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookMilestoneEditedPropChangesPropDescriptionType",
-    "WebhookMilestoneEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropDueOnType",
-    "WebhookMilestoneEditedPropChangesPropDueOnTypeForResponse",
-    "WebhookMilestoneEditedPropChangesPropTitleType",
-    "WebhookMilestoneEditedPropChangesPropTitleTypeForResponse",
-    "WebhookMilestoneEditedPropChangesType",
-    "WebhookMilestoneEditedPropChangesTypeForResponse",
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedTypeForResponse",
+    "WebhookMilestoneClosedType",
+    "WebhookMilestoneClosedTypeForResponse",
 )

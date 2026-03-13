@@ -13,35 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
     body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
     body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesPostBodyType",
-    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

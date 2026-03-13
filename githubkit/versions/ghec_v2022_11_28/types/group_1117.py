@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0106 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
+from .group_0242 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+class OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrganizationsOrganizationIdCustomRolesGetResponse200Type",
+    "OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse",
 )

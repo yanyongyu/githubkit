@@ -13,150 +13,81 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0049 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
+
+    Timeline Comment Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    event: Literal["commented"]
+    actor: SimpleUserType
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
+    user: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
 
 
-class TimelineCommittedEventTypeForResponse(TypedDict):
-    """Timeline Committed Event
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
-    Timeline Committed Event
+    Timeline Comment Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorTypeForResponse
-    committer: TimelineCommittedEventPropCommitterTypeForResponse
-    message: str
-    tree: TimelineCommittedEventPropTreeTypeForResponse
-    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
-    verification: TimelineCommittedEventPropVerificationTypeForResponse
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-
-
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    user: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropAuthorTypeForResponse",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropCommitterTypeForResponse",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropParentsItemsTypeForResponse",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropTreeTypeForResponse",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventPropVerificationTypeForResponse",
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

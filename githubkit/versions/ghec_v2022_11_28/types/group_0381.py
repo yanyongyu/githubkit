@@ -9,76 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0378 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
-class CodeScanningDefaultSetupTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    Configuration for code scanning default setup.
-    """
-
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    runner_type: NotRequired[Union[None, Literal["standard", "labeled"]]]
-    runner_label: NotRequired[Union[str, None]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupType",
-    "CodeScanningDefaultSetupTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

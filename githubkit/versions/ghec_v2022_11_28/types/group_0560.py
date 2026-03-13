@@ -12,37 +12,41 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class HovercardType(TypedDict):
+    """Hovercard
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    Hovercard
     """
 
-    id: int
-    node_id: str
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class SimpleInstallationTypeForResponse(TypedDict):
-    """Simple Installation
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-
-    cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-
-    with-github-apps)."
+    Hovercard
     """
 
-    id: int
-    node_id: str
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "SimpleInstallationType",
-    "SimpleInstallationTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

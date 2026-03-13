@@ -9,63 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
+from .group_0353 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0358 import CommitType, CommitTypeForResponse
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Branch With Protection
+    """
 
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
-
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

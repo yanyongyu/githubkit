@@ -9,64 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0293 import ProjectsV2StatusUpdate
 
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
+class OrganizationProgrammaticAccessGrant(GitHubModel):
+    """Organization Programmatic Access Grant
 
-    A projects v2 project
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token."
+    )
     owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
     )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was closed."
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission."
     )
-    created_at: _dt.datetime = Field(
-        description="The time when the project was created."
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization."
     )
-    updated_at: _dt.datetime = Field(
-        description="The time when the project was last updated."
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
     )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
     )
-    deleted_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was deleted."
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
     )
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
     )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
         default=UNSET
     )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
-    )
 
 
-model_rebuild(ProjectsV2)
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
 
-__all__ = ("ProjectsV2",)
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+
+
+model_rebuild(OrganizationProgrammaticAccessGrant)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+
+__all__ = (
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+)

@@ -9,54 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    total_count: int
-    secrets: list[CodespacesSecretType]
-
-
-class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesSecretTypeForResponse]
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    synced_at: NotRequired[str]
 
 
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    groups: list[
+        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+    ]
+    synced_at: NotRequired[str]
 
 
-class CodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    Secrets for a GitHub Codespace.
-    """
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
+    TypedDict
+):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesSecretType",
-    "CodespacesSecretTypeForResponse",
-    "UserCodespacesSecretsGetResponse200Type",
-    "UserCodespacesSecretsGetResponse200TypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
 )

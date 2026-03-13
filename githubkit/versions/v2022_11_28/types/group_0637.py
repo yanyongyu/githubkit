@@ -9,114 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0495 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0496 import WebhooksChangesType, WebhooksChangesTypeForResponse
+from .group_0638 import (
+    WebhookIssueCommentEditedPropIssueType,
+    WebhookIssueCommentEditedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssueCommentEditedType(TypedDict):
+    """issue_comment edited event"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhooksChangesType
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentEditedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
+class WebhookIssueCommentEditedTypeForResponse(TypedDict):
+    """issue_comment edited event"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhooksChangesTypeForResponse
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentEditedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentEditedType",
+    "WebhookIssueCommentEditedTypeForResponse",
 )

@@ -13,71 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0507 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0509 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
+    project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnEditedTypeForResponse(TypedDict):
-    """project_column edited event"""
+class WebhookProjectClosedTypeForResponse(TypedDict):
+    """project closed event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
+    project: WebhooksProjectTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesTypeForResponse",
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedTypeForResponse",
+    "WebhookProjectClosedType",
+    "WebhookProjectClosedTypeForResponse",
 )

@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody
 
-    bypass_review_id: NotRequired[int]
+    Examples:
+        {'users': ['mona']}
+    """
 
-
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
-
-    bypass_review_id: NotRequired[int]
+    users: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyTypeForResponse",
 )

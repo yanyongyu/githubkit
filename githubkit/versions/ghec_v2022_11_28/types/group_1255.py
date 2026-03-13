@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0324 import ArtifactType, ArtifactTypeForResponse
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    query_suite: NotRequired[Literal["default", "extended"]]
+
+
+class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
+
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgSecurityProductEnablementPostBodyType",
+    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
 )

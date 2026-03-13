@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0198 import DiscussionType, DiscussionTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0688 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0578 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookForkType(TypedDict):
-    """fork event
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unlabeled"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    forkee: WebhookForkPropForkeeType
     installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookForkTypeForResponse(TypedDict):
-    """fork event
+class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
+    """discussion unlabeled event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unlabeled"]
+    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    forkee: WebhookForkPropForkeeTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookForkType",
-    "WebhookForkTypeForResponse",
+    "WebhookDiscussionUnlabeledType",
+    "WebhookDiscussionUnlabeledTypeForResponse",
 )

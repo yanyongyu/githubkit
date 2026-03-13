@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0191 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
+from .group_0182 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
+from .group_0186 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
 )
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
 )

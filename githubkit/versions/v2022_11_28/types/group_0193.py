@@ -13,32 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0194 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Merges must be performed via a merge queue.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
-    """merge_queue
+class RepositoryRuleUpdateTypeForResponse(TypedDict):
+    """update
 
-    Merges must be performed via a merge queue.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueueType",
-    "RepositoryRuleMergeQueueTypeForResponse",
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdateTypeForResponse",
 )

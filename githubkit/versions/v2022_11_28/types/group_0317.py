@@ -13,115 +13,51 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryCollaboratorPermissionType(TypedDict):
-    """Repository Collaborator Permission
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Repository Collaborator Permission
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorType]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
-    """Repository Collaborator Permission
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    Repository Collaborator Permission
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    permission: str
-    role_name: str
-    user: Union[None, CollaboratorTypeForResponse]
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
 
 
-class CollaboratorType(TypedDict):
-    """Collaborator
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsType]
-    role_name: str
-    user_view_type: NotRequired[str]
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
-class CollaboratorTypeForResponse(TypedDict):
-    """Collaborator
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    Collaborator
-    """
-
-    login: str
-    id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
-    role_name: str
-    user_view_type: NotRequired[str]
-
-
-class CollaboratorPropPermissionsType(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
-
-
-class CollaboratorPropPermissionsTypeForResponse(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "CollaboratorPropPermissionsType",
-    "CollaboratorPropPermissionsTypeForResponse",
-    "CollaboratorType",
-    "CollaboratorTypeForResponse",
-    "RepositoryCollaboratorPermissionType",
-    "RepositoryCollaboratorPermissionTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

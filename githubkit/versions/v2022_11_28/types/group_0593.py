@@ -14,43 +14,46 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0489 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0594 import (
+    WebhookDiscussionTransferredPropChangesType,
+    WebhookDiscussionTransferredPropChangesTypeForResponse,
+)
 
 
-class WebhookDiscussionUnlabeledType(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionTransferredTypeForResponse(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionUnlabeledType",
-    "WebhookDiscussionUnlabeledTypeForResponse",
+    "WebhookDiscussionTransferredType",
+    "WebhookDiscussionTransferredTypeForResponse",
 )

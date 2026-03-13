@@ -11,44 +11,46 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+from .group_0527 import MetaType, MetaTypeForResponse
 
 
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
+class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
-
-
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    id: NotRequired[str]
+    members: NotRequired[list[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
+    meta: NotRequired[MetaType]
 
 
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
+class ScimEnterpriseGroupResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1"""
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    id: NotRequired[str]
+    members: NotRequired[
+        list[ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse]
+    ]
+    meta: NotRequired[MetaTypeForResponse]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItemsTypeForResponse",
+    "ScimEnterpriseGroupResponseAllof1Type",
+    "ScimEnterpriseGroupResponseAllof1TypeForResponse",
 )

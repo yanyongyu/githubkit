@@ -9,105 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0354 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0356 import CommitPropCommitType, CommitPropCommitTypeForResponse
 
+class GitUserType(TypedDict):
+    """Git User
 
-class CommitType(TypedDict):
-    """Commit
-
-    Commit
+    Metaproperties for Git author/committer information.
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[SimpleUserType, EmptyObjectType, None]
-    committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: list[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[list[DiffEntryType]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class CommitTypeForResponse(TypedDict):
-    """Commit
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    Commit
+    Metaproperties for Git author/committer information.
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
-    parents: list[CommitPropParentsItemsTypeForResponse]
-    stats: NotRequired[CommitPropStatsTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
-
-
-class EmptyObjectType(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class EmptyObjectTypeForResponse(TypedDict):
-    """Empty Object
-
-    An object without any properties.
-    """
-
-
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropParentsItemsTypeForResponse(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
-
-
-class CommitPropStatsTypeForResponse(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropParentsItemsType",
-    "CommitPropParentsItemsTypeForResponse",
-    "CommitPropStatsType",
-    "CommitPropStatsTypeForResponse",
-    "CommitType",
-    "CommitTypeForResponse",
-    "EmptyObjectType",
-    "EmptyObjectTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

@@ -9,34 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0303 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
+class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
+
+    attestations_subject_digests: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostResponse200Type",
+    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
 )

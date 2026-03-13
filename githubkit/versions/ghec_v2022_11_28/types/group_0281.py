@@ -12,59 +12,48 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
+
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    Org Membership
-    """
-
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[None, SimpleUserType]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
+    ]
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    Org Membership
-    """
-
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[None, SimpleUserTypeForResponse]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    can_create_repository: bool
-
-
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
 )

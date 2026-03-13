@@ -14,78 +14,46 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0486 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0491 import (
-    WebhooksRepositoriesAddedItemsType,
-    WebhooksRepositoriesAddedItemsTypeForResponse,
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0489 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0493 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationRepositoriesAddedType(TypedDict):
-    """installation_repositories added event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
-    action: Literal["added"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
-    ]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    requester: NotRequired[Union[WebhooksUserType, None]]
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
-    """installation_repositories added event"""
+class WebhookInstallationCreatedTypeForResponse(TypedDict):
+    """installation created event"""
 
-    action: Literal["added"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
-    ]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserTypeForResponse, None]
+    requester: NotRequired[Union[WebhooksUserTypeForResponse, None]]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
-
-
-class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
-
-    full_name: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    private: NotRequired[bool]
-
-
 __all__ = (
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
-    "WebhookInstallationRepositoriesAddedType",
-    "WebhookInstallationRepositoriesAddedTypeForResponse",
+    "WebhookInstallationCreatedType",
+    "WebhookInstallationCreatedTypeForResponse",
 )

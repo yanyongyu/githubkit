@@ -11,26 +11,55 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoAttestationsPostBody(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    key_prefix: str = Field(
-        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
-    )
-    url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
-    )
-    is_alphanumeric: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundle = Field(
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information."
     )
 
 
-model_rebuild(ReposOwnerRepoAutolinksPostBody)
+class ReposOwnerRepoAttestationsPostBodyPropBundle(GitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-__all__ = ("ReposOwnerRepoAutolinksPostBody",)
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial"""
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope(ExtraGitHubModel):
+    """ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope"""
+
+
+model_rebuild(ReposOwnerRepoAttestationsPostBody)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundle)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial)
+model_rebuild(ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsPostBody",
+    "ReposOwnerRepoAttestationsPostBodyPropBundle",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
+)

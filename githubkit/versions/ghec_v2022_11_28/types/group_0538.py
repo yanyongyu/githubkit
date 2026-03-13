@@ -9,78 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0537 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from .group_0533 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class UserType(TypedDict):
+    """User"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class UserTypeForResponse(TypedDict):
+    """User"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameTypeForResponse]
+    display_name: str
+    emails: list[UserEmailsItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
+class UserNameType(TypedDict):
+    """UserName"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
 
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
+class UserNameTypeForResponse(TypedDict):
+    """UserName"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
+
+
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
+
+
+class UserEmailsItemsTypeForResponse(TypedDict):
+    """UserEmailsItems"""
+
+    value: str
+    type: str
+    primary: bool
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "UserEmailsItemsType",
+    "UserEmailsItemsTypeForResponse",
+    "UserNameType",
+    "UserNameTypeForResponse",
+    "UserType",
+    "UserTypeForResponse",
 )

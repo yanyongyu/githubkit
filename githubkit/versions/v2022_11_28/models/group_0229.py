@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,61 +18,139 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0180 import RepositoryRulesetBypassActor
+from .group_0181 import RepositoryRulesetConditions
+from .group_0189 import OrgRulesetConditionsOneof0
+from .group_0190 import OrgRulesetConditionsOneof1
+from .group_0191 import OrgRulesetConditionsOneof2
+from .group_0192 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0193 import RepositoryRuleUpdate
+from .group_0195 import RepositoryRuleRequiredLinearHistory
+from .group_0196 import RepositoryRuleMergeQueue
+from .group_0198 import RepositoryRuleRequiredDeployments
+from .group_0200 import RepositoryRulePullRequest
+from .group_0202 import RepositoryRuleRequiredStatusChecks
+from .group_0204 import RepositoryRuleCommitMessagePattern
+from .group_0206 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0208 import RepositoryRuleCommitterEmailPattern
+from .group_0210 import RepositoryRuleBranchNamePattern
+from .group_0212 import RepositoryRuleTagNamePattern
+from .group_0214 import RepositoryRuleFilePathRestriction
+from .group_0216 import RepositoryRuleMaxFilePathLength
+from .group_0218 import RepositoryRuleFileExtensionRestriction
+from .group_0220 import RepositoryRuleMaxFileSize
+from .group_0223 import RepositoryRuleWorkflows
+from .group_0225 import RepositoryRuleCodeScanning
+from .group_0227 import RepositoryRuleCopilotCodeReview
 
-class RuleSuiteRequiredStatusChecks(GitHubModel):
-    """Required status checks rule suite metadata
 
-    Metadata for a required status checks rule evaluation result.
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
     """
 
-    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
+    )
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The status checks associated with the rule evaluation.",
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+
+
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
+
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
+        default=UNSET
     )
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the status check."
-    )
-    context: Missing[str] = Field(
-        default=UNSET, description="The context name of the status check."
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the status check."
-    )
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of the status check."
-    )
-    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
-        Field(
-            default=UNSET,
-            description="The GitHub App associated with the status check.",
-        )
-    )
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
 
-    The GitHub App associated with the status check.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the GitHub App."
-    )
-    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
 
 
-model_rebuild(RuleSuiteRequiredStatusChecks)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "RuleSuiteRequiredStatusChecks",
-    "RuleSuiteRequiredStatusChecksPropChecksItems",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
 )

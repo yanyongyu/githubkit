@@ -12,27 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Short Blob
-    """
-
-    url: str
-    sha: str
+    name: str
 
 
-class ShortBlobTypeForResponse(TypedDict):
-    """Short Blob
+class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Short Blob
-    """
-
-    url: str
-    sha: str
+    name: str
 
 
 __all__ = (
-    "ShortBlobType",
-    "ShortBlobTypeForResponse",
+    "DeploymentBranchPolicyNamePatternType",
+    "DeploymentBranchPolicyNamePatternTypeForResponse",
 )

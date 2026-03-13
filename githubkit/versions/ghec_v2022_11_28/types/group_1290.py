@@ -12,29 +12,31 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
-
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse(
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
 
     Examples:
-        {'apps': ['my-app']}
+        {'contexts': ['contexts']}
     """
 
-    apps: list[str]
+    contexts: list[str]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0TypeForResponse",
 )

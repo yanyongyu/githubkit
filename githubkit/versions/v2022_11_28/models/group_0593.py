@@ -19,17 +19,18 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0044 import Discussion
-from .group_0475 import EnterpriseWebhooks
-from .group_0476 import SimpleInstallation
-from .group_0477 import OrganizationSimpleWebhooks
-from .group_0478 import RepositoryWebhooks
-from .group_0489 import WebhooksLabel
+from .group_0478 import EnterpriseWebhooks
+from .group_0479 import SimpleInstallation
+from .group_0480 import OrganizationSimpleWebhooks
+from .group_0481 import RepositoryWebhooks
+from .group_0594 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookDiscussionUnlabeled(GitHubModel):
-    """discussion unlabeled event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -43,7 +44,6 @@ class WebhookDiscussionUnlabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -56,6 +56,6 @@ class WebhookDiscussionUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionUnlabeled)
+model_rebuild(WebhookDiscussionTransferred)
 
-__all__ = ("WebhookDiscussionUnlabeled",)
+__all__ = ("WebhookDiscussionTransferred",)

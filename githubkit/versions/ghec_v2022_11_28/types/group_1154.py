@@ -9,26 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
     total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    variables: list[OrganizationActionsVariableType]
+
+
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
+
+
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsVariablesNameRepositoriesGetResponse200TypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

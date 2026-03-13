@@ -13,23 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0606 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0607 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0609 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -38,12 +35,10 @@ class WebhookSponsorshipPendingTierChangeType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8TypeForResponse
-    effective_date: NotRequired[str]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +48,6 @@ class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSponsorshipPendingTierChangeType",
-    "WebhookSponsorshipPendingTierChangeTypeForResponse",
+    "WebhookSponsorshipCreatedType",
+    "WebhookSponsorshipCreatedTypeForResponse",
 )

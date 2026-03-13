@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0085 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
 )

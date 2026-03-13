@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0047 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+
+class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+
+    total_count: int
+    platforms: list[str]
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: list[OrganizationSimpleType]
-
-
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleTypeForResponse]
+    total_count: int
+    platforms: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
 )

@@ -9,110 +9,139 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse
-    ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+    bundle: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+    bundle: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndle
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
+    ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndle
 
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    users: NotRequired[list[str]]
-    teams: NotRequired[list[str]]
-    apps: NotRequired[list[str]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropDsseEnvelope
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

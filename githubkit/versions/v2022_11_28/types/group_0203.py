@@ -9,38 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0204 import (
-    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
-)
+
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
 
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-    Parameters to be used for the commit_author_email_pattern rule
-    """
-
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
-
-
-class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
-    """
-
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
     ]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
+
+
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
+    """
+
+    context: str
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleCommitAuthorEmailPatternType",
-    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
 )

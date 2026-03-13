@@ -10,31 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0678 import (
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+)
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[
+        WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorTypeForResponse, None
+    ]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneType",
+    "WebhookIssuesClosedPropIssueAllof0PropMilestoneTypeForResponse",
 )

@@ -9,73 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType
-            ],
-            None,
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
         ]
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    message: NotRequired[str]
-    reassigned_resources: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse
-            ],
-            None,
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
         ]
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    resource_type: NotRequired[str]
+    type: NotRequired[str]
     name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    resource_type: NotRequired[str]
+    type: NotRequired[str]
     name: NotRequired[str]
-    previous_cost_center: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

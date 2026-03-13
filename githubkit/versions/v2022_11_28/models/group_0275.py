@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -17,52 +18,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0121 import Team
 
+class Autolink(GitHubModel):
+    """Autolink reference
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
-
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    An autolink reference.
     """
 
-    users: Missing[list[SimpleUser]] = Field(
-        default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    teams: Missing[list[Team]] = Field(
-        default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
     )
-    apps: Missing[list[Union[Integration, None]]] = Field(
-        default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
-    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+model_rebuild(Autolink)
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
-)
+__all__ = ("Autolink",)

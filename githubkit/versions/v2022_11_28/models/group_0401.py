@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
+class PullRequestPropLabelsItems(GitHubModel):
+    """PullRequestPropLabelsItems"""
 
-    Pull Request Merge Result
-    """
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
 
+model_rebuild(PullRequestPropLabelsItems)
 
-model_rebuild(PullRequestMergeResult)
-
-__all__ = ("PullRequestMergeResult",)
+__all__ = ("PullRequestPropLabelsItems",)

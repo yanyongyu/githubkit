@@ -9,83 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0486 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0491 import (
-    WebhooksRepositoriesAddedItemsType,
-    WebhooksRepositoriesAddedItemsTypeForResponse,
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0493 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["removed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: list[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
-    ]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationDeletedTypeForResponse(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["removed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
-    repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse
-    ]
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserTypeForResponse, None]
+    requester: NotRequired[None]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse",
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedTypeForResponse",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedTypeForResponse",
 )

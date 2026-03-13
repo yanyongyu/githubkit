@@ -10,101 +10,387 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0570 import (
-    WebhooksApproverType,
-    WebhooksApproverTypeForResponse,
-    WebhooksReviewersItemsType,
-    WebhooksReviewersItemsTypeForResponse,
-)
-from .group_0571 import (
-    WebhooksWorkflowJobRunType,
-    WebhooksWorkflowJobRunTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0572 import WebhooksWorkflowType, WebhooksWorkflowTypeForResponse
 
 
-class WebhookDeploymentReviewRejectedType(TypedDict):
-    """WebhookDeploymentReviewRejected"""
+class WebhookDeploymentCreatedType(TypedDict):
+    """deployment created event"""
 
-    action: Literal["rejected"]
-    approver: NotRequired[WebhooksApproverType]
-    comment: NotRequired[str]
+    action: Literal["created"]
+    deployment: WebhookDeploymentCreatedPropDeploymentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    reviewers: NotRequired[list[WebhooksReviewersItemsType]]
     sender: SimpleUserType
-    since: str
-    workflow_job_run: NotRequired[WebhooksWorkflowJobRunType]
-    workflow_job_runs: NotRequired[
-        list[WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsType]
-    ]
-    workflow_run: Union[WebhookDeploymentReviewRejectedPropWorkflowRunType, None]
+    workflow: Union[WebhooksWorkflowType, None]
+    workflow_run: Union[WebhookDeploymentCreatedPropWorkflowRunType, None]
 
 
-class WebhookDeploymentReviewRejectedTypeForResponse(TypedDict):
-    """WebhookDeploymentReviewRejected"""
+class WebhookDeploymentCreatedTypeForResponse(TypedDict):
+    """deployment created event"""
 
-    action: Literal["rejected"]
-    approver: NotRequired[WebhooksApproverTypeForResponse]
-    comment: NotRequired[str]
+    action: Literal["created"]
+    deployment: WebhookDeploymentCreatedPropDeploymentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    reviewers: NotRequired[list[WebhooksReviewersItemsTypeForResponse]]
     sender: SimpleUserTypeForResponse
-    since: str
-    workflow_job_run: NotRequired[WebhooksWorkflowJobRunTypeForResponse]
-    workflow_job_runs: NotRequired[
-        list[WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsTypeForResponse]
+    workflow: Union[WebhooksWorkflowTypeForResponse, None]
+    workflow_run: Union[WebhookDeploymentCreatedPropWorkflowRunTypeForResponse, None]
+
+
+class WebhookDeploymentCreatedPropDeploymentType(TypedDict):
+    """Deployment
+
+    The [deployment](https://docs.github.com/enterprise-
+    cloud@latest//rest/deployments/deployments#list-deployments).
+    """
+
+    created_at: str
+    creator: Union[WebhookDeploymentCreatedPropDeploymentPropCreatorType, None]
+    description: Union[str, None]
+    environment: str
+    id: int
+    node_id: str
+    original_environment: str
+    payload: Union[str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type]
+    performed_via_github_app: NotRequired[
+        Union[WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType, None]
     ]
-    workflow_run: Union[
-        WebhookDeploymentReviewRejectedPropWorkflowRunTypeForResponse, None
+    production_environment: NotRequired[bool]
+    ref: str
+    repository_url: str
+    sha: str
+    statuses_url: str
+    task: str
+    transient_environment: NotRequired[bool]
+    updated_at: str
+    url: str
+
+
+class WebhookDeploymentCreatedPropDeploymentTypeForResponse(TypedDict):
+    """Deployment
+
+    The [deployment](https://docs.github.com/enterprise-
+    cloud@latest//rest/deployments/deployments#list-deployments).
+    """
+
+    created_at: str
+    creator: Union[
+        WebhookDeploymentCreatedPropDeploymentPropCreatorTypeForResponse, None
     ]
+    description: Union[str, None]
+    environment: str
+    id: int
+    node_id: str
+    original_environment: str
+    payload: Union[
+        str, WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1TypeForResponse
+    ]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppTypeForResponse,
+            None,
+        ]
+    ]
+    production_environment: NotRequired[bool]
+    ref: str
+    repository_url: str
+    sha: str
+    statuses_url: str
+    task: str
+    transient_environment: NotRequired[bool]
+    updated_at: str
+    url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsType(TypedDict):
-    """WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems"""
+class WebhookDeploymentCreatedPropDeploymentPropCreatorType(TypedDict):
+    """User"""
 
-    conclusion: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    environment: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    updated_at: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsTypeForResponse(TypedDict):
-    """WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems"""
+class WebhookDeploymentCreatedPropDeploymentPropCreatorTypeForResponse(TypedDict):
+    """User"""
 
-    conclusion: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    environment: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    name: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    updated_at: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunType(TypedDict):
+WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type: TypeAlias = dict[str, Any]
+"""WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1
+"""
+
+
+WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1TypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1
+"""
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[_dt.datetime, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[_dt.datetime, None]
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppTypeForResponse(
+    TypedDict
+):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    events: NotRequired[list[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerTypeForResponse,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsTypeForResponse
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[str, None]
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType(
+    TypedDict
+):
+    """WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsTypeForResponse(
+    TypedDict
+):
+    """WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookDeploymentCreatedPropWorkflowRunType(TypedDict):
     """Deployment Workflow Run"""
 
-    actor: Union[WebhookDeploymentReviewRejectedPropWorkflowRunPropActorType, None]
+    actor: Union[WebhookDeploymentCreatedPropWorkflowRunPropActorType, None]
     artifacts_url: NotRequired[str]
     cancel_url: NotRequired[str]
     check_suite_id: int
@@ -123,13 +409,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunType(TypedDict):
         ],
     ]
     created_at: _dt.datetime
+    display_title: str
     event: str
     head_branch: str
-    head_commit: NotRequired[
-        Union[WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitType, None]
-    ]
+    head_commit: NotRequired[None]
     head_repository: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryType
     ]
     head_sha: str
     html_url: str
@@ -139,42 +424,39 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunType(TypedDict):
     name: str
     node_id: str
     path: str
-    previous_attempt_url: NotRequired[Union[str, None]]
+    previous_attempt_url: NotRequired[None]
     pull_requests: list[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsType
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsType
     ]
     referenced_workflows: NotRequired[
         Union[
             list[
-                WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsType
+                WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsType
             ],
             None,
         ]
     ]
-    repository: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType
-    ]
+    repository: NotRequired[WebhookDeploymentCreatedPropWorkflowRunPropRepositoryType]
     rerun_url: NotRequired[str]
     run_attempt: int
     run_number: int
     run_started_at: _dt.datetime
-    status: Literal["requested", "in_progress", "completed", "queued", "waiting"]
-    triggering_actor: Union[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorType, None
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "waiting", "pending"
+    ]
+    triggering_actor: NotRequired[
+        Union[WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorType, None]
     ]
     updated_at: _dt.datetime
     url: str
     workflow_id: int
     workflow_url: NotRequired[str]
-    display_title: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunTypeForResponse(TypedDict):
+class WebhookDeploymentCreatedPropWorkflowRunTypeForResponse(TypedDict):
     """Deployment Workflow Run"""
 
-    actor: Union[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropActorTypeForResponse, None
-    ]
+    actor: Union[WebhookDeploymentCreatedPropWorkflowRunPropActorTypeForResponse, None]
     artifacts_url: NotRequired[str]
     cancel_url: NotRequired[str]
     check_suite_id: int
@@ -193,16 +475,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunTypeForResponse(TypedDict):
         ],
     ]
     created_at: str
+    display_title: str
     event: str
     head_branch: str
-    head_commit: NotRequired[
-        Union[
-            WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitTypeForResponse,
-            None,
-        ]
-    ]
+    head_commit: NotRequired[None]
     head_repository: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForResponse
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryTypeForResponse
     ]
     head_sha: str
     html_url: str
@@ -212,38 +490,41 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunTypeForResponse(TypedDict):
     name: str
     node_id: str
     path: str
-    previous_attempt_url: NotRequired[Union[str, None]]
+    previous_attempt_url: NotRequired[None]
     pull_requests: list[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsTypeForResponse
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsTypeForResponse
     ]
     referenced_workflows: NotRequired[
         Union[
             list[
-                WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse
+                WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse
             ],
             None,
         ]
     ]
     repository: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForResponse
+        WebhookDeploymentCreatedPropWorkflowRunPropRepositoryTypeForResponse
     ]
     rerun_url: NotRequired[str]
     run_attempt: int
     run_number: int
     run_started_at: str
-    status: Literal["requested", "in_progress", "completed", "queued", "waiting"]
-    triggering_actor: Union[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorTypeForResponse,
-        None,
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "waiting", "pending"
+    ]
+    triggering_actor: NotRequired[
+        Union[
+            WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorTypeForResponse,
+            None,
+        ]
     ]
     updated_at: str
     url: str
     workflow_id: int
     workflow_url: NotRequired[str]
-    display_title: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropActorType(TypedDict):
+class WebhookDeploymentCreatedPropWorkflowRunPropActorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -270,7 +551,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropActorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropActorTypeForResponse(TypedDict):
+class WebhookDeploymentCreatedPropWorkflowRunPropActorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -297,37 +578,27 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropActorTypeForResponse(Typ
     user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitType(TypedDict):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit"""
-
-
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsType(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit"""
-
-
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsType(
-    TypedDict
-):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems"""
 
     path: str
     ref: NotRequired[str]
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems"""
 
     path: str
     ref: NotRequired[str]
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorType(TypedDict):
+class WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -354,7 +625,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorType(Type
     user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorTypeForResponse(
     TypedDict
 ):
     """User"""
@@ -383,8 +654,8 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorTypeForRe
     user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType(TypedDict):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository"""
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryType(TypedDict):
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository"""
 
     archive_url: NotRequired[str]
     assignees_url: NotRequired[str]
@@ -397,7 +668,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType(Typed
     contents_url: NotRequired[str]
     contributors_url: NotRequired[str]
     deployments_url: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    description: NotRequired[None]
     downloads_url: NotRequired[str]
     events_url: NotRequired[str]
     fork: NotRequired[bool]
@@ -421,7 +692,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType(Typed
     node_id: NotRequired[str]
     notifications_url: NotRequired[str]
     owner: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerType
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerType
     ]
     private: NotRequired[bool]
     pulls_url: NotRequired[str]
@@ -436,10 +707,10 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType(Typed
     url: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository"""
 
     archive_url: NotRequired[str]
     assignees_url: NotRequired[str]
@@ -452,7 +723,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForRes
     contents_url: NotRequired[str]
     contributors_url: NotRequired[str]
     deployments_url: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    description: NotRequired[None]
     downloads_url: NotRequired[str]
     events_url: NotRequired[str]
     fork: NotRequired[bool]
@@ -476,7 +747,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForRes
     node_id: NotRequired[str]
     notifications_url: NotRequired[str]
     owner: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse
+        WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse
     ]
     private: NotRequired[bool]
     pulls_url: NotRequired[str]
@@ -491,10 +762,8 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForRes
     url: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerType(
-    TypedDict
-):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner"""
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerType(TypedDict):
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -514,13 +783,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerT
     subscriptions_url: NotRequired[str]
     type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -540,11 +808,10 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerT
     subscriptions_url: NotRequired[str]
     type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType(TypedDict):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository"""
+class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryType(TypedDict):
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepository"""
 
     archive_url: NotRequired[str]
     assignees_url: NotRequired[str]
@@ -557,7 +824,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType(TypedDict
     contents_url: NotRequired[str]
     contributors_url: NotRequired[str]
     deployments_url: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    description: NotRequired[None]
     downloads_url: NotRequired[str]
     events_url: NotRequired[str]
     fork: NotRequired[bool]
@@ -581,7 +848,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType(TypedDict
     node_id: NotRequired[str]
     notifications_url: NotRequired[str]
     owner: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerType
+        WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerType
     ]
     private: NotRequired[bool]
     pulls_url: NotRequired[str]
@@ -596,10 +863,8 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType(TypedDict
     url: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForResponse(
-    TypedDict
-):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository"""
+class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryTypeForResponse(TypedDict):
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepository"""
 
     archive_url: NotRequired[str]
     assignees_url: NotRequired[str]
@@ -612,7 +877,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForRespons
     contents_url: NotRequired[str]
     contributors_url: NotRequired[str]
     deployments_url: NotRequired[str]
-    description: NotRequired[Union[str, None]]
+    description: NotRequired[None]
     downloads_url: NotRequired[str]
     events_url: NotRequired[str]
     fork: NotRequired[bool]
@@ -636,7 +901,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForRespons
     node_id: NotRequired[str]
     notifications_url: NotRequired[str]
     owner: NotRequired[
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse
+        WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse
     ]
     private: NotRequired[bool]
     pulls_url: NotRequired[str]
@@ -651,10 +916,8 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForRespons
     url: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerType(
-    TypedDict
-):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner"""
+class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerType(TypedDict):
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -674,13 +937,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerType(
     subscriptions_url: NotRequired[str]
     type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -700,58 +962,53 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerTypeF
     subscriptions_url: NotRequired[str]
     type: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsType(
-    TypedDict
-):
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsType(TypedDict):
     """Check Run Pull Request"""
 
-    base: (
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseType
-    )
-    head: (
-        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadType
-    )
+    base: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseType
+    head: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadType
     id: int
     number: int
     url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsTypeForResponse(
     TypedDict
 ):
     """Check Run Pull Request"""
 
-    base: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse
-    head: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse
+    base: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse
+    head: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse
     id: int
     number: int
     url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseType(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseType(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    )
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse
+    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -761,7 +1018,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBas
     url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse(
     TypedDict
 ):
     """Repo Ref"""
@@ -771,27 +1028,29 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBas
     url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadType(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadType(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    )
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse(
     TypedDict
 ):
-    """WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead"""
+    """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse
+    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse
     sha: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -801,7 +1060,7 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHea
     url: str
 
 
-class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse(
+class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse(
     TypedDict
 ):
     """Repo Ref"""
@@ -812,36 +1071,44 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHea
 
 
 __all__ = (
-    "WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsType",
-    "WebhookDeploymentReviewRejectedPropWorkflowJobRunsItemsTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropActorType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropActorTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommitTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActorTypeForResponse",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunType",
-    "WebhookDeploymentReviewRejectedPropWorkflowRunTypeForResponse",
-    "WebhookDeploymentReviewRejectedType",
-    "WebhookDeploymentReviewRejectedTypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentPropCreatorType",
+    "WebhookDeploymentCreatedPropDeploymentPropCreatorTypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1Type",
+    "WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1TypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerType",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwnerTypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsType",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissionsTypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppType",
+    "WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppTypeForResponse",
+    "WebhookDeploymentCreatedPropDeploymentType",
+    "WebhookDeploymentCreatedPropDeploymentTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropActorType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropActorTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropRepositoryTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorType",
+    "WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActorTypeForResponse",
+    "WebhookDeploymentCreatedPropWorkflowRunType",
+    "WebhookDeploymentCreatedPropWorkflowRunTypeForResponse",
+    "WebhookDeploymentCreatedType",
+    "WebhookDeploymentCreatedTypeForResponse",
 )

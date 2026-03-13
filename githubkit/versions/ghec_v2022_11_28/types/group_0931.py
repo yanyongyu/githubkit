@@ -13,38 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0318 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryDeletedType(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryAdvisoryReportedType(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["deleted"]
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookRepositoryDeletedTypeForResponse(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryAdvisoryReportedTypeForResponse(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["deleted"]
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository_advisory: RepositoryAdvisoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookRepositoryDeletedType",
-    "WebhookRepositoryDeletedTypeForResponse",
+    "WebhookRepositoryAdvisoryReportedType",
+    "WebhookRepositoryAdvisoryReportedTypeForResponse",
 )

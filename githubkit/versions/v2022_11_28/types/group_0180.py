@@ -9,37 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0181 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Parameters for a repository name condition
+    An actor that can bypass rules in a ruleset
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository names
+class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Parameters for a repository name condition
+    An actor that can bypass rules in a ruleset
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetType",
-    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
+    "RepositoryRulesetBypassActorType",
+    "RepositoryRulesetBypassActorTypeForResponse",
 )

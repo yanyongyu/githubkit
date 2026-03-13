@@ -15,26 +15,37 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0239 import MinimalRepository
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    invitee: Union[None, SimpleUser] = Field()
+    inviter: Union[None, SimpleUser] = Field()
+    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
+        description="The permission associated with the invitation."
+    )
     created_at: _dt.datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
+    )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(Reaction)
+model_rebuild(RepositoryInvitation)
 
-__all__ = ("Reaction",)
+__all__ = ("RepositoryInvitation",)

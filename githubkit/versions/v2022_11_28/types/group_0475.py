@@ -9,58 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
-    """
-
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    avatar_url: str
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-class EnterpriseWebhooksTypeForResponse(TypedDict):
-    """Enterprise
+class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
-    """
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
+    ]
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    avatar_url: str
+
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "EnterpriseWebhooksType",
-    "EnterpriseWebhooksTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportUserType",
+    "BillingPremiumRequestUsageReportUserTypeForResponse",
 )

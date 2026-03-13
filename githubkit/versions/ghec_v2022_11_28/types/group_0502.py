@@ -12,35 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0163 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+from .group_0156 import (
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof21Type(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof18Type(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof21Type",
-    "RepositoryRuleDetailedOneof21TypeForResponse",
+    "RepositoryRuleDetailedOneof18Type",
+    "RepositoryRuleDetailedOneof18TypeForResponse",
 )

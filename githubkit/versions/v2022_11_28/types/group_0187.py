@@ -9,41 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0179 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0183 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+from .group_0188 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof1Type(TypedDict):
-    """repository_id_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    Conditions to target repositories by id and refs by name
+    Parameters for a repository property condition
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
-
-
-class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
 
 
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
+
+    Parameters for a repository property condition
+    """
+
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+
+
 __all__ = (
-    "OrgRulesetConditionsOneof1Type",
-    "OrgRulesetConditionsOneof1TypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

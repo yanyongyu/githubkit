@@ -14,23 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class TeamMembership(GitHubModel):
-    """Team Membership
+class ImmutableReleasesOrganizationSettings(GitHubModel):
+    """Check immutable releases organization settings
 
-    Team Membership
+    Check immutable releases settings for an organization.
     """
 
-    url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
     )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(ImmutableReleasesOrganizationSettings)
 
-__all__ = ("TeamMembership",)
+__all__ = ("ImmutableReleasesOrganizationSettings",)

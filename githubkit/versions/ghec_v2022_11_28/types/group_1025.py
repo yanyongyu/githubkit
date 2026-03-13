@@ -9,37 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
-
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-
-
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

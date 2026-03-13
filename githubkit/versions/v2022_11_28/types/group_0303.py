@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0302 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
+
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
+
+    Successful deletion of a code scanning analysis
+    """
+
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+    Successful deletion of a code scanning analysis
+    """
 
-
-class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
-
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisSkippedRepoGroupType",
-    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
 )

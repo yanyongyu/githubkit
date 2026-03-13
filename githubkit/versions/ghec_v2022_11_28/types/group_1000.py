@@ -9,53 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0340 import DeploymentType, DeploymentTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0343 import DeploymentType, DeploymentTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobQueuedType(TypedDict):
-    """workflow_job queued event"""
+class WebhookWorkflowJobInProgressType(TypedDict):
+    """workflow_job in_progress event"""
 
-    action: Literal["queued"]
+    action: Literal["in_progress"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobType
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
     deployment: NotRequired[DeploymentType]
 
 
-class WebhookWorkflowJobQueuedTypeForResponse(TypedDict):
-    """workflow_job queued event"""
+class WebhookWorkflowJobInProgressTypeForResponse(TypedDict):
+    """workflow_job in_progress event"""
 
-    action: Literal["queued"]
+    action: Literal["in_progress"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse
     deployment: NotRequired[DeploymentTypeForResponse]
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
 
     check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
     created_at: str
     head_sha: str
     html_url: str
@@ -66,73 +65,73 @@ class WebhookWorkflowJobQueuedPropWorkflowJobType(TypedDict):
     run_attempt: int
     run_id: int
     run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType]
-    url: str
-
-
-class WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
     started_at: str
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse]
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
     url: str
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse]
+    url: str
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
-    """Workflow Step"""
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
     name: str
     number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending"]
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobQueuedPropWorkflowJobType",
-    "WebhookWorkflowJobQueuedPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobQueuedType",
-    "WebhookWorkflowJobQueuedTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobInProgressType",
+    "WebhookWorkflowJobInProgressTypeForResponse",
 )

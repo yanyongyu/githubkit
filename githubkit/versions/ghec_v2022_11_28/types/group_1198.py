@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    message: NotRequired[str]
+    selected_usernames: list[str]
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    message: NotRequired[str]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutResponse200Type",
-    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

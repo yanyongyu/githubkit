@@ -9,40 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0216 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    restricted_file_paths: list[str]
 
 
-class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
-    ]
+    restricted_file_paths: list[str]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionType",
-    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
 )

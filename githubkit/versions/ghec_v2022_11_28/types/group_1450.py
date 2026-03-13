@@ -12,49 +12,81 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    synced_at: NotRequired[str]
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    groups: list[
-        TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
+    schemas: NotRequired[list[str]]
+    display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
+    emails: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
     ]
-    synced_at: NotRequired[str]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
     TypedDict
 ):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    id: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[str]
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
 )

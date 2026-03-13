@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
-
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
-
-
-class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
-
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
-    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutBodyType",
+    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
 )

@@ -13,54 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
     run.
     """
 
-    title: NotRequired[str]
+    title: str
     summary: str
     text: NotRequired[str]
     annotations: NotRequired[
-        list[
-            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
-        ]
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
     ]
     images: NotRequired[
-        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
     ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
+class ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
     run.
     """
 
-    title: NotRequired[str]
+    title: str
     summary: str
     text: NotRequired[str]
     annotations: NotRequired[
         list[
-            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse
+            ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse
         ]
     ]
     images: NotRequired[
-        list[
-            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse
-        ]
+        list[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse]
     ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
 
     path: str
     start_line: int
@@ -73,10 +67,10 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTy
     raw_details: NotRequired[str]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse(
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
 
     path: str
     start_line: int
@@ -89,38 +83,34 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTy
     raw_details: NotRequired[str]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
 
     alt: str
     image_url: str
     caption: NotRequired[str]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse(
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
 
     alt: str
     image_url: str
     caption: NotRequired[str]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
 
     label: str
     description: str
     identifier: str
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
 
     label: str
     description: str
@@ -128,12 +118,12 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse(
 
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse",
 )

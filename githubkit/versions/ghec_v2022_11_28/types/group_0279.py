@@ -9,15 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class IssueFieldType(TypedDict):
+    """Issue Field
 
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
+    """
+
+    id: int
+    node_id: str
     name: str
-    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
+
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
@@ -27,13 +64,16 @@ class OrganizationCreateIssueTypeType(TypedDict):
             ],
         ]
     ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
-    """OrganizationCreateIssueType"""
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
 
+    id: int
     name: str
-    is_enabled: bool
     description: NotRequired[Union[str, None]]
     color: NotRequired[
         Union[
@@ -43,9 +83,14 @@ class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
             ],
         ]
     ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCreateIssueTypeType",
-    "OrganizationCreateIssueTypeTypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

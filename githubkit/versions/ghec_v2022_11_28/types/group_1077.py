@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0085 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
 )

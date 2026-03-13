@@ -9,79 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningPatternConfigurationType(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningLocationIssueTitleType(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
-    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    issue_title_url: str
 
 
-class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-    custom_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
+    issue_title_url: str
 
 
-class SecretScanningPatternOverrideType(TypedDict):
-    """SecretScanningPatternOverride"""
+class SecretScanningLocationIssueCommentType(TypedDict):
+    """SecretScanningLocationIssueComment
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
 
 
-class SecretScanningPatternOverrideTypeForResponse(TypedDict):
-    """SecretScanningPatternOverride"""
+class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueComment
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[None, Literal["not-set", "disabled", "enabled"]]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+
+
+class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+
+
+class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+
+
+class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
 
 
 __all__ = (
-    "SecretScanningPatternConfigurationType",
-    "SecretScanningPatternConfigurationTypeForResponse",
-    "SecretScanningPatternOverrideType",
-    "SecretScanningPatternOverrideTypeForResponse",
+    "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueCommentTypeForResponse",
+    "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueTitleTypeForResponse",
+    "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestTitleTypeForResponse",
 )

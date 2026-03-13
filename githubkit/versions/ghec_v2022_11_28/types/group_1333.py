@@ -9,49 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    total_count: int
-    secrets: list[DependabotSecretType]
-
-
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    Set secrets for Dependabot.
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
+    ]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-    Set secrets for Dependabot.
+    object containing information about the committer.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
 )

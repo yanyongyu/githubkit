@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,54 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    budget_amount: Missing[int] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
+    provider_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
     )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
-    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
 )

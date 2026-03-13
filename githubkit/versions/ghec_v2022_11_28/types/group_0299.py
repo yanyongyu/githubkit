@@ -9,38 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0295 import LinkType, LinkTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    The status of auto merging a pull request.
+    """
+
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class AutoMergeTypeForResponse(TypedDict):
+    """Auto merge
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    The status of auto merging a pull request.
+    """
+
+    enabled_by: SimpleUserTypeForResponse
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "AutoMergeType",
+    "AutoMergeTypeForResponse",
 )

@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class UserEmailVisibilityPatchBodyType(TypedDict):
-    """UserEmailVisibilityPatchBody"""
-
-    visibility: Literal["public", "private"]
+from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    visibility: Literal["public", "private"]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "UserEmailVisibilityPatchBodyType",
-    "UserEmailVisibilityPatchBodyTypeForResponse",
+    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

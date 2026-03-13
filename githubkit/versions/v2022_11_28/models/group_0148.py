@@ -13,54 +13,45 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0042 import OrganizationSimple
 
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-class OrgMembership(GitHubModel):
-    """Org Membership
-
-    Org Membership
-    """
-
-    url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
     )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    direct_membership: Missing[bool] = Field(
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
         default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+        description="Options for single select fields. Only applicable when updating single_select fields.",
     )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
+
+
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
     )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
 
 
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool = Field()
-
-
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
 )

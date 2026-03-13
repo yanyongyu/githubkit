@@ -10,39 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0124 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Repository Identifier
-    """
-
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
     id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[_dt.datetime, None]
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
-    """Repository Identifier
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Repository Identifier
-    """
-
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
     id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[str, None]
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepositoryType",
-    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

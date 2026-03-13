@@ -19,90 +19,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0083 import Team
-from .group_0199 import Milestone
-from .group_0296 import AutoMerge
-from .group_0298 import PullRequestSimplePropBase, PullRequestSimplePropHead
-from .group_0299 import PullRequestSimplePropLinks
+from .group_0296 import ProjectsV2StatusUpdate
 
 
-class PullRequestSimple(GitHubModel):
-    """Pull Request Simple
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
 
-    Pull Request Simple
+    A projects v2 project
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field()
-    state: str = Field()
-    locked: bool = Field()
-    title: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    body: Union[str, None] = Field()
-    labels: list[PullRequestSimplePropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_teams: Missing[list[Team]] = Field(default=UNSET)
-    head: PullRequestSimplePropHead = Field()
-    base: PullRequestSimplePropBase = Field()
-    links: PullRequestSimplePropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was closed."
+    )
+    created_at: _dt.datetime = Field(
+        description="The time when the project was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time when the project was last updated."
+    )
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
+    )
+    deleted_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was deleted."
+    )
+    deleted_by: Union[None, SimpleUser] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-class PullRequestSimplePropLabelsItems(GitHubModel):
-    """PullRequestSimplePropLabelsItems"""
+model_rebuild(ProjectsV2)
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-
-
-model_rebuild(PullRequestSimple)
-model_rebuild(PullRequestSimplePropLabelsItems)
-
-__all__ = (
-    "PullRequestSimple",
-    "PullRequestSimplePropLabelsItems",
-)
+__all__ = ("ProjectsV2",)

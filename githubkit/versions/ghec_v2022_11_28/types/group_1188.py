@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0085 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
+
+class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
-
-
-class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
-    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

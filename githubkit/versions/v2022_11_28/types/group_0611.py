@@ -13,50 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0018 import InstallationType, InstallationTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import (
-    WebhookIssueCommentCreatedPropCommentType,
-    WebhookIssueCommentCreatedPropCommentTypeForResponse,
-)
-from .group_0613 import (
-    WebhookIssueCommentCreatedPropIssueType,
-    WebhookIssueCommentCreatedPropIssueTypeForResponse,
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0493 import (
+    WebhooksRepositoriesItemsType,
+    WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationSuspendType(TypedDict):
+    """installation suspend event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
+    action: Literal["suspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserType
 
 
-class WebhookIssueCommentCreatedTypeForResponse(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationSuspendTypeForResponse(TypedDict):
+    """installation suspend event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentTypeForResponse
+    action: Literal["suspend"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssueCommentCreatedPropIssueTypeForResponse
+    installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    requester: NotRequired[None]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedType",
-    "WebhookIssueCommentCreatedTypeForResponse",
+    "WebhookInstallationSuspendType",
+    "WebhookInstallationSuspendTypeForResponse",
 )

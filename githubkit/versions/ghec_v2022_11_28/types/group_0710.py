@@ -9,77 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0709 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
-)
+
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
-
-
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
     TypedDict
 ):
-    """App
+    """User"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType",
-    "WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType",
+    "WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
 )

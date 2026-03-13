@@ -13,41 +13,93 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0158 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0509 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
-    A project was created
-    """
-
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookProjectEditedTypeForResponse(TypedDict):
+    """project edited event"""
 
-    A project was created
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
     """
 
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+
+
+class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectCreatedType",
-    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedTypeForResponse",
 )

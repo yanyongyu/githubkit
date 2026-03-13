@@ -13,28 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0509 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0511 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0512 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2ItemDeletedType(TypedDict):
-    """Projects v2 Item Deleted Event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["deleted"]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
-    """Projects v2 Item Deleted Event"""
+class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["deleted"]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     projects_v2_item: ProjectsV2ItemTypeForResponse
@@ -42,6 +48,6 @@ class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectsV2ItemDeletedType",
-    "WebhookProjectsV2ItemDeletedTypeForResponse",
+    "WebhookProjectsV2ItemArchivedType",
+    "WebhookProjectsV2ItemArchivedTypeForResponse",
 )

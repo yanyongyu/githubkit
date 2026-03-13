@@ -9,56 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0281 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0282 import CommitType, CommitTypeForResponse
+from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    Commit Comparison
+    Combined Commit Status
     """
 
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
 
-    Commit Comparison
+    Combined Commit Status
     """
 
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
+    commit_url: str
     url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

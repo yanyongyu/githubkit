@@ -9,99 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
-
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0594 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[
-            WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse, None
-        ]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookProjectCardEditedTypeForResponse(TypedDict):
+    """project_card edited event"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorTypeForResponse",
-    "WebhookProjectCardMovedPropProjectCardAllof1Type",
-    "WebhookProjectCardMovedPropProjectCardAllof1TypeForResponse",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesTypeForResponse",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedTypeForResponse",
 )

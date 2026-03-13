@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,25 +19,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0003 import SimpleUser
 
 
-class Status(GitHubModel):
-    """Status
+class Reaction(GitHubModel):
+    """Reaction
 
-    The status of a commit.
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str = Field()
-    avatar_url: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
-    context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    user: Union[None, SimpleUser] = Field()
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(description="The reaction to use")
+    created_at: _dt.datetime = Field()
 
 
-model_rebuild(Status)
+model_rebuild(Reaction)
 
-__all__ = ("Status",)
+__all__ = ("Reaction",)

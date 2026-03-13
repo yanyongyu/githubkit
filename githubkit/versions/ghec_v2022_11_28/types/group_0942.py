@@ -9,43 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0115 import (
-    RepositoryRulesetConditionsType,
-    RepositoryRulesetConditionsTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0171 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0943 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
+    """repository ruleset deleted event"""
 
-    added: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    deleted: NotRequired[list[RepositoryRulesetConditionsTypeForResponse]]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsTypeForResponse
-        ]
-    ]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository_ruleset: RepositoryRulesetTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse",
+    "WebhookRepositoryRulesetDeletedType",
+    "WebhookRepositoryRulesetDeletedTypeForResponse",
 )

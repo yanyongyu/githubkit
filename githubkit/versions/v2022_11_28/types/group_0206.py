@@ -12,26 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0207 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+
+
+class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
+    """commit_author_email_pattern
+
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleCommitterEmailPatternPropParametersType",
-    "RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse",
+    "RepositoryRuleCommitAuthorEmailPatternType",
+    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
 )

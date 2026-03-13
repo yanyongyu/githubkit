@@ -12,15 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "UserEmailsPostBodyOneof0Type",
+    "UserEmailsPostBodyOneof0TypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,191 +18,144 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
-from .group_0121 import Team
-from .group_0241 import RepositoryAdvisoryCredit
-
-
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
-
-    A repository security advisory.
-    """
-
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
-    )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
-    )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
-    )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
-        description="The severity of the advisory."
-    )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
-    )
-    published_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
-    )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
-    )
-    withdrawn_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
-    )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
-    )
-    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[list[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
-    )
-    collaborating_teams: Union[list[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
-    )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
-    )
-
-
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
-    )
-
-
-class RepositoryAdvisoryPropCvss(GitHubModel):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None] = Field(description="The CVSS vector.")
-    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
-        description="The CVSS score."
-    )
-
-
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
-    )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
-    )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
-    )
-    vulnerable_functions: Union[list[str], None] = Field(
-        description="The functions in the package that are affected."
-    )
-
-
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
-    )
-
-
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCvss)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
-
-__all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryPropCvss",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+from .group_0034 import SimpleRepository
+from .group_0239 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
 )
+from .group_0240 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0241 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+
+
+class OrganizationSecretScanningAlert(GitHubModel):
+    """OrganizationSecretScanningAlert"""
+
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    updated_at: Missing[Union[None, _dt.datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL of the code locations for this alert.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[None, SimpleUser]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment that was optionally added when this alert was closed",
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
+    )
+    is_base64_encoded: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not alert is base64 encoded",
+    )
+    first_location_detected: Missing[
+        Union[
+            None,
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+        ]
+    ] = Field(default=UNSET)
+    has_more_locations: Missing[bool] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
+    )
+    assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationSecretScanningAlert)
+
+__all__ = ("OrganizationSecretScanningAlert",)

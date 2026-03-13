@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0604 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0606 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["reopen"]
+    alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["reopen"]
+    alert: WebhooksAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertCreatedType",
-    "WebhookSecretScanningAlertCreatedTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertReopenType",
+    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
 )

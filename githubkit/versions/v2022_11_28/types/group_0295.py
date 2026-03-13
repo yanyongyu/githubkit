@@ -9,28 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

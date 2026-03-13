@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
+class UserCodespacesPostBodyOneof1(GitHubModel):
+    """UserCodespacesPostBodyOneof1"""
 
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
+        description="Pull request number for this codespace"
     )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[list[str]] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+    )
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+        default=UNSET,
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+    )
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+    Pull request number for this codespace
+    """
+
+    pull_request_number: int = Field(description="Pull request number")
+    repository_id: int = Field(description="Repository id for this codespace")
+
+
+model_rebuild(UserCodespacesPostBodyOneof1)
+model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
+
+__all__ = (
+    "UserCodespacesPostBodyOneof1",
+    "UserCodespacesPostBodyOneof1PropPullRequest",
+)

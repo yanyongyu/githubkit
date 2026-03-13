@@ -19,17 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0198 import Discussion
-from .group_0559 import EnterpriseWebhooks
-from .group_0560 import SimpleInstallation
-from .group_0561 import OrganizationSimpleWebhooks
-from .group_0562 import RepositoryWebhooks
-from .group_0575 import WebhooksLabel
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
 
 
-class WebhookDiscussionLabeled(GitHubModel):
-    """discussion labeled event"""
+class WebhookDiscussionCreated(GitHubModel):
+    """discussion created event"""
 
-    action: Literal["labeled"] = Field()
+    action: Literal["created"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -43,7 +42,6 @@ class WebhookDiscussionLabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -56,6 +54,6 @@ class WebhookDiscussionLabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionLabeled)
+model_rebuild(WebhookDiscussionCreated)
 
-__all__ = ("WebhookDiscussionLabeled",)
+__all__ = ("WebhookDiscussionCreated",)

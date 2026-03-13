@@ -15,19 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0085 import CopilotSeatDetails
 
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
+    create_ruleset: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0085 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
+    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
 )

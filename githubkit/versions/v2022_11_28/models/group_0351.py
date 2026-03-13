@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class Blob(GitHubModel):
-    """Blob
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Blob
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
-    sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-model_rebuild(Blob)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = ("Blob",)
+__all__ = ("CustomDeploymentRuleApp",)

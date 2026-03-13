@@ -11,31 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0037 import (
-    ActionsHostedRunnerCustomImageVersionType,
-    ActionsHostedRunnerCustomImageVersionTypeForResponse,
-)
+from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
 )

@@ -9,34 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0176 import CustomPropertyValue
 
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    An actor that can bypass rules in a ruleset
+    List of custom property values for a repository
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
-    )
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ] = Field(description="The type of actor that can bypass a ruleset.")
-    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
-        default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("RepositoryRulesetBypassActor",)
+__all__ = ("OrgRepoCustomPropertyValues",)

@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,43 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0206 import Issue
+from .group_0300 import PullRequestSimple
+from .group_0303 import ProjectsV2DraftIssue
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
 
-    The configuration for iteration fields.
+class ProjectsV2ItemSimple(GitHubModel):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the first iteration."
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
     )
-    duration: Missing[int] = Field(
-        default=UNSET,
-        description="The default duration for iterations in days. Individual iterations can override this value.",
+    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
+        default=UNSET, description="The content represented by the item."
     )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the iteration."
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
     )
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the iteration."
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    duration: Missing[int] = Field(
-        default=UNSET, description="The duration of the iteration in days."
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
+    )
+    project_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the project this item belongs to."
+    )
+    item_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the item in the project."
     )
 
 
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+model_rebuild(ProjectsV2ItemSimple)
 
-__all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
-)
+__all__ = ("ProjectsV2ItemSimple",)

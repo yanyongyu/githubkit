@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0629 import (
+from .group_0632 import (
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
     WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
@@ -21,8 +21,14 @@ from .group_0629 import (
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[_dt.datetime, None]
     description: Union[str, None]
@@ -43,10 +49,16 @@ class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDi
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[str, None]
     description: Union[str, None]
@@ -68,6 +80,6 @@ class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppTypeForRespo
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

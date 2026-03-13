@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
+    last_read_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
     )
 
 
-model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(NotificationsPutBody)
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = ("NotificationsPutBody",)

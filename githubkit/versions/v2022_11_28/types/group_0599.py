@@ -11,28 +11,46 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0600 import WebhookForkPropForkeeType, WebhookForkPropForkeeTypeForResponse
 
-class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+class WebhookForkType(TypedDict):
+    """fork event
+
+    A user forks a repository.
+    """
+
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    forkee: WebhookForkPropForkeeType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
+class WebhookForkTypeForResponse(TypedDict):
+    """fork event
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    A user forks a repository.
+    """
+
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    forkee: WebhookForkPropForkeeTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookForkPropForkeeAllof0PropPermissionsType",
-    "WebhookForkPropForkeeAllof0PropPermissionsTypeForResponse",
+    "WebhookForkType",
+    "WebhookForkTypeForResponse",
 )

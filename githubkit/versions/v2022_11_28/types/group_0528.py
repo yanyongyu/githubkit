@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0481 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0482 import WebhooksRuleType, WebhooksRuleTypeForResponse
 
 
-class WebhookCheckRunCompletedType(TypedDict):
-    """Check Run Completed Event"""
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookCheckRunCompletedTypeForResponse(TypedDict):
-    """Check Run Completed Event"""
+class WebhookBranchProtectionRuleCreatedTypeForResponse(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
+    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunCompletedType",
-    "WebhookCheckRunCompletedTypeForResponse",
+    "WebhookBranchProtectionRuleCreatedType",
+    "WebhookBranchProtectionRuleCreatedTypeForResponse",
 )

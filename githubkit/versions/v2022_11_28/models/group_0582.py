@@ -19,19 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0044 import Discussion
-from .group_0475 import EnterpriseWebhooks
-from .group_0476 import SimpleInstallation
-from .group_0477 import OrganizationSimpleWebhooks
-from .group_0478 import RepositoryWebhooks
-from .group_0488 import WebhooksComment
+from .group_0478 import EnterpriseWebhooks
+from .group_0479 import SimpleInstallation
+from .group_0480 import OrganizationSimpleWebhooks
+from .group_0481 import RepositoryWebhooks
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookDiscussionClosed(GitHubModel):
+    """discussion closed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
-    comment: WebhooksComment = Field()
+    action: Literal["closed"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -57,24 +54,6 @@ class WebhookDiscussionCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
+model_rebuild(WebhookDiscussionClosed)
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-
-__all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-)
+__all__ = ("WebhookDiscussionClosed",)

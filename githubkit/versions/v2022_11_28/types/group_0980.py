@@ -14,21 +14,21 @@ from typing_extensions import TypedDict
 from .group_0114 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
     total_count: int
     labels: list[RunnerLabelType]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
     total_count: int
     labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",
-    "OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",
+    "OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
 )

@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

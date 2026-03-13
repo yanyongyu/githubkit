@@ -9,49 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
-    ]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
-    ]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

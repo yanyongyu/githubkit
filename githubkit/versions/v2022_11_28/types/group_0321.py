@@ -10,77 +10,102 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0085 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class CommitCommentType(TypedDict):
+    """Commit Comment
 
-    Combined Commit Status
+    Commit Comment
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
+    html_url: str
     url: str
-
-
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
-
-    Combined Commit Status
-    """
-
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
-
-
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
     id: int
     node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserType]
     created_at: _dt.datetime
     updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
 
-    description: Union[str, None]
+    Commit Comment
+    """
+
+    html_url: str
+    url: str
     id: int
     node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[None, SimpleUserTypeForResponse]
     created_at: str
     updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
+
+
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CommitCommentType",
+    "CommitCommentTypeForResponse",
+    "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

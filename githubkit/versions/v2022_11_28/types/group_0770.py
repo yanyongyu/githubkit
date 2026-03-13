@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0506 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0509 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookProjectCreatedType(TypedDict):
+    """project created event"""
 
-    action: Literal["reopened"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookProjectReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectReopenedTypeForResponse(TypedDict):
-    """project reopened event"""
+class WebhookProjectCreatedTypeForResponse(TypedDict):
+    """project created event"""
 
-    action: Literal["reopened"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookProjectReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectReopenedType",
-    "WebhookProjectReopenedTypeForResponse",
+    "WebhookProjectCreatedType",
+    "WebhookProjectCreatedTypeForResponse",
 )

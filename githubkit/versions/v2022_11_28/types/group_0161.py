@@ -14,154 +14,65 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0045 import MilestoneType, MilestoneTypeForResponse
-from .group_0121 import TeamType, TeamTypeForResponse
-from .group_0160 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0162 import (
-    PullRequestSimplePropBaseType,
-    PullRequestSimplePropBaseTypeForResponse,
-    PullRequestSimplePropHeadType,
-    PullRequestSimplePropHeadTypeForResponse,
-)
-from .group_0163 import (
-    PullRequestSimplePropLinksType,
-    PullRequestSimplePropLinksTypeForResponse,
+from .group_0160 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
 )
 
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
 
-    Pull Request Simple
+    A projects v2 project
     """
 
-    url: str
-    id: int
+    id: float
     node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
+    owner: SimpleUserType
+    creator: SimpleUserType
     title: str
-    user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[_dt.datetime, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    requested_reviewers: NotRequired[list[SimpleUserType]]
-    requested_teams: NotRequired[list[TeamType]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[_dt.datetime, None]
+    deleted_by: Union[None, SimpleUserType]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[None, ProjectsV2StatusUpdateType]]
+    is_template: NotRequired[bool]
 
 
-class PullRequestSimpleTypeForResponse(TypedDict):
-    """Pull Request Simple
+class ProjectsV2TypeForResponse(TypedDict):
+    """Projects v2 Project
 
-    Pull Request Simple
+    A projects v2 project
     """
 
-    url: str
-    id: int
+    id: float
     node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
+    owner: SimpleUserTypeForResponse
+    creator: SimpleUserTypeForResponse
     title: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[None, MilestoneTypeForResponse]
-    active_lock_reason: NotRequired[Union[str, None]]
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[str, None]
     created_at: str
     updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_teams: NotRequired[list[TeamTypeForResponse]]
-    head: PullRequestSimplePropHeadTypeForResponse
-    base: PullRequestSimplePropBaseTypeForResponse
-    links: PullRequestSimplePropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[str, None]
+    deleted_by: Union[None, SimpleUserTypeForResponse]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[
+        Union[None, ProjectsV2StatusUpdateTypeForResponse]
     ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    draft: NotRequired[bool]
-
-
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimplePropLabelsItemsTypeForResponse",
-    "PullRequestSimpleType",
-    "PullRequestSimpleTypeForResponse",
+    "ProjectsV2Type",
+    "ProjectsV2TypeForResponse",
 )

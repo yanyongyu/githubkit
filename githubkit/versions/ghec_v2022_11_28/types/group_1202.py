@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from .group_0242 import (
+    OrganizationCustomRepositoryRoleType,
+    OrganizationCustomRepositoryRoleTypeForResponse,
+)
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

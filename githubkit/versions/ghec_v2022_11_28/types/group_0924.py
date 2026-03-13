@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0602 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0604 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
 
 
-class WebhookReleasePublishedType(TypedDict):
-    """release published event"""
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
 
-    action: Literal["published"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookReleasePublishedTypeForResponse(TypedDict):
-    """release published event"""
+class WebhookReleaseDeletedTypeForResponse(TypedDict):
+    """release deleted event"""
 
-    action: Literal["published"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksRelease1TypeForResponse
+    release: WebhooksReleaseTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleasePublishedType",
-    "WebhookReleasePublishedTypeForResponse",
+    "WebhookReleaseDeletedType",
+    "WebhookReleaseDeletedTypeForResponse",
 )

@@ -13,25 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0582 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
-from .group_0794 import (
-    WebhookIssuesTransferredPropChangesType,
-    WebhookIssuesTransferredPropChangesTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0585 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookIssuesTransferredType(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesPinnedType(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesType
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     issue: WebhooksIssue2Type
@@ -40,11 +35,10 @@ class WebhookIssuesTransferredType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookIssuesTransferredTypeForResponse(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesPinnedTypeForResponse(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesTypeForResponse
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     issue: WebhooksIssue2TypeForResponse
@@ -54,6 +48,6 @@ class WebhookIssuesTransferredTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesTransferredType",
-    "WebhookIssuesTransferredTypeForResponse",
+    "WebhookIssuesPinnedType",
+    "WebhookIssuesPinnedTypeForResponse",
 )

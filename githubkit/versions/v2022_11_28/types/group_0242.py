@@ -13,268 +13,151 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0121 import TeamType, TeamTypeForResponse
+from .group_0034 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0239 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0240 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
 from .group_0241 import (
-    RepositoryAdvisoryCreditType,
-    RepositoryAdvisoryCreditTypeForResponse,
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
 )
 
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+class OrganizationSecretScanningAlertType(TypedDict):
+    """OrganizationSecretScanningAlert"""
 
-    A repository security advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    published_at: Union[_dt.datetime, None]
-    closed_at: Union[_dt.datetime, None]
-    withdrawn_at: Union[_dt.datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[list[SimpleUserType], None]
-    collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryTypeForResponse(TypedDict):
-    """RepositoryAdvisory
-
-    A repository security advisory.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    published_at: Union[str, None]
-    closed_at: Union[str, None]
-    withdrawn_at: Union[str, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
-    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
-    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
-    collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    number: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[None, _dt.datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    repository: NotRequired[SimpleRepositoryType]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
+        Union[
+            None,
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
         ]
     ]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[None, SimpleUserType]]
 
 
-class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
+class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
+    """OrganizationSecretScanningAlert"""
 
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    number: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[Union[None, str]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolved_at: NotRequired[Union[str, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    repository: NotRequired[SimpleRepositoryTypeForResponse]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    push_protection_bypassed_at: NotRequired[Union[str, None]]
+    push_protection_bypass_request_reviewer: NotRequired[
+        Union[None, SimpleUserTypeForResponse]
+    ]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    is_base64_encoded: NotRequired[Union[bool, None]]
+    first_location_detected: NotRequired[
+        Union[
+            None,
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
         ]
     ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
+    has_more_locations: NotRequired[bool]
+    assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCvssTypeForResponse",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropSubmissionTypeForResponse",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityTypeForResponse",
+    "OrganizationSecretScanningAlertType",
+    "OrganizationSecretScanningAlertTypeForResponse",
 )

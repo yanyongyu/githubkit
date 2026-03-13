@@ -12,35 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0206 import (
-    RepositoryRuleCommitterEmailPatternPropParametersType,
-    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
-)
 
+class RepositoryRuleDetailedOneof9Type(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-class RepositoryRuleDetailedOneof12Type(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
-
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof12TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
+class RepositoryRuleDetailedOneof9TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof9"""
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
-    ]
+    type: Literal["non_fast_forward"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof12Type",
-    "RepositoryRuleDetailedOneof12TypeForResponse",
+    "RepositoryRuleDetailedOneof9Type",
+    "RepositoryRuleDetailedOneof9TypeForResponse",
 )

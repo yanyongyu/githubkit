@@ -9,40 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0302 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    Repository Identifier
+    """
+
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[_dt.datetime, None]
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    Repository Identifier
+    """
+
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
 )

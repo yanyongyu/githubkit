@@ -10,69 +10,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Review Dismissed Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_dismissed"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    rename: RenamedIssueEventPropRenameType
 
 
-class ReviewDismissedIssueEventTypeForResponse(TypedDict):
-    """Review Dismissed Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Review Dismissed Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_dismissed"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
+    rename: RenamedIssueEventPropRenameTypeForResponse
 
 
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    from_: str
+    to: str
 
 
-class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    from_: str
+    to: str
 
 
 __all__ = (
-    "ReviewDismissedIssueEventPropDismissedReviewType",
-    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
-    "ReviewDismissedIssueEventType",
-    "ReviewDismissedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

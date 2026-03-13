@@ -13,56 +13,103 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0049 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
-class WebhooksMilestoneType(TypedDict):
-    """Milestone
 
-    A collection of related issues and pull requests.
+class WebhooksIssueCommentType(TypedDict):
+    """issue comment
+
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
     created_at: _dt.datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
     html_url: str
     id: int
-    labels_url: str
+    issue_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    performed_via_github_app: Union[IntegrationType, None]
+    reactions: WebhooksIssueCommentPropReactionsType
     updated_at: _dt.datetime
     url: str
+    user: Union[WebhooksIssueCommentPropUserType, None]
+    pin: NotRequired[Union[None, PinnedIssueCommentType]]
 
 
-class WebhooksMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class WebhooksIssueCommentTypeForResponse(TypedDict):
+    """issue comment
 
-    A collection of related issues and pull requests.
+    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
+    itself.
     """
 
-    closed_at: Union[str, None]
-    closed_issues: int
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
     created_at: str
-    creator: Union[WebhooksMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
     html_url: str
     id: int
-    labels_url: str
+    issue_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
     updated_at: str
+    url: str
+    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
+    pin: NotRequired[Union[None, PinnedIssueCommentTypeForResponse]]
+
+
+class WebhooksIssueCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksMilestonePropCreatorType(TypedDict):
+class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksIssueCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -89,7 +136,7 @@ class WebhooksMilestonePropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
+class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -117,8 +164,10 @@ class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestonePropCreatorTypeForResponse",
-    "WebhooksMilestoneType",
-    "WebhooksMilestoneTypeForResponse",
+    "WebhooksIssueCommentPropReactionsType",
+    "WebhooksIssueCommentPropReactionsTypeForResponse",
+    "WebhooksIssueCommentPropUserType",
+    "WebhooksIssueCommentPropUserTypeForResponse",
+    "WebhooksIssueCommentType",
+    "WebhooksIssueCommentTypeForResponse",
 )

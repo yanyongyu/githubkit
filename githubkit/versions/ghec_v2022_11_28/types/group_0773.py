@@ -13,58 +13,28 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0768 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse,
-)
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
-
-
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
 )

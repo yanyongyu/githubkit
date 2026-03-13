@@ -9,57 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0186 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-
-
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
+    Parameters for a repository ID condition
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    Parameters for a targeting a repository property
+    Parameters for a repository ID condition
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetType",
+    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
 )

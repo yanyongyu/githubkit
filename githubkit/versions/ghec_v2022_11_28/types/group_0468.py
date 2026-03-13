@@ -9,51 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+class PageBuildType(TypedDict):
+    """Page Build
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    Page Build
+    """
+
+    url: str
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[None, SimpleUserType]
+    commit: str
+    duration: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PagesDeploymentStatusTypeForResponse(TypedDict):
-    """GitHub Pages deployment status"""
+class PageBuildTypeForResponse(TypedDict):
+    """Page Build
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-        ]
-    ]
+    Page Build
+    """
+
+    url: str
+    status: str
+    error: PageBuildPropErrorTypeForResponse
+    pusher: Union[None, SimpleUserTypeForResponse]
+    commit: str
+    duration: int
+    created_at: str
+    updated_at: str
+
+
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
+
+
+class PageBuildPropErrorTypeForResponse(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
 
 
 __all__ = (
-    "PagesDeploymentStatusType",
-    "PagesDeploymentStatusTypeForResponse",
+    "PageBuildPropErrorType",
+    "PageBuildPropErrorTypeForResponse",
+    "PageBuildType",
+    "PageBuildTypeForResponse",
 )

@@ -16,40 +16,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPostBody"""
+class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    title: Missing[str] = Field(
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: Missing[float] = Field(
         default=UNSET,
-        description="The title of the new pull request. Required unless `issue` is specified.",
+        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    head: str = Field(
-        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
-    )
-    head_repo: Missing[str] = Field(
+    artifact_url: Missing[str] = Field(
         default=UNSET,
-        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
+        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    base: str = Field(
-        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    maintainer_can_modify: Missing[bool] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+        description="The target environment for this GitHub Pages deployment.",
     )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/enterprise-cloud@latest//articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
+    pages_build_version: str = Field(
+        default="GITHUB_SHA",
+        description="A unique string that represents the version of the build for this deployment.",
     )
-    issue: Missing[int] = Field(
-        default=UNSET,
-        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
+    oidc_token: str = Field(
+        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPostBody)
+model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPostBody",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)

@@ -12,35 +12,84 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0202 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
-)
 
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
-
-    Parameters to be used for the commit_message_pattern rule
-    """
-
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
-
-
-class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
-    """commit_message_pattern
-
-    Parameters to be used for the commit_message_pattern rule
-    """
-
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
     ]
 
 
+class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
+
+    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
+    required_reviewers: NotRequired[
+        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
+    ]
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerType
+
+
+class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
+    """RequiredReviewerConfiguration
+
+    A reviewing team, and file patterns describing which files they must approve
+    changes to.
+    """
+
+    file_patterns: list[str]
+    minimum_approvals: int
+    reviewer: RepositoryRuleParamsReviewerTypeForResponse
+
+
+class RepositoryRuleParamsReviewerType(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
+class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
+    """Reviewer
+
+    A required reviewing team
+    """
+
+    id: int
+    type: Literal["Team"]
+
+
 __all__ = (
-    "RepositoryRuleCommitMessagePatternType",
-    "RepositoryRuleCommitMessagePatternTypeForResponse",
+    "RepositoryRuleParamsRequiredReviewerConfigurationType",
+    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
+    "RepositoryRuleParamsReviewerType",
+    "RepositoryRuleParamsReviewerTypeForResponse",
+    "RepositoryRulePullRequestPropParametersType",
+    "RepositoryRulePullRequestPropParametersTypeForResponse",
 )

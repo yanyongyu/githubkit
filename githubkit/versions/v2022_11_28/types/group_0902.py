@@ -13,48 +13,56 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0267 import DeploymentType, DeploymentTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0270 import DeploymentType, DeploymentTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobInProgressType(TypedDict):
-    """workflow_job in_progress event"""
+class WebhookWorkflowJobCompletedType(TypedDict):
+    """workflow_job completed event"""
 
-    action: Literal["in_progress"]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
     deployment: NotRequired[DeploymentType]
 
 
-class WebhookWorkflowJobInProgressTypeForResponse(TypedDict):
-    """workflow_job in_progress event"""
+class WebhookWorkflowJobCompletedTypeForResponse(TypedDict):
+    """workflow_job completed event"""
 
-    action: Literal["in_progress"]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse
     deployment: NotRequired[DeploymentTypeForResponse]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
     check_run_url: str
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ]
     created_at: str
     head_sha: str
     html_url: str
@@ -70,19 +78,27 @@ class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
     runner_id: Union[Union[int, None], None]
     runner_name: Union[Union[str, None], None]
     started_at: str
-    status: Literal["queued", "in_progress", "completed"]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[Union[str, None], None]
     workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
     url: str
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+class WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
     check_run_url: str
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ]
     created_at: str
     head_sha: str
     html_url: str
@@ -98,40 +114,40 @@ class WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse(TypedDict):
     runner_id: Union[Union[int, None], None]
     runner_name: Union[Union[str, None], None]
     started_at: str
-    status: Literal["queued", "in_progress", "completed"]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[Union[str, None], None]
     workflow_name: Union[Union[str, None], None]
-    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse]
     url: str
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
     name: str
     number: int
-    started_at: Union[Union[str, None], None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    completed_at: Union[Union[str, None], None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
     name: str
     number: int
-    started_at: Union[Union[str, None], None]
-    status: Literal["in_progress", "completed", "queued", "pending"]
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsTypeForResponse",
-    "WebhookWorkflowJobInProgressPropWorkflowJobType",
-    "WebhookWorkflowJobInProgressPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobInProgressType",
-    "WebhookWorkflowJobInProgressTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobCompletedType",
+    "WebhookWorkflowJobCompletedTypeForResponse",
 )

@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """OrgsOrgCopilotContentExclusionPutBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

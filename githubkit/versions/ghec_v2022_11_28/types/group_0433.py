@@ -9,40 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
+from .group_0432 import HookResponseType, HookResponseTypeForResponse
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class HookType(TypedDict):
+    """Webhook
 
-    Porter Author
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    remote_id: str
-    remote_name: str
-    email: str
     name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigType
+    updated_at: _dt.datetime
+    created_at: _dt.datetime
     url: str
-    import_url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class HookTypeForResponse(TypedDict):
+    """Webhook
 
-    Porter Author
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    remote_id: str
-    remote_name: str
-    email: str
     name: str
+    active: bool
+    events: list[str]
+    config: WebhookConfigTypeForResponse
+    updated_at: str
+    created_at: str
     url: str
-    import_url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseTypeForResponse
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "HookType",
+    "HookTypeForResponse",
 )

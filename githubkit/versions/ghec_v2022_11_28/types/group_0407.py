@@ -9,40 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0090 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
-
-    Details for the vulnerable dependency.
+    Repository rule violation was detected
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
 
-    Details for the vulnerable dependency.
+    Repository rule violation was detected
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
-    relationship: NotRequired[Union[None, Literal["unknown", "direct", "transitive"]]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
+
+
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

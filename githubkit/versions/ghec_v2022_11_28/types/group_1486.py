@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    attestation_ids: list[int]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    attestation_ids: list[int]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type",
+    "UsersUsernameAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
 )

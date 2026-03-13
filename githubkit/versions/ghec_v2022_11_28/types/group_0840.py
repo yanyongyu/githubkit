@@ -13,52 +13,56 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0841 import (
-    WebhookPackageUpdatedPropPackagePropPackageVersionType,
-    WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse,
+    WebhookPackagePublishedPropPackagePropPackageVersionType,
+    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
 )
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookPackagePublishedPropPackageType(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
     Information about the package.
     """
 
-    created_at: str
+    created_at: Union[str, None]
     description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
     package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionType, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    updated_at: Union[str, None]
 
 
-class WebhookPackageUpdatedPropPackageTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
     Information about the package.
     """
 
-    created_at: str
+    created_at: Union[str, None]
     description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse, None]
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
     package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse, None]
-    updated_at: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: Union[str, None]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -85,7 +89,7 @@ class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
+class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -112,8 +116,8 @@ class WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
     about_url: str
     name: str
@@ -122,8 +126,8 @@ class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
     vendor: str
 
 
-class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
     about_url: str
     name: str
@@ -133,10 +137,10 @@ class WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropOwnerTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
-    "WebhookPackageUpdatedPropPackagePropRegistryTypeForResponse",
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackageTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropOwnerType",
+    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackagePublishedPropPackageType",
+    "WebhookPackagePublishedPropPackageTypeForResponse",
 )

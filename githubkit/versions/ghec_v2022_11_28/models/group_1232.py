@@ -18,24 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserSshSigningKeysPostBody(GitHubModel):
-    """UserSshSigningKeysPostBody"""
+class UserMembershipsOrgsOrgPatchBody(GitHubModel):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
-        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest//authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
+    state: Literal["active"] = Field(
+        description='The state that the membership should be in. Only `"active"` will be accepted.'
     )
 
 
-model_rebuild(UserSshSigningKeysPostBody)
+model_rebuild(UserMembershipsOrgsOrgPatchBody)
 
-__all__ = ("UserSshSigningKeysPostBody",)
+__all__ = ("UserMembershipsOrgsOrgPatchBody",)

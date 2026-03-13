@@ -19,18 +19,18 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0198 import Discussion
-from .group_0559 import EnterpriseWebhooks
-from .group_0560 import SimpleInstallation
-from .group_0561 import OrganizationSimpleWebhooks
-from .group_0562 import RepositoryWebhooks
-from .group_0574 import WebhooksComment
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0576 import WebhooksAnswer
 
 
-class WebhookDiscussionCommentCreated(GitHubModel):
-    """discussion_comment created event"""
+class WebhookDiscussionAnswered(GitHubModel):
+    """discussion answered event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhooksComment = Field()
+    action: Literal["answered"] = Field()
+    answer: WebhooksAnswer = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +56,6 @@ class WebhookDiscussionCommentCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionCommentCreated)
+model_rebuild(WebhookDiscussionAnswered)
 
-__all__ = ("WebhookDiscussionCommentCreated",)
+__all__ = ("WebhookDiscussionAnswered",)

@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0052 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
-
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
-
-
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    total_count: float
+    runners: list[RunnerType]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+
+    total_count: float
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType",
-    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
 )

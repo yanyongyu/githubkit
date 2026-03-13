@@ -14,167 +14,129 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRelease1Type(TypedDict):
-    """Release
+class WebhooksReviewCommentType(TypedDict):
+    """Pull Request Review Comment
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
     """
 
-    assets: list[Union[WebhooksRelease1PropAssetsItemsType, None]]
-    assets_url: str
-    author: Union[WebhooksRelease1PropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[_dt.datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    immutable: bool
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[_dt.datetime, None]
-    reactions: NotRequired[WebhooksRelease1PropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    updated_at: Union[_dt.datetime, None]
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhooksRelease1TypeForResponse(TypedDict):
-    """Release
-
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
-
-    assets: list[Union[WebhooksRelease1PropAssetsItemsTypeForResponse, None]]
-    assets_url: str
-    author: Union[WebhooksRelease1PropAuthorTypeForResponse, None]
-    body: Union[str, None]
-    created_at: Union[str, None]
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    immutable: bool
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[str, None]
-    reactions: NotRequired[WebhooksRelease1PropReactionsTypeForResponse]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    updated_at: Union[str, None]
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhooksRelease1PropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: _dt.datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    digest: Union[str, None]
-    state: Literal["uploaded"]
-    updated_at: _dt.datetime
-    uploader: NotRequired[Union[WebhooksRelease1PropAssetsItemsPropUploaderType, None]]
-    url: str
-
-
-class WebhooksRelease1PropAssetsItemsTypeForResponse(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: str
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    digest: Union[str, None]
-    state: Literal["uploaded"]
-    updated_at: str
-    uploader: NotRequired[
-        Union[WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse, None]
+    links: WebhooksReviewCommentPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    body: str
+    commit_id: str
+    created_at: _dt.datetime
+    diff_hunk: str
+    html_url: str
+    id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhooksReviewCommentPropReactionsType
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[WebhooksReviewCommentPropUserType, None]
+
+
+class WebhooksReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
+
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: WebhooksReviewCommentPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    commit_id: str
+    created_at: str
+    diff_hunk: str
+    html_url: str
+    id: int
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhooksReviewCommentPropReactionsTypeForResponse
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[None, Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: str
+    url: str
+    user: Union[WebhooksReviewCommentPropUserTypeForResponse, None]
+
+
+class WebhooksReviewCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksRelease1PropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
+class WebhooksReviewCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
-class WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksRelease1PropAuthorType(TypedDict):
+class WebhooksReviewCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -201,7 +163,7 @@ class WebhooksRelease1PropAuthorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksRelease1PropAuthorTypeForResponse(TypedDict):
+class WebhooksReviewCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -228,45 +190,71 @@ class WebhooksRelease1PropAuthorTypeForResponse(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksRelease1PropReactionsType(TypedDict):
-    """Reactions"""
+class WebhooksReviewCommentPropLinksType(TypedDict):
+    """WebhooksReviewCommentPropLinks"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    html: WebhooksReviewCommentPropLinksPropHtmlType
+    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
+    self_: WebhooksReviewCommentPropLinksPropSelfType
 
 
-class WebhooksRelease1PropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class WebhooksReviewCommentPropLinksTypeForResponse(TypedDict):
+    """WebhooksReviewCommentPropLinks"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    html: WebhooksReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse
+    self_: WebhooksReviewCommentPropLinksPropSelfTypeForResponse
+
+
+class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
+    """Link"""
+
+    href: str
+
+
+class WebhooksReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "WebhooksRelease1PropAssetsItemsPropUploaderType",
-    "WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse",
-    "WebhooksRelease1PropAssetsItemsType",
-    "WebhooksRelease1PropAssetsItemsTypeForResponse",
-    "WebhooksRelease1PropAuthorType",
-    "WebhooksRelease1PropAuthorTypeForResponse",
-    "WebhooksRelease1PropReactionsType",
-    "WebhooksRelease1PropReactionsTypeForResponse",
-    "WebhooksRelease1Type",
-    "WebhooksRelease1TypeForResponse",
+    "WebhooksReviewCommentPropLinksPropHtmlType",
+    "WebhooksReviewCommentPropLinksPropHtmlTypeForResponse",
+    "WebhooksReviewCommentPropLinksPropPullRequestType",
+    "WebhooksReviewCommentPropLinksPropPullRequestTypeForResponse",
+    "WebhooksReviewCommentPropLinksPropSelfType",
+    "WebhooksReviewCommentPropLinksPropSelfTypeForResponse",
+    "WebhooksReviewCommentPropLinksType",
+    "WebhooksReviewCommentPropLinksTypeForResponse",
+    "WebhooksReviewCommentPropReactionsType",
+    "WebhooksReviewCommentPropReactionsTypeForResponse",
+    "WebhooksReviewCommentPropUserType",
+    "WebhooksReviewCommentPropUserTypeForResponse",
+    "WebhooksReviewCommentType",
+    "WebhooksReviewCommentTypeForResponse",
 )

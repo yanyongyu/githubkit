@@ -12,16 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    issue_id: int = Field(
-        description="The id of the issue that blocks the current issue"
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)

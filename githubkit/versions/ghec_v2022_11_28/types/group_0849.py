@@ -9,28 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0593 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    sender: SimpleUserType
+    installation: SimpleInstallationType
 
-    payload: str
 
+class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
+    """personal_access_token_request denied event"""
 
-class WebhookPingFormEncodedTypeForResponse(TypedDict):
-    """WebhookPingFormEncoded
-
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPingFormEncodedType",
-    "WebhookPingFormEncodedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestDeniedType",
+    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
 )

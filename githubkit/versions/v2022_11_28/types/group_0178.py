@@ -9,33 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0179 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Parameters for a repository ruleset ref name condition
+    Code of Conduct Simple
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class RepositoryRulesetConditionsTypeForResponse(TypedDict):
-    """Repository ruleset conditions for ref names
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Parameters for a repository ruleset ref name condition
+    Code of Conduct Simple
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsType",
-    "RepositoryRulesetConditionsTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

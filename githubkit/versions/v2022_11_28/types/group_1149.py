@@ -9,45 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
+
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesPostBody"""
 
-    billable_owner: NotRequired[SimpleUserType]
-    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: NotRequired[SimpleUserTypeForResponse]
-    defaults: NotRequired[
-        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
-    ]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
-
-    location: str
-    devcontainer_path: Union[str, None]
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
-
-    location: str
-    devcontainer_path: Union[str, None]
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
-    "ReposOwnerRepoCodespacesNewGetResponse200Type",
-    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
+    "ReposOwnerRepoCodespacesPostBodyType",
+    "ReposOwnerRepoCodespacesPostBodyTypeForResponse",
 )

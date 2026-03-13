@@ -9,39 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class SecretScanningLocationDiscussionBody(GitHubModel):
+    """SecretScanningLocationDiscussionBody
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+class SecretScanningLocationPullRequestComment(GitHubModel):
+    """SecretScanningLocationPullRequestComment
 
-__all__ = ("RepositoryAdvisoryCredit",)
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected."
+    )
+
+
+model_rebuild(SecretScanningLocationDiscussionBody)
+model_rebuild(SecretScanningLocationPullRequestComment)
+
+__all__ = (
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationPullRequestComment",
+)

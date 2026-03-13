@@ -13,41 +13,42 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0406 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookDeleteType(TypedDict):
+    """delete event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoReopenedTypeForResponse(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookDeleteTypeForResponse(TypedDict):
+    """delete event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoReopenedType",
-    "WebhookDependabotAlertAutoReopenedTypeForResponse",
+    "WebhookDeleteType",
+    "WebhookDeleteTypeForResponse",
 )

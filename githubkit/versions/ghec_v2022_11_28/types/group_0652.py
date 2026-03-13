@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0406 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0108 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAssigneesChangedType(TypedDict):
-    """Dependabot alert assignees changed event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["assignees_changed"]
-    alert: DependabotAlertType
+    action: Literal["updated"]
+    definition: CustomPropertyType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
-    """Dependabot alert assignees changed event"""
+class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
+    """custom property updated event"""
 
-    action: Literal["assignees_changed"]
-    alert: DependabotAlertTypeForResponse
+    action: Literal["updated"]
+    definition: CustomPropertyTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertAssigneesChangedType",
-    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
+    "WebhookCustomPropertyUpdatedType",
+    "WebhookCustomPropertyUpdatedTypeForResponse",
 )

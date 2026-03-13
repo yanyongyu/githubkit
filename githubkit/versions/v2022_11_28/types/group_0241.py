@@ -9,57 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    discussion_body_url: str
 
 
-class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
-    """RepositoryAdvisoryCredit
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    A credit given to a user for a repository security advisory.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    user: SimpleUserTypeForResponse
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    discussion_body_url: str
+
+
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+
+
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
 
 
 __all__ = (
-    "RepositoryAdvisoryCreditType",
-    "RepositoryAdvisoryCreditTypeForResponse",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

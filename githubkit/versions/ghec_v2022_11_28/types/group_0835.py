@@ -9,81 +9,150 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0575 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookOrganizationMemberInvitedType(TypedDict):
+    """organization member_invited event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
+    user: NotRequired[Union[WebhooksUserType, None]]
 
 
-class WebhookRubygemsMetadataTypeForResponse(TypedDict):
-    """Ruby Gems metadata"""
+class WebhookOrganizationMemberInvitedTypeForResponse(TypedDict):
+    """organization member_invited event"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoTypeForResponse]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataTypeForResponse]
-    repo: NotRequired[str]
-    dependencies: NotRequired[
-        list[WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse]
+    action: Literal["member_invited"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    invitation: WebhookOrganizationMemberInvitedPropInvitationTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
+    user: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+
+
+class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
+    created_at: _dt.datetime
+    email: Union[str, None]
+    failed_at: Union[_dt.datetime, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
+
+
+class WebhookOrganizationMemberInvitedPropInvitationTypeForResponse(TypedDict):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
+    """
+
+    created_at: str
+    email: Union[str, None]
+    failed_at: Union[str, None]
+    failed_reason: Union[str, None]
+    id: float
+    invitation_teams_url: str
+    inviter: Union[
+        WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse, None
     ]
-    commit_oid: NotRequired[str]
+    login: Union[str, None]
+    node_id: str
+    role: str
+    team_count: float
+    invitation_source: NotRequired[str]
 
 
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
+    """User"""
 
-    version: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRubygemsMetadataPropVersionInfoTypeForResponse(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse(
+    TypedDict
+):
+    """User"""
 
-    version: NotRequired[str]
-
-
-WebhookRubygemsMetadataPropMetadataType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropMetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropMetadata
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsType: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
-
-
-WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookRubygemsMetadataPropDependenciesItems
-"""
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
-    "WebhookRubygemsMetadataPropDependenciesItemsTypeForResponse",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropMetadataTypeForResponse",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropVersionInfoTypeForResponse",
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataTypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse",
+    "WebhookOrganizationMemberInvitedPropInvitationType",
+    "WebhookOrganizationMemberInvitedPropInvitationTypeForResponse",
+    "WebhookOrganizationMemberInvitedType",
+    "WebhookOrganizationMemberInvitedTypeForResponse",
 )

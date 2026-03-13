@@ -9,35 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-    Code of Conduct Simple
+    Custom property set payload
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
 
-    Code of Conduct Simple
+    Custom property set payload
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
 )

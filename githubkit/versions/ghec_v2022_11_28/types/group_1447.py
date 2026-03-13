@@ -9,37 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
     ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

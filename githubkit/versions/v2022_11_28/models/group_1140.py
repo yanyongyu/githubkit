@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,34 +16,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    state: Missing[Literal["open", "dismissed"]] = Field(
-        default=UNSET,
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
-    )
-    dismissed_reason: Missing[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    auto_trigger_checks: Missing[
+        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
     ] = Field(
         default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    create_request: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, attempt to create an alert dismissal request.",
-    )
-    assignees: list[str] = Field(
-        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
+        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)
+    app_id: int = Field(description="The `id` of the GitHub App.")
+    setting: bool = Field(
+        default=True,
+        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+
+__all__ = (
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
+)

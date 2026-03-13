@@ -16,23 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    new_name: Missing[str] = Field(
+    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
+    after_id: Missing[int] = Field(
         default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
     )
-    color: Missing[str] = Field(
+    before_id: Missing[int] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)

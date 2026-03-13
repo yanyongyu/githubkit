@@ -9,53 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0280 import BranchProtectionType, BranchProtectionTypeForResponse
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
 
-    Diff Entry
+class ShortBranchType(TypedDict):
+    """Short Branch
+
+    Short Branch
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class DiffEntryTypeForResponse(TypedDict):
-    """Diff Entry
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
 
-    Diff Entry
+    Short Branch
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "DiffEntryType",
-    "DiffEntryTypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

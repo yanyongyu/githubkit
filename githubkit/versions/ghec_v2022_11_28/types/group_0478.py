@@ -11,26 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0295 import LinkType, LinkTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
 
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
 )

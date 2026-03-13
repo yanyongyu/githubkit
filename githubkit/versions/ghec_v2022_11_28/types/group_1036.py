@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0052 import RunnerType, RunnerTypeForResponse
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    total_count: float
-    runners: list[RunnerType]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

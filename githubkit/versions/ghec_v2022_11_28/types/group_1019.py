@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
 
-from .group_0036 import (
-    ActionsHostedRunnerCustomImageType,
-    ActionsHostedRunnerCustomImageTypeForResponse,
-)
-
-
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

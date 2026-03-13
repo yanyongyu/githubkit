@@ -9,61 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0206 import IssueType, IssueTypeForResponse
-from .group_0297 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0300 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class PullRequestSimplePropHeadTypeForResponse(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    An item belonging to a project
-    """
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryTypeForResponse]
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
-    ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropBaseTypeForResponse(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: Union[None, SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropBaseTypeForResponse",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropHeadTypeForResponse",
 )

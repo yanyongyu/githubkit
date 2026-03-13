@@ -9,118 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0162 import LinkType, LinkTypeForResponse
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    Pull Request Reviews are reviews on pull requests.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class PullRequestPropLinksTypeForResponse(TypedDict):
+    """PullRequestPropLinks"""
 
-    Pull Request Reviews are reviews on pull requests.
-    """
-
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-
-
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "PullRequestPropLinksType",
+    "PullRequestPropLinksTypeForResponse",
 )

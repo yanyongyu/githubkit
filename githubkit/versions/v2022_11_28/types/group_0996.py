@@ -17,25 +17,25 @@ from .group_0119 import (
 )
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
     TypedDict
 ):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
     total_count: NotRequired[int]
     deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
     total_count: NotRequired[int]
     deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
-    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
 )

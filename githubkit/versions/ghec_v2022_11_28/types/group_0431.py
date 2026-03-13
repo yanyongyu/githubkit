@@ -9,30 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Check immutable releases
+    The hierarchy between files in a Git repository.
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Check immutable releases
+    The hierarchy between files in a Git repository.
     """
 
-    enabled: bool
-    enforced_by_owner: bool
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
+
+
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
+
+
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
+
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

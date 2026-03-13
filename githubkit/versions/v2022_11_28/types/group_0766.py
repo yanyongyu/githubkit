@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0507 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0510 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectColumnMovedType(TypedDict):
-    """project_column moved event"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
-    action: Literal["moved"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project_column: WebhooksProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectColumnMovedTypeForResponse(TypedDict):
-    """project_column moved event"""
+class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
+    """project_column created event"""
 
-    action: Literal["moved"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     project_column: WebhooksProjectColumnTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectColumnMovedType",
-    "WebhookProjectColumnMovedTypeForResponse",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedTypeForResponse",
 )

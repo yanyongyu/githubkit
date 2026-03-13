@@ -13,33 +13,53 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

@@ -9,107 +9,183 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
-class WebhooksTeam1Type(TypedDict):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
+class WebhooksSecurityAdvisoryType(TypedDict):
+    """WebhooksSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeam1PropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    cvss: WebhooksSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
+    withdrawn_at: Union[str, None]
 
 
-class WebhooksTeam1TypeForResponse(TypedDict):
-    """Team
+class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    Groups of organization members that gives permissions on specified repositories.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeam1PropParentTypeForResponse, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    cvss: WebhooksSecurityAdvisoryPropCvssTypeForResponse
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
     ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    withdrawn_at: Union[str, None]
 
 
-class WebhooksTeam1PropParentType(TypedDict):
-    """WebhooksTeam1PropParent"""
+class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
     name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
 
 
-class WebhooksTeam1PropParentTypeForResponse(TypedDict):
-    """WebhooksTeam1PropParent"""
+class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
+    cwe_id: str
     name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
     url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
+    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "WebhooksTeam1PropParentType",
-    "WebhooksTeam1PropParentTypeForResponse",
-    "WebhooksTeam1Type",
-    "WebhooksTeam1TypeForResponse",
+    "WebhooksSecurityAdvisoryPropCvssType",
+    "WebhooksSecurityAdvisoryPropCvssTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCwesItemsType",
+    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropReferencesItemsType",
+    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryType",
+    "WebhooksSecurityAdvisoryTypeForResponse",
 )

@@ -12,41 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class SocialAccountType(TypedDict):
+    """Social account
 
-    Hovercard
+    Social media account
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    provider: str
+    url: str
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
 
-    Hovercard
+    Social media account
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
-
-
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
+    provider: str
+    url: str
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
 )

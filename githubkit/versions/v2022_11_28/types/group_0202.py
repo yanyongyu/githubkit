@@ -12,26 +12,37 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0203 import (
+    RepositoryRuleRequiredStatusChecksPropParametersType,
+    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleCommitMessagePatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+
+
+class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
+    """required_status_checks
+
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternPropParametersType",
-    "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksType",
+    "RepositoryRuleRequiredStatusChecksTypeForResponse",
 )

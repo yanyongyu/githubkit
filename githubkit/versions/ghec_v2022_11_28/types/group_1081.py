@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0103 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
-)
+from .group_0100 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    properties: list[OrganizationCustomPropertyType]
+    total_count: int
+    network_configurations: list[NetworkConfigurationType]
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
 
-    properties: list[OrganizationCustomPropertyTypeForResponse]
+    total_count: int
+    network_configurations: list[NetworkConfigurationTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
+    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
 )

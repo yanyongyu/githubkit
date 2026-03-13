@@ -14,19 +14,38 @@ import datetime as _dt
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    Set secrets for GitHub Actions.
+    Repository actions caches
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
+    )
 
 
-model_rebuild(ActionsSecret)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-__all__ = ("ActionsSecret",)
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
+
+__all__ = (
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
+)

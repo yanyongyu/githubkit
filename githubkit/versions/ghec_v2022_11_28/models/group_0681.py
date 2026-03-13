@@ -19,18 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0198 import Discussion
-from .group_0559 import EnterpriseWebhooks
-from .group_0560 import SimpleInstallation
-from .group_0561 import OrganizationSimpleWebhooks
-from .group_0562 import RepositoryWebhooks
-from .group_0682 import WebhookDiscussionTransferredPropChanges
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
 
 
-class WebhookDiscussionTransferred(GitHubModel):
-    """discussion transferred event"""
+class WebhookDiscussionLocked(GitHubModel):
+    """discussion locked event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookDiscussionTransferredPropChanges = Field()
+    action: Literal["locked"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -56,6 +54,6 @@ class WebhookDiscussionTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionTransferred)
+model_rebuild(WebhookDiscussionLocked)
 
-__all__ = ("WebhookDiscussionTransferred",)
+__all__ = ("WebhookDiscussionLocked",)

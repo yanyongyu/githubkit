@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: list[int]
+from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
 
-    runners: list[int]
+    total_count: float
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+
+    total_count: float
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200TypeForResponse",
 )

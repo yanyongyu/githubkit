@@ -13,41 +13,43 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0333 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0176 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
-class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookCustomPropertyValuesUpdatedTypeForResponse(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["auto_dismissed"]
-    alert: DependabotAlertTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    new_property_values: list[CustomPropertyValueTypeForResponse]
+    old_property_values: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoDismissedType",
-    "WebhookDependabotAlertAutoDismissedTypeForResponse",
+    "WebhookCustomPropertyValuesUpdatedType",
+    "WebhookCustomPropertyValuesUpdatedTypeForResponse",
 )

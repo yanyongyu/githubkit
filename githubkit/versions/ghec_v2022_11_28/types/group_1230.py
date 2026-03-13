@@ -10,30 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0306 import (
+    ProjectsV2FieldSingleSelectOptionType,
+    ProjectsV2FieldSingleSelectOptionTypeForResponse,
+)
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
 )

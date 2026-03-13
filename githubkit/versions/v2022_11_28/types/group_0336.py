@@ -9,156 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0037 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0038 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0039 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0337 import (
+    DependabotAlertPropDependencyType,
+    DependabotAlertPropDependencyTypeForResponse,
+)
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
+
+    A Dependabot alert.
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
 
 
-class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
-    """Dependency Graph SPDX SBOM
+class DependabotAlertTypeForResponse(TypedDict):
+    """DependabotAlert
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    A Dependabot alert.
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
-
-
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[None, SimpleUserTypeForResponse]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
     ]
-
-
-class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
     ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[
-            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
-        ]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomTypeForResponse",
+    "DependabotAlertType",
+    "DependabotAlertTypeForResponse",
 )

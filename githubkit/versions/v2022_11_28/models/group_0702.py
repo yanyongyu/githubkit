@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0475 import EnterpriseWebhooks
-from .group_0476 import SimpleInstallation
-from .group_0477 import OrganizationSimpleWebhooks
-from .group_0478 import RepositoryWebhooks
-from .group_0496 import WebhooksIssue2
-from .group_0703 import WebhookIssuesTransferredPropChanges
+from .group_0478 import EnterpriseWebhooks
+from .group_0479 import SimpleInstallation
+from .group_0480 import OrganizationSimpleWebhooks
+from .group_0481 import RepositoryWebhooks
+from .group_0499 import WebhooksIssue2
 
 
-class WebhookIssuesTransferred(GitHubModel):
-    """issues transferred event"""
+class WebhookIssuesPinned(GitHubModel):
+    """issues pinned event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookIssuesTransferredPropChanges = Field()
+    action: Literal["pinned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +55,6 @@ class WebhookIssuesTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTransferred)
+model_rebuild(WebhookIssuesPinned)
 
-__all__ = ("WebhookIssuesTransferred",)
+__all__ = ("WebhookIssuesPinned",)

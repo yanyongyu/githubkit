@@ -9,48 +9,112 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    total_count: Missing[int] = Field(default=UNSET)
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-        ]
-    ] = Field(default=UNSET)
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The name of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name parameter must also be identical across all entries.\n",
+    )
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name and version parameters must also be identical across all entries.\n",
+    )
+    version: Missing[str] = Field(
+        max_length=100,
+        default=UNSET,
+        description="The artifact version. Note that if multiple deployments have identical 'digest' parameter values,\nthe version parameter must also be identical across all entries.\n",
+    )
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
+    ExtraGitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
+
+    Key-value pairs to tag the deployment record.
+    """
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
 model_rebuild(
-    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
 )
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
 )

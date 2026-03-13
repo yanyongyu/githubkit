@@ -9,100 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleViolationErrorType(TypedDict):
-    """RepositoryRuleViolationError
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    Repository rule violation was detected
+    An object describing a symlink
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
-    """RepositoryRuleViolationError
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    Repository rule violation was detected
+    An object describing a symlink
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
-    ]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
-        ]
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
-        ]
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
-    "RepositoryRuleViolationErrorType",
-    "RepositoryRuleViolationErrorTypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

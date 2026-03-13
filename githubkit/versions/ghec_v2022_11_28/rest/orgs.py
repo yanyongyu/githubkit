@@ -44,6 +44,7 @@ if TYPE_CHECKING:
         HookDelivery,
         HookDeliveryItem,
         ImmutableReleasesOrganizationSettings,
+        IssueField,
         IssueType,
         MinimalRepository,
         OrganizationCustomRepositoryRole,
@@ -101,8 +102,11 @@ if TYPE_CHECKING:
         HookDeliveryItemTypeForResponse,
         HookDeliveryTypeForResponse,
         ImmutableReleasesOrganizationSettingsTypeForResponse,
+        IssueFieldTypeForResponse,
         IssueTypeTypeForResponse,
         MinimalRepositoryTypeForResponse,
+        OrganizationCreateIssueFieldPropOptionsItemsType,
+        OrganizationCreateIssueFieldType,
         OrganizationCreateIssueTypeType,
         OrganizationCustomOrganizationRoleCreateSchemaType,
         OrganizationCustomOrganizationRoleUpdateSchemaType,
@@ -118,6 +122,8 @@ if TYPE_CHECKING:
         OrganizationSimpleTypeForResponse,
         OrganizationsOrganizationIdCustomRolesGetResponse200TypeForResponse,
         OrganizationsOrgOrgPropertiesValuesPatchBodyType,
+        OrganizationUpdateIssueFieldPropOptionsItemsType,
+        OrganizationUpdateIssueFieldType,
         OrganizationUpdateIssueTypeType,
         OrgHookTypeForResponse,
         OrgMembershipTypeForResponse,
@@ -7195,6 +7201,502 @@ class OrgsClient:
             response_model=list[Team],
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def list_issue_fields(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
+    ]:
+        """orgs/list-issue-fields
+
+        GET /orgs/{org}/issue-fields
+
+        Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueField
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_fields(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueField, None]], list[Union[IssueFieldTypeForResponse, None]]
+    ]:
+        """orgs/list-issue-fields
+
+        GET /orgs/{org}/issue-fields
+
+        Lists all issue fields for an organization. OAuth app tokens and personal access tokens (classic) need the read:org scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#list-issue-fields-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueField
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCreateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "number"],
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    def create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/create-issue-field
+
+        POST /orgs/{org}/issue-fields
+
+        Creates a new issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationCreateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationCreateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "number"],
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    async def async_create_issue_field(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/create-issue-field
+
+        POST /orgs/{org}/issue-fields
+
+        Creates a new issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#create-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationCreateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def delete_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/delete-issue-field
+
+        DELETE /orgs/{org}/issue-fields/{issue_field_id}
+
+        Deletes an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_delete_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/delete-issue-field
+
+        DELETE /orgs/{org}/issue-fields/{issue_field_id}
+
+        Deletes an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#delete-issue-field-for-an-organization
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationUpdateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            list[OrganizationUpdateIssueFieldPropOptionsItemsType]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    def update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/update-issue-field
+
+        PATCH /orgs/{org}/issue-fields/{issue_field_id}
+
+        Updates an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrganizationUpdateIssueFieldType,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    @overload
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        options: Missing[
+            list[OrganizationUpdateIssueFieldPropOptionsItemsType]
+        ] = UNSET,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]: ...
+
+    async def async_update_issue_field(
+        self,
+        org: str,
+        issue_field_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrganizationUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueField, None], Union[IssueFieldTypeForResponse, None]]:
+        """orgs/update-issue-field
+
+        PATCH /orgs/{org}/issue-fields/{issue_field_id}
+
+        Updates an issue field for an organization.
+
+        You can find out more about issue fields in [Managing issue fields in an organization](https://docs.github.com/enterprise-cloud@latest//issues/tracking-your-work-with-issues/using-issues/managing-issue-fields-in-an-organization).
+
+        To use this endpoint, the authenticated user must be an administrator for the organization. OAuth app tokens and
+        personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/issue-fields#update-issue-field-for-an-organization
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueField,
+            OrganizationUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrganizationUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[IssueField, None],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

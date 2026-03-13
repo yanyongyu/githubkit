@@ -9,20 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-EmojisGetResponse200Type: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+from typing_extensions import TypedDict
 
 
-EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+class ApplicationsClientIdTokenPatchBodyType(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str
+
+
+class ApplicationsClientIdTokenPatchBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str
 
 
 __all__ = (
-    "EmojisGetResponse200Type",
-    "EmojisGetResponse200TypeForResponse",
+    "ApplicationsClientIdTokenPatchBodyType",
+    "ApplicationsClientIdTokenPatchBodyTypeForResponse",
 )

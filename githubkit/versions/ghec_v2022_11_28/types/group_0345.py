@@ -9,38 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-    An autolink reference.
+    Response containing the workflow run ID and URLs.
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-class AutolinkTypeForResponse(TypedDict):
-    """Autolink reference
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
 
-    An autolink reference.
+    Response containing the workflow run ID and URLs.
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[str, None]]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
 __all__ = (
-    "AutolinkType",
-    "AutolinkTypeForResponse",
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
 )

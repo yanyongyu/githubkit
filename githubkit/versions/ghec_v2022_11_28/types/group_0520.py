@@ -12,31 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class TopicType(TypedDict):
+    """Topic
 
-    Content Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    names: list[str]
 
 
-class ContentTrafficTypeForResponse(TypedDict):
-    """Content Traffic
+class TopicTypeForResponse(TypedDict):
+    """Topic
 
-    Content Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    names: list[str]
 
 
 __all__ = (
-    "ContentTrafficType",
-    "ContentTrafficTypeForResponse",
+    "TopicType",
+    "TopicTypeForResponse",
 )

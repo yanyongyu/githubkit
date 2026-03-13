@@ -14,15 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Topic(GitHubModel):
-    """Topic
+class ParticipationStats(GitHubModel):
+    """Participation Stats"""
 
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: list[str] = Field()
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
-model_rebuild(Topic)
+model_rebuild(ParticipationStats)
 
-__all__ = ("Topic",)
+__all__ = ("ParticipationStats",)

@@ -9,32 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

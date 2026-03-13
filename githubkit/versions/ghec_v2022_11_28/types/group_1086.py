@@ -9,95 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0108 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
-    ]
+    properties: list[CustomPropertyType]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
 )

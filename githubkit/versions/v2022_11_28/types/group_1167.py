@@ -9,49 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Union
 from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
-
-
-class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
-
-    event_type: str
-    client_payload: NotRequired[
-        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
     ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+
+
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
 """
 
 
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
-
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
 """
 
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyType",
+    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
 )

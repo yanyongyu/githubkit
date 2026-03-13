@@ -9,118 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0581 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0751 import (
+    WebhookIssueCommentUnpinnedPropIssueType,
+    WebhookIssueCommentUnpinnedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssueCommentUnpinnedType(TypedDict):
+    """issue_comment unpinned event"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentUnpinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
+class WebhookIssueCommentUnpinnedTypeForResponse(TypedDict):
+    """issue_comment unpinned event"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentUnpinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentUnpinnedType",
+    "WebhookIssueCommentUnpinnedTypeForResponse",
 )

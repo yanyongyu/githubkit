@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0588 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0591 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
 
 
-class WebhookMilestoneOpenedType(TypedDict):
-    """milestone opened event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["opened"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     milestone: WebhooksMilestone3Type
@@ -35,10 +35,10 @@ class WebhookMilestoneOpenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMilestoneOpenedTypeForResponse(TypedDict):
-    """milestone opened event"""
+class WebhookMilestoneCreatedTypeForResponse(TypedDict):
+    """milestone created event"""
 
-    action: Literal["opened"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     milestone: WebhooksMilestone3TypeForResponse
@@ -48,6 +48,6 @@ class WebhookMilestoneOpenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMilestoneOpenedType",
-    "WebhookMilestoneOpenedTypeForResponse",
+    "WebhookMilestoneCreatedType",
+    "WebhookMilestoneCreatedTypeForResponse",
 )

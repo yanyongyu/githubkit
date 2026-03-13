@@ -9,94 +9,205 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0091 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0092 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0093 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0407 import (
-    DependabotAlertPropDependencyType,
-    DependabotAlertPropDependencyTypeForResponse,
-)
 
+class FileCommitType(TypedDict):
+    """File Commit
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
-
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
+    content: Union[FileCommitPropContentType, None]
+    commit: FileCommitPropCommitType
 
 
-class DependabotAlertTypeForResponse(TypedDict):
-    """DependabotAlert
+class FileCommitTypeForResponse(TypedDict):
+    """File Commit
 
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    content: Union[FileCommitPropContentTypeForResponse, None]
+    commit: FileCommitPropCommitTypeForResponse
+
+
+class FileCommitPropContentType(TypedDict):
+    """FileCommitPropContent"""
+
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksType]
+
+
+class FileCommitPropContentTypeForResponse(TypedDict):
+    """FileCommitPropContent"""
+
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
+
+
+class FileCommitPropContentPropLinksType(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
+class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
+class FileCommitPropCommitType(TypedDict):
+    """FileCommitPropCommit"""
+
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorType]
+    committer: NotRequired[FileCommitPropCommitPropCommitterType]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeType]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationType]
+
+
+class FileCommitPropCommitTypeForResponse(TypedDict):
+    """FileCommitPropCommit"""
+
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
+    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
+
+
+class FileCommitPropCommitPropAuthorType(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterType(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeType(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsType(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropVerificationType(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
+
+
+class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotAlertType",
-    "DependabotAlertTypeForResponse",
+    "FileCommitPropCommitPropAuthorType",
+    "FileCommitPropCommitPropAuthorTypeForResponse",
+    "FileCommitPropCommitPropCommitterType",
+    "FileCommitPropCommitPropCommitterTypeForResponse",
+    "FileCommitPropCommitPropParentsItemsType",
+    "FileCommitPropCommitPropParentsItemsTypeForResponse",
+    "FileCommitPropCommitPropTreeType",
+    "FileCommitPropCommitPropTreeTypeForResponse",
+    "FileCommitPropCommitPropVerificationType",
+    "FileCommitPropCommitPropVerificationTypeForResponse",
+    "FileCommitPropCommitType",
+    "FileCommitPropCommitTypeForResponse",
+    "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentPropLinksTypeForResponse",
+    "FileCommitPropContentType",
+    "FileCommitPropContentTypeForResponse",
+    "FileCommitType",
+    "FileCommitTypeForResponse",
 )

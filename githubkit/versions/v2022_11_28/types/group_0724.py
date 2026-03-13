@@ -12,102 +12,98 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0486 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0500 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0489 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["removed"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhooksTeamType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMembershipRemovedTypeForResponse(TypedDict):
-    """membership removed event"""
+class WebhookMemberEditedTypeForResponse(TypedDict):
+    """member edited event"""
 
-    action: Literal["removed"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     member: Union[WebhooksUserTypeForResponse, None]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
-    team: WebhooksTeamTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
 
 
-class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
-    """User"""
+class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChanges
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[
+        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    ]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropSenderTypeForResponse",
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedTypeForResponse",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesTypeForResponse",
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedTypeForResponse",
 )

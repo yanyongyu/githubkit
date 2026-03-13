@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0312 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0606 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0970 import (
+    WebhookSecurityAndAnalysisPropChangesType,
+    WebhookSecurityAndAnalysisPropChangesTypeForResponse,
+)
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecurityAndAnalysisType(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["cancelled"]
+    changes: WebhookSecurityAndAnalysisPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    repository: FullRepositoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSecurityAndAnalysisTypeForResponse(TypedDict):
+    """security_and_analysis event"""
 
-    action: Literal["cancelled"]
+    changes: WebhookSecurityAndAnalysisPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
+    repository: FullRepositoryTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipCancelledType",
-    "WebhookSponsorshipCancelledTypeForResponse",
+    "WebhookSecurityAndAnalysisType",
+    "WebhookSecurityAndAnalysisTypeForResponse",
 )

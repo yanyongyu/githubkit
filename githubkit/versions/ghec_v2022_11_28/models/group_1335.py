@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    id: int = Field(description="ID of the created snapshot.")
-    created_at: str = Field(description="The time at which the snapshot was created.")
-    result: str = Field(
-        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
+    state: Missing[Literal["dismissed", "open"]] = Field(
+        default=UNSET,
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
     )
-    message: str = Field(
-        description="A message providing further details about the result, such as why the dependencies were not updated."
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
+        default=UNSET,
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+    )
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment associated with dismissing the alert.",
+    )
+    assignees: list[str] = Field(
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert."
     )
 
 
-model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)

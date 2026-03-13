@@ -13,80 +13,57 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0824 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
 )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    created_at: str
-    description: None
+    created_at: Union[str, None]
+    description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
     package_type: str
-    package_version: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
-    )
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
     ]
-    updated_at: str
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: Union[str, None]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    created_at: str
-    description: None
+    created_at: Union[str, None]
+    description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse
     package_type: str
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse,
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
         None,
     ]
-    updated_at: str
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse,
+        None,
+    ]
+    updated_at: Union[str, None]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
     avatar_url: str
     events_url: str
@@ -109,21 +86,59 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse(
     user_view_type: NotRequired[str]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse(
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse(
     TypedDict
 ):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackageTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse",
 )

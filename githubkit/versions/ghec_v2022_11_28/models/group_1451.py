@@ -9,42 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
-    )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
-    )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    operations: list[
+        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
+    ] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        alias="Operations",
+        description="Set of operations to be performed",
     )
 
 
-model_rebuild(UserPatchBody)
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
 
-__all__ = ("UserPatchBody",)
+    op: Literal["add", "remove", "replace"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[
+        Union[
+            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
+            list[
+                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
+            ],
+            str,
+        ]
+    ] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
+    GitHubModel
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
+
+    active: Missing[Union[bool, None]] = Field(default=UNSET)
+    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
+    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
+    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
+    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
+    GitHubModel
+):
+    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
+    Items
+    """
+
+    value: Missing[str] = Field(default=UNSET)
+    primary: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
+model_rebuild(
+    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
+)
+model_rebuild(
+    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
+)
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
+    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
+)

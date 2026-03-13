@@ -9,73 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0352 import GitUserType, GitUserTypeForResponse
-from .group_0353 import VerificationType, VerificationTypeForResponse
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class SearchResultTextMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItems"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[None, GitUserTypeForResponse]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[
+        list[SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse]
+    ]
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    name: str
-    email: str
-    date: _dt.datetime
-
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    sha: str
-    url: str
-
-
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    text: NotRequired[str]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsTypeForResponse",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsTypeForResponse",
 )

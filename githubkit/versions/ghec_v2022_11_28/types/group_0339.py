@@ -10,78 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0083 import TeamType, TeamTypeForResponse
 
 
-class PendingDeploymentPropReviewersItemsType(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
+class EnvironmentApprovalsType(TypedDict):
+    """Environment Approval
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
-
-
-class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
-    """PendingDeploymentPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
-
-
-class PendingDeploymentType(TypedDict):
-    """Pending Deployment
-
-    Details of a deployment that is waiting for protection rules to pass
+    An entry in the reviews log for environment deployments
     """
 
-    environment: PendingDeploymentPropEnvironmentType
-    wait_timer: int
-    wait_timer_started_at: Union[_dt.datetime, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsType]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsType]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserType
+    comment: str
 
 
-class PendingDeploymentTypeForResponse(TypedDict):
-    """Pending Deployment
+class EnvironmentApprovalsTypeForResponse(TypedDict):
+    """Environment Approval
 
-    Details of a deployment that is waiting for protection rules to pass
+    An entry in the reviews log for environment deployments
     """
 
-    environment: PendingDeploymentPropEnvironmentTypeForResponse
-    wait_timer: int
-    wait_timer_started_at: Union[str, None]
-    current_user_can_approve: bool
-    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+    environments: list[EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse]
+    state: Literal["approved", "rejected", "pending"]
+    user: SimpleUserTypeForResponse
+    comment: str
 
 
-class PendingDeploymentPropEnvironmentType(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
     id: NotRequired[int]
     node_id: NotRequired[str]
     name: NotRequired[str]
     url: NotRequired[str]
     html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
-    """PendingDeploymentPropEnvironment"""
+class EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse(TypedDict):
+    """EnvironmentApprovalsPropEnvironmentsItems"""
 
     id: NotRequired[int]
     node_id: NotRequired[str]
     name: NotRequired[str]
     url: NotRequired[str]
     html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "PendingDeploymentPropEnvironmentType",
-    "PendingDeploymentPropEnvironmentTypeForResponse",
-    "PendingDeploymentPropReviewersItemsType",
-    "PendingDeploymentPropReviewersItemsTypeForResponse",
-    "PendingDeploymentType",
-    "PendingDeploymentTypeForResponse",
+    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "EnvironmentApprovalsPropEnvironmentsItemsTypeForResponse",
+    "EnvironmentApprovalsType",
+    "EnvironmentApprovalsTypeForResponse",
 )

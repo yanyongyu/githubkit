@@ -12,22 +12,39 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Check immutable releases
+    The hierarchy between files in a Git repository.
     """
 
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
     )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
-    )
 
 
-model_rebuild(CheckImmutableReleases)
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-__all__ = ("CheckImmutableReleases",)
+    path: str = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
+
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

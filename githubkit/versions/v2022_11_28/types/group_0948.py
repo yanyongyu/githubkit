@@ -9,95 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
 
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
-    ]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
-
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
-    ]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
+    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0226 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetDeletedType(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookRepositoryPublicizedType(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["deleted"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetDeletedTypeForResponse(TypedDict):
-    """repository ruleset deleted event"""
+class WebhookRepositoryPublicizedTypeForResponse(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["deleted"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetDeletedType",
-    "WebhookRepositoryRulesetDeletedTypeForResponse",
+    "WebhookRepositoryPublicizedType",
+    "WebhookRepositoryPublicizedTypeForResponse",
 )

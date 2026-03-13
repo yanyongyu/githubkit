@@ -9,44 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
-
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[_dt.datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+from .group_0228 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+)
 
 
-class RuleSuitesItemsTypeForResponse(TypedDict):
-    """RuleSuitesItems"""
+class RepositoryRuleCopilotCodeReviewType(TypedDict):
+    """copilot_code_review
 
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[str]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
+    """
+
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+
+
+class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
+    """copilot_code_review
+
+    Request Copilot code review for new pull requests automatically if the author
+    has access to Copilot code review and their premium requests quota has not
+    reached the limit.
+    """
+
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RuleSuitesItemsType",
-    "RuleSuitesItemsTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewType",
+    "RepositoryRuleCopilotCodeReviewTypeForResponse",
 )

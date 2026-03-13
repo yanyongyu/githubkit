@@ -13,38 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0293 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0597 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
+)
+from .group_0598 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):
-    """Projects v2 Status Update Deleted Event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["deleted"]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_status_update: ProjectsV2StatusUpdateType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookProjectsV2StatusUpdateDeletedTypeForResponse(TypedDict):
-    """Projects v2 Status Update Deleted Event"""
+class WebhookProjectsV2ItemRestoredTypeForResponse(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["deleted"]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectsV2StatusUpdateDeletedType",
-    "WebhookProjectsV2StatusUpdateDeletedTypeForResponse",
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredTypeForResponse",
 )

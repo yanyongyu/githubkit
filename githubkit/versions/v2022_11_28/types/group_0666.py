@@ -13,7 +13,7 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0662 import (
+from .group_0665 import (
     WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
     WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse,
     WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
@@ -21,8 +21,16 @@ from .group_0662 import (
 )
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType(
+    TypedDict
+):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[_dt.datetime, None]
     description: Union[str, None]
@@ -93,10 +101,16 @@ class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType(TypedD
     updated_at: Union[_dt.datetime, None]
 
 
-class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse(
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse(
     TypedDict
 ):
-    """WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp"""
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[str, None]
     description: Union[str, None]
@@ -168,6 +182,6 @@ class WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResp
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppType",
-    "WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubAppTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppTypeForResponse",
 )

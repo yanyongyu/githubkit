@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0488 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentType
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,11 +37,11 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -50,7 +50,71 @@ class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
+
+
+class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
+
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: (
+        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: _dt.datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
+    "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedTypeForResponse",
 )

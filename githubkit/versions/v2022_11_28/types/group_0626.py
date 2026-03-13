@@ -9,118 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0495 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0627 import (
+    WebhookIssueCommentDeletedPropIssueType,
+    WebhookIssueCommentDeletedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
-    """User"""
+class WebhookIssueCommentDeletedType(TypedDict):
+    """issue_comment deleted event"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    action: Literal["deleted"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentDeletedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
+class WebhookIssueCommentDeletedTypeForResponse(TypedDict):
+    """issue_comment deleted event"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["deleted"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    issue: WebhookIssueCommentDeletedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentDeletedType",
+    "WebhookIssueCommentDeletedTypeForResponse",
 )

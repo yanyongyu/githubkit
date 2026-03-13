@@ -1177,6 +1177,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import IssueEventType as IssueEventType
     from githubkit.versions.v2022_11_28.types import (
+        IssueFieldPropOptionsItemsType as IssueFieldPropOptionsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import IssueFieldType as IssueFieldType
+    from githubkit.versions.v2022_11_28.types import (
         IssueFieldValuePropSingleSelectOptionType as IssueFieldValuePropSingleSelectOptionType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1319,6 +1323,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationActionsVariableType as OrganizationActionsVariableType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrganizationCreateIssueFieldPropOptionsItemsType as OrganizationCreateIssueFieldPropOptionsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationCreateIssueFieldType as OrganizationCreateIssueFieldType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrganizationCreateIssueTypeType as OrganizationCreateIssueTypeType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1395,6 +1405,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationUpdateIssueFieldPropOptionsItemsType as OrganizationUpdateIssueFieldPropOptionsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrganizationUpdateIssueFieldType as OrganizationUpdateIssueFieldType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
@@ -2332,6 +2348,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepoSearchResultItemType as RepoSearchResultItemType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryAdvisoryCreatePropCreditsItemsType as RepositoryAdvisoryCreatePropCreditsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3162,6 +3190,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType as ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType as ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
@@ -10758,6 +10789,12 @@ else:
             "ApiInsightsUserStatsItemsType",
             "InteractionLimitResponseType",
             "InteractionLimitType",
+            "IssueFieldType",
+            "IssueFieldPropOptionsItemsType",
+            "OrganizationCreateIssueFieldType",
+            "OrganizationCreateIssueFieldPropOptionsItemsType",
+            "OrganizationUpdateIssueFieldType",
+            "OrganizationUpdateIssueFieldPropOptionsItemsType",
             "OrganizationCreateIssueTypeType",
             "OrganizationUpdateIssueTypeType",
             "OrgMembershipType",
@@ -13919,6 +13956,7 @@ else:
             "ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+            "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
             "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
@@ -13990,6 +14028,10 @@ else:
             "ReposOwnerRepoTopicsPutBodyType",
             "ReposOwnerRepoTransferPostBodyType",
             "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
+            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType",
+            "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
             "TeamsTeamIdPatchBodyType",
             "TeamsTeamIdMembershipsUsernamePutBodyType",
             "TeamsTeamIdReposOwnerRepoPutBodyType",

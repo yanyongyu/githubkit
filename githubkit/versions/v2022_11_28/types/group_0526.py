@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0479 import WebhooksRuleType, WebhooksRuleTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
+    """branch protection configuration disabled event"""
 
-    action: Literal["deleted"]
+    action: Literal["disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
     sender: SimpleUserType
 
 
-class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionConfigurationDisabledTypeForResponse(TypedDict):
+    """branch protection configuration disabled event"""
 
-    action: Literal["deleted"]
+    action: Literal["disabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeletedType",
-    "WebhookBranchProtectionRuleDeletedTypeForResponse",
+    "WebhookBranchProtectionConfigurationDisabledType",
+    "WebhookBranchProtectionConfigurationDisabledTypeForResponse",
 )

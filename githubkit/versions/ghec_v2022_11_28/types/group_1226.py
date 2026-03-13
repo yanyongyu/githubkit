@@ -9,25 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
+    ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
 )

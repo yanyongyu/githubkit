@@ -9,41 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0179 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0185 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Conditions to target repositories by property and refs by name
+    include: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
+    ]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
 
-    Conditions to target repositories by property and refs by name
+    Parameters for a targeting a repository property
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    name: str
+    property_values: list[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
 )

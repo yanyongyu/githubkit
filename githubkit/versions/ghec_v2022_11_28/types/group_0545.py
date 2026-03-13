@@ -9,121 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0537 import (
+from .group_0540 import (
     SearchResultTextMatchesItemsType,
     SearchResultTextMatchesItemsTypeForResponse,
 )
 
 
-class UserSearchResultItemType(TypedDict):
-    """User Search Result Item
+class LabelSearchResultItemType(TypedDict):
+    """Label Search Result Item
 
-    User Search Result Item
+    Label Search Result Item
     """
 
-    login: str
     id: int
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
     score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[_dt.datetime, None]]
-    user_view_type: NotRequired[str]
 
 
-class UserSearchResultItemTypeForResponse(TypedDict):
-    """User Search Result Item
+class LabelSearchResultItemTypeForResponse(TypedDict):
+    """Label Search Result Item
 
-    User Search Result Item
+    Label Search Result Item
     """
 
-    login: str
     id: int
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    received_events_url: str
-    type: str
+    name: str
+    color: str
+    default: bool
+    description: Union[str, None]
     score: float
-    following_url: str
-    gists_url: str
-    starred_url: str
-    events_url: str
-    public_repos: NotRequired[int]
-    public_gists: NotRequired[int]
-    followers: NotRequired[int]
-    following: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    name: NotRequired[Union[str, None]]
-    bio: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    site_admin: bool
-    hireable: NotRequired[Union[bool, None]]
     text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    blog: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    suspended_at: NotRequired[Union[str, None]]
-    user_view_type: NotRequired[str]
 
 
-class SearchUsersGetResponse200Type(TypedDict):
-    """SearchUsersGetResponse200"""
+class SearchLabelsGetResponse200Type(TypedDict):
+    """SearchLabelsGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[UserSearchResultItemType]
+    items: list[LabelSearchResultItemType]
 
 
-class SearchUsersGetResponse200TypeForResponse(TypedDict):
-    """SearchUsersGetResponse200"""
+class SearchLabelsGetResponse200TypeForResponse(TypedDict):
+    """SearchLabelsGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: list[UserSearchResultItemTypeForResponse]
+    items: list[LabelSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "SearchUsersGetResponse200Type",
-    "SearchUsersGetResponse200TypeForResponse",
-    "UserSearchResultItemType",
-    "UserSearchResultItemTypeForResponse",
+    "LabelSearchResultItemType",
+    "LabelSearchResultItemTypeForResponse",
+    "SearchLabelsGetResponse200Type",
+    "SearchLabelsGetResponse200TypeForResponse",
 )

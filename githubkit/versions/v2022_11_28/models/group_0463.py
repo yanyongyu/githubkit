@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Email(GitHubModel):
-    """Email
+class CodespacesUserPublicKey(GitHubModel):
+    """CodespacesUserPublicKey
 
-    Email
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(Email)
+model_rebuild(CodespacesUserPublicKey)
 
-__all__ = ("Email",)
+__all__ = ("CodespacesUserPublicKey",)

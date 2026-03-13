@@ -9,115 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0200 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0575 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0583 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookLabelEditedType(TypedDict):
-    """label edited event"""
+class WebhookIssuesUntypedType(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookLabelEditedPropChangesType]
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelType
+    issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelEditedTypeForResponse(TypedDict):
-    """label edited event"""
+class WebhookIssuesUntypedTypeForResponse(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelTypeForResponse
+    issue: WebhooksIssueTypeForResponse
+    type: Union[IssueTypeTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookLabelEditedPropChangesType(TypedDict):
-    """WebhookLabelEditedPropChanges
-
-    The changes to the label if the action was `edited`.
-    """
-
-    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
-    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
-    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
-
-
-class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChanges
-
-    The changes to the label if the action was `edited`.
-    """
-
-    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
-    description: NotRequired[
-        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
-    ]
-    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookLabelEditedPropChangesPropColorType(TypedDict):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropNameType(TypedDict):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookLabelEditedPropChangesPropColorType",
-    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
-    "WebhookLabelEditedPropChangesPropDescriptionType",
-    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookLabelEditedPropChangesPropNameType",
-    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
-    "WebhookLabelEditedPropChangesType",
-    "WebhookLabelEditedPropChangesTypeForResponse",
-    "WebhookLabelEditedType",
-    "WebhookLabelEditedTypeForResponse",
+    "WebhookIssuesUntypedType",
+    "WebhookIssuesUntypedTypeForResponse",
 )

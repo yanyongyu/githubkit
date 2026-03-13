@@ -9,56 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0356 import HookResponseType, HookResponseTypeForResponse
+from .group_0283 import VerificationType, VerificationTypeForResponse
 
 
-class HookType(TypedDict):
-    """Webhook
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Webhooks for repositories.
+    Metadata for a Git tag
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
+    node_id: str
+    tag: str
+    sha: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    Webhooks for repositories.
+    Metadata for a Git tag
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
+    node_id: str
+    tag: str
+    sha: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

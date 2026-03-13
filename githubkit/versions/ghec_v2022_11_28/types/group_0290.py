@@ -9,143 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0082 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
     repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    parent: Union[None, TeamSimpleType]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class OrganizationProgrammaticAccessGrantRequestTypeForResponse(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class TeamRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a Team
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    The Relationship a Team has with a role.
     """
 
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
     id: int
-    reason: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
     repositories_url: str
-    permissions: (
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse
-    )
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    parent: Union[None, TeamSimpleTypeForResponse]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse
-    ]
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-"""
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestType",
-    "OrganizationProgrammaticAccessGrantRequestTypeForResponse",
+    "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentPropPermissionsTypeForResponse",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentTypeForResponse",
 )

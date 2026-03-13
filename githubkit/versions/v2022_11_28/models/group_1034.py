@@ -12,17 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0085 import MinimalRepository
-
-
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)
+    message: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
+
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

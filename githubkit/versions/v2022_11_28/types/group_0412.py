@@ -13,32 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0194 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof4Type(TypedDict):
-    """RepositoryRuleDetailedOneof4"""
+class RepositoryRuleDetailedOneof1Type(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof4TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof4"""
+class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof4Type",
-    "RepositoryRuleDetailedOneof4TypeForResponse",
+    "RepositoryRuleDetailedOneof1Type",
+    "RepositoryRuleDetailedOneof1TypeForResponse",
 )

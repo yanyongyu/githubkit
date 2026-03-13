@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0561 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0562 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0840 import (
-    WebhookPackageUpdatedPropPackageType,
-    WebhookPackageUpdatedPropPackageTypeForResponse,
+    WebhookPackagePublishedPropPackageType,
+    WebhookPackagePublishedPropPackageTypeForResponse,
 )
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    action: Literal["updated"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
-    repository: RepositoryWebhooksType
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookPackageUpdatedTypeForResponse(TypedDict):
-    """package updated event"""
+class WebhookPackagePublishedTypeForResponse(TypedDict):
+    """package published event"""
 
-    action: Literal["updated"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    package: WebhookPackageUpdatedPropPackageTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    package: WebhookPackagePublishedPropPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPackageUpdatedType",
-    "WebhookPackageUpdatedTypeForResponse",
+    "WebhookPackagePublishedType",
+    "WebhookPackagePublishedTypeForResponse",
 )

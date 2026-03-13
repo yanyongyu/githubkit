@@ -14,21 +14,21 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0475 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0476 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0477 import (
+from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0480 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0478 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0488 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0490 import WebhooksAnswerType, WebhooksAnswerTypeForResponse
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDiscussionAnsweredType(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentType
+    action: Literal["answered"]
+    answer: WebhooksAnswerType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,11 +37,11 @@ class WebhookDiscussionCommentCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
-    """discussion_comment created event"""
+class WebhookDiscussionAnsweredTypeForResponse(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["answered"]
+    answer: WebhooksAnswerTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentCreatedType",
-    "WebhookDiscussionCommentCreatedTypeForResponse",
+    "WebhookDiscussionAnsweredType",
+    "WebhookDiscussionAnsweredTypeForResponse",
 )

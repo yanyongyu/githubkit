@@ -9,31 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ImmutableReleasesOrganizationSettingsType(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningPatternConfigurationType(TypedDict):
+    """Secret scanning pattern configuration
 
-    Check immutable releases settings for an organization.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
 
 
-class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
-    """Check immutable releases organization settings
+class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
+    """Secret scanning pattern configuration
 
-    Check immutable releases settings for an organization.
+    A collection of secret scanning patterns and their settings related to push
+    protection.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
+    custom_pattern_overrides: NotRequired[
+        list[SecretScanningPatternOverrideTypeForResponse]
+    ]
+
+
+class SecretScanningPatternOverrideType(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class SecretScanningPatternOverrideTypeForResponse(TypedDict):
+    """SecretScanningPatternOverride"""
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    slug: NotRequired[str]
+    display_name: NotRequired[str]
+    alert_total: NotRequired[int]
+    alert_total_percentage: NotRequired[int]
+    false_positives: NotRequired[int]
+    false_positive_rate: NotRequired[int]
+    bypass_rate: NotRequired[int]
+    default_setting: NotRequired[Literal["disabled", "enabled"]]
+    enterprise_setting: NotRequired[
+        Union[None, Literal["not-set", "disabled", "enabled"]]
+    ]
+    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "ImmutableReleasesOrganizationSettingsType",
-    "ImmutableReleasesOrganizationSettingsTypeForResponse",
+    "SecretScanningPatternConfigurationType",
+    "SecretScanningPatternConfigurationTypeForResponse",
+    "SecretScanningPatternOverrideType",
+    "SecretScanningPatternOverrideTypeForResponse",
 )

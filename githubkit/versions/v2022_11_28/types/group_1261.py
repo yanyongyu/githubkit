@@ -13,25 +13,31 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

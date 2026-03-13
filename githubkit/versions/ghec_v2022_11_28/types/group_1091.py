@@ -9,61 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
 
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
-        ]
-    ]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: (
+        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    )
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
-        ]
-    ]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    type: NotRequired[str]
-    name: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
-
-    type: NotRequired[str]
-    name: NotRequired[str]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

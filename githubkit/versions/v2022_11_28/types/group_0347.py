@@ -9,22 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0348 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
-class DeploymentBranchPolicyNamePatternType(TypedDict):
-    """Deployment branch policy name pattern"""
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    name: str
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
-    """Deployment branch policy name pattern"""
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    name: str
+    id: int
+    node_id: str
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternType",
-    "DeploymentBranchPolicyNamePatternTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

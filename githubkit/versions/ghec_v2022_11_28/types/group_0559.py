@@ -10,57 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    Starred Repository
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    avatar_url: str
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class EnterpriseWebhooksTypeForResponse(TypedDict):
-    """Enterprise
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    Starred Repository
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    avatar_url: str
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "EnterpriseWebhooksType",
-    "EnterpriseWebhooksTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

@@ -11,44 +11,49 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0239 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Repository invitations let you manage who you collaborate with.
     """
 
     id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
     created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Repository invitations let you manage who you collaborate with.
     """
 
     id: int
-    node_id: str
-    user: Union[None, SimpleUserTypeForResponse]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[None, SimpleUserTypeForResponse]
+    inviter: Union[None, SimpleUserTypeForResponse]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
     created_at: str
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

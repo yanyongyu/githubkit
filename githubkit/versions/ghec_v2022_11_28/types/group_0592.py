@@ -9,48 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    body: Union[str, None]
-    columns_url: str
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: _dt.datetime
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
     url: str
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksProjectTypeForResponse(TypedDict):
-    """Project"""
+class WebhooksMembershipTypeForResponse(TypedDict):
+    """Membership
 
-    body: Union[str, None]
-    columns_url: str
-    created_at: str
-    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: str
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
     url: str
+    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +72,7 @@ class WebhooksProjectPropCreatorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
+class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -105,8 +100,8 @@ class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectPropCreatorTypeForResponse",
-    "WebhooksProjectType",
-    "WebhooksProjectTypeForResponse",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipPropUserTypeForResponse",
+    "WebhooksMembershipType",
+    "WebhooksMembershipTypeForResponse",
 )

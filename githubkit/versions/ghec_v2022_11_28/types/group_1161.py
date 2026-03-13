@@ -9,67 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
+    """
 
-    total_count: NotRequired[int]
-    storage_records: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: NotRequired[Literal["deployed", "decommissioned"]]
+    deployment_name: str
+    github_repository: NotRequired[str]
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+Key-value pairs to tag the deployment record.
+"""
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+msPropTags
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+Key-value pairs to tag the deployment record.
+"""
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
 )

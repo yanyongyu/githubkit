@@ -9,49 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0559 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0560 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0575 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyDeletedType(TypedDict):
-    """organization custom property deleted event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookOrganizationCustomPropertyDeletedTypeForResponse(TypedDict):
-    """organization custom property deleted event"""
+class WebhookOrgBlockBlockedTypeForResponse(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["deleted"]
-    definition: WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["blocked"]
+    blocked_user: Union[WebhooksUserTypeForResponse, None]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-class WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse(TypedDict):
-    """WebhookOrganizationCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionType",
-    "WebhookOrganizationCustomPropertyDeletedPropDefinitionTypeForResponse",
-    "WebhookOrganizationCustomPropertyDeletedType",
-    "WebhookOrganizationCustomPropertyDeletedTypeForResponse",
+    "WebhookOrgBlockBlockedType",
+    "WebhookOrgBlockBlockedTypeForResponse",
 )
