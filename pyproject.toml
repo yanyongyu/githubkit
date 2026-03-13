@@ -170,7 +170,7 @@ legacy_rest_models = "githubkit/rest/__init__.py"
 version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
-is_latest = true
+is_latest = false
 source = "descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[tool.codegen.descriptions]]
@@ -179,6 +179,20 @@ identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
 source = "descriptions-next/ghec/ghec.2022-11-28.json"
+
+[[tool.codegen.descriptions]]
+version = "2026-03-10"
+identifier = "2026-03-10"
+module = "v2026_03_10"
+is_latest = true
+source = "descriptions-next/api.github.com/api.github.com.2026-03-10.json"
+
+[[tool.codegen.descriptions]]
+version = "2026-03-10"
+identifier = "ghec-2026-03-10"
+module = "ghec_v2026_03_10"
+is_latest = false
+source = "descriptions-next/ghec/ghec.2026-03-10.json"
 
 [[tool.codegen.overrides]]
 
@@ -608,7 +622,7 @@ source = "descriptions-next/ghec/ghec.2022-11-28.json"
 
 [[tool.codegen.overrides]]
 # override invalid schemas for ghec-2022-11-28
-target_descriptions = ["ghec-2022-11-28"]
+target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 
 [tool.codegen.overrides.schema_overrides]
 # duplicate operation name for enterprise apps
