@@ -321,9 +321,11 @@ You can also get the latest version name of GitHub API and version-module mappin
 from githubkit.versions import LATEST_VERSION, VERSIONS
 ```
 
-Current supported versions are: (you can find it in the section `[[tool.codegen.descriptions]]` of the `pyproject.toml` file)
+Current supported versions are: (you can also find it in the section `[[descriptions]]` of the `githubkit/versions/versions.lock` file)
 
-- 2022-11-28 (latest)
+- 2026-03-10 (latest)
+- ghec-2026-03-10
+- 2022-11-28
 - ghec-2022-11-28
 
 ## REST API Pagination
