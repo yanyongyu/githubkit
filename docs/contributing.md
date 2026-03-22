@@ -36,7 +36,7 @@ If you encounter an schema error, you can patch the schema by modifying the `pyp
 
 In the `[tool.codegen.overrides.schema_overrides]` section, you can modify the schema using json pointer. The value will override the original schema.
 
-Specially, if the json pointer points to a dictionary, you can use special value `<unset>` to remove the key from the dictionary. If the json pointer points to a array, you can use a list value to replace the original array. Or you can use a dict with key `<add>` and `<remove>` to add or remove items from the array.
+Specially, if the json pointer points to a dictionary, you can use special value `<unset>` to remove the key from the dictionary. If the json pointer points to a array, you can use a list value to replace the original array. Or you can use a dict with key `<add>` and `<remove>` to add or remove items from the array. For any json pointer, you can use a dict with key "<copy>" to replace the pointer data by the value pointer's data.
 
 Please add a comment to explain the reason for the patch if you want to submit a PR.
 

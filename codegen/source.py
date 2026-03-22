@@ -29,6 +29,14 @@ class Source:
     def data(self) -> Any:
         return self.pointer.resolve(self.root)
 
+    @property
+    def parent(self) -> "Source":
+        parts = self.pointer.get_parts()
+        if not parts:
+            raise ValueError("Root source has no parent")
+        fragment = JsonPointer.from_parts(parts[:-1]).path
+        return self.resolve_ref(str(httpx.URL(fragment=fragment)))
+
     def get_root(self: "Source") -> "Source":
         return Source(uri=self.uri.copy_with(fragment=""), root=self.root)
 

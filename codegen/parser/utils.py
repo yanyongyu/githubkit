@@ -23,6 +23,7 @@ RESERVED_WORDS = (
     "id",
 }
 
+COPY_KEY = "<copy>"
 UNSET_KEY = "<unset>"
 ADD_KEY = "<add>"
 REMOVE_KEY = "<remove>"
@@ -102,7 +103,19 @@ def build_prop_name(name: str) -> str:
     return fix_reserved_words(snake_case(name))
 
 
-def merge_dict(old: dict, new: dict):
+def _handle_copy(source: "Source", new: dict):
+    if COPY_KEY not in new:
+        return
+    copy_from = new.pop(COPY_KEY)
+    if not isinstance(copy_from, str):
+        raise TypeError(f"{COPY_KEY} value must be a reference string")
+    copy_source = source.resolve_ref(copy_from)
+    target_name = source.pointer.parts[-1]
+    source.parent.data[target_name] = copy_source.data
+
+
+def merge_dict(source: "Source", new: dict):
+    old = source.data
     # make change inplace to make json point correct
     for key, value in new.items():
         # remove a field
@@ -115,12 +128,13 @@ def merge_dict(old: dict, new: dict):
                 old[key] = value
             else:
                 try:
-                    merge_inplace(old[key], value)
+                    merge_inplace(source / key, value)
                 except TypeError:
                     old[key] = value
 
 
-def merge_list(old: list, new: list | dict):
+def merge_list(source: "Source", new: list | dict):
+    old = source.data
     if isinstance(new, list):
         old.clear()
         old.extend(new)
@@ -132,13 +146,16 @@ def merge_list(old: list, new: list | dict):
             old.extend(new[ADD_KEY])
 
 
-def merge_inplace(old: Any, new: Any):
-    if isinstance(old, dict) and isinstance(new, dict):
-        merge_dict(old, new)
-    elif isinstance(old, list) and isinstance(new, list | dict):
-        merge_list(old, new)
+def merge_inplace(source: "Source", new: Any):
+    if isinstance(new, dict):
+        _handle_copy(source, new)
+
+    if isinstance(source.data, dict) and isinstance(new, dict):
+        merge_dict(source, new)
+    elif isinstance(source.data, list) and isinstance(new, list | dict):
+        merge_list(source, new)
     else:
-        raise TypeError(f"Cannot merge type {type(old)} with {type(new)}")
+        raise TypeError(f"Cannot merge type {type(source.data)} with {type(new)}")
 
 
 def schema_from_source(source: "Source") -> oas.Schema:

@@ -162,6 +162,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/d5aff63f
 "/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
 "/components/schemas/webhook-code-scanning-alert-reopened-by-user/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
 "/components/schemas/webhook-code-scanning-alert-updated-assignment/properties/alert/properties/fixed_at" = {type = ["string", "null"], format = "date-time"}
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/dismissed_by" = {"<copy>" = "#/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/dismissed_by"}
 "/webhooks/repository-dispatch-sample.collected/post" = {operationId = "repository-dispatch"}
 "/components/schemas/webhooks_answer/properties/parent_id" = {type = ["integer", "null"]}
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
