@@ -166,6 +166,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/d5aff63f
 "/webhooks/repository-dispatch-sample.collected/post" = {operationId = "repository-dispatch"}
 "/components/schemas/webhooks_answer/properties/parent_id" = {type = ["integer", "null"]}
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
+"/components/schemas/dependabot-alert/properties/dependency/properties/relationship/enum" = {"<add>" = ["inconclusive"]}
 "/components/schemas/code-scanning-alert-classification/enum" = {"<add>" = ["documentation"]}
 
 [[overrides]]
