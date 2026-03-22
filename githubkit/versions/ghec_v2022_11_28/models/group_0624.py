@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0562 import EnterpriseWebhooks
-from .group_0563 import SimpleInstallation
-from .group_0564 import OrganizationSimpleWebhooks
-from .group_0565 import RepositoryWebhooks
-from .group_0570 import CheckRunWithSimpleCheckSuite
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
+from .group_0572 import CheckRunWithSimpleCheckSuite
 
 
-class WebhookCheckRunCreated(GitHubModel):
-    """Check Run Created Event"""
+class WebhookCheckRunCompleted(GitHubModel):
+    """Check Run Completed Event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["completed"] = Field()
     check_run: CheckRunWithSimpleCheckSuite = Field(
         title="CheckRun",
         description="A check performed on the code of a given code change",
@@ -55,6 +55,6 @@ class WebhookCheckRunCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCheckRunCreated)
+model_rebuild(WebhookCheckRunCompleted)
 
-__all__ = ("WebhookCheckRunCreated",)
+__all__ = ("WebhookCheckRunCompleted",)

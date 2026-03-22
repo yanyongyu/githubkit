@@ -9,56 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    Rate Limit Overview
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-
-
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_upload: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
+    )
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+model_rebuild(TeamMembership)
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
-
-
-model_rebuild(RateLimitOverview)
-model_rebuild(RateLimitOverviewPropResources)
-model_rebuild(RateLimit)
-
-__all__ = (
-    "RateLimit",
-    "RateLimitOverview",
-    "RateLimitOverviewPropResources",
-)
+__all__ = ("TeamMembership",)

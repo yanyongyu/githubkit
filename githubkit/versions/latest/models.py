@@ -1221,6 +1221,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit.versions.v2026_03_10.models import (
         NotificationsThreadsThreadIdSubscriptionPutBody as NotificationsThreadsThreadIdSubscriptionPutBody,
     )
+    from githubkit.versions.v2026_03_10.models import (
+        OidcCustomPropertyInclusion as OidcCustomPropertyInclusion,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OidcCustomPropertyInclusionInput as OidcCustomPropertyInclusionInput,
+    )
     from githubkit.versions.v2026_03_10.models import OidcCustomSub as OidcCustomSub
     from githubkit.versions.v2026_03_10.models import (
         OidcCustomSubRepo as OidcCustomSubRepo,
@@ -1637,6 +1643,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotCodingAgentPermissionsPutBody as OrgsOrgCopilotCodingAgentPermissionsPutBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody as OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
     )
     from githubkit.versions.v2026_03_10.models import (
         OrgsOrgCopilotContentExclusionPutBody as OrgsOrgCopilotContentExclusionPutBody,
@@ -10327,6 +10345,8 @@ else:
             "ClassroomAssignmentGrade",
             "ActionsCacheRetentionLimitForEnterprise",
             "ActionsCacheStorageLimitForEnterprise",
+            "OidcCustomPropertyInclusion",
+            "OidcCustomPropertyInclusionInput",
             "CodeSecurityConfiguration",
             "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
             "CodeSecurityConfigurationPropCodeScanningOptions",
@@ -13479,6 +13499,10 @@ else:
             "OrgsOrgCopilotBillingSelectedUsersPostResponse201",
             "OrgsOrgCopilotBillingSelectedUsersDeleteBody",
             "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",
+            "OrgsOrgCopilotCodingAgentPermissionsGetResponse200",
+            "OrgsOrgCopilotCodingAgentPermissionsPutBody",
+            "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",
+            "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",
             "OrgsOrgCopilotContentExclusionPutBody",
             "OrgsOrgCopilotContentExclusionPutResponse200",
             "OrgsOrgDependabotSecretsGetResponse200",

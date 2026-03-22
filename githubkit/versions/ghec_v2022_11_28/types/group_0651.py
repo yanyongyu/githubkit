@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0108 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0564 import (
+from .group_0110 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["promote_to_enterprise"]
+    action: Literal["created"]
     definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,10 +33,10 @@ class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCustomPropertyCreatedTypeForResponse(TypedDict):
+    """custom property created event"""
 
-    action: Literal["promote_to_enterprise"]
+    action: Literal["created"]
     definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCustomPropertyPromotedToEnterpriseType",
-    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
+    "WebhookCustomPropertyCreatedType",
+    "WebhookCustomPropertyCreatedTypeForResponse",
 )

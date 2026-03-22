@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,76 +18,97 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0074 import SimpleRepository
-from .group_0091 import DependabotAlertSecurityVulnerability
-from .group_0092 import DependabotAlertSecurityAdvisory
-from .group_0093 import DependabotAlertDismissalRequestSimple
-from .group_0095 import DependabotAlertWithRepositoryPropDependency
+from .group_0001 import CvssSeverities
+from .group_0002 import SecurityAdvisoryEpss
+from .group_0093 import DependabotAlertSecurityVulnerability
 
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityAdvisory(GitHubModel):
+    """DependabotAlertSecurityAdvisory
 
-    A Dependabot alert.
+    Details for the GitHub Security Advisory.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory."
     )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory."
     )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
+    summary: str = Field(
+        max_length=1024, description="A short, plain text summary of the advisory."
     )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory."
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    vulnerabilities: list[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory."
+    )
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory."
+    )
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    epss: Missing[Union[SecurityAdvisoryEpss, None]] = Field(
+        default=UNSET,
+        description="The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss).",
+    )
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration."
+    )
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources."
+    )
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information."
+    )
+    published_at: _dt.datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
-    )
-    assignees: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The users assigned to this alert."
-    )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    withdrawn_at: Union[_dt.datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
 
-__all__ = ("DependabotAlertWithRepository",)
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.")
+    name: str = Field(description="The short, plain text name of the CWE.")
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
+    value: str = Field(description="The value of the advisory identifer.")
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.")
+
+
+model_rebuild(DependabotAlertSecurityAdvisory)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+
+__all__ = (
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+)

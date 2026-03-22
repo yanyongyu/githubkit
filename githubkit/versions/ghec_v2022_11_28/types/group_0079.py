@@ -9,55 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class CodeScanningOptionsType(TypedDict):
+    """CodeScanningOptions
 
-class CodeSecurityConfigurationRepositoriesType(TypedDict):
-    """CodeSecurityConfigurationRepositories
-
-    Repositories associated with a code security configuration and attachment status
+    Security Configuration feature options for code scanning
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryType]
+    allow_advanced: NotRequired[Union[bool, None]]
 
 
-class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationRepositories
+class CodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeScanningOptions
 
-    Repositories associated with a code security configuration and attachment status
+    Security Configuration feature options for code scanning
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryTypeForResponse]
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeSecurityConfigurationRepositoriesType",
-    "CodeSecurityConfigurationRepositoriesTypeForResponse",
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
+    "CodeScanningOptionsType",
+    "CodeScanningOptionsTypeForResponse",
 )

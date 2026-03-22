@@ -9,46 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class GroupType(TypedDict):
+    """Group"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
-
-
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsType]]
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class GroupTypeForResponse(TypedDict):
+    """Group"""
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
 
 
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
+class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
 
     value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    display_name: str
+
+
+class GroupPropMembersItemsTypeForResponse(TypedDict):
+    """GroupPropMembersItems"""
+
+    value: str
+    display_name: str
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "GroupPropMembersItemsType",
+    "GroupPropMembersItemsTypeForResponse",
+    "GroupType",
+    "GroupTypeForResponse",
 )

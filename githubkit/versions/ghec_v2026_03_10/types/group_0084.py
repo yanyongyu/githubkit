@@ -9,54 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-    Group of enterprise owners and/or members
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
+    node_id: str
     url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
     members_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class EnterpriseTeamTypeForResponse(TypedDict):
-    """Enterprise Team
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
 
-    Group of enterprise owners and/or members
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
+    node_id: str
     url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
     members_url: str
-    created_at: str
-    updated_at: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "EnterpriseTeamType",
-    "EnterpriseTeamTypeForResponse",
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
 )

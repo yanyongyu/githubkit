@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
+class ActionsForkPrWorkflowsPrivateReposRequest(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateReposRequest"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
     )
-    selected_repositories_url: Missing[str] = Field(
+    send_write_tokens_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
+    )
+    send_secrets_and_variables: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
+    )
+    require_approval_for_fork_pr_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(ActionsForkPrWorkflowsPrivateReposRequest)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("ActionsForkPrWorkflowsPrivateReposRequest",)

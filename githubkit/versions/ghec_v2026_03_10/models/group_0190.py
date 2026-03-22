@@ -18,32 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateCostCenter(GitHubModel):
-    """UpdateCostCenter"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
+
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
+    )
+
+
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
     azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: list[UpdateCostCenterPropResourcesItems] = Field()
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
 
 
-class UpdateCostCenterPropResourcesItems(GitHubModel):
-    """UpdateCostCenterPropResourcesItems"""
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
     type: str = Field(description="Type of the resource.")
     name: str = Field(description="Name of the resource.")
 
 
-model_rebuild(UpdateCostCenter)
-model_rebuild(UpdateCostCenterPropResourcesItems)
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
 
 __all__ = (
-    "UpdateCostCenter",
-    "UpdateCostCenterPropResourcesItems",
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
 )

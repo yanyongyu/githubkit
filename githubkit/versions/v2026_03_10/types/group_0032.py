@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningOptionsType(TypedDict):
-    """CodeScanningOptions
+class OidcCustomPropertyInclusionInputType(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Security Configuration feature options for code scanning
+    Input for creating an OIDC custom property inclusion
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    custom_property_name: str
 
 
-class CodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeScanningOptions
+class OidcCustomPropertyInclusionInputTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    Security Configuration feature options for code scanning
+    Input for creating an OIDC custom property inclusion
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
-
-
-class CodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+    custom_property_name: str
 
 
 __all__ = (
-    "CodeScanningDefaultSetupOptionsType",
-    "CodeScanningDefaultSetupOptionsTypeForResponse",
-    "CodeScanningOptionsType",
-    "CodeScanningOptionsTypeForResponse",
+    "OidcCustomPropertyInclusionInputType",
+    "OidcCustomPropertyInclusionInputTypeForResponse",
 )

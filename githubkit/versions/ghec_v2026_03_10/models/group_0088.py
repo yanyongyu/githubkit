@@ -9,28 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class CopilotUsageMetrics1DayReport(GitHubModel):
-    """Copilot Metrics 1 Day Report
+class CopilotEnterpriseContentExclusionDetails(ExtraGitHubModel):
+    """Copilot Enterprise Content Exclusion Details
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
+    List all Copilot Content Exclusion rules for an enterprise.
     """
 
-    download_links: list[str] = Field(
-        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
-    )
-    report_day: _dt.date = Field(
-        description="The day of the report in `YYYY-MM-DD` format."
-    )
 
+model_rebuild(CopilotEnterpriseContentExclusionDetails)
 
-model_rebuild(CopilotUsageMetrics1DayReport)
-
-__all__ = ("CopilotUsageMetrics1DayReport",)
+__all__ = ("CopilotEnterpriseContentExclusionDetails",)

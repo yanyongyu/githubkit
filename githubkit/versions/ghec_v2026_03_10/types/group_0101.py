@@ -12,33 +12,69 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
 
-    A hosted compute network settings resource.
+    Information about the status of a license sync job for an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    ]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class GetLicenseSyncStatusTypeForResponse(TypedDict):
+    """License Sync Status
 
-    A hosted compute network settings resource.
+    Information about the status of a license sync job for an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+    TypedDict
+):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
+    "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusTypeForResponse",
 )

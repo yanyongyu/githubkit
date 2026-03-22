@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
@@ -16,39 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsGistIdPatchBody(GitHubModel):
-    """GistsGistIdPatchBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
     description: Missing[str] = Field(
-        default=UNSET, description="The description of the gist."
+        default=UNSET, description="Description of the gist"
     )
-    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
-        default=UNSET,
-        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
     )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
-    """GistsGistIdPatchBodyPropFiles
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
+    Names and content for the files that make up the gist
 
     Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
     """
 
 
-model_rebuild(GistsGistIdPatchBody)
-model_rebuild(GistsGistIdPatchBodyPropFiles)
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
 
 __all__ = (
-    "GistsGistIdPatchBody",
-    "GistsGistIdPatchBodyPropFiles",
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
 )

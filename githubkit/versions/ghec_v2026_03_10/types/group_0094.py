@@ -13,93 +13,125 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0074 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0091 import (
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
+from .group_0093 import (
     DependabotAlertSecurityVulnerabilityType,
     DependabotAlertSecurityVulnerabilityTypeForResponse,
 )
-from .group_0092 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0093 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0095 import (
-    DependabotAlertWithRepositoryPropDependencyType,
-    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
-)
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
 
-    A Dependabot alert.
+    Details for the GitHub Security Advisory.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: _dt.datetime
     updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
-    repository: SimpleRepositoryType
+    withdrawn_at: Union[_dt.datetime, None]
 
 
-class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisory
 
-    A Dependabot alert.
+    Details for the GitHub Security Advisory.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
-    created_at: str
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse]
+    identifiers: list[
+        DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse
+    ]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    published_at: str
     updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[None, SimpleUserTypeForResponse]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    repository: SimpleRepositoryTypeForResponse
+    withdrawn_at: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryType",
-    "DependabotAlertWithRepositoryTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryTypeForResponse",
 )

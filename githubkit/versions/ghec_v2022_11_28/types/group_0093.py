@@ -9,62 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0092 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class DependabotAlertDismissalRequestSimpleType(TypedDict):
-    """Dependabot alert dismissal request
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Information about an active dismissal request for this Dependabot alert.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
-    created_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
-
-    Information about an active dismissal request for this Dependabot alert.
-    """
-
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[
-        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
     ]
-    created_at: NotRequired[str]
-    url: NotRequired[str]
 
 
-class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    The user who requested the dismissal.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    id: NotRequired[int]
-    login: NotRequired[str]
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    ]
 
 
-class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    The user who requested the dismissal.
+    Details pertaining to the package version that patches this vulnerability.
     """
 
-    id: NotRequired[int]
-    login: NotRequired[str]
+    identifier: str
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestSimplePropRequesterType",
-    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestSimpleType",
-    "DependabotAlertDismissalRequestSimpleTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

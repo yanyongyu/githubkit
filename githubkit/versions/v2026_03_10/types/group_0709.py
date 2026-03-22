@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0477 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0478 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0479 import (
+from .group_0048 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0479 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0480 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0481 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0480 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0491 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0496 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0482 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0498 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesUnlabeledType(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesTypedType(TypedDict):
+    """issues typed event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["typed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     issue: WebhooksIssueType
-    label: NotRequired[WebhooksLabelType]
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnlabeledTypeForResponse(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesTypedTypeForResponse(TypedDict):
+    """issues typed event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["typed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     issue: WebhooksIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
+    type: Union[IssueTypeTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnlabeledType",
-    "WebhookIssuesUnlabeledTypeForResponse",
+    "WebhookIssuesTypedType",
+    "WebhookIssuesTypedTypeForResponse",
 )

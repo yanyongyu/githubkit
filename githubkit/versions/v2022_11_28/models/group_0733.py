@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0478 import EnterpriseWebhooks
-from .group_0479 import SimpleInstallation
-from .group_0480 import OrganizationSimpleWebhooks
-from .group_0481 import RepositoryWebhooks
-from .group_0498 import WebhooksMilestone
+from .group_0480 import EnterpriseWebhooks
+from .group_0481 import SimpleInstallation
+from .group_0482 import OrganizationSimpleWebhooks
+from .group_0483 import RepositoryWebhooks
+from .group_0500 import WebhooksMilestone
 
 
-class WebhookMilestoneDeleted(GitHubModel):
-    """milestone deleted event"""
+class WebhookMilestoneClosed(GitHubModel):
+    """milestone closed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookMilestoneDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneDeleted)
+model_rebuild(WebhookMilestoneClosed)
 
-__all__ = ("WebhookMilestoneDeleted",)
+__all__ = ("WebhookMilestoneClosed",)

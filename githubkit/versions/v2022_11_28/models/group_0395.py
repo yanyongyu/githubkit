@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-class PageBuild(GitHubModel):
-    """Page Build
-
-    Page Build
+    Results of a successful merge upstream request
     """
 
-    url: str = Field()
-    status: str = Field()
-    error: PageBuildPropError = Field()
-    pusher: Union[None, SimpleUser] = Field()
-    commit: str = Field()
-    duration: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-class PageBuildPropError(GitHubModel):
-    """PageBuildPropError"""
+model_rebuild(MergedUpstream)
 
-    message: Union[str, None] = Field()
-
-
-model_rebuild(PageBuild)
-model_rebuild(PageBuildPropError)
-
-__all__ = (
-    "PageBuild",
-    "PageBuildPropError",
-)
+__all__ = ("MergedUpstream",)

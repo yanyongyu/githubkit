@@ -9,60 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-class ActivityType(TypedDict):
-    """Activity
-
-    Activity
+    Response containing the workflow run ID and URLs.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserType]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
 
-    Activity
+    Response containing the workflow run ID and URLs.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[None, SimpleUserTypeForResponse]
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
 )

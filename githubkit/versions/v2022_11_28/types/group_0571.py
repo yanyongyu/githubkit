@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0336 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0478 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0479 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0480 import (
+from .group_0338 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0480 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0481 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0482 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0481 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0483 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReopenedType(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookDependabotAlertFixedType(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["reopened"]
+    action: Literal["fixed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookDependabotAlertFixedTypeForResponse(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["reopened"]
+    action: Literal["fixed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertReopenedType",
-    "WebhookDependabotAlertReopenedTypeForResponse",
+    "WebhookDependabotAlertFixedType",
+    "WebhookDependabotAlertFixedTypeForResponse",
 )

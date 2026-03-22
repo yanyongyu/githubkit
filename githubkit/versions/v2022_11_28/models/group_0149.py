@@ -18,26 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class OrganizationCreateIssueField(GitHubModel):
+    """OrganizationCreateIssueField"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
-    )
+    name: str = Field(description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+        default=UNSET, description="Description of the issue field."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    data_type: Literal["text", "date", "single_select", "number"] = Field(
+        description="The data type of the issue field."
+    )
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+    )
+    options: Missing[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
+    ] = Field(
+        default=UNSET,
+        description="Options for single select fields. Required when data_type is 'single_select'.",
+    )
 
 
-model_rebuild(OrganizationCreateIssueType)
+class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-__all__ = ("OrganizationCreateIssueType",)
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationCreateIssueField)
+model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationCreateIssueField",
+    "OrganizationCreateIssueFieldPropOptionsItems",
+)

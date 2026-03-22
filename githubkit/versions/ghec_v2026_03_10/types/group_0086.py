@@ -9,24 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class EnterpriseTeamTypeForResponse(TypedDict):
+    """Enterprise Team
+
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "CopilotEnterpriseContentExclusionDetailsType",
-    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
+    "EnterpriseTeamType",
+    "EnterpriseTeamTypeForResponse",
 )

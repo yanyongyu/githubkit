@@ -14,15 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsArtifactAndLogRetentionResponse(GitHubModel):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomPropertyInclusionInput(GitHubModel):
+    """Actions OIDC Custom Property Inclusion Input
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
-    maximum_allowed_days: int = Field(
-        description="The maximum number of days that can be configured"
+    Input for creating an OIDC custom property inclusion
+    """
+
+    custom_property_name: str = Field(
+        description="The name of the custom property to include in the OIDC token"
     )
 
 
-model_rebuild(ActionsArtifactAndLogRetentionResponse)
+model_rebuild(OidcCustomPropertyInclusionInput)
 
-__all__ = ("ActionsArtifactAndLogRetentionResponse",)
+__all__ = ("OidcCustomPropertyInclusionInput",)

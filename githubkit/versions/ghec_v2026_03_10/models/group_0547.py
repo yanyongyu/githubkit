@@ -18,68 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0540 import SearchResultTextMatchesItems
 
-class PublicUser(GitHubModel):
-    """Public User
 
-    Public User
+class TopicSearchResultItem(GitHubModel):
+    """Topic Search Result Item
+
+    Topic Search Result Item
     """
 
-    login: str = Field()
-    id: int = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
+    name: str = Field()
+    display_name: Union[str, None] = Field()
+    short_description: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    created_by: Union[str, None] = Field()
+    released: Union[str, None] = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
-    private_gists: Missing[int] = Field(default=UNSET)
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    disk_usage: Missing[int] = Field(default=UNSET)
-    collaborators: Missing[int] = Field(default=UNSET)
+    featured: bool = Field()
+    curated: bool = Field()
+    score: float = Field()
+    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
+    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
+    related: Missing[Union[list[TopicSearchResultItemPropRelatedItems], None]] = Field(
+        default=UNSET
+    )
+    aliases: Missing[Union[list[TopicSearchResultItemPropAliasesItems], None]] = Field(
+        default=UNSET
+    )
 
 
-class PublicUserPropPlan(GitHubModel):
-    """PublicUserPropPlan"""
+class TopicSearchResultItemPropRelatedItems(GitHubModel):
+    """TopicSearchResultItemPropRelatedItems"""
 
-    collaborators: int = Field()
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(PublicUser)
-model_rebuild(PublicUserPropPlan)
+class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class TopicSearchResultItemPropAliasesItems(GitHubModel):
+    """TopicSearchResultItemPropAliasesItems"""
+
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
+
+
+class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
+    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    topic_id: Missing[int] = Field(default=UNSET)
+    relation_type: Missing[str] = Field(default=UNSET)
+
+
+class SearchTopicsGetResponse200(GitHubModel):
+    """SearchTopicsGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: list[TopicSearchResultItem] = Field()
+
+
+model_rebuild(TopicSearchResultItem)
+model_rebuild(TopicSearchResultItemPropRelatedItems)
+model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
+model_rebuild(TopicSearchResultItemPropAliasesItems)
+model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
+model_rebuild(SearchTopicsGetResponse200)
 
 __all__ = (
-    "PublicUser",
-    "PublicUserPropPlan",
+    "SearchTopicsGetResponse200",
+    "TopicSearchResultItem",
+    "TopicSearchResultItemPropAliasesItems",
+    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
+    "TopicSearchResultItemPropRelatedItems",
+    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
 )

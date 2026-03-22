@@ -9,59 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0038 import DependabotAlertPackage
 
 
-class DependabotAlertDismissalRequestSimple(GitHubModel):
-    """Dependabot alert dismissal request
+class DependabotAlertSecurityVulnerability(GitHubModel):
+    """DependabotAlertSecurityVulnerability
 
-    Information about an active dismissal request for this Dependabot alert.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package."
     )
-    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
-        default=UNSET, description="The current status of the dismissal request."
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the vulnerability."
     )
-    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
+    vulnerable_version_range: str = Field(
+        description="Conditions that identify vulnerable versions of this vulnerability's package."
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time when the dismissal request was created.",
-    )
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to get more information about this dismissal request.",
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
+    ] = Field(
+        description="Details pertaining to the package version that patches this vulnerability."
     )
 
 
-class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestSimplePropRequester
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
 
-    The user who requested the dismissal.
+    Details pertaining to the package version that patches this vulnerability.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the user."
+    identifier: str = Field(
+        description="The package version that patches this vulnerability."
     )
 
 
-model_rebuild(DependabotAlertDismissalRequestSimple)
-model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
+model_rebuild(DependabotAlertSecurityVulnerability)
+model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
 
 __all__ = (
-    "DependabotAlertDismissalRequestSimple",
-    "DependabotAlertDismissalRequestSimplePropRequester",
+    "DependabotAlertSecurityVulnerability",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
 )

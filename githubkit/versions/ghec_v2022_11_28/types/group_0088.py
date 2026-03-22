@@ -9,33 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
-class CopilotUsageMetrics1DayReportType(TypedDict):
-    """Copilot Metrics 1 Day Report
+CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
 
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
-    """
-
-    download_links: list[str]
-    report_day: _dt.date
-
-
-class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 1 Day Report
-
-    Links to download the Copilot usage metrics report for an
-    enterprise/organization for a specific day.
-    """
-
-    download_links: list[str]
-    report_day: str
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
 __all__ = (
-    "CopilotUsageMetrics1DayReportType",
-    "CopilotUsageMetrics1DayReportTypeForResponse",
+    "CopilotEnterpriseContentExclusionDetailsType",
+    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
 )

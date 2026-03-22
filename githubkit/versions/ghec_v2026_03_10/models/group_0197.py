@@ -9,35 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class BillingUsageReport(GitHubModel):
+    """BillingUsageReport"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
-    )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
+        default=UNSET, alias="usageItems"
     )
 
 
-model_rebuild(Label)
+class BillingUsageReportPropUsageItemsItems(GitHubModel):
+    """BillingUsageReportPropUsageItemsItems"""
 
-__all__ = ("Label",)
+    date: str = Field(description="Date of the usage line item.")
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    quantity: int = Field(description="Quantity of the usage line item.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+    organization_name: str = Field(
+        alias="organizationName", description="Name of the organization."
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET, alias="repositoryName", description="Name of the repository."
+    )
+
+
+model_rebuild(BillingUsageReport)
+model_rebuild(BillingUsageReportPropUsageItemsItems)
+
+__all__ = (
+    "BillingUsageReport",
+    "BillingUsageReportPropUsageItemsItems",
+)

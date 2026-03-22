@@ -9,27 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class TagType(TypedDict):
+    """Tag
 
-    timestamp: _dt.datetime
-    uniques: int
-    count: int
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class TrafficTypeForResponse(TypedDict):
-    """Traffic"""
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    timestamp: str
-    uniques: int
-    count: int
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "TrafficType",
-    "TrafficTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

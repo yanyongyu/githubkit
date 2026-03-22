@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
+class ActionsForkPrWorkflowsPrivateRepos(GitHubModel):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    A GitHub organization.
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
+    run_workflows_from_fork_pull_requests: bool = Field(
+        description="Whether workflows triggered by pull requests from forks are allowed to run on private repositories."
+    )
+    send_write_tokens_to_workflows: bool = Field(
+        description="Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request."
+    )
+    send_secrets_and_variables: bool = Field(
+        description="Whether to make secrets and variables available to workflows triggered by pull requests from forks."
+    )
+    require_approval_for_fork_pr_workflows: bool = Field(
+        description="Whether workflows triggered by pull requests from forks require approval from a repository administrator to run."
+    )
 
 
-model_rebuild(OrganizationSimple)
+model_rebuild(ActionsForkPrWorkflowsPrivateRepos)
 
-__all__ = ("OrganizationSimple",)
+__all__ = ("ActionsForkPrWorkflowsPrivateRepos",)

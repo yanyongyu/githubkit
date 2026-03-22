@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0477 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0478 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0479 import (
+from .group_0479 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0480 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0481 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0480 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0483 import (
+from .group_0482 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import (
     CheckRunWithSimpleCheckSuiteType,
     CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["created"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -38,10 +38,10 @@ class WebhookCheckRunCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCheckRunCreatedTypeForResponse(TypedDict):
-    """Check Run Created Event"""
+class WebhookCheckRunCompletedTypeForResponse(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["created"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookCheckRunCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCheckRunCreatedType",
-    "WebhookCheckRunCreatedTypeForResponse",
+    "WebhookCheckRunCompletedType",
+    "WebhookCheckRunCompletedTypeForResponse",
 )

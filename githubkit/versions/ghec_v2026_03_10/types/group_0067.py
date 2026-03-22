@@ -9,58 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
 
-    A response made by a delegated bypasser to a bypass request.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
-class BypassResponseTypeForResponse(TypedDict):
-    """Bypass response
+class GoogleCloudConfigTypeForResponse(TypedDict):
+    """GoogleCloudConfig
 
-    A response made by a delegated bypasser to a bypass request.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class BypassResponsePropReviewerTypeForResponse(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
 __all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponsePropReviewerTypeForResponse",
-    "BypassResponseType",
-    "BypassResponseTypeForResponse",
+    "GoogleCloudConfigType",
+    "GoogleCloudConfigTypeForResponse",
 )

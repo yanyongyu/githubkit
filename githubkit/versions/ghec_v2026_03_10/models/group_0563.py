@@ -9,36 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationSimpleWebhooks(GitHubModel):
-    """Organization Simple
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest//admin/overview/about-enterprise-accounts)."
     """
 
-    login: str = Field()
-    id: int = Field()
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
+    )
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
+    )
+    id: int = Field(description="Unique identifier of the enterprise")
     node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
     avatar_url: str = Field()
-    description: Union[str, None] = Field()
 
 
-model_rebuild(OrganizationSimpleWebhooks)
+model_rebuild(EnterpriseWebhooks)
 
-__all__ = ("OrganizationSimpleWebhooks",)
+__all__ = ("EnterpriseWebhooks",)

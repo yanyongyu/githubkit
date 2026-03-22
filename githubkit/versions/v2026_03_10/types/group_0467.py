@@ -9,44 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class EmailType(TypedDict):
+    """Email
 
-    Key
+    Email
     """
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: _dt.datetime
+    email: str
+    primary: bool
     verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    visibility: Union[str, None]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class EmailTypeForResponse(TypedDict):
+    """Email
 
-    Key
+    Email
     """
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: str
+    email: str
+    primary: bool
     verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+    visibility: Union[str, None]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "EmailType",
+    "EmailTypeForResponse",
 )

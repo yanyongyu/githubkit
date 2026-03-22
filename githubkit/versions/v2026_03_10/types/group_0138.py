@@ -10,68 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0087 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class OrgHookType(TypedDict):
-    """Org Hook
 
-    Org Hook
+class PackageType(TypedDict):
+    """Package
+
+    A software package
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: _dt.datetime
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
     created_at: _dt.datetime
-    type: str
+    updated_at: _dt.datetime
 
 
-class OrgHookTypeForResponse(TypedDict):
-    """Org Hook
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    Org Hook
+    A software package
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigTypeForResponse
-    updated_at: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    repository: NotRequired[Union[None, MinimalRepositoryTypeForResponse]]
     created_at: str
-    type: str
-
-
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-class OrgHookPropConfigTypeForResponse(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    updated_at: str
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookPropConfigTypeForResponse",
-    "OrgHookType",
-    "OrgHookTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

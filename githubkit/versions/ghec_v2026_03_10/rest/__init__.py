@@ -136,6 +136,12 @@ class RestNamespace:
         return ActionsClient(self._github)
 
     @cached_property
+    def oidc(self) -> "OidcClient":
+        from .oidc import OidcClient
+
+        return OidcClient(self._github)
+
+    @cached_property
     def secret_scanning(self) -> "SecretScanningClient":
         from .secret_scanning import SecretScanningClient
 
@@ -236,12 +242,6 @@ class RestNamespace:
         from .orgs import OrgsClient
 
         return OrgsClient(self._github)
-
-    @cached_property
-    def oidc(self) -> "OidcClient":
-        from .oidc import OidcClient
-
-        return OidcClient(self._github)
 
     @cached_property
     def campaigns(self) -> "CampaignsClient":

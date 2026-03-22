@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,48 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class UsageReportExportList(GitHubModel):
+    """UsageReportExportList"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
-    )
-
-
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str = Field(description="Date of the usage line item.")
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
-    )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
+    usage_report_exports: list[UsageReportExport] = Field(
+        description="List of usage report exports"
     )
 
 
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
+class UsageReportExport(GitHubModel):
+    """UsageReportExport"""
+
+    id: str = Field(description="Unique identifier for the usage report export")
+    report_type: Literal["detailed", "summarized", "premium_request"] = Field(
+        description="The type of usage report"
+    )
+    start_date: _dt.date = Field(description="The start date for the report")
+    end_date: _dt.date = Field(description="The end date for the report")
+    status: Literal["processing", "completed", "failed"] = Field(
+        description="The current status of the report export"
+    )
+    download_urls: Missing[list[str]] = Field(
+        default=UNSET,
+        description="URLs to download the completed report. Only present when the report status is `completed`.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the report export was created"
+    )
+    actor: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the export"
+    )
+
+
+model_rebuild(UsageReportExportList)
+model_rebuild(UsageReportExport)
 
 __all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
+    "UsageReportExport",
+    "UsageReportExportList",
 )

@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class AuditLogStreamKeyType(TypedDict):
-    """stream-key
+class EnterpriseOrganizationInstallationType(TypedDict):
+    """Enterprise Organization Installation
 
-    Audit Log Streaming Public Key
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    key_id: str
-    key: str
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsType
+    events: NotRequired[list[str]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class AuditLogStreamKeyTypeForResponse(TypedDict):
-    """stream-key
+class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
+    """Enterprise Organization Installation
 
-    Audit Log Streaming Public Key
+    A GitHub App Installation on an enterprise-owned organization
     """
 
-    key_id: str
-    key: str
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsTypeForResponse
+    events: NotRequired[list[str]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "AuditLogStreamKeyType",
-    "AuditLogStreamKeyTypeForResponse",
+    "EnterpriseOrganizationInstallationType",
+    "EnterpriseOrganizationInstallationTypeForResponse",
 )

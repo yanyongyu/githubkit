@@ -9,73 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    License Content
+    An SSH key granting access to a single repository.
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    key: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class LicenseContentTypeForResponse(TypedDict):
-    """License Content
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    License Content
+    An SSH key granting access to a single repository.
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
+    id: int
+    key: str
     url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksTypeForResponse
-    license_: Union[None, LicenseSimpleTypeForResponse]
-
-
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class LicenseContentPropLinksTypeForResponse(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "LicenseContentPropLinksType",
-    "LicenseContentPropLinksTypeForResponse",
-    "LicenseContentType",
-    "LicenseContentTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

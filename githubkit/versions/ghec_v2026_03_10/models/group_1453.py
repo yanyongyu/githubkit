@@ -9,42 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[list[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
     )
 
 
-model_rebuild(UserPatchBody)
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
-__all__ = ("UserPatchBody",)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: Missing[str] = Field(default=UNSET)
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+)

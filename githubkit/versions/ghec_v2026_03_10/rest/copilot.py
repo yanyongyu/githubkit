@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 from weakref import ref
 
 from pydantic import BaseModel
@@ -21,6 +21,7 @@ from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     import datetime as _dt
+    from typing import Literal
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -50,6 +51,8 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
         OrgsOrgCopilotContentExclusionPutResponse200,
     )
     from ..types import (
@@ -85,6 +88,10 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
         OrgsOrgCopilotContentExclusionPutBodyType,
         OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
     )
@@ -3486,6 +3493,748 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def get_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-coding-agent-permissions-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about which repositories in an organization have been enabled
+        or disabled for the Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-copilot-coding-agent-permissions-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Gets information about which repositories in an organization have been enabled
+        or disabled for the Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#get-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    def set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-permissions-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets the policy for which repositories in an organization can use Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        enabled_repositories: Literal["all", "selected", "none"],
+    ) -> Response: ...
+
+    async def async_set_copilot_coding_agent_permissions_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodingAgentPermissionsPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-permissions-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Sets the policy for which repositories in an organization can use Copilot coding agent.
+
+        Organization owners can configure whether Copilot coding agent is enabled for
+        all repositories, selected repositories, or no repositories owned by the organization.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-copilot-coding-agent-permissions-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """copilot/list-copilot-coding-agent-selected-repositories-for-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+
+        Organization owners can use this endpoint when the coding agent repository policy
+        is set to `selected` to see which repositories have been enabled.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    async def async_list_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
+    ]:
+        """copilot/list-copilot-coding-agent-selected-repositories-for-organization
+
+        GET /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists the selected repositories that are enabled for Copilot coding agent in an organization.
+
+        Organization owners can use this endpoint when the coding agent repository policy
+        is set to `selected` to see which repositories have been enabled.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    def set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-selected-repositories-for-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Replaces the list of selected repositories that are enabled for Copilot coding
+        agent in an organization. This method can only be called when the coding agent
+        repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        selected_repository_ids: list[int],
+    ) -> Response: ...
+
+    async def async_set_copilot_coding_agent_selected_repositories_for_organization(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-copilot-coding-agent-selected-repositories-for-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Replaces the list of selected repositories that are enabled for Copilot coding
+        agent in an organization. This method can only be called when the coding agent
+        repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#set-selected-repositories-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/coding-agent/permissions/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def enable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/enable-copilot-coding-agent-for-repository-in-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Adds a repository to the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_enable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/enable-copilot-coding-agent-for-repository-in-organization
+
+        PUT /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Adds a repository to the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#enable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def disable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/disable-copilot-coding-agent-for-repository-in-organization
+
+        DELETE /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Removes a repository from the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    async def async_disable_copilot_coding_agent_for_repository_in_organization(
+        self,
+        org: str,
+        repository_id: int,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """copilot/disable-copilot-coding-agent-for-repository-in-organization
+
+        DELETE /orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Removes a repository from the list of selected repositories enabled for Copilot
+        coding agent in an organization. This method can only be called when the
+        coding agent repository policy is set to `selected`.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` scopes to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-coding-agent-management#disable-a-repository-for-copilot-coding-agent-in-an-organization
+        """
+
+        from ..models import BasicError
+
+        url = (
+            f"/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
             },
         )
 

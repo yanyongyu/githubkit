@@ -14,34 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsEnterprisePermissions(GitHubModel):
-    """ActionsEnterprisePermissions"""
+class OidcCustomPropertyInclusion(GitHubModel):
+    """Actions OIDC Custom Property Inclusion
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+    An OIDC custom property inclusion for repository properties
+    """
+
+    custom_property_name: str = Field(
+        description="The name of the custom property that is included in the OIDC token"
     )
-    selected_organizations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected organizations that are allowed to run GitHub Actions, when `enabled_organizations` is set to `selected`.",
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    inclusion_source: Literal["organization", "enterprise"] = Field(
+        description="Whether the inclusion was defined at the organization or enterprise level"
     )
 
 
-model_rebuild(ActionsEnterprisePermissions)
+model_rebuild(OidcCustomPropertyInclusion)
 
-__all__ = ("ActionsEnterprisePermissions",)
+__all__ = ("OidcCustomPropertyInclusion",)

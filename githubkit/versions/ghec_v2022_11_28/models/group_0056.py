@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,26 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0020 import Repository
 
-class Announcement(GitHubModel):
-    """Enterprise Announcement
 
-    Enterprise global announcement
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    announcement: Union[str, None] = Field(
-        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest//github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
+    token: str = Field(description="The token used for authentication")
+    expires_at: _dt.datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
     )
-    expires_at: Missing[Union[_dt.datetime, None]] = Field(
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
         default=UNSET,
-        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string.",
-    )
-    user_dismissible: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether an announcement can be dismissed by the user.",
+        description="Describe whether all repositories have been selected or there's a selection involved",
     )
 
 
-model_rebuild(Announcement)
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
 
-__all__ = ("Announcement",)
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

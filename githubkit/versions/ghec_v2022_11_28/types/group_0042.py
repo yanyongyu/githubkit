@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsArtifactAndLogRetentionResponseType(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomPropertyInclusionInputType(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    days: int
-    maximum_allowed_days: int
+    Input for creating an OIDC custom property inclusion
+    """
+
+    custom_property_name: str
 
 
-class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomPropertyInclusionInputTypeForResponse(TypedDict):
+    """Actions OIDC Custom Property Inclusion Input
 
-    days: int
-    maximum_allowed_days: int
+    Input for creating an OIDC custom property inclusion
+    """
+
+    custom_property_name: str
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionResponseType",
-    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
+    "OidcCustomPropertyInclusionInputType",
+    "OidcCustomPropertyInclusionInputTypeForResponse",
 )

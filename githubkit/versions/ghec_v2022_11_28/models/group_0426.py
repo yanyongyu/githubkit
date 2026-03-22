@@ -14,16 +14,26 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ShortBlob(GitHubModel):
-    """Short Blob
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    Short Blob
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    url: str = Field()
-    sha: str = Field()
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
+    )
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
+    )
 
 
-model_rebuild(ShortBlob)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = ("ShortBlob",)
+__all__ = ("CustomDeploymentRuleApp",)

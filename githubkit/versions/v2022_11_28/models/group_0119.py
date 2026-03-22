@@ -9,58 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0020 import Repository
 
-class ArtifactDeploymentRecord(GitHubModel):
-    """Artifact Deployment Record
 
-    Artifact Metadata Deployment Record
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
+
+    Authentication Token
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    logical_environment: Missing[str] = Field(default=UNSET)
-    physical_environment: Missing[str] = Field(default=UNSET)
-    cluster: Missing[str] = Field(default=UNSET)
-    deployment_name: Missing[str] = Field(default=UNSET)
-    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+    token: str = Field(description="The token used for authentication")
+    expires_at: _dt.datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
     )
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    attestation_id: Missing[Union[int, None]] = Field(
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
         default=UNSET,
-        description="The ID of the provenance attestation associated with the deployment record.",
+        description="Describe whether all repositories have been selected or there's a selection involved",
     )
 
 
-class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
-    """ArtifactDeploymentRecordPropTags"""
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
-model_rebuild(ArtifactDeploymentRecord)
-model_rebuild(ArtifactDeploymentRecordPropTags)
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
 
 __all__ = (
-    "ArtifactDeploymentRecord",
-    "ArtifactDeploymentRecordPropTags",
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
 )

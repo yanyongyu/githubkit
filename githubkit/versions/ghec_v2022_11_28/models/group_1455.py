@@ -11,35 +11,59 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
     )
-    synced_at: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+    )
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[list[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    group_id: str = Field(description="ID of the IdP group.")
-    group_name: str = Field(description="Name of the IdP group.")
-    group_description: str = Field(description="Description of the IdP group.")
-    id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
 
 __all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+    "ScimV2OrganizationsOrgUsersPostBody",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersPostBodyPropName",
 )

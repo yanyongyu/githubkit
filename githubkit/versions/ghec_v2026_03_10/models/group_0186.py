@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateBudget(GitHubModel):
-    """UpdateBudget"""
+class CreateBudget(GitHubModel):
+    """CreateBudget"""
 
     message: str = Field(
-        description="A message indicating the result of the update operation"
+        description="A message indicating the result of the create operation"
     )
-    budget: UpdateBudgetPropBudget = Field()
+    budget: CreateBudgetPropBudget = Field()
 
 
-class UpdateBudgetPropBudget(GitHubModel):
-    """UpdateBudgetPropBudget"""
+class CreateBudgetPropBudget(GitHubModel):
+    """CreateBudgetPropBudget"""
 
     id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
     budget_scope: Missing[
@@ -50,13 +50,13 @@ class UpdateBudgetPropBudget(GitHubModel):
     budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
         default=UNSET, description="The type of pricing for the budget"
     )
-    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
+    budget_alerting: Missing[CreateBudgetPropBudgetPropBudgetAlerting] = Field(
         default=UNSET
     )
 
 
-class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class CreateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
         default=UNSET, description="Whether alerts are enabled for this budget"
@@ -66,12 +66,12 @@ class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
     )
 
 
-model_rebuild(UpdateBudget)
-model_rebuild(UpdateBudgetPropBudget)
-model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
+model_rebuild(CreateBudget)
+model_rebuild(CreateBudgetPropBudget)
+model_rebuild(CreateBudgetPropBudgetPropBudgetAlerting)
 
 __all__ = (
-    "UpdateBudget",
-    "UpdateBudgetPropBudget",
-    "UpdateBudgetPropBudgetPropBudgetAlerting",
+    "CreateBudget",
+    "CreateBudgetPropBudget",
+    "CreateBudgetPropBudgetPropBudgetAlerting",
 )

@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AmazonS3OidcConfig(GitHubModel):
-    """AmazonS3OIDCConfig
+class GetAuditLogStreamConfigsItems(GitHubModel):
+    """GetAuditLogStreamConfigsItems"""
 
-    Amazon S3 OIDC Config for audit log streaming configuration.
-    """
-
-    bucket: str = Field(description="Amazon S3 Bucket Name.")
-    region: str = Field(description="AWS S3 Bucket Region.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    authentication_type: Literal["oidc"] = Field(
-        description="Authentication Type for Amazon S3."
-    )
-    arn_role: str = Field()
+    id: Missing[int] = Field(default=UNSET)
+    stream_type: Missing[str] = Field(default=UNSET)
+    stream_details: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-class SplunkConfig(GitHubModel):
-    """SplunkConfig
+model_rebuild(GetAuditLogStreamConfigsItems)
 
-    Splunk Config for Audit Log Stream Configuration
-    """
-
-    domain: str = Field(description="Domain of Splunk instance.")
-    port: int = Field(description="The port number for connecting to Splunk.")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
-    )
-    encrypted_token: str = Field(description="Encrypted Token.")
-    ssl_verify: bool = Field(
-        description="SSL verification helps ensure your events are sent to your Splunk endpoint securely."
-    )
-
-
-model_rebuild(AmazonS3OidcConfig)
-model_rebuild(SplunkConfig)
-
-__all__ = (
-    "AmazonS3OidcConfig",
-    "SplunkConfig",
-)
+__all__ = ("GetAuditLogStreamConfigsItems",)

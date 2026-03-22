@@ -13,23 +13,37 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyAllof1Type(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class CustomPropertyBaseType(TypedDict):
+    """CustomPropertyBase"""
 
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
     ]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
 
 
-class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
-    """OrganizationCustomPropertyAllof1"""
+class CustomPropertyBaseTypeForResponse(TypedDict):
+    """CustomPropertyBase"""
 
-    values_editable_by: NotRequired[
-        Union[None, Literal["enterprise_actors", "enterprise_and_org_actors"]]
+    property_name: NotRequired[str]
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: NotRequired[
+        Literal["string", "single_select", "multi_select", "true_false", "url"]
     ]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "OrganizationCustomPropertyAllof1Type",
-    "OrganizationCustomPropertyAllof1TypeForResponse",
+    "CustomPropertyBaseType",
+    "CustomPropertyBaseTypeForResponse",
 )

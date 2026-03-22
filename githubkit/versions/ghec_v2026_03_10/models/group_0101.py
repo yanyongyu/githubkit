@@ -16,28 +16,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-    A hosted compute network settings resource.
+    Information about the status of a license sync job for an enterprise.
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
-    )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(NetworkSettings)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("NetworkSettings",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)
