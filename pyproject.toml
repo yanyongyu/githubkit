@@ -619,6 +619,11 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
 "/components/schemas/dependabot-alert-with-repository/properties/dependency/properties/relationship/enum" = { "<add>" = [
   "inconclusive",
 ] }
+# https://github.com/yanyongyu/githubkit/issues/284
+# https://github.com/github/rest-api-description/issues/6108
+"/components/schemas/dependabot-alert/properties/dependency/properties/relationship/enum" = { "<add>" = [
+  "inconclusive",
+] }
 # https://github.com/github/rest-api-description/issues/4728
 "/components/schemas/code-scanning-alert-classification/enum" = { "<add>" = [
   "documentation",
