@@ -205,6 +205,10 @@ You can make multiple requests with the same client instance in one context:
         repo: FullRepository = resp.parsed_data
     ```
 
+!!! warning
+
+    Repeatedly creating new client instances may lead to memory leaks. We recommend reusing the same client instance within a single context to avoid this issue.
+
 ## Data Validation
 
 As shown above, the response data is parsed and validated by accessing the `response.parsed_data` property. This ensures that the data type returned by the API is as expected and your code is safe to use it (with static type checking). But sometimes you may want to get the raw data returned by the API, such as when the schema is not correct. You can use the `response.text` property or `response.json()` method to get the raw data. The loaded json data is also typed but not validated. For example:
