@@ -599,6 +599,10 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
   "null",
 ], format = "date-time" }
 
+# https://github.com/yanyongyu/githubkit/issues/283
+# https://github.com/github/rest-api-description/issues/6107
+"/components/schemas/webhook-code-scanning-alert-reopened/properties/alert/properties/dismissed_by" = { "<copy>" = "#/components/schemas/webhook-code-scanning-alert-appeared-in-branch/properties/alert/properties/dismissed_by" }
+
 # webhook repository dispatch action can be any string
 "/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
 # "/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
