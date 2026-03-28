@@ -131,8 +131,10 @@ nav:
       - OAuth APP Device Flow: quickstart/oauth-device-flow.md
       - GitHub APP: quickstart/github-app.md
   - Usage:
-      - Authentication: usage/authentication.md
-      - Configuration: usage/configuration.md
+      - Getting Started:
+          - Authentication: usage/getting-started/authentication.md
+          - Configuration: usage/getting-started/configuration.md
+          - Reusing Client: usage/getting-started/reusing-client.md
       - REST API: usage/rest-api.md
       - GraphQL: usage/graphql.md
       - Auto Retry: usage/auto-retry.md

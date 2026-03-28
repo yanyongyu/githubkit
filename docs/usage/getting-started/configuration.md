@@ -177,7 +177,7 @@ Available built-in throttlers:
 
 ### `auto_retry`
 
-The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](./auto-retry.md) for more infomation.
+The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](../auto-retry.md) for more infomation.
 
 ### `rest_api_validate_body`
 
