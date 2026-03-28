@@ -1,54 +1,70 @@
 # Authentication
 
-githubkit supports multiple authentication strategies to access the GitHub API. You can also switch between them easily when doing auth flow.
+githubkit supports a variety of authentication strategies for the GitHub API. The following table summarizes all available strategies:
+
+| Strategy                                                                 | Use Case                       |
+| ------------------------------------------------------------------------ | ------------------------------ |
+| [`UnauthAuthStrategy`](#without-authentication)                          | Public endpoints, quick tests  |
+| [`TokenAuthStrategy`](#token-authentication)                             | Personal Access Tokens (PAT)   |
+| [`AppAuthStrategy`](#github-app-authentication)                          | GitHub App (JWT)               |
+| [`AppInstallationAuthStrategy`](#github-app-installation-authentication) | GitHub App installation        |
+| [`OAuthAppAuthStrategy`](#oauth-app-authentication)                      | OAuth App (client credentials) |
+| [`OAuthTokenAuthStrategy`](#oauth-user-token-authentication)             | Stored user access tokens      |
+| [`OAuthWebAuthStrategy`](#oauth-web-flow-authentication)                 | OAuth web flow code exchange   |
+| [`OAuthDeviceAuthStrategy`](#oauth-device-flow-authentication)           | OAuth device flow (CLI, IoT)   |
+| [`ActionAuthStrategy`](#github-action-authentication)                    | GitHub Actions workflows       |
+
+All strategies are importable from the top-level `githubkit` package.
 
 ## Without Authentication
 
-If you want to access GitHub API without authentication or make a temporary test, you can use `UnauthAuthStrategy`:
+Access public GitHub API endpoints without credentials. Useful for quick tests, but subject to much lower [rate limits](https://docs.github.com/en/rest/rate-limit).
 
 ```python
 from githubkit import GitHub, UnauthAuthStrategy
 
-# simply omit the auth parameter
+# Simply omit the auth parameter
 github = GitHub()
-# or, use UnauthAuthStrategy
+
+# Or explicitly use UnauthAuthStrategy
 github = GitHub(UnauthAuthStrategy())
 ```
 
 ## Token Authentication
 
-You can authenticate to GitHub using a [Personal Access Token (PAT)](https://github.com/settings/personal-access-tokens/new). Replace `<your_token_here>` with your token:
+The simplest way to authenticate — pass a [Personal Access Token (PAT)](https://github.com/settings/personal-access-tokens/new) as a string. This works for both classic tokens and fine-grained PATs.
 
 ```python
 from githubkit import GitHub, TokenAuthStrategy
 
-# simply pass the token as a string
+# Shorthand: pass a token string directly
 github = GitHub("<your_token_here>")
-# or, use TokenAuthStrategy
+
+# Explicit: use TokenAuthStrategy
 github = GitHub(TokenAuthStrategy("<your_token_here>"))
 ```
 
-## GitHub APP Authentication
+!!! tip
 
-If you are developing a GitHub App, you can authenticate using the GitHub App's private key and app ID. See [GitHub Docs - Authenticating as a GitHub App](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app) for more information.
+    Store tokens in environment variables or a secrets manager — never hard-code them in source files.
 
-If you do not want to use OAuth features, you can omit the client ID and client secret. Replace `<app_id>`, `<private_key>`, `<optional_client_id>`, and `<optional_client_secret>` with your app's credentials:
+## GitHub App Authentication
+
+Authenticate **as a GitHub App** using a JSON Web Token (JWT) signed with the app's private key. This gives you access to app-level API endpoints (e.g., listing installations). See [GitHub Docs — Authenticating as a GitHub App](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app) for background.
+
+You can identify the app by **app ID** or **client ID** (GitHub supports both). The client ID and client secret are only required if you plan to use OAuth features (e.g., exchanging user tokens).
 
 ```python
 from githubkit import GitHub, AppAuthStrategy
 
+# Using app ID (client ID and secret are optional)
 github = GitHub(
     AppAuthStrategy(
         "<app_id>", "<private_key>", "<optional_client_id>", "<optional_client_secret>"
     )
 )
-```
 
-GitHub currently supports authentication using a GitHub App's private key and client ID. So, you could provide either the app ID or the client ID.
-
-```python
-from githubkit import GitHub, AppAuthStrategy
-
+# Using client ID instead of app ID
 github = GitHub(
     AppAuthStrategy(
         None, "<private_key>", "<client_id>", "<optional_client_secret>"
@@ -56,25 +72,23 @@ github = GitHub(
 )
 ```
 
-## GitHub APP Installation Authentication
+## GitHub App Installation Authentication
 
-GitHub Ap installation allows the app to access resources owned by that installation, as long as the app was granted the necessary repository access and permissions. API requests made by an app installation are attributed to the app. For more information, see [GitHub Docs - Authenticating as an installation](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation).
+Authenticate **as a specific installation** of your GitHub App. This grants access to the repositories and permissions that the organization or user has approved for that installation. API requests are attributed to the app.
+
+See [GitHub Docs — Authenticating as an installation](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation) for details.
 
 ```python
 from githubkit import GitHub, AppInstallationAuthStrategy
 
+# Using app ID
 github = GitHub(
     AppInstallationAuthStrategy(
         "<app_id>", "<private_key>", installation_id, "<optional_client_id>", "<optional_client_secret>",
     )
 )
-```
 
-App installation authentication also supports using the client ID instead of the app ID:
-
-```python
-from githubkit import GitHub, AppInstallationAuthStrategy
-
+# Using client ID instead of app ID
 github = GitHub(
     AppInstallationAuthStrategy(
         None, "<private_key>", installation_id, "<client_id>", "<optional_client_secret>",
@@ -82,9 +96,13 @@ github = GitHub(
 )
 ```
 
-## OAuth APP Authentication
+!!! tip
 
-If you are developing an OAuth App, you can authenticate using the client ID and client secret. See [GitHub Docs - Authenticating with an OAuth App](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authenticating-to-the-rest-api-with-an-oauth-app) for more information.
+    You can also derive an installation client from a `GitHub` App instance using `with_auth` — see [Switching Auth Strategies](#switching-auth-strategies) below.
+
+## OAuth App Authentication
+
+Authenticate as an **OAuth App** using client credentials. This strategy uses [Basic authentication](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authenticating-to-the-rest-api-with-an-oauth-app) with the client ID and secret, which is required for certain endpoints (e.g., managing OAuth tokens).
 
 ```python
 from githubkit import GitHub, OAuthAppAuthStrategy
@@ -94,9 +112,11 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
 ## OAuth User Token Authentication
 
-OAuth App (GitHub App) allows you to act on behalf of a user after the user authorized your app. You can authenticate using the user token. This auth strategy is usefull when you stored the user token in a database.
+Act **on behalf of a user** using a previously obtained OAuth access token. This is the strategy to use when you have stored a user's token in your database and want to make API calls as that user.
 
-If you are developing an OAuth App or a GitHub App without user-to-server token expiration, you can authenticate using the user token directly:
+### Without token expiration
+
+For OAuth Apps or GitHub Apps **without** user-to-server token expiration enabled:
 
 ```python
 from githubkit import GitHub, OAuthTokenAuthStrategy
@@ -108,7 +128,9 @@ github = GitHub(
 )
 ```
 
-If you are developing a GitHub App with user-to-server token expiration, you need to provide the refresh token to keep the token up-to-date. In this case, you can omit the access token, but if you provide the access token, the access token expiration time is required:
+### With token expiration (refresh tokens)
+
+For GitHub Apps **with** user-to-server token expiration enabled, provide the refresh token so githubkit can automatically renew expired access tokens. If you also supply the access token, you **must** include its expiration time:
 
 ```python
 from datetime import datetime
@@ -119,48 +141,50 @@ github = GitHub(
     OAuthTokenAuthStrategy(
         "<client_id>",
         "<client_secret>",
-        token="<access_token>",  # optional
-        expire_time=datetime(),  # optional
-        refresh_token="<refresh_token>",
+        token="<access_token>",  # optional if refresh_token is set
+        expire_time=datetime(),  # required when token is provided
+        refresh_token="<refresh_token>",  # optional if token is set
         refresh_token_expire_time=datetime(),  # optional
     )
 )
 ```
 
-If you want to refresh the access token immediately, you can normally call the `refresh` method:
+### Manually refreshing the token
+
+You can force a token refresh at any time:
 
 ```python
 # sync
-auth = github.auth.refresh(github)
+github.auth.refresh(github)
 # async
-auth = await github.auth.async_refresh(github)
+await github.auth.async_refresh(github)
 ```
 
-This will update the access token and refresh token inplace. You can now store the new refresh token in `github.auth` to your database.
+This updates the `token` and `refresh_token` attributes **in place** on the auth strategy object. After refreshing, persist the new values from `github.auth` to your database.
 
 ## OAuth Web Flow Authentication
 
-GitHub OAuth web flow allows you to exchange the user access token with the web flow code. githubkit has built-in support for OAuth web flow token exchanging. See [GitHub Docs - Using the web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-web-application-flow-to-generate-a-user-access-token) for more information.
+Exchange an OAuth **authorization code** (from the web application flow) for a user access token. See [GitHub Docs — Using the web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-web-application-flow-to-generate-a-user-access-token).
 
 ```python
 from githubkit import GitHub, OAuthWebAuthStrategy
 
 github = GitHub(
-    OAuthWebAuthStrategy(
-        "<client_id_here>", "<client_secret_here>", "<web_flow_exchange_code_here>"
-    )
+    OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>")
 )
 ```
 
-Note that this auth strategy is only for one-time use. You need to store the user access token and refresh token in your database for future use:
+!!! warning
+
+    This strategy is **one-time use** — the authorization code can only be exchanged once. After obtaining the token, persist it and switch to `OAuthTokenAuthStrategy` for subsequent requests.
+
+To exchange the code and retrieve the resulting token:
 
 ```python
 from githubkit import GitHub, OAuthWebAuthStrategy, OAuthTokenAuthStrategy
 
 github = GitHub(
-    OAuthWebAuthStrategy(
-        "<client_id_here>", "<client_secret_here>", "<web_flow_exchange_code_here>"
-    )
+    OAuthWebAuthStrategy("<client_id>", "<client_secret>", "<code>")
 )
 
 # sync
@@ -168,57 +192,55 @@ auth: OAuthTokenAuthStrategy = github.auth.exchange_token(github)
 # async
 auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(github)
 
+# Persist these values to your database
 access_token = auth.token
 refresh_token = auth.refresh_token
 ```
 
-See [Switch between AuthStrategy](#switch-between-authstrategy) for more detail about oauth flow.
+See [Switching Auth Strategies](#switching-auth-strategies) for a complete example of web flow integration with `OAuthAppAuthStrategy`.
 
 ## OAuth Device Flow Authentication
 
-OAuth device flow allows you to authenticate as a user without a web browser (e.g., cli tools, desktop apps). githubkit has built-in support for OAuth device flow. See [GitHub Docs - Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token) for more information.
+Authenticate a user on **input-constrained devices** (CLI tools, IoT, smart TVs) without a web browser. githubkit handles the polling loop automatically. See [GitHub Docs — Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token).
 
-Before you start the device flow, you need to create a callback function to display the user code to the user. The callback function will be called when the user code is generated, and githubkit will poll the server until the user successfully authenticated or code expired.
+You must provide a **callback function** that displays the user code. githubkit calls this function when a code is generated, then polls the server until the user completes authentication or the code expires.
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy
 
-# sync/async func for displaying user code to user
-# the data dict is the generation response from the github server.
-# see the link above for more fields in the response.
 def callback(data: dict):
-    print(data["user_code"])
+    """Display the user code and verification URL to the user."""
+    print(f"Open {data['verification_uri']} and enter code: {data['user_code']}")
 
 github = GitHub(
-    OAuthDeviceAuthStrategy(
-        "<client_id_here>", callback
-    )
+    OAuthDeviceAuthStrategy("<client_id>", callback)
 )
 ```
 
-Note that this auth strategy is only for one-time use too. You need to store the user access token and refresh token in your database for future use:
+The callback receives the full device authorization response as a dict. Key fields can be found in the [GitHub Docs — Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token).
+
+!!! warning
+
+    This strategy is also **one-time use**. Exchange and persist the token for future requests:
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
-github = GitHub(
-    OAuthDeviceAuthStrategy(
-        "<client_id_here>", callback
-    )
-)
+github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
 # sync
 auth: OAuthTokenAuthStrategy = github.auth.exchange_token(github)
 # async
 auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(github)
 
+# Persist these values
 access_token = auth.token
 refresh_token = auth.refresh_token
 ```
 
 ## GitHub Action Authentication
 
-githubkit provides a built-in auth strategy for GitHub Actions. You can use the `ActionAuthStrategy` to automatically authenticate to the GitHub API.
+Authenticate automatically inside **GitHub Actions** workflows using the `GITHUB_TOKEN` provided by the runner.
 
 ```python
 from githubkit import GitHub, ActionAuthStrategy
@@ -226,37 +248,42 @@ from githubkit import GitHub, ActionAuthStrategy
 github = GitHub(ActionAuthStrategy())
 ```
 
-and add input or env to the action step:
+Make sure the token is available to your step — pass it as an **input** or **environment variable**:
 
 ```yaml
-- name: Some step use githubkit
+- name: Run my script
   with:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-- name: Some step use githubkit
+# Or as an environment variable
+- name: Run my script
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Switch between AuthStrategy
+## Switching Auth Strategies
 
-You can change the auth strategy and get a new client simplely using `with_auth`.
+The `with_auth` method creates a **new `GitHub` instance** with a different auth strategy while **sharing the same configuration** (base URL, timeout, cache, etc.). This is essential for OAuth flows where you start as an app and then act as a user.
 
-Switch from GitHub App to a specific installation:
+### GitHub App → Installation
 
 ```python
 from githubkit import GitHub, AppAuthStrategy
 
 github = GitHub(AppAuthStrategy("<app_id>", "<private_key>"))
+
+# Create a new client authenticated as a specific installation
 installation_github = github.with_auth(
     github.auth.as_installation(installation_id)
 )
 ```
 
-Switch from GitHub App to an OAuth App:
+### GitHub App → OAuth App
+
+Requires `client_id` and `client_secret` to be set on the `AppAuthStrategy`:
 
 ```python
-from githubkit import GitHub, AppAuthStrategy, OAuthAppAuthStrategy
+from githubkit import GitHub, AppAuthStrategy
 
 github = GitHub(
     AppAuthStrategy(
@@ -267,59 +294,66 @@ github = GitHub(
 oauth_github = github.with_auth(github.auth.as_oauth_app())
 ```
 
-Switch from OAuth App to a web user authorization (OAuth Web Flow):
+### OAuth App → User (Web Flow)
+
+Exchange a web flow code for a user token and make requests as the user:
 
 ```python
 from githubkit import GitHub, OAuthAppAuthStrategy
 
 github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+
+# Create a client that acts as the user
 user_github = github.with_auth(github.auth.as_web_user("<code>"))
 
-# now you can act as the user
+# Make a request as the user
 resp = user_github.rest.users.get_authenticated()
 user = resp.parsed_data
 
-# you can get the user token after you maked a request as user
+# Retrieve the tokens for persistence
 user_token = user_github.auth.token
 user_token_expire_time = user_github.auth.expire_time
 refresh_token = user_github.auth.refresh_token
 refresh_token_expire_time = user_github.auth.refresh_token_expire_time
 ```
 
-you can also get the user token directly without making a request (Switch from `OAuthWebAuthStrategy` to `OAuthTokenAuthStrategy`):
+You can also exchange the code for a token **without making a request first**:
 
 ```python
 from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
 github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
+# sync
 auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
-# or asynchronously
+# async
 auth: OAuthTokenAuthStrategy = await github.auth.as_web_user("<code>").async_exchange_token(github)
 
+# Persist the tokens
 user_token = auth.token
 user_token_expire_time = auth.expire_time
 refresh_token = auth.refresh_token
 refresh_token_expire_time = auth.refresh_token_expire_time
 
+# Create a new client with the exchanged token
 user_github = github.with_auth(auth)
 ```
 
-Switch from `OAuthDeviceAuthStrategy` to `OAuthTokenAuthStrategy`:
+### Device Flow → Token
 
 ```python
-from githubkit import GitHub, OAuthDeviceAuthStrategy
+from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
 def callback(data: dict):
     print(data["user_code"])
 
 user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
 
-# now you can act as the user
+# Option 1: Make a request first (triggers the device flow automatically)
 resp = user_github.rest.users.get_authenticated()
 user = resp.parsed_data
 
-# you can get the user token after you maked a request as user
+# Retrieve the tokens for persistence
 user_token = user_github.auth.token
 user_token_expire_time = user_github.auth.expire_time
 refresh_token = user_github.auth.refresh_token
@@ -335,5 +369,6 @@ user_token_expire_time = auth.expire_time
 refresh_token = auth.refresh_token
 refresh_token_expire_time = auth.refresh_token_expire_time
 
-user_github = github.with_auth(auth)
+# Create a reusable client with the token
+token_github = user_github.with_auth(auth)
 ```

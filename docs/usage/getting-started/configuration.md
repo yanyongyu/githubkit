@@ -1,6 +1,6 @@
 # Configuration
 
-githubkit is highly configurable, you can change the default config by passing config options to `GitHub`:
+githubkit is highly configurable. You can customize its behavior by passing keyword arguments directly to the `GitHub` constructor:
 
 ```python
 from githubkit import GitHub
@@ -13,6 +13,10 @@ github = GitHub(
     follow_redirects=True,
     timeout=None,
     ssl_verify=True,
+    trust_env=True,
+    proxy=None,
+    transport=None,
+    async_transport=None,
     cache_strategy=None,
     http_cache=True,
     throttler=None,
@@ -21,7 +25,7 @@ github = GitHub(
 )
 ```
 
-Or, you can pass the config object directly (not recommended):
+Alternatively, you can build a `Config` object and pass it via the `config` parameter. This is useful when you want to share the same configuration across multiple `GitHub` instances:
 
 ```python
 import httpx
@@ -36,6 +40,10 @@ config = Config(
     follow_redirects=True,
     timeout=httpx.Timeout(None),
     ssl_verify=True,
+    trust_env=True,
+    proxy=None,
+    transport=None,
+    async_transport=None,
     cache_strategy=DEFAULT_CACHE_STRATEGY,
     http_cache=True,
     throttler=None,
@@ -46,139 +54,217 @@ config = Config(
 github = GitHub(config=config)
 ```
 
+!!! note
+
+    When using the `config` parameter, you **cannot** pass individual keyword arguments at the same time — they are mutually exclusive.
+
 ## Options
 
 ### `base_url`
 
-The `base_url` option is used to set the base URL of the GitHub API. If you are using GitHub Enterprise Server, you need to include the `/api/v3/` path in the base URL.
+The base URL for all API requests. Defaults to `https://api.github.com/`.
+
+If you are using **GitHub Enterprise Server**, you must include the `/api/v3/` path suffix:
+
+```python
+github = GitHub(base_url="https://github.example.com/api/v3/")
+```
+
+!!! note
+
+    githubkit automatically appends a trailing slash (`/`) if one is missing.
 
 ### `accept_format`, `previews`
 
-The `accept_format` and `previews` are used to set the default `Accept` header. By default, githubkit uses `application/vnd.github+json`. You can find more details in [GitHub API docs](https://docs.github.com/en/rest/overview/media-types).
+These options control the `Accept` header sent with every request. By default, githubkit uses `application/vnd.github+json`.
 
-The `accept_format` option could be set to `PARAM+json`, such as `raw+json`.
+- **`accept_format`** — a media type suffix such as `"raw+json"` or `"html+json"`. The leading dot is optional; githubkit adds it automatically. See [GitHub API Media Types](https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types) for available formats.
+- **`previews`** — a list of API preview feature names, e.g., `["starfox"]`. Do **not** include the `-preview` suffix — githubkit adds it for you.
 
-The `previews` option could be set to a list of preview features, such as `["starfox"]`. You can find the preview feature names in the GitHub API docs. Note that you do not need to include the `-preview` suffix in the preview feature name.
+```python
+# Request raw markdown content as JSON
+github = GitHub(accept_format="raw+json")
+
+# Enable an API preview feature
+github = GitHub(previews=["starfox"])
+```
 
 ### `user_agent`
 
-The `user_agent` option is used to set the `User-Agent` header. By default, githubkit uses `GitHubKit/Python`.
+Sets the `User-Agent` header. Defaults to `"GitHubKit/Python"`.
 
 ### `follow_redirects`
 
-The `follow_redirects` option is used to enable or disable the HTTP redirect following feature. By default, githubkit follows the redirects.
+Whether to automatically follow HTTP redirects (3xx responses). Enabled by default.
 
 ### `timeout`
 
-The `timeout` option is used to set the request timeout. You can pass a float, `None` or `httpx.Timeout` to this field. By default, the requests will never timeout. See [Timeout](https://www.python-httpx.org/advanced/timeouts/) for more information.
+The request timeout. Accepts a `float` (seconds), an `httpx.Timeout` object for fine-grained control, or `None` for no timeout (default). See [HTTPX Timeouts](https://www.python-httpx.org/advanced/timeouts/) for details.
+
+```python
+import httpx
+
+# Simple: 10 second timeout for all operations
+github = GitHub(timeout=10.0)
+
+# Fine-grained: different timeouts for connect vs. read
+github = GitHub(timeout=httpx.Timeout(5.0, read=30.0))
+```
 
 ### `ssl_verify`
 
-The `ssl_verify` option is used to customize the SSL certificate verification. By default, githubkit enables the SSL certificate verification. If you want to disable the SSL certificate verification, you can set this option to `False`. Or you can provide a custom ssl context to this option. See [SSL](https://www.python-httpx.org/advanced/ssl/) for more information.
+Controls SSL certificate verification. Defaults to `True`.
+
+- `True` — verify SSL certificates using the default CA bundle.
+- `False` — **disable** SSL verification (not recommended for production).
+- `ssl.SSLContext` — provide a custom SSL context for advanced use cases.
+
+See [HTTPX SSL](https://www.python-httpx.org/advanced/ssl/) for details.
 
 ### `trust_env`
 
-If `trust_env` is set to `True`, githubkit (httpx) will look for the environment variables to configure the proxy and SSL certificate verification. By default, this option is set to `True`. If you want to disable this feature, you can set this option to `False`.
+When `True` (default), githubkit (via HTTPX) reads environment variables such as `HTTP_PROXY`, `HTTPS_PROXY`, and `SSL_CERT_FILE` to configure proxies and SSL. Set to `False` to ignore these variables.
 
 ### `proxy`
 
-If you want to set a proxy for client programmatically, you can pass a proxy URL to the `proxy` option. See [httpx's proxies documentation](https://www.python-httpx.org/advanced/proxies/) for more information.
+Sets a proxy URL for all requests. Accepts a string, `httpx.URL`, or `httpx.Proxy` object.
+
+```python
+github = GitHub(proxy="http://proxy.example.com:8080")
+```
+
+See [HTTPX Proxies](https://www.python-httpx.org/advanced/proxies/) for more details.
+
+!!! note
+
+    If `trust_env` is `True` and no `proxy` is set, githubkit respects the `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY` environment variables.
 
 ### `transport`, `async_transport`
 
-These two options let you provide a custom [HTTPX transport](https://www.python-httpx.org/advanced/transports/) for the underlying HTTP client.
+Provide custom [HTTPX transports](https://www.python-httpx.org/advanced/transports/) to replace the default networking layer. This is useful for:
 
-They accept instances of the following types:
+- **Unit testing** — inject `httpx.MockTransport` to stub API responses without making real HTTP calls.
+- **Custom networking** — use alternative transport implementations (e.g., HTTP/3, Unix sockets).
 
-- `httpx.BaseTransport` (sync transport) — pass via the `transport` option.
-- `httpx.AsyncBaseTransport` (async transport) — pass via the `async_transport` option.
+| Option            | Type                       | Used for       |
+| ----------------- | -------------------------- | -------------- |
+| `transport`       | `httpx.BaseTransport`      | Sync requests  |
+| `async_transport` | `httpx.AsyncBaseTransport` | Async requests |
 
-When provided, githubkit will forward the transport to create the client. This is useful for:
+```python
+import httpx
 
-- providing a custom network implementation;
-- injecting test-only transports (for example `httpx.MockTransport`) to stub responses in unit tests;
-- using alternative transports provided by HTTPX or third parties.
+def mock_handler(request: httpx.Request) -> httpx.Response:
+    return httpx.Response(200, json={"login": "octocat"})
 
-Note that if you provide a custom transport, proxy environment variables will have no effect. If you set the option to `None`, HTTPX will create the default transport.
+github = GitHub(transport=httpx.MockTransport(mock_handler))
+```
+
+!!! warning
+
+    When a custom transport is provided, proxy-related environment variables (`HTTP_PROXY`, etc.) have no effect. Set `transport` / `async_transport` to `None` (default) to use HTTPX's built-in transport.
 
 ### `cache_strategy`
 
-The `cache_strategy` option defines how to cache the tokens or http responses. You can provide a githubkit built-in cache strategy or a custom one that implements the `BaseCacheStrategy` interface. By default, githubkit uses the `MemCacheStrategy` to cache the data in memory.
+Controls how githubkit caches **tokens** (e.g., GitHub App installation tokens) and **HTTP responses**. The default is `MemCacheStrategy`, which stores data in process memory.
 
-Available built-in cache strategies:
+You can provide any built-in strategy or implement a custom one by subclassing `BaseCacheStrategy`.
 
-- `MemCacheStrategy`: Cache the data in memory.
+#### Built-in Cache Strategies
 
-      Normally, you do not need to specifically use this cache strategy. It is used by default.
+**`MemCacheStrategy`** — In-memory cache (default)
 
-      ```python
-      from githubkit.cache import DEFAULT_CACHE_STRATEGY, MemCacheStrategy
+No extra setup is needed. Each `MemCacheStrategy` instance maintains its own cache; the default instance is shared globally.
 
-      # Use the default cache strategy
-      github = GitHub(cache_strategy=DEFAULT_CACHE_STRATEGY)
-      # Or you can initialize another MemCacheStrategy instance
-      # this will create a new cache instance and not share the cache with the global one
-      github = GitHub(cache_strategy=MemCacheStrategy())
-      ```
+```python
+from githubkit import GitHub
+from githubkit.cache import DEFAULT_CACHE_STRATEGY, MemCacheStrategy
 
-- `RedisCacheStrategy`: Cache the data in Redis (Sync only).
+# Use the global default (shared across all GitHub instances)
+github = GitHub(cache_strategy=DEFAULT_CACHE_STRATEGY)
 
-      To cache the data in Redis (Sync only), you need to provide a redis client to the `RedisCacheStrategy`. For example:
+# Or create an isolated cache instance
+github = GitHub(cache_strategy=MemCacheStrategy())
+```
 
-      ```python
-      from redis import Redis
+**`RedisCacheStrategy`** — Redis cache (sync only)
 
-      github = GitHub(
-          cache_strategy=RedisCacheStrategy(
-              client=Redis(host="localhost", port=6379), prefix="githubkit:"
-          )
-      )
-      ```
+Stores tokens and HTTP responses in Redis. Requires the `redis` package.
 
-      The `prefix` option is used to set the key prefix in Redis. You should add a `:` at the end of the prefix if you want to use namespace like key format. Both `githubkit` and `hishel` will use the prefix to store the cache data.
+```python
+from redis import Redis
+from githubkit import GitHub
+from githubkit.cache import RedisCacheStrategy
 
-      Note that using this sync only cache strategy will cause the `GitHub` instance to be sync only.
+github = GitHub(
+    cache_strategy=RedisCacheStrategy(
+        client=Redis(host="localhost", port=6379),
+        prefix="githubkit:",
+    )
+)
+```
 
-- `AsyncRedisCacheStrategy`: Cache the data in Redis (Async only).
+!!! warning
 
-      To cache the data in Redis (Async only), you need to provide an async redis client to the `AsyncRedisCacheStrategy`. For example:
+    Using `RedisCacheStrategy` restricts the `GitHub` instance to **sync-only** operations.
 
-      ```python
-      from redis.asyncio import Redis
+**`AsyncRedisCacheStrategy`** — Redis cache (async only)
 
-      github = GitHub(
-          cache_strategy=AsyncRedisCacheStrategy(
-              client=Redis(host="localhost", port=6379), prefix="githubkit:"
-          )
-      )
-      ```
+The async counterpart of `RedisCacheStrategy`. Requires the `redis` package with async support (`redis.asyncio`).
 
-      The `prefix` option is used to set the key prefix in Redis. You should add a `:` at the end of the prefix if you want to use namespace like key format. Both `githubkit` and `hishel` will use the prefix to store the cache data.
+```python
+from redis.asyncio import Redis
+from githubkit import GitHub
+from githubkit.cache import AsyncRedisCacheStrategy
 
-      Note that using this async only cache strategy will cause the `GitHub` instance to be async only.
+github = GitHub(
+    cache_strategy=AsyncRedisCacheStrategy(
+        client=Redis(host="localhost", port=6379),
+        prefix="githubkit:",
+    )
+)
+```
+
+!!! warning
+
+    Using `AsyncRedisCacheStrategy` restricts the `GitHub` instance to **async-only** operations.
+
+!!! tip
+
+    The `prefix` parameter adds a key namespace in Redis. Include a trailing colon (`:`) for readable key names (e.g., `"githubkit:"`). Both githubkit and [Hishel](https://hishel.com/) use this prefix.
 
 ### `http_cache`
 
-The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
+Enables HTTP response caching powered by [Hishel](https://hishel.com/). When enabled, githubkit respects standard HTTP caching headers (`ETag`, `Last-Modified`, `Cache-Control`) returned by the GitHub API. This reduces redundant API calls and helps you stay within [rate limits](https://docs.github.com/en/rest/rate-limit).
+
+Enabled by default (`True`). Set to `False` to disable.
 
 ### `throttler`
 
-The `throttler` option is used to control the request concurrency to avoid hitting the rate limit. You can provide a githubkit built-in throttler or a custom one that implements the `BaseThrottler` interface. By default, githubkit uses the `LocalThrottler` to control the request concurrency.
+Controls request concurrency to prevent hitting GitHub's rate limits. By default, githubkit uses `LocalThrottler`, which limits concurrent requests within the current process or event loop.
 
-Available built-in throttlers:
+```python
+from githubkit import GitHub
+from githubkit.throttling import LocalThrottler
 
-- `LocalThrottler`: Control the request concurrency in the local process / event loop.
+# Allow at most 100 concurrent requests
+github = GitHub(throttler=LocalThrottler(100))
+```
 
-      ```python
-      from githubkit.throttling import LocalThrottler
-
-      github = GitHub(throttler=LocalThrottler(100))
-      ```
+You can implement a custom throttler by subclassing `BaseThrottler`.
 
 ### `auto_retry`
 
-The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](../auto-retry.md) for more infomation.
+Enables automatic retrying of requests when a **rate limit is exceeded** (HTTP 403/429) or a **server error** (HTTP 5xx) is encountered. Enabled by default (`True`).
+
+- `True` — use the built-in retry strategy.
+- `False` — disable auto-retry.
+- `RetryDecisionFunc` — provide a custom callable for fine-grained control.
+
+See [Auto Retry](../auto-retry.md) for more information.
 
 ### `rest_api_validate_body`
 
-The `rest_api_validate_body` option is used to enable or disable the rest API request body validation. By default, githubkit validates the input data against the GitHub API schema. If you do not want to validate the input data, you can set this option to `False`.
+When `True` (default), githubkit validates REST API request bodies against the GitHub API schema **before** sending the request. This catches invalid payloads early with clear error messages.
+
+Set to `False` to skip validation, which can be useful if you need to send payloads that don't strictly match the schema (e.g., undocumented fields).
