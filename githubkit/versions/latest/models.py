@@ -665,6 +665,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotSeatDetails as CopilotSeatDetails,
     )
     from githubkit.versions.v2026_03_10.models import (
+        CopilotUsageMetrics1DayReport as CopilotUsageMetrics1DayReport,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        CopilotUsageMetrics28DayReport as CopilotUsageMetrics28DayReport,
+    )
+    from githubkit.versions.v2026_03_10.models import (
         CopilotUsageMetricsDay as CopilotUsageMetricsDay,
     )
     from githubkit.versions.v2026_03_10.models import CreateEvent as CreateEvent
@@ -3279,6 +3285,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
     )
     from githubkit.versions.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
@@ -10358,6 +10367,8 @@ else:
             "CodeSecurityDefaultConfigurationsItems",
             "SimpleRepository",
             "CodeSecurityConfigurationRepositories",
+            "CopilotUsageMetrics1DayReport",
+            "CopilotUsageMetrics28DayReport",
             "DependabotAlertPackage",
             "DependabotAlertSecurityVulnerability",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -13797,6 +13808,7 @@ else:
             "ReposOwnerRepoRulesetsRulesetIdPutBody",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",

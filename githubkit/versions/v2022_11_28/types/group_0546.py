@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0480 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0481 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0482 import (
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0483 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0547 import (
-    WebhookCodeScanningAlertClosedByUserPropAlertType,
-    WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse,
+    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
+    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertClosedByUserType(TypedDict):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["closed_by_user"]
-    alert: WebhookCodeScanningAlertClosedByUserPropAlertType
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertClosedByUserType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert closed_by_user event"""
+class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["closed_by_user"]
-    alert: WebhookCodeScanningAlertClosedByUserPropAlertTypeForResponse
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertClosedByUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertClosedByUserType",
-    "WebhookCodeScanningAlertClosedByUserTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchType",
+    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
 )

@@ -444,6 +444,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -465,6 +466,7 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -487,6 +489,7 @@ class AppsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -508,6 +511,7 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

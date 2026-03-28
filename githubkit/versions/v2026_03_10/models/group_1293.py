@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class UserEmailVisibilityPatchBody(GitHubModel):
+    """UserEmailVisibilityPatchBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    visibility: Literal["public", "private"] = Field(
+        description="Denotes whether an email is publicly visible."
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(UserEmailVisibilityPatchBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("UserEmailVisibilityPatchBody",)

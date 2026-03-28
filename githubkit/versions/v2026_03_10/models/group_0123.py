@@ -13,60 +13,54 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
-from .group_0122 import TeamSimple
 
+class ArtifactDeploymentRecord(GitHubModel):
+    """Artifact Deployment Record
 
-class Team(GitHubModel):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    Artifact Metadata Deployment Record
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
+    id: Missing[int] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    logical_environment: Missing[str] = Field(default=UNSET)
+    physical_environment: Missing[str] = Field(default=UNSET)
+    cluster: Missing[str] = Field(default=UNSET)
+    deployment_name: Missing[str] = Field(default=UNSET)
+    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
+        description="A list of runtime risks associated with the deployment.",
     )
-    enterprise_id: Missing[int] = Field(
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    attestation_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="The ID of the provenance attestation associated with the deployment record.",
     )
-    parent: Union[None, TeamSimple] = Field()
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
-
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
+class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
+    """ArtifactDeploymentRecordPropTags"""
 
 
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
+model_rebuild(ArtifactDeploymentRecord)
+model_rebuild(ArtifactDeploymentRecordPropTags)
 
 __all__ = (
-    "Team",
-    "TeamPropPermissions",
+    "ArtifactDeploymentRecord",
+    "ArtifactDeploymentRecordPropTags",
 )

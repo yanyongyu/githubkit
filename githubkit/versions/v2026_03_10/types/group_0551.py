@@ -9,52 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0479 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0480 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0481 import (
+from .group_0481 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0482 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0483 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0482 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0484 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0552 import (
-    WebhookCodeScanningAlertReopenedPropAlertType,
-    WebhookCodeScanningAlertReopenedPropAlertTypeForResponse,
+    WebhookCodeScanningAlertFixedPropAlertType,
+    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertReopenedType(TypedDict):
-    """code_scanning_alert reopened event"""
+class WebhookCodeScanningAlertFixedType(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["reopened"]
-    alert: WebhookCodeScanningAlertReopenedPropAlertType
-    commit_oid: Union[str, None]
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: Union[str, None]
+    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertReopenedTypeForResponse(TypedDict):
-    """code_scanning_alert reopened event"""
+class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
+    """code_scanning_alert fixed event"""
 
-    action: Literal["reopened"]
-    alert: WebhookCodeScanningAlertReopenedPropAlertTypeForResponse
-    commit_oid: Union[str, None]
+    action: Literal["fixed"]
+    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: Union[str, None]
+    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedType",
-    "WebhookCodeScanningAlertReopenedTypeForResponse",
+    "WebhookCodeScanningAlertFixedType",
+    "WebhookCodeScanningAlertFixedTypeForResponse",
 )

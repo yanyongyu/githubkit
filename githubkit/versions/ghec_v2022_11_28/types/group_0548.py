@@ -103,7 +103,6 @@ class RepoSearchResultItemType(TypedDict):
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]
@@ -203,7 +202,6 @@ class RepoSearchResultItemTypeForResponse(TypedDict):
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     archived: bool
     disabled: bool
     visibility: NotRequired[str]

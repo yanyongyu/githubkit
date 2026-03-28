@@ -67,6 +67,52 @@ class OrgsOrgPrivateRegistriesSecretNamePatchBody(GitHubModel):
         default=UNSET,
         description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`.",
     )
+    auth_type: Missing[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ] = Field(
+        default=UNSET,
+        description="The authentication type for the private registry. This field cannot be changed after creation. If provided, it must match the existing `auth_type` of the configuration. To change the authentication type, delete and recreate the configuration.",
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET,
+        description="The tenant ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET,
+        description="The client ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+    )
+    aws_region: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS region. Required when `auth_type` is `oidc_aws`.",
+    )
+    account_id: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS account ID. Required when `auth_type` is `oidc_aws`.",
+    )
+    role_name: Missing[str] = Field(
+        default=UNSET,
+        description="The AWS IAM role name. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain. Required when `auth_type` is `oidc_aws`.",
+    )
+    domain_owner: Missing[str] = Field(
+        default=UNSET,
+        description="The CodeArtifact domain owner (AWS account ID). Required when `auth_type` is `oidc_aws`.",
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog OIDC provider name. Required when `auth_type` is `oidc_jfrog`.",
+    )
+    audience: Missing[str] = Field(
+        default=UNSET,
+        description="The OIDC audience. Optional for `oidc_aws` and `oidc_jfrog` auth types.",
+    )
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET,
+        description="The JFrog identity mapping name. Optional for `oidc_jfrog` auth type.",
+    )
 
 
 model_rebuild(OrgsOrgPrivateRegistriesSecretNamePatchBody)

@@ -64,12 +64,14 @@ class CodeScanningAlertInstancePropMessageType(TypedDict):
     """CodeScanningAlertInstancePropMessage"""
 
     text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
     """CodeScanningAlertInstancePropMessage"""
 
     text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 __all__ = (

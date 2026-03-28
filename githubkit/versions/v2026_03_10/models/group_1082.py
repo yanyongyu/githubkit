@@ -9,19 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
+model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)
+__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)

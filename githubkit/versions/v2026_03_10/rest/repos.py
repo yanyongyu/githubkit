@@ -13796,6 +13796,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -13815,6 +13816,7 @@ class ReposClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -13840,6 +13842,7 @@ class ReposClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -13859,6 +13862,7 @@ class ReposClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -17768,6 +17772,8 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset
         """
 
+        from ..models import BasicError
+
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -17777,6 +17783,9 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     async def async_delete_release_asset(
@@ -17795,6 +17804,8 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/assets#delete-a-release-asset
         """
 
+        from ..models import BasicError
+
         url = f"/repos/{owner}/{repo}/releases/assets/{asset_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -17804,6 +17815,9 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -18127,7 +18141,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/releases#get-the-latest-release
         """
 
-        from ..models import Release
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases/latest"
 
@@ -18139,6 +18153,9 @@ class ReposClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Release,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     async def async_get_latest_release(
@@ -18160,7 +18177,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/releases#get-the-latest-release
         """
 
-        from ..models import Release
+        from ..models import BasicError, Release
 
         url = f"/repos/{owner}/{repo}/releases/latest"
 
@@ -18172,6 +18189,9 @@ class ReposClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Release,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     def get_release_by_tag(
@@ -18334,6 +18354,8 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/releases#delete-a-release
         """
 
+        from ..models import BasicError
+
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -18343,6 +18365,9 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     async def async_delete_release(
@@ -18363,6 +18388,8 @@ class ReposClient:
         See also: https://docs.github.com/rest/releases/releases#delete-a-release
         """
 
+        from ..models import BasicError
+
         url = f"/repos/{owner}/{repo}/releases/{release_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -18372,6 +18399,9 @@ class ReposClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
+            error_models={
+                "404": BasicError,
+            },
         )
 
     @overload

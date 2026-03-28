@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsArtifactAndLogRetentionResponseType(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    days: int
-    maximum_allowed_days: int
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
-class ActionsArtifactAndLogRetentionResponseTypeForResponse(TypedDict):
-    """ActionsArtifactAndLogRetentionResponse"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    days: int
-    maximum_allowed_days: int
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "ActionsArtifactAndLogRetentionResponseType",
-    "ActionsArtifactAndLogRetentionResponseTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

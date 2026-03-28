@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0480 import EnterpriseWebhooks
-from .group_0481 import SimpleInstallation
-from .group_0482 import OrganizationSimpleWebhooks
-from .group_0483 import RepositoryWebhooks
-from .group_0486 import CheckRunWithSimpleCheckSuite
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0488 import CheckRunWithSimpleCheckSuite
 
 
-class WebhookCheckRunRerequested(GitHubModel):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunRequestedAction(GitHubModel):
+    """Check Run Requested Action Event"""
 
-    action: Literal["rerequested"] = Field()
+    action: Literal["requested_action"] = Field()
     check_run: CheckRunWithSimpleCheckSuite = Field(
         title="CheckRun",
         description="A check performed on the code of a given code change",
@@ -52,9 +52,28 @@ class WebhookCheckRunRerequested(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
+        Field(default=UNSET, description="The action requested by the user.")
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCheckRunRerequested)
+class WebhookCheckRunRequestedActionPropRequestedAction(GitHubModel):
+    """WebhookCheckRunRequestedActionPropRequestedAction
 
-__all__ = ("WebhookCheckRunRerequested",)
+    The action requested by the user.
+    """
+
+    identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The integrator reference of the action requested by the user.",
+    )
+
+
+model_rebuild(WebhookCheckRunRequestedAction)
+model_rebuild(WebhookCheckRunRequestedActionPropRequestedAction)
+
+__all__ = (
+    "WebhookCheckRunRequestedAction",
+    "WebhookCheckRunRequestedActionPropRequestedAction",
+)

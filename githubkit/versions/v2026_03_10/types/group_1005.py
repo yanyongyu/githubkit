@@ -9,22 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    attestation_ids: list[int]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    attestation_ids: list[int]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
+    ]
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

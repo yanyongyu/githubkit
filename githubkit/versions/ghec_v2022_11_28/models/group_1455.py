@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
@@ -16,54 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
-    )
-    display_name: Missing[str] = Field(
+    issue_field_values: Missing[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+        ]
+    ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
     )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
-    )
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
+    aluesItems
     """
 
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
+    )
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
+model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody)
+model_rebuild(
+    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
 )

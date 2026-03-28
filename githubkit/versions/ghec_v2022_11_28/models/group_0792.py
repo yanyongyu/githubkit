@@ -107,9 +107,6 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
         default=UNSET,
         description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    has_commit_comments: Missing[bool] = Field(
-        default=UNSET, description="Whether commit comments are enabled."
-    )
     has_downloads: bool = Field(
         default=True, description="Whether downloads are enabled."
     )

@@ -989,7 +989,6 @@ class WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoType(TypedDict):
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1106,7 +1105,6 @@ class WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoTypeForResponse(
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1351,7 +1349,6 @@ class WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoType(TypedDict):
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1468,7 +1465,6 @@ class WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoTypeForResponse(
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str

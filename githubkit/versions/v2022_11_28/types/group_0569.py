@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0338 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0480 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0481 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0482 import (
+from .group_0340 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0482 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0483 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0484 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0483 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0485 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertCreatedType(TypedDict):
-    """Dependabot alert created event"""
+class WebhookDependabotAlertAutoDismissedType(TypedDict):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["created"]
+    action: Literal["auto_dismissed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertCreatedTypeForResponse(TypedDict):
-    """Dependabot alert created event"""
+class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["created"]
+    action: Literal["auto_dismissed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertCreatedType",
-    "WebhookDependabotAlertCreatedTypeForResponse",
+    "WebhookDependabotAlertAutoDismissedType",
+    "WebhookDependabotAlertAutoDismissedTypeForResponse",
 )

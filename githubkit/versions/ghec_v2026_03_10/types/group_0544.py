@@ -195,6 +195,20 @@ class SearchIssuesGetResponse200Type(TypedDict):
     total_count: int
     incomplete_results: bool
     items: list[IssueSearchResultItemType]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+            ]
+        ]
+    ]
 
 
 class SearchIssuesGetResponse200TypeForResponse(TypedDict):
@@ -203,6 +217,20 @@ class SearchIssuesGetResponse200TypeForResponse(TypedDict):
     total_count: int
     incomplete_results: bool
     items: list[IssueSearchResultItemTypeForResponse]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+            ]
+        ]
+    ]
 
 
 __all__ = (

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,55 +18,78 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0162 import ProjectsV2StatusUpdate
 
+class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
+    """Organization private registry
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
-
-    A projects v2 project
+    Private registry configuration for an organization
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
+    name: str = Field(description="The name of the private registry configuration.")
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
+    ] = Field(description="The registry type.")
+    auth_type: Missing[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
     )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
     )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was closed."
+    username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to use when authenticating with the private registry.",
     )
-    created_at: _dt.datetime = Field(
-        description="The time when the project was created."
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The time when the project was last updated."
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
     )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
     )
-    deleted_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was deleted."
+    tenant_id: Missing[str] = Field(
+        default=UNSET, description="The tenant ID of the Azure AD application."
     )
-    deleted_by: Union[None, SimpleUser] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
+    client_id: Missing[str] = Field(
+        default=UNSET, description="The client ID of the Azure AD application."
     )
-    latest_status_update: Missing[Union[None, ProjectsV2StatusUpdate]] = Field(
-        default=UNSET
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
+    domain_owner: Missing[str] = Field(
+        default=UNSET, description="The CodeArtifact domain owner."
     )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog OIDC provider name."
     )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog identity mapping name."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(ProjectsV2)
+model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
 
-__all__ = ("ProjectsV2",)
+__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)

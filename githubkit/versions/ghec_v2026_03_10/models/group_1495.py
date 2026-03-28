@@ -18,21 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
     type: Literal["Issue", "PullRequest"] = Field(
         description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
+    )
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)

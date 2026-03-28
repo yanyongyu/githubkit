@@ -746,6 +746,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
             OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         )
@@ -772,6 +773,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -856,6 +861,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
             OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         )
@@ -882,6 +888,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -945,6 +955,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         )
@@ -971,6 +982,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -1034,6 +1049,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         )
@@ -1060,6 +1076,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -1121,6 +1141,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataStorageRecordPostBody,
             OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         )
@@ -1147,6 +1168,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     @overload
@@ -1208,6 +1233,7 @@ class OrgsClient:
         """
 
         from ..models import (
+            BasicError,
             OrgsOrgArtifactsMetadataStorageRecordPostBody,
             OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         )
@@ -1234,6 +1260,10 @@ class OrgsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def list_artifact_deployment_records(
@@ -3243,6 +3273,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -3267,6 +3298,7 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -3291,6 +3323,7 @@ class OrgsClient:
         *,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
+        status: Missing[Literal["success", "failure"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemTypeForResponse]]:
@@ -3315,6 +3348,7 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
+            "status": status,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

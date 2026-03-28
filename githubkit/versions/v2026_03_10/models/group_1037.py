@@ -9,19 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for Copilot coding agent."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)

@@ -9,51 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
     )
-    branch_policies: list[DeploymentBranchPolicy] = Field()
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
+        default=UNSET,
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
+    )
 
 
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-    Details of a deployment branch or tag policy.
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10. The total
+    size of the JSON payload must be less than 64KB.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
-    )
 
-
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
 
 __all__ = (
-    "DeploymentBranchPolicy",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
 )

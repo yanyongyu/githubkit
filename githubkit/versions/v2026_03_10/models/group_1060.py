@@ -9,69 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
-
-
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+    pat_ids: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The IDs of the fine-grained personal access tokens.",
     )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
-)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

@@ -12,31 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0308 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
 
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
     name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    data_type: Literal["text", "number", "date"]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
     name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

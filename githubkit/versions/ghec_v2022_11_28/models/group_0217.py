@@ -96,7 +96,6 @@ class ForkEventPropForkee(GitHubModel):
         default=UNSET,
         description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    has_commit_comments: Missing[bool] = Field(default=UNSET)
     forks_count: Missing[int] = Field(default=UNSET)
     mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
     archived: Missing[bool] = Field(default=UNSET)

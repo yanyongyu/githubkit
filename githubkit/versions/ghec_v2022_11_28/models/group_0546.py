@@ -130,6 +130,25 @@ class SearchIssuesGetResponse200(GitHubModel):
     total_count: int = Field()
     incomplete_results: bool = Field()
     items: list[IssueSearchResultItem] = Field()
+    search_type: Literal["lexical", "semantic", "hybrid"] = Field(
+        description="The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`."
+    )
+    lexical_fallback_reason: Missing[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred.",
+    )
 
 
 model_rebuild(IssueSearchResultItem)

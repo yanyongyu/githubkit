@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
+
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-class PinnedIssueComment(GitHubModel):
-    """Pinned Issue Comment
+model_rebuild(ReactionRollup)
 
-    Context around who pinned an issue comment and when it was pinned.
-    """
-
-    pinned_at: _dt.datetime = Field()
-    pinned_by: Union[None, SimpleUser] = Field()
-
-
-model_rebuild(PinnedIssueComment)
-
-__all__ = ("PinnedIssueComment",)
+__all__ = ("ReactionRollup",)

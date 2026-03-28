@@ -80,7 +80,6 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     has_downloads: bool
     has_issues: bool
     has_pages: bool
@@ -189,7 +188,6 @@ class WebhookIssuesOpenedPropChangesPropOldRepositoryTypeForResponse(TypedDict):
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     has_downloads: bool
     has_issues: bool
     has_pages: bool

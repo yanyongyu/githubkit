@@ -12,16 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for Copilot coding agent."
+    )
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)

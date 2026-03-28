@@ -9,24 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
+    """
+
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
+
+
+class CopilotOrganizationDetailsTypeForResponse(TypedDict):
+    """Copilot Organization Details
+
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
+    """
+
+    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
+
+
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationDetailsTypeForResponse",
+    "CopilotOrganizationSeatBreakdownType",
+    "CopilotOrganizationSeatBreakdownTypeForResponse",
 )

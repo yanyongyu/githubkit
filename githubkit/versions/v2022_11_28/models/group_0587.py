@@ -18,19 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0046 import Discussion
-from .group_0480 import EnterpriseWebhooks
-from .group_0481 import SimpleInstallation
-from .group_0482 import OrganizationSimpleWebhooks
-from .group_0483 import RepositoryWebhooks
-from .group_0493 import WebhooksComment
+from .group_0048 import Discussion
+from .group_0482 import EnterpriseWebhooks
+from .group_0483 import SimpleInstallation
+from .group_0484 import OrganizationSimpleWebhooks
+from .group_0485 import RepositoryWebhooks
+from .group_0495 import WebhooksComment
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookDiscussionCommentCreated(GitHubModel):
+    """discussion_comment created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    action: Literal["created"] = Field()
     comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
@@ -57,24 +56,6 @@ class WebhookDiscussionCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
+model_rebuild(WebhookDiscussionCommentCreated)
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-
-__all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-)
+__all__ = ("WebhookDiscussionCommentCreated",)

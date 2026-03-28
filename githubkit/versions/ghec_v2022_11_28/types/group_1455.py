@@ -9,80 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[list[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
-    schemas: NotRequired[list[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
+    aluesItems
     """
 
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
+    field_id: int
+    value: Union[str, float]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
+    aluesItems
     """
 
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
 )

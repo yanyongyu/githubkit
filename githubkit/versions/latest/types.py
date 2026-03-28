@@ -695,6 +695,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         CopilotSeatDetailsType as CopilotSeatDetailsType,
     )
     from githubkit.versions.v2026_03_10.types import (
+        CopilotUsageMetrics1DayReportType as CopilotUsageMetrics1DayReportType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        CopilotUsageMetrics28DayReportType as CopilotUsageMetrics28DayReportType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
         CopilotUsageMetricsDayType as CopilotUsageMetricsDayType,
     )
     from githubkit.versions.v2026_03_10.types import CreateEventType as CreateEventType
@@ -3387,6 +3393,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
     )
     from githubkit.versions.v2026_03_10.types import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
@@ -10544,6 +10553,8 @@ else:
             "CodeSecurityDefaultConfigurationsItemsType",
             "SimpleRepositoryType",
             "CodeSecurityConfigurationRepositoriesType",
+            "CopilotUsageMetrics1DayReportType",
+            "CopilotUsageMetrics28DayReportType",
             "DependabotAlertPackageType",
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -13983,6 +13994,7 @@ else:
             "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
             "ReposOwnerRepoStatusesShaPostBodyType",
             "ReposOwnerRepoSubscriptionPutBodyType",

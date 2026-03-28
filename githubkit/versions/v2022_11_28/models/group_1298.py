@@ -12,22 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0018 import Installation
 
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
+class UserInstallationsGetResponse200(GitHubModel):
+    """UserInstallationsGetResponse200"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
-    )
+    total_count: int = Field()
+    installations: list[Installation] = Field()
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(UserInstallationsGetResponse200)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("UserInstallationsGetResponse200",)

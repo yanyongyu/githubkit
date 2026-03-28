@@ -43,6 +43,11 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
         "python_index",
         "terraform_registry",
     ] = Field(description="The registry type.")
+    auth_type: Missing[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
+    )
     url: Missing[str] = Field(
         default=UNSET, description="The URL of the private registry."
     )
@@ -60,6 +65,26 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
     selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+    )
+    tenant_id: Missing[str] = Field(
+        default=UNSET, description="The tenant ID of the Azure AD application."
+    )
+    client_id: Missing[str] = Field(
+        default=UNSET, description="The client ID of the Azure AD application."
+    )
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
+    domain_owner: Missing[str] = Field(
+        default=UNSET, description="The CodeArtifact domain owner."
+    )
+    jfrog_oidc_provider_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog OIDC provider name."
+    )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
+    identity_mapping_name: Missing[str] = Field(
+        default=UNSET, description="The JFrog identity mapping name."
     )
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()

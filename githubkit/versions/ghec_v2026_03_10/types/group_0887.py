@@ -1032,7 +1032,6 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoType(Typ
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     has_pages: bool
     has_projects: bool
     has_wiki: bool
@@ -1150,7 +1149,6 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoTypeForR
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     has_pages: bool
     has_projects: bool
     has_wiki: bool
@@ -1462,7 +1460,6 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoType(Typ
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -1580,7 +1577,6 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoTypeForR
     has_discussions: bool
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
-    has_commit_comments: NotRequired[bool]
     homepage: Union[str, None]
     hooks_url: str
     html_url: str

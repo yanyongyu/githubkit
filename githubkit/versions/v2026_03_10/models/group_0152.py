@@ -18,26 +18,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
-    )
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+        default=UNSET, description="Description of the issue field."
     )
-    color: Missing[
-        Union[
-            None,
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
+    )
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+        default=UNSET,
+        description="Options for single select fields. Only applicable when updating single_select fields.",
+    )
 
 
-model_rebuild(OrganizationUpdateIssueType)
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-__all__ = ("OrganizationUpdateIssueType",)
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,47 +17,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetBudget(GitHubModel):
-    """GetBudget"""
-
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"] = (
-        Field(description="The type of scope for the budget")
-    )
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
-    )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+from .group_0036 import SimpleRepository
 
 
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET, description="Whether alerts are enabled for this budget"
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
+        default=UNSET,
+        description="The default repository access level for Dependabot updates.",
     )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET, description="Array of user login names who will receive alerts"
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
-)
+__all__ = ("DependabotRepositoryAccessDetails",)

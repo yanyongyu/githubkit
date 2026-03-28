@@ -9,48 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Timeline Unassigned Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserType
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[_dt.datetime, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class DeployKeyTypeForResponse(TypedDict):
-    """Deploy Key
+class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    An SSH key granting access to a single repository.
+    Timeline Unassigned Issue Event
     """
 
     id: int
-    key: str
+    node_id: str
     url: str
-    title: str
-    verified: bool
+    actor: SimpleUserTypeForResponse
+    event: Literal["unassigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
-    enabled: NotRequired[bool]
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "DeployKeyType",
-    "DeployKeyTypeForResponse",
+    "TimelineUnassignedIssueEventType",
+    "TimelineUnassignedIssueEventTypeForResponse",
 )

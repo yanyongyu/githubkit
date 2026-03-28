@@ -44,6 +44,7 @@ if TYPE_CHECKING:
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
         SecretScanningAlertTypeForResponse,
         SecretScanningLocationTypeForResponse,
@@ -738,6 +739,7 @@ class SecretScanningClient:
         data: Union[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
@@ -781,6 +783,26 @@ class SecretScanningClient:
         assignee: Union[str, None],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
+    @overload
+    def update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
     def update_alert(
         self,
         owner: str,
@@ -793,6 +815,7 @@ class SecretScanningClient:
             Union[
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
             ]
         ] = UNSET,
         **kwargs,
@@ -818,6 +841,7 @@ class SecretScanningClient:
             EventsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
             SecretScanningAlert,
         )
 
@@ -835,6 +859,7 @@ class SecretScanningClient:
                 Union[
                     ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
                     ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
                 ],
                 json,
             )
@@ -864,6 +889,7 @@ class SecretScanningClient:
         data: Union[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
         ],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
@@ -907,6 +933,26 @@ class SecretScanningClient:
         assignee: Union[str, None],
     ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
 
+    @overload
+    async def async_update_alert(
+        self,
+        owner: str,
+        repo: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        state: Missing[Literal["open", "resolved"]] = UNSET,
+        resolution: Missing[
+            Union[
+                None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]
+            ]
+        ] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+        assignee: Missing[Union[str, None]] = UNSET,
+    ) -> Response[SecretScanningAlert, SecretScanningAlertTypeForResponse]: ...
+
     async def async_update_alert(
         self,
         owner: str,
@@ -919,6 +965,7 @@ class SecretScanningClient:
             Union[
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type,
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type,
+                ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type,
             ]
         ] = UNSET,
         **kwargs,
@@ -944,6 +991,7 @@ class SecretScanningClient:
             EventsGetResponse503,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+            ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
             SecretScanningAlert,
         )
 
@@ -961,6 +1009,7 @@ class SecretScanningClient:
                 Union[
                     ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
                     ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
+                    ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
                 ],
                 json,
             )

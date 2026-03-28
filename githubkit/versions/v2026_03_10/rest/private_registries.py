@@ -197,10 +197,25 @@ class PrivateRegistriesClient:
         url: str,
         username: Missing[Union[str, None]] = UNSET,
         replaces_base: Missing[bool] = UNSET,
-        encrypted_value: str,
-        key_id: str,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
+        auth_type: Missing[
+            Literal[
+                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+            ]
+        ] = UNSET,
+        tenant_id: Missing[str] = UNSET,
+        client_id: Missing[str] = UNSET,
+        aws_region: Missing[str] = UNSET,
+        account_id: Missing[str] = UNSET,
+        role_name: Missing[str] = UNSET,
+        domain: Missing[str] = UNSET,
+        domain_owner: Missing[str] = UNSET,
+        jfrog_oidc_provider_name: Missing[str] = UNSET,
+        audience: Missing[str] = UNSET,
+        identity_mapping_name: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -224,6 +239,7 @@ class PrivateRegistriesClient:
 
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -304,10 +320,25 @@ class PrivateRegistriesClient:
         url: str,
         username: Missing[Union[str, None]] = UNSET,
         replaces_base: Missing[bool] = UNSET,
-        encrypted_value: str,
-        key_id: str,
+        encrypted_value: Missing[str] = UNSET,
+        key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
+        auth_type: Missing[
+            Literal[
+                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+            ]
+        ] = UNSET,
+        tenant_id: Missing[str] = UNSET,
+        client_id: Missing[str] = UNSET,
+        aws_region: Missing[str] = UNSET,
+        account_id: Missing[str] = UNSET,
+        role_name: Missing[str] = UNSET,
+        domain: Missing[str] = UNSET,
+        domain_owner: Missing[str] = UNSET,
+        jfrog_oidc_provider_name: Missing[str] = UNSET,
+        audience: Missing[str] = UNSET,
+        identity_mapping_name: Missing[str] = UNSET,
     ) -> Response[
         OrgPrivateRegistryConfigurationWithSelectedRepositories,
         OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse,
@@ -331,6 +362,7 @@ class PrivateRegistriesClient:
 
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -646,6 +678,21 @@ class PrivateRegistriesClient:
         key_id: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
+        auth_type: Missing[
+            Literal[
+                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+            ]
+        ] = UNSET,
+        tenant_id: Missing[str] = UNSET,
+        client_id: Missing[str] = UNSET,
+        aws_region: Missing[str] = UNSET,
+        account_id: Missing[str] = UNSET,
+        role_name: Missing[str] = UNSET,
+        domain: Missing[str] = UNSET,
+        domain_owner: Missing[str] = UNSET,
+        jfrog_oidc_provider_name: Missing[str] = UNSET,
+        audience: Missing[str] = UNSET,
+        identity_mapping_name: Missing[str] = UNSET,
     ) -> Response: ...
 
     def update_org_private_registry(
@@ -664,6 +711,7 @@ class PrivateRegistriesClient:
 
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -749,6 +797,21 @@ class PrivateRegistriesClient:
         key_id: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[list[int]] = UNSET,
+        auth_type: Missing[
+            Literal[
+                "token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"
+            ]
+        ] = UNSET,
+        tenant_id: Missing[str] = UNSET,
+        client_id: Missing[str] = UNSET,
+        aws_region: Missing[str] = UNSET,
+        account_id: Missing[str] = UNSET,
+        role_name: Missing[str] = UNSET,
+        domain: Missing[str] = UNSET,
+        domain_owner: Missing[str] = UNSET,
+        jfrog_oidc_provider_name: Missing[str] = UNSET,
+        audience: Missing[str] = UNSET,
+        identity_mapping_name: Missing[str] = UNSET,
     ) -> Response: ...
 
     async def async_update_org_private_registry(
@@ -767,6 +830,7 @@ class PrivateRegistriesClient:
 
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+        For OIDC-based registries (`oidc_azure`, `oidc_aws`, or `oidc_jfrog`), the `encrypted_value` and `key_id` fields should be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 

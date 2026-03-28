@@ -18,25 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
     issue_field_values: Missing[
         list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
         ]
     ] = Field(
         max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
+        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
     )
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
     GitHubModel
 ):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
     """
 
     field_id: int = Field(description="The ID of the issue field to set")
@@ -45,12 +45,12 @@ class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssue
     )
 
 
-model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody)
+model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody)
 model_rebuild(
-    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
 )
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
 )

@@ -52,10 +52,23 @@ class OrgPrivateRegistryConfigurationType(TypedDict):
         "python_index",
         "terraform_registry",
     ]
+    auth_type: NotRequired[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ]
     url: NotRequired[str]
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
     visibility: Literal["all", "private", "selected"]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
 
@@ -84,10 +97,23 @@ class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
         "python_index",
         "terraform_registry",
     ]
+    auth_type: NotRequired[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ]
     url: NotRequired[str]
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
     visibility: Literal["all", "private", "selected"]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
     created_at: str
     updated_at: str
 

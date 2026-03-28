@@ -13,44 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0479 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0480 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0481 import (
+from .group_0436 import (
+    SecretScanningLocationType,
+    SecretScanningLocationTypeForResponse,
+)
+from .group_0482 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0483 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0482 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0522 import (
+from .group_0484 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0524 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["publicly_leaked"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["publicly_leaked"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    location: SecretScanningLocationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertPubliclyLeakedType",
-    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedType",
+    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
 )

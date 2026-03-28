@@ -9692,188 +9692,191 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
     )
     from .group_1447 import (
-        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
     )
     from .group_1448 import (
-        ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
+        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
     )
     from .group_1449 import (
+        ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
+    )
+    from .group_1450 import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
     )
-    from .group_1450 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
-    from .group_1451 import (
+    from .group_1451 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
+    from .group_1452 import (
         ReposOwnerRepoTransferPostBody as ReposOwnerRepoTransferPostBody,
     )
-    from .group_1452 import (
+    from .group_1453 import (
         ReposTemplateOwnerTemplateRepoGeneratePostBody as ReposTemplateOwnerTemplateRepoGeneratePostBody,
     )
-    from .group_1453 import (
+    from .group_1454 import (
         RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody,
     )
-    from .group_1453 import (
+    from .group_1454 import (
         RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems,
     )
-    from .group_1454 import (
+    from .group_1455 import (
         RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody,
     )
-    from .group_1454 import (
+    from .group_1455 import (
         RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems as RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems,
     )
-    from .group_1455 import (
+    from .group_1456 import (
         ScimV2OrganizationsOrgUsersPostBody as ScimV2OrganizationsOrgUsersPostBody,
     )
-    from .group_1455 import (
+    from .group_1456 import (
         ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems as ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems,
     )
-    from .group_1455 import (
+    from .group_1456 import (
         ScimV2OrganizationsOrgUsersPostBodyPropName as ScimV2OrganizationsOrgUsersPostBodyPropName,
     )
-    from .group_1456 import (
+    from .group_1457 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBody as ScimV2OrganizationsOrgUsersScimUserIdPutBody,
     )
-    from .group_1456 import (
+    from .group_1457 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems as ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems,
     )
-    from .group_1456 import (
+    from .group_1457 import (
         ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName as ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName,
     )
-    from .group_1457 import (
+    from .group_1458 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBody as ScimV2OrganizationsOrgUsersScimUserIdPatchBody,
     )
-    from .group_1457 import (
+    from .group_1458 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems,
     )
-    from .group_1457 import (
+    from .group_1458 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0 as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
     )
-    from .group_1457 import (
+    from .group_1458 import (
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items as ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items,
     )
-    from .group_1458 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
-    from .group_1459 import (
+    from .group_1459 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
+    from .group_1460 import (
         TeamsTeamIdMembershipsUsernamePutBody as TeamsTeamIdMembershipsUsernamePutBody,
     )
-    from .group_1460 import (
+    from .group_1461 import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
     )
-    from .group_1461 import (
+    from .group_1462 import (
         TeamsTeamIdTeamSyncGroupMappingsPatchBody as TeamsTeamIdTeamSyncGroupMappingsPatchBody,
     )
-    from .group_1461 import (
+    from .group_1462 import (
         TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems as TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems,
     )
-    from .group_1462 import UserPatchBody as UserPatchBody
-    from .group_1463 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
-    from .group_1464 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
-    from .group_1465 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
-    from .group_1465 import (
+    from .group_1463 import UserPatchBody as UserPatchBody
+    from .group_1464 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
+    from .group_1465 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
+    from .group_1466 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
+    from .group_1466 import (
         UserCodespacesPostBodyOneof1PropPullRequest as UserCodespacesPostBodyOneof1PropPullRequest,
     )
-    from .group_1466 import CodespacesSecret as CodespacesSecret
-    from .group_1466 import (
+    from .group_1467 import CodespacesSecret as CodespacesSecret
+    from .group_1467 import (
         UserCodespacesSecretsGetResponse200 as UserCodespacesSecretsGetResponse200,
     )
-    from .group_1467 import (
+    from .group_1468 import (
         UserCodespacesSecretsSecretNamePutBody as UserCodespacesSecretsSecretNamePutBody,
     )
-    from .group_1468 import (
+    from .group_1469 import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200 as UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1469 import (
+    from .group_1470 import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_1470 import (
+    from .group_1471 import (
         UserCodespacesCodespaceNamePatchBody as UserCodespacesCodespaceNamePatchBody,
     )
-    from .group_1471 import (
+    from .group_1472 import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
     )
-    from .group_1472 import (
+    from .group_1473 import (
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
     )
-    from .group_1473 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
-    from .group_1474 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
-    from .group_1475 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
-    from .group_1476 import UserGpgKeysPostBody as UserGpgKeysPostBody
-    from .group_1477 import (
+    from .group_1474 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
+    from .group_1475 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
+    from .group_1476 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
+    from .group_1477 import UserGpgKeysPostBody as UserGpgKeysPostBody
+    from .group_1478 import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
     )
-    from .group_1478 import (
+    from .group_1479 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200 as UserInstallationsInstallationIdRepositoriesGetResponse200,
     )
-    from .group_1478 import (
+    from .group_1479 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems,
     )
-    from .group_1479 import (
+    from .group_1480 import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_1480 import UserKeysPostBody as UserKeysPostBody
-    from .group_1481 import (
+    from .group_1481 import UserKeysPostBody as UserKeysPostBody
+    from .group_1482 import (
         UserMembershipsOrgsOrgPatchBody as UserMembershipsOrgsOrgPatchBody,
     )
-    from .group_1482 import UserMigrationsPostBody as UserMigrationsPostBody
-    from .group_1483 import UserReposPostBody as UserReposPostBody
-    from .group_1484 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
-    from .group_1485 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
-    from .group_1486 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
-    from .group_1487 import (
+    from .group_1483 import UserMigrationsPostBody as UserMigrationsPostBody
+    from .group_1484 import UserReposPostBody as UserReposPostBody
+    from .group_1485 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
+    from .group_1486 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
+    from .group_1487 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
+    from .group_1488 import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBody as UserUserIdProjectsV2ProjectNumberDraftsPostBody,
     )
-    from .group_1488 import (
+    from .group_1489 import (
         UsersUserIdProjectsV2ProjectNumberViewsPostBody as UsersUserIdProjectsV2ProjectNumberViewsPostBody,
     )
-    from .group_1489 import (
+    from .group_1490 import (
         UsersUsernameAttestationsBulkListPostBody as UsersUsernameAttestationsBulkListPostBody,
     )
-    from .group_1490 import (
+    from .group_1491 import (
         UsersUsernameAttestationsBulkListPostResponse200 as UsersUsernameAttestationsBulkListPostResponse200,
     )
-    from .group_1490 import (
+    from .group_1491 import (
         UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
     )
-    from .group_1490 import (
+    from .group_1491 import (
         UsersUsernameAttestationsBulkListPostResponse200PropPageInfo as UsersUsernameAttestationsBulkListPostResponse200PropPageInfo,
     )
-    from .group_1491 import (
+    from .group_1492 import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0 as UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
     )
-    from .group_1492 import (
+    from .group_1493 import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof1 as UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
     )
-    from .group_1493 import (
+    from .group_1494 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
-    from .group_1493 import (
+    from .group_1494 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
     )
-    from .group_1493 import (
+    from .group_1494 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
     )
-    from .group_1493 import (
+    from .group_1494 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
     )
-    from .group_1493 import (
+    from .group_1494 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
-    from .group_1494 import (
+    from .group_1495 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
     )
-    from .group_1495 import (
+    from .group_1496 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
     )
-    from .group_1496 import (
+    from .group_1497 import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
     )
-    from .group_1497 import (
+    from .group_1498 import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
     )
-    from .group_1498 import (
+    from .group_1499 import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
     )
-    from .group_1499 import (
+    from .group_1500 import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody,
     )
-    from .group_1499 import (
+    from .group_1500 import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
     )
 else:
@@ -14851,100 +14854,103 @@ else:
         ".group_1446": (
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",
         ),
-        ".group_1447": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
-        ".group_1448": ("ReposOwnerRepoStatusesShaPostBody",),
-        ".group_1449": ("ReposOwnerRepoSubscriptionPutBody",),
-        ".group_1450": ("ReposOwnerRepoTopicsPutBody",),
-        ".group_1451": ("ReposOwnerRepoTransferPostBody",),
-        ".group_1452": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
-        ".group_1453": (
+        ".group_1447": (
+            "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",
+        ),
+        ".group_1448": ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",),
+        ".group_1449": ("ReposOwnerRepoStatusesShaPostBody",),
+        ".group_1450": ("ReposOwnerRepoSubscriptionPutBody",),
+        ".group_1451": ("ReposOwnerRepoTopicsPutBody",),
+        ".group_1452": ("ReposOwnerRepoTransferPostBody",),
+        ".group_1453": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
+        ".group_1454": (
             "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody",
             "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
         ),
-        ".group_1454": (
+        ".group_1455": (
             "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
             "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
         ),
-        ".group_1455": (
+        ".group_1456": (
             "ScimV2OrganizationsOrgUsersPostBody",
             "ScimV2OrganizationsOrgUsersPostBodyPropName",
             "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
         ),
-        ".group_1456": (
+        ".group_1457": (
             "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
             "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
             "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
         ),
-        ".group_1457": (
+        ".group_1458": (
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
             "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
         ),
-        ".group_1458": ("TeamsTeamIdPatchBody",),
-        ".group_1459": ("TeamsTeamIdMembershipsUsernamePutBody",),
-        ".group_1460": ("TeamsTeamIdReposOwnerRepoPutBody",),
-        ".group_1461": (
+        ".group_1459": ("TeamsTeamIdPatchBody",),
+        ".group_1460": ("TeamsTeamIdMembershipsUsernamePutBody",),
+        ".group_1461": ("TeamsTeamIdReposOwnerRepoPutBody",),
+        ".group_1462": (
             "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
             "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
         ),
-        ".group_1462": ("UserPatchBody",),
-        ".group_1463": ("UserCodespacesGetResponse200",),
-        ".group_1464": ("UserCodespacesPostBodyOneof0",),
-        ".group_1465": (
+        ".group_1463": ("UserPatchBody",),
+        ".group_1464": ("UserCodespacesGetResponse200",),
+        ".group_1465": ("UserCodespacesPostBodyOneof0",),
+        ".group_1466": (
             "UserCodespacesPostBodyOneof1",
             "UserCodespacesPostBodyOneof1PropPullRequest",
         ),
-        ".group_1466": (
+        ".group_1467": (
             "UserCodespacesSecretsGetResponse200",
             "CodespacesSecret",
         ),
-        ".group_1467": ("UserCodespacesSecretsSecretNamePutBody",),
-        ".group_1468": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1469": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_1470": ("UserCodespacesCodespaceNamePatchBody",),
-        ".group_1471": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
-        ".group_1472": ("UserCodespacesCodespaceNamePublishPostBody",),
-        ".group_1473": ("UserEmailVisibilityPatchBody",),
-        ".group_1474": ("UserEmailsPostBodyOneof0",),
-        ".group_1475": ("UserEmailsDeleteBodyOneof0",),
-        ".group_1476": ("UserGpgKeysPostBody",),
-        ".group_1477": ("UserInstallationsGetResponse200",),
-        ".group_1478": (
+        ".group_1468": ("UserCodespacesSecretsSecretNamePutBody",),
+        ".group_1469": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1470": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_1471": ("UserCodespacesCodespaceNamePatchBody",),
+        ".group_1472": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
+        ".group_1473": ("UserCodespacesCodespaceNamePublishPostBody",),
+        ".group_1474": ("UserEmailVisibilityPatchBody",),
+        ".group_1475": ("UserEmailsPostBodyOneof0",),
+        ".group_1476": ("UserEmailsDeleteBodyOneof0",),
+        ".group_1477": ("UserGpgKeysPostBody",),
+        ".group_1478": ("UserInstallationsGetResponse200",),
+        ".group_1479": (
             "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems",
             "UserInstallationsInstallationIdRepositoriesGetResponse200",
         ),
-        ".group_1479": ("UserInteractionLimitsGetResponse200Anyof1",),
-        ".group_1480": ("UserKeysPostBody",),
-        ".group_1481": ("UserMembershipsOrgsOrgPatchBody",),
-        ".group_1482": ("UserMigrationsPostBody",),
-        ".group_1483": ("UserReposPostBody",),
-        ".group_1484": ("UserSocialAccountsPostBody",),
-        ".group_1485": ("UserSocialAccountsDeleteBody",),
-        ".group_1486": ("UserSshSigningKeysPostBody",),
-        ".group_1487": ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",),
-        ".group_1488": ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",),
-        ".group_1489": ("UsersUsernameAttestationsBulkListPostBody",),
-        ".group_1490": (
+        ".group_1480": ("UserInteractionLimitsGetResponse200Anyof1",),
+        ".group_1481": ("UserKeysPostBody",),
+        ".group_1482": ("UserMembershipsOrgsOrgPatchBody",),
+        ".group_1483": ("UserMigrationsPostBody",),
+        ".group_1484": ("UserReposPostBody",),
+        ".group_1485": ("UserSocialAccountsPostBody",),
+        ".group_1486": ("UserSocialAccountsDeleteBody",),
+        ".group_1487": ("UserSshSigningKeysPostBody",),
+        ".group_1488": ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",),
+        ".group_1489": ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",),
+        ".group_1490": ("UsersUsernameAttestationsBulkListPostBody",),
+        ".group_1491": (
             "UsersUsernameAttestationsBulkListPostResponse200",
             "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
             "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
         ),
-        ".group_1491": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",),
-        ".group_1492": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",),
-        ".group_1493": (
+        ".group_1492": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",),
+        ".group_1493": ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",),
+        ".group_1494": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
         ),
-        ".group_1494": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",),
-        ".group_1495": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",),
-        ".group_1496": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",),
-        ".group_1497": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",),
-        ".group_1498": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",),
-        ".group_1499": (
+        ".group_1495": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",),
+        ".group_1496": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",),
+        ".group_1497": ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",),
+        ".group_1498": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",),
+        ".group_1499": ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1",),
+        ".group_1500": (
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
             "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
         ),

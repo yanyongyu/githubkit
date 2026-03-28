@@ -9,35 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0040 import DependabotAlertPackage
 
 
-class Label(GitHubModel):
-    """Label
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Details for the vulnerable dependency.
     """
 
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[None, Literal["unknown", "direct", "transitive", "inconclusive"]]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-model_rebuild(Label)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("Label",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

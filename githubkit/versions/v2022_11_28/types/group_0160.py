@@ -9,135 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
-
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    A version of a software package
     """
 
     id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
-    """Organization Programmatic Access Grant
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    A version of a software package
     """
 
     id: int
-    owner: SimpleUserTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: str
+    updated_at: str
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
-    ]
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
 
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantTypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

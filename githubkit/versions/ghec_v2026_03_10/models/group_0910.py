@@ -578,9 +578,6 @@ class WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo(GitHubMod
         default=UNSET,
         description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    has_commit_comments: Missing[bool] = Field(
-        default=UNSET, description="Whether commit comments are enabled."
-    )
     homepage: Union[str, None] = Field()
     hooks_url: str = Field()
     html_url: str = Field()
@@ -806,9 +803,6 @@ class WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo(GitHubMod
     pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
         default=UNSET,
         description="The policy controlling who can create pull requests: all or collaborators_only.",
-    )
-    has_commit_comments: Missing[bool] = Field(
-        default=UNSET, description="Whether commit comments are enabled."
     )
     homepage: Union[str, None] = Field()
     hooks_url: str = Field()

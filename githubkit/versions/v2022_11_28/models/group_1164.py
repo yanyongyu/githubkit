@@ -12,26 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
 
-    body: str = Field(description="The contents of the comment.")
-    path: Missing[str] = Field(
-        default=UNSET, description="Relative path of the file to comment on."
-    )
-    position: Missing[int] = Field(
-        default=UNSET, description="Line index in the diff to comment on."
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
-    )
+    body: str = Field(description="The contents of the comment")
 
 
-model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)

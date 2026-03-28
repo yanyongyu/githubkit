@@ -12,25 +12,81 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
-    """Actions cache retention limit for a repository
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    GitHub Actions cache retention policy for a repository.
+    Rate Limit Overview
     """
 
-    max_cache_retention_days: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesType
 
 
-class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache retention limit for a repository
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    GitHub Actions cache retention policy for a repository.
+    Rate Limit Overview
     """
 
-    max_cache_retention_days: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+
+
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
+
+
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    code_scanning_upload: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
+
+
+class RateLimitType(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
+
+
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForRepositoryType",
-    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

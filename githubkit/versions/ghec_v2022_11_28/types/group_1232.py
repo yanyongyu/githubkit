@@ -42,6 +42,19 @@ class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
     key_id: NotRequired[str]
     visibility: NotRequired[Literal["all", "private", "selected"]]
     selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
 
 
 class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
@@ -73,6 +86,19 @@ class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
     key_id: NotRequired[str]
     visibility: NotRequired[Literal["all", "private", "selected"]]
     selected_repository_ids: NotRequired[list[int]]
+    auth_type: NotRequired[
+        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
+    ]
+    tenant_id: NotRequired[str]
+    client_id: NotRequired[str]
+    aws_region: NotRequired[str]
+    account_id: NotRequired[str]
+    role_name: NotRequired[str]
+    domain: NotRequired[str]
+    domain_owner: NotRequired[str]
+    jfrog_oidc_provider_name: NotRequired[str]
+    audience: NotRequired[str]
+    identity_mapping_name: NotRequired[str]
 
 
 __all__ = (

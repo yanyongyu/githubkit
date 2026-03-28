@@ -64,6 +64,10 @@ class CodeScanningAlertInstancePropMessage(GitHubModel):
     """CodeScanningAlertInstancePropMessage"""
 
     text: Missing[str] = Field(default=UNSET)
+    markdown: Missing[str] = Field(
+        default=UNSET,
+        description="The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance.",
+    )
 
 
 model_rebuild(CodeScanningAlertInstance)
