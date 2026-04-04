@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
     )
-    include_claim_keys: Missing[list[str]] = Field(
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        description="Reason for approving or denying the request. Max 1024 characters.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

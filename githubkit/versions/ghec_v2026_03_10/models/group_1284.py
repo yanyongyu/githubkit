@@ -9,42 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
-    )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-    ] = Field(
+    pattern_config_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
+    provider_pattern_settings: Missing[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
 ):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 25. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
     """
 
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
 )

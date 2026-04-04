@@ -9,57 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
-
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-        ]
-    ]
+from .group_1276 import (
+    ReposOwnerRepoPagesPostBodyPropSourceType,
+    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
+)
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
-    luesItems
-    """
+class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    field_id: int
-    value: Union[str, float]
-
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
-    luesItems
-    """
-
-    field_id: int
-    value: Union[str, float]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
 
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
+    "ReposOwnerRepoPagesPostBodyAnyof0Type",
+    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
 )

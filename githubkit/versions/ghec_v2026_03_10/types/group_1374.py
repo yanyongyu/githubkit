@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
-
-    use_lfs: Literal["opt_in", "opt_out"]
+from .group_0365 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportLfsPatchBody"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    use_lfs: Literal["opt_in", "opt_out"]
+    total_count: int
+    check_runs: list[CheckRunType]
+
+
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoImportLfsPatchBodyType",
-    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
 )

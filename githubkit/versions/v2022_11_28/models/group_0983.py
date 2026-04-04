@@ -13,20 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0119 import Runner
+
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+model_rebuild(GistsGistIdCommentsPostBody)
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
-    )
-
-
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
-
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("GistsGistIdCommentsPostBody",)

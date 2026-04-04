@@ -12,21 +12,57 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseType]
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: float
+    runner_groups: list[RunnerGroupsEnterpriseTypeForResponse]
+
+
+class RunnerGroupsEnterpriseType(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+
+
+class RunnerGroupsEnterpriseTypeForResponse(TypedDict):
+    """RunnerGroupsEnterprise"""
+
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_organizations_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type",
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsEnterpriseType",
+    "RunnerGroupsEnterpriseTypeForResponse",
 )

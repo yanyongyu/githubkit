@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class UserCodespacesCodespaceNamePatchBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePatchBodyType",
-    "UserCodespacesCodespaceNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
 )

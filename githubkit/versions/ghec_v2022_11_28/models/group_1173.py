@@ -16,13 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC Subject customization
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    )
 
 
-model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
+model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
 
-__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)
+__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)

@@ -104,6 +104,15 @@ class SecretScanningAlertWebhook(GitHubModel):
         description="Whether the detected secret was found in multiple repositories in the same organization or business.",
     )
     assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    closure_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request author.",
+    )
+    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request reviewer.",
+    )
+    closure_request_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
 model_rebuild(SecretScanningAlertWebhook)

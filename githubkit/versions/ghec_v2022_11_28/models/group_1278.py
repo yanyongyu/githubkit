@@ -14,20 +14,28 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

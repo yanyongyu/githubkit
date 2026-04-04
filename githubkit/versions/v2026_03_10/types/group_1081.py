@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    pattern_config_version: NotRequired[str]
+    message: NotRequired[str]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    pattern_config_version: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

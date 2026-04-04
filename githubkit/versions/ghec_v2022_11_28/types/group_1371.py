@@ -9,55 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksPostBodyType(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: int
+    secrets: list[RepoCodespacesSecretType]
 
 
-class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    name: NotRequired[str]
-    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    total_count: int
+    secrets: list[RepoCodespacesSecretTypeForResponse]
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    Key/value pairs to provide settings for this webhook.
+    Set repository secrets for GitHub Codespaces.
     """
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    Key/value pairs to provide settings for this webhook.
+    Set repository secrets for GitHub Codespaces.
     """
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBodyPropConfigType",
-    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
-    "ReposOwnerRepoHooksPostBodyType",
-    "ReposOwnerRepoHooksPostBodyTypeForResponse",
+    "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

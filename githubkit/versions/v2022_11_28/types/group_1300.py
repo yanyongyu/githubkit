@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+
+    expected_head_sha: NotRequired[str]
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+
+    expected_head_sha: NotRequired[str]
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
 )

@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    selected_repository_ids: list[int]
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    selected_repository_ids: list[int]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
-    "OrgsOrgActionsVariablesNameRepositoriesPutBodyTypeForResponse",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

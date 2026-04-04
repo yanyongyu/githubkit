@@ -11,22 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be requested."
-    )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be requested."
-    )
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
+)

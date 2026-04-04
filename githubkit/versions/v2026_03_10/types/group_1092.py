@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0133 import CodespaceType, CodespaceTypeForResponse
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    total_count: int
+    codespaces: list[CodespaceType]
 
 
-class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgSecurityProductEnablementPostBodyType",
-    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
 )

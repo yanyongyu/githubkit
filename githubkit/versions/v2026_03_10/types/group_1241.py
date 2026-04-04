@@ -11,22 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0180 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueType]
-
-
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: list[CustomPropertyValueTypeForResponse]
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

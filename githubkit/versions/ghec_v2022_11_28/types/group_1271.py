@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    key_id: str
+    key: str
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: list[str]
-    work_folder: NotRequired[str]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",
-    "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

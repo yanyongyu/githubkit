@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    async_: NotRequired[bool]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    async_: NotRequired[bool]
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

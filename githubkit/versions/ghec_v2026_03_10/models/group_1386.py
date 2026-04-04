@@ -9,31 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    labels: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str = Field()
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ] = Field(description="The reason for dismissing the alert.")
+    dismissed_comment: Missing[str] = Field(
+        default=UNSET, description="An optional comment explaining the dismissal."
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
-)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody",)

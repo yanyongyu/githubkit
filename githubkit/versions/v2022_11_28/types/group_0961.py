@@ -12,53 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+    access_token: str
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
-
-
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
-
-
-class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    access_token: str
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "ApplicationsClientIdGrantDeleteBodyType",
+    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
 )

@@ -13,53 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-
-
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
-
-
-class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
-
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int
-    repository_id: int
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
-    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
-    "UserCodespacesPostBodyOneof1Type",
-    "UserCodespacesPostBodyOneof1TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

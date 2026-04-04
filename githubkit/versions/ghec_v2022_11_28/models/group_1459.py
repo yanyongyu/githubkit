@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,32 +16,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoPullsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPostBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    title: Missing[str] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="The title of the new pull request. Required unless `issue` is specified.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    head: str = Field(
+        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
+    )
+    head_repo: Missing[str] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    base: str = Field(
+        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/enterprise-cloud@latest//articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
+    )
+    issue: Missing[int] = Field(
+        default=UNSET,
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoPullsPostBody)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPostBody",)

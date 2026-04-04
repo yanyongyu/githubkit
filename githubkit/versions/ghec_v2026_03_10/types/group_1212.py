@@ -9,29 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    attestations: NotRequired[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
+    ]
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    attestations: NotRequired[
+        list[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdConfigPatchBodyType",
-    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

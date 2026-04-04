@@ -9,22 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1(ExtraGitHubModel):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class AgentsReposOwnerRepoTasksGetResponse400(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse400
 
-    client_id: str = Field()
-    client_secret: str = Field()
-    webhook_secret: Union[str, None] = Field()
-    pem: str = Field()
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201Allof1)
+class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse400)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems)
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse400",
+    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems",
+)

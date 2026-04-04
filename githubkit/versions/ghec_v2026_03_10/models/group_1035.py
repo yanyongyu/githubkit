@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,46 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+class AgentsTasksGetResponse403(GitHubModel):
+    """AgentsTasksGetResponse403
 
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsEnterprise] = Field()
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    errors: Missing[list[AgentsTasksGetResponse403PropErrorsItems]] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
+model_rebuild(AgentsTasksGetResponse403)
+model_rebuild(AgentsTasksGetResponse403PropErrorsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
+    "AgentsTasksGetResponse403",
+    "AgentsTasksGetResponse403PropErrorsItems",
 )

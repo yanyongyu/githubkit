@@ -11,25 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0105 import (
-    OrganizationCustomPropertyType,
-    OrganizationCustomPropertyTypeForResponse,
-)
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+
+    labels: list[str]
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    properties: list[OrganizationCustomPropertyType]
-
-
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomPropertyTypeForResponse]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
-    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

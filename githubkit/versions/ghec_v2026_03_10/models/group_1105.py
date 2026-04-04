@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to unassign the team from."
+    selected_enterprise_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody",)

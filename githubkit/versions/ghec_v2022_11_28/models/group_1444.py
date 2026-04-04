@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,84 +18,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0112 import RepositoryRulesetBypassActor
-from .group_0117 import RepositoryRulesetConditions
-from .group_0131 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0132 import RepositoryRuleUpdate
-from .group_0134 import RepositoryRuleRequiredLinearHistory
-from .group_0135 import RepositoryRuleRequiredDeployments
-from .group_0137 import RepositoryRulePullRequest
-from .group_0139 import RepositoryRuleRequiredStatusChecks
-from .group_0141 import RepositoryRuleCommitMessagePattern
-from .group_0143 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0145 import RepositoryRuleCommitterEmailPattern
-from .group_0147 import RepositoryRuleBranchNamePattern
-from .group_0149 import RepositoryRuleTagNamePattern
-from .group_0151 import RepositoryRuleFilePathRestriction
-from .group_0153 import RepositoryRuleMaxFilePathLength
-from .group_0155 import RepositoryRuleFileExtensionRestriction
-from .group_0157 import RepositoryRuleMaxFileSize
-from .group_0160 import RepositoryRuleWorkflows
-from .group_0162 import RepositoryRuleCodeScanning
-from .group_0164 import RepositoryRuleCopilotCodeReview
-from .group_0171 import RepositoryRuleMergeQueue
 
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+        description="The state of the milestone. Either `open` or `closed`.",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

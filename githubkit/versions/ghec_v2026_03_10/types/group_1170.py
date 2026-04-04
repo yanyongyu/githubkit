@@ -9,22 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    attestation_ids: list[int]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    attestation_ids: list[int]
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
 )

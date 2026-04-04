@@ -9,29 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AppHookConfigPatchBodyType(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksGetResponse401Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class AppHookConfigPatchBodyTypeForResponse(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksGetResponse401TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppHookConfigPatchBodyType",
-    "AppHookConfigPatchBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse401Type",
+    "AgentsReposOwnerRepoTasksGetResponse401TypeForResponse",
 )

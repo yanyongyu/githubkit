@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0294 import CheckRunType, CheckRunTypeForResponse
+from .group_0260 import JobType, JobTypeForResponse
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunType]
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
     total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    jobs: list[JobType]
+
+
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+
+    total_count: int
+    jobs: list[JobTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",
+    "ReposOwnerRepoActionsRunsRunIdJobsGetResponse200TypeForResponse",
 )

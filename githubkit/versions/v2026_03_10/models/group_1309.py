@@ -9,27 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
-    """UsersUsernameAttestationsBulkListPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Union[str, None] = Field(
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
     )
 
 
-model_rebuild(UsersUsernameAttestationsBulkListPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)

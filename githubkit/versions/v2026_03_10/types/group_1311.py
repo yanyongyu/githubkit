@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    subject_digests: list[str]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    subject_digests: list[str]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
 )

@@ -9,19 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

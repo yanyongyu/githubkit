@@ -9,42 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0078 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+
+    name: str
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
     """
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutRespons
-    e200
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
     """
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyType",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyTypeForResponse",
 )

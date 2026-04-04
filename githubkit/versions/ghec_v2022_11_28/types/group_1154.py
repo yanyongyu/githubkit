@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0241 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
+
+
+class MarkdownPostBodyTypeForResponse(TypedDict):
+    """MarkdownPostBody"""
+
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "MarkdownPostBodyType",
+    "MarkdownPostBodyTypeForResponse",
 )

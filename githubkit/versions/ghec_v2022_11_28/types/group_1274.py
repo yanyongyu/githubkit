@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0340 import WorkflowRunType, WorkflowRunTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    issue_field_id: int
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
-
-
-class ReposOwnerRepoActionsRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+    issue_field_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

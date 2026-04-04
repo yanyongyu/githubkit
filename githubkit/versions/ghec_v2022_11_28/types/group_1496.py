@@ -9,34 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0308 import (
-    ProjectsV2FieldSingleSelectOptionType,
-    ProjectsV2FieldSingleSelectOptionTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    name: str
-    data_type: Literal["single_select"]
-    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
 )

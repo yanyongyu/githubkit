@@ -13,18 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0260 import Job
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    issue_field_id: int = Field(
+        description="The ID of the IssueField to create the field for."
+    )
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
 
-    total_count: int = Field()
-    jobs: list[Job] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)

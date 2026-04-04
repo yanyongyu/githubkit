@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    dismissal_review_id: NotRequired[int]
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    dismissal_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200Type",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200TypeForResponse",
 )

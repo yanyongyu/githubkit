@@ -9,57 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
     ]
-    return_run_details: NotRequired[bool]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
-    ]
-    return_run_details: NotRequired[bool]
-
-
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
+    """
 
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+
+
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
 )

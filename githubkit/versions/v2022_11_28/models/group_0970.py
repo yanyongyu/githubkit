@@ -16,14 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used in the organization"
+    scope: Literal["all", "all_without_configurations"] = Field(
+        description="The type of repositories to attach the configuration to."
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersPutBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody
+)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
+)

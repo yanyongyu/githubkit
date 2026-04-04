@@ -16,14 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

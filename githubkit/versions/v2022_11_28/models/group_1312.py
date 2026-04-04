@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

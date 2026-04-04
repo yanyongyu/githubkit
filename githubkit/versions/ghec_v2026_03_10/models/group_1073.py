@@ -9,13 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)

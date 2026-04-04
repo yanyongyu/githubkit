@@ -9,24 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    encrypted_value: str
-    key_id: str
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    encrypted_value: str
-    key_id: str
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoActionsSecretsSecretNamePutBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

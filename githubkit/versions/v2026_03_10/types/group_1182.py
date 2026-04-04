@@ -9,28 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0262 import ActionsSecretType, ActionsSecretTypeForResponse
+from .group_1180 import (
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
+)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
-    total_count: int
-    secrets: list[ActionsSecretType]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ]
+    started_at: NotRequired[_dt.datetime]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ]
+    started_at: NotRequired[str]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1Type",
+    "ReposOwnerRepoCheckRunsPostBodyOneof1TypeForResponse",
 )

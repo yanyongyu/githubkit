@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgMembershipsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    role: NotRequired[Literal["admin", "member"]]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgMembershipsUsernamePutBodyType",
-    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
 )

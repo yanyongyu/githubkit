@@ -9,84 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
+    enabled: bool
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
-
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
-    emails: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
+    enabled: bool
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

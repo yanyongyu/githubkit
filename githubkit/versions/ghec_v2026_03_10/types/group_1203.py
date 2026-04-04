@@ -9,22 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    selected_repository_ids: list[int]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    selected_repository_ids: list[int]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    artifact_url: NotRequired[str]
+    path: NotRequired[str]
+    registry_url: str
+    repository: NotRequired[str]
+    status: NotRequired[Literal["active", "eol", "deleted"]]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
-    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
 )

@@ -9,58 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
-
-
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-class ActionsHostedRunnerCustomImageType(TypedDict):
-    """GitHub-hosted runner custom image details
+class AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
-
-
-class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int
-    platform: str
-    total_versions_size: int
-    name: str
-    source: str
-    versions_count: int
-    latest_version: str
-    state: str
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
+    permissions: NotRequired[AppPermissionsTypeForResponse]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageType",
-    "ActionsHostedRunnerCustomImageTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "AppInstallationsInstallationIdAccessTokensPostBodyType",
+    "AppInstallationsInstallationIdAccessTokensPostBodyTypeForResponse",
 )

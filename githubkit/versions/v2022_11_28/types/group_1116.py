@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesPostBody"""
-
-    name: str
-    value: str
+from .group_0178 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class ReposOwnerRepoActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    name: str
-    value: str
+    properties: list[CustomPropertyType]
+
+
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesPostBodyType",
-    "ReposOwnerRepoActionsVariablesPostBodyTypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

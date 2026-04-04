@@ -12,15 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+
+    repository_id: int
+    alert_numbers: list[int]
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+
+    repository_id: int
+    alert_numbers: list[int]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
 )

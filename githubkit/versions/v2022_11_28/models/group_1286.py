@@ -18,50 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
-    """UserCodespacesPostBodyOneof1"""
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
-        description="Pull request number for this codespace"
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
     )
-    location: Missing[str] = Field(
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="State of this Pull Request. Either `open` or `closed`.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    base: Missing[str] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-    Pull request number for this codespace
-    """
-
-    pull_request_number: int = Field(description="Pull request number")
-    repository_id: int = Field(description="Repository id for this codespace")
-
-
-model_rebuild(UserCodespacesPostBodyOneof1)
-model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
-
-__all__ = (
-    "UserCodespacesPostBodyOneof1",
-    "UserCodespacesPostBodyOneof1PropPullRequest",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

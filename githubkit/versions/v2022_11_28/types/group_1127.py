@@ -9,62 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
-        ]
-    ]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
 )

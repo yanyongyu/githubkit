@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,18 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    total_count: int = Field()
+    secrets: list[OrganizationDependabotSecret] = Field()
+
+
+class OrganizationDependabotSecret(GitHubModel):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
+model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
+model_rebuild(OrganizationDependabotSecret)
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)
+__all__ = (
+    "OrganizationDependabotSecret",
+    "OrgsOrgDependabotSecretsGetResponse200",
+)

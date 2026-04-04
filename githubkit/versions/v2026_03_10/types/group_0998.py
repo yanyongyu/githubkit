@@ -9,115 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
-    ]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
-    ]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
     """
 
+    id: int
+    platform: str
+    total_versions_size: int
     name: str
-    digest: str
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: str
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
     """
 
+    id: int
+    platform: str
+    total_versions_size: int
     name: str
-    digest: str
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: str
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

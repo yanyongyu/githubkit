@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
-
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
-
-    seats_created: int = Field()
+from .group_0038 import ActionsHostedRunnerCuratedImage
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201)
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201",)
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCuratedImage] = Field()
+
+
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200)
+
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200",)

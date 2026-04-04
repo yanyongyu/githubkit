@@ -9,20 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0078 import CodeSecurityConfiguration
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specifies which types of repository this security configuration is applied to by default.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
+
+
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
+
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)

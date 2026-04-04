@@ -12,27 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
-    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
 )

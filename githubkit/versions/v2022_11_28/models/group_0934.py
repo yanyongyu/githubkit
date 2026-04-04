@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,29 +19,157 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the team."
+    Full session details within a task
+    """
+
+    id: str = Field(description="Session ID")
+    name: Missing[str] = Field(default=UNSET, description="Session name")
+    user: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+    ] = Field(default=UNSET, description="The user who created this session")
+    owner: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+    ] = Field(default=UNSET, description="The owner of the repository")
+    repository: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this session belongs to")
+    agent_id: Missing[int] = Field(default=UNSET, description="Agent ID")
+    agent_task_id: Missing[str] = Field(
+        default=UNSET, description="Agent internal task ID"
     )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
-        default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
+    task_id: Missing[str] = Field(
+        default=UNSET, description="Task ID this session belongs to"
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(description="Current state of a session")
+    created_at: _dt.datetime = Field(description="Creation timestamp")
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Last update timestamp"
     )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
+    completed_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Completion timestamp"
+    )
+    event_type: Missing[str] = Field(
+        default=UNSET, description="Type of event that triggered this session"
+    )
+    event_url: Missing[str] = Field(
+        default=UNSET, description="URL of the triggering event"
+    )
+    event_content: Missing[str] = Field(
+        default=UNSET, description="Content of the triggering event"
+    )
+    event_identifiers: Missing[list[str]] = Field(
+        default=UNSET, description="Identifiers for tracking"
+    )
+    resource_type: Missing[str] = Field(
+        default=UNSET, description="Type of resource associated with this session"
+    )
+    resource_id: Missing[int] = Field(default=UNSET, description="Resource ID")
+    resource_number: Missing[int] = Field(
+        default=UNSET, description="Resource number (e.g., PR number)"
+    )
+    resource_global_id: Missing[str] = Field(
+        default=UNSET, description="GraphQL global ID of the resource"
+    )
+    resource_state: Missing[str] = Field(
+        default=UNSET, description="State of the associated resource"
+    )
+    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
+    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    workflow_run_id: Missing[int] = Field(
+        default=UNSET, description="GitHub Actions workflow run ID"
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="Model used for this session"
+    )
+    premium_requests: Missing[float] = Field(
+        default=UNSET, description="Premium request count"
+    )
+    error: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+    ] = Field(default=UNSET, description="Error details for a failed session")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+
+    The user who created this session
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsPostBody)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBody",)
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
+    ry
+
+    The repository this session belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: Missing[str] = Field(default=UNSET, description="Error message")
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+)
+model_rebuild(
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+)

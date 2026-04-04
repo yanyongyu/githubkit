@@ -15,15 +15,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0244 import OrganizationCustomRepositoryRole
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
     )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)

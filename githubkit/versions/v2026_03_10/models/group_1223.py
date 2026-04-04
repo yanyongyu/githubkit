@@ -12,27 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    new_name: Missing[str] = Field(
-        default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
     )
-    color: Missing[str] = Field(
-        default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
-    )
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)

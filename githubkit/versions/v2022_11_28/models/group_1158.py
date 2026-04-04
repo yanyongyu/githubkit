@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,29 +19,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
     total_count: int = Field()
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
-    ] = Field()
+    workflows: list[Workflow] = Field()
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+class Workflow(GitHubModel):
+    """Workflow
 
+    A GitHub Actions workflow
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
     path: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    display_name: Missing[str] = Field(default=UNSET)
+    state: Literal[
+        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    ] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    html_url: str = Field()
+    badge_url: str = Field()
+    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
+model_rebuild(Workflow)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+    "ReposOwnerRepoActionsWorkflowsGetResponse200",
+    "Workflow",
 )

@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0102 import NetworkConfiguration
+
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    )
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
-
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsGetResponse200",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)

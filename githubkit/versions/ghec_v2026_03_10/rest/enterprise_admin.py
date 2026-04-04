@@ -6858,6 +6858,8 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def create_network_configuration_for_enterprise(
@@ -6928,6 +6930,8 @@ class EnterpriseAdminClient:
         name: str,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: list[str],
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_create_network_configuration_for_enterprise(
@@ -7118,6 +7122,8 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     def update_network_configuration_for_enterprise(
@@ -7194,6 +7200,8 @@ class EnterpriseAdminClient:
         name: Missing[str] = UNSET,
         compute_service: Missing[Literal["none", "actions"]] = UNSET,
         network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_settings_ids: Missing[list[str]] = UNSET,
+        failover_network_enabled: Missing[bool] = UNSET,
     ) -> Response[NetworkConfiguration, NetworkConfigurationTypeForResponse]: ...
 
     async def async_update_network_configuration_for_enterprise(

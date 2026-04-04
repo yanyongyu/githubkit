@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0258 import Artifact
-
-
-class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)
+    async_: Missing[bool] = Field(
+        default=UNSET,
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+    )
+
+
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

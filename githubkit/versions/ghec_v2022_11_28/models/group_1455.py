@@ -9,48 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1453 import ReposOwnerRepoPagesPostBodyPropSource
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    issue_field_values: Missing[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
+    )
+    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
         default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
+        description="The source branch and directory used to publish your Pages site.",
     )
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
-    """
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
-
-
-model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody)
-model_rebuild(
-    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-)
-
-__all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
-)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)

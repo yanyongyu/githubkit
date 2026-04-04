@@ -9,81 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
-    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
 
 
-class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
-
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
-    ]
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
-
-
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    Information about the current page.
-    """
-
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200Type",
-    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse",
 )

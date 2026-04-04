@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,27 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    users: Missing[list[str]] = Field(
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
         default=UNSET,
-        description="The usernames of the users to remove from the cost center.",
-    )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to remove from the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to remove from the cost center."
+        description="Specify which types of repository this security configuration should be applied to by default.",
     )
 
 
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
 )

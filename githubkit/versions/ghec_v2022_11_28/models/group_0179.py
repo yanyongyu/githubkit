@@ -12,6 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class SecretScanningLocationCommit(GitHubModel):
@@ -39,6 +41,10 @@ class SecretScanningLocationCommit(GitHubModel):
     commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
     commit_url: str = Field(
         description="The API URL to get the associated commit resource"
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL to get the associated commit resource.",
     )
 
 
@@ -80,6 +86,10 @@ class SecretScanningLocationIssueBody(GitHubModel):
     issue_body_url: str = Field(
         description="The API URL to get the issue where the secret was detected."
     )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue where the secret was detected.",
+    )
 
 
 class SecretScanningLocationDiscussionTitle(GitHubModel):
@@ -116,6 +126,10 @@ class SecretScanningLocationPullRequestBody(GitHubModel):
     pull_request_body_url: str = Field(
         description="The API URL to get the pull request where the secret was detected."
     )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
+    )
 
 
 class SecretScanningLocationPullRequestReview(GitHubModel):
@@ -127,6 +141,10 @@ class SecretScanningLocationPullRequestReview(GitHubModel):
 
     pull_request_review_url: str = Field(
         description="The API URL to get the pull request review where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review where the secret was detected.",
     )
 
 

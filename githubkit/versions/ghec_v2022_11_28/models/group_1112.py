@@ -14,12 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200",)

@@ -9,38 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    invitee_id: Missing[int] = Field(
+    name: Missing[str] = Field(
+        min_length=1,
+        max_length=50,
         default=UNSET,
-        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+        description="The name of the campaign",
     )
-    email: Missing[str] = Field(
+    description: Missing[str] = Field(
+        min_length=1,
+        max_length=255,
         default=UNSET,
-        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
+        description="A description for the campaign",
     )
-    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
-        Field(
-            default=UNSET,
-            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
-        )
-    )
-    team_ids: Missing[list[int]] = Field(
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Specify IDs for the teams you want to invite new members to.",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
 
 
-model_rebuild(OrgsOrgInvitationsPostBody)
+model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
 
-__all__ = ("OrgsOrgInvitationsPostBody",)
+__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)

@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0265 import ActionsVariableType, ActionsVariableTypeForResponse
-
-
-class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
+
+
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesGetResponse200Type",
-    "ReposOwnerRepoActionsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

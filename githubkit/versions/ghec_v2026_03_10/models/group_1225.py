@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members and outside collaborators whose codespaces should be billed to the organization.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)

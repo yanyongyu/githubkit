@@ -16,16 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    sha: str = Field(description="The SHA1 value to set this reference to")
-    force: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
-    )
+    total_count: int = Field()
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
 
 
-model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+)

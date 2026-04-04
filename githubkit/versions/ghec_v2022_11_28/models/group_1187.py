@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members and outside collaborators whose codespaces should be billed to the organization.",
+    runners: list[int] = Field(
+        description="List of runner IDs to add to the runner group."
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)

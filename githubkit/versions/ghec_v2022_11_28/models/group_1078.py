@@ -9,54 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
-
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
-    ] = Field()
+from .group_0049 import OrganizationSimple
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
+    total_count: float = Field()
+    organizations: list[OrganizationSimple] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
 )

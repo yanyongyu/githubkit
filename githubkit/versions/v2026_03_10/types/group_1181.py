@@ -9,41 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0353 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
+from .group_1180 import (
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse,
 )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[_dt.datetime]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
     ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+class ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppTypeForResponse]
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[str]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputTypeForResponse]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsTypeForResponse]
     ]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0Type",
+    "ReposOwnerRepoCheckRunsPostBodyOneof0TypeForResponse",
 )

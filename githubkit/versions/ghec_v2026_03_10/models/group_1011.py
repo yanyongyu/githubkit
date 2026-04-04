@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,23 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    content_type: Missing[str] = Field(
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description='Human-readable message (populated when code is "custom")',
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(AppHookConfigPatchBody)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
 
-__all__ = ("AppHookConfigPatchBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksGetResponse401",
+    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+)

@@ -9,24 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_0078 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
 )

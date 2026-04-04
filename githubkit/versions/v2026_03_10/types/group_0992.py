@@ -13,25 +13,59 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsVariablesPostBodyType(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
 
 
-class OrgsOrgActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str
-    value: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesPostBodyType",
-    "OrgsOrgActionsVariablesPostBodyTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

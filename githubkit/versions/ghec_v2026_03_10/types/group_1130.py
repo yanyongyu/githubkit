@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int
-    platforms: list[str]
+    pattern_config_version: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int
-    platforms: list[str]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

@@ -12,33 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: NotRequired[float]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: NotRequired[float]
-    artifact_url: NotRequired[str]
-    environment: NotRequired[str]
-    pages_build_version: str
-    oidc_token: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesDeploymentsPostBodyType",
-    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
+    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
 )

@@ -51,6 +51,7 @@ class ExemptionRequest(GitHubModel):
             "secret_scanning_closure",
             "code_scanning_alert_dismissal",
             "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
         ]
     ] = Field(default=UNSET, description="The type of request.")
     exemption_request_data: Missing[
@@ -60,6 +61,7 @@ class ExemptionRequest(GitHubModel):
             DismissalRequestSecretScanning,
             DismissalRequestCodeScanning,
             DismissalRequestDependabot,
+            DismissalRequestLicenseCompliance,
         ]
     ] = Field(default=UNSET)
     resource_identifier: Missing[str] = Field(
@@ -79,6 +81,7 @@ class ExemptionRequest(GitHubModel):
             DismissalRequestSecretScanningMetadata,
             DismissalRequestCodeScanningMetadata,
             DismissalRequestDependabotMetadata,
+            DismissalRequestLicenseComplianceMetadata,
             None,
         ]
     ] = Field(default=UNSET, description="Metadata about the exemption request.")
@@ -154,6 +157,20 @@ class DismissalRequestDependabotMetadata(GitHubModel):
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ] = Field(default=UNSET, description="The reason for the dismissal request")
+
+
+class DismissalRequestLicenseComplianceMetadata(GitHubModel):
+    """License compliance alert closure request metadata
+
+    Metadata for a License compliance alert closure request.
+    """
+
+    alert_title: Missing[str] = Field(
+        default=UNSET, description="The title of the License compliance alert"
+    )
+    reason: Missing[Literal["amendment", "private package", "inaccurate license"]] = (
+        Field(default=UNSET, description="The reason for the closure request")
+    )
 
 
 class ExemptionRequestPushRulesetBypass(GitHubModel):
@@ -265,6 +282,29 @@ class DismissalRequestDependabotPropDataItems(GitHubModel):
     )
 
 
+class DismissalRequestLicenseCompliance(GitHubModel):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: Missing[Literal["license_compliance_dismissal"]] = Field(
+        default=UNSET, description="The type of request"
+    )
+    data: Missing[list[DismissalRequestLicenseCompliancePropDataItems]] = Field(
+        default=UNSET,
+        description="The data related to the License compliance alerts that have closure requests.",
+    )
+
+
+class DismissalRequestLicenseCompliancePropDataItems(GitHubModel):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: Missing[str] = Field(
+        default=UNSET, description="The number of the alert to be closed"
+    )
+
+
 class ExemptionRequestSecretScanning(GitHubModel):
     """Secret scanning push protection exemption request data
 
@@ -312,6 +352,7 @@ model_rebuild(ExemptionRequestSecretScanningMetadata)
 model_rebuild(DismissalRequestSecretScanningMetadata)
 model_rebuild(DismissalRequestCodeScanningMetadata)
 model_rebuild(DismissalRequestDependabotMetadata)
+model_rebuild(DismissalRequestLicenseComplianceMetadata)
 model_rebuild(ExemptionRequestPushRulesetBypass)
 model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
 model_rebuild(DismissalRequestSecretScanning)
@@ -320,6 +361,8 @@ model_rebuild(DismissalRequestCodeScanning)
 model_rebuild(DismissalRequestCodeScanningPropDataItems)
 model_rebuild(DismissalRequestDependabot)
 model_rebuild(DismissalRequestDependabotPropDataItems)
+model_rebuild(DismissalRequestLicenseCompliance)
+model_rebuild(DismissalRequestLicenseCompliancePropDataItems)
 model_rebuild(ExemptionRequestSecretScanning)
 model_rebuild(ExemptionRequestSecretScanningPropDataItems)
 model_rebuild(ExemptionRequestSecretScanningPropDataItemsPropLocationsItems)
@@ -331,6 +374,9 @@ __all__ = (
     "DismissalRequestDependabot",
     "DismissalRequestDependabotMetadata",
     "DismissalRequestDependabotPropDataItems",
+    "DismissalRequestLicenseCompliance",
+    "DismissalRequestLicenseComplianceMetadata",
+    "DismissalRequestLicenseCompliancePropDataItems",
     "DismissalRequestSecretScanning",
     "DismissalRequestSecretScanningMetadata",
     "DismissalRequestSecretScanningPropDataItems",

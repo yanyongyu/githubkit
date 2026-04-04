@@ -9,43 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
-
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
-
-    fields: list[
-        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
-    ]
+    selected_usernames: list[str]
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    id: int
-    value: Union[str, float, None]
-
-
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

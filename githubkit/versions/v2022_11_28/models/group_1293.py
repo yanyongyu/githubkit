@@ -16,17 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be requested."
     )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)

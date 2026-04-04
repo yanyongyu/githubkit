@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class AgentsTasksTaskIdGetResponse401(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    errors: Missing[list[AgentsTasksTaskIdGetResponse401PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(AgentsTasksTaskIdGetResponse401)
+model_rebuild(AgentsTasksTaskIdGetResponse401PropErrorsItems)
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse401",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItems",
+)

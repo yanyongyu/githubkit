@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,28 +16,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPutBody(GitHubModel):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
-        default=UNSET,
-        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
-    )
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the username to provide to `vcs_url`.",
-    )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the password to provide to `vcs_url`.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
-    )
+    total_count: int = Field()
+    devcontainers: list[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
 
 
-model_rebuild(ReposOwnerRepoImportPutBody)
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-__all__ = ("ReposOwnerRepoImportPutBody",)
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+)

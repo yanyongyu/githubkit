@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,30 +18,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1231 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
-
-    cname: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
     )
-    https_enforced: Missing[bool] = Field(
-        default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
     )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+        default=UNSET,
+        description="An object with information about the individual creating the tag.",
+    )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+    An object with information about the individual creating the tag.
+    """
+
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+
+__all__ = (
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
+)

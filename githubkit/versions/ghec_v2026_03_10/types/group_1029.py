@@ -9,37 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse403TypeForResponse",
 )

@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0132 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
 
-class ReposOwnerRepoImportPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    machines: list[CodespaceMachineType]
 
 
-class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    total_count: int
+    machines: list[CodespaceMachineTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPatchBodyType",
-    "ReposOwnerRepoImportPatchBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200Type",
+    "ReposOwnerRepoCodespacesMachinesGetResponse200TypeForResponse",
 )

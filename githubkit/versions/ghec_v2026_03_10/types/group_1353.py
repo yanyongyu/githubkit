@@ -9,55 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
-
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyType]
+from .group_1351 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
+)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
-    total_count: int
-    branch_policies: list[DeploymentBranchPolicyTypeForResponse]
-
-
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
     name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    ]
 
 
-class DeploymentBranchPolicyTypeForResponse(TypedDict):
-    """Deployment branch policy
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
     name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[str]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    ]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "DeploymentBranchPolicyType",
-    "DeploymentBranchPolicyTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200TypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1TypeForResponse",
 )

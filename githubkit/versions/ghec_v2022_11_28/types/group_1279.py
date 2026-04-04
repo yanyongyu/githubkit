@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    enable_debug_logging: NotRequired[bool]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    enable_debug_logging: NotRequired[bool]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

@@ -9,19 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
+class AgentsTasksGetResponse401(GitHubModel):
+    """AgentsTasksGetResponse401
 
-    disable_self_hosted_runners_for_all_orgs: bool = Field(
-        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[list[AgentsTasksGetResponse401PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody)
+model_rebuild(AgentsTasksGetResponse401)
+model_rebuild(AgentsTasksGetResponse401PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody",)
+__all__ = (
+    "AgentsTasksGetResponse401",
+    "AgentsTasksGetResponse401PropErrorsItems",
+)

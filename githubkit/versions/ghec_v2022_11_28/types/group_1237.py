@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0309 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
 
-
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
-
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
 )

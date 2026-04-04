@@ -79,6 +79,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -122,6 +123,7 @@ class DependabotClient:
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -157,6 +159,7 @@ class DependabotClient:
         self,
         enterprise: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -200,6 +203,7 @@ class DependabotClient:
         url = f"/enterprises/{enterprise}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -657,6 +661,7 @@ class DependabotClient:
         self,
         org: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -701,6 +706,7 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -740,6 +746,7 @@ class DependabotClient:
         self,
         org: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -784,6 +791,7 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -1636,6 +1644,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -1667,6 +1676,7 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,
@@ -1705,6 +1715,7 @@ class DependabotClient:
         owner: str,
         repo: str,
         *,
+        classification: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
         severity: Missing[str] = UNSET,
         ecosystem: Missing[str] = UNSET,
@@ -1736,6 +1747,7 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/alerts"
 
         params = {
+            "classification": classification,
             "state": state,
             "severity": severity,
             "ecosystem": ecosystem,

@@ -9,52 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgSettingsImmutableReleasesPutBodyType(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
-        ]
-    ]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    attestations: NotRequired[
-        list[
-            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
-    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgSettingsImmutableReleasesPutBodyType",
+    "OrgsOrgSettingsImmutableReleasesPutBodyTypeForResponse",
 )

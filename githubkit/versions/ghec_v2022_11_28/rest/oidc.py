@@ -22,14 +22,16 @@ from githubkit.utils import UNSET, exclude_unset
 if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
+    from githubkit.typing import Missing
+    from githubkit.utils import UNSET
 
     from ..models import EmptyObject, OidcCustomPropertyInclusion, OidcCustomSub
     from ..types import (
         EmptyObjectTypeForResponse,
         OidcCustomPropertyInclusionInputType,
         OidcCustomPropertyInclusionTypeForResponse,
-        OidcCustomSubType,
         OidcCustomSubTypeForResponse,
+        OrgsOrgActionsOidcCustomizationSubPutBodyType,
     )
 
 
@@ -727,7 +729,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OidcCustomSubType,
+        data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -738,7 +740,7 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        include_claim_keys: list[str],
+        include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     def update_oidc_custom_sub_template_for_org(
@@ -747,7 +749,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OidcCustomSubType] = UNSET,
+        data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
@@ -761,7 +763,11 @@ class OidcClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
-        from ..models import BasicError, EmptyObject, OidcCustomSub
+        from ..models import (
+            BasicError,
+            EmptyObject,
+            OrgsOrgActionsOidcCustomizationSubPutBody,
+        )
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
@@ -773,7 +779,7 @@ class OidcClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OidcCustomSub, json)
+            json = type_validate_python(OrgsOrgActionsOidcCustomizationSubPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -796,7 +802,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: OidcCustomSubType,
+        data: OrgsOrgActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     @overload
@@ -807,7 +813,7 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        include_claim_keys: list[str],
+        include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
@@ -816,7 +822,7 @@ class OidcClient:
         *,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        data: Missing[OidcCustomSubType] = UNSET,
+        data: Missing[OrgsOrgActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject, EmptyObjectTypeForResponse]:
         """oidc/update-oidc-custom-sub-template-for-org
@@ -830,7 +836,11 @@ class OidcClient:
         See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization
         """
 
-        from ..models import BasicError, EmptyObject, OidcCustomSub
+        from ..models import (
+            BasicError,
+            EmptyObject,
+            OrgsOrgActionsOidcCustomizationSubPutBody,
+        )
 
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
@@ -842,7 +852,7 @@ class OidcClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OidcCustomSub, json)
+            json = type_validate_python(OrgsOrgActionsOidcCustomizationSubPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

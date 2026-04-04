@@ -34,6 +34,7 @@ class ExemptionRequestType(TypedDict):
             "secret_scanning_closure",
             "code_scanning_alert_dismissal",
             "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
         ]
     ]
     exemption_request_data: NotRequired[
@@ -43,6 +44,7 @@ class ExemptionRequestType(TypedDict):
             DismissalRequestSecretScanningType,
             DismissalRequestCodeScanningType,
             DismissalRequestDependabotType,
+            DismissalRequestLicenseComplianceType,
         ]
     ]
     resource_identifier: NotRequired[str]
@@ -54,6 +56,7 @@ class ExemptionRequestType(TypedDict):
             DismissalRequestSecretScanningMetadataType,
             DismissalRequestCodeScanningMetadataType,
             DismissalRequestDependabotMetadataType,
+            DismissalRequestLicenseComplianceMetadataType,
             None,
         ]
     ]
@@ -81,6 +84,7 @@ class ExemptionRequestTypeForResponse(TypedDict):
             "secret_scanning_closure",
             "code_scanning_alert_dismissal",
             "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
         ]
     ]
     exemption_request_data: NotRequired[
@@ -90,6 +94,7 @@ class ExemptionRequestTypeForResponse(TypedDict):
             DismissalRequestSecretScanningTypeForResponse,
             DismissalRequestCodeScanningTypeForResponse,
             DismissalRequestDependabotTypeForResponse,
+            DismissalRequestLicenseComplianceTypeForResponse,
         ]
     ]
     resource_identifier: NotRequired[str]
@@ -101,6 +106,7 @@ class ExemptionRequestTypeForResponse(TypedDict):
             DismissalRequestSecretScanningMetadataTypeForResponse,
             DismissalRequestCodeScanningMetadataTypeForResponse,
             DismissalRequestDependabotMetadataTypeForResponse,
+            DismissalRequestLicenseComplianceMetadataTypeForResponse,
             None,
         ]
     ]
@@ -196,6 +202,26 @@ class DismissalRequestDependabotMetadataTypeForResponse(TypedDict):
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ]
+
+
+class DismissalRequestLicenseComplianceMetadataType(TypedDict):
+    """License compliance alert closure request metadata
+
+    Metadata for a License compliance alert closure request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["amendment", "private package", "inaccurate license"]]
+
+
+class DismissalRequestLicenseComplianceMetadataTypeForResponse(TypedDict):
+    """License compliance alert closure request metadata
+
+    Metadata for a License compliance alert closure request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["amendment", "private package", "inaccurate license"]]
 
 
 class ExemptionRequestPushRulesetBypassType(TypedDict):
@@ -338,6 +364,40 @@ class DismissalRequestDependabotPropDataItemsTypeForResponse(TypedDict):
     alert_number: NotRequired[str]
 
 
+class DismissalRequestLicenseComplianceType(TypedDict):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: NotRequired[Literal["license_compliance_dismissal"]]
+    data: NotRequired[list[DismissalRequestLicenseCompliancePropDataItemsType]]
+
+
+class DismissalRequestLicenseComplianceTypeForResponse(TypedDict):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: NotRequired[Literal["license_compliance_dismissal"]]
+    data: NotRequired[
+        list[DismissalRequestLicenseCompliancePropDataItemsTypeForResponse]
+    ]
+
+
+class DismissalRequestLicenseCompliancePropDataItemsType(TypedDict):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestLicenseCompliancePropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
 class ExemptionRequestSecretScanningType(TypedDict):
     """Secret scanning push protection exemption request data
 
@@ -409,6 +469,12 @@ __all__ = (
     "DismissalRequestDependabotPropDataItemsTypeForResponse",
     "DismissalRequestDependabotType",
     "DismissalRequestDependabotTypeForResponse",
+    "DismissalRequestLicenseComplianceMetadataType",
+    "DismissalRequestLicenseComplianceMetadataTypeForResponse",
+    "DismissalRequestLicenseCompliancePropDataItemsType",
+    "DismissalRequestLicenseCompliancePropDataItemsTypeForResponse",
+    "DismissalRequestLicenseComplianceType",
+    "DismissalRequestLicenseComplianceTypeForResponse",
     "DismissalRequestSecretScanningMetadataType",
     "DismissalRequestSecretScanningMetadataTypeForResponse",
     "DismissalRequestSecretScanningPropDataItemsType",

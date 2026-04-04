@@ -154,6 +154,15 @@ class OrganizationSecretScanningAlert(GitHubModel):
         description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
     )
     assigned_to: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    closure_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request author.",
+    )
+    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request reviewer.",
+    )
+    closure_request_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
 
 
 model_rebuild(OrganizationSecretScanningAlert)

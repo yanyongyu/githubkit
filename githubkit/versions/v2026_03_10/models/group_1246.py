@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,48 +18,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-    location: Missing[str] = Field(
+    title: Missing[Union[str, int, None]] = Field(
+        default=UNSET, description="The title of the issue."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contents of the issue."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The open or closed state of the issue."
+    )
+    state_reason: Missing[
+        Union[None, Literal["completed", "not_planned", "duplicate", "reopened"]]
+    ] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
+        description="The reason for the state change. Ignored unless `state` is changed.",
     )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
     )
-    client_ip: Missing[str] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="IP for location auto-detection when proxying a request",
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
     )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
+    ] = Field(
         default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
     )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
+    type: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(description="The value to set for the field")
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchBody",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+)

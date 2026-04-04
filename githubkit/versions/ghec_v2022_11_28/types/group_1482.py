@@ -13,19 +13,19 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    state: Literal["active"]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    state: Literal["active"]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "UserMembershipsOrgsOrgPatchBodyType",
-    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

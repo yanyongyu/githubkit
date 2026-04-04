@@ -9,49 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    total_count: int
-    secrets: list[RepoCodespacesSecretType]
-
-
-class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[RepoCodespacesSecretTypeForResponse]
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBody"""
 
-    Set repository secrets for GitHub Codespaces.
+    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+
+
+class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
+    ]
 
 
-class RepoCodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsPostBodyPropBundle
 
-    Set repository secrets for GitHub Codespaces.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
+
+
+ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "RepoCodespacesSecretType",
-    "RepoCodespacesSecretTypeForResponse",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsPostBodyType",
+    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
 )

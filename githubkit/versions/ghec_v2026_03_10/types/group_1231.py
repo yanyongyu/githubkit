@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    issue_field_id: int
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    issue_field_id: int
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

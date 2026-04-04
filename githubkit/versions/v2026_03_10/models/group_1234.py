@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,32 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1230 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoHooksPostBody(GitHubModel):
+    """ReposOwnerRepoHooksPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
-
-    cname: Missing[Union[str, None]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
     )
-    https_enforced: Missing[bool] = Field(
+    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof3)
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3",)
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoHooksPostBody)
+model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
+
+__all__ = (
+    "ReposOwnerRepoHooksPostBody",
+    "ReposOwnerRepoHooksPostBodyPropConfig",
+)

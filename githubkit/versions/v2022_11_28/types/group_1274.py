@@ -9,24 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
-
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+from .group_1271 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof2"""
+
+    cname: Union[str, None]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoSubscriptionPutBodyType",
-    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof2Type",
+    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
 )

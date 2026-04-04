@@ -110,6 +110,315 @@ if TYPE_CHECKING or is_lazy_disabled():
         AddedToProjectIssueEventPropProjectCard as AddedToProjectIssueEventPropProjectCard,
     )
     from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200 as AgentsReposOwnerRepoTasksGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse400 as AgentsReposOwnerRepoTasksGetResponse400,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse401 as AgentsReposOwnerRepoTasksGetResponse401,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse403 as AgentsReposOwnerRepoTasksGetResponse403,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse404 as AgentsReposOwnerRepoTasksGetResponse404,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse422 as AgentsReposOwnerRepoTasksGetResponse422,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostBody as AgentsReposOwnerRepoTasksPostBody,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201 as AgentsReposOwnerRepoTasksPostResponse201,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0 as AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropOwner as AgentsReposOwnerRepoTasksPostResponse201PropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropRepository as AgentsReposOwnerRepoTasksPostResponse201PropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems as AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse400 as AgentsReposOwnerRepoTasksPostResponse400,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse401 as AgentsReposOwnerRepoTasksPostResponse401,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse403 as AgentsReposOwnerRepoTasksPostResponse403,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse422 as AgentsReposOwnerRepoTasksPostResponse422,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200 as AgentsReposOwnerRepoTasksTaskIdGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse400 as AgentsReposOwnerRepoTasksTaskIdGetResponse400,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse401 as AgentsReposOwnerRepoTasksTaskIdGetResponse401,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse403 as AgentsReposOwnerRepoTasksTaskIdGetResponse403,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse404 as AgentsReposOwnerRepoTasksTaskIdGetResponse404,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse422 as AgentsReposOwnerRepoTasksTaskIdGetResponse422,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200 as AgentsTasksGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItems as AgentsTasksGetResponse200PropTasksItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropOwner as AgentsTasksGetResponse200PropTasksItemsPropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropRepository as AgentsTasksGetResponse200PropTasksItemsPropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse400 as AgentsTasksGetResponse400,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse400PropErrorsItems as AgentsTasksGetResponse400PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse401 as AgentsTasksGetResponse401,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse401PropErrorsItems as AgentsTasksGetResponse401PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse403 as AgentsTasksGetResponse403,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse403PropErrorsItems as AgentsTasksGetResponse403PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse422 as AgentsTasksGetResponse422,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksGetResponse422PropErrorsItems as AgentsTasksGetResponse422PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200 as AgentsTasksTaskIdGetResponse200,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0 as AgentsTasksTaskIdGetResponse200Allof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0 as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1 as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0 as AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropOwner as AgentsTasksTaskIdGetResponse200Allof0PropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropRepository as AgentsTasksTaskIdGetResponse200Allof0PropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems as AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1 as AgentsTasksTaskIdGetResponse200Allof1,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse400 as AgentsTasksTaskIdGetResponse400,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse400PropErrorsItems as AgentsTasksTaskIdGetResponse400PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse401 as AgentsTasksTaskIdGetResponse401,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse401PropErrorsItems as AgentsTasksTaskIdGetResponse401PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse403 as AgentsTasksTaskIdGetResponse403,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse403PropErrorsItems as AgentsTasksTaskIdGetResponse403PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse404 as AgentsTasksTaskIdGetResponse404,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse404PropErrorsItems as AgentsTasksTaskIdGetResponse404PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse422 as AgentsTasksTaskIdGetResponse422,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        AgentsTasksTaskIdGetResponse422PropErrorsItems as AgentsTasksTaskIdGetResponse422PropErrorsItems,
+    )
+    from githubkit.versions.v2026_03_10.models import (
         ApiInsightsRouteStatsItems as ApiInsightsRouteStatsItems,
     )
     from githubkit.versions.v2026_03_10.models import (
@@ -1394,6 +1703,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersPostBodyPropImage as OrgsOrgActionsHostedRunnersPostBodyPropImage,
+    )
+    from githubkit.versions.v2026_03_10.models import (
+        OrgsOrgActionsOidcCustomizationSubPutBody as OrgsOrgActionsOidcCustomizationSubPutBody,
     )
     from githubkit.versions.v2026_03_10.models import (
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
@@ -13359,6 +13671,109 @@ else:
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+            "AgentsReposOwnerRepoTasksGetResponse200",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItems",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+            "AgentsReposOwnerRepoTasksGetResponse400",
+            "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoTasksGetResponse401",
+            "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoTasksGetResponse403",
+            "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems",
+            "AgentsReposOwnerRepoTasksGetResponse404",
+            "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoTasksGetResponse422",
+            "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems",
+            "AgentsReposOwnerRepoTasksPostBody",
+            "AgentsReposOwnerRepoTasksPostResponse201",
+            "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0",
+            "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems",
+            "AgentsReposOwnerRepoTasksPostResponse201PropOwner",
+            "AgentsReposOwnerRepoTasksPostResponse201PropRepository",
+            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems",
+            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0",
+            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1",
+            "AgentsReposOwnerRepoTasksPostResponse400",
+            "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoTasksPostResponse401",
+            "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoTasksPostResponse403",
+            "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems",
+            "AgentsReposOwnerRepoTasksPostResponse422",
+            "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse400",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse401",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse422",
+            "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems",
+            "AgentsTasksGetResponse200",
+            "AgentsTasksGetResponse200PropTasksItems",
+            "AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+            "AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
+            "AgentsTasksGetResponse200PropTasksItemsPropOwner",
+            "AgentsTasksGetResponse200PropTasksItemsPropRepository",
+            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems",
+            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+            "AgentsTasksGetResponse400",
+            "AgentsTasksGetResponse400PropErrorsItems",
+            "AgentsTasksGetResponse401",
+            "AgentsTasksGetResponse401PropErrorsItems",
+            "AgentsTasksGetResponse403",
+            "AgentsTasksGetResponse403PropErrorsItems",
+            "AgentsTasksGetResponse422",
+            "AgentsTasksGetResponse422PropErrorsItems",
+            "AgentsTasksTaskIdGetResponse200",
+            "AgentsTasksTaskIdGetResponse200Allof0",
+            "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+            "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+            "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
+            "AgentsTasksTaskIdGetResponse200Allof0PropOwner",
+            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems",
+            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0",
+            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1",
+            "AgentsTasksTaskIdGetResponse200Allof1",
+            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
+            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+            "AgentsTasksTaskIdGetResponse400",
+            "AgentsTasksTaskIdGetResponse400PropErrorsItems",
+            "AgentsTasksTaskIdGetResponse401",
+            "AgentsTasksTaskIdGetResponse401PropErrorsItems",
+            "AgentsTasksTaskIdGetResponse403",
+            "AgentsTasksTaskIdGetResponse403PropErrorsItems",
+            "AgentsTasksTaskIdGetResponse404",
+            "AgentsTasksTaskIdGetResponse404PropErrorsItems",
+            "AgentsTasksTaskIdGetResponse422",
+            "AgentsTasksTaskIdGetResponse422PropErrorsItems",
             "AppManifestsCodeConversionsPostResponse201",
             "AppManifestsCodeConversionsPostResponse201Allof1",
             "AppHookConfigPatchBody",
@@ -13422,6 +13837,7 @@ else:
             "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200",
             "OrgsOrgActionsHostedRunnersPlatformsGetResponse200",
             "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",
+            "OrgsOrgActionsOidcCustomizationSubPutBody",
             "OrgsOrgActionsPermissionsPutBody",
             "OrgsOrgActionsPermissionsRepositoriesGetResponse200",
             "OrgsOrgActionsPermissionsRepositoriesPutBody",

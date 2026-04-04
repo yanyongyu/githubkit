@@ -16,15 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

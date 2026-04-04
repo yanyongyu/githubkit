@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC Subject customization
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    id: NotRequired[int]
-    name: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
-    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

@@ -9,27 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
-
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+from .group_0078 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
+
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
+
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200TypeForResponse",
 )

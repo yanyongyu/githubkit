@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0108 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgCopilotCodingAgentPermissionsPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsPutBodyType",
+    "OrgsOrgCopilotCodingAgentPermissionsPutBodyTypeForResponse",
 )

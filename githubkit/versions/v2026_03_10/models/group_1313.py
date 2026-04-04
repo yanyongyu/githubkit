@@ -16,28 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    attestations: Missing[
-        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
-    GitHubModel
-):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    subscribed: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
+    )
 
 
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
-model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

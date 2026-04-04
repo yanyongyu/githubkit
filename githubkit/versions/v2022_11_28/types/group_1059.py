@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
 )

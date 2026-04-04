@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int = Field(description="External Group Id")
+class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
+model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)

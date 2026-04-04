@@ -13,23 +13,61 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
 
 
-class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    budget_scope: NotRequired[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
+    budget_product_sku: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsPutBodyType",
-    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

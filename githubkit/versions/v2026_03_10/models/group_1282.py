@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,33 +16,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoPullsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    title: Missing[str] = Field(
+        default=UNSET,
+        description="The title of the new pull request. Required unless `issue` is specified.",
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    head: str = Field(
+        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
+    head_repo: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
     )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
+    base: str = Field(
+        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
     )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
     )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
+    )
+    issue: Missing[int] = Field(
+        default=UNSET,
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(ReposOwnerRepoPullsPostBody)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPostBody",)

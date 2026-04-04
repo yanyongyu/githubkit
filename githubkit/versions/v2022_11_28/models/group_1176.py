@@ -12,16 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    message: Missing[str] = Field(default=UNSET)
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0)
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",)

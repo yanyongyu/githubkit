@@ -93,6 +93,9 @@ class SearchClient:
         *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
         language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
 
+        > [!NOTE]
+        > `repository.description`, `repository.owner.type`, and `repository.owner.node_id` are closing down on this endpoint and will return `null` in a future API version. Use the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint (`GET /repos/{owner}/{repo}`) to retrieve full repository metadata.
+
         This endpoint requires you to authenticate and limits you to 10 requests per minute.
 
         See also: https://docs.github.com/rest/search/search#search-code
@@ -164,6 +167,9 @@ class SearchClient:
         *   Only files smaller than 384 KB are searchable.
         *   You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing
         language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is.
+
+        > [!NOTE]
+        > `repository.description`, `repository.owner.type`, and `repository.owner.node_id` are closing down on this endpoint and will return `null` in a future API version. Use the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint (`GET /repos/{owner}/{repo}`) to retrieve full repository metadata.
 
         This endpoint requires you to authenticate and limits you to 10 requests per minute.
 
@@ -330,6 +336,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -372,6 +379,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -387,6 +395,7 @@ class SearchClient:
                 "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 
@@ -413,6 +422,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         advanced_search: Missing[str] = UNSET,
+        search_type: Missing[Literal["semantic", "hybrid"]] = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
     ) -> Response[
@@ -455,6 +465,7 @@ class SearchClient:
             "per_page": per_page,
             "page": page,
             "advanced_search": advanced_search,
+            "search_type": search_type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -470,6 +481,7 @@ class SearchClient:
                 "503": EventsGetResponse503,
                 "422": ValidationError,
                 "403": BasicError,
+                "401": BasicError,
             },
         )
 

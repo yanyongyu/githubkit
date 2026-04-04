@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0262 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "ReposOwnerRepoActionsSecretsGetResponse200Type",
-    "ReposOwnerRepoActionsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

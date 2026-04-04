@@ -12,15 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int = Field()
-    platforms: list[str] = Field()
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPlatformsGetResponse200)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("OrgsOrgActionsHostedRunnersPlatformsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)

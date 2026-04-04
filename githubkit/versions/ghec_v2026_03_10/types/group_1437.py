@@ -12,25 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    new_name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class ReposOwnerRepoLabelsNamePatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    previous_tag_name: NotRequired[str]
-    configuration_file_path: NotRequired[str]
+    new_name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
-    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
+    "ReposOwnerRepoLabelsNamePatchBodyType",
+    "ReposOwnerRepoLabelsNamePatchBodyTypeForResponse",
 )

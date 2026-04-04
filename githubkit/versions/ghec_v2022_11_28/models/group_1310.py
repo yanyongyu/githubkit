@@ -12,24 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0054 import Runner
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    bypass_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the bypass review."
-    )
+    total_count: int = Field()
+    runners: list[Runner] = Field()
 
 
-model_rebuild(
-    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
-)
+model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
 
-__all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
-)
+__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)

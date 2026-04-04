@@ -9,55 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
-
-
-class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
-
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    attestations: NotRequired[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
+    ]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
+    attestations: NotRequired[
+        list[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: NotRequired[
+        Union[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
+            None,
+        ]
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: NotRequired[
+        Union[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse,
+            None,
+        ]
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
+    ]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
 
-    Key/value pairs to provide settings for this webhook.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+pVerificationMaterial
+"""
+
+
+OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+pVerificationMaterial
+"""
+
+
+OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+pDsseEnvelope
+"""
+
+
+OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+pDsseEnvelope
+"""
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

@@ -9,70 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class OrgsOrgReposPostBodyType(TypedDict):
+    """OrgsOrgReposPostBody"""
 
-    total_count: int
-    workflows: list[WorkflowType]
-
-
-class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
-
-    total_count: int
-    workflows: list[WorkflowTypeForResponse]
-
-
-class WorkflowType(TypedDict):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
     name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[_dt.datetime]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
 
 
-class WorkflowTypeForResponse(TypedDict):
-    """Workflow
+class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgReposPostBody"""
 
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
     name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    description: NotRequired[str]
+    homepage: NotRequired[str]
+    private: NotRequired[bool]
+    visibility: NotRequired[Literal["public", "private"]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    is_template: NotRequired[bool]
+    team_id: NotRequired[int]
+    auto_init: NotRequired[bool]
+    gitignore_template: NotRequired[str]
+    license_template: NotRequired[str]
+    allow_squash_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    use_squash_pr_title_as_default: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-    created_at: str
-    updated_at: str
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[str]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    custom_properties: NotRequired[
+        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
+    ]
+
+
+OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
+
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
+
+
+OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""OrgsOrgReposPostBodyPropCustomProperties
+
+The custom properties for the new repository. The keys are the custom property
+names, and the values are the corresponding custom property values.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
-    "WorkflowType",
-    "WorkflowTypeForResponse",
+    "OrgsOrgReposPostBodyPropCustomPropertiesType",
+    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
+    "OrgsOrgReposPostBodyType",
+    "OrgsOrgReposPostBodyTypeForResponse",
 )

@@ -9,49 +9,139 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    total_count: int
-    secrets: list[RepoCodespacesSecretType]
-
-
-class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[RepoCodespacesSecretTypeForResponse]
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    Set repository secrets for GitHub Codespaces.
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse
+    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
+    ]
 
 
-class RepoCodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndle
 
-    Set repository secrets for GitHub Codespaces.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropVerificationMaterial
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropDsseEnvelope
+"""
+
+
+ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+ndlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "RepoCodespacesSecretType",
-    "RepoCodespacesSecretTypeForResponse",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

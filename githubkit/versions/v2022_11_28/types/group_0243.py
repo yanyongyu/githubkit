@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class SecretScanningLocationCommitType(TypedDict):
@@ -28,6 +28,7 @@ class SecretScanningLocationCommitType(TypedDict):
     blob_url: str
     commit_sha: str
     commit_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationCommitTypeForResponse(TypedDict):
@@ -46,6 +47,7 @@ class SecretScanningLocationCommitTypeForResponse(TypedDict):
     blob_url: str
     commit_sha: str
     commit_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationWikiCommitType(TypedDict):
@@ -92,6 +94,7 @@ class SecretScanningLocationIssueBodyType(TypedDict):
     """
 
     issue_body_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
@@ -102,6 +105,7 @@ class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
     """
 
     issue_body_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationDiscussionTitleType(TypedDict):
@@ -152,6 +156,7 @@ class SecretScanningLocationPullRequestBodyType(TypedDict):
     """
 
     pull_request_body_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
@@ -162,6 +167,7 @@ class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
     """
 
     pull_request_body_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestReviewType(TypedDict):
@@ -172,6 +178,7 @@ class SecretScanningLocationPullRequestReviewType(TypedDict):
     """
 
     pull_request_review_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
@@ -182,6 +189,7 @@ class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
     """
 
     pull_request_review_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (

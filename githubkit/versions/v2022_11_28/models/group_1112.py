@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,14 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    )
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
+    )
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

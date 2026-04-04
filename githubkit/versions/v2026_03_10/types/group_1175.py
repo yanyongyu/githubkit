@@ -9,22 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    message: NotRequired[str]
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str]
 
 
-class ReposOwnerRepoDeploymentsPostResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    message: NotRequired[str]
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostResponse202Type",
-    "ReposOwnerRepoDeploymentsPostResponse202TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
 )

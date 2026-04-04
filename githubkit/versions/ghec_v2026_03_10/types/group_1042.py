@@ -9,26 +9,206 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0054 import RunnerType, RunnerTypeForResponse
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
+
+    Full session details within a task
+    """
+
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
+    ]
+    owner: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
+    ]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
+    ]
+    agent_id: NotRequired[int]
+    agent_task_id: NotRequired[str]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    completed_at: NotRequired[_dt.datetime]
+    event_type: NotRequired[str]
+    event_url: NotRequired[str]
+    event_content: NotRequired[str]
+    event_identifiers: NotRequired[list[str]]
+    resource_type: NotRequired[str]
+    resource_id: NotRequired[int]
+    resource_number: NotRequired[int]
+    resource_global_id: NotRequired[str]
+    resource_state: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    workflow_run_id: NotRequired[int]
+    model: NotRequired[str]
+    premium_requests: NotRequired[float]
+    error: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerType]]
+    Full session details within a task
+    """
+
+    id: str
+    name: NotRequired[str]
+    user: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
+    ]
+    owner: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
+    ]
+    repository: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
+    ]
+    agent_id: NotRequired[int]
+    agent_task_id: NotRequired[str]
+    task_id: NotRequired[str]
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ]
+    created_at: str
+    updated_at: NotRequired[str]
+    completed_at: NotRequired[str]
+    event_type: NotRequired[str]
+    event_url: NotRequired[str]
+    event_content: NotRequired[str]
+    event_identifiers: NotRequired[list[str]]
+    resource_type: NotRequired[str]
+    resource_id: NotRequired[int]
+    resource_number: NotRequired[int]
+    resource_global_id: NotRequired[str]
+    resource_state: NotRequired[str]
+    head_ref: NotRequired[str]
+    base_ref: NotRequired[str]
+    workflow_run_id: NotRequired[int]
+    model: NotRequired[str]
+    premium_requests: NotRequired[float]
+    error: NotRequired[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-    total_count: NotRequired[float]
-    runners: NotRequired[list[RunnerTypeForResponse]]
+    The user who created this session
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+
+    The user who created this session
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
 )

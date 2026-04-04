@@ -9,31 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

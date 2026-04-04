@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    enabled: bool
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    enabled: bool
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

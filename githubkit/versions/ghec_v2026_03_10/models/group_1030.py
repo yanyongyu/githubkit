@@ -18,22 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems]
+    ] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+)

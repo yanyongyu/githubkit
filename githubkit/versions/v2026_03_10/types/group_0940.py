@@ -9,49 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class AgentsTasksGetResponse400Type(TypedDict):
+    """AgentsTasksGetResponse400
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsType]]
+    documentation_url: str
 
 
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class AgentsTasksGetResponse400TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse400
 
-Names and content for the files that make up the gist
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsTypeForResponse]]
+    documentation_url: str
 
 
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
+class AgentsTasksGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse400PropErrorsItems
 
-Names and content for the files that make up the gist
+    A single validation error
+    """
 
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "AgentsTasksGetResponse400PropErrorsItemsType",
+    "AgentsTasksGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse400Type",
+    "AgentsTasksGetResponse400TypeForResponse",
 )

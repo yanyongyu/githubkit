@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0104 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: float
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: float
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
 )

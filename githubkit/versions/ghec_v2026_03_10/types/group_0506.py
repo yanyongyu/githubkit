@@ -98,6 +98,9 @@ class SecretScanningAlertType(TypedDict):
     ]
     has_more_locations: NotRequired[bool]
     assigned_to: NotRequired[Union[None, SimpleUserType]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
 
 
 class SecretScanningAlertTypeForResponse(TypedDict):
@@ -152,6 +155,9 @@ class SecretScanningAlertTypeForResponse(TypedDict):
     ]
     has_more_locations: NotRequired[bool]
     assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
 
 
 __all__ = (

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class SecretScanningLocationIssueTitleType(TypedDict):
@@ -20,6 +20,7 @@ class SecretScanningLocationIssueTitleType(TypedDict):
     """
 
     issue_title_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
@@ -30,6 +31,7 @@ class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
     """
 
     issue_title_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationIssueCommentType(TypedDict):
@@ -40,6 +42,7 @@ class SecretScanningLocationIssueCommentType(TypedDict):
     """
 
     issue_comment_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
@@ -50,6 +53,7 @@ class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
     """
 
     issue_comment_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestTitleType(TypedDict):
@@ -60,6 +64,7 @@ class SecretScanningLocationPullRequestTitleType(TypedDict):
     """
 
     pull_request_title_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
@@ -70,6 +75,7 @@ class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
     """
 
     pull_request_title_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
@@ -81,6 +87,7 @@ class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
     """
 
     pull_request_review_comment_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
@@ -92,6 +99,7 @@ class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
     """
 
     pull_request_review_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (

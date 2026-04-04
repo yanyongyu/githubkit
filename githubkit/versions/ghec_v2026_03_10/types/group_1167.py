@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    subject_digests: list[str]
-    predicate_type: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsBulkListPostBodyType",
-    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

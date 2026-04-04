@@ -9,28 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
-    seats_cancelled: int
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+The tags associated with the deployment.
+"""
 
-    seats_cancelled: int
+
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+
+The tags associated with the deployment.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
 )

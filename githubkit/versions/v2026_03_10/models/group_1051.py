@@ -9,38 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1050 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
-    """OrgsOrgInvitationsPostBody"""
 
-    invitee_id: Missing[int] = Field(
+class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof0"""
+
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
+    )
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    email: Missing[str] = Field(
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
+        description="The slugs of the teams to set as the campaign managers.",
     )
-    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
-        Field(
-            default=UNSET,
-            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
-        )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
     )
-    team_ids: Missing[list[int]] = Field(
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Union[
+        Annotated[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+            Field(min_length=1 if PYDANTIC_V2 else None),
+        ],
+        None,
+    ] = Field(description="The code scanning alerts to include in this campaign")
+    generate_issues: Missing[bool] = Field(
         default=UNSET,
-        description="Specify IDs for the teams you want to invite new members to.",
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-model_rebuild(OrgsOrgInvitationsPostBody)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
 
-__all__ = ("OrgsOrgInvitationsPostBody",)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)

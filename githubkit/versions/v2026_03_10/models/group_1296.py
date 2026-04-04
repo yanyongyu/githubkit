@@ -12,19 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    body: str = Field(description="The body text of the pull request review.")
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",)

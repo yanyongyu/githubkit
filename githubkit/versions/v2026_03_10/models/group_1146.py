@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPostBody"""
-
-    head_sha: str = Field(description="The sha of the head commit.")
+from .group_0256 import Artifact
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)
+    total_count: int = Field()
+    artifacts: list[Artifact] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",)

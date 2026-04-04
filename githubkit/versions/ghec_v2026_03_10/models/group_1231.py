@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0087 import CopilotSeatDetails
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    issue_field_id: int = Field(
-        description="The ID of the IssueField to create the field for."
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

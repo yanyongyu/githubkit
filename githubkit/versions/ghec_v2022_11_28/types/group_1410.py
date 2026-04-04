@@ -12,43 +12,44 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1407 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
+
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-    public: NotRequired[bool]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
-    ]
-    public: NotRequired[bool]
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof2Type",
-    "ReposOwnerRepoPagesPutBodyAnyof2TypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
 )

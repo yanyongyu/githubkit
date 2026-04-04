@@ -54,6 +54,9 @@ class SecretScanningAlertWebhookType(TypedDict):
     publicly_leaked: NotRequired[Union[bool, None]]
     multi_repo: NotRequired[Union[bool, None]]
     assigned_to: NotRequired[Union[None, SimpleUserType]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
 
 
 class SecretScanningAlertWebhookTypeForResponse(TypedDict):
@@ -96,6 +99,9 @@ class SecretScanningAlertWebhookTypeForResponse(TypedDict):
     publicly_leaked: NotRequired[Union[bool, None]]
     multi_repo: NotRequired[Union[bool, None]]
     assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
 
 
 __all__ = (

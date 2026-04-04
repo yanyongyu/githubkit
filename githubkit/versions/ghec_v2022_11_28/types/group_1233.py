@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
-
-    title: str
-    body: NotRequired[str]
+from .group_0087 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    title: str
-    body: NotRequired[str]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

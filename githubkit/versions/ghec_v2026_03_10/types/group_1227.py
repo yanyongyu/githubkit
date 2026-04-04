@@ -9,95 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    total_count: int
+    secrets: list[CodespacesOrgSecretType]
+
+
+class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[CodespacesOrgSecretTypeForResponse]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    auth_type: NotRequired[
-        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
-    ]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class CodespacesOrgSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
 
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    url: str
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    auth_type: NotRequired[
-        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
-    ]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesPostBodyType",
-    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
+    "CodespacesOrgSecretType",
+    "CodespacesOrgSecretTypeForResponse",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
 )

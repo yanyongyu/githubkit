@@ -9,24 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str]
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
-    "ReposOwnerRepoDependabotSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0TypeForResponse",
 )

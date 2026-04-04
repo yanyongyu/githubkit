@@ -12,16 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
 
-    message: Missing[str] = Field(default=UNSET)
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody)
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",)

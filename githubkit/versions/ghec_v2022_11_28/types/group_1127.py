@@ -11,27 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0036 import (
-    ActionsHostedRunnerCustomImageType,
-    ActionsHostedRunnerCustomImageTypeForResponse,
-)
+from .group_0110 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageType]
+    properties: list[CustomPropertyType]
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    total_count: int
-    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
 )

@@ -11,21 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    RemovePatchBody
+    """
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    repositories: list[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        description="The repository names to remove from the installation.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody
+)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody",
+)

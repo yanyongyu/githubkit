@@ -11,19 +11,16 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)

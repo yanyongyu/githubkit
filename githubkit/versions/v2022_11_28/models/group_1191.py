@@ -9,20 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    state: Missing[Literal["open", "dismissed"]] = Field(
+        default=UNSET,
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    create_request: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, attempt to create an alert dismissal request.",
+    )
+    assignees: list[str] = Field(
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
+    )
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)

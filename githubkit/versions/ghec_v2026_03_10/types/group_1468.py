@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class UserCodespacesCodespaceNamePatchBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[list[str]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePatchBodyType",
-    "UserCodespacesCodespaceNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse",
 )

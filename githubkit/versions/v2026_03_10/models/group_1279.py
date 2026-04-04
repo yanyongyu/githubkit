@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,32 +16,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdPatchBody(GitHubModel):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: Missing[float] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    artifact_url: Missing[str] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+        description="The target environment for this GitHub Pages deployment.",
     )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    pages_build_version: str = Field(
+        default="GITHUB_SHA",
+        description="A unique string that represents the version of the build for this deployment.",
+    )
+    oidc_token: str = Field(
+        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
     )
 
 
-model_rebuild(TeamsTeamIdPatchBody)
+model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
 
-__all__ = ("TeamsTeamIdPatchBody",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)

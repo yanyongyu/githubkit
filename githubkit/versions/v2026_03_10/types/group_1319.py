@@ -9,49 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class TeamsTeamIdPatchBodyType(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdPatchBody"""
 
-    fields: list[
-        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    name: str
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
-
-
-class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
-
-    id: int
-    value: Union[str, float, None]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
-    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
+    "TeamsTeamIdPatchBodyType",
+    "TeamsTeamIdPatchBodyTypeForResponse",
 )

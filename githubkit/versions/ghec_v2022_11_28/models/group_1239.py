@@ -9,30 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
-    )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

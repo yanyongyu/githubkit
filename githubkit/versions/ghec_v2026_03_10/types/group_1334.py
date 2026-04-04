@@ -11,24 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0365 import CheckRunType, CheckRunTypeForResponse
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: list[str]
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
 
-    total_count: int
-    check_runs: list[CheckRunType]
+    Examples:
+        {'contexts': ['contexts']}
+    """
 
-
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: list[CheckRunTypeForResponse]
+    contexts: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckRunsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
 )

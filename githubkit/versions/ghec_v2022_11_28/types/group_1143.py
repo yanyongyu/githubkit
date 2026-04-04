@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0035 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+
+    usernames: list[str]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[ActionsHostedRunnerType]
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
 
-    total_count: float
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse",
 )

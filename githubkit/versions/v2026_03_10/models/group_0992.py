@@ -18,20 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    )
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+
+__all__ = (
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

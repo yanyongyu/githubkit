@@ -6,28 +6,28 @@ version = "2022-11-28"
 identifier = "2022-11-28"
 module = "v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/c1ed8648e9c212c2c510ce0a01cff128ba26a8bb/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/758e5523c8b6082bdd547cef042b884229a0355c/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
 
 [[descriptions]]
 version = "2022-11-28"
 identifier = "ghec-2022-11-28"
 module = "ghec_v2022_11_28"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/c1ed8648e9c212c2c510ce0a01cff128ba26a8bb/descriptions-next/ghec/ghec.2022-11-28.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/758e5523c8b6082bdd547cef042b884229a0355c/descriptions-next/ghec/ghec.2022-11-28.json"
 
 [[descriptions]]
 version = "2026-03-10"
 identifier = "2026-03-10"
 module = "v2026_03_10"
 is_latest = true
-source = "https://raw.githubusercontent.com/github/rest-api-description/c1ed8648e9c212c2c510ce0a01cff128ba26a8bb/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/758e5523c8b6082bdd547cef042b884229a0355c/descriptions-next/api.github.com/api.github.com.2026-03-10.json"
 
 [[descriptions]]
 version = "2026-03-10"
 identifier = "ghec-2026-03-10"
 module = "ghec_v2026_03_10"
 is_latest = false
-source = "https://raw.githubusercontent.com/github/rest-api-description/c1ed8648e9c212c2c510ce0a01cff128ba26a8bb/descriptions-next/ghec/ghec.2026-03-10.json"
+source = "https://raw.githubusercontent.com/github/rest-api-description/758e5523c8b6082bdd547cef042b884229a0355c/descriptions-next/ghec/ghec.2026-03-10.json"
 
 [[overrides]]
 [overrides.field_overrides]

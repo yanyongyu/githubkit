@@ -9,70 +9,189 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0112 import (
+    RepositoryRulesetBypassActorType,
+    RepositoryRulesetBypassActorTypeForResponse,
+)
+from .group_0131 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleCreationTypeForResponse,
+    RepositoryRuleDeletionType,
+    RepositoryRuleDeletionTypeForResponse,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleNonFastForwardTypeForResponse,
+    RepositoryRuleRequiredSignaturesType,
+    RepositoryRuleRequiredSignaturesTypeForResponse,
+)
+from .group_0132 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
+from .group_0134 import (
+    RepositoryRuleRequiredLinearHistoryType,
+    RepositoryRuleRequiredLinearHistoryTypeForResponse,
+)
+from .group_0135 import (
+    RepositoryRuleRequiredDeploymentsType,
+    RepositoryRuleRequiredDeploymentsTypeForResponse,
+)
+from .group_0137 import (
+    RepositoryRulePullRequestType,
+    RepositoryRulePullRequestTypeForResponse,
+)
+from .group_0139 import (
+    RepositoryRuleRequiredStatusChecksType,
+    RepositoryRuleRequiredStatusChecksTypeForResponse,
+)
+from .group_0141 import (
+    RepositoryRuleCommitMessagePatternType,
+    RepositoryRuleCommitMessagePatternTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRuleCommitAuthorEmailPatternType,
+    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+)
+from .group_0145 import (
+    RepositoryRuleCommitterEmailPatternType,
+    RepositoryRuleCommitterEmailPatternTypeForResponse,
+)
+from .group_0147 import (
+    RepositoryRuleBranchNamePatternType,
+    RepositoryRuleBranchNamePatternTypeForResponse,
+)
+from .group_0149 import (
+    RepositoryRuleTagNamePatternType,
+    RepositoryRuleTagNamePatternTypeForResponse,
+)
+from .group_0151 import (
+    RepositoryRuleFilePathRestrictionType,
+    RepositoryRuleFilePathRestrictionTypeForResponse,
+)
+from .group_0153 import (
+    RepositoryRuleMaxFilePathLengthType,
+    RepositoryRuleMaxFilePathLengthTypeForResponse,
+)
+from .group_0155 import (
+    RepositoryRuleFileExtensionRestrictionType,
+    RepositoryRuleFileExtensionRestrictionTypeForResponse,
+)
+from .group_0157 import (
+    RepositoryRuleMaxFileSizeType,
+    RepositoryRuleMaxFileSizeTypeForResponse,
+)
+from .group_0160 import (
+    RepositoryRuleWorkflowsType,
+    RepositoryRuleWorkflowsTypeForResponse,
+)
+from .group_0162 import (
+    RepositoryRuleCodeScanningType,
+    RepositoryRuleCodeScanningTypeForResponse,
+)
+from .group_0164 import (
+    RepositoryRuleCopilotCodeReviewType,
+    RepositoryRuleCopilotCodeReviewTypeForResponse,
+)
+from .group_0168 import (
+    OrgRulesetConditionsOneof0Type,
+    OrgRulesetConditionsOneof0TypeForResponse,
+)
+from .group_0169 import (
+    OrgRulesetConditionsOneof1Type,
+    OrgRulesetConditionsOneof1TypeForResponse,
+)
+from .group_0170 import (
+    OrgRulesetConditionsOneof2Type,
+    OrgRulesetConditionsOneof2TypeForResponse,
+)
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
-    total_count: int
-    workflows: list[WorkflowType]
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-
-class ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
-
-    total_count: int
-    workflows: list[WorkflowTypeForResponse]
-
-
-class WorkflowType(TypedDict):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
     ]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[_dt.datetime]
-
-
-class WorkflowTypeForResponse(TypedDict):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int
-    node_id: str
-    name: str
-    path: str
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleFilePathRestrictionType,
+                RepositoryRuleMaxFilePathLengthType,
+                RepositoryRuleFileExtensionRestrictionType,
+                RepositoryRuleMaxFileSizeType,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+                RepositoryRuleCopilotCodeReviewType,
+            ]
+        ]
     ]
-    created_at: str
-    updated_at: str
-    url: str
-    html_url: str
-    badge_url: str
-    deleted_at: NotRequired[str]
+
+
+class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
+
+    name: NotRequired[str]
+    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0TypeForResponse,
+            OrgRulesetConditionsOneof1TypeForResponse,
+            OrgRulesetConditionsOneof2TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                RepositoryRuleCreationTypeForResponse,
+                RepositoryRuleUpdateTypeForResponse,
+                RepositoryRuleDeletionTypeForResponse,
+                RepositoryRuleRequiredLinearHistoryTypeForResponse,
+                RepositoryRuleRequiredDeploymentsTypeForResponse,
+                RepositoryRuleRequiredSignaturesTypeForResponse,
+                RepositoryRulePullRequestTypeForResponse,
+                RepositoryRuleRequiredStatusChecksTypeForResponse,
+                RepositoryRuleNonFastForwardTypeForResponse,
+                RepositoryRuleCommitMessagePatternTypeForResponse,
+                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
+                RepositoryRuleCommitterEmailPatternTypeForResponse,
+                RepositoryRuleBranchNamePatternTypeForResponse,
+                RepositoryRuleTagNamePatternTypeForResponse,
+                RepositoryRuleFilePathRestrictionTypeForResponse,
+                RepositoryRuleMaxFilePathLengthTypeForResponse,
+                RepositoryRuleFileExtensionRestrictionTypeForResponse,
+                RepositoryRuleMaxFileSizeTypeForResponse,
+                RepositoryRuleWorkflowsTypeForResponse,
+                RepositoryRuleCodeScanningTypeForResponse,
+                RepositoryRuleCopilotCodeReviewTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsGetResponse200TypeForResponse",
-    "WorkflowType",
-    "WorkflowTypeForResponse",
+    "OrgsOrgRulesetsRulesetIdPutBodyType",
+    "OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse",
 )

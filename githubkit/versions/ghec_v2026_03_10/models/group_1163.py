@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,48 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
     name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
     )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
+        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
     )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    size: str = Field(
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
     )
-    artifact_url: Missing[str] = Field(
-        pattern="^https://",
+    runner_group_id: int = Field(
+        description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="The URL where the artifact is stored.",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
     )
-    path: Missing[str] = Field(default=UNSET, description="The path of the artifact.")
-    registry_url: str = Field(
-        min_length=1,
-        pattern="^https://",
-        description="The base URL of the artifact registry.",
-    )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The repository name within the registry."
-    )
-    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+    enable_static_ip: Missing[bool] = Field(
         default=UNSET,
-        description="The status of the artifact (e.g., active, inactive).",
+        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
+    image_gen: Missing[bool] = Field(
         default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+        description="Whether this runner should be used to generate custom images.",
     )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
+class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
 
-__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The unique identifier of the runner image."
+    )
+    source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET, description="The source of the runner image."
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+
+
+model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
+model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersPostBody",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+)

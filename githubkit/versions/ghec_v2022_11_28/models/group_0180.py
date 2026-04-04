@@ -12,6 +12,8 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class SecretScanningLocationIssueTitle(GitHubModel):
@@ -23,6 +25,10 @@ class SecretScanningLocationIssueTitle(GitHubModel):
 
     issue_title_url: str = Field(
         description="The API URL to get the issue where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue where the secret was detected.",
     )
 
 
@@ -36,6 +42,10 @@ class SecretScanningLocationIssueComment(GitHubModel):
     issue_comment_url: str = Field(
         description="The API URL to get the issue comment where the secret was detected."
     )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue comment where the secret was detected.",
+    )
 
 
 class SecretScanningLocationPullRequestTitle(GitHubModel):
@@ -47,6 +57,10 @@ class SecretScanningLocationPullRequestTitle(GitHubModel):
 
     pull_request_title_url: str = Field(
         description="The API URL to get the pull request where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
     )
 
 
@@ -60,6 +74,10 @@ class SecretScanningLocationPullRequestReviewComment(GitHubModel):
 
     pull_request_review_comment_url: str = Field(
         description="The API URL to get the pull request review comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review comment where the secret was detected.",
     )
 
 

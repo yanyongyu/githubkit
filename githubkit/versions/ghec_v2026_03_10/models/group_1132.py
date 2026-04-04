@@ -18,22 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

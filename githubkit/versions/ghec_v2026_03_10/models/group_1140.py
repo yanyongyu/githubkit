@@ -18,32 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+    name: str = Field(description="The name of the team.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the team."
     )
-    allows_public_repositories: Missing[bool] = Field(
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
     )
-    selected_workflows: Missing[list[str]] = Field(
+    group_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/enterprise-cloud@latest//rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+model_rebuild(EnterprisesEnterpriseTeamsPostBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseTeamsPostBody",)

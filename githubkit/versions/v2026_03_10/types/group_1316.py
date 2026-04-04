@@ -9,34 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0175 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
+    owner: NotRequired[str]
     name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
+    owner: NotRequired[str]
     name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
 )

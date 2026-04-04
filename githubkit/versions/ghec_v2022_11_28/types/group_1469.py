@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0241 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
 )

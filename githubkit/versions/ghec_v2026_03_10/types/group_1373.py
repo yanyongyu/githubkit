@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    email: NotRequired[str]
-    name: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",
-    "ReposOwnerRepoImportAuthorsAuthorIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",
+    "ReposOwnerRepoCommitsCommitShaCommentsPostBodyTypeForResponse",
 )

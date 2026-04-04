@@ -13,19 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgMigrationsPostBodyType(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
 
 
-class OrgsOrgSecurityProductEnablementPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgMigrationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    repositories: list[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[list[Literal["repositories"]]]
 
 
 __all__ = (
-    "OrgsOrgSecurityProductEnablementPostBodyType",
-    "OrgsOrgSecurityProductEnablementPostBodyTypeForResponse",
+    "OrgsOrgMigrationsPostBodyType",
+    "OrgsOrgMigrationsPostBodyTypeForResponse",
 )

@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    selected_usernames: list[str]
+    runners: list[int]
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    selected_usernames: list[str]
+    runners: list[int]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
-    "OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
 )

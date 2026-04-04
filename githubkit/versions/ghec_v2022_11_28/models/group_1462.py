@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,30 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
-        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
     )
-    synced_at: Missing[str] = Field(default=UNSET)
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="State of this Pull Request. Either `open` or `closed`.",
+    )
+    base: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+    )
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest//articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+    )
 
 
-class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
-    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-    group_id: str = Field(description="ID of the IdP group.")
-    group_name: str = Field(description="Name of the IdP group.")
-    group_description: str = Field(description="Description of the IdP group.")
-    id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
-model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
-
-__all__ = (
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
-    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0256 import ArtifactType, ArtifactTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    total_count: int
-    artifacts: list[ArtifactType]
+    async_: NotRequired[bool]
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    async_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
 )

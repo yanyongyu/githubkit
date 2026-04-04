@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["text", "number", "date"] = Field(
-        description="The field's data type."
-    )
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)

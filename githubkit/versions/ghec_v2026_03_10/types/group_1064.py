@@ -11,22 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
 
-    selected_enterprise_teams: list[str]
-
-
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    selected_enterprise_teams: list[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

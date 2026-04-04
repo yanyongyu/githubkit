@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0340 import WorkflowRun
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
-
-    total_count: int = Field()
-    workflow_runs: list[WorkflowRun] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200)
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",)
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

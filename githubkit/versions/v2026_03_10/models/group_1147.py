@@ -12,37 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0260 import Job
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
-
-    auto_trigger_checks: Missing[
-        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
-        default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
-    )
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
     GitHubModel
 ):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
-    )
+    total_count: int = Field()
+    jobs: list[Job] = Field()
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
 
-__all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)

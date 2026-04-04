@@ -13,16 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0118 import RunnerLabel
+
+class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
+    """GistsGistIdCommentsCommentIdPatchBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
 
-    total_count: int = Field()
-    labels: list[RunnerLabel] = Field()
-
-
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200)
-
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)

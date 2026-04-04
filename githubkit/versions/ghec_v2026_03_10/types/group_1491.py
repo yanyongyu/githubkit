@@ -9,52 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    attestations: NotRequired[
+    issue_field_values: NotRequired[
         list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
         ]
     ]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    attestations: NotRequired[
+    issue_field_values: NotRequired[
         list[
-            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
         ]
     ]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
     TypedDict
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    field_id: int
+    value: Union[str, float]
 
 
-class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
+    luesItems
+    """
 
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
-    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
 )

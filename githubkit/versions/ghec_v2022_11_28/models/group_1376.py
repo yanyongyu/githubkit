@@ -16,13 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
-    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
-    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
+    )
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
+    )
 
 
-model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

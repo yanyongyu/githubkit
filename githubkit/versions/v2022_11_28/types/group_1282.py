@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0180 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    properties: list[CustomPropertyValueType]
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "TeamsTeamIdReposOwnerRepoPutBodyType",
-    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
 )

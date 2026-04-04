@@ -14,14 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to assign the team to."
-    )
+    The total number of seats created for the members of the specified enterprise
+    team(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201",)

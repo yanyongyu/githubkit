@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    async_: Missing[bool] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
+        max_length=250 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
     )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

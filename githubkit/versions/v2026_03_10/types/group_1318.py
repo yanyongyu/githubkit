@@ -9,31 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
+        ]
+    ]
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    issue_field_values: NotRequired[
+        list[
+            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
+    aluesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
+
+
+class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
+    aluesItems
+    """
+
+    field_id: int
+    value: Union[str, float]
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType",
+    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
 )

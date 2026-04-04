@@ -9,26 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
 
-    total_count: int
-    platforms: list[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse(
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200"""
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
 
-    total_count: int
-    platforms: list[str]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200Type",
-    "EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401TypeForResponse",
 )

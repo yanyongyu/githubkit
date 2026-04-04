@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0118 import RunnerLabel
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.",
-    )
+    total_count: int = Field()
+    labels: list[RunnerLabel] = Field()
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",)

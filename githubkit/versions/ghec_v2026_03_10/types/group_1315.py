@@ -9,50 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-        ]
-    ]
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    app_id: int
-    setting: bool
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    environment_ids: list[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsTypeForResponse",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
+    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
 )

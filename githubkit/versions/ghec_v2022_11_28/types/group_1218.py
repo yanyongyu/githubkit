@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInvitationsPostBodyType(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[list[int]]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[_dt.datetime]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
-class OrgsOrgInvitationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[list[int]]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: NotRequired[str]
+    contact_link: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
 
 
 __all__ = (
-    "OrgsOrgInvitationsPostBodyType",
-    "OrgsOrgInvitationsPostBodyTypeForResponse",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
+    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
 )

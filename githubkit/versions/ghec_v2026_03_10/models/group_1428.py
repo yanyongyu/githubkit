@@ -11,22 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be removed."
+    labels: Missing[list[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description='The names of the labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue)."',
     )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be removed."
-    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)

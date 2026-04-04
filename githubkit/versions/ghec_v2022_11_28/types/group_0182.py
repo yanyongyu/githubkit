@@ -100,6 +100,9 @@ class OrganizationSecretScanningAlertType(TypedDict):
     ]
     has_more_locations: NotRequired[bool]
     assigned_to: NotRequired[Union[None, SimpleUserType]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserType]]
 
 
 class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
@@ -155,6 +158,9 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
     ]
     has_more_locations: NotRequired[bool]
     assigned_to: NotRequired[Union[None, SimpleUserTypeForResponse]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[None, SimpleUserTypeForResponse]]
 
 
 __all__ = (

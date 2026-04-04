@@ -16,15 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
-    )
+    attestations: Missing[
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
+model_rebuild(
+    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
+)
+
+__all__ = (
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

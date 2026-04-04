@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

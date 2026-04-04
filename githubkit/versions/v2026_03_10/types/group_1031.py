@@ -9,30 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
+    total_count: int
+    variables: list[OrganizationActionsVariableType]
+
+
+class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[OrganizationActionsVariableTypeForResponse]
+
+
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
     """
 
-    seats_cancelled: int
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
+    Organization variable for GitHub Actions.
     """
 
-    seats_cancelled: int
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
 )

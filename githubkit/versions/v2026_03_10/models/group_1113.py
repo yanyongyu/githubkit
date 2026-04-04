@@ -9,21 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
+        Field(description="A list of field updates to apply.")
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
+
+__all__ = (
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
+)

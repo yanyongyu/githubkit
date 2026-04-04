@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0255 import CodespaceType, CodespaceTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    permission: NotRequired[str]
+    total_count: int
+    codespaces: list[CodespaceType]
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    permission: NotRequired[str]
+    total_count: int
+    codespaces: list[CodespaceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",
-    "OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyTypeForResponse",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
+    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
 )

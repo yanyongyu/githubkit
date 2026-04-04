@@ -9,46 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1407 import (
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-)
+
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
-    public: bool
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    cname: NotRequired[Union[str, None]]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
-        ]
-    ]
-    public: bool
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPutBodyAnyof3Type",
-    "ReposOwnerRepoPagesPutBodyAnyof3TypeForResponse",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyType",
+    "ReposOwnerRepoHooksPostBodyTypeForResponse",
 )

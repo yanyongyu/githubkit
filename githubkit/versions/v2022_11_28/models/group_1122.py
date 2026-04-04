@@ -16,12 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)

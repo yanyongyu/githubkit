@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgInstallationsGetResponse200(GitHubModel):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems(GitHubModel):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+    repository_id: int = Field(description="The repository id")
+    alert_numbers: list[int] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="The alert numbers"
+    )
 
 
-model_rebuild(OrgsOrgInstallationsGetResponse200)
+model_rebuild(OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems)
 
-__all__ = ("OrgsOrgInstallationsGetResponse200",)
+__all__ = ("OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems",)

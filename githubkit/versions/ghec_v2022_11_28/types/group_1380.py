@@ -9,61 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
-    ]
-    assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBody"""
-
-    title: Union[str, int]
-    body: NotRequired[str]
-    assignee: NotRequired[Union[str, None]]
-    milestone: NotRequired[Union[str, int, None]]
-    labels: NotRequired[
-        list[
-            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ]
+    dismissed_comment: NotRequired[str]
     assignees: NotRequired[list[str]]
-    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-
-
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesPostBodyType",
-    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

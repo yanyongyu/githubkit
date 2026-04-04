@@ -9,26 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-
-
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[RepositoryType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    total_count: float
-    repositories: list[RepositoryTypeForResponse]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

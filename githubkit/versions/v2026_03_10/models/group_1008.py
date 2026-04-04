@@ -12,17 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
-    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for GitHub Actions."
+    )
 
 
-model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
+model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
 
-__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0327 import ArtifactType, ArtifactTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    total_count: int
-    artifacts: list[ArtifactType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
 )

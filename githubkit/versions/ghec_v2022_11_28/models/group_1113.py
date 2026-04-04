@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class GistsGistIdStarGetResponse404(GitHubModel):
-    """GistsGistIdStarGetResponse404"""
+class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
 
 
-model_rebuild(GistsGistIdStarGetResponse404)
+model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
 
-__all__ = ("GistsGistIdStarGetResponse404",)
+__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)

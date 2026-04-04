@@ -9,35 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    total_count: int = Field()
-    secrets: list[RepoCodespacesSecret] = Field()
-
-
-class RepoCodespacesSecret(GitHubModel):
-    """Codespaces Secret
-
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    attestations: Missing[
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
-model_rebuild(RepoCodespacesSecret)
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoAttestationsSubjectDigestGetResponse200)
+model_rebuild(
+    ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems
+)
 
 __all__ = (
-    "RepoCodespacesSecret",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
 )

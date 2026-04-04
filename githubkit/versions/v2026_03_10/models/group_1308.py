@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    filter_: Missing[str] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    visible_fields: Missing[list[int]] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
     )
 
 
-model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)

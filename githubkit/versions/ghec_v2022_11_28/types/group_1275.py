@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0329 import ArtifactType, ArtifactTypeForResponse
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    total_count: int
-    artifacts: list[ArtifactType]
-
-
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: list[ArtifactTypeForResponse]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",
-    "ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
 )

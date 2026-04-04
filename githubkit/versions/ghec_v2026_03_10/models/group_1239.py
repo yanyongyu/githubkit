@@ -11,21 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0110 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
-    )
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

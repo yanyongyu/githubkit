@@ -9,27 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
-class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    body: str
+    commit_id: str
+    path: str
+    position: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    line: NotRequired[int]
+    start_line: NotRequired[int]
+    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
+    in_reply_to: NotRequired[int]
+    subject_type: NotRequired[Literal["line", "file"]]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
 )

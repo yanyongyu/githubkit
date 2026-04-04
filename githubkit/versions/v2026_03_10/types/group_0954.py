@@ -13,91 +13,73 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class AgentsTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
 
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType
-    ]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
-
-    message: NotRequired[str]
-    budget: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse
-    ]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
-
-    id: NotRequired[str]
-    budget_amount: NotRequired[float]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
+    documentation_url: str
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200TypeForResponse",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422Type",
+    "AgentsTasksTaskIdGetResponse422TypeForResponse",
 )

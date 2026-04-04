@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    selected_repository_ids: list[int]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    selected_repository_ids: list[int]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
 )

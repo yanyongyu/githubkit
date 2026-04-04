@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0256 import Codespace
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs that can access the runner group."
+    )
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody)
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",)

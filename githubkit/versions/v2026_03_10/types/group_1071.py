@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    type: Literal["Issue", "PullRequest"]
-    id: int
-    owner: NotRequired[str]
-    repo: NotRequired[str]
-    number: NotRequired[int]
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse",
 )

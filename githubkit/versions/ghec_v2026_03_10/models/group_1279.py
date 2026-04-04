@@ -11,19 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0110 import CustomProperty
 
 
-class ReposOwnerRepoActionsSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoActionsSecretsSecretNamePutBody"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key) endpoint.",
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoActionsSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

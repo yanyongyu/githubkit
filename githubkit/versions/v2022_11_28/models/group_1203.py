@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

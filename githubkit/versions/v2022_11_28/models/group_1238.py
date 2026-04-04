@@ -17,21 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1237 import ReposOwnerRepoPagesPostBodyPropSource
 
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
-
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
     )
-    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
-        description="The source branch and directory used to publish your Pages site."
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the username to provide to `vcs_url`.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the password to provide to `vcs_url`.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)
+__all__ = ("ReposOwnerRepoImportPutBody",)

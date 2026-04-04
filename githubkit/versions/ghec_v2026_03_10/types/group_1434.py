@@ -12,21 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
 
-    message: NotRequired[str]
-    url: NotRequired[str]
+    sub_issue_id: int
+    after_id: NotRequired[int]
+    before_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
 )

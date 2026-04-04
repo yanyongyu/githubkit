@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    issue_field_id: int
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    issue_field_id: int
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

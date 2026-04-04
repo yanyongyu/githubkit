@@ -16,18 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    labels: NotRequired[list[str]]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    labels: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse",
 )

@@ -14,16 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailVisibilityPatchBody(GitHubModel):
-    """UserEmailVisibilityPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    visibility: Literal["public", "private"] = Field(
-        description="Denotes whether an email is publicly visible."
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(UserEmailVisibilityPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("UserEmailVisibilityPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

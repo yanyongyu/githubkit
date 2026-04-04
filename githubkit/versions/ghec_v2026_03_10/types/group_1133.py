@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+
+    name: str
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    total_count: float
-    repositories: list[RepositoryType]
-
-
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: list[RepositoryTypeForResponse]
+    name: str
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
 )

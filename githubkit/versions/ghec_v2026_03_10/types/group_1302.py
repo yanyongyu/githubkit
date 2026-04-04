@@ -9,32 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    enable_debug_logging: NotRequired[bool]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: list[str]
+    enable_debug_logging: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
+    "ReposOwnerRepoActionsJobsJobIdRerunPostBodyTypeForResponse",
 )

@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Examples:
-        {'users': ['mona']}
+    Actions OIDC subject customization for a repository
     """
 
-    users: list[str]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Examples:
-        {'users': ['mona']}
+    Actions OIDC subject customization for a repository
     """
 
-    users: list[str]
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
+    "ReposOwnerRepoActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

@@ -13,19 +13,23 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    scope: Literal["all", "all_without_configurations"]
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
+    scope: Literal["all", "all_without_configurations"]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
-    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyTypeForResponse",
 )

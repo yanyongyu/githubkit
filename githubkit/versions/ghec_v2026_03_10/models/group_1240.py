@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0108 import CustomPropertyValue
 
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
     )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

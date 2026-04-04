@@ -9,22 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
+        ]
+    ]
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
+    artifact_url: NotRequired[Union[str, None]]
+    registry_url: NotRequired[str]
+    repository: NotRequired[Union[str, None]]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutResponse200Type",
-    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
 )

@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0089 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+
+    body: str
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse(
     TypedDict
 ):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    body: str
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse",
 )

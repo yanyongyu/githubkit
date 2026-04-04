@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0258 import Artifact
-
-
-class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
-
-    total_count: int = Field()
-    artifacts: list[Artifact] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200)
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",)
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
+    )
+
+
+model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+
+__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)

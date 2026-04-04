@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
-
-    new_name: str = Field(description="The new name of the branch.")
+from .group_0265 import ActionsVariable
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchRenamePostBody)
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBody",)
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)

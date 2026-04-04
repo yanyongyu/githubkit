@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
-
-    repository_id: int
-    alert_numbers: list[int]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
-    repository_id: int
-    alert_numbers: list[int]
+    total_count: float
+    repositories: list[RepositoryType]
+
+
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+
+    total_count: float
+    repositories: list[RepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
-    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
 )

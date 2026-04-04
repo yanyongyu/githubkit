@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0244 import OrganizationCustomRepositoryRole
 
-class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
-        default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
     )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
-    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

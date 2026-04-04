@@ -9,50 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1010 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
-)
+
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgType]
 
 
-class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
+    total_count: float
+    runner_groups: list[RunnerGroupsOrgTypeForResponse]
+
+
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
     name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
-    ]
-    generate_issues: NotRequired[bool]
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
-class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class RunnerGroupsOrgTypeForResponse(TypedDict):
+    """RunnerGroupsOrg"""
 
+    id: float
     name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
-            None,
-        ]
-    ]
-    generate_issues: NotRequired[bool]
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    network_configuration_id: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof1Type",
-    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
+    "RunnerGroupsOrgType",
+    "RunnerGroupsOrgTypeForResponse",
 )

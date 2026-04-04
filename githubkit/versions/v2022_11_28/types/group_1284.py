@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0133 import CodespaceType, CodespaceTypeForResponse
+
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+
+    body: str
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
+class ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class UserCodespacesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    body: str
 
 
 __all__ = (
-    "UserCodespacesGetResponse200Type",
-    "UserCodespacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdPatchBodyTypeForResponse",
 )

@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0338 import WorkflowRunType, WorkflowRunTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunType]
+    pattern_config_version: NotRequired[str]
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
+class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
 
-    total_count: int
-    workflow_runs: list[WorkflowRunTypeForResponse]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

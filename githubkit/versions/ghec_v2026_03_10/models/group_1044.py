@@ -9,24 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0054 import Runner
 
+class AgentsTasksTaskIdGetResponse401(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+    errors: Missing[list[AgentsTasksTaskIdGetResponse401PropErrorsItems]] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(AgentsTasksTaskIdGetResponse401)
+model_rebuild(AgentsTasksTaskIdGetResponse401PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = (
+    "AgentsTasksTaskIdGetResponse401",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItems",
+)

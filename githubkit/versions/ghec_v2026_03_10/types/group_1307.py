@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0054 import RunnerType, RunnerTypeForResponse
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    bypass_review_id: NotRequired[int]
+    total_count: int
+    runners: list[RunnerType]
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    bypass_review_id: NotRequired[int]
+    total_count: int
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunnersGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
 )

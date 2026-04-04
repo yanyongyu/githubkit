@@ -11,32 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0038 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type(
+
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
-
-    seats_created: int
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201
+    """EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    The total number of seats created for the members of the specified enterprise
-    team(s).
-    """
-
-    seats_created: int
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

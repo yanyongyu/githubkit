@@ -9,48 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
-
-
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
-
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[str, None]
+    pem: str
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "AppManifestsCodeConversionsPostResponse201Allof1Type",
+    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
 )

@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0263 import ActionsVariable
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the request. Max 1024 characters.",
+    )
+
+
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

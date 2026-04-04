@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
 
 from pydantic import Field
 
@@ -19,32 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    total_count: int = Field()
-    secrets: list[OrganizationActionsSecret] = Field()
-
-
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
-
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    last_read_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
+    )
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(NotificationsPutBody)
 
-__all__ = (
-    "OrganizationActionsSecret",
-    "OrgsOrgActionsSecretsGetResponse200",
-)
+__all__ = ("NotificationsPutBody",)

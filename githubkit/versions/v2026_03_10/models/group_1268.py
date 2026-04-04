@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,28 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoNotificationsPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0",)
+__all__ = ("ReposOwnerRepoNotificationsPutBody",)

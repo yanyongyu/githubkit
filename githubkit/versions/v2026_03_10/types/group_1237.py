@@ -12,27 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1236 import (
-    ReposOwnerRepoPagesPostBodyPropSourceType,
-    ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse,
-)
+
+class ReposOwnerRepoImportPutBodyType(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
+
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPutBody"""
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
-
-
-class ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
-
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceTypeForResponse
+    vcs_url: str
+    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPagesPostBodyAnyof0Type",
-    "ReposOwnerRepoPagesPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoImportPutBodyType",
+    "ReposOwnerRepoImportPutBodyTypeForResponse",
 )

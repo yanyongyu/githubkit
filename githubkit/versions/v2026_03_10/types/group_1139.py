@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
-
-    new_name: str
+from .group_0263 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    new_name: str
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchRenamePostBodyType",
-    "ReposOwnerRepoBranchesBranchRenamePostBodyTypeForResponse",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
+    "ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse",
 )

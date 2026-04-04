@@ -9,37 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoPullsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
 )

@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
-
-    status: Literal["approve", "deny"]
-    message: str
-
-
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse(
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
 
-    status: Literal["approve", "deny"]
-    message: str
+    bypass_review_id: NotRequired[int]
+
+
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+
+    bypass_review_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyType",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200Type",
+    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse",
 )

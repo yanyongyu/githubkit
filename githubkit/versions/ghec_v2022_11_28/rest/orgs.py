@@ -1309,6 +1309,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
@@ -1424,6 +1425,7 @@ class OrgsClient:
             ]
         ] = UNSET,
         github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse,
@@ -1524,6 +1526,7 @@ class OrgsClient:
         deployments: list[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
         ],
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
@@ -1618,6 +1621,7 @@ class OrgsClient:
         deployments: list[
             OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
         ],
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse,
@@ -1714,6 +1718,7 @@ class OrgsClient:
         repository: Missing[str] = UNSET,
         status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
         github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
@@ -1806,6 +1811,7 @@ class OrgsClient:
         repository: Missing[str] = UNSET,
         status: Missing[Literal["active", "eol", "deleted"]] = UNSET,
         github_repository: Missing[str] = UNSET,
+        return_records: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse,
@@ -8803,7 +8809,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8853,7 +8859,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8901,7 +8907,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -8949,7 +8955,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9033,7 +9039,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9131,7 +9137,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9587,7 +9593,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9629,7 +9635,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **View organization roles** (`read_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9671,7 +9677,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9706,7 +9712,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9776,7 +9782,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -9871,7 +9877,7 @@ class OrgsClient:
         To use this endpoint, the authenticated user must be one of:
 
         - An administrator for the organization.
-        - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
+        - An organization member (or a member of a team) assigned a custom organization role that includes the **Manage custom organization roles** (`write_organization_custom_org_role`) permission. For more information, see "[Permissions for organization access](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)."
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 

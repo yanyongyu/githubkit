@@ -9,46 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0184 import RepositoryRulesetBypassActor
+from .group_0193 import OrgRulesetConditionsOneof0
+from .group_0194 import OrgRulesetConditionsOneof1
+from .group_0195 import OrgRulesetConditionsOneof2
+from .group_0196 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0197 import RepositoryRuleUpdate
+from .group_0199 import RepositoryRuleRequiredLinearHistory
+from .group_0202 import RepositoryRuleRequiredDeployments
+from .group_0204 import RepositoryRulePullRequest
+from .group_0206 import RepositoryRuleRequiredStatusChecks
+from .group_0208 import RepositoryRuleCommitMessagePattern
+from .group_0210 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0212 import RepositoryRuleCommitterEmailPattern
+from .group_0214 import RepositoryRuleBranchNamePattern
+from .group_0216 import RepositoryRuleTagNamePattern
+from .group_0218 import RepositoryRuleFilePathRestriction
+from .group_0220 import RepositoryRuleMaxFilePathLength
+from .group_0222 import RepositoryRuleFileExtensionRestriction
+from .group_0224 import RepositoryRuleMaxFileSize
+from .group_0227 import RepositoryRuleWorkflows
+from .group_0229 import RepositoryRuleCodeScanning
+from .group_0231 import RepositoryRuleCopilotCodeReview
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
     ] = Field(
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
     )
-    return_run_details: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the response should include the workflow run ID and URLs.",
-    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 25. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("OrgsOrgRulesetsPostBody",)

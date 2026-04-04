@@ -9,50 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_1173 import (
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
-    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: _dt.datetime
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
-    ]
-    generate_issues: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgCampaignsPostBodyOneof1"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    name: str
-    description: str
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: str
-    contact_link: NotRequired[Union[str, None]]
-    code_scanning_alerts: NotRequired[
-        Union[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
-            None,
-        ]
-    ]
-    generate_issues: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "OrgsOrgCampaignsPostBodyOneof1Type",
-    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

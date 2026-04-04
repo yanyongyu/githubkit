@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0054 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",
+    "EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

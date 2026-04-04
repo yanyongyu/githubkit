@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,51 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    name: Missing[str] = Field(
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
+    ref: str = Field(
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
+    )
+    sarif: str = Field(
+        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'
+    )
+    checkout_uri: Missing[str] = Field(
         default=UNSET,
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
+        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
     )
-    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
+    started_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    events: Missing[list[str]] = Field(
+    tool_name: Missing[str] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
+        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
     )
-    active: Missing[bool] = Field(
+    validate_: Missing[bool] = Field(
         default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        alias="validate",
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
     )
 
 
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoHooksPostBody)
-model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
-
-__all__ = (
-    "ReposOwnerRepoHooksPostBody",
-    "ReposOwnerRepoHooksPostBodyPropConfig",
-)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)

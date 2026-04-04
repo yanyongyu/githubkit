@@ -9,115 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
-    ]
+    total_count: int
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
-    ]
+    total_count: int
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
     """
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: str
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
     """
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: NotRequired[Literal["deployed", "decommissioned"]]
-    deployment_name: str
-    github_repository: NotRequired[str]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
-
-Key-value pairs to tag the deployment record.
-"""
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
+    "ActionsCacheUsageByRepositoryType",
+    "ActionsCacheUsageByRepositoryTypeForResponse",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
 )

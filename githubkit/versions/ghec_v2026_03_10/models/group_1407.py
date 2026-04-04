@@ -17,35 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1404 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoGitTreesPostBody(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof2(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
-
-    cname: Union[str, None] = Field(
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."'
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
+        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
     )
-    https_enforced: Missing[bool] = Field(
+    base_tree: Missing[str] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: Missing[str] = Field(
+        default=UNSET, description="The file referenced in the tree."
+    )
+    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
-    public: Missing[bool] = Field(
+    type: Missing[Literal["blob", "tree", "commit"]] = Field(
+        default=UNSET, description="Either `blob`, `tree`, or `commit`."
+    )
+    sha: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    )
+    content: Missing[str] = Field(
+        default=UNSET,
+        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof2)
+model_rebuild(ReposOwnerRepoGitTreesPostBody)
+model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2",)
+__all__ = (
+    "ReposOwnerRepoGitTreesPostBody",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
+)

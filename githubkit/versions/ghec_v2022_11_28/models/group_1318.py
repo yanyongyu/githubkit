@@ -9,40 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    auto_trigger_checks: Missing[
-        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
-        default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
+    environment_ids: list[int] = Field(
+        description="The list of environment ids to approve or reject"
     )
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
-
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
     )
+    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)

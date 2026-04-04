@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the pull request review comment."
-    )
+    body: str = Field(description="The contents of the comment.")
 
 
-model_rebuild(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)

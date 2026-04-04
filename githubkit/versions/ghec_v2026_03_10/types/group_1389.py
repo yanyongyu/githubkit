@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
 
-    name: str
+    status: Literal["approve", "deny"]
+    message: str
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBody"""
 
-    name: str
+    status: Literal["approve", "deny"]
+    message: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType",
+    "ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyTypeForResponse",
 )

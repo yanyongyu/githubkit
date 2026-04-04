@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
-
-    attestation_ids: list[int]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
-    attestation_ids: list[int]
+    total_count: float
+    repositories: list[RepositoryType]
+
+
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+
+    total_count: float
+    repositories: list[RepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
 )

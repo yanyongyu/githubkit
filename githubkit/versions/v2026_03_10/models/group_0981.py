@@ -11,29 +11,44 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
     )
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
+
+
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
+
+__all__ = (
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
+)

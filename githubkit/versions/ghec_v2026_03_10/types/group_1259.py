@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    async_: NotRequired[bool]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    async_: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
 )

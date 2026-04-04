@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0262 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
+
+
+class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
-    "ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
 )

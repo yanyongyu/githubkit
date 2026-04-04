@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    role: NotRequired[Literal["admin", "member"]]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    role: NotRequired[Literal["admin", "member"]]
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgMembershipsUsernamePutBodyType",
+    "OrgsOrgMembershipsUsernamePutBodyTypeForResponse",
 )

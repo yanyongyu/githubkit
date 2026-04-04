@@ -12,26 +12,39 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
-
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+from .group_1447 import (
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+)
 
 
-class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+    ]
+    public: NotRequired[bool]
+
+
+class ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse,
+    ]
+    public: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoStatusesShaPostBodyType",
-    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyAnyof1TypeForResponse",
 )

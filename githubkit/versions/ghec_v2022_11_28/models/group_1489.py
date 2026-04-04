@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,24 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    state: Literal["error", "failure", "pending", "success"] = Field(
+        description="The state of the status."
     )
-    filter_: Missing[str] = Field(
+    target_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/enterprise-cloud@latest//issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
     )
-    visible_fields: Missing[list[int]] = Field(
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the status."
+    )
+    context: Missing[str] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
     )
 
 
-model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(ReposOwnerRepoStatusesShaPostBody)
 
-__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("ReposOwnerRepoStatusesShaPostBody",)

@@ -14,15 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    selected_repository_ids: list[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
+    )
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)

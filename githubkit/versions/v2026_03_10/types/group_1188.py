@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0294 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    content: str
-    encoding: NotRequired[str]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    content: str
-    encoding: NotRequired[str]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoGitBlobsPostBodyType",
-    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
 )

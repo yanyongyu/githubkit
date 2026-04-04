@@ -9,37 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[float]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[float]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesDeploymentsPostBodyType",
+    "ReposOwnerRepoPagesDeploymentsPostBodyTypeForResponse",
 )

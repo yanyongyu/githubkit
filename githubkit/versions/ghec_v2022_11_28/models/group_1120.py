@@ -16,21 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
 
-__all__ = ("OrganizationsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)

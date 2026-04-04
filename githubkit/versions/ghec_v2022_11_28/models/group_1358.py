@@ -15,29 +15,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0426 import CustomDeploymentRuleApp
+
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+
+    auto_trigger_checks: Missing[
+        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
+    ] = Field(
+        default=UNSET,
+        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
+    app_id: int = Field(description="The `id` of the GitHub App.")
+    setting: bool = Field(
+        default=True,
+        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
     )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        list[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
 )

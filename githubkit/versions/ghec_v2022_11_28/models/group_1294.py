@@ -9,104 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
-    dismissal_restrictions: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
-    ] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    dismiss_stale_reviews: Missing[bool] = Field(
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
+        description="The hosted compute service to use for the network configuration.",
     )
-    require_code_owner_reviews: Missing[bool] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) have reviewed.",
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    required_approving_review_count: Missing[int] = Field(
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    require_last_push_approval: Missing[bool] = Field(
+    failover_network_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
-    )
-    bypass_pull_request_allowances: Missing[
-        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+        description="Indicates whether the failover network resource is enabled.",
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
-    missalRestrictions
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: Missing[list[str]] = Field(
-        default=UNSET, description="The list of user `login`s with dismissal access"
-    )
-    teams: Missing[list[str]] = Field(
-        default=UNSET, description="The list of team `slug`s with dismissal access"
-    )
-    apps: Missing[list[str]] = Field(
-        default=UNSET, description="The list of app `slug`s with dismissal access"
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
-    assPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of user `login`s allowed to bypass pull request requirements.",
-    )
-    teams: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of team `slug`s allowed to bypass pull request requirements.",
-    )
-    apps: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The list of app `slug`s allowed to bypass pull request requirements.",
-    )
-
-
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
-)
-
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
-)
+__all__ = ("OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",)

@@ -16,19 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
-    )
+    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
 
 
-model_rebuild(ReposOwnerRepoCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
 
-__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)

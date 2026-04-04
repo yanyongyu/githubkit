@@ -47,6 +47,9 @@ class DependabotAlertSecurityAdvisory(GitHubModel):
     severity: Literal["low", "medium", "high", "critical"] = Field(
         description="The severity of the advisory."
     )
+    classification: Missing[Literal["general", "malware"]] = Field(
+        default=UNSET, description="The classification of the advisory."
+    )
     cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
     epss: Missing[Union[SecurityAdvisoryEpss, None]] = Field(
         default=UNSET,

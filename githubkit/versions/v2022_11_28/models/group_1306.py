@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

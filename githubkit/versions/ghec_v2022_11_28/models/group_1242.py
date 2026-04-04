@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0110 import CustomProperty
 
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

@@ -9,39 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0105 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

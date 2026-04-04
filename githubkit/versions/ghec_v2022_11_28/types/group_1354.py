@@ -9,49 +9,131 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
 
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
 
-
-class ReposOwnerRepoDispatchesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
-
-    event_type: str
-    client_payload: NotRequired[
-        ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse
+    title: NotRequired[str]
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
+        ]
+    ]
+    images: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
     ]
 
 
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadType: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
 
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
-"""
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: NotRequired[str]
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse
+        ]
+    ]
+    images: NotRequired[
+        list[
+            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse
+        ]
+    ]
 
 
-ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
 
-JSON payload with extra information about the webhook event that your action or
-workflow may use. The maximum number of top-level properties is 10. The total
-size of the JSON payload must be less than 64KB.
-"""
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
 
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadTypeForResponse",
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse",
 )

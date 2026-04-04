@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
-
-    branch: str
+from .group_0334 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    branch: str
+    total_count: int
+    variables: list[ActionsVariableType]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoMergeUpstreamPostBodyType",
-    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200TypeForResponse",
 )

@@ -9,22 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    message: NotRequired[str]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    message: NotRequired[str]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyTypeForResponse",
 )

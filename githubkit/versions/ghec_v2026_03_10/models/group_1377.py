@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,41 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    title: Union[str, int] = Field(description="The title of the issue.")
-    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
     ] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+    )
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment associated with dismissing the alert.",
     )
     assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
-    )
-    type: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.",
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0)
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoIssuesPostBody)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
-
-__all__ = (
-    "ReposOwnerRepoIssuesPostBody",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",)

@@ -9,89 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
-    signature: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
-
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
-    signature: NotRequired[str]
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
-
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyType",
-    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

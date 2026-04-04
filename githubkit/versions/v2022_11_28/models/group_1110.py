@@ -15,19 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0174 import ProjectsV2FieldSingleSelectOption
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)

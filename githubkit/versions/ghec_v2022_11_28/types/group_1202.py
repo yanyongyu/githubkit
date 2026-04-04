@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
-
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+from .group_0253 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+
+    total_count: int
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
-    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200TypeForResponse",
 )

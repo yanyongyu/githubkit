@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    action: Literal["revoke"]
+    selected_usernames: list[str]
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    action: Literal["revoke"]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
-    "OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
+    "OrgsOrgCodespacesAccessSelectedUsersPostBodyTypeForResponse",
 )

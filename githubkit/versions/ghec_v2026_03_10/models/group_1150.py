@@ -9,42 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
-    total_count: int = Field()
-    secrets: list[OrganizationActionsSecret] = Field()
-
-
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
-
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
 
-__all__ = (
-    "OrganizationActionsSecret",
-    "OrgsOrgActionsSecretsGetResponse200",
-)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)

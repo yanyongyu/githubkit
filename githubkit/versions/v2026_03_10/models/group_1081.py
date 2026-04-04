@@ -16,14 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
 
-__all__ = ("OrgsOrgSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

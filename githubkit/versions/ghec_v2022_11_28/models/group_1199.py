@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
-
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int = Field()
+from .group_0241 import MinimalRepository
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)

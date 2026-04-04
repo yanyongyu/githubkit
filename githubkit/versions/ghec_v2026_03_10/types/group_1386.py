@@ -9,44 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    labels: NotRequired[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
     ]
+    dismissed_comment: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
-
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    name: str
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ]
+    dismissed_comment: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
 )

@@ -9,93 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAttestationsPostBodyType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
+    ]
 
 
-class ReposOwnerRepoAttestationsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBody"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
 
-    bundle: ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
+        ]
+    ]
+    custom_pattern_settings: NotRequired[
+        list[
+            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
+        ]
+    ]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundleType(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType
-    ]
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
-class ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostBodyPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
+    ems
     """
 
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse
-    ]
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
-ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial
-"""
+class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
+    s
+    """
 
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
-
-
-ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope
-"""
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleType",
-    "ReposOwnerRepoAttestationsPostBodyPropBundleTypeForResponse",
-    "ReposOwnerRepoAttestationsPostBodyType",
-    "ReposOwnerRepoAttestationsPostBodyTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
+    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
 )

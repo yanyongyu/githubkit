@@ -33,6 +33,7 @@ class DependabotAlertSecurityAdvisoryType(TypedDict):
     description: str
     vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
     severity: Literal["low", "medium", "high", "critical"]
+    classification: NotRequired[Literal["general", "malware"]]
     cvss: DependabotAlertSecurityAdvisoryPropCvssType
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
     epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
@@ -56,6 +57,7 @@ class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
     description: str
     vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
     severity: Literal["low", "medium", "high", "critical"]
+    classification: NotRequired[Literal["general", "malware"]]
     cvss: DependabotAlertSecurityAdvisoryPropCvssTypeForResponse
     cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
     epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]

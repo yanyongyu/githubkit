@@ -10,28 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoImportPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPatchBodyType",
-    "ReposOwnerRepoImportPatchBodyTypeForResponse",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

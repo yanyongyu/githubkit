@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,39 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+    name: str = Field(description="The name of the team.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the team."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
         default=UNSET,
-        description="List of repository IDs that can access the runner group.",
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
     )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest//rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
     )
-    allows_public_repositories: Missing[bool] = Field(
+    group_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/enterprise-cloud@latest//rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+model_rebuild(EnterprisesEnterpriseTeamsPostBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+__all__ = ("EnterprisesEnterpriseTeamsPostBody",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,84 +19,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
 
 
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
 
-    Private registry configuration for an organization
+    Secrets for a GitHub Codespace.
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    auth_type: Missing[
-        Literal["token", "username_password", "oidc_azure", "oidc_aws", "oidc_jfrog"]
-    ] = Field(
-        default=UNSET, description="The authentication type for the private registry."
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
-    )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
-    )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
     visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
+        description="The type of repositories in the organization that the secret is visible to"
     )
-    tenant_id: Missing[str] = Field(
-        default=UNSET, description="The tenant ID of the Azure AD application."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
     )
-    client_id: Missing[str] = Field(
-        default=UNSET, description="The client ID of the Azure AD application."
-    )
-    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
-    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
-    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
-    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
-    domain_owner: Missing[str] = Field(
-        default=UNSET, description="The CodeArtifact domain owner."
-    )
-    jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog OIDC provider name."
-    )
-    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
-    identity_mapping_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog identity mapping name."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
 __all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
+    "CodespacesOrgSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
 )

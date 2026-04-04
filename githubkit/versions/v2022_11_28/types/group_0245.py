@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class SecretScanningLocationDiscussionBodyType(TypedDict):
@@ -40,6 +40,7 @@ class SecretScanningLocationPullRequestCommentType(TypedDict):
     """
 
     pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
@@ -50,6 +51,7 @@ class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
     """
 
     pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (

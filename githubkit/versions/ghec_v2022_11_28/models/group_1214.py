@@ -13,51 +13,88 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
+    attestations: Missing[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: Missing[
+        Union[
+            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-    name: Missing[str] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+    GitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
 
-    Key/value pairs to provide settings for this webhook.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
 
 
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pVerificationMaterial
+    """
+
+
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
+    pDsseEnvelope
+    """
+
+
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+)
+model_rebuild(
+    OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+)
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
 )

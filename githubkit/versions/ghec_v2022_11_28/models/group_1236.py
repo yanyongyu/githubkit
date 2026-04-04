@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0308 import ProjectsV2FieldSingleSelectOption
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    selected_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of teams from which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)

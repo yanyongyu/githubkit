@@ -12,26 +12,29 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
-
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+from .group_0174 import (
+    ProjectsV2FieldSingleSelectOptionType,
+    ProjectsV2FieldSingleSelectOptionTypeForResponse,
+)
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    environment_ids: list[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
+
+
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
+
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2TypeForResponse",
 )

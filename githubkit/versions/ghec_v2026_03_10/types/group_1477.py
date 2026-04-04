@@ -9,18 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+
+    tag_name: str
+    target_commitish: NotRequired[str]
+    previous_tag_name: NotRequired[str]
+    configuration_file_path: NotRequired[str]
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyType",
+    "ReposOwnerRepoReleasesGenerateNotesPostBodyTypeForResponse",
 )

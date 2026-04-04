@@ -9,50 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0338 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
-
-    total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
-    ]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
     total_count: int
-    devcontainers: list[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse
-    ]
+    workflow_runs: list[WorkflowRunType]
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
 
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
+    total_count: int
+    workflow_runs: list[WorkflowRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsTypeForResponse",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200TypeForResponse",
 )

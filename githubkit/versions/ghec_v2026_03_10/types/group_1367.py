@@ -9,47 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
-
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
-    base_tree: NotRequired[str]
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    billable_owner: NotRequired[SimpleUserTypeForResponse]
+    defaults: NotRequired[
+        ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse
+    ]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
-    "ReposOwnerRepoGitTreesPostBodyType",
-    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsTypeForResponse",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200TypeForResponse",
 )

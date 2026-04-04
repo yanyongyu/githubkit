@@ -9,60 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+class AgentsTasksGetResponse403Type(TypedDict):
+    """AgentsTasksGetResponse403
 
-    total_count: float
-    runner_groups: list[RunnerGroupsEnterpriseType]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float
-    runner_groups: list[RunnerGroupsEnterpriseTypeForResponse]
-
-
-class RunnerGroupsEnterpriseType(TypedDict):
-    """RunnerGroupsEnterprise"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_organizations_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsType]]
+    documentation_url: str
 
 
-class RunnerGroupsEnterpriseTypeForResponse(TypedDict):
-    """RunnerGroupsEnterprise"""
+class AgentsTasksGetResponse403TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403
 
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_organizations_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200TypeForResponse",
-    "RunnerGroupsEnterpriseType",
-    "RunnerGroupsEnterpriseTypeForResponse",
+    "AgentsTasksGetResponse403PropErrorsItemsType",
+    "AgentsTasksGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse403Type",
+    "AgentsTasksGetResponse403TypeForResponse",
 )

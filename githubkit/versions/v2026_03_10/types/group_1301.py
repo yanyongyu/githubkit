@@ -10,22 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    state: Literal["active"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class UserMembershipsOrgsOrgPatchBodyTypeForResponse(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    state: Literal["active"]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "UserMembershipsOrgsOrgPatchBodyType",
-    "UserMembershipsOrgsOrgPatchBodyTypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

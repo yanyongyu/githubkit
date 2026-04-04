@@ -9,36 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[_dt.datetime]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[str]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryType]]
+
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+
+    total_count: NotRequired[int]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
-    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse",
 )

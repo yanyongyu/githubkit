@@ -9,27 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
     ]
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    strict: NotRequired[bool]
+    contexts: NotRequired[list[str]]
+    checks: NotRequired[
+        list[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
+        ]
     ]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
 )

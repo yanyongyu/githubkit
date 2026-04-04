@@ -11,18 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0036 import ActionsHostedRunnerCustomImage
-
-
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
+from .group_0108 import CustomPropertyValue
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",)
+    organization_logins: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of organizations that the custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the organizations."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
+
+__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)

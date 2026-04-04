@@ -13,27 +13,22 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    pat_ids: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The IDs of the fine-grained personal access tokens.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

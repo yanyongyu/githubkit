@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    async_: NotRequired[bool]
+    selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    async_: NotRequired[bool]
+    selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
-    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
+    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
 )

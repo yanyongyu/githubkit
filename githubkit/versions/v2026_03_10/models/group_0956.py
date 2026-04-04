@@ -9,39 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class AppManifestsCodeConversionsPostResponse201Allof1(ExtraGitHubModel):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    total_count: int = Field()
-    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
-
-
-class ActionsCacheUsageByRepository(GitHubModel):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str = Field(
-        description="The repository owner and name for the cache usage being shown."
-    )
-    active_caches_size_in_bytes: int = Field(
-        description="The sum of the size in bytes of all the active cache items in the repository."
-    )
-    active_caches_count: int = Field(
-        description="The number of active caches in the repository."
-    )
+    client_id: str = Field()
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
-model_rebuild(ActionsCacheUsageByRepository)
+model_rebuild(AppManifestsCodeConversionsPostResponse201Allof1)
 
-__all__ = (
-    "ActionsCacheUsageByRepository",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
-)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1",)

@@ -15,13 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
-
-    message: Missing[str] = Field(default=UNSET)
+from .group_0252 import ArtifactDeploymentRecord
 
 
-model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of deployment records for this digest and organization",
+    )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+
+__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)

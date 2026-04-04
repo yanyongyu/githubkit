@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0104 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
-
-
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+class AppHookConfigPatchBodyTypeForResponse(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
+    "AppHookConfigPatchBodyType",
+    "AppHookConfigPatchBodyTypeForResponse",
 )

@@ -9,70 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0420 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
+from .group_1354 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse,
 )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
-            ],
-            None,
-        ]
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[_dt.datetime]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
     ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: NotRequired[int]
-    prevent_self_review: NotRequired[bool]
-    reviewers: NotRequired[
-        Union[
-            list[
-                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    completed_at: NotRequired[_dt.datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
     ]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: NotRequired[Literal["User", "Team"]]
-    id: NotRequired[int]
+    name: NotRequired[str]
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    started_at: NotRequired[str]
+    status: NotRequired[Literal["completed"]]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[str]
+    output: NotRequired[
+        ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputTypeForResponse
+    ]
+    actions: NotRequired[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyTypeForResponse",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0TypeForResponse",
 )

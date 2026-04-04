@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0241 import MinimalRepository
-
-
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
-
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+from .group_0253 import ArtifactDeploymentRecord
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",)
+    total_count: int = Field(description="The number of deployment records created")
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
+
+__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)

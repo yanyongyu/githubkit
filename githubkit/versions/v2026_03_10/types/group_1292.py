@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    name: NotRequired[str]
-    private: NotRequired[bool]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    name: NotRequired[str]
-    private: NotRequired[bool]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNamePublishPostBodyType",
-    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
 )

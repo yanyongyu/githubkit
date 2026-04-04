@@ -9,34 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    parent_team_id: NotRequired[int]
 
-    contexts: list[str]
 
+class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0
-
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: list[str]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    parent_team_id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0TypeForResponse",
+    "OrgsOrgTeamsPostBodyType",
+    "OrgsOrgTeamsPostBodyTypeForResponse",
 )

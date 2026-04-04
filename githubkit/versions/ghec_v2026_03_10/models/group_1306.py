@@ -14,21 +14,26 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody(
-    GitHubModel
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    status: Literal["approve", "reject"] = Field(
-        description="The review action to perform on the bypass request."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    message: str = Field(
-        description="A message to include with the review. Has a maximum character length of 2048."
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody)
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
 
-__all__ = ("ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

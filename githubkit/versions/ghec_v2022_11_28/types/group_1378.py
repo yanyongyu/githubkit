@@ -9,18 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
+
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoContentsPathPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
+
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse
+    ]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
-    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyType",
+    "ReposOwnerRepoContentsPathPutBodyTypeForResponse",
 )

@@ -9,49 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
 
-    total_count: int
-    secrets: list[DependabotSecretType]
-
-
-class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[DependabotSecretTypeForResponse]
-
-
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
-
-    Set secrets for Dependabot.
+    Examples:
+        {'apps': ['my-app']}
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    apps: list[str]
 
 
-class DependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody
 
-    Set secrets for Dependabot.
+    Examples:
+        {'apps': ['my-app']}
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    apps: list[str]
 
 
 __all__ = (
-    "DependabotSecretType",
-    "DependabotSecretTypeForResponse",
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyTypeForResponse",
 )

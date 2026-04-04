@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoStatusesShaPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    name: str
-    layout: Literal["table", "board", "roadmap"]
-    filter_: NotRequired[str]
-    visible_fields: NotRequired[list[int]]
+    state: Literal["error", "failure", "pending", "success"]
+    target_url: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
-    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
+    "ReposOwnerRepoStatusesShaPostBodyType",
+    "ReposOwnerRepoStatusesShaPostBodyTypeForResponse",
 )

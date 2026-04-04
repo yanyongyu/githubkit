@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    The total number of seats created for members of the specified team(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

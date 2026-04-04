@@ -12,29 +12,109 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
+
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
-class OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    The created or existing ruleset (if create_ruleset was true).
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
 )

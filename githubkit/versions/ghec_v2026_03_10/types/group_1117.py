@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    ignored: NotRequired[bool]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    ignored: NotRequired[bool]
+    organization_id: int
+    create_ruleset: NotRequired[bool]
 
 
 __all__ = (
-    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutBodyTypeForResponse",
 )
