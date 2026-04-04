@@ -47,4 +47,4 @@ resp = github.rest.repos.get(owner="owner", repo="repo")
 
 !!! warning
 
-    Repeatedly creating new HTTP clients may lead to **memory leaks**. We strongly recommend **using the context manager** for any workload that makes multiple API calls.
+    Repeatedly creating new HTTP clients may lead to **memory leaks**. We strongly recommend **using the context manager** for any workload that makes multiple API calls or long running processes.
