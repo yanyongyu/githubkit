@@ -2,6 +2,12 @@
 
 githubkit manages an underlying [HTTPX](https://www.python-httpx.org/) client for making HTTP requests. You can use a **context manager** to ensure the HTTP client is properly created, reused, and closed when you're done.
 
+<!-- https://github.com/yanyongyu/githubkit/issues/285 -->
+
+!!! warning
+
+    We strongly recommend **using the context manager** for any workload that makes multiple API calls or long running processes. Repeatedly creating new HTTP clients may lead to **memory leaks**. 
+
 ## Using the Context Manager
 
 Wrapping your `GitHub` instance in a `with` (sync) or `async with` (async) block creates a single HTTP client that is shared across all requests made inside that block, and automatically closed on exit:
@@ -42,9 +48,3 @@ from githubkit import GitHub
 github = GitHub("<your_token_here>")
 resp = github.rest.repos.get(owner="owner", repo="repo")
 ```
-
-<!-- https://github.com/yanyongyu/githubkit/issues/285 -->
-
-!!! warning
-
-    Repeatedly creating new HTTP clients may lead to **memory leaks**. We strongly recommend **using the context manager** for any workload that makes multiple API calls or long running processes.
