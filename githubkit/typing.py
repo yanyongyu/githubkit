@@ -4,6 +4,7 @@ from typing import (
     IO,
     TYPE_CHECKING,
     Annotated,
+    Any,
     Callable,
     Literal,
     NamedTuple,
@@ -97,6 +98,9 @@ class RetryOption(NamedTuple):
 
 
 RetryDecisionFunc: TypeAlias = Callable[[GitHubException, int], RetryOption]
+
+
+EventHookTypes: TypeAlias = Mapping[str, list[Callable[..., Any]]]
 
 
 class HishelControllerOptions(TypedDict, total=False):
