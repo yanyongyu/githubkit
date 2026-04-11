@@ -24,15 +24,15 @@ Generate latest models and apis from GitHub's OpenAPI schema:
 
     This may use about **400M** memory and take a long time.
 
-Please make sure you have activated the virtual environment.
-
 ```bash
 uv run bash ./scripts/run-codegen.sh
 ```
 
+If you encounter rate limit error, you can set `GITHUB_TOKEN` environment variable to a GitHub personal access token.
+
 ### Patch Schema
 
-If you encounter an schema error, you can patch the schema by modifying the `pyproject.toml` file.
+If you encounter schema error, you can patch the schema by modifying the `pyproject.toml` file.
 
 In the `[tool.codegen.overrides.schema_overrides]` section, you can modify the schema using json pointer. The value will override the original schema.
 
