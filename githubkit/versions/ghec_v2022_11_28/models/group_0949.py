@@ -17,30 +17,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0131 import (
+from .group_0132 import (
     RepositoryRuleCreation,
     RepositoryRuleDeletion,
     RepositoryRuleNonFastForward,
     RepositoryRuleRequiredSignatures,
 )
-from .group_0132 import RepositoryRuleUpdate
-from .group_0134 import RepositoryRuleRequiredLinearHistory
-from .group_0135 import RepositoryRuleRequiredDeployments
-from .group_0137 import RepositoryRulePullRequest
-from .group_0139 import RepositoryRuleRequiredStatusChecks
-from .group_0141 import RepositoryRuleCommitMessagePattern
-from .group_0143 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0145 import RepositoryRuleCommitterEmailPattern
-from .group_0147 import RepositoryRuleBranchNamePattern
-from .group_0149 import RepositoryRuleTagNamePattern
-from .group_0151 import RepositoryRuleFilePathRestriction
-from .group_0153 import RepositoryRuleMaxFilePathLength
-from .group_0155 import RepositoryRuleFileExtensionRestriction
-from .group_0157 import RepositoryRuleMaxFileSize
-from .group_0160 import RepositoryRuleWorkflows
-from .group_0162 import RepositoryRuleCodeScanning
-from .group_0164 import RepositoryRuleCopilotCodeReview
-from .group_0171 import RepositoryRuleMergeQueue
+from .group_0133 import RepositoryRuleUpdate
+from .group_0135 import RepositoryRuleRequiredLinearHistory
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
+from .group_0172 import RepositoryRuleMergeQueue
 from .group_0950 import (
     WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
 )

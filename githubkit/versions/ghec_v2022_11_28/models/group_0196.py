@@ -19,25 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportRequest(GitHubModel):
-    """UsageReportExportRequest"""
+class UsageReportExportList(GitHubModel):
+    """UsageReportExportList"""
 
+    usage_report_exports: list[UsageReportExport] = Field(
+        description="List of usage report exports"
+    )
+
+
+class UsageReportExport(GitHubModel):
+    """UsageReportExport"""
+
+    id: str = Field(description="Unique identifier for the usage report export")
     report_type: Literal["detailed", "summarized", "premium_request"] = Field(
-        description="The type of usage report to generate"
+        description="The type of usage report"
     )
-    start_date: _dt.date = Field(
-        description="The start date for the report in YYYY-MM-DD format"
+    start_date: _dt.date = Field(description="The start date for the report")
+    end_date: _dt.date = Field(description="The end date for the report")
+    status: Literal["processing", "completed", "failed"] = Field(
+        description="The current status of the report export"
     )
-    end_date: Missing[_dt.date] = Field(
+    download_urls: Missing[list[str]] = Field(
         default=UNSET,
-        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+        description="URLs to download the completed report. Only present when the report status is `completed`.",
     )
-    send_email: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the report export was created"
+    )
+    actor: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the export"
     )
 
 
-model_rebuild(UsageReportExportRequest)
+model_rebuild(UsageReportExportList)
+model_rebuild(UsageReportExport)
 
-__all__ = ("UsageReportExportRequest",)
+__all__ = (
+    "UsageReportExport",
+    "UsageReportExportList",
+)

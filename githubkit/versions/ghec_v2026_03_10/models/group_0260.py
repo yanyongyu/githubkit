@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,45 +18,54 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class CredentialAuthorization(GitHubModel):
+    """Credential Authorization
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
+    Credential Authorization
     """
 
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+    login: str = Field(description="User login that owns the underlying credential.")
+    credential_id: int = Field(
+        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    )
+    credential_type: str = Field(
+        description="Human-readable description of the credential type."
+    )
+    token_last_eight: Missing[str] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="Last eight characters of the credential. Only included in responses with credential_type of personal access token.",
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
+    credential_authorized_at: _dt.datetime = Field(
+        description="Date when the credential was authorized for use."
     )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+    scopes: Missing[list[str]] = Field(
+        default=UNSET, description="List of oauth scopes the token has been granted."
     )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    fingerprint: Missing[str] = Field(
+        default=UNSET,
+        description="Unique string to distinguish the credential. Only included in responses with credential_type of SSH Key.",
     )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    credential_accessed_at: Union[_dt.datetime, None] = Field(
+        description="Date when the credential was last accessed. May be null if it was never accessed"
+    )
+    authorized_credential_id: Union[int, None] = Field(
+        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
+    )
+    authorized_credential_title: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
+    )
+    authorized_credential_note: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The note given to the token. This will only be present when the credential is a token.",
+    )
+    authorized_credential_expires_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The expiry for the token. This will only be present when the credential is a token.",
+    )
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(CredentialAuthorization)
 
-__all__ = (
-    "OrganizationCustomRepositoryRole",
-    "OrgsOrgCustomRepositoryRolesGetResponse200",
-)
+__all__ = ("CredentialAuthorization",)

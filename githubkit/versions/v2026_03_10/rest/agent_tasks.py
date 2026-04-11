@@ -227,11 +227,8 @@ class AgentTasksClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        agent_id: Missing[int] = UNSET,
-        problem_statement: Missing[str] = UNSET,
-        event_content: str,
+        prompt: str,
         model: Missing[str] = UNSET,
-        custom_agent: Missing[str] = UNSET,
         create_pull_request: Missing[bool] = UNSET,
         base_ref: Missing[str] = UNSET,
     ) -> Response[
@@ -259,7 +256,7 @@ class AgentTasksClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Creates a new task for a repository
+        Creates a new task for a repository.
 
 
         See also: https://docs.github.com/rest/agent-tasks/agent-tasks#create-a-task
@@ -325,11 +322,8 @@ class AgentTasksClient:
         data: UnsetType = UNSET,
         headers: Optional[Mapping[str, str]] = None,
         stream: bool = False,
-        agent_id: Missing[int] = UNSET,
-        problem_statement: Missing[str] = UNSET,
-        event_content: str,
+        prompt: str,
         model: Missing[str] = UNSET,
-        custom_agent: Missing[str] = UNSET,
         create_pull_request: Missing[bool] = UNSET,
         base_ref: Missing[str] = UNSET,
     ) -> Response[
@@ -357,7 +351,7 @@ class AgentTasksClient:
         > [!NOTE]
         > This endpoint is in public preview and is subject to change.
 
-        Creates a new task for a repository
+        Creates a new task for a repository.
 
 
         See also: https://docs.github.com/rest/agent-tasks/agent-tasks#create-a-task

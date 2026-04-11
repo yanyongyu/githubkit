@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0010 import Integration
-from .group_0205 import PinnedIssueComment
+from .group_0206 import PinnedIssueComment
 
 
 class WebhookIssueCommentCreatedPropComment(GitHubModel):

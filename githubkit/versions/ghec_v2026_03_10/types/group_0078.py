@@ -256,6 +256,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
     security_configuration_id: NotRequired[int]
 
 
@@ -268,6 +269,7 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
     security_configuration_id: NotRequired[int]
 
 

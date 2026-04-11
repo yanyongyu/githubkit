@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0208 import Issue
+from .group_0209 import Issue
 from .group_0302 import PullRequestSimple
 from .group_0305 import ProjectsV2DraftIssue
 

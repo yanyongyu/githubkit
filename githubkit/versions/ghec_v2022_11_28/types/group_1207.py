@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0253 import (
+from .group_0254 import (
     ArtifactDeploymentRecordType,
     ArtifactDeploymentRecordTypeForResponse,
 )

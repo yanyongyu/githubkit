@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0255 import CodespaceType, CodespaceTypeForResponse
+from .group_0256 import CodespaceType, CodespaceTypeForResponse
 
 
 class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):

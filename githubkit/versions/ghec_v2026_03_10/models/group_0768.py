@@ -18,10 +18,10 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0202 import IssueType
-from .group_0204 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0206 import IssueComment
-from .group_0207 import IssueFieldValue
+from .group_0203 import IssueType
+from .group_0205 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0207 import IssueComment
+from .group_0208 import IssueFieldValue
 from .group_0774 import WebhookIssuesClosedPropIssueAllof0PropPullRequest
 from .group_0776 import WebhookIssuesClosedPropIssueMergedMilestone
 from .group_0777 import WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp

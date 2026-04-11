@@ -16,7 +16,7 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 from .group_0085 import TeamType, TeamTypeForResponse
-from .group_0208 import IssueType, IssueTypeForResponse
+from .group_0209 import IssueType, IssueTypeForResponse
 
 
 class IssueEventType(TypedDict):

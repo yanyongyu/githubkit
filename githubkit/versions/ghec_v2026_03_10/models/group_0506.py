@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0179 import (
+from .group_0180 import (
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -28,13 +28,13 @@ from .group_0179 import (
     SecretScanningLocationPullRequestReview,
     SecretScanningLocationWikiCommit,
 )
-from .group_0180 import (
+from .group_0181 import (
     SecretScanningLocationIssueComment,
     SecretScanningLocationIssueTitle,
     SecretScanningLocationPullRequestReviewComment,
     SecretScanningLocationPullRequestTitle,
 )
-from .group_0181 import (
+from .group_0182 import (
     SecretScanningLocationDiscussionBody,
     SecretScanningLocationPullRequestComment,
 )
@@ -85,6 +85,13 @@ class SecretScanningAlert(GitHubModel):
     secret_type_display_name: Missing[str] = Field(
         default=UNSET,
         description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    provider: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The provider of the secret that was detected."
+    )
+    provider_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.",
     )
     secret: Missing[str] = Field(
         default=UNSET, description="The secret that was detected."

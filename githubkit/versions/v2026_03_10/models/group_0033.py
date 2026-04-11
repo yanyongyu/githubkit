@@ -229,6 +229,9 @@ class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropRevie
     reviewer_type: Literal["TEAM", "ROLE"] = Field(
         description="The type of the bypass reviewer"
     )
+    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
+        default=UNSET, description="The bypass mode for the reviewer"
+    )
     security_configuration_id: Missing[int] = Field(
         default=UNSET,
         description="The ID of the security configuration associated with this bypass reviewer",

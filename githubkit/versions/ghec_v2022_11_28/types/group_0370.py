@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0241 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0242 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
 class CheckSuitePreferenceType(TypedDict):

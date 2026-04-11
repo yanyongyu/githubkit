@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0256 import CodespaceType, CodespaceTypeForResponse
+from .group_0257 import CodespaceType, CodespaceTypeForResponse
 
 
 class OrgsOrgCodespacesGetResponse200Type(TypedDict):

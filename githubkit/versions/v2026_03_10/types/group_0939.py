@@ -185,7 +185,7 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType(TypedDict):
     """
 
     provider: Literal["github"]
-    type: Literal["github_resource", "branch"]
+    type: Literal["pull", "branch"]
     data: Union[
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
@@ -201,7 +201,7 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse(
     """
 
     provider: Literal["github"]
-    type: Literal["github_resource", "branch"]
+    type: Literal["pull", "branch"]
     data: Union[
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse,
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse,
@@ -216,8 +216,7 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Typ
     A GitHub resource (pull request, issue, etc.)
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    id: int
     global_id: NotRequired[str]
 
 
@@ -229,8 +228,7 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Typ
     A GitHub resource (pull request, issue, etc.)
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    id: int
     global_id: NotRequired[str]
 
 
@@ -242,8 +240,8 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Typ
     A Git branch reference
     """
 
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
+    head_ref: str
+    base_ref: str
 
 
 class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse(
@@ -254,8 +252,8 @@ class AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Typ
     A Git branch reference
     """
 
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
+    head_ref: str
+    base_ref: str
 
 
 __all__ = (

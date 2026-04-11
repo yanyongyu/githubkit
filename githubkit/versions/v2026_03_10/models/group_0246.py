@@ -84,6 +84,13 @@ class OrganizationSecretScanningAlert(GitHubModel):
         default=UNSET,
         description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
+    provider: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The provider of the secret that was detected."
+    )
+    provider_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.",
+    )
     secret: Missing[str] = Field(
         default=UNSET, description="The secret that was detected."
     )

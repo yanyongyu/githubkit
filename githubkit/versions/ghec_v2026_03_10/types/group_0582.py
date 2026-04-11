@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0205 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0206 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
 
 
 class WebhooksIssueCommentType(TypedDict):

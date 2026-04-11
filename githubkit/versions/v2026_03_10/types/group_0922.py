@@ -15,11 +15,8 @@ from typing_extensions import NotRequired, TypedDict
 class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
     """AgentsReposOwnerRepoTasksPostBody"""
 
-    agent_id: NotRequired[int]
-    problem_statement: NotRequired[str]
-    event_content: str
+    prompt: str
     model: NotRequired[str]
-    custom_agent: NotRequired[str]
     create_pull_request: NotRequired[bool]
     base_ref: NotRequired[str]
 
@@ -27,11 +24,8 @@ class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
 class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
     """AgentsReposOwnerRepoTasksPostBody"""
 
-    agent_id: NotRequired[int]
-    problem_statement: NotRequired[str]
-    event_content: str
+    prompt: str
     model: NotRequired[str]
-    custom_agent: NotRequired[str]
     create_pull_request: NotRequired[bool]
     base_ref: NotRequired[str]
 

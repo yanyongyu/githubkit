@@ -13,15 +13,15 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0202 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0204 import (
+from .group_0203 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0205 import (
     IssueDependenciesSummaryType,
     IssueDependenciesSummaryTypeForResponse,
     SubIssuesSummaryType,
     SubIssuesSummaryTypeForResponse,
 )
-from .group_0206 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0207 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0207 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0208 import IssueFieldValueType, IssueFieldValueTypeForResponse
 
 
 class WebhookIssuesLockedPropIssueType(TypedDict):

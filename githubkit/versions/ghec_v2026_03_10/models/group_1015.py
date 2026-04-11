@@ -19,22 +19,13 @@ from githubkit.utils import UNSET
 class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
     """AgentsReposOwnerRepoTasksPostBody"""
 
-    agent_id: Missing[int] = Field(
-        default=UNSET, description="Agent ID (optional, defaults to coding agent)"
-    )
-    problem_statement: Missing[str] = Field(
-        default=UNSET, description="Additional prompting for the agent"
-    )
-    event_content: str = Field(description="User's written prompt")
+    prompt: str = Field(description="The user's prompt for the agent")
     model: Missing[str] = Field(
         default=UNSET,
         description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="Custom agent identifier"
-    )
     create_pull_request: Missing[bool] = Field(
-        default=UNSET, description="Whether to create a PR"
+        default=UNSET, description="Whether to create a PR."
     )
     base_ref: Missing[str] = Field(
         default=UNSET, description="Base ref for new branch/PR"

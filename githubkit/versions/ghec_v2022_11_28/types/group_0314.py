@@ -16,7 +16,7 @@ from typing_extensions import NotRequired, TypeAlias, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0240 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
+from .group_0241 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 from .group_0313 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
 

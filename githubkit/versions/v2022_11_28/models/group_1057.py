@@ -204,6 +204,9 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
     reviewer_type: Literal["TEAM", "ROLE"] = Field(
         description="The type of the bypass reviewer"
     )
+    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
+        default=UNSET, description="The bypass mode for the reviewer"
+    )
 
 
 model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)

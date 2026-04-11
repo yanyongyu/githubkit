@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0179 import (
+from .group_0180 import (
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
@@ -30,7 +30,7 @@ from .group_0179 import (
     SecretScanningLocationWikiCommitType,
     SecretScanningLocationWikiCommitTypeForResponse,
 )
-from .group_0180 import (
+from .group_0181 import (
     SecretScanningLocationIssueCommentType,
     SecretScanningLocationIssueCommentTypeForResponse,
     SecretScanningLocationIssueTitleType,
@@ -40,7 +40,7 @@ from .group_0180 import (
     SecretScanningLocationPullRequestTitleType,
     SecretScanningLocationPullRequestTitleTypeForResponse,
 )
-from .group_0181 import (
+from .group_0182 import (
     SecretScanningLocationDiscussionBodyType,
     SecretScanningLocationDiscussionBodyTypeForResponse,
     SecretScanningLocationPullRequestCommentType,
@@ -66,6 +66,8 @@ class SecretScanningAlertType(TypedDict):
     resolution_comment: NotRequired[Union[str, None]]
     secret_type: NotRequired[str]
     secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
     secret: NotRequired[str]
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
@@ -121,6 +123,8 @@ class SecretScanningAlertTypeForResponse(TypedDict):
     resolution_comment: NotRequired[Union[str, None]]
     secret_type: NotRequired[str]
     secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
     secret: NotRequired[str]
     push_protection_bypassed: NotRequired[Union[bool, None]]
     push_protection_bypassed_by: NotRequired[Union[None, SimpleUserTypeForResponse]]

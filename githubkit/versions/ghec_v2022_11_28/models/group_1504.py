@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0256 import Codespace
+from .group_0257 import Codespace
 
 
 class UserCodespacesGetResponse200(GitHubModel):

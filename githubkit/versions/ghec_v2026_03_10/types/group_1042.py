@@ -31,8 +31,6 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType(TypedDict):
     repository: NotRequired[
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
     ]
-    agent_id: NotRequired[int]
-    agent_task_id: NotRequired[str]
     task_id: NotRequired[str]
     state: Literal[
         "queued",
@@ -47,20 +45,10 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType(TypedDict):
     created_at: _dt.datetime
     updated_at: NotRequired[_dt.datetime]
     completed_at: NotRequired[_dt.datetime]
-    event_type: NotRequired[str]
-    event_url: NotRequired[str]
-    event_content: NotRequired[str]
-    event_identifiers: NotRequired[list[str]]
-    resource_type: NotRequired[str]
-    resource_id: NotRequired[int]
-    resource_number: NotRequired[int]
-    resource_global_id: NotRequired[str]
-    resource_state: NotRequired[str]
+    prompt: NotRequired[str]
     head_ref: NotRequired[str]
     base_ref: NotRequired[str]
-    workflow_run_id: NotRequired[int]
     model: NotRequired[str]
-    premium_requests: NotRequired[float]
     error: NotRequired[
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
     ]
@@ -83,8 +71,6 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(Type
     repository: NotRequired[
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
     ]
-    agent_id: NotRequired[int]
-    agent_task_id: NotRequired[str]
     task_id: NotRequired[str]
     state: Literal[
         "queued",
@@ -99,20 +85,10 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(Type
     created_at: str
     updated_at: NotRequired[str]
     completed_at: NotRequired[str]
-    event_type: NotRequired[str]
-    event_url: NotRequired[str]
-    event_content: NotRequired[str]
-    event_identifiers: NotRequired[list[str]]
-    resource_type: NotRequired[str]
-    resource_id: NotRequired[int]
-    resource_number: NotRequired[int]
-    resource_global_id: NotRequired[str]
-    resource_state: NotRequired[str]
+    prompt: NotRequired[str]
     head_ref: NotRequired[str]
     base_ref: NotRequired[str]
-    workflow_run_id: NotRequired[int]
     model: NotRequired[str]
-    premium_requests: NotRequired[float]
     error: NotRequired[
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
     ]

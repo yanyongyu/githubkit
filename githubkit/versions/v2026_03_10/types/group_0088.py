@@ -232,6 +232,7 @@ class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersIt
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
@@ -241,6 +242,7 @@ class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersIt
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (

@@ -14,7 +14,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0208 import IssueType, IssueTypeForResponse
+from .group_0209 import IssueType, IssueTypeForResponse
 from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0566 import (
     OrganizationSimpleWebhooksType,

@@ -125,8 +125,8 @@ class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems(GitHubModel):
     """
 
     provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["github_resource", "branch"] = Field(
-        description="Discriminator for data shape"
+    type: Literal["pull", "branch"] = Field(
+        description="Type of artifact. Available Values: `pull`, `branch`.\n"
     )
     data: Union[
         AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
@@ -142,10 +142,7 @@ class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0(
     A GitHub resource (pull request, issue, etc.)
     """
 
-    id: Missing[int] = Field(default=UNSET, description="GitHub resource ID")
-    type: Missing[str] = Field(
-        default=UNSET, description="Resource type (e.g., pull_request, issue)"
-    )
+    id: int = Field(description="GitHub resource ID")
     global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
 
 
@@ -157,8 +154,8 @@ class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1(
     A Git branch reference
     """
 
-    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
-    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    head_ref: str = Field(description="Head branch name")
+    base_ref: str = Field(description="Base branch name")
 
 
 model_rebuild(AgentsReposOwnerRepoTasksPostResponse201)

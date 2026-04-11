@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0108 import CustomPropertyValue
+from .group_0109 import CustomPropertyValue
 
 
 class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):

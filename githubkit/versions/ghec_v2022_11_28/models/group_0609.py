@@ -70,6 +70,13 @@ class SecretScanningAlertWebhook(GitHubModel):
         default=UNSET,
         description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
+    provider: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The provider of the secret that was detected."
+    )
+    provider_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug identifier for the provider of the secret that was detected.",
+    )
     validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
         default=UNSET, description="The token status as of the latest validity check."
     )

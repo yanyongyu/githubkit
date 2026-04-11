@@ -18,7 +18,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0236 import MarketplaceListingPlan
+from .group_0237 import MarketplaceListingPlan
 
 
 class UserMarketplacePurchase(GitHubModel):

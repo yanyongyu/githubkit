@@ -38,7 +38,7 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType(TypedDict):
     """
 
     provider: Literal["github"]
-    type: Literal["github_resource", "branch"]
+    type: Literal["pull", "branch"]
     data: Union[
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type,
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type,
@@ -52,7 +52,7 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse(Typ
     """
 
     provider: Literal["github"]
-    type: Literal["github_resource", "branch"]
+    type: Literal["pull", "branch"]
     data: Union[
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0TypeForResponse,
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeForResponse,
@@ -67,8 +67,7 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type(
     A GitHub resource (pull request, issue, etc.)
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    id: int
     global_id: NotRequired[str]
 
 
@@ -80,8 +79,7 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0TypeF
     A GitHub resource (pull request, issue, etc.)
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    id: int
     global_id: NotRequired[str]
 
 
@@ -93,8 +91,8 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type(
     A Git branch reference
     """
 
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
+    head_ref: str
+    base_ref: str
 
 
 class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeForResponse(
@@ -105,8 +103,8 @@ class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeF
     A Git branch reference
     """
 
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
+    head_ref: str
+    base_ref: str
 
 
 __all__ = (

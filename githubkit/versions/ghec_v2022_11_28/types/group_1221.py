@@ -209,6 +209,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
@@ -220,6 +221,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScannin
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (

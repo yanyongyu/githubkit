@@ -15,7 +15,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0208 import Issue
+from .group_0209 import Issue
 
 
 class TimelineCrossReferencedEventPropSource(GitHubModel):

@@ -222,12 +222,141 @@ class SecretScanningClient:
             },
         )
 
+    def list_enterprise_dismissal_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-dismissal-requests
+
+        GET /enterprises/{enterprise}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an enterprise.
+
+        The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/enterprises/{enterprise}/dismissal-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_list_enterprise_dismissal_requests(
+        self,
+        enterprise: str,
+        *,
+        organization_name: Missing[str] = UNSET,
+        reviewer: Missing[str] = UNSET,
+        requester: Missing[str] = UNSET,
+        time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
+        request_status: Missing[
+            Literal[
+                "completed", "cancelled", "approved", "expired", "denied", "open", "all"
+            ]
+        ] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        list[SecretScanningDismissalRequest],
+        list[SecretScanningDismissalRequestTypeForResponse],
+    ]:
+        """secret-scanning/list-enterprise-dismissal-requests
+
+        GET /enterprises/{enterprise}/dismissal-requests/secret-scanning
+
+        Lists requests to dismiss secret scanning alerts in an enterprise.
+
+        The authenticated user must be an enterprise owner or an enterprise security manager to access this endpoint.
+        Personal access tokens (classic) need the `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/alert-dismissal-requests#list-alert-dismissal-requests-for-secret-scanning-for-an-enterprise
+        """
+
+        from ..models import BasicError, SecretScanningDismissalRequest
+
+        url = f"/enterprises/{enterprise}/dismissal-requests/secret-scanning"
+
+        params = {
+            "organization_name": organization_name,
+            "reviewer": reviewer,
+            "requester": requester,
+            "time_period": time_period,
+            "request_status": request_status,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[SecretScanningDismissalRequest],
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+            },
+        )
+
     def list_alerts_for_enterprise(
         self,
         enterprise: str,
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -266,6 +395,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,
@@ -300,6 +432,9 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -338,6 +473,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,
@@ -914,6 +1052,9 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -956,6 +1097,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,
@@ -991,6 +1135,9 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -1033,6 +1180,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,
@@ -2247,6 +2397,9 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -2285,6 +2438,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,
@@ -2320,6 +2476,9 @@ class SecretScanningClient:
         *,
         state: Missing[Literal["open", "resolved"]] = UNSET,
         secret_type: Missing[str] = UNSET,
+        exclude_secret_types: Missing[str] = UNSET,
+        exclude_providers: Missing[str] = UNSET,
+        providers: Missing[str] = UNSET,
         resolution: Missing[str] = UNSET,
         assignee: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
@@ -2358,6 +2517,9 @@ class SecretScanningClient:
         params = {
             "state": state,
             "secret_type": secret_type,
+            "exclude_secret_types": exclude_secret_types,
+            "exclude_providers": exclude_providers,
+            "providers": providers,
             "resolution": resolution,
             "assignee": assignee,
             "sort": sort,

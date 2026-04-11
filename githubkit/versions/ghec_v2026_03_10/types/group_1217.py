@@ -207,6 +207,7 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypass
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
@@ -218,6 +219,7 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypass
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (

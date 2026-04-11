@@ -482,6 +482,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedB
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
@@ -493,6 +494,7 @@ class ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedB
 
     reviewer_id: int
     reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0152 import (
+from .group_0153 import (
     RepositoryRuleFilePathRestrictionPropParametersType,
     RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
 )

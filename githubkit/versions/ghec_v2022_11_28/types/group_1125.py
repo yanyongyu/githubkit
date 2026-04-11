@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0105 import (
+from .group_0106 import (
     OrganizationCustomPropertyType,
     OrganizationCustomPropertyTypeForResponse,
 )
