@@ -172,9 +172,9 @@ github = GitHub(transport=httpx.MockTransport(mock_handler))
 
 Register [HTTPX event hooks](https://www.python-httpx.org/advanced/event-hooks/) that run on every request and/or response. This is useful for logging, injecting headers, collecting metrics, or raising on error status codes — without modifying your business logic.
 
-| Option              | Hook signatures                             | Used for       |
-| ------------------- | ------------------------------------------- | -------------- |
-| `event_hooks`       | `def hook(request)` / `def hook(response)`  | Sync requests  |
+| Option              | Hook signatures                                        | Used for       |
+| ------------------- | ------------------------------------------------------ | -------------- |
+| `event_hooks`       | `def hook(request)` / `def hook(response)`             | Sync requests  |
 | `async_event_hooks` | `async def hook(request)` / `async def hook(response)` | Async requests |
 
 Both options accept a dictionary mapping event names (`"request"`, `"response"`) to a list of callables. Each callable receives an `httpx.Request` or `httpx.Response` object respectively.

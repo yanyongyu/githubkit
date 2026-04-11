@@ -6,7 +6,7 @@ githubkit manages an underlying [HTTPX](https://www.python-httpx.org/) client fo
 
 !!! warning
 
-    We strongly recommend **using the context manager** for any workload that makes multiple API calls or long running processes. Repeatedly creating new HTTP clients may lead to **memory leaks**. 
+    We strongly recommend **using the context manager** for any workload that makes multiple API calls or long running processes. Repeatedly creating new HTTP clients may lead to **memory leaks**.
 
 ## Using the Context Manager
 
