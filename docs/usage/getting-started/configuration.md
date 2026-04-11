@@ -17,6 +17,8 @@ github = GitHub(
     proxy=None,
     transport=None,
     async_transport=None,
+    event_hooks=None,
+    async_event_hooks=None,
     cache_strategy=None,
     http_cache=True,
     throttler=None,
@@ -44,6 +46,8 @@ config = Config(
     proxy=None,
     transport=None,
     async_transport=None,
+    event_hooks=None,
+    async_event_hooks=None,
     cache_strategy=DEFAULT_CACHE_STRATEGY,
     http_cache=True,
     throttler=None,
@@ -163,6 +167,61 @@ github = GitHub(transport=httpx.MockTransport(mock_handler))
 !!! warning
 
     When a custom transport is provided, proxy-related environment variables (`HTTP_PROXY`, etc.) have no effect. Set `transport` / `async_transport` to `None` (default) to use HTTPX's built-in transport.
+
+### `event_hooks`, `async_event_hooks`
+
+Register [HTTPX event hooks](https://www.python-httpx.org/advanced/event-hooks/) that run on every request and/or response. This is useful for logging, injecting headers, collecting metrics, or raising on error status codes — without modifying your business logic.
+
+| Option              | Hook signatures                             | Used for       |
+| ------------------- | ------------------------------------------- | -------------- |
+| `event_hooks`       | `def hook(request)` / `def hook(response)`  | Sync requests  |
+| `async_event_hooks` | `async def hook(request)` / `async def hook(response)` | Async requests |
+
+Both options accept a dictionary mapping event names (`"request"`, `"response"`) to a list of callables. Each callable receives an `httpx.Request` or `httpx.Response` object respectively.
+
+=== "Sync"
+
+    ```python
+    import httpx
+    from githubkit import GitHub
+
+    def log_request(request: httpx.Request) -> None:
+        print(f"-> {request.method} {request.url}")
+
+    def log_response(response: httpx.Response) -> None:
+        print(f"<- {response.status_code}")
+
+    github = GitHub(
+        event_hooks={
+            "request": [log_request],
+            "response": [log_response],
+        },
+    )
+    ```
+
+=== "Async"
+
+    ```python
+    import httpx
+    from githubkit import GitHub
+
+    async def log_request(request: httpx.Request) -> None:
+        print(f"-> {request.method} {request.url}")
+
+    async def log_response(response: httpx.Response) -> None:
+        print(f"<- {response.status_code}")
+
+    github = GitHub(
+        async_event_hooks={
+            "request": [log_request],
+            "response": [log_response],
+        },
+    )
+    ```
+
+!!! note
+
+    Response hooks are called **before** the response body is read. If you need to access the body inside a hook, call `response.read()` (sync) or `await response.aread()` (async).
 
 ### `cache_strategy`
 

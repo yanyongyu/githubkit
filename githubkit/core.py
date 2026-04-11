@@ -27,6 +27,7 @@ from .throttling import BaseThrottler
 from .typing import (
     ContentTypes,
     CookieTypes,
+    EventHookTypes,
     HeaderTypes,
     ProxyTypes,
     QueryParamTypes,
@@ -90,6 +91,8 @@ class GitHubCore(Generic[A]):
         proxy: Optional[ProxyTypes] = None,
         transport: Optional[httpx.BaseTransport] = None,
         async_transport: Optional[httpx.AsyncBaseTransport] = None,
+        event_hooks: Optional[EventHookTypes] = None,
+        async_event_hooks: Optional[EventHookTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -114,6 +117,8 @@ class GitHubCore(Generic[A]):
         proxy: Optional[ProxyTypes] = None,
         transport: Optional[httpx.BaseTransport] = None,
         async_transport: Optional[httpx.AsyncBaseTransport] = None,
+        event_hooks: Optional[EventHookTypes] = None,
+        async_event_hooks: Optional[EventHookTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -138,6 +143,8 @@ class GitHubCore(Generic[A]):
         proxy: Optional[ProxyTypes] = None,
         transport: Optional[httpx.BaseTransport] = None,
         async_transport: Optional[httpx.AsyncBaseTransport] = None,
+        event_hooks: Optional[EventHookTypes] = None,
+        async_event_hooks: Optional[EventHookTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -161,6 +168,8 @@ class GitHubCore(Generic[A]):
         proxy: Optional[ProxyTypes] = None,
         transport: Optional[httpx.BaseTransport] = None,
         async_transport: Optional[httpx.AsyncBaseTransport] = None,
+        event_hooks: Optional[EventHookTypes] = None,
+        async_event_hooks: Optional[EventHookTypes] = None,
         cache_strategy: Optional[BaseCacheStrategy] = None,
         http_cache: bool = True,
         throttler: Optional[BaseThrottler] = None,
@@ -184,6 +193,8 @@ class GitHubCore(Generic[A]):
             proxy=proxy,
             transport=transport,
             async_transport=async_transport,
+            event_hooks=event_hooks,
+            async_event_hooks=async_event_hooks,
             cache_strategy=cache_strategy,
             http_cache=http_cache,
             throttler=throttler,
@@ -252,12 +263,15 @@ class GitHubCore(Generic[A]):
             return hishel.CacheClient(
                 **self._get_client_defaults(),
                 transport=self.config.transport,
+                event_hooks=self.config.event_hooks,
                 storage=self.config.cache_strategy.get_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
 
         return httpx.Client(
-            **self._get_client_defaults(), transport=self.config.transport
+            **self._get_client_defaults(),
+            transport=self.config.transport,
+            event_hooks=self.config.event_hooks,
         )
 
     # get or create sync client
@@ -277,12 +291,15 @@ class GitHubCore(Generic[A]):
             return hishel.AsyncCacheClient(
                 **self._get_client_defaults(),
                 transport=self.config.async_transport,
+                event_hooks=self.config.async_event_hooks,
                 storage=self.config.cache_strategy.get_async_hishel_storage(),
                 controller=self.config.cache_strategy.get_hishel_controller(),
             )
 
         return httpx.AsyncClient(
-            **self._get_client_defaults(), transport=self.config.async_transport
+            **self._get_client_defaults(),
+            transport=self.config.async_transport,
+            event_hooks=self.config.async_event_hooks,
         )
 
     # get or create async client
