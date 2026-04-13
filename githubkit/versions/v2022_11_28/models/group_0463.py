@@ -101,7 +101,7 @@ class RepoSearchResultItem(GitHubModel):
     has_projects: bool = Field()
     has_pages: bool = Field()
     has_wiki: bool = Field()
-    has_downloads: bool = Field()
+    has_downloads: Missing[bool] = Field(default=UNSET)
     has_discussions: Missing[bool] = Field(default=UNSET)
     has_pull_requests: Missing[bool] = Field(default=UNSET)
     pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(

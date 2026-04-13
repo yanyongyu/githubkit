@@ -77,6 +77,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/3ba1e727
 "/components/schemas/repository-webhooks/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/repository-webhooks/properties/template_repository/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/repository/properties/owner" = {anyOf = [{type = "null"}, {"$ref" = "#/components/schemas/simple-user"}], "$ref" = "<unset>"}
+"/components/schemas/repo-search-result-item/required" = {"<remove>" = ["has_downloads"]}
 "/components/schemas/auto-merge/properties/commit_title" = {type = ["string", "null"]}
 "/components/schemas/auto-merge/properties/commit_message" = {type = ["string", "null"]}
 "/paths/~1repos~1{owner}~1{repo}~1releases/post/requestBody/content/application~1json/schema/properties/make_latest" = {default = "true"}

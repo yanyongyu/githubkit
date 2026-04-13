@@ -328,6 +328,9 @@ source = "descriptions-next/ghec/ghec.2026-03-10.json"
   { "$ref" = "#/components/schemas/simple-user" },
 ], "$ref" = "<unset>" }
 
+# https://github.com/yanyongyu/githubkit/issues/293
+"/components/schemas/repo-search-result-item/required" = { "<remove>" = ["has_downloads"] }
+
 # https://github.com/github/rest-api-description/issues/2491
 "/components/schemas/auto-merge/properties/commit_title" = { type = [
   "string",
