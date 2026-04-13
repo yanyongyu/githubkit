@@ -99,7 +99,7 @@ class RepoSearchResultItemType(TypedDict):
     has_projects: bool
     has_pages: bool
     has_wiki: bool
-    has_downloads: bool
+    has_downloads: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
@@ -198,7 +198,7 @@ class RepoSearchResultItemTypeForResponse(TypedDict):
     has_projects: bool
     has_pages: bool
     has_wiki: bool
-    has_downloads: bool
+    has_downloads: NotRequired[bool]
     has_discussions: NotRequired[bool]
     has_pull_requests: NotRequired[bool]
     pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
