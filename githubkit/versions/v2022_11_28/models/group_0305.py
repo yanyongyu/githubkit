@@ -17,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0129 import CodeScanningAlertLocation
+from .group_0128 import CodeScanningAlertLocation
 
 
 class CodeScanningAlertInstanceList(GitHubModel):

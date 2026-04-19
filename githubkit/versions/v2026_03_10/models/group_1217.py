@@ -11,38 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
-    event_type: str = Field(
-        min_length=1,
-        max_length=100,
-        description="A custom webhook event name. Must be 100 characters or fewer.",
-    )
-    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
-        default=UNSET,
-        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10. The total size of the JSON payload must be less than 64KB.",
-    )
+    labels: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10. The total
-    size of the JSON payload must be less than 64KB.
-    """
+    name: str = Field()
 
 
-model_rebuild(ReposOwnerRepoDispatchesPostBody)
-model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBody",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
 )

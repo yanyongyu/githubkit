@@ -9,24 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    total_count: int
+    secrets: list[CodespacesSecretType]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    total_count: int
+    secrets: list[CodespacesSecretTypeForResponse]
+
+
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
+
+
+class CodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "CodespacesSecretType",
+    "CodespacesSecretTypeForResponse",
+    "UserCodespacesSecretsGetResponse200Type",
+    "UserCodespacesSecretsGetResponse200TypeForResponse",
 )

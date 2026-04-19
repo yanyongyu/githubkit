@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,146 +17,55 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0079 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
-
-    name: str = Field(
-        description="The name of the code security configuration. Must be unique within the enterprise."
-    )
-    description: str = Field(
-        max_length=255, description="A description of the code security configuration"
-    )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="The enablement status of GitHub Code Security features.",
+        description="Whether to prevent additional spending once the budget is exceeded",
     )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The enablement status of Automatic dependency submission",
-    )
-    dependency_graph_autosubmit_action_options: Missing[
-        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
-    )
-    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Secret Protection features.",
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    secret_scanning_extended_metadata: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning extended metadata",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
-    bmitActionOptions
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

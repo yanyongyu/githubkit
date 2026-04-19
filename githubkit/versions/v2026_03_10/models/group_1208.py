@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,59 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    message: str = Field(description="The commit message.")
-    sha: str = Field(description="The blob SHA of the file being deleted.")
-    branch: Missing[str] = Field(
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="The branch name. Default: the repository’s default branch",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
-        default=UNSET, description="object containing information about the committer."
-    )
-    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
-        default=UNSET, description="object containing information about the author."
-    )
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="The email of the author (or committer) of the commit",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
+    type: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The email of the author (or committer) of the commit",
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
 
 __all__ = (
-    "ReposOwnerRepoContentsPathDeleteBody",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
 )

@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0256 import Codespace
-
-
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgCodespacesGetResponse200)
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+    async_: Missing[bool] = Field(
+        default=UNSET,
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+    )
+
+
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

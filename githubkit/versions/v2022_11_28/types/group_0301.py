@@ -14,11 +14,11 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0128 import (
+from .group_0127 import (
     CodeScanningAnalysisToolType,
     CodeScanningAnalysisToolTypeForResponse,
 )
-from .group_0130 import (
+from .group_0129 import (
     CodeScanningAlertInstanceType,
     CodeScanningAlertInstanceTypeForResponse,
 )

@@ -12,22 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_1027 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
+from .group_0038 import ActionsHostedRunnerCuratedImage
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCuratedImage] = Field()
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200)
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesGithubOwnedGetResponse200",)

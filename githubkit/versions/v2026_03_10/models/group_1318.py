@@ -9,48 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    issue_field_values: Missing[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
-    )
+    attestations: Missing[
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
     GitHubModel
 ):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
-    """
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody)
-model_rebuild(
-    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
 )

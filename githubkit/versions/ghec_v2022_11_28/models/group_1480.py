@@ -11,31 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
-    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
+class UserEmailsPostBodyOneof0(GitHubModel):
+    """UserEmailsPostBodyOneof0
 
-    tag_name: str = Field(
-        description="The tag name for the release. This can be an existing tag or a new one."
-    )
-    target_commitish: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
-    )
-    previous_tag_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
-    )
-    configuration_file_path: Missing[str] = Field(
-        default=UNSET,
-        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
+model_rebuild(UserEmailsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)
+__all__ = ("UserEmailsPostBodyOneof0",)

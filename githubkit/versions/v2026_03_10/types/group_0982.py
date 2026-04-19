@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class GistsGistIdCommentsPostBodyType(TypedDict):
-    """GistsGistIdCommentsPostBody"""
-
-    body: str
+from .group_0118 import RunnerType, RunnerTypeForResponse
 
 
-class GistsGistIdCommentsPostBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsPostBody"""
+class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    body: str
+    total_count: int
+    runners: list[RunnerType]
+
+
+class OrgsOrgActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "GistsGistIdCommentsPostBodyType",
-    "GistsGistIdCommentsPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnersGetResponse200TypeForResponse",
 )

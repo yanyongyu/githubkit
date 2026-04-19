@@ -10,80 +10,94 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0065 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
-)
-from .group_0066 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
-)
-from .group_0067 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
+        ]
     ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
+    custom_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
+        ]
     ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
+    pattern_config_version: NotRequired[Union[str, None]]
+    provider_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
+        ]
     ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
+    custom_pattern_settings: NotRequired[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
+        ]
     ]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: NotRequired[str]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
 )

@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody
+class ReposOwnerRepoCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the commit comment."
     )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody)
+model_rebuild(ReposOwnerRepoCommentsCommentIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",)

@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
-
-    default_level: Literal["public", "internal"]
+from .group_0089 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    default_level: Literal["public", "internal"]
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

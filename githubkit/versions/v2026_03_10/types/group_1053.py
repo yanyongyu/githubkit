@@ -9,36 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyType(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[_dt.datetime]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: int
+    installations: list[InstallationType]
 
 
-class OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCampaignsCampaignNumberPatchBody"""
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    managers: NotRequired[list[str]]
-    team_managers: NotRequired[list[str]]
-    ends_at: NotRequired[str]
-    contact_link: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCampaignsCampaignNumberPatchBodyType",
-    "OrgsOrgCampaignsCampaignNumberPatchBodyTypeForResponse",
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
 )

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    total_count: int
-    platforms: list[str]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    total_count: int
-    platforms: list[str]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsBulkListPostBodyType",
+    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
 )

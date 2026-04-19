@@ -17,34 +17,84 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1447 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_0113 import RepositoryRulesetBypassActor
+from .group_0118 import RepositoryRulesetConditions
+from .group_0132 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0133 import RepositoryRuleUpdate
+from .group_0135 import RepositoryRuleRequiredLinearHistory
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
+from .group_0172 import RepositoryRuleMergeQueue
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    cname: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    https_enforced: Missing[bool] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
-    public: Missing[bool] = Field(
+    conditions: Missing[RepositoryRulesetConditions] = Field(
         default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
     )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

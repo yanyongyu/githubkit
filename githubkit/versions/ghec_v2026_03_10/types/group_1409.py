@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-
-
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    config: NotRequired[WebhookConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    add_events: NotRequired[list[str]]
-    remove_events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
+
+
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdPatchBodyType",
-    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

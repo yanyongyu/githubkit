@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,33 +17,89 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[OrganizationDependabotSecret] = Field()
-
-
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
-
-__all__ = (
-    "OrganizationDependabotSecret",
-    "OrgsOrgDependabotSecretsGetResponse200",
+from .group_0113 import RepositoryRulesetBypassActor
+from .group_0132 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
+from .group_0133 import RepositoryRuleUpdate
+from .group_0135 import RepositoryRuleRequiredLinearHistory
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
+from .group_0169 import OrgRulesetConditionsOneof0
+from .group_0170 import OrgRulesetConditionsOneof1
+from .group_0171 import OrgRulesetConditionsOneof2
+
+
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(OrgsOrgRulesetsPostBody)
+
+__all__ = ("OrgsOrgRulesetsPostBody",)

@@ -12,15 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
 
 
-class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
 
 
 __all__ = (
-    "GistsGistIdStarGetResponse404Type",
-    "GistsGistIdStarGetResponse404TypeForResponse",
+    "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType",
+    "OrgsOrgActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

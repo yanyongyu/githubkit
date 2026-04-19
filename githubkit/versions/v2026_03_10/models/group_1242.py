@@ -17,18 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1241 import ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+        default=UNSET,
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    )
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site."
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)

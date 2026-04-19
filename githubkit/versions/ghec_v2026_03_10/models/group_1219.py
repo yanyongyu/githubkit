@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,212 +17,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0079 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
+class OrgsOrgInvitationsPostBody(GitHubModel):
+    """OrgsOrgInvitationsPostBody"""
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
-
-    name: Missing[str] = Field(
+    invitee_id: Missing[int] = Field(
         default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
     )
-    description: Missing[str] = Field(
-        max_length=255,
+    email: Missing[str] = Field(
         default=UNSET,
-        description="A description of the code security configuration",
+        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
     )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
-    )
-    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Code Security features.",
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of Automatic dependency submission",
-    )
-    dependency_graph_autosubmit_action_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
         Field(
             default=UNSET,
-            description="The enablement status of Dependabot security updates",
+            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
         )
     )
-    dependabot_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    team_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled.",
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
-    )
-    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Secret Protection features.",
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
-    )
-    secret_scanning_delegated_bypass_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    secret_scanning_extended_metadata: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning extended metadata",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+        description="Specify IDs for the teams you want to invite new members to.",
     )
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
-    submitActionOptions
+model_rebuild(OrgsOrgInvitationsPostBody)
 
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
-        list[
-            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDeleg
-    atedBypassOptionsPropReviewersItems
-    """
-
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
-        default=UNSET, description="The bypass mode for the reviewer"
-    )
-
-
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
-model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
-)
-model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions
-)
-model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
-)
-
-__all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
-)
+__all__ = ("OrgsOrgInvitationsPostBody",)

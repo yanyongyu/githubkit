@@ -13,16 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0119 import Runner
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str] = Field(description="The username for users")
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody)
 
-    total_count: int = Field()
-    runners: list[Runner] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",)

@@ -9,34 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    Examples:
-        {'teams': ['my-team']}
+    total_count: int
+    secrets: list[DependabotSecretType]
+
+
+class ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+
+    total_count: int
+    secrets: list[DependabotSecretTypeForResponse]
+
+
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
+
+    Set secrets for Dependabot.
     """
 
-    teams: list[str]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
+class DependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret
 
-    Examples:
-        {'teams': ['my-team']}
+    Set secrets for Dependabot.
     """
 
-    teams: list[str]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0TypeForResponse",
+    "DependabotSecretType",
+    "DependabotSecretTypeForResponse",
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "ReposOwnerRepoDependabotSecretsGetResponse200TypeForResponse",
 )

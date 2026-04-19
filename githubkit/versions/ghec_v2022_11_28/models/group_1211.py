@@ -11,19 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
+    )
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
     )
 
 
-model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
+model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)

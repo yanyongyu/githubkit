@@ -12,17 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0103 import NetworkConfiguration
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+from .group_0245 import OrganizationCustomRepositoryRole
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

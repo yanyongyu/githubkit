@@ -9,57 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType(TypedDict):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
+class UsersUsernameAttestationsBulkListPostBodyType(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType
-        ]
-    ]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
+class UsersUsernameAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameAttestationsBulkListPostBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
-    """
-
-    field_id: int
-    value: Union[str, float]
-
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
-    """
-
-    field_id: int
-    value: Union[str, float]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItemsTypeForResponse",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyTypeForResponse",
+    "UsersUsernameAttestationsBulkListPostBodyType",
+    "UsersUsernameAttestationsBulkListPostBodyTypeForResponse",
 )

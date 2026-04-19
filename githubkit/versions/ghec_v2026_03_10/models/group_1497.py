@@ -14,18 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["text", "number", "date"] = Field(
+        description="The field's data type."
     )
 
 
-model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0)
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0",)

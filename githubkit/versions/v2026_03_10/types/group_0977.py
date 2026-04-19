@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0103 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    total_count: float
+    runners: list[ActionsHostedRunnerType]
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
 
-    name: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
+    total_count: float
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
-    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
 )

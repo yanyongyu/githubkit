@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
-
-
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
-
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+from .group_0102 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
-class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+
+
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "ApplicationsClientIdTokenScopedPostBodyType",
-    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

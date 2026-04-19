@@ -9,27 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class ArtifactDeploymentRecord(GitHubModel):
+    """Artifact Deployment Record
 
-    The public key used for setting Actions Secrets.
+    Artifact Metadata Deployment Record
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
     id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    logical_environment: Missing[str] = Field(default=UNSET)
+    physical_environment: Missing[str] = Field(default=UNSET)
+    cluster: Missing[str] = Field(default=UNSET)
+    deployment_name: Missing[str] = Field(default=UNSET)
+    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
+    )
     created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    attestation_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The ID of the provenance attestation associated with the deployment record.",
+    )
 
 
-model_rebuild(ActionsPublicKey)
+class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
+    """ArtifactDeploymentRecordPropTags"""
 
-__all__ = ("ActionsPublicKey",)
+
+model_rebuild(ArtifactDeploymentRecord)
+model_rebuild(ArtifactDeploymentRecordPropTags)
+
+__all__ = (
+    "ArtifactDeploymentRecord",
+    "ArtifactDeploymentRecordPropTags",
+)

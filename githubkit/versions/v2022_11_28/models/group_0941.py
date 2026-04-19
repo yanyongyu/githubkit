@@ -9,58 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsTasksGetResponse400(GitHubModel):
-    """AgentsTasksGetResponse400
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsTasksGetResponse400PropErrorsItems]] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsTasksGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    organization_slugs: list[str] = Field(
+        description="Organization slug to unassign the team from."
     )
 
 
-model_rebuild(AgentsTasksGetResponse400)
-model_rebuild(AgentsTasksGetResponse400PropErrorsItems)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
 
-__all__ = (
-    "AgentsTasksGetResponse400",
-    "AgentsTasksGetResponse400PropErrorsItems",
-)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)

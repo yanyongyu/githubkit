@@ -12,16 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0242 import MinimalRepository
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(NotificationsPutResponse202)
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("NotificationsPutResponse202",)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)

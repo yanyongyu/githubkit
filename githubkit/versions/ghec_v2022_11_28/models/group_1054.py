@@ -9,19 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0065 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
+)
+from .group_0066 import AmazonS3OidcConfig, SplunkConfig
+from .group_0067 import GoogleCloudConfig
 
-class ApplicationsClientIdGrantDeleteBody(GitHubModel):
-    """ApplicationsClientIdGrantDeleteBody"""
 
-    access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API."
+class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
     )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
 
 
-model_rebuild(ApplicationsClientIdGrantDeleteBody)
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
 
-__all__ = ("ApplicationsClientIdGrantDeleteBody",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)

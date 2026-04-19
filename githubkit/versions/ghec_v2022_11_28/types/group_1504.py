@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0257 import CodespaceType, CodespaceTypeForResponse
-
-
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesGetResponse200"""
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1"""
+
+    type: Literal["Issue", "PullRequest"]
+    id: NotRequired[int]
+    owner: str
+    repo: str
+    number: int
 
 
 __all__ = (
-    "UserCodespacesGetResponse200Type",
-    "UserCodespacesGetResponse200TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type",
+    "UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
 )

@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class UserPatchBodyType(TypedDict):
+    """UserPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class UserPatchBodyTypeForResponse(TypedDict):
+    """UserPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
+    "UserPatchBodyType",
+    "UserPatchBodyTypeForResponse",
 )

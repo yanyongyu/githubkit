@@ -9,31 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
 
 
-class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    name: str
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: list[str]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    attestations: NotRequired[
+        list[
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

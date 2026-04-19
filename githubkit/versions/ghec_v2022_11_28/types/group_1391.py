@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    body: str
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    dismissal_review_id: NotRequired[int]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
 )

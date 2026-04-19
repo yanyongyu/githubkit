@@ -19,9 +19,9 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0127 import CodeScanningAlertRuleSummary
-from .group_0128 import CodeScanningAnalysisTool
-from .group_0130 import CodeScanningAlertInstance
+from .group_0126 import CodeScanningAlertRuleSummary
+from .group_0127 import CodeScanningAnalysisTool
+from .group_0129 import CodeScanningAlertInstance
 
 
 class CodeScanningAlertItems(GitHubModel):

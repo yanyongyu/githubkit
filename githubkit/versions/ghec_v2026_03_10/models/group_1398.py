@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0334 import ActionsVariable
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
+class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+    sub_issue_id: int = Field(
+        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
+    )
+    replace_parent: Missing[bool] = Field(
+        default=UNSET,
+        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)

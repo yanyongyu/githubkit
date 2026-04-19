@@ -14,18 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0174 import ProjectsV2FieldSingleSelectOption
 
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
     )
 
 
-model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",)

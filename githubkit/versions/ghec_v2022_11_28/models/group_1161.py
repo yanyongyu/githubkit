@@ -13,17 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0109 import CustomPropertyValue
+from .group_0242 import MinimalRepository
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the organization."
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)

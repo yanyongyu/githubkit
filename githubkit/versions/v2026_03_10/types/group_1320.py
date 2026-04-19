@@ -10,22 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0174 import (
+    ProjectsV2FieldSingleSelectOptionType,
+    ProjectsV2FieldSingleSelectOptionTypeForResponse,
+)
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionType]
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    name: str
+    data_type: Literal["single_select"]
+    single_select_options: list[ProjectsV2FieldSingleSelectOptionTypeForResponse]
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1TypeForResponse",
 )

@@ -12,15 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
+
+    repositories: list[str]
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
+
+    repositories: list[str]
 
 
 __all__ = (
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse",
 )

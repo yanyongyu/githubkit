@@ -12,16 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    selected_repository_ids: list[int] = Field(
-        description="IDs of repositories that can use repository-level self-hosted runners"
-    )
+    attestations: Missing[
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody)
+class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
+    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",)
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
+model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+
+__all__ = (
+    "OrgsOrgAttestationsSubjectDigestGetResponse200",
+    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

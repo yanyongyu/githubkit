@@ -11,59 +11,59 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class UsersUsernameAttestationsBulkListPostResponse200(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    attestations_subject_digests: Missing[
+        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[UsersUsernameAttestationsBulkListPostResponse200PropPageInfo] = (
+        Field(default=UNSET, description="Information about the current page.")
     )
-    display_name: Missing[str] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
-    )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
-    )
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+class UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+    Mapping of subject digest to bundles.
     """
 
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
+
+class UsersUsernameAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
+    )
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200)
+model_rebuild(
+    UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+)
+model_rebuild(UsersUsernameAttestationsBulkListPostResponse200PropPageInfo)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
+    "UsersUsernameAttestationsBulkListPostResponse200",
+    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfo",
 )

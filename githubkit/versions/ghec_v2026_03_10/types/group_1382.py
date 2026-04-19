@@ -9,57 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Union
-from typing_extensions import NotRequired, TypeAlias, TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
+    title: Union[str, int]
+    body: NotRequired[str]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
     ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    assignees: NotRequired[list[str]]
+    type: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoIssuesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
+    title: Union[str, int]
+    body: NotRequired[str]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse]
+        ]
     ]
-    environment: NotRequired[str]
+    assignees: NotRequired[list[str]]
+    type: NotRequired[Union[str, None]]
+
+
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    color: NotRequired[Union[str, None]]
 
 
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
-
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
-    "ReposOwnerRepoDeploymentsPostBodyType",
-    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesPostBodyType",
+    "ReposOwnerRepoIssuesPostBodyTypeForResponse",
 )

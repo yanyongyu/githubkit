@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,47 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksPostBody(GitHubModel):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
+    """OrgsOrgSettingsImmutableReleasesPutBody"""
 
-    name: str = Field(description='Must be passed as "web".')
-    config: OrgsOrgHooksPostBodyPropConfig = Field(
-        description="Key/value pairs to provide settings for this webhook."
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
     )
-    events: Missing[list[str]] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description='Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
     )
 
 
-class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksPostBodyPropConfig
+model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    username: Missing[str] = Field(default=UNSET)
-    password: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgHooksPostBody)
-model_rebuild(OrgsOrgHooksPostBodyPropConfig)
-
-__all__ = (
-    "OrgsOrgHooksPostBody",
-    "OrgsOrgHooksPostBodyPropConfig",
-)
+__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)

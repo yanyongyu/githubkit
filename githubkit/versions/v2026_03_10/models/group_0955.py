@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,42 +17,69 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0008 import Enterprise
-from .group_0009 import IntegrationPropPermissions
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+
+    message: Missing[str] = Field(default=UNSET)
+    budget: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
+    ] = Field(default=UNSET)
 
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
-    """AppManifestsCodeConversionsPostResponse201"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
 
-    id: int = Field(description="Unique identifier of the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    node_id: str = Field()
-    client_id: str = Field()
-    owner: Union[SimpleUser, Enterprise] = Field()
-    name: str = Field(description="The name of the GitHub app")
-    description: Union[str, None] = Field()
-    external_url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    permissions: IntegrationPropPermissions = Field(
-        description="The set of permissions for the GitHub app"
-    )
-    events: list[str] = Field(
-        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
-    )
-    installations_count: Missing[int] = Field(
+    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
+    budget_amount: Missing[float] = Field(
         default=UNSET,
-        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    client_secret: str = Field()
-    webhook_secret: Union[str, None] = Field()
-    pem: str = Field()
+    prevent_further_usage: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201)
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
+    etAlerting
+    """
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201",)
+    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
+model_rebuild(
+    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
+)
+
+__all__ = (
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
+)

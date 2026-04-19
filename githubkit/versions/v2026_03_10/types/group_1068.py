@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    selected_teams: list[str]
+    key_id: str
+    key: str
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    selected_teams: list[str]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
-    "OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

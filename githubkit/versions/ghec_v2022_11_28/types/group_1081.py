@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
+
+    message: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    runners: list[int]
-
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: list[int]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
 )

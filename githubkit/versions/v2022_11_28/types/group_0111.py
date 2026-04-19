@@ -9,31 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsForkPrContributorApprovalType(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class ActionsForkPrWorkflowsPrivateReposType(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
-class ActionsForkPrContributorApprovalTypeForResponse(TypedDict):
-    """ActionsForkPrContributorApproval"""
+class ActionsForkPrWorkflowsPrivateReposTypeForResponse(TypedDict):
+    """ActionsForkPrWorkflowsPrivateRepos"""
 
-    approval_policy: Literal[
-        "first_time_contributors_new_to_github",
-        "first_time_contributors",
-        "all_external_contributors",
-    ]
+    run_workflows_from_fork_pull_requests: bool
+    send_write_tokens_to_workflows: bool
+    send_secrets_and_variables: bool
+    require_approval_for_fork_pr_workflows: bool
 
 
 __all__ = (
-    "ActionsForkPrContributorApprovalType",
-    "ActionsForkPrContributorApprovalTypeForResponse",
+    "ActionsForkPrWorkflowsPrivateReposType",
+    "ActionsForkPrWorkflowsPrivateReposTypeForResponse",
 )

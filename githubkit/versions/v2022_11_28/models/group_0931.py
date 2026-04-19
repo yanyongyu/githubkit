@@ -9,56 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    scope: Literal["all", "all_without_configurations"] = Field(
+        description="The type of repositories to attach the configuration to."
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
 model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody
 )
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
 )

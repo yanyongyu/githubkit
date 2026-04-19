@@ -12,26 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class ApplicationsClientIdTokenPostBody(GitHubModel):
+    """ApplicationsClientIdTokenPostBody"""
 
-    prompt: str = Field(description="The user's prompt for the agent")
-    model: Missing[str] = Field(
-        default=UNSET,
-        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
-    )
-    create_pull_request: Missing[bool] = Field(
-        default=UNSET, description="Whether to create a PR."
-    )
-    base_ref: Missing[str] = Field(
-        default=UNSET, description="Base ref for new branch/PR"
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostBody)
+model_rebuild(ApplicationsClientIdTokenPostBody)
 
-__all__ = ("AgentsReposOwnerRepoTasksPostBody",)
+__all__ = ("ApplicationsClientIdTokenPostBody",)

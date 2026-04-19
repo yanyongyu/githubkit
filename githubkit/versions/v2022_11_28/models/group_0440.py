@@ -28,6 +28,9 @@ class SecretScanningScanHistory(GitHubModel):
     custom_pattern_backfill_scans: Missing[
         list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
     ] = Field(default=UNSET)
+    generic_secrets_backfill_scans: Missing[list[SecretScanningScan]] = Field(
+        default=UNSET
+    )
 
 
 class SecretScanningScan(GitHubModel):

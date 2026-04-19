@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,35 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0420 import DeploymentBranchPolicySettings
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: Literal["open", "dismissed"] = Field(
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
+
+    wait_timer: Missing[int] = Field(
+        default=UNSET,
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
     )
-    dismissed_reason: Missing[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not a user who created the job is prevented from approving their own job.",
+    )
+    reviewers: Missing[
+        Union[
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            None,
+        ]
     ] = Field(
         default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
         Field(
             default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
         )
     )
-    create_request: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, attempt to create an alert dismissal request.",
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
     )
-    assignees: Missing[list[str]] = Field(
+    id: Missing[int] = Field(
         default=UNSET,
-        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert.",
+        description="The id of the user or team who can review the deployment",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+)

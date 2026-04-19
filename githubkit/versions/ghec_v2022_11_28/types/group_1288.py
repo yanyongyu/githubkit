@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    pattern_config_version: NotRequired[str]
+    name: str
+    value: str
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchResponse200"""
+class ReposOwnerRepoActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    pattern_config_version: NotRequired[str]
+    name: str
+    value: str
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200Type",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
+    "ReposOwnerRepoActionsVariablesPostBodyType",
+    "ReposOwnerRepoActionsVariablesPostBodyTypeForResponse",
 )

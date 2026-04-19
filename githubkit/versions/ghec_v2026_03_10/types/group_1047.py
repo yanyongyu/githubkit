@@ -9,77 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AgentsTasksTaskIdGetResponse422Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse422
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
-    documentation_url: str
+    labels: list[str]
 
 
-class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse422
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    labels: list[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse422Type",
-    "AgentsTasksTaskIdGetResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

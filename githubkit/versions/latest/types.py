@@ -114,315 +114,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         AddedToProjectIssueEventType as AddedToProjectIssueEventType,
     )
     from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse200Type as AgentsReposOwnerRepoTasksGetResponse200Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType as AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse400Type as AgentsReposOwnerRepoTasksGetResponse400Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse401Type as AgentsReposOwnerRepoTasksGetResponse401Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType as AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse403Type as AgentsReposOwnerRepoTasksGetResponse403Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse404Type as AgentsReposOwnerRepoTasksGetResponse404Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType as AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksGetResponse422Type as AgentsReposOwnerRepoTasksGetResponse422Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostBodyType as AgentsReposOwnerRepoTasksPostBodyType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type as AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropOwnerType as AgentsReposOwnerRepoTasksPostResponse201PropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType as AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType as AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse201Type as AgentsReposOwnerRepoTasksPostResponse201Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType as AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse400Type as AgentsReposOwnerRepoTasksPostResponse400Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType as AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse401Type as AgentsReposOwnerRepoTasksPostResponse401Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType as AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse403Type as AgentsReposOwnerRepoTasksPostResponse403Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType as AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksPostResponse422Type as AgentsReposOwnerRepoTasksPostResponse422Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Type as AgentsReposOwnerRepoTasksTaskIdGetResponse200Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse400Type as AgentsReposOwnerRepoTasksTaskIdGetResponse400Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse401Type as AgentsReposOwnerRepoTasksTaskIdGetResponse401Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse403Type as AgentsReposOwnerRepoTasksTaskIdGetResponse403Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse404Type as AgentsReposOwnerRepoTasksTaskIdGetResponse404Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType as AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsReposOwnerRepoTasksTaskIdGetResponse422Type as AgentsReposOwnerRepoTasksTaskIdGetResponse422Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type as AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropOwnerType as AgentsTasksGetResponse200PropTasksItemsPropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropRepositoryType as AgentsTasksGetResponse200PropTasksItemsPropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType as AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200PropTasksItemsType as AgentsTasksGetResponse200PropTasksItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse200Type as AgentsTasksGetResponse200Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse400PropErrorsItemsType as AgentsTasksGetResponse400PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse400Type as AgentsTasksGetResponse400Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse401PropErrorsItemsType as AgentsTasksGetResponse401PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse401Type as AgentsTasksGetResponse401Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse403PropErrorsItemsType as AgentsTasksGetResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse403Type as AgentsTasksGetResponse403Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse422PropErrorsItemsType as AgentsTasksGetResponse422PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksGetResponse422Type as AgentsTasksGetResponse422Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type as AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropOwnerType as AgentsTasksTaskIdGetResponse200Allof0PropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType as AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType as AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof0Type as AgentsTasksTaskIdGetResponse200Allof0Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Allof1Type as AgentsTasksTaskIdGetResponse200Allof1Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse200Type as AgentsTasksTaskIdGetResponse200Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse400PropErrorsItemsType as AgentsTasksTaskIdGetResponse400PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse400Type as AgentsTasksTaskIdGetResponse400Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse401PropErrorsItemsType as AgentsTasksTaskIdGetResponse401PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse401Type as AgentsTasksTaskIdGetResponse401Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse403PropErrorsItemsType as AgentsTasksTaskIdGetResponse403PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse403Type as AgentsTasksTaskIdGetResponse403Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse404PropErrorsItemsType as AgentsTasksTaskIdGetResponse404PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse404Type as AgentsTasksTaskIdGetResponse404Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse422PropErrorsItemsType as AgentsTasksTaskIdGetResponse422PropErrorsItemsType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        AgentsTasksTaskIdGetResponse422Type as AgentsTasksTaskIdGetResponse422Type,
-    )
-    from githubkit.versions.v2026_03_10.types import (
         ApiInsightsRouteStatsItemsType as ApiInsightsRouteStatsItemsType,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -1190,6 +881,21 @@ if TYPE_CHECKING or is_lazy_disabled():
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType as EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
         EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -1694,12 +1400,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationSimpleWebhooksType as OrganizationSimpleWebhooksType,
     )
     from githubkit.versions.v2026_03_10.types import (
-        OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType as OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
-        OrganizationsOrgDependabotRepositoryAccessPatchBodyType as OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-    )
-    from githubkit.versions.v2026_03_10.types import (
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType,
     )
     from githubkit.versions.v2026_03_10.types import (
@@ -2059,6 +1759,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         OrgsOrgCopilotContentExclusionPutResponse200Type as OrgsOrgCopilotContentExclusionPutResponse200Type,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType as OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        OrgsOrgDependabotRepositoryAccessPatchBodyType as OrgsOrgDependabotRepositoryAccessPatchBodyType,
     )
     from githubkit.versions.v2026_03_10.types import (
         OrgsOrgDependabotSecretsGetResponse200Type as OrgsOrgDependabotSecretsGetResponse200Type,
@@ -3333,6 +3039,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit.versions.v2026_03_10.types import (
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType as ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
+    )
+    from githubkit.versions.v2026_03_10.types import (
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type as ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type,
     )
     from githubkit.versions.v2026_03_10.types import (
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
@@ -10984,7 +10693,6 @@ else:
             "ThreadSubscriptionType",
             "ActionsCacheRetentionLimitForOrganizationType",
             "ActionsCacheStorageLimitForOrganizationType",
-            "DependabotRepositoryAccessDetailsType",
             "GetAllBudgetsType",
             "BudgetType",
             "BudgetPropBudgetAlertingType",
@@ -11064,6 +10772,7 @@ else:
             "CopilotIdeCodeCompletionsPropEditorsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType",
             "CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType",
+            "DependabotRepositoryAccessDetailsType",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -13857,109 +13566,6 @@ else:
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
-            "AgentsReposOwnerRepoTasksGetResponse200Type",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwnerType",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepositoryType",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
-            "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
-            "AgentsReposOwnerRepoTasksGetResponse400Type",
-            "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse401Type",
-            "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse403Type",
-            "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse404Type",
-            "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksGetResponse422Type",
-            "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksPostBodyType",
-            "AgentsReposOwnerRepoTasksPostResponse201Type",
-            "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type",
-            "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType",
-            "AgentsReposOwnerRepoTasksPostResponse201PropOwnerType",
-            "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType",
-            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType",
-            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type",
-            "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type",
-            "AgentsReposOwnerRepoTasksPostResponse400Type",
-            "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksPostResponse401Type",
-            "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksPostResponse403Type",
-            "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksPostResponse422Type",
-            "AgentsReposOwnerRepoTasksPostResponse422PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse401Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse403Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse404Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItemsType",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse422Type",
-            "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType",
-            "AgentsTasksGetResponse200Type",
-            "AgentsTasksGetResponse200PropTasksItemsType",
-            "AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
-            "AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
-            "AgentsTasksGetResponse200PropTasksItemsPropOwnerType",
-            "AgentsTasksGetResponse200PropTasksItemsPropRepositoryType",
-            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
-            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
-            "AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
-            "AgentsTasksGetResponse400Type",
-            "AgentsTasksGetResponse400PropErrorsItemsType",
-            "AgentsTasksGetResponse401Type",
-            "AgentsTasksGetResponse401PropErrorsItemsType",
-            "AgentsTasksGetResponse403Type",
-            "AgentsTasksGetResponse403PropErrorsItemsType",
-            "AgentsTasksGetResponse422Type",
-            "AgentsTasksGetResponse422PropErrorsItemsType",
-            "AgentsTasksTaskIdGetResponse200Type",
-            "AgentsTasksTaskIdGetResponse200Allof0Type",
-            "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-            "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-            "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
-            "AgentsTasksTaskIdGetResponse200Allof0PropOwnerType",
-            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType",
-            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type",
-            "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type",
-            "AgentsTasksTaskIdGetResponse200Allof1Type",
-            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
-            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
-            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
-            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
-            "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
-            "AgentsTasksTaskIdGetResponse400Type",
-            "AgentsTasksTaskIdGetResponse400PropErrorsItemsType",
-            "AgentsTasksTaskIdGetResponse401Type",
-            "AgentsTasksTaskIdGetResponse401PropErrorsItemsType",
-            "AgentsTasksTaskIdGetResponse403Type",
-            "AgentsTasksTaskIdGetResponse403PropErrorsItemsType",
-            "AgentsTasksTaskIdGetResponse404Type",
-            "AgentsTasksTaskIdGetResponse404PropErrorsItemsType",
-            "AgentsTasksTaskIdGetResponse422Type",
-            "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
             "AppManifestsCodeConversionsPostResponse201Type",
             "AppManifestsCodeConversionsPostResponse201Allof1Type",
             "AppHookConfigPatchBodyType",
@@ -13979,6 +13585,11 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+            "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+            "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
+            "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
+            "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+            "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
             "EnterprisesEnterpriseTeamsPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
             "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
@@ -14001,8 +13612,6 @@ else:
             "NotificationsPutBodyType",
             "NotificationsPutResponse202Type",
             "NotificationsThreadsThreadIdSubscriptionPutBodyType",
-            "OrganizationsOrgDependabotRepositoryAccessPatchBodyType",
-            "OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
             "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200Type",
@@ -14118,6 +13727,8 @@ else:
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
             "OrgsOrgCopilotContentExclusionPutBodyType",
             "OrgsOrgCopilotContentExclusionPutResponse200Type",
+            "OrgsOrgDependabotRepositoryAccessPatchBodyType",
+            "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
             "OrgsOrgDependabotSecretsGetResponse200Type",
             "OrganizationDependabotSecretType",
             "OrgsOrgDependabotSecretsSecretNamePutBodyType",
@@ -14299,6 +13910,7 @@ else:
             "ReposOwnerRepoDependabotSecretsGetResponse200Type",
             "DependabotSecretType",
             "ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",
+            "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
             "ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",
             "ReposOwnerRepoDeploymentsPostBodyType",
             "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",

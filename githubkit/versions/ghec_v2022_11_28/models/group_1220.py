@@ -11,22 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0018 import Installation
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgInstallationsGetResponse200(GitHubModel):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    selected_repository_ids: Missing[list[int]] = Field(
-        max_length=250 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
-    )
+    total_count: int = Field()
+    installations: list[Installation] = Field()
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+model_rebuild(OrgsOrgInstallationsGetResponse200)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)
+__all__ = ("OrgsOrgInstallationsGetResponse200",)

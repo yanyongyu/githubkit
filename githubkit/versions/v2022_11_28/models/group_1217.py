@@ -9,49 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ] = Field(
-        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
-    )
-    target_url: Missing[str] = Field(
+    labels: Missing[list[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET,
-        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the status. The maximum description length is 140 characters.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
-    )
-    environment_url: Missing[str] = Field(
-        default=UNSET,
-        description='Sets the URL for accessing your environment. Default: `""`',
-    )
-    auto_inactive: Missing[bool] = Field(
-        default=UNSET,
-        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
+        description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."',
     )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0)
 
-__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",)

@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0256 import CodespaceMachineType, CodespaceMachineTypeForResponse
+from .group_0255 import CodespaceMachineType, CodespaceMachineTypeForResponse
 from .group_0314 import FullRepositoryType, FullRepositoryTypeForResponse
 
 

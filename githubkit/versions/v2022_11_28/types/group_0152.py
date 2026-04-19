@@ -36,6 +36,7 @@ class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
 class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
     """OrganizationUpdateIssueFieldPropOptionsItems"""
 
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
@@ -45,6 +46,7 @@ class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
 class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
     """OrganizationUpdateIssueFieldPropOptionsItems"""
 
+    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]

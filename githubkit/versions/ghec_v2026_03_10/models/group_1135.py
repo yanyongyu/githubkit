@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody"""
-
-    name: str = Field(description="The new name for the cost center")
+from .group_0020 import Repository
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody)
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBody",)
+    total_count: float = Field()
+    repositories: list[Repository] = Field()
+
+
+model_rebuild(OrgsOrgActionsPermissionsRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",)

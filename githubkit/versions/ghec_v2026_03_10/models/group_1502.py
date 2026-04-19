@@ -9,62 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserCodespacesPostBodyOneof0(GitHubModel):
-    """UserCodespacesPostBodyOneof0"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    repository_id: int = Field(description="Repository id for this codespace")
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
-    )
-    location: Missing[str] = Field(
-        default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems
+    ] = Field(description="A list of field updates to apply.")
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(
+    GitHubModel
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
     )
 
 
-model_rebuild(UserCodespacesPostBodyOneof0)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
 
-__all__ = ("UserCodespacesPostBodyOneof0",)
+__all__ = (
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
+)

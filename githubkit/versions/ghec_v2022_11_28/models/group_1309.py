@@ -9,31 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPermissionsPutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: list[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
 
-__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)

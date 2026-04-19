@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any
+from typing_extensions import TypeAlias
+
+EnterprisesEnterpriseCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
-
-
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
-
-    disable_self_hosted_runners_for_all_orgs: bool
+EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseCopilotContentExclusionPutBody
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyType",
+    "EnterprisesEnterpriseCopilotContentExclusionPutBodyTypeForResponse",
 )

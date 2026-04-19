@@ -16,12 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    errors: Missing[list[str]] = Field(default=UNSET)
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422",)
+__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)

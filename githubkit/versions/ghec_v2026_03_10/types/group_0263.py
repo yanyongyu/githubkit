@@ -12,26 +12,34 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
-
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+from .group_0076 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+
+
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
+    accessible_repositories: NotRequired[
+        list[Union[None, SimpleRepositoryTypeForResponse]]
+    ]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleUpdateSchemaType",
-    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

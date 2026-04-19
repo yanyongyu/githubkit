@@ -14,16 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the issue or pull request to add to the project.",
+    )
+    owner: str = Field(description="The repository owner login.")
+    repo: str = Field(description="The repository name.")
+    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,51 +18,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse403(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
+class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems]
-    ] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    )
+    size: Missing[str] = Field(
+        default=UNSET,
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+    )
+    image_id: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
+    )
+    image_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)

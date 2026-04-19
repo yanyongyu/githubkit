@@ -13,24 +13,19 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
+from .group_0111 import CustomProperty
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    AddPatchBody
-    """
 
-    repositories: list[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        description="The repository names to add to the installation.",
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody
-)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody",
-)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

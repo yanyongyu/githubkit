@@ -9,62 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
-        ]
-    ]
+    total_count: int
+    secrets: list[RepoCodespacesSecretType]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[list[str]]
-    checks: NotRequired[
-        list[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse
-        ]
-    ]
+    total_count: int
+    secrets: list[RepoCodespacesSecretTypeForResponse]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Set repository secrets for GitHub Codespaces.
     """
 
-    context: str
-    app_id: NotRequired[int]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Set repository secrets for GitHub Codespaces.
     """
 
-    context: str
-    app_id: NotRequired[int]
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsTypeForResponse",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyTypeForResponse",
+    "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

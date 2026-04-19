@@ -12,53 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0036 import ActionsHostedRunnerCustomImage
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200)
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
-
-__all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200",)

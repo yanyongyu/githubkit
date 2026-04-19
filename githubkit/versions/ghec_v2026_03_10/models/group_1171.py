@@ -11,23 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)

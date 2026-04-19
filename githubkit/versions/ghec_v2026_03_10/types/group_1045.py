@@ -9,77 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0053 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class AgentsTasksTaskIdGetResponse403Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse403
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse403PropErrorsItemsType]]
-    documentation_url: str
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-class AgentsTasksTaskIdGetResponse403TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse403
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse403PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse403Type",
-    "AgentsTasksTaskIdGetResponse403TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200TypeForResponse",
 )

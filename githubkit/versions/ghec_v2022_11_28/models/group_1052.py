@@ -9,13 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
+
+    repositories: list[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        description="The repository names to add to the installation.",
+    )
 
 
-model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody
+)
 
-__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody",
+)

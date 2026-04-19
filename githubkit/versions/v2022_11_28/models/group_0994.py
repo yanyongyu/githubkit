@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,68 +19,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200"""
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    message: Missing[str] = Field(default=UNSET)
-    budget: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget
-    ] = Field(default=UNSET)
+    total_count: int = Field()
+    variables: list[OrganizationActionsVariable] = Field()
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget"""
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["enterprise", "organization", "repository", "cost_center"]
-    ] = Field(default=UNSET, description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
-        default=UNSET, description="The type of pricing for the budget"
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-
-
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudg
-    etAlerting
+    Organization variable for GitHub Actions.
     """
 
-    will_alert: bool = Field(description="Whether alerts are enabled for this budget")
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts"
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget)
-model_rebuild(
-    OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting
-)
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudget",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchResponse200PropBudgetPropBudgetAlerting",
+    "OrganizationActionsVariable",
+    "OrgsOrgActionsVariablesGetResponse200",
 )

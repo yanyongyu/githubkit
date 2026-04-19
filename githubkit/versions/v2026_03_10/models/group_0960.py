@@ -14,14 +14,43 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdGrantDeleteBody(GitHubModel):
-    """ApplicationsClientIdGrantDeleteBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API."
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
+
+
+class ActionsHostedRunnerCustomImage(GitHubModel):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int = Field(
+        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    )
+    platform: str = Field(description="The operating system of the image.")
+    total_versions_size: int = Field(
+        description="Total size of all the image versions in GB."
+    )
+    name: str = Field(description="Display name for this image.")
+    source: str = Field(description="The image provider.")
+    versions_count: int = Field(
+        description="The number of image versions associated with the image."
+    )
+    latest_version: str = Field(
+        description="The latest image version associated with the image."
+    )
+    state: str = Field(
+        description="The number of image versions associated with the image."
     )
 
 
-model_rebuild(ApplicationsClientIdGrantDeleteBody)
+model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
+model_rebuild(ActionsHostedRunnerCustomImage)
 
-__all__ = ("ApplicationsClientIdGrantDeleteBody",)
+__all__ = (
+    "ActionsHostedRunnerCustomImage",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
+)

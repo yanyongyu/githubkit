@@ -9,32 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    total_count: int = Field()
+    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
+
+
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
     )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(AppHookConfigPatchBody)
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
 
-__all__ = ("AppHookConfigPatchBody",)
+__all__ = (
+    "ActionsCacheUsageByRepository",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+)

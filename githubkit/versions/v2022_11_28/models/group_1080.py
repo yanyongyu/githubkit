@@ -11,17 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0178 import CustomProperty
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for Copilot coding agent."
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

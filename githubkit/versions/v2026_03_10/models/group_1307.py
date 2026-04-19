@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,84 +17,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0184 import RepositoryRulesetBypassActor
-from .group_0185 import RepositoryRulesetConditions
-from .group_0196 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0197 import RepositoryRuleUpdate
-from .group_0199 import RepositoryRuleRequiredLinearHistory
-from .group_0200 import RepositoryRuleMergeQueue
-from .group_0202 import RepositoryRuleRequiredDeployments
-from .group_0204 import RepositoryRulePullRequest
-from .group_0206 import RepositoryRuleRequiredStatusChecks
-from .group_0208 import RepositoryRuleCommitMessagePattern
-from .group_0210 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0212 import RepositoryRuleCommitterEmailPattern
-from .group_0214 import RepositoryRuleBranchNamePattern
-from .group_0216 import RepositoryRuleTagNamePattern
-from .group_0218 import RepositoryRuleFilePathRestriction
-from .group_0220 import RepositoryRuleMaxFilePathLength
-from .group_0222 import RepositoryRuleFileExtensionRestriction
-from .group_0224 import RepositoryRuleMaxFileSize
-from .group_0227 import RepositoryRuleWorkflows
-from .group_0229 import RepositoryRuleCodeScanning
-from .group_0231 import RepositoryRuleCopilotCodeReview
 
+class UserMigrationsPostBody(GitHubModel):
+    """UserMigrationsPostBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="Lock the repositories being migrated at the start of the migration",
     )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    exclude_git_data: Missing[bool] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET, description="Do not include attachments in the migration"
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET, description="Do not include releases in the migration"
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude attributes from the API response to improve performance",
+    )
+    repositories: list[str] = Field()
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(UserMigrationsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("UserMigrationsPostBody",)

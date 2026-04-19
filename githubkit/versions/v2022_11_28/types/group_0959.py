@@ -11,16 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+from .group_0103 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
+
+
+class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
-    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
+    "OrgsOrgActionsHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
 )

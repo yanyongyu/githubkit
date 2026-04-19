@@ -18,41 +18,74 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    commit_sha: str = Field(
-        min_length=40,
-        max_length=40,
-        pattern="^[0-9a-fA-F]+$",
-        description="The SHA of the commit to which the analysis you are uploading relates.",
-    )
-    ref: str = Field(
-        pattern="^refs/(heads|tags|pull)/.*$",
-        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
-    )
-    sarif: str = Field(
-        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'
-    )
-    checkout_uri: Missing[str] = Field(
+    message: str = Field(description="The commit message")
+    tree: str = Field(description="The SHA of the tree object this commit points to")
+    parents: Missing[list[str]] = Field(
         default=UNSET,
-        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
+        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
     )
-    started_at: Missing[_dt.datetime] = Field(
+    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
         default=UNSET,
-        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
     )
-    tool_name: Missing[str] = Field(
+    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
         default=UNSET,
-        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
+        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
     )
-    validate_: Missing[bool] = Field(
+    signature: Missing[str] = Field(
         default=UNSET,
-        alias="validate",
-        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
+        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
+class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str = Field(description="The name of the author (or committer) of the commit")
+    email: str = Field(
+        description="The email of the author (or committer) of the commit"
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitCommitsPostBody)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
+model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
+
+__all__ = (
+    "ReposOwnerRepoGitCommitsPostBody",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
+)

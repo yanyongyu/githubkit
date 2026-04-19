@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
+    status: Literal["approve", "reject"] = Field(
+        description="The review action to perform on the bypass request."
+    )
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody",)

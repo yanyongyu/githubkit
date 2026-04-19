@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,51 +16,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    organizations: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of organization logins within the enterprise to disable Copilot coding agent for.",
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems]
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+        ]
     ] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
-
-    A single validation error
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
     )
+    values: list[str] = Field(description="The values of the custom property to match.")
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
 )

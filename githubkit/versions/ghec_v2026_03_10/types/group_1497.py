@@ -10,22 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "TeamsTeamIdMembershipsUsernamePutBodyType",
-    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

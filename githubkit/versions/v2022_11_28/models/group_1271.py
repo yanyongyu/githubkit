@@ -16,20 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
-    )
-    path: Literal["/", "/docs"] = Field(
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

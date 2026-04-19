@@ -9,42 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=40,
+        pattern="^[0-9a-fA-F]+$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
     ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
     )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-    ] = Field(
+    sarif: str = Field(
+        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'
+    )
+    checkout_uri: Missing[str] = Field(
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
+    )
+    started_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    tool_name: Missing[str] = Field(
+        default=UNSET,
+        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
+    )
+    validate_: Missing[bool] = Field(
+        default=UNSET,
+        alias="validate",
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
     )
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 25. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)

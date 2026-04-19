@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CredentialsRevokePostBodyType(TypedDict):
-    """CredentialsRevokePostBody"""
+class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
 
-    credentials: list[str]
+    total_count: int
+    platforms: list[str]
 
 
-class CredentialsRevokePostBodyTypeForResponse(TypedDict):
-    """CredentialsRevokePostBody"""
+class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
 
-    credentials: list[str]
+    total_count: int
+    platforms: list[str]
 
 
 __all__ = (
-    "CredentialsRevokePostBodyType",
-    "CredentialsRevokePostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
 )

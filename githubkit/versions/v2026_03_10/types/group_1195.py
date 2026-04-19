@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0133 import CodespaceType, CodespaceTypeForResponse
+
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str
+    sha: str
 
 
-class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+class ReposOwnerRepoGitRefsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
-
-
-class ReposOwnerRepoCodespacesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesGetResponse200Type",
-    "ReposOwnerRepoCodespacesGetResponse200TypeForResponse",
+    "ReposOwnerRepoGitRefsPostBodyType",
+    "ReposOwnerRepoGitRefsPostBodyTypeForResponse",
 )

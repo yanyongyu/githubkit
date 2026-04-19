@@ -9,27 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
 
 
-class ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
+    base_tree: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",
-    "ReposOwnerRepoCommentsCommentIdReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
+    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
 )

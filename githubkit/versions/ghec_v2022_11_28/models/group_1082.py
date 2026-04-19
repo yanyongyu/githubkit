@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0054 import Runner
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[list[Runner]] = Field(default=UNSET)
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ] = Field(
+        description="The policy state for Copilot coding agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)

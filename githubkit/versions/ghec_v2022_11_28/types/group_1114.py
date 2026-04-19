@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class GistsGistIdCommentsPostBodyType(TypedDict):
+    """GistsGistIdCommentsPostBody"""
 
-    message: NotRequired[str]
+    body: str
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class GistsGistIdCommentsPostBodyTypeForResponse(TypedDict):
+    """GistsGistIdCommentsPostBody"""
 
-    message: NotRequired[str]
+    body: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type",
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse",
+    "GistsGistIdCommentsPostBodyType",
+    "GistsGistIdCommentsPostBodyTypeForResponse",
 )

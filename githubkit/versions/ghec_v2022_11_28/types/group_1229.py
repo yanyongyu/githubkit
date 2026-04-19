@@ -9,54 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    total_count: int
-    secrets: list[CodespacesOrgSecretType]
-
-
-class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesOrgSecretTypeForResponse]
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
+class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
-
-
-class CodespacesOrgSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    pat_request_ids: NotRequired[list[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodespacesOrgSecretType",
-    "CodespacesOrgSecretTypeForResponse",
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
-    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
+    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
 )

@@ -9,67 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
     )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    physical_environment: Missing[str] = Field(
+        max_length=128,
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="The physical region of the deployment.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=1000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
+    return_records: Missing[bool] = Field(
         default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
+        description="If true, the endpoint will return the set records in the response body\n",
     )
 
 
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
     """
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
+    name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The name of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name parameter must also be identical across all entries.\n",
     )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact. Note that if multiple deployments have identical 'digest' parameter values,\nthe name and version parameters must also be identical across all entries.\n",
     )
-    version: Missing[Union[str, None]] = Field(
+    version: Missing[str] = Field(
+        max_length=100,
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="The artifact version. Note that if multiple deployments have identical 'digest' parameter values,\nthe version parameter must also be identical across all entries.\n",
+    )
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
+    ExtraGitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
+
+    Key-value pairs to tag the deployment record.
+    """
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+)
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
 )

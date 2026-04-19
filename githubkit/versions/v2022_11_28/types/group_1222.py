@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0355 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
-)
+
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
-    ]
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
-
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppTypeForResponse]
-    ]
+    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
+    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
 )

@@ -13,25 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
+    "TeamsTeamIdReposOwnerRepoPutBodyType",
+    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
 )

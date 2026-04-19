@@ -18,41 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
-    )
-    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
-    )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
-    )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."',
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
-    )
-    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
-        Union[bool, None]
-    ] = Field(
-        default=UNSET,
-        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    reassigned_resources: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)
+    resource_type: Missing[str] = Field(
+        default=UNSET, description="The type of resource that was reassigned."
+    )
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the resource that was reassigned."
+    )
+    previous_cost_center: Missing[str] = Field(
+        default=UNSET, description="The previous cost center of the resource."
+    )
+
+
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems",
+)

@@ -11,20 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0253 import ArtifactDeploymentRecord
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    total_count: int = Field(description="The number of deployment records created")
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsType(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    total_count: float
-    repositories: list[RepositoryType]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
 
-    total_count: float
-    repositories: list[RepositoryTypeForResponse]
+    id: NotRequired[int]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",
-    "OrgsOrgActionsPermissionsRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsType",
+    "OrgsOrgAttestationsRepositoriesGetResponse200ItemsTypeForResponse",
 )

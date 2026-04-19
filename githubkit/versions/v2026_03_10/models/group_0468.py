@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0132 import CodespaceMachine
+from .group_0131 import CodespaceMachine
 from .group_0183 import FullRepository
 
 

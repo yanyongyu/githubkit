@@ -14,45 +14,99 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0065 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
+from .group_0113 import RepositoryRulesetBypassActor
+from .group_0126 import EnterpriseRulesetConditionsOneof0
+from .group_0127 import EnterpriseRulesetConditionsOneof1
+from .group_0128 import EnterpriseRulesetConditionsOneof2
+from .group_0129 import EnterpriseRulesetConditionsOneof3
+from .group_0130 import EnterpriseRulesetConditionsOneof4
+from .group_0131 import EnterpriseRulesetConditionsOneof5
+from .group_0132 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
-from .group_0066 import AmazonS3OidcConfig, SplunkConfig
-from .group_0067 import GoogleCloudConfig
+from .group_0133 import RepositoryRuleUpdate
+from .group_0135 import RepositoryRuleRequiredLinearHistory
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0138 import RepositoryRulePullRequest
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleFilePathRestriction
+from .group_0154 import RepositoryRuleMaxFilePathLength
+from .group_0156 import RepositoryRuleFileExtensionRestriction
+from .group_0158 import RepositoryRuleMaxFileSize
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0165 import RepositoryRuleCopilotCodeReview
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseRulesetsRulesetIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
+model_rebuild(EnterprisesEnterpriseRulesetsRulesetIdPutBody)
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)
+__all__ = ("EnterprisesEnterpriseRulesetsRulesetIdPutBody",)

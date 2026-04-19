@@ -12,20 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1042 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
-        Field(default=UNSET, description="Sessions associated with this task")
+    runners: list[int] = Field(
+        description="List of runner IDs to add to the runner group."
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
 
-__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,33 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
     )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)

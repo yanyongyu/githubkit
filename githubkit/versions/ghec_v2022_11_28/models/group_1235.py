@@ -14,15 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
-    """
-
-    seats_created: int = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
+model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)

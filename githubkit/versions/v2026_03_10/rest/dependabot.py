@@ -47,8 +47,8 @@ if TYPE_CHECKING:
         DependabotSecretTypeForResponse,
         EmptyObjectTypeForResponse,
         OrganizationDependabotSecretTypeForResponse,
-        OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
-        OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
+        OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
+        OrgsOrgDependabotRepositoryAccessPatchBodyType,
         OrgsOrgDependabotSecretsGetResponse200TypeForResponse,
         OrgsOrgDependabotSecretsSecretNamePutBodyType,
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse,
@@ -235,428 +235,6 @@ class DependabotClient:
             },
         )
 
-    def repository_access_for_org(
-        self,
-        org: str,
-        *,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        DependabotRepositoryAccessDetails,
-        DependabotRepositoryAccessDetailsTypeForResponse,
-    ]:
-        """dependabot/repository-access-for-org
-
-        GET /organizations/{org}/dependabot/repository-access
-
-        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
-        Unauthorized users will not see the existence of this endpoint.
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
-        """
-
-        from ..models import BasicError, DependabotRepositoryAccessDetails
-
-        url = f"/organizations/{org}/dependabot/repository-access"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=DependabotRepositoryAccessDetails,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    async def async_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        page: Missing[int] = UNSET,
-        per_page: Missing[int] = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-    ) -> Response[
-        DependabotRepositoryAccessDetails,
-        DependabotRepositoryAccessDetailsTypeForResponse,
-    ]:
-        """dependabot/repository-access-for-org
-
-        GET /organizations/{org}/dependabot/repository-access
-
-        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
-        Unauthorized users will not see the existence of this endpoint.
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
-        """
-
-        from ..models import BasicError, DependabotRepositoryAccessDetails
-
-        url = f"/organizations/{org}/dependabot/repository-access"
-
-        params = {
-            "page": page,
-            "per_page": per_page,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=DependabotRepositoryAccessDetails,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    def update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-    ) -> Response: ...
-
-    @overload
-    def update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        repository_ids_to_add: Missing[list[int]] = UNSET,
-        repository_ids_to_remove: Missing[list[int]] = UNSET,
-    ) -> Response: ...
-
-    def update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """dependabot/update-repository-access-for-org
-
-        PATCH /organizations/{org}/dependabot/repository-access
-
-        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
-
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
-        Unauthorized users will not see the existence of this endpoint.
-
-        **Example request body:**
-        ```json
-        {
-          "repository_ids_to_add": [123, 456],
-          "repository_ids_to_remove": [789]
-        }
-        ```
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgDependabotRepositoryAccessPatchBody,
-        )
-
-        url = f"/organizations/{org}/dependabot/repository-access"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgDependabotRepositoryAccessPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    async def async_update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgDependabotRepositoryAccessPatchBodyType,
-    ) -> Response: ...
-
-    @overload
-    async def async_update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        repository_ids_to_add: Missing[list[int]] = UNSET,
-        repository_ids_to_remove: Missing[list[int]] = UNSET,
-    ) -> Response: ...
-
-    async def async_update_repository_access_for_org(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[OrganizationsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """dependabot/update-repository-access-for-org
-
-        PATCH /organizations/{org}/dependabot/repository-access
-
-        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
-
-        > [!NOTE]
-        >    This operation supports both server-to-server and user-to-server access.
-        Unauthorized users will not see the existence of this endpoint.
-
-        **Example request body:**
-        ```json
-        {
-          "repository_ids_to_add": [123, 456],
-          "repository_ids_to_remove": [789]
-        }
-        ```
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgDependabotRepositoryAccessPatchBody,
-        )
-
-        url = f"/organizations/{org}/dependabot/repository-access"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgDependabotRepositoryAccessPatchBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    def set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
-    ) -> Response: ...
-
-    @overload
-    def set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        default_level: Literal["public", "internal"],
-    ) -> Response: ...
-
-    def set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """dependabot/set-repository-access-default-level
-
-        PUT /organizations/{org}/dependabot/repository-access/default-level
-
-        Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
-        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
-        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
-
-        Unauthorized users will not see the existence of this endpoint.
-
-        This operation supports both server-to-server and user-to-server access.
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody,
-        )
-
-        url = f"/organizations/{org}/dependabot/repository-access/default-level"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    async def async_set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
-    ) -> Response: ...
-
-    @overload
-    async def async_set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        default_level: Literal["public", "internal"],
-    ) -> Response: ...
-
-    async def async_set_repository_access_default_level(
-        self,
-        org: str,
-        *,
-        headers: Optional[Mapping[str, str]] = None,
-        stream: bool = False,
-        data: Missing[
-            OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBodyType
-        ] = UNSET,
-        **kwargs,
-    ) -> Response:
-        """dependabot/set-repository-access-default-level
-
-        PUT /organizations/{org}/dependabot/repository-access/default-level
-
-        Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
-        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
-        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
-
-        Unauthorized users will not see the existence of this endpoint.
-
-        This operation supports both server-to-server and user-to-server access.
-
-        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
-        """
-
-        from ..models import (
-            BasicError,
-            OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody,
-        )
-
-        url = f"/organizations/{org}/dependabot/repository-access/default-level"
-
-        headers = {
-            "Content-Type": "application/json",
-            "X-GitHub-Api-Version": self._REST_API_VERSION,
-            **(headers or {}),
-        }
-
-        json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_validate_body:
-            json = type_validate_python(
-                OrganizationsOrgDependabotRepositoryAccessDefaultLevelPutBody, json
-            )
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PUT",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            stream=stream,
-            error_models={
-                "403": BasicError,
-                "404": BasicError,
-            },
-        )
-
     def list_alerts_for_org(
         self,
         org: str,
@@ -824,6 +402,418 @@ class DependabotClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationErrorSimple,
+            },
+        )
+
+    def repository_access_for_org(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-org
+
+        GET /orgs/{org}/dependabot/repository-access
+
+        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
+        > [!NOTE]
+        >    This operation supports both server-to-server and user-to-server access.
+        Unauthorized users will not see the existence of this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/orgs/{org}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        DependabotRepositoryAccessDetails,
+        DependabotRepositoryAccessDetailsTypeForResponse,
+    ]:
+        """dependabot/repository-access-for-org
+
+        GET /orgs/{org}/dependabot/repository-access
+
+        Lists repositories that organization admins have allowed Dependabot to access when updating dependencies.
+        > [!NOTE]
+        >    This operation supports both server-to-server and user-to-server access.
+        Unauthorized users will not see the existence of this endpoint.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-organization
+        """
+
+        from ..models import BasicError, DependabotRepositoryAccessDetails
+
+        url = f"/orgs/{org}/dependabot/repository-access"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRepositoryAccessDetails,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    def update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-org
+
+        PATCH /orgs/{org}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
+
+        > [!NOTE]
+        >    This operation supports both server-to-server and user-to-server access.
+        Unauthorized users will not see the existence of this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgDependabotRepositoryAccessPatchBody
+
+        url = f"/orgs/{org}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgDependabotRepositoryAccessPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        repository_ids_to_add: Missing[list[int]] = UNSET,
+        repository_ids_to_remove: Missing[list[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_update_repository_access_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgDependabotRepositoryAccessPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/update-repository-access-for-org
+
+        PATCH /orgs/{org}/dependabot/repository-access
+
+        Updates repositories according to the list of repositories that organization admins have given Dependabot access to when they've updated dependencies.
+
+        > [!NOTE]
+        >    This operation supports both server-to-server and user-to-server access.
+        Unauthorized users will not see the existence of this endpoint.
+
+        **Example request body:**
+        ```json
+        {
+          "repository_ids_to_add": [123, 456],
+          "repository_ids_to_remove": [789]
+        }
+        ```
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgDependabotRepositoryAccessPatchBody
+
+        url = f"/orgs/{org}/dependabot/repository-access"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgDependabotRepositoryAccessPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    def set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level
+
+        PUT /orgs/{org}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        Unauthorized users will not see the existence of this endpoint.
+
+        This operation supports both server-to-server and user-to-server access.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/orgs/{org}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        default_level: Literal["public", "internal"],
+    ) -> Response: ...
+
+    async def async_set_repository_access_default_level(
+        self,
+        org: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependabot/set-repository-access-default-level
+
+        PUT /orgs/{org}/dependabot/repository-access/default-level
+
+        Sets the default level of repository access Dependabot will have while performing an update.  Available values are:
+        - 'public' - Dependabot will only have access to public repositories, unless access is explicitly granted to non-public repositories.
+        - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
+
+        Unauthorized users will not see the existence of this endpoint.
+
+        This operation supports both server-to-server and user-to-server access.
+
+        See also: https://docs.github.com/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody,
+        )
+
+        url = f"/orgs/{org}/dependabot/repository-access/default-level"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
             },
         )
 

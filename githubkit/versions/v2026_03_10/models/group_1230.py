@@ -12,17 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+    )
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

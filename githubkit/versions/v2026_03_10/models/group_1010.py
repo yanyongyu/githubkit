@@ -15,16 +15,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+
+class OrgsOrgAttestationsRepositoriesGetResponse200Items(GitHubModel):
+    """OrgsOrgAttestationsRepositoriesGetResponse200Items"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgAttestationsRepositoriesGetResponse200Items)
 
-    total_count: Missing[int] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgAttestationsRepositoriesGetResponse200Items",)

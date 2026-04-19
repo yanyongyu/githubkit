@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0294 import CheckRun
+
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
 
-    total_count: int = Field()
-    check_runs: list[CheckRun] = Field()
-
-
-model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
-
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)

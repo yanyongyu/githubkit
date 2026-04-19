@@ -9,37 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0036 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
+
+    budgets: list[BudgetType]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
-
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[list[Union[None, SimpleRepositoryType]]]
+    budgets: list[BudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class BudgetType(TypedDict):
+    """Budget"""
 
-    Information about repositories that Dependabot is able to access in an
-    organization
-    """
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
 
-    default_level: NotRequired[Union[None, Literal["public", "internal"]]]
-    accessible_repositories: NotRequired[
-        list[Union[None, SimpleRepositoryTypeForResponse]]
-    ]
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: str
+    budget_entity_name: NotRequired[str]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

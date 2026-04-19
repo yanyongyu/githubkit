@@ -15,28 +15,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
-
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to remove from the cost center.",
-    )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to remove from the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to remove from the cost center."
-    )
+from .group_0020 import Repository
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
-)
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200"""
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
-)
+    total_count: Missing[int] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",)

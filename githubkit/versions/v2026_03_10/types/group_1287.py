@@ -9,41 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class UserPatchBodyType(TypedDict):
+    """UserPatchBody"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
+class UserPatchBodyTypeForResponse(TypedDict):
+    """UserPatchBody"""
 
-    body: str
-    commit_id: str
-    path: str
-    position: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    line: NotRequired[int]
-    start_line: NotRequired[int]
-    start_side: NotRequired[Literal["LEFT", "RIGHT", "side"]]
-    in_reply_to: NotRequired[int]
-    subject_type: NotRequired[Literal["line", "file"]]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    blog: NotRequired[str]
+    twitter_username: NotRequired[Union[str, None]]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    hireable: NotRequired[bool]
+    bio: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsPostBodyTypeForResponse",
+    "UserPatchBodyType",
+    "UserPatchBodyTypeForResponse",
 )

@@ -12,21 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0255 import Codespace
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be requested."
-    )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be requested."
-    )
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
+model_rebuild(UserCodespacesGetResponse200)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)
+__all__ = ("UserCodespacesGetResponse200",)

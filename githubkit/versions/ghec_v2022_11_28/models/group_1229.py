@@ -9,49 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+    )
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-__all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

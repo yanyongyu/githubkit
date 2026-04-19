@@ -9,56 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1215 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
-    """OrgsOrgCampaignsPostBodyOneof0"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    name: str = Field(
-        min_length=1, max_length=50, description="The name of the campaign"
-    )
-    description: str = Field(
-        min_length=1, max_length=255, description="A description for the campaign"
-    )
-    managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
-    )
-    team_managers: Missing[list[str]] = Field(
-        max_length=10 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the teams to set as the campaign managers.",
-    )
-    ends_at: _dt.datetime = Field(
-        description="The end date and time of the campaign. The date must be in the future."
-    )
-    contact_link: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contact link of the campaign. Must be a URI."
-    )
-    code_scanning_alerts: Union[
-        Annotated[
-            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
-            Field(min_length=1 if PYDANTIC_V2 else None),
-        ],
-        None,
-    ] = Field(description="The code scanning alerts to include in this campaign")
-    generate_issues: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, will automatically generate issues for the campaign. The default is false.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
 
 
-model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)

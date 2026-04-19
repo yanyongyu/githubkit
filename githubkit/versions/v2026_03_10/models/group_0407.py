@@ -14,7 +14,7 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
-from .group_0125 import Team
+from .group_0124 import Team
 
 
 class PullRequestReviewRequest(GitHubModel):

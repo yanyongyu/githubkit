@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    labels: Missing[list[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
+    commit_title: Missing[str] = Field(
+        default=UNSET, description="Title for the automatic commit message."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET, description="Extra detail to append to automatic commit message."
+    )
+    sha: Missing[str] = Field(
         default=UNSET,
-        description='The names of the labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue)."',
+        description="SHA that pull request head must match to allow merge.",
+    )
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET, description="The merge method to use."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)

@@ -13,13 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
-
-    body: str = Field(description="The text of the review comment.")
+from .group_0132 import Codespace
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(UserCodespacesGetResponse200)
+
+__all__ = ("UserCodespacesGetResponse200",)

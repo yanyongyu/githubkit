@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0123 import ArtifactDeploymentRecord
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+class OrgsOrgCopilotCodingAgentPermissionsPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsPutBody"""
 
-    total_count: int = Field(description="The number of deployment records created")
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsPutBody)
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsPutBody",)

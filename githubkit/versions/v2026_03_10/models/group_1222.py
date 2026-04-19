@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0262 import ActionsSecret
+
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue."
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
 
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)

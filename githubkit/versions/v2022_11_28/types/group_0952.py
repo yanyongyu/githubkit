@@ -9,77 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksTaskIdGetResponse401Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse401
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse401PropErrorsItemsType]]
-    documentation_url: str
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class AgentsTasksTaskIdGetResponse401TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse401
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse401PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse401Type",
-    "AgentsTasksTaskIdGetResponse401TypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

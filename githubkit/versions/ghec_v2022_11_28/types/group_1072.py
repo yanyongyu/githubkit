@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    selected_organization_ids: list[int]
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    selected_organization_ids: list[int]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",
-    "EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

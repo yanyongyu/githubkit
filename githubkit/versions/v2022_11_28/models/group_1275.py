@@ -17,32 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1271 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-class ReposOwnerRepoPagesPutBodyAnyof3(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof3"""
-
-    cname: Missing[Union[str, None]] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
     )
-    https_enforced: Missing[bool] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
+    assignee: Union[str, None] = Field(
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
+    )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof3)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)

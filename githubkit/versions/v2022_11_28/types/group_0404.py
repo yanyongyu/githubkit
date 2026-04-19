@@ -15,7 +15,7 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0049 import MilestoneType, MilestoneTypeForResponse
-from .group_0124 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0123 import TeamSimpleType, TeamSimpleTypeForResponse
 from .group_0167 import AutoMergeType, AutoMergeTypeForResponse
 from .group_0405 import (
     PullRequestPropLabelsItemsType,

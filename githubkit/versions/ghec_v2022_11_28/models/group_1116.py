@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
-
-    message: Missing[str] = Field(default=UNSET)
+class GistsGistIdStarGetResponse404(GitHubModel):
+    """GistsGistIdStarGetResponse404"""
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse404)
+model_rebuild(GistsGistIdStarGetResponse404)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsGetResponse404",)
+__all__ = ("GistsGistIdStarGetResponse404",)

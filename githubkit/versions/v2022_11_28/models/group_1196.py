@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0133 import Codespace
+
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
+
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesGetResponse200"""
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
-
-
-model_rebuild(ReposOwnerRepoCodespacesGetResponse200)
-
-__all__ = ("ReposOwnerRepoCodespacesGetResponse200",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

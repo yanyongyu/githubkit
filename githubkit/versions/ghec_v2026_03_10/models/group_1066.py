@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0034 import ActionsHostedRunnerMachineSpec
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    total_count: int = Field()
-    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
+    selected_enterprise_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody",)

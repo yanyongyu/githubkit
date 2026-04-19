@@ -9,85 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal
-from typing_extensions import NotRequired, TypeAlias, TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import TypedDict
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    status: Literal["deployed", "decommissioned"]
-    logical_environment: str
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: str
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    The total number of seats created for the specified user(s).
+    """
 
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
-
-The tags associated with the deployment.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
-
-The tags associated with the deployment.
-"""
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

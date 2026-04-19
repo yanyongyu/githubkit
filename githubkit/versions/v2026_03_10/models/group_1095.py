@@ -16,16 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    async_: Missing[bool] = Field(
+    permission: Missing[str] = Field(
         default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)

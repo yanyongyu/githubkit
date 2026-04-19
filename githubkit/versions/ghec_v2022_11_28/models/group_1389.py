@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
-    ] = Field(description="The reason for dismissing the alert.")
-    dismissed_comment: Missing[str] = Field(
-        default=UNSET, description="An optional comment explaining the dismissal."
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)

@@ -16,48 +16,75 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class BillingUsageSummaryReportOrg(GitHubModel):
+    """BillingUsageSummaryReportOrg"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
+    time_period: BillingUsageSummaryReportOrgPropTimePeriod = Field(alias="timePeriod")
+    organization: str = Field(description="The unique identifier of the organization.")
+    repository: Missing[str] = Field(
+        default=UNSET, description="The name of the repository for the usage report."
+    )
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    sku: Missing[str] = Field(
+        default=UNSET, description="The SKU for the usage report."
+    )
+    usage_items: list[BillingUsageSummaryReportOrgPropUsageItemsItems] = Field(
+        alias="usageItems"
     )
 
 
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
+class BillingUsageSummaryReportOrgPropTimePeriod(GitHubModel):
+    """BillingUsageSummaryReportOrgPropTimePeriod"""
 
-    date: str = Field(description="Date of the usage line item.")
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
+
+
+class BillingUsageSummaryReportOrgPropUsageItemsItems(GitHubModel):
+    """BillingUsageSummaryReportOrgPropUsageItemsItems"""
+
     product: str = Field(description="Product name.")
     sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
     unit_type: str = Field(
         alias="unitType", description="Unit type of the usage line item."
     )
     price_per_unit: float = Field(
         alias="pricePerUnit", description="Price per unit of the usage line item."
     )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
     gross_amount: float = Field(
         alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
     )
     discount_amount: float = Field(
         alias="discountAmount", description="Discount amount of the usage line item."
     )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
     net_amount: float = Field(
         alias="netAmount", description="Net amount of the usage line item."
     )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
-    )
 
 
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
+model_rebuild(BillingUsageSummaryReportOrg)
+model_rebuild(BillingUsageSummaryReportOrgPropTimePeriod)
+model_rebuild(BillingUsageSummaryReportOrgPropUsageItemsItems)
 
 __all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
+    "BillingUsageSummaryReportOrg",
+    "BillingUsageSummaryReportOrgPropTimePeriod",
+    "BillingUsageSummaryReportOrgPropUsageItemsItems",
 )

@@ -9,48 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, Literal
+from typing_extensions import NotRequired, TypeAlias, TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
 
-    total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    name: str
+    digest: str
+    version: NotRequired[str]
+    status: Literal["deployed", "decommissioned"]
+    logical_environment: str
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: str
+    tags: NotRequired[
+        OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse
+    ]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    github_repository: NotRequired[str]
+    return_records: NotRequired[bool]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType: TypeAlias = dict[str, Any]
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+The tags associated with the deployment.
+"""
 
 
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
+OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse: TypeAlias = (
+    dict[str, Any]
+)
+"""OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
 
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+The tags associated with the deployment.
+"""
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyTypeForResponse",
 )

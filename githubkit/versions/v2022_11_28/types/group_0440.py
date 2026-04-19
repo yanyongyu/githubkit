@@ -23,6 +23,7 @@ class SecretScanningScanHistoryType(TypedDict):
     custom_pattern_backfill_scans: NotRequired[
         list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
     ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanType]]
 
 
 class SecretScanningScanHistoryTypeForResponse(TypedDict):
@@ -36,6 +37,7 @@ class SecretScanningScanHistoryTypeForResponse(TypedDict):
             SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
         ]
     ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
 
 
 class SecretScanningScanType(TypedDict):

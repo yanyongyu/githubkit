@@ -17,27 +17,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0076 import SimpleRepository
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[Union[str, None]] = Field(
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: Missing[Union[None, Literal["public", "internal"]]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The default repository access level for Dependabot updates.",
     )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+    accessible_repositories: Missing[list[Union[None, SimpleRepository]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+__all__ = ("DependabotRepositoryAccessDetails",)

@@ -12,23 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
-    )
-    ignored: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(UserSocialAccountsPostBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("UserSocialAccountsPostBody",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,49 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse401(GitHubModel):
-    """AgentsTasksTaskIdGetResponse401
+class NotificationsPutBody(GitHubModel):
+    """NotificationsPutBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse401PropErrorsItems]] = Field(
+    last_read_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    read: Missing[bool] = Field(
+        default=UNSET, description="Whether the notification has been read."
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse401)
-model_rebuild(AgentsTasksTaskIdGetResponse401PropErrorsItems)
+model_rebuild(NotificationsPutBody)
 
-__all__ = (
-    "AgentsTasksTaskIdGetResponse401",
-    "AgentsTasksTaskIdGetResponse401PropErrorsItems",
-)
+__all__ = ("NotificationsPutBody",)

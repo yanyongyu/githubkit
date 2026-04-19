@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GistsGistIdCommentsPostBodyType(TypedDict):
-    """GistsGistIdCommentsPostBody"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    body: str
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
-class GistsGistIdCommentsPostBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsPostBody"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    body: str
+    name: str
+    runner_group_id: int
+    labels: list[str]
+    work_folder: NotRequired[str]
 
 
 __all__ = (
-    "GistsGistIdCommentsPostBodyType",
-    "GistsGistIdCommentsPostBodyTypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostBodyTypeForResponse",
 )

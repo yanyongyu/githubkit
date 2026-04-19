@@ -17,31 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class ReposOwnerRepoHooksPostBody(GitHubModel):
+    """ReposOwnerRepoHooksPostBody"""
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
     )
-    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
-        default=UNSET
+    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
+        default=UNSET,
+        description="Key/value pairs to provide settings for this webhook.",
+    )
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    location: str = Field()
-    devcontainer_path: Union[str, None] = Field()
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+model_rebuild(ReposOwnerRepoHooksPostBody)
+model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+    "ReposOwnerRepoHooksPostBody",
+    "ReposOwnerRepoHooksPostBodyPropConfig",
 )

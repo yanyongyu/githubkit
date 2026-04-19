@@ -13,71 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsTasksGetResponse422Type(TypedDict):
-    """AgentsTasksGetResponse422
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
-    documentation_url: str
-
-
-class AgentsTasksGetResponse422TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
-    documentation_url: str
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
-class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    name: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[list[int]]
+    runners: NotRequired[list[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[list[str]]
+    network_configuration_id: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksGetResponse422PropErrorsItemsType",
-    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse422Type",
-    "AgentsTasksGetResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
 )

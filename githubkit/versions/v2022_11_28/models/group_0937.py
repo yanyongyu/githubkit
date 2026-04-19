@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,51 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse403(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse403
+class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    name: str = Field(description="The name of the team.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the team."
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems]
-    ] = Field(
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
+    )
+    group_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems)
+model_rebuild(EnterprisesEnterpriseTeamsPostBody)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse403",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems",
-)
+__all__ = ("EnterprisesEnterpriseTeamsPostBody",)

@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
-class ReposOwnerRepoSubscriptionPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class UserSocialAccountsPostBodyTypeForResponse(TypedDict):
+    """UserSocialAccountsPostBody
 
-    subscribed: NotRequired[bool]
-    ignored: NotRequired[bool]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSubscriptionPutBodyType",
-    "ReposOwnerRepoSubscriptionPutBodyTypeForResponse",
+    "UserSocialAccountsPostBodyType",
+    "UserSocialAccountsPostBodyTypeForResponse",
 )

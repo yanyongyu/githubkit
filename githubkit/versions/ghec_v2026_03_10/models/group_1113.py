@@ -12,16 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutResponse200)
+model_rebuild(GistsGistIdCommentsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutResponse200",)
+__all__ = ("GistsGistIdCommentsPostBody",)

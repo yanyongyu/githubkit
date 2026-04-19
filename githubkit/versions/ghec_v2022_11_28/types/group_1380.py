@@ -13,35 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: NotRequired[list[str]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: NotRequired[list[str]]
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
 )

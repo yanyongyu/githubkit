@@ -9,48 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    issue_field_values: Missing[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
-        ]
-    ] = Field(
-        max_length=25 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
-    )
+    attestations: Missing[
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
     GitHubModel
 ):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldV
-    aluesItems
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    bundle: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+    ] = Field(
+        default=UNSET,
+        description="The attestation's Sigstore Bundle.\nRefer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.",
+    )
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle(
+    GitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float] = Field(
-        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
-    )
+    media_type: Missing[str] = Field(default=UNSET, alias="mediaType")
+    verification_material: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+    ] = Field(default=UNSET, alias="verificationMaterial")
+    dsse_envelope: Missing[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
+    ] = Field(default=UNSET, alias="dsseEnvelope")
 
 
-model_rebuild(RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody)
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dlePropVerificationMaterial
+    """
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope(
+    ExtraGitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dlePropDsseEnvelope
+    """
+
+
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
 model_rebuild(
-    RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
+)
+model_rebuild(
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial
+)
+model_rebuild(
+    UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope
 )
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBody",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
 )

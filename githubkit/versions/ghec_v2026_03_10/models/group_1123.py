@@ -9,44 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
+    total_count: int = Field()
+    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
+
+
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
-        default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
     )
-    network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
     )
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)
+__all__ = (
+    "ActionsCacheUsageByRepository",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+)

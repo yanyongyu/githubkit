@@ -30,12 +30,14 @@ if TYPE_CHECKING:
     from ..models import (
         DependencyGraphDiffItems,
         DependencyGraphSpdxSbom,
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
     from ..types import (
         DependencyGraphDiffItemsTypeForResponse,
         DependencyGraphSpdxSbomTypeForResponse,
         MetadataType,
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
         SnapshotPropDetectorType,
         SnapshotPropJobType,
@@ -211,6 +213,164 @@ class DependencyGraphClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=DependencyGraphSpdxSbom,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    def fetch_sbom_report(
+        self,
+        owner: str,
+        repo: str,
+        sbom_uuid: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependency-graph/fetch-sbom-report
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom/fetch-report/{sbom_uuid}
+
+        Fetches a previously generated software bill of materials (SBOM) for a repository.
+        When the SBOM is ready, the response is a 302 redirect to a temporary download URL for the SBOM in SPDX JSON format.
+        The generated SBOM report may be retained for up to one week from the original request.
+        The temporary download URL returned by this endpoint expires separately, and its expiry is set when the fetch request is made.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dependency-graph/sbom/fetch-report/{sbom_uuid}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_fetch_sbom_report(
+        self,
+        owner: str,
+        repo: str,
+        sbom_uuid: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response:
+        """dependency-graph/fetch-sbom-report
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom/fetch-report/{sbom_uuid}
+
+        Fetches a previously generated software bill of materials (SBOM) for a repository.
+        When the SBOM is ready, the response is a 302 redirect to a temporary download URL for the SBOM in SPDX JSON format.
+        The generated SBOM report may be retained for up to one week from the original request.
+        The temporary download URL returned by this endpoint expires separately, and its expiry is set when the fetch request is made.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#fetch-a-software-bill-of-materials-sbom-for-a-repository
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/dependency-graph/sbom/fetch-report/{sbom_uuid}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    def generate_sbom_report(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse,
+    ]:
+        """dependency-graph/generate-sbom-report
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom/generate-report
+
+        Triggers a job to generate a software bill of materials (SBOM) for a repository in SPDX JSON format.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+        )
+
+        url = f"/repos/{owner}/{repo}/dependency-graph/sbom/generate-report"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+            error_models={
+                "404": BasicError,
+                "403": BasicError,
+            },
+        )
+
+    async def async_generate_sbom_report(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+        ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse,
+    ]:
+        """dependency-graph/generate-sbom-report
+
+        GET /repos/{owner}/{repo}/dependency-graph/sbom/generate-report
+
+        Triggers a job to generate a software bill of materials (SBOM) for a repository in SPDX JSON format.
+
+        See also: https://docs.github.com/rest/dependency-graph/sboms#request-generation-of-a-software-bill-of-materials-sbom-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
+        )
+
+        url = f"/repos/{owner}/{repo}/dependency-graph/sbom/generate-report"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
             error_models={
                 "404": BasicError,
                 "403": BasicError,

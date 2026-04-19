@@ -9,78 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0036 import (
+    ActionsHostedRunnerCustomImageType,
+    ActionsHostedRunnerCustomImageTypeForResponse,
+)
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type(
     TypedDict
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

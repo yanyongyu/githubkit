@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,74 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1024 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_1025 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
 
+class EnterprisesEnterpriseActionsHostedRunnersPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
-
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+    name: str = Field(
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
     )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
+    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage = Field(
+        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
     )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
+    size: str = Field(
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
     )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
+    runner_group_id: int = Field(
+        description="The existing runner group to add this runner to."
     )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
+    maximum_runners: Missing[int] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    enable_static_ip: Missing[bool] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be used to generate custom images.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0)
+class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0",)
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The unique identifier of the runner image."
+    )
+    source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET, description="The source of the runner image."
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBody)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsHostedRunnersPostBody",
+    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage",
+)

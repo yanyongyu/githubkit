@@ -9,60 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class AgentsReposOwnerRepoTasksGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+from .group_0017 import AppPermissions
 
 
-class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse404)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse404",
-    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems",
-)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

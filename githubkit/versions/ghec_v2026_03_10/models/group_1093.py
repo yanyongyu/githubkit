@@ -14,45 +14,73 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0065 import (
-    AmazonS3AccessKeysConfig,
-    AzureBlobConfig,
-    AzureHubConfig,
-    DatadogConfig,
-    HecConfig,
-)
-from .group_0066 import AmazonS3OidcConfig, SplunkConfig
-from .group_0067 import GoogleCloudConfig
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
 
-    enabled: bool = Field(description="This setting pauses or resumes a stream.")
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ] = Field(
-        description="The audit log streaming provider. The name is case sensitive."
+    pattern_config_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    vendor_specific: Union[
-        AzureBlobConfig,
-        AzureHubConfig,
-        AmazonS3OidcConfig,
-        AmazonS3AccessKeysConfig,
-        SplunkConfig,
-        HecConfig,
-        GoogleCloudConfig,
-        DatadogConfig,
-    ] = Field()
+    provider_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
+    custom_pattern_settings: Missing[
+        list[
+            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+        ]
+    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
 
 
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
+    ternSettingsItems
+    """
 
-__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
+    rnSettingsItems
+    """
+
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The ID of the pattern to configure."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
+        default=UNSET, description="Push protection setting to set for the pattern."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
+)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+)

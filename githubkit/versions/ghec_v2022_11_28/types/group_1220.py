@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0018 import InstallationType, InstallationTypeForResponse
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    installations: list[InstallationType]
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    installations: list[InstallationTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",
-    "OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyTypeForResponse",
+    "OrgsOrgInstallationsGetResponse200Type",
+    "OrgsOrgInstallationsGetResponse200TypeForResponse",
 )

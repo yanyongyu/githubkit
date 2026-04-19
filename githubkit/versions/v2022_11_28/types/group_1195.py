@@ -13,31 +13,85 @@ import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
+    signature: NotRequired[str]
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[str]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
+    signature: NotRequired[str]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
-    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyType",
+    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
 )

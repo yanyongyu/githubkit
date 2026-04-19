@@ -9,35 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    async_: NotRequired[bool]
 
 
-class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    async_: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessPutBodyType",
-    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
+    "OrgsOrgOutsideCollaboratorsUsernamePutBodyTypeForResponse",
 )

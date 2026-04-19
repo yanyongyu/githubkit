@@ -18,49 +18,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse422(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse422PropErrorsItems]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="Whether to prevent additional spending once the budget is exceeded",
+    )
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["enterprise", "organization", "repository", "cost_center"]
+    ] = Field(default=UNSET, description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
+    )
+    budget_type: Missing[Literal["ProductPricing", "SkuPricing"]] = Field(
+        default=UNSET, description="The type of pricing for the budget"
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse422)
-model_rebuild(AgentsTasksTaskIdGetResponse422PropErrorsItems)
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: Missing[bool] = Field(
+        default=UNSET, description="Whether alerts are enabled for this budget"
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET, description="Array of user login names who will receive alerts"
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse422",
-    "AgentsTasksTaskIdGetResponse422PropErrorsItems",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

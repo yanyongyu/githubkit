@@ -18,24 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET, description="Title for the automatic commit message."
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET, description="Extra detail to append to automatic commit message."
-    )
-    sha: Missing[str] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET, description="The merge method to use."
+        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutBody)
+model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBody",)
+__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)

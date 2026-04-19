@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,18 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    body: Missing[str] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

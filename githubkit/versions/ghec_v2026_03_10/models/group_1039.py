@@ -12,49 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    selected_organization_ids: list[int] = Field(
+        description="List of organization IDs that can access the runner group."
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody)
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
-
-__all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody",)

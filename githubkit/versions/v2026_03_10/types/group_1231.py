@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    sha: str
-    force: NotRequired[bool]
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[_dt.datetime]
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoMilestonesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    sha: str
-    force: NotRequired[bool]
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitRefsRefPatchBodyType",
-    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
+    "ReposOwnerRepoMilestonesPostBodyType",
+    "ReposOwnerRepoMilestonesPostBodyTypeForResponse",
 )

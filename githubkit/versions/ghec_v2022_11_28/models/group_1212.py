@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
     )
 
 
-model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)

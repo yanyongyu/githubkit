@@ -9,59 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class UserCodespacesSecretsGetResponse200(GitHubModel):
+    """UserCodespacesSecretsGetResponse200"""
 
-    commit_id: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
+    total_count: int = Field()
+    secrets: list[CodespacesSecret] = Field()
+
+
+class CodespacesSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
-        default=UNSET,
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
     )
-    comments: Missing[
-        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
-    ] = Field(
-        default=UNSET,
-        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
+    selected_repositories_url: str = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
-
-    path: str = Field(
-        description="The relative path to the file that necessitates a review comment."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
-    )
-    body: str = Field(description="Text of the review comment.")
-    line: Missing[int] = Field(default=UNSET)
-    side: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    start_side: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
+model_rebuild(UserCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesSecret)
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
+    "CodespacesSecret",
+    "UserCodespacesSecretsGetResponse200",
 )

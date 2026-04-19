@@ -9,75 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AgentsTasksGetResponse400Type(TypedDict):
-    """AgentsTasksGetResponse400
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsType]]
-    documentation_url: str
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class AgentsTasksGetResponse400TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse400
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse400PropErrorsItemsTypeForResponse]]
-    documentation_url: str
-
-
-class AgentsTasksGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsTasksGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "AgentsTasksGetResponse400PropErrorsItemsType",
-    "AgentsTasksGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse400Type",
-    "AgentsTasksGetResponse400TypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200TypeForResponse",
 )

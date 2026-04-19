@@ -9,75 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, Union
+from typing_extensions import NotRequired, TypeAlias, TypedDict
 
 
-class AgentsTasksGetResponse422Type(TypedDict):
-    """AgentsTasksGetResponse422
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsType]]
-    documentation_url: str
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class AgentsTasksGetResponse422TypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksGetResponse422PropErrorsItemsTypeForResponse]]
-    documentation_url: str
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class AgentsTasksGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
 
-    A single validation error
-    """
+Names and content for the files that make up the gist
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
-class AgentsTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksGetResponse422PropErrorsItems
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
 
-    A single validation error
-    """
+Names and content for the files that make up the gist
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "AgentsTasksGetResponse422PropErrorsItemsType",
-    "AgentsTasksGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsTasksGetResponse422Type",
-    "AgentsTasksGetResponse422TypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

@@ -12,16 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC Subject customization
 
-    name: str = Field(
-        description="The name of the cost center (max length 255 characters)"
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
+model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)
+__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)

@@ -12,23 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class UserSshSigningKeysPostBodyType(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    title: NotRequired[str]
+    key: str
 
 
-class ReposOwnerRepoTransferPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
+    """UserSshSigningKeysPostBody"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    title: NotRequired[str]
+    key: str
 
 
 __all__ = (
-    "ReposOwnerRepoTransferPostBodyType",
-    "ReposOwnerRepoTransferPostBodyTypeForResponse",
+    "UserSshSigningKeysPostBodyType",
+    "UserSshSigningKeysPostBodyTypeForResponse",
 )

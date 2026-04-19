@@ -15,19 +15,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import CopilotSeatDetails
 
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

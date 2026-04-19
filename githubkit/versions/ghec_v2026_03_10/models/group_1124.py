@@ -11,21 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0106 import OrganizationCustomProperty
-
-
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
-
-    properties: list[OrganizationCustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
-    )
+from .group_0035 import ActionsHostedRunner
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+class OrgsOrgActionsHostedRunnersGetResponse200(GitHubModel):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+    total_count: int = Field()
+    runners: list[ActionsHostedRunner] = Field()
+
+
+model_rebuild(OrgsOrgActionsHostedRunnersGetResponse200)
+
+__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200",)

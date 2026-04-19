@@ -14,16 +14,15 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    labels: list[str] = Field(
+    selected_usernames: list[str] = Field(
         max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
+        description="The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)

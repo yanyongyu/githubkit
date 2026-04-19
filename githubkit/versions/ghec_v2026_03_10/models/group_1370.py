@@ -16,15 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    permission: Missing[str] = Field(
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
         default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
     )
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

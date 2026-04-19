@@ -14,19 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0308 import ProjectsV2FieldSingleSelectOption
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["single_select"] = Field(description="The field's data type.")
+    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
+        description="The options available for single select fields. At least one option must be provided when creating a single select field."
     )
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1",)

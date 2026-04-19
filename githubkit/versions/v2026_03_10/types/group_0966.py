@@ -9,20 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-EmojisGetResponse200Type: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+
+    name: NotRequired[str]
+    runner_group_id: NotRequired[int]
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    size: NotRequired[str]
+    image_id: NotRequired[str]
+    image_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EmojisGetResponse200Type",
-    "EmojisGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
+    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
 )

@@ -9,30 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
-    seats_cancelled: int
+
+class GistsGistIdGetResponse403TypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403"""
+
+    block: NotRequired[GistsGistIdGetResponse403PropBlockTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
-    seats_cancelled: int
+
+class GistsGistIdGetResponse403PropBlockTypeForResponse(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "GistsGistIdGetResponse403PropBlockType",
+    "GistsGistIdGetResponse403PropBlockTypeForResponse",
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403TypeForResponse",
 )

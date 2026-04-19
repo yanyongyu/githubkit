@@ -16,21 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class UserSshSigningKeysPostBody(GitHubModel):
+    """UserSshSigningKeysPostBody"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
+        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest//authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(UserSshSigningKeysPostBody)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = ("UserSshSigningKeysPostBody",)

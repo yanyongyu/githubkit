@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
-
-    errors: NotRequired[list[str]]
-
-
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    errors: NotRequired[list[str]]
+    pattern_config_version: NotRequired[str]
+
+
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

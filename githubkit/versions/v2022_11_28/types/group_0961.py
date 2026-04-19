@@ -12,19 +12,55 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    access_token: str
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
-    access_token: str
+    total_count: int
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
+
+
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
+
+
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
+
+    Provides details of a custom runner image
+    """
+
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "ApplicationsClientIdGrantDeleteBodyType",
-    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

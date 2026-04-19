@@ -11,16 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+from .group_0118 import RunnerType, RunnerTypeForResponse
 
 
-class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerType
+    encoded_jit_config: str
+
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+
+    runner: RunnerTypeForResponse
+    encoded_jit_config: str
 
 
 __all__ = (
-    "GistsGistIdStarGetResponse404Type",
-    "GistsGistIdStarGetResponse404TypeForResponse",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
+    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
 )

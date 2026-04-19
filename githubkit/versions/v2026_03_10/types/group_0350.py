@@ -13,7 +13,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0125 import TeamType, TeamTypeForResponse
+from .group_0124 import TeamType, TeamTypeForResponse
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):

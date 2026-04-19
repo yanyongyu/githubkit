@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot coding agent. Can be one of `all`, `selected`, or `none`."
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
-    selected_repositories_url: Missing[str] = Field(
+    id: Missing[int] = Field(
         default=UNSET,
-        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+        description="The unique identifier of the issue or pull request to add to the project.",
     )
+    owner: str = Field(description="The repository owner login.")
+    repo: str = Field(description="The repository name.")
+    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)

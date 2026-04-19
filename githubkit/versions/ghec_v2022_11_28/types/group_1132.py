@@ -9,57 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0034 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: (
-        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    )
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    budget_scope: Literal["enterprise", "organization", "repository", "cost_center"]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

@@ -9,30 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0049 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleType]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    total_count: float
-    organizations: list[OrganizationSimpleTypeForResponse]
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

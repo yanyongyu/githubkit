@@ -9,28 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
+    ]
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+
+    commit_id: NotRequired[str]
+    body: NotRequired[str]
+    event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
+    comments: NotRequired[
+        list[
+            ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
+
+
+class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    path: str
+    position: NotRequired[int]
+    body: str
+    line: NotRequired[int]
+    side: NotRequired[str]
+    start_line: NotRequired[int]
+    start_side: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsPostBodyTypeForResponse",
 )

@@ -9,48 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack: str = Field(
-        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
-    )
-    repositories: Missing[list[str]] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="Optional parameter to specify the organization name if forking into an organization.",
     )
-    repository_lists: list[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
-    )
-    repository_owners: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    name: Missing[str] = Field(
         default=UNSET,
-        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

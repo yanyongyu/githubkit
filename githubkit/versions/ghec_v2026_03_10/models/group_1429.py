@@ -12,14 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    name: str = Field()
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)

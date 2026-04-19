@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
-    """
-
-    seats_created: int
+    key_id: str
+    key: str
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    The total number of seats created for members of the specified team(s).
-    """
-
-    seats_created: int
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

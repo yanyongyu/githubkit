@@ -12,17 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0256 import CodespaceMachine
-
-
-class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
-
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoCodespacesMachinesGetResponse200)
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200",)
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Optional parameter to specify the organization name if forking into an organization.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
+    )
+
+
+model_rebuild(ReposOwnerRepoForksPostBody)
+
+__all__ = ("ReposOwnerRepoForksPostBody",)

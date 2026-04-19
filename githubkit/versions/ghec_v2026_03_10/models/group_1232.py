@@ -11,18 +11,16 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    selected_teams: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of team names within the organization to which to grant access to GitHub Copilot.",
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)
+__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)

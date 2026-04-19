@@ -9,89 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBody(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    name: str = Field(
-        min_length=1, max_length=256, description="The name of the artifact."
-    )
-    digest: str = Field(
-        min_length=71,
-        max_length=71,
-        pattern="^sha256:[a-f0-9]{64}$",
-        description="The hex encoded digest of the artifact.",
-    )
-    version: Missing[str] = Field(
-        min_length=1, max_length=100, default=UNSET, description="The artifact version."
-    )
-    status: Literal["deployed", "decommissioned"] = Field(
-        description="The status of the artifact. Can be either deployed or decommissioned."
-    )
-    logical_environment: str = Field(
-        min_length=1, max_length=128, description="The stage of the deployment."
-    )
-    physical_environment: Missing[str] = Field(
-        max_length=128,
-        default=UNSET,
-        description="The physical region of the deployment.",
-    )
-    cluster: Missing[str] = Field(
-        max_length=128, default=UNSET, description="The deployment cluster."
-    )
-    deployment_name: str = Field(
-        max_length=256,
-        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a cluster, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\n",
-    )
-    tags: Missing[OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags] = Field(
-        default=UNSET, description="The tags associated with the deployment."
-    )
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
-    )
-    github_repository: Missing[str] = Field(
-        min_length=1,
-        max_length=100,
-        pattern="^[A-Za-z0-9.\\-_]+$",
-        default=UNSET,
-        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
-    )
-    return_records: Missing[bool] = Field(
-        default=UNSET,
-        description="If true, the endpoint will return the created or updated record in the response body.\n",
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags(ExtraGitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-    The tags associated with the deployment.
-    """
-
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBody)
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBody",
-    "OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags",
-)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

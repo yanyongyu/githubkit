@@ -10,48 +10,88 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    total_count: int
-    secrets: list[RepoCodespacesSecretType]
-
-
-class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[RepoCodespacesSecretTypeForResponse]
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
+    signature: NotRequired[str]
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBody"""
 
-    Set repository secrets for GitHub Codespaces.
+    message: str
+    tree: str
+    parents: NotRequired[list[str]]
+    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
+    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
+    signature: NotRequired[str]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
     """
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    email: str
+    date: NotRequired[_dt.datetime]
 
 
-class RepoCodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
 
-    Set repository secrets for GitHub Codespaces.
+    Information about the author of the commit. By default, the `author` will be the
+    authenticated user and the current date. See the `author` and `committer` object
+    below for details.
     """
 
     name: str
-    created_at: str
-    updated_at: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
+
+
+class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
+
+    Information about the person who is making the commit. By default, `committer`
+    will use the information set in `author`. See the `author` and `committer`
+    object below for details.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "RepoCodespacesSecretType",
-    "RepoCodespacesSecretTypeForResponse",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
+    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
+    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoGitCommitsPostBodyType",
+    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
 )

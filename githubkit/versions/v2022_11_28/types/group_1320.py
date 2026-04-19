@@ -9,37 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
-
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-
-
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
     name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    data_type: Literal["text", "number", "date"]
+
+
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+
+    name: str
+    data_type: Literal["text", "number", "date"]
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
+    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
 )

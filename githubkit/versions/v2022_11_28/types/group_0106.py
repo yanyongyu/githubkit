@@ -12,41 +12,25 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerLimitsType(TypedDict):
-    """ActionsHostedRunnerLimits"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
-
-
-class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
-    """ActionsHostedRunnerLimits"""
-
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
-
-
-class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Actions OIDC Subject customization
     """
 
-    maximum: int
-    current_usage: int
+    include_claim_keys: list[str]
 
 
-class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Actions OIDC Subject customization
     """
 
-    maximum: int
-    current_usage: int
+    include_claim_keys: list[str]
 
 
 __all__ = (
-    "ActionsHostedRunnerLimitsPropPublicIpsType",
-    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
-    "ActionsHostedRunnerLimitsType",
-    "ActionsHostedRunnerLimitsTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

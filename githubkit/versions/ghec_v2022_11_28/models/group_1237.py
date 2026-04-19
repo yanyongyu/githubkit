@@ -12,18 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    The total number of seats set to "pending cancellation" for members of the
-    specified team(s).
-    """
+    title: str = Field(
+        description="The title of the draft issue item to create in the project."
+    )
+    body: Missing[str] = Field(
+        default=UNSET,
+        description="The body content of the draft issue item to create in the project.",
+    )
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)

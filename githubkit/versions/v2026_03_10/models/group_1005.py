@@ -16,18 +16,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    Actions OIDC Subject customization
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of storage records for this digest and organization",
+    )
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
     """
 
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[str] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
+model_rebuild(
+    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = (
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
+)

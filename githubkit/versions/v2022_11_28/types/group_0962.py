@@ -12,19 +12,53 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdTokenPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenPostBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    access_token: str
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
 
 
-class ApplicationsClientIdTokenPostBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdTokenPostBody"""
+class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
 
-    access_token: str
+    total_count: int
+    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+
+
+class ActionsHostedRunnerCustomImageVersionType(TypedDict):
+    """GitHub-hosted runner custom image version details.
+
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
+
+
+class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image version details.
+
+    Provides details of a hosted runner custom image version
+    """
+
+    version: str
+    state: str
+    size_gb: int
+    created_on: str
+    state_details: str
 
 
 __all__ = (
-    "ApplicationsClientIdTokenPostBodyType",
-    "ApplicationsClientIdTokenPostBodyTypeForResponse",
+    "ActionsHostedRunnerCustomImageVersionType",
+    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
 )

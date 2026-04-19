@@ -9,45 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class UserCodespacesPostBodyOneof0Type(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    repository_id: int
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType
+    ]
 
 
-class UserCodespacesPostBodyOneof0TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    repository_id: int
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    fields: list[
+        UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
+
+
+class UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof0Type",
-    "UserCodespacesPostBodyOneof0TypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

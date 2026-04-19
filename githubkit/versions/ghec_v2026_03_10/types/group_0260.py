@@ -10,51 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
 
-    Credential Authorization
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
     """
 
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: _dt.datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[_dt.datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class CredentialAuthorizationTypeForResponse(TypedDict):
-    """Credential Authorization
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
 
-    Credential Authorization
+    Custom repository roles created by organization owners
     """
 
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: str
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[str, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[str, None]]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+
+
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "CredentialAuthorizationType",
-    "CredentialAuthorizationTypeForResponse",
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

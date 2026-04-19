@@ -14,19 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0175 import ProjectsV2FieldIterationConfiguration
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
+    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    name: str = Field(description="The name of the field.")
+    data_type: Literal["iteration"] = Field(description="The field's data type.")
+    iteration_configuration: ProjectsV2FieldIterationConfiguration = Field(
+        description="The configuration for iteration fields."
     )
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = ("UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2",)

@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0180 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    properties: list[CustomPropertyValueType]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPropertiesValuesPatchBodyType",
-    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
+    "ReposTemplateOwnerTemplateRepoGeneratePostBodyTypeForResponse",
 )

@@ -9,42 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+    key_prefix: str = Field(
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
     )
-    compute_service: Missing[Literal["none", "actions"]] = Field(
-        default=UNSET,
-        description="The hosted compute service to use for the network configuration.",
+    url_template: str = Field(
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
     )
-    network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    is_alphanumeric: Missing[bool] = Field(
         default=UNSET,
-        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
     )
 
 
-model_rebuild(OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody)
+model_rebuild(ReposOwnerRepoAutolinksPostBody)
 
-__all__ = ("OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody",)
+__all__ = ("ReposOwnerRepoAutolinksPostBody",)

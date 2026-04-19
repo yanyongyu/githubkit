@@ -9,37 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
+            ],
+            None,
+        ]
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[list[int]]
-    runners: NotRequired[list[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
-    network_configuration_id: NotRequired[str]
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",
-    "EnterprisesEnterpriseActionsRunnerGroupsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
 )

@@ -13,27 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
-    state: NotRequired[Literal["open", "closed"]]
-    base: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberPatchBodyType",
-    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
+    "TeamsTeamIdMembershipsUsernamePutBodyType",
+    "TeamsTeamIdMembershipsUsernamePutBodyTypeForResponse",
 )

@@ -9,31 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0949 import (
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class AgentsTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1"""
-
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+class GistsGistIdStarGetResponse404Type(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
-class AgentsTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse200Allof1"""
-
-    sessions: NotRequired[
-        list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse]
-    ]
+class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
+    """GistsGistIdStarGetResponse404"""
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1Type",
-    "AgentsTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "GistsGistIdStarGetResponse404Type",
+    "GistsGistIdStarGetResponse404TypeForResponse",
 )

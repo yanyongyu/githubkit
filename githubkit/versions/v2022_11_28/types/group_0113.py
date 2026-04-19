@@ -12,25 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestType(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
 
 
-class ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse(TypedDict):
-    """ActionsForkPrWorkflowsPrivateReposRequest"""
+class SelectedActionsTypeForResponse(TypedDict):
+    """SelectedActions"""
 
-    run_workflows_from_fork_pull_requests: bool
-    send_write_tokens_to_workflows: NotRequired[bool]
-    send_secrets_and_variables: NotRequired[bool]
-    require_approval_for_fork_pr_workflows: NotRequired[bool]
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[list[str]]
 
 
 __all__ = (
-    "ActionsForkPrWorkflowsPrivateReposRequestType",
-    "ActionsForkPrWorkflowsPrivateReposRequestTypeForResponse",
+    "SelectedActionsType",
+    "SelectedActionsTypeForResponse",
 )

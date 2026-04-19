@@ -12,16 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    runners: list[int] = Field(
-        description="List of runner IDs to add to the runner group."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)

@@ -16,18 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    sub_issue_id: int = Field(
-        description="The id of the sub-issue to add. The sub-issue must belong to the same repository owner as the parent issue"
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be removed."
     )
-    replace_parent: Missing[bool] = Field(
-        default=UNSET,
-        description="Option that, when true, instructs the operation to replace the sub-issues current parent issue",
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

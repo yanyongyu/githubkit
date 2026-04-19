@@ -9,57 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType(TypedDict):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
+class UsersUserIdProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
 
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType
-        ]
-    ]
-
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBody"""
-
-    issue_field_values: NotRequired[
-        list[
-            RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
-    luesItems
-    """
+class UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
 
-    field_id: int
-    value: Union[str, float]
-
-
-class RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldVa
-    luesItems
-    """
-
-    field_id: int
-    value: Union[str, float]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
 
 
 __all__ = (
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItemsTypeForResponse",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyType",
-    "RepositoriesRepositoryIdIssuesIssueNumberIssueFieldValuesPutBodyTypeForResponse",
+    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyType",
+    "UsersUserIdProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

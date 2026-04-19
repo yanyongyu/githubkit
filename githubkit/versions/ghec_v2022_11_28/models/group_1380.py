@@ -18,31 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    state: Literal["dismissed", "open"] = Field(
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+        description="The username to provide to the originating repository.",
     )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
+        description="The password to provide to the originating repository.",
     )
-    assignees: Missing[list[str]] = Field(
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
         default=UNSET,
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.",
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

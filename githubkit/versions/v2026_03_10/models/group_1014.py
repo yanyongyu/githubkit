@@ -9,41 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
-
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
-    )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-    network_configuration_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
-    )
+from .group_1012 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
+    )
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Missing[
+        Union[
+            Annotated[
+                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+                Field(min_length=1 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The code scanning alerts to include in this campaign",
+    )
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
+    )
+
+
+model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
+
+__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)

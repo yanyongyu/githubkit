@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,15 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    message: str = Field(
-        description="The message for the pull request review dismissal"
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
     )
-    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

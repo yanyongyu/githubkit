@@ -31,13 +31,17 @@ class OrganizationUpdateIssueField(GitHubModel):
     )
     options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
         default=UNSET,
-        description="Options for single select fields. Only applicable when updating single_select fields.",
+        description="Options for single select fields. Only applicable when updating single_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
 class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
     """OrganizationUpdateIssueFieldPropOptionsItems"""
 
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
     name: str = Field(description="Name of the option.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the option."

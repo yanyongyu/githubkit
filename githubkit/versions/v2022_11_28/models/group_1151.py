@@ -12,18 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPostBody"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
-    )
+    head_sha: str = Field(description="The sha of the head commit.")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
+model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)

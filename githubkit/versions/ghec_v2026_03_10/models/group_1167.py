@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0038 import ActionsHostedRunnerCuratedImage
-
-
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
-
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCuratedImage] = Field()
+from .group_0252 import ArtifactDeploymentRecord
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200)
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200(GitHubModel):
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of deployment records for this digest and organization",
+    )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200)
+
+__all__ = ("OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200",)

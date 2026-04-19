@@ -51,6 +51,11 @@ if TYPE_CHECKING:
         CopilotUsageMetrics1DayReportTypeForResponse,
         CopilotUsageMetrics28DayReportTypeForResponse,
         CopilotUsageMetricsDayTypeForResponse,
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType,
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType,
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
+        EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
         OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
@@ -449,6 +454,524 @@ class CopilotClient:
                 "500": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        policy_state: Literal[
+            "enabled_for_all_orgs",
+            "disabled_for_all_orgs",
+            "enabled_for_selected_orgs",
+            "configured_by_org_admins",
+        ],
+    ) -> Response: ...
+
+    def set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-enterprise-coding-agent-policy
+
+        PUT /enterprises/{enterprise}/copilot/policies/coding_agent
+
+        Sets the policy for Copilot coding agent usage across an enterprise.
+
+        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        organizations, disabled for all organizations, configured by individual organization
+        admins, or enabled for selected organizations only.
+
+        Only enterprise owners can set the coding agent policy for their enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+            },
+        )
+
+    @overload
+    async def async_set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        policy_state: Literal[
+            "enabled_for_all_orgs",
+            "disabled_for_all_orgs",
+            "enabled_for_selected_orgs",
+            "configured_by_org_admins",
+        ],
+    ) -> Response: ...
+
+    async def async_set_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-enterprise-coding-agent-policy
+
+        PUT /enterprises/{enterprise}/copilot/policies/coding_agent
+
+        Sets the policy for Copilot coding agent usage across an enterprise.
+
+        Enterprise owners can configure whether Copilot coding agent is enabled for all
+        organizations, disabled for all organizations, configured by individual organization
+        admins, or enabled for selected organizations only.
+
+        Only enterprise owners can set the coding agent policy for their enterprise.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#set-the-coding-agent-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+            },
+        )
+
+    @overload
+    def add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
+    ) -> Response: ...
+
+    @overload
+    def add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organizations: Missing[list[str]] = UNSET,
+        custom_properties: Missing[
+            list[
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response: ...
+
+    def add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/add-organizations-to-enterprise-coding-agent-policy
+
+        POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
+
+        Enables Copilot coding agent for the specified organizations within the enterprise.
+
+        The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
+        using this endpoint. Organizations can be specified by login or matched via custom properties.
+
+        Only organizations that have Copilot enabled and belong to the enterprise will be affected.
+
+        Only enterprise owners can add organizations to the coding agent policy.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent/organizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+            },
+        )
+
+    @overload
+    async def async_add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organizations: Missing[list[str]] = UNSET,
+        custom_properties: Missing[
+            list[
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response: ...
+
+    async def async_add_organizations_to_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/add-organizations-to-enterprise-coding-agent-policy
+
+        POST /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
+
+        Enables Copilot coding agent for the specified organizations within the enterprise.
+
+        The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
+        using this endpoint. Organizations can be specified by login or matched via custom properties.
+
+        Only organizations that have Copilot enabled and belong to the enterprise will be affected.
+
+        Only enterprise owners can add organizations to the coding agent policy.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#add-organizations-to-the-enterprise-coding-agent-policy
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent/organizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+            },
+        )
+
+    @overload
+    def remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    def remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organizations: Missing[list[str]] = UNSET,
+        custom_properties: Missing[
+            list[
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response: ...
+
+    def remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/remove-organizations-from-enterprise-coding-agent-policy
+
+        DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
+
+        Disables Copilot coding agent for the specified organizations within the enterprise.
+
+        The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
+        using this endpoint. Organizations can be specified by login or matched via custom properties.
+
+        Only organizations that have Copilot enabled and belong to the enterprise will be affected.
+
+        Only enterprise owners can remove organizations from the coding agent policy.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent/organizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+            },
+        )
+
+    @overload
+    async def async_remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        organizations: Missing[list[str]] = UNSET,
+        custom_properties: Missing[
+            list[
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+            ]
+        ] = UNSET,
+    ) -> Response: ...
+
+    async def async_remove_organizations_from_enterprise_coding_agent_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Mapping[str, str]] = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/remove-organizations-from-enterprise-coding-agent-policy
+
+        DELETE /enterprises/{enterprise}/copilot/policies/coding_agent/organizations
+
+        Disables Copilot coding agent for the specified organizations within the enterprise.
+
+        The enterprise's coding agent policy must be set to `enabled_for_selected_orgs` before
+        using this endpoint. Organizations can be specified by login or matched via custom properties.
+
+        Only organizations that have Copilot enabled and belong to the enterprise will be affected.
+
+        Only enterprise owners can remove organizations from the coding agent policy.
+
+        OAuth app tokens and personal access tokens (classic) need either the `manage_billing:copilot` or `admin:enterprise` scopes to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-coding-agent-management#remove-organizations-from-the-enterprise-coding-agent-policy
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/coding_agent/organizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
             },
         )
 

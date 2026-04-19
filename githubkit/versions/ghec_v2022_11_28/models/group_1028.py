@@ -9,60 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0034 import ActionsHostedRunnerMachineSpec
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+class EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    total_count: int = Field()
+    machine_specs: list[ActionsHostedRunnerMachineSpec] = Field()
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200)
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
-    )
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems)
-
-__all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200",)

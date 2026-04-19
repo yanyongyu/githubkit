@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,109 +18,198 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
+from .group_0021 import RepositoryPropCodeSearchIndexStatus, RepositoryPropPermissions
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    Full session details within a task
-    """
+class InstallationRepositoriesGetResponse200PropRepositoriesItems(GitHubModel):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItems"""
 
-    id: str = Field(description="Session ID")
-    name: Missing[str] = Field(default=UNSET, description="Session name")
-    user: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser] = (
-        Field(default=UNSET, description="The user who created this session")
+    id: int = Field(description="Unique identifier of the repository")
+    node_id: str = Field()
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    forks: int = Field()
+    permissions: Missing[RepositoryPropPermissions] = Field(default=UNSET)
+    owner: Union[None, SimpleUser] = Field()
+    private: bool = Field(
+        default=False, description="Whether the repository is private or public."
     )
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    hooks_url: str = Field()
+    svn_url: str = Field()
+    homepage: Union[str, None] = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    size: int = Field(
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
     )
-    repository: Missing[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this session belongs to")
-    task_id: Missing[str] = Field(
-        default=UNSET, description="Task ID this session belongs to"
+    default_branch: str = Field(description="The default branch of the repository.")
+    open_issues_count: int = Field()
+    is_template: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(description="Current state of a session")
-    created_at: _dt.datetime = Field(description="Creation timestamp")
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Last update timestamp"
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
+    has_projects: bool = Field(
+        default=True, description="Whether projects are enabled."
     )
-    completed_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Completion timestamp"
+    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
+    has_pages: bool = Field()
+    has_downloads: bool = Field(
+        default=True, description="Whether downloads are enabled."
     )
-    prompt: Missing[str] = Field(
-        default=UNSET, description="Content of the triggering event"
+    has_discussions: Missing[bool] = Field(
+        default=UNSET, description="Whether discussions are enabled."
     )
-    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
-    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
-    model: Missing[str] = Field(
-        default=UNSET, description="Model used for this session"
+    has_pull_requests: Missing[bool] = Field(
+        default=UNSET, description="Whether pull requests are enabled."
     )
-    error: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError] = (
-        Field(default=UNSET, description="Error details for a failed session")
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
+    )
+    archived: bool = Field(
+        default=False, description="Whether the repository is archived."
+    )
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
+    )
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility: public, private, or internal.",
+    )
+    pushed_at: Union[_dt.datetime, None] = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    allow_rebase_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow rebase merges for pull requests."
+    )
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    allow_squash_merge: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow squash merges for pull requests."
+    )
+    allow_auto_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to allow Auto-merge to be used on pull requests.",
+    )
+    delete_branch_on_merge: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to delete head branches when pull requests are merged",
+    )
+    allow_update_branch: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
+    )
+    use_squash_pr_title_as_default: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.",
+    )
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
+    )
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
+    )
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit title.\n\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
+    )
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+    )
+    allow_merge_commit: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow merge commits for pull requests."
+    )
+    allow_forking: Missing[bool] = Field(
+        default=UNSET, description="Whether to allow forking this repo"
+    )
+    web_commit_signoff_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to require contributors to sign off on web-based commits",
+    )
+    open_issues: int = Field()
+    watchers: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    starred_at: Missing[str] = Field(default=UNSET)
+    anonymous_access_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether anonymous git access is enabled for this repository",
+    )
+    code_search_index_status: Missing[RepositoryPropCodeSearchIndexStatus] = Field(
+        default=UNSET,
+        description="The status of the code search index for this repository",
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
 
-    The user who created this session
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    total_count: int = Field()
+    repositories: list[InstallationRepositoriesGetResponse200PropRepositoriesItems] = (
+        Field()
     )
+    repository_selection: Missing[str] = Field(default=UNSET)
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-
-    The repository this session belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: Missing[str] = Field(default=UNSET, description="Error message")
-
-
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError)
+model_rebuild(InstallationRepositoriesGetResponse200PropRepositoriesItems)
+model_rebuild(InstallationRepositoriesGetResponse200)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+    "InstallationRepositoriesGetResponse200",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItems",
 )

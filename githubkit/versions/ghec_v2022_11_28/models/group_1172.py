@@ -9,47 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
-    )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    size: Missing[str] = Field(
-        default=UNSET,
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
-    )
-    image_id: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
-    )
-    image_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    attestations_subject_digests: Missing[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
+        default=UNSET, description="Information about the current page."
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
+class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)
+    Mapping of subject digest to bundles.
+    """
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
+    )
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
+
+
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
+
+__all__ = (
+    "OrgsOrgAttestationsBulkListPostResponse200",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+)

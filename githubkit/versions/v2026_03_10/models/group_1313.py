@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,19 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    ignored: Missing[bool] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    )
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)

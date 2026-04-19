@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,74 +17,151 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0931 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_0932 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
+from .group_0034 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
     name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique across the enterprise.",
     )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
+    description: Missing[str] = Field(
+        max_length=255,
+        default=UNSET,
+        description="A description of the code security configuration",
     )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
+    advanced_security: Missing[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="The enablement status of GitHub Code Security features.",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    code_scanning_default_setup_options: Missing[
+        Union[CodeScanningDefaultSetupOptions, None]
+    ] = Field(
+        default=UNSET, description="Feature options for code scanning default setup"
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
+    )
+    code_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of code scanning delegated alert dismissal",
+    )
+    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of GitHub Secret Protection features.",
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
+    secret_scanning_generic_secrets: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_delegated_alert_dismissal: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning delegated alert dismissal",
+    )
+    secret_scanning_extended_metadata: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning extended metadata",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
+    )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0)
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
+    dencyGraphAutosubmitActionOptions
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0",)
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,76 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1040 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_1041 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_1043 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-class AgentsTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200"""
-
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
-    )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
+    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Whether the runner group can be used by `public` repositories.",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
-        Field(default=UNSET, description="Sessions associated with this task")
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = ("AgentsTasksTaskIdGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)

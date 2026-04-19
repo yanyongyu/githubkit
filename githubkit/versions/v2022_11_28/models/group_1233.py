@@ -19,43 +19,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
-    )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
-    )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+    state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET,
-        description="An object with information about the individual creating the tag.",
+        description="The state of the milestone. Either `open` or `closed`.",
     )
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[_dt.datetime] = Field(
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
-)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

@@ -13,16 +13,13 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0335 import ActionsSecret
+
+class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPostBody"""
+
+    head_sha: str = Field(description="The sha of the head commit.")
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
+model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
 
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)

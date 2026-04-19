@@ -9,24 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any
-from typing_extensions import TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: _dt.datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[_dt.datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
+
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: str
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
 )

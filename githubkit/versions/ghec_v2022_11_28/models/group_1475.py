@@ -9,26 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    body: Missing[str] = Field(
-        default=UNSET, description="The body text of the pull request review"
-    )
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)

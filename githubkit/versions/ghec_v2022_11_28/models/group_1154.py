@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,19 +19,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class MarkdownPostBody(GitHubModel):
-    """MarkdownPostBody"""
+class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsGetResponse200"""
 
-    text: str = Field(description="The Markdown text to render in HTML.")
-    mode: Missing[Literal["markdown", "gfm"]] = Field(
-        default=UNSET, description="The rendering mode."
+    total_count: int = Field()
+    secrets: list[OrganizationActionsSecret] = Field()
+
+
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
+
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    context: Missing[str] = Field(
-        default=UNSET,
-        description="The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(MarkdownPostBody)
+model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrganizationActionsSecret)
 
-__all__ = ("MarkdownPostBody",)
+__all__ = (
+    "OrganizationActionsSecret",
+    "OrgsOrgActionsSecretsGetResponse200",
+)

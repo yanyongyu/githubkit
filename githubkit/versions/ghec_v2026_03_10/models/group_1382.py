@@ -13,57 +13,46 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or SHA."
-    )
-    task: Missing[str] = Field(
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+    ] = Field(
         default=UNSET,
-        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    auto_merge: Missing[bool] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )
-    required_contexts: Missing[list[str]] = Field(
+    type: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The [status](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
-    )
-    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
-        Field(default=UNSET)
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the deployment."
-    )
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
     )
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostBody)
-model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBody",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
 )
